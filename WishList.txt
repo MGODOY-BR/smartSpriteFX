@@ -13,4 +13,5 @@ Functions
 			1) The child folders from Asset folder, find for each image (png/bmp/jpg). Find for this file for the fileName.meta files.
 			2) Open each file and replace textureType: -1 for textureType: 8. Close and open Unity
 			3) Be careful because could there are texture files in that files and another items use meta files.
+			4) It´s possible set another properties at once, such as scale
 		
