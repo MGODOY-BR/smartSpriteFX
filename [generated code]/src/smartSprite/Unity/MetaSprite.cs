@@ -17,9 +17,9 @@ namespace smartSprite.Unity{
 		}
 
 		/// <summary>
-		/// The piece to add meta sprite
+		/// It´s the game object represented by the meta sprite
 		/// </summary>
-		private Piece _piece;
+		public GameObject RelatedGameObject;
 
 		/// <param name="piece"></param>
 		public void MetaSprite(Piece piece) {

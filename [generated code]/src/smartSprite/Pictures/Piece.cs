@@ -8,7 +8,7 @@ namespace smartSprite.Pictures{
 	/// <summary>
 	/// Represents a piece of picture, created by user
 	/// </summary>
-	public class Piece {
+	public class Piece : GameObject {
 
 		/// <summary>
 		/// Represents a piece of picture, created by user

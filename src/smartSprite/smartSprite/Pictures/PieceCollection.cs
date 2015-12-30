@@ -27,6 +27,11 @@ namespace smartSprite.Pictures{
 		public HashSet<Piece> PieceList;
 
 		/// <summary>
+		/// It´s list of groups
+		/// </summary>
+		public Group GroupList;
+
+		/// <summary>
 		/// Generates the pieces created
 		/// </summary>
 		/// <param name="folder"></param>
