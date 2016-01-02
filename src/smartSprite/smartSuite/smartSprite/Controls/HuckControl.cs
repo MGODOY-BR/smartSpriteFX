@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace smartSprite.Controls
 {
-    public partial class HuckControlcs : UserControl
+    public partial class HuckControl : UserControl
     {
-        public HuckControlcs()
+        public HuckControl()
         {
             InitializeComponent();
         }

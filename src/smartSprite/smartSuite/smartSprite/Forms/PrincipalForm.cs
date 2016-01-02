@@ -318,6 +318,17 @@ namespace smartSprite.Forms
             this.LoadSettings();
 
             this.FormClosed += PrincipalForm_FormClosed;
+            this.draftControl1.GettingSettings += DraftControl1_GettingSettings;
+        }
+
+        /// <summary>
+        /// Occurs when the draft controls needs to check toolbars
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void DraftControl1_GettingSettings(object sender, Controls.ToolboxState.DraftSettings e)
+        {
+            e.HuckOn = this.toolHuckButton.Checked;  
         }
 
         /// <summary>

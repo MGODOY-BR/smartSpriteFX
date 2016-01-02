@@ -53,12 +53,13 @@
     <Compile Include="Controls\DraftControl.Designer.cs">
       <DependentUpon>DraftControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\HuckControlcs.cs">
+    <Compile Include="Controls\HuckControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\HuckControlcs.Designer.cs">
-      <DependentUpon>HuckControlcs.cs</DependentUpon>
+    <Compile Include="Controls\HuckControl.Designer.cs">
+      <DependentUpon>HuckControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\ToolboxState\DraftSettings.cs" />
     <Compile Include="Forms\PieceManager.cs" />
     <Compile Include="Forms\PrincipalForm.cs">
       <SubType>Form</SubType>
@@ -78,8 +79,8 @@
     <EmbeddedResource Include="Controls\DraftControl.resx">
       <DependentUpon>DraftControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\HuckControlcs.resx">
-      <DependentUpon>HuckControlcs.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\HuckControl.resx">
+      <DependentUpon>HuckControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\PrincipalForm.resx">
       <DependentUpon>PrincipalForm.cs</DependentUpon>

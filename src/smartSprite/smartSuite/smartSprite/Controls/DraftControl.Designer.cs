@@ -41,6 +41,7 @@
             this.imgDraft.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.imgDraft.TabIndex = 1;
             this.imgDraft.TabStop = false;
+            this.imgDraft.MouseClick += new System.Windows.Forms.MouseEventHandler(this.imgDraft_MouseClick);
             // 
             // DraftControl
             // 

@@ -47,11 +47,11 @@
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.pnlImage = new System.Windows.Forms.Panel();
+            this.draftControl1 = new smartSprite.Controls.DraftControl();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.toolHuckButton = new System.Windows.Forms.ToolStripButton();
             this.openDraftFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.openSmartSpriteFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.draftControl1 = new smartSprite.Controls.DraftControl();
             this.statusStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -284,26 +284,33 @@
             this.pnlImage.Size = new System.Drawing.Size(739, 361);
             this.pnlImage.TabIndex = 0;
             // 
+            // draftControl1
+            // 
+            this.draftControl1.AutoSize = true;
+            this.draftControl1.Location = new System.Drawing.Point(0, 0);
+            this.draftControl1.Name = "draftControl1";
+            this.draftControl1.Size = new System.Drawing.Size(742, 348);
+            this.draftControl1.TabIndex = 0;
+            // 
             // toolStrip1
             // 
             this.toolStrip1.Dock = System.Windows.Forms.DockStyle.None;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton1});
+            this.toolHuckButton});
             this.toolStrip1.Location = new System.Drawing.Point(3, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(35, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(66, 25);
             this.toolStrip1.TabIndex = 0;
             // 
-            // toolStripButton1
+            // toolHuckButton
             // 
-            this.toolStripButton1.CheckOnClick = true;
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = global::smartSprite.Properties.Resources.Huck;
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton1.Text = "toolHuckButton";
-            this.toolStripButton1.ToolTipText = "Huck";
+            this.toolHuckButton.CheckOnClick = true;
+            this.toolHuckButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolHuckButton.Image = global::smartSprite.Properties.Resources.Huck;
+            this.toolHuckButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolHuckButton.Name = "toolHuckButton";
+            this.toolHuckButton.Size = new System.Drawing.Size(23, 22);
+            this.toolHuckButton.ToolTipText = "Huck";
             // 
             // openDraftFileDialog1
             // 
@@ -314,14 +321,6 @@
             // openSmartSpriteFileDialog1
             // 
             this.openSmartSpriteFileDialog1.Filter = "smartSprite File|*.smartSprite";
-            // 
-            // draftControl1
-            // 
-            this.draftControl1.AutoSize = true;
-            this.draftControl1.Location = new System.Drawing.Point(0, 0);
-            this.draftControl1.Name = "draftControl1";
-            this.draftControl1.Size = new System.Drawing.Size(742, 348);
-            this.draftControl1.TabIndex = 0;
             // 
             // PrincipalForm
             // 
@@ -383,7 +382,7 @@
         private System.Windows.Forms.ToolStripContainer toolStripContainer1;
         private System.Windows.Forms.Panel pnlImage;
         private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripButton toolHuckButton;
         private Controls.DraftControl draftControl1;
     }
 }

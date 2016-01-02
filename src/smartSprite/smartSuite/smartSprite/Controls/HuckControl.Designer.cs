@@ -1,6 +1,6 @@
 ﻿namespace smartSprite.Controls
 {
-    partial class HuckControlcs
+    partial class HuckControl
     {
         /// <summary> 
         /// Required designer variable.
