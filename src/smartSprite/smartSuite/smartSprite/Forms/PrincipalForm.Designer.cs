@@ -33,6 +33,7 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblVersion = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.pnlSourceFolder = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -46,15 +47,15 @@
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.pnlImage = new System.Windows.Forms.Panel();
-            this.openDraftFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.openSmartSpriteFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.imgDraft = new System.Windows.Forms.PictureBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.openDraftFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.openSmartSpriteFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.draftControl1 = new smartSprite.Controls.DraftControl();
             this.statusStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
             this.pnlSourceFolder.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -64,8 +65,6 @@
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
             this.pnlImage.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imgDraft)).BeginInit();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -119,12 +118,22 @@
             this.lblVersion.TabIndex = 2;
             this.lblVersion.Text = "Indefined";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::smartSprite.Properties.Resources.logo;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 16);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(494, 28);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.27648F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 83.72353F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 166F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 167F));
             this.tableLayoutPanel2.Controls.Add(this.pnlSourceFolder, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel3, 2, 0);
             this.tableLayoutPanel2.Controls.Add(this.toolStripContainer1, 1, 0);
@@ -219,13 +228,13 @@
             this.tableLayoutPanel3.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.treeView1, 0, 1);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(894, 3);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(893, 3);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 3;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.260726F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 92.73927F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(161, 386);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(162, 386);
             this.tableLayoutPanel3.TabIndex = 1;
             // 
             // label1
@@ -242,7 +251,7 @@
             this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeView1.Location = new System.Drawing.Point(3, 29);
             this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(155, 333);
+            this.treeView1.Size = new System.Drawing.Size(156, 333);
             this.treeView1.TabIndex = 1;
             // 
             // toolStripContainer1
@@ -251,11 +260,11 @@
             // toolStripContainer1.ContentPanel
             // 
             this.toolStripContainer1.ContentPanel.Controls.Add(this.pnlImage);
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(740, 361);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(739, 361);
             this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolStripContainer1.Location = new System.Drawing.Point(148, 3);
             this.toolStripContainer1.Name = "toolStripContainer1";
-            this.toolStripContainer1.Size = new System.Drawing.Size(740, 386);
+            this.toolStripContainer1.Size = new System.Drawing.Size(739, 386);
             this.toolStripContainer1.TabIndex = 2;
             this.toolStripContainer1.Text = "toolStripContainer1";
             // 
@@ -268,42 +277,12 @@
             this.pnlImage.AutoScroll = true;
             this.pnlImage.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.pnlImage.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pnlImage.Controls.Add(this.imgDraft);
+            this.pnlImage.Controls.Add(this.draftControl1);
             this.pnlImage.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlImage.Location = new System.Drawing.Point(0, 0);
             this.pnlImage.Name = "pnlImage";
-            this.pnlImage.Size = new System.Drawing.Size(740, 361);
+            this.pnlImage.Size = new System.Drawing.Size(739, 361);
             this.pnlImage.TabIndex = 0;
-            // 
-            // openDraftFileDialog1
-            // 
-            this.openDraftFileDialog1.Filter = "PNG Files|*.png|JPEG files|*.JPEG|JPG files|*.JPG|All files|*.*";
-            this.openDraftFileDialog1.SupportMultiDottedExtensions = true;
-            this.openDraftFileDialog1.Title = "Open draft";
-            // 
-            // openSmartSpriteFileDialog1
-            // 
-            this.openSmartSpriteFileDialog1.Filter = "smartSprite File|*.smartSprite";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::smartSprite.Properties.Resources.logo;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 16);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(494, 28);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
-            // imgDraft
-            // 
-            this.imgDraft.Image = global::smartSprite.Properties.Resources.DraftSample;
-            this.imgDraft.Location = new System.Drawing.Point(0, 0);
-            this.imgDraft.Name = "imgDraft";
-            this.imgDraft.Size = new System.Drawing.Size(736, 345);
-            this.imgDraft.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.imgDraft.TabIndex = 0;
-            this.imgDraft.TabStop = false;
             // 
             // toolStrip1
             // 
@@ -312,7 +291,7 @@
             this.toolStripButton1});
             this.toolStrip1.Location = new System.Drawing.Point(3, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(66, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(35, 25);
             this.toolStrip1.TabIndex = 0;
             // 
             // toolStripButton1
@@ -325,6 +304,24 @@
             this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton1.Text = "toolHuckButton";
             this.toolStripButton1.ToolTipText = "Huck";
+            // 
+            // openDraftFileDialog1
+            // 
+            this.openDraftFileDialog1.Filter = "PNG Files|*.png|JPEG files|*.JPEG|JPG files|*.JPG|All files|*.*";
+            this.openDraftFileDialog1.SupportMultiDottedExtensions = true;
+            this.openDraftFileDialog1.Title = "Open draft";
+            // 
+            // openSmartSpriteFileDialog1
+            // 
+            this.openSmartSpriteFileDialog1.Filter = "smartSprite File|*.smartSprite";
+            // 
+            // draftControl1
+            // 
+            this.draftControl1.AutoSize = true;
+            this.draftControl1.Location = new System.Drawing.Point(0, 0);
+            this.draftControl1.Name = "draftControl1";
+            this.draftControl1.Size = new System.Drawing.Size(742, 348);
+            this.draftControl1.TabIndex = 0;
             // 
             // PrincipalForm
             // 
@@ -339,6 +336,7 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.pnlSourceFolder.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
@@ -354,8 +352,6 @@
             this.toolStripContainer1.PerformLayout();
             this.pnlImage.ResumeLayout(false);
             this.pnlImage.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imgDraft)).EndInit();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -386,8 +382,8 @@
         private System.Windows.Forms.TreeView treeView1;
         private System.Windows.Forms.ToolStripContainer toolStripContainer1;
         private System.Windows.Forms.Panel pnlImage;
-        private System.Windows.Forms.PictureBox imgDraft;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private Controls.DraftControl draftControl1;
     }
 }
