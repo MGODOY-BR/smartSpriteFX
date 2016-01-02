@@ -15,6 +15,15 @@ namespace smartSuite.smartSprite.Pictures{
 		/// </summary>
 		public Picture(String fullPath)
         {
+            #region Entries validation
+            
+            if (String.IsNullOrEmpty(fullPath))
+            {
+                throw new ArgumentNullException("fullPath");
+            }
+
+            #endregion
+
             this._fullPath = fullPath;
 		}
 

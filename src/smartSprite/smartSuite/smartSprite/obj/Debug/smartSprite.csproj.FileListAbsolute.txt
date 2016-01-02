@@ -1,9 +1,9 @@
 C:\Users\Marcelo\Documents\Repositório GIT\smartSprite\src\smartSprite\smartSuite\smartSprite\smartSprite\bin\Debug\smartSprite.exe.config
 C:\Users\Marcelo\Documents\Repositório GIT\smartSprite\src\smartSprite\smartSuite\smartSprite\bin\Debug\smartSprite.exe.config
-C:\Users\Marcelo\Documents\Repositório GIT\smartSprite\src\smartSprite\smartSuite\smartSprite\obj\Debug\smartSprite.csprojResolveAssemblyReference.cache
-C:\Users\Marcelo\Documents\Repositório GIT\smartSprite\src\smartSprite\smartSuite\smartSprite\obj\Debug\smartSprite.Properties.Resources.resources
-C:\Users\Marcelo\Documents\Repositório GIT\smartSprite\src\smartSprite\smartSuite\smartSprite\obj\Debug\smartSprite.csproj.GenerateResource.Cache
 C:\Users\Marcelo\Documents\Repositório GIT\smartSprite\src\smartSprite\smartSuite\smartSprite\bin\Debug\smartSprite.exe
 C:\Users\Marcelo\Documents\Repositório GIT\smartSprite\src\smartSprite\smartSuite\smartSprite\bin\Debug\smartSprite.pdb
+C:\Users\Marcelo\Documents\Repositório GIT\smartSprite\src\smartSprite\smartSuite\smartSprite\obj\Debug\smartSprite.Properties.Resources.resources
+C:\Users\Marcelo\Documents\Repositório GIT\smartSprite\src\smartSprite\smartSuite\smartSprite\obj\Debug\smartSprite.csproj.GenerateResource.Cache
 C:\Users\Marcelo\Documents\Repositório GIT\smartSprite\src\smartSprite\smartSuite\smartSprite\obj\Debug\smartSprite.exe
 C:\Users\Marcelo\Documents\Repositório GIT\smartSprite\src\smartSprite\smartSuite\smartSprite\obj\Debug\smartSprite.pdb
+C:\Users\Marcelo\Documents\Repositório GIT\smartSprite\src\smartSprite\smartSuite\smartSprite\obj\Debug\smartSprite.csprojResolveAssemblyReference.cache

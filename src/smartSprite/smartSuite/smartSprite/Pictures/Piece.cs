@@ -9,7 +9,7 @@ namespace smartSuite.smartSprite.Pictures{
 	/// <summary>
 	/// Represents a piece of picture, created by user
 	/// </summary>
-	public class Piece : GameObject {
+	public class Piece : IGameObject {
 
 		/// <summary>
 		/// It´s the name of piece of picture
@@ -69,6 +69,23 @@ namespace smartSuite.smartSprite.Pictures{
 		/// <param name="pointB"></param>
 		public Piece(Picture picture, Point pointA, Point pointB)
         {
+            #region Entries validation
+
+            if (picture == null)
+            {
+                throw new ArgumentNullException("picture");
+            }
+            if (pointA == null)
+            {
+                throw new ArgumentNullException("pointA");
+            }
+            if (pointB == null)
+            {
+                throw new ArgumentNullException("pointB");
+            }
+
+            #endregion
+
             this._referencePicture = picture;
             this.PointA = pointA;
             this.PointB = pointB;

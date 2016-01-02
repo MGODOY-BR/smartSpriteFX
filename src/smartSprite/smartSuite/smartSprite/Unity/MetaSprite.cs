@@ -14,14 +14,23 @@ namespace smartSuite.smartSprite.Unity{
 		/// <summary>
 		/// It´s the game object represented by the meta sprite
 		/// </summary>
-		public GameObject RelatedGameObject
+		public IGameObject RelatedGameObject
         {
             get;
             set;
         }
 
-		public MetaSprite(GameObject gameObject)
+		public MetaSprite(IGameObject gameObject)
         {
+            #region Entries validation
+
+            if (gameObject == null)
+            {
+                throw new ArgumentNullException("gameObject");
+            }
+
+            #endregion
+
             this.RelatedGameObject = gameObject;
 		}
 

@@ -9,7 +9,7 @@ namespace smartSuite.smartSprite.Pictures{
 	/// <summary>
 	/// Represents a group of piece to join the related pieces of image
 	/// </summary>
-	public class Group : GameObject {
+	public class Group : IGameObject {
 
 		/// <summary>
 		/// It´s the name of group
@@ -59,6 +59,15 @@ namespace smartSuite.smartSprite.Pictures{
 		/// <param name="folder"></param>
 		public void Generate(String folder)
         {
+            #region Entries validation
+
+            if (String.IsNullOrEmpty(folder))
+            {
+                throw new ArgumentNullException("folder");
+            }
+
+            #endregion
+
             throw new NotImplementedException();
 		}
 

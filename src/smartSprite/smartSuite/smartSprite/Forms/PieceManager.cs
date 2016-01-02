@@ -56,6 +56,15 @@ namespace smartSuite.smartSprite.Forms{
 		/// </summary>
 		/// <param name="fileName"></param>
 		public static void Load(String fileName) {
+
+            #region Entries validation
+
+            if (String.IsNullOrEmpty(fileName))
+            {
+                throw new ArgumentNullException("fileName");
+            }
+
+            #endregion
             throw new NotImplementedException();
 		}
 

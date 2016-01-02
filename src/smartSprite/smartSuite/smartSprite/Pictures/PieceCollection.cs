@@ -35,6 +35,15 @@ namespace smartSuite.smartSprite.Pictures{
 
         public PieceCollection(Picture picture)
         {
+            #region Entries validation
+
+            if (picture == null)
+            {
+                throw new ArgumentNullException("picture");
+            }
+
+            #endregion
+
             this.PieceList = new List<Piece>();
             this.GroupList = new List<Group>();
             this._referencePicture = picture;
@@ -45,6 +54,16 @@ namespace smartSuite.smartSprite.Pictures{
 		/// </summary>
 		/// <param name="folder"></param>
 		public void Generate(String folder) {
+
+            #region Entries validation
+
+            if (String.IsNullOrEmpty(folder))
+            {
+                throw new ArgumentNullException("folder");
+            }
+
+            #endregion
+
             // TODO implement here
             throw new NotImplementedException();
 		}
@@ -54,6 +73,15 @@ namespace smartSuite.smartSprite.Pictures{
 		/// </summary>
 		/// <param name="fileName"></param>
 		public void Save(String fileName) {
+
+            #region Entries validation
+            
+            if (String.IsNullOrEmpty(fileName))
+            {
+                throw new ArgumentNullException("fileName");
+            }
+
+            #endregion
             // TODO implement here
             throw new NotImplementedException();
         }
@@ -64,6 +92,15 @@ namespace smartSuite.smartSprite.Pictures{
         /// <param name="fileName"></param>
         /// <returns></returns>
         public static PieceCollection Load(String fileName) {
+
+            #region Entries validation
+
+            if (String.IsNullOrEmpty(fileName))
+            {
+                throw new ArgumentNullException("fileName");
+            }
+
+            #endregion
             // TODO implement here
             throw new NotImplementedException();
         }
