@@ -219,12 +219,12 @@ namespace smartSprite.Forms
         {
             if (!String.IsNullOrEmpty(Settings.Default.lastSourceFolder))
             {
-                this.txtSourceFolder.Text = Settings.Default.lastSourceFolder;
-                this.folderBrowserDialog1.SelectedPath = this.txtSourceFolder.Text.Trim();
+                this.txtDraftSourceFolder.Text = Settings.Default.lastSourceFolder;
+                this.openDraftFileDialog1.FileName = this.txtDraftSourceFolder.Text.Trim();
             }
             else
             {
-                this.txtSourceFolder.Text = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
+                this.txtDraftSourceFolder.Text = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
             }
 
             this.lblVersion.Text = this.GetType().Assembly.GetName().Version.ToString() + "(Alpha)";
@@ -237,7 +237,7 @@ namespace smartSprite.Forms
         /// </summary>
         private void RefreshForm()
         {
-            if (!Directory.Exists(this.txtSourceFolder.Text))
+            if (!Directory.Exists(this.txtDraftSourceFolder.Text))
             {
                 return;
             }
@@ -246,8 +246,8 @@ namespace smartSprite.Forms
             {
                 this.Interrupt();
 
-                this.folderBrowserDialog1.SelectedPath = this.txtSourceFolder.Text.Trim();
-                Settings.Default.lastSourceFolder = this.txtSourceFolder.Text.Trim();
+                this.openDraftFileDialog1.FileName = this.txtDraftSourceFolder.Text.Trim();
+                Settings.Default.lastSourceFolder = this.txtDraftSourceFolder.Text.Trim();
                 Settings.Default.Save();
             }
             finally
@@ -288,6 +288,21 @@ namespace smartSprite.Forms
             }
 
             this.pnlSourceFolder.Enabled = enabled;
+        }
+
+        /// <summary>
+        /// Opens the open source dialog
+        /// </summary>
+        /// <param name="sourceFolder"></param>
+        /// <param name="openDialog"></param>
+        private void DoOpenSourceDialog(TextBox sourceFolder, OpenFileDialog openDialog)
+        {
+            openDialog.ShowDialog();
+            if (openDialog.FileName != null)
+            {
+                sourceFolder.Text = openDialog.FileName;
+                this.RefreshForm();
+            }
         }
 
         #region Events
@@ -333,19 +348,14 @@ namespace smartSprite.Forms
             }
         }
 
-        /// <summary>
-        /// Open folders
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnOpenFolder_Click(object sender, EventArgs e)
+        private void btnOpenDraft_Click(object sender, EventArgs e)
         {
-            this.folderBrowserDialog1.ShowDialog();
-            if (this.folderBrowserDialog1.SelectedPath != null)
-            {
-                this.txtSourceFolder.Text = this.folderBrowserDialog1.SelectedPath;
-                this.RefreshForm();
-            }
+            this.DoOpenSourceDialog(this.txtDraftSourceFolder, this.openDraftFileDialog1);
+        }
+
+        private void btnOpenResumeWork_Click(object sender, EventArgs e)
+        {
+            this.DoOpenSourceDialog(this.txtLoadSprite, this.openSmartSpriteFileDialog1);
         }
 
         /// <summary>

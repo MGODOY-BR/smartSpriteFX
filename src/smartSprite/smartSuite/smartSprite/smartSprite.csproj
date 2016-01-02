@@ -89,7 +89,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\DraftSample.png" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="Resources\error.png" />
   </ItemGroup>

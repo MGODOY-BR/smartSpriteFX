@@ -33,27 +33,45 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblVersion = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.pnlSourceFolder = new System.Windows.Forms.Panel();
-            this.txtSourceFolder = new System.Windows.Forms.TextBox();
-            this.btnOpenFolder = new System.Windows.Forms.Button();
-            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnOpenResumeWork = new System.Windows.Forms.Button();
+            this.txtLoadSprite = new System.Windows.Forms.TextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnOpenDraft = new System.Windows.Forms.Button();
+            this.txtDraftSourceFolder = new System.Windows.Forms.TextBox();
+            this.openDraftFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.openSmartSpriteFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.treeView1 = new System.Windows.Forms.TreeView();
+            this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
+            this.pnlImage = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.imgDraft = new System.Windows.Forms.PictureBox();
             this.statusStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
             this.pnlSourceFolder.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
+            this.toolStripContainer1.ContentPanel.SuspendLayout();
+            this.toolStripContainer1.SuspendLayout();
+            this.pnlImage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgDraft)).BeginInit();
             this.SuspendLayout();
             // 
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 386);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 448);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(903, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1064, 22);
             this.statusStrip1.TabIndex = 0;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -74,7 +92,7 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(903, 386);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1064, 448);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // panel1
@@ -85,7 +103,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(897, 44);
+            this.panel1.Size = new System.Drawing.Size(1058, 44);
             this.panel1.TabIndex = 0;
             // 
             // lblVersion
@@ -97,6 +115,168 @@
             this.lblVersion.TabIndex = 2;
             this.lblVersion.Text = "Indefined";
             // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 3;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.27648F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 83.72353F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 165F));
+            this.tableLayoutPanel2.Controls.Add(this.pnlSourceFolder, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel3, 2, 0);
+            this.tableLayoutPanel2.Controls.Add(this.toolStripContainer1, 1, 0);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 53);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 1;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1058, 392);
+            this.tableLayoutPanel2.TabIndex = 1;
+            // 
+            // pnlSourceFolder
+            // 
+            this.pnlSourceFolder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.pnlSourceFolder.Controls.Add(this.groupBox2);
+            this.pnlSourceFolder.Controls.Add(this.groupBox1);
+            this.pnlSourceFolder.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlSourceFolder.Location = new System.Drawing.Point(3, 3);
+            this.pnlSourceFolder.Name = "pnlSourceFolder";
+            this.pnlSourceFolder.Size = new System.Drawing.Size(139, 386);
+            this.pnlSourceFolder.TabIndex = 0;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.btnOpenResumeWork);
+            this.groupBox2.Controls.Add(this.txtLoadSprite);
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox2.Location = new System.Drawing.Point(0, 100);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(139, 113);
+            this.groupBox2.TabIndex = 4;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Resume work...";
+            // 
+            // btnOpenResumeWork
+            // 
+            this.btnOpenResumeWork.Location = new System.Drawing.Point(6, 18);
+            this.btnOpenResumeWork.Name = "btnOpenResumeWork";
+            this.btnOpenResumeWork.Size = new System.Drawing.Size(37, 24);
+            this.btnOpenResumeWork.TabIndex = 3;
+            this.btnOpenResumeWork.Text = "...";
+            this.btnOpenResumeWork.UseVisualStyleBackColor = true;
+            this.btnOpenResumeWork.Click += new System.EventHandler(this.btnOpenResumeWork_Click);
+            // 
+            // txtLoadSprite
+            // 
+            this.txtLoadSprite.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtLoadSprite.Location = new System.Drawing.Point(6, 48);
+            this.txtLoadSprite.Multiline = true;
+            this.txtLoadSprite.Name = "txtLoadSprite";
+            this.txtLoadSprite.Size = new System.Drawing.Size(127, 44);
+            this.txtLoadSprite.TabIndex = 4;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.btnOpenDraft);
+            this.groupBox1.Controls.Add(this.txtDraftSourceFolder);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox1.Location = new System.Drawing.Point(0, 0);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(139, 100);
+            this.groupBox1.TabIndex = 3;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "New from draft...";
+            // 
+            // btnOpenDraft
+            // 
+            this.btnOpenDraft.Location = new System.Drawing.Point(6, 19);
+            this.btnOpenDraft.Name = "btnOpenDraft";
+            this.btnOpenDraft.Size = new System.Drawing.Size(37, 24);
+            this.btnOpenDraft.TabIndex = 1;
+            this.btnOpenDraft.Text = "...";
+            this.btnOpenDraft.UseVisualStyleBackColor = true;
+            this.btnOpenDraft.Click += new System.EventHandler(this.btnOpenDraft_Click);
+            // 
+            // txtDraftSourceFolder
+            // 
+            this.txtDraftSourceFolder.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtDraftSourceFolder.Location = new System.Drawing.Point(6, 49);
+            this.txtDraftSourceFolder.Multiline = true;
+            this.txtDraftSourceFolder.Name = "txtDraftSourceFolder";
+            this.txtDraftSourceFolder.Size = new System.Drawing.Size(127, 44);
+            this.txtDraftSourceFolder.TabIndex = 2;
+            this.txtDraftSourceFolder.Leave += new System.EventHandler(this.txtSourceFolder_Leave);
+            // 
+            // openDraftFileDialog1
+            // 
+            this.openDraftFileDialog1.Filter = "PNG Files|*.png|JPEG files|*.JPEG|JPG files|*.JPG|All files|*.*";
+            this.openDraftFileDialog1.SupportMultiDottedExtensions = true;
+            this.openDraftFileDialog1.Title = "Open draft";
+            // 
+            // openSmartSpriteFileDialog1
+            // 
+            this.openSmartSpriteFileDialog1.Filter = "smartSprite File|*.smartSprite";
+            // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.ColumnCount = 1;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.Controls.Add(this.label1, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.treeView1, 0, 1);
+            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(895, 3);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 3;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.260726F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 92.73927F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(160, 386);
+            this.tableLayoutPanel3.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(3, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(112, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "GameObject hierarchy";
+            // 
+            // treeView1
+            // 
+            this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeView1.Location = new System.Drawing.Point(3, 29);
+            this.treeView1.Name = "treeView1";
+            this.treeView1.Size = new System.Drawing.Size(154, 333);
+            this.treeView1.TabIndex = 1;
+            // 
+            // toolStripContainer1
+            // 
+            // 
+            // toolStripContainer1.ContentPanel
+            // 
+            this.toolStripContainer1.ContentPanel.Controls.Add(this.pnlImage);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(741, 361);
+            this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.toolStripContainer1.Location = new System.Drawing.Point(148, 3);
+            this.toolStripContainer1.Name = "toolStripContainer1";
+            this.toolStripContainer1.Size = new System.Drawing.Size(741, 386);
+            this.toolStripContainer1.TabIndex = 2;
+            this.toolStripContainer1.Text = "toolStripContainer1";
+            // 
+            // pnlImage
+            // 
+            this.pnlImage.AutoScroll = true;
+            this.pnlImage.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.pnlImage.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pnlImage.Controls.Add(this.imgDraft);
+            this.pnlImage.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlImage.Location = new System.Drawing.Point(0, 0);
+            this.pnlImage.Name = "pnlImage";
+            this.pnlImage.Size = new System.Drawing.Size(741, 361);
+            this.pnlImage.TabIndex = 0;
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::smartSprite.Properties.Resources.logo;
@@ -107,62 +287,21 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // tableLayoutPanel2
+            // imgDraft
             // 
-            this.tableLayoutPanel2.ColumnCount = 2;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.27648F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 83.72353F));
-            this.tableLayoutPanel2.Controls.Add(this.pnlSourceFolder, 0, 0);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 53);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 1;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(897, 330);
-            this.tableLayoutPanel2.TabIndex = 1;
-            // 
-            // pnlSourceFolder
-            // 
-            this.pnlSourceFolder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.pnlSourceFolder.Controls.Add(this.txtSourceFolder);
-            this.pnlSourceFolder.Controls.Add(this.btnOpenFolder);
-            this.pnlSourceFolder.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlSourceFolder.Location = new System.Drawing.Point(3, 3);
-            this.pnlSourceFolder.Name = "pnlSourceFolder";
-            this.pnlSourceFolder.Size = new System.Drawing.Size(140, 324);
-            this.pnlSourceFolder.TabIndex = 0;
-            // 
-            // txtSourceFolder
-            // 
-            this.txtSourceFolder.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSourceFolder.Location = new System.Drawing.Point(7, 33);
-            this.txtSourceFolder.Multiline = true;
-            this.txtSourceFolder.Name = "txtSourceFolder";
-            this.txtSourceFolder.Size = new System.Drawing.Size(120, 44);
-            this.txtSourceFolder.TabIndex = 2;
-            this.txtSourceFolder.Leave += new System.EventHandler(this.txtSourceFolder_Leave);
-            // 
-            // btnOpenFolder
-            // 
-            this.btnOpenFolder.Location = new System.Drawing.Point(7, 3);
-            this.btnOpenFolder.Name = "btnOpenFolder";
-            this.btnOpenFolder.Size = new System.Drawing.Size(37, 24);
-            this.btnOpenFolder.TabIndex = 1;
-            this.btnOpenFolder.Text = "...";
-            this.btnOpenFolder.UseVisualStyleBackColor = true;
-            this.btnOpenFolder.Click += new System.EventHandler(this.btnOpenFolder_Click);
-            // 
-            // folderBrowserDialog1
-            // 
-            this.folderBrowserDialog1.Description = "Select a source folder";
-            this.folderBrowserDialog1.ShowNewFolderButton = false;
+            this.imgDraft.Image = global::smartSprite.Properties.Resources.DraftSample;
+            this.imgDraft.Location = new System.Drawing.Point(0, 0);
+            this.imgDraft.Name = "imgDraft";
+            this.imgDraft.Size = new System.Drawing.Size(736, 345);
+            this.imgDraft.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.imgDraft.TabIndex = 0;
+            this.imgDraft.TabStop = false;
             // 
             // PrincipalForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(903, 408);
+            this.ClientSize = new System.Drawing.Size(1064, 470);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.statusStrip1);
             this.Name = "PrincipalForm";
@@ -171,10 +310,21 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.pnlSourceFolder.ResumeLayout(false);
-            this.pnlSourceFolder.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.tableLayoutPanel3.ResumeLayout(false);
+            this.tableLayoutPanel3.PerformLayout();
+            this.toolStripContainer1.ContentPanel.ResumeLayout(false);
+            this.toolStripContainer1.ResumeLayout(false);
+            this.toolStripContainer1.PerformLayout();
+            this.pnlImage.ResumeLayout(false);
+            this.pnlImage.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgDraft)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -188,10 +338,21 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Panel pnlSourceFolder;
-        private System.Windows.Forms.Button btnOpenFolder;
-        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
-        private System.Windows.Forms.TextBox txtSourceFolder;
+        private System.Windows.Forms.Button btnOpenDraft;
+        private System.Windows.Forms.TextBox txtDraftSourceFolder;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label lblVersion;
+        private System.Windows.Forms.OpenFileDialog openDraftFileDialog1;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button btnOpenResumeWork;
+        private System.Windows.Forms.TextBox txtLoadSprite;
+        private System.Windows.Forms.OpenFileDialog openSmartSpriteFileDialog1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TreeView treeView1;
+        private System.Windows.Forms.ToolStripContainer toolStripContainer1;
+        private System.Windows.Forms.Panel pnlImage;
+        private System.Windows.Forms.PictureBox imgDraft;
     }
 }
