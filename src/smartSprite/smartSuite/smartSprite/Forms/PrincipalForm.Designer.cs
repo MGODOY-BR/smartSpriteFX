@@ -72,9 +72,9 @@
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 448);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 494);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1064, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1102, 22);
             this.statusStrip1.TabIndex = 0;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -95,7 +95,7 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1064, 448);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1102, 494);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // panel1
@@ -106,7 +106,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1058, 44);
+            this.panel1.Size = new System.Drawing.Size(1096, 44);
             this.panel1.TabIndex = 0;
             // 
             // lblVersion
@@ -142,7 +142,7 @@
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1058, 392);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1096, 438);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
             // pnlSourceFolder
@@ -153,7 +153,7 @@
             this.pnlSourceFolder.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlSourceFolder.Location = new System.Drawing.Point(3, 3);
             this.pnlSourceFolder.Name = "pnlSourceFolder";
-            this.pnlSourceFolder.Size = new System.Drawing.Size(139, 386);
+            this.pnlSourceFolder.Size = new System.Drawing.Size(145, 432);
             this.pnlSourceFolder.TabIndex = 0;
             // 
             // groupBox2
@@ -163,7 +163,7 @@
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox2.Location = new System.Drawing.Point(0, 100);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(139, 113);
+            this.groupBox2.Size = new System.Drawing.Size(145, 113);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Resume work...";
@@ -185,7 +185,7 @@
             this.txtLoadSprite.Location = new System.Drawing.Point(6, 48);
             this.txtLoadSprite.Multiline = true;
             this.txtLoadSprite.Name = "txtLoadSprite";
-            this.txtLoadSprite.Size = new System.Drawing.Size(127, 44);
+            this.txtLoadSprite.Size = new System.Drawing.Size(133, 44);
             this.txtLoadSprite.TabIndex = 4;
             // 
             // groupBox1
@@ -195,7 +195,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(139, 100);
+            this.groupBox1.Size = new System.Drawing.Size(145, 100);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "New from draft...";
@@ -217,7 +217,7 @@
             this.txtDraftSourceFolder.Location = new System.Drawing.Point(6, 49);
             this.txtDraftSourceFolder.Multiline = true;
             this.txtDraftSourceFolder.Name = "txtDraftSourceFolder";
-            this.txtDraftSourceFolder.Size = new System.Drawing.Size(127, 44);
+            this.txtDraftSourceFolder.Size = new System.Drawing.Size(133, 44);
             this.txtDraftSourceFolder.TabIndex = 2;
             this.txtDraftSourceFolder.Leave += new System.EventHandler(this.txtSourceFolder_Leave);
             // 
@@ -228,13 +228,13 @@
             this.tableLayoutPanel3.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.treeView1, 0, 1);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(893, 3);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(931, 3);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 3;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.260726F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 92.73927F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(162, 386);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(162, 432);
             this.tableLayoutPanel3.TabIndex = 1;
             // 
             // label1
@@ -249,9 +249,9 @@
             // treeView1
             // 
             this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeView1.Location = new System.Drawing.Point(3, 29);
+            this.treeView1.Location = new System.Drawing.Point(3, 32);
             this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(156, 333);
+            this.treeView1.Size = new System.Drawing.Size(156, 376);
             this.treeView1.TabIndex = 1;
             // 
             // toolStripContainer1
@@ -260,11 +260,11 @@
             // toolStripContainer1.ContentPanel
             // 
             this.toolStripContainer1.ContentPanel.Controls.Add(this.pnlImage);
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(739, 361);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(771, 407);
             this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.toolStripContainer1.Location = new System.Drawing.Point(148, 3);
+            this.toolStripContainer1.Location = new System.Drawing.Point(154, 3);
             this.toolStripContainer1.Name = "toolStripContainer1";
-            this.toolStripContainer1.Size = new System.Drawing.Size(739, 386);
+            this.toolStripContainer1.Size = new System.Drawing.Size(771, 432);
             this.toolStripContainer1.TabIndex = 2;
             this.toolStripContainer1.Text = "toolStripContainer1";
             // 
@@ -281,7 +281,7 @@
             this.pnlImage.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlImage.Location = new System.Drawing.Point(0, 0);
             this.pnlImage.Name = "pnlImage";
-            this.pnlImage.Size = new System.Drawing.Size(739, 361);
+            this.pnlImage.Size = new System.Drawing.Size(771, 407);
             this.pnlImage.TabIndex = 0;
             // 
             // draftControl1
@@ -289,7 +289,7 @@
             this.draftControl1.AutoSize = true;
             this.draftControl1.Location = new System.Drawing.Point(0, 0);
             this.draftControl1.Name = "draftControl1";
-            this.draftControl1.Size = new System.Drawing.Size(742, 348);
+            this.draftControl1.Size = new System.Drawing.Size(742, 374);
             this.draftControl1.TabIndex = 0;
             // 
             // toolStrip1
@@ -299,7 +299,7 @@
             this.toolHuckButton});
             this.toolStrip1.Location = new System.Drawing.Point(3, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(66, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(35, 25);
             this.toolStrip1.TabIndex = 0;
             // 
             // toolHuckButton
@@ -326,7 +326,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1064, 470);
+            this.ClientSize = new System.Drawing.Size(1102, 516);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.statusStrip1);
             this.Name = "PrincipalForm";
