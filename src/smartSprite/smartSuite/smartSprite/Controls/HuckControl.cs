@@ -15,6 +15,21 @@ namespace smartSprite.Controls
         public HuckControl()
         {
             InitializeComponent();
+
+            this.MouseMove += HuckControl_MouseMove;
         }
+
+        #region Events
+
+        private void HuckControl_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                this.Top += e.Y - this.Height / 2;
+                this.Left += e.X - this.Width / 2;
+            }
+        }
+
+        #endregion
     }
 }
