@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using smartSprite.Utilities;
 
 namespace smartSprite.Forms.Controls
 {
@@ -20,6 +21,11 @@ namespace smartSprite.Forms.Controls
             get;
             set;
         }
+
+        /// <summary>
+        /// Gets the date when huck was created
+        /// </summary>
+        private DateTime _createdWhen;
 
         /// <summary>
         /// It´s the tracked horizontal line by the huck
@@ -36,12 +42,13 @@ namespace smartSprite.Forms.Controls
             InitializeComponent();
 
             this.MouseMove += HuckControl_MouseMove;
+            this._createdWhen = DateTime.Now;
         }
 
         /// <summary>
-        /// Updates the lines between the pairs
+        /// Creates the lines between the pairs
         /// </summary>
-        public void UpdateLines()
+        public void CreateLines()
         {
             #region Entries validation
 
@@ -60,18 +67,25 @@ namespace smartSprite.Forms.Controls
             D-------B
             
             */
+            HuckControl older = this.GetOlderHuckFromPair();
+            HuckControl newer = this.GetNewerHuckFromPair();
 
-            LineControl AC = new LineControl();
-            LineControl AD = new LineControl();
-            LineControl DB = new LineControl();
-            LineControl CB = new LineControl();
+            older.LineHorizontal = new LineControl();
+            older.LineVertical = new LineControl();
+            newer.LineHorizontal = new LineControl();
+            newer.LineVertical = new LineControl();
+
+            var AC = older.LineHorizontal;
+            var AD = older.LineVertical;
+            var CB = newer.LineVertical;
+            var DB = newer.LineHorizontal;
 
             this.Pair.LineHorizontal = AC;
             this.Pair.LineVertical = AD;
             this.LineHorizontal = DB;
             this.LineVertical = CB;
 
-            ResizeLines(AC, AD, DB, CB);
+            ResizeLines(older, newer);
 
             this.Parent.Controls.Add(AC);
             this.Parent.Controls.Add(DB);
@@ -82,19 +96,20 @@ namespace smartSprite.Forms.Controls
         /// <summary>
         /// Resizes the lines
         /// </summary>
-        /// <param name="AC"></param>
-        /// <param name="AD"></param>
-        /// <param name="DB"></param>
-        /// <param name="CB"></param>
-        private void ResizeLines(LineControl AC, LineControl AD, LineControl DB, LineControl CB)
+        private void ResizeLines(HuckControl older, HuckControl newer)
         {
-            Point currentPoint = new Point(this.Left + (this.Width / 2), this.Top + (this.Height / 2));
-            Point pairPoint = new Point(this.Pair.Left + (this.Pair.Width / 2), this.Pair.Top + (this.Pair.Height / 2));
+            Point currentPoint = new Point(newer.Left + (newer.Width / 2), newer.Top + (newer.Height / 2));
+            Point pairPoint = new Point(older.Left + (older.Width / 2), older.Top + (older.Height / 2));
 
-            AC.Resize(LineControlState.LineControlStyle.Horizontal, currentPoint.X - pairPoint.X);
+            LineControl AC = older.LineHorizontal;
+            LineControl AD = older.LineVertical;
+            LineControl DB = newer.LineHorizontal;
+            LineControl CB = newer.LineVertical;
+
+            AC.Resize(LineControlState.LineControlStyle.Horizontal, MathUtil.SubtractAbsolute(currentPoint.X, pairPoint.X));
             DB.Resize(AC.Style, AC.Width);
 
-            AD.Resize(LineControlState.LineControlStyle.Vertical, currentPoint.Y - pairPoint.Y);
+            AD.Resize(LineControlState.LineControlStyle.Vertical, MathUtil.SubtractAbsolute(currentPoint.Y, pairPoint.Y));
             CB.Resize(AD.Style, AD.Height);
 
             AC.Top = pairPoint.Y;
@@ -110,6 +125,54 @@ namespace smartSprite.Forms.Controls
             CB.Left = AC.Left + AC.Width;
         }
 
+        /// <summary>
+        /// Gets the older huck from pair
+        /// </summary>
+        private HuckControl GetOlderHuckFromPair()
+        {
+            #region Entries validation
+
+            if (this.Pair == null)
+            {
+                return this;
+            }
+
+            #endregion
+
+            if (this._createdWhen.CompareTo(this.Pair._createdWhen) == -1)
+            {
+                return this;
+            }
+            else
+            {
+                return this.Pair;
+            }
+        }
+
+        /// <summary>
+        /// Gets the newer huck from pair
+        /// </summary>
+        private HuckControl GetNewerHuckFromPair()
+        {
+            #region Entries validation
+
+            if (this.Pair == null)
+            {
+                return this;
+            }
+
+            #endregion
+
+            if (this._createdWhen.CompareTo(this.Pair._createdWhen) == 1)
+            {
+                return this;
+            }
+            else
+            {
+                return this.Pair;
+            }
+        }
+
         #region Events
 
         private void HuckControl_MouseMove(object sender, MouseEventArgs e)
@@ -119,13 +182,14 @@ namespace smartSprite.Forms.Controls
                 this.Top += e.Y - this.Height / 2;
                 this.Left += e.X - this.Width / 2;
 
+                HuckControl older = this.GetOlderHuckFromPair();
+                HuckControl newer = this.GetNewerHuckFromPair();
+
                 if (this.Pair != null)
                 {
                     this.ResizeLines(
-                        this.LineHorizontal,
-                        this.LineVertical,
-                        this.Pair.LineHorizontal,
-                        this.Pair.LineVertical);
+                        older,
+                        newer);
                 }
             }
         }

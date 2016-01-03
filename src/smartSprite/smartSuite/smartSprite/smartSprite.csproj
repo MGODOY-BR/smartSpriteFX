@@ -83,6 +83,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Unity\IGameObject.cs" />
     <Compile Include="Unity\MetaSprite.cs" />
+    <Compile Include="Utilities\MathUtil.cs" />
     <EmbeddedResource Include="Forms\Controls\DraftControl.resx">
       <DependentUpon>DraftControl.cs</DependentUpon>
     </EmbeddedResource>

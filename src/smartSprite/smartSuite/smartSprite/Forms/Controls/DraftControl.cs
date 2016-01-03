@@ -120,7 +120,7 @@ namespace smartSprite.Forms.Controls
             this.imgDraft.Controls.Add(newHuck);
             if (newHuck.Pair != null)
             {
-                newHuck.UpdateLines();
+                newHuck.CreateLines();
                 this._lastHuck = null;
             }
         }
