@@ -112,16 +112,16 @@ namespace smartSprite.Forms.Controls
             AD.Resize(LineControlState.LineControlStyle.Vertical, MathUtil.SubtractAbsolute(currentPoint.Y, pairPoint.Y));
             CB.Resize(AD.Style, AD.Height);
 
-            AC.Top = pairPoint.Y;
-            AC.Left = pairPoint.X;
+            AC.Top = MathUtil.GetLower<int>(pairPoint.Y, currentPoint.Y);
+            AC.Left = MathUtil.GetLower<int>(pairPoint.X, currentPoint.X);
 
             DB.Top = AC.Top + AD.Height;
-            DB.Left = pairPoint.X;
+            DB.Left = MathUtil.GetLower<int>(pairPoint.X, currentPoint.X);
 
-            AD.Top = pairPoint.Y;
+            AD.Top = MathUtil.GetLower<int>(pairPoint.Y, currentPoint.Y);
             AD.Left = AC.Left;
 
-            CB.Top = pairPoint.Y;
+            CB.Top = MathUtil.GetLower<int>(pairPoint.Y, currentPoint.Y);
             CB.Left = AC.Left + AC.Width;
         }
 
