@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace smartSprite.Controls
+namespace smartSprite.Forms.Controls
 {
     public partial class HuckControl : UserControl
     {

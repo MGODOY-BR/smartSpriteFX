@@ -47,7 +47,7 @@
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.pnlImage = new System.Windows.Forms.Panel();
-            this.draftControl1 = new smartSprite.Controls.DraftControl();
+            this.draftControl1 = new smartSprite.Forms.Controls.DraftControl();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolHuckButton = new System.Windows.Forms.ToolStripButton();
             this.openDraftFileDialog1 = new System.Windows.Forms.OpenFileDialog();

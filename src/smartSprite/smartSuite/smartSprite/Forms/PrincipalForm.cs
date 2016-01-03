@@ -382,7 +382,7 @@ namespace smartSprite.Forms
         private void toolHuckButton_Click(object sender, EventArgs e)
         {
             this.draftControl1.LastSettings =
-                new smartSprite.Controls.ToolboxState.DraftSettings
+                new smartSprite.Forms.Controls.ToolboxState.DraftSettings
                 {
                     HuckOn = toolHuckButton.Checked
                 };

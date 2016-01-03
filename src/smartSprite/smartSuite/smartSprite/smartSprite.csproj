@@ -47,26 +47,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controls\DraftControl.cs">
+    <Compile Include="Forms\Controls\DraftControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\DraftControl.Designer.cs">
+    <Compile Include="Forms\Controls\DraftControl.Designer.cs">
       <DependentUpon>DraftControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\HuckControl.cs">
+    <Compile Include="Forms\Controls\HuckControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\HuckControl.Designer.cs">
+    <Compile Include="Forms\Controls\HuckControl.Designer.cs">
       <DependentUpon>HuckControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\LineControl.cs">
+    <Compile Include="Forms\Controls\LineControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\LineControl.Designer.cs">
+    <Compile Include="Forms\Controls\LineControl.Designer.cs">
       <DependentUpon>LineControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\LineControlState\LineControlStyle.cs" />
-    <Compile Include="Controls\ToolboxState\DraftSettings.cs" />
+    <Compile Include="Forms\Controls\LineControlState\LineControlStyle.cs" />
+    <Compile Include="Forms\Controls\ToolboxState\DraftSettings.cs" />
     <Compile Include="Forms\PieceManager.cs" />
     <Compile Include="Forms\PrincipalForm.cs">
       <SubType>Form</SubType>
@@ -83,13 +83,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Unity\IGameObject.cs" />
     <Compile Include="Unity\MetaSprite.cs" />
-    <EmbeddedResource Include="Controls\DraftControl.resx">
+    <EmbeddedResource Include="Forms\Controls\DraftControl.resx">
       <DependentUpon>DraftControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\HuckControl.resx">
+    <EmbeddedResource Include="Forms\Controls\HuckControl.resx">
       <DependentUpon>HuckControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\LineControl.resx">
+    <EmbeddedResource Include="Forms\Controls\LineControl.resx">
       <DependentUpon>LineControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\PrincipalForm.resx">

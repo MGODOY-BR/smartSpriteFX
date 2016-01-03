@@ -1,4 +1,4 @@
-﻿namespace smartSprite.Controls
+﻿namespace smartSprite.Forms.Controls
 {
     partial class LineControl
     {
