@@ -21,6 +21,16 @@ namespace smartSprite.Controls
             set;
         }
 
+        /// <summary>
+        /// It´s the tracked horizontal line by the huck
+        /// </summary>
+        public LineControl LineHorizontal { get; set; }
+
+        /// <summary>
+        /// It´s the tracked vertical line by the huck
+        /// </summary>
+        public LineControl LineVertical { get; set; }
+
         public HuckControl()
         {
             InitializeComponent();
@@ -56,6 +66,28 @@ namespace smartSprite.Controls
             LineControl DB = new LineControl();
             LineControl CB = new LineControl();
 
+            this.Pair.LineHorizontal = AC;
+            this.Pair.LineVertical = AD;
+            this.LineHorizontal = DB;
+            this.LineVertical = CB;
+
+            ResizeLines(AC, AD, DB, CB);
+
+            this.Parent.Controls.Add(AC);
+            this.Parent.Controls.Add(DB);
+            this.Parent.Controls.Add(AD);
+            this.Parent.Controls.Add(CB);
+        }
+
+        /// <summary>
+        /// Resizes the lines
+        /// </summary>
+        /// <param name="AC"></param>
+        /// <param name="AD"></param>
+        /// <param name="DB"></param>
+        /// <param name="CB"></param>
+        private void ResizeLines(LineControl AC, LineControl AD, LineControl DB, LineControl CB)
+        {
             Point currentPoint = new Point(this.Left + (this.Width / 2), this.Top + (this.Height / 2));
             Point pairPoint = new Point(this.Pair.Left + (this.Pair.Width / 2), this.Pair.Top + (this.Pair.Height / 2));
 
@@ -76,11 +108,6 @@ namespace smartSprite.Controls
 
             CB.Top = pairPoint.Y;
             CB.Left = AC.Left + AC.Width;
-
-            this.Parent.Controls.Add(AC);
-            this.Parent.Controls.Add(DB);
-            this.Parent.Controls.Add(AD);
-            this.Parent.Controls.Add(CB);
         }
 
         #region Events
@@ -91,6 +118,15 @@ namespace smartSprite.Controls
             {
                 this.Top += e.Y - this.Height / 2;
                 this.Left += e.X - this.Width / 2;
+
+                if (this.Pair != null)
+                {
+                    this.ResizeLines(
+                        this.LineHorizontal,
+                        this.LineVertical,
+                        this.Pair.LineHorizontal,
+                        this.Pair.LineVertical);
+                }
             }
         }
 
