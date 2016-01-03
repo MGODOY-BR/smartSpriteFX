@@ -30,16 +30,16 @@
         {
             this.SuspendLayout();
             // 
-            // HuckControlcs
+            // HuckControl
             // 
             this.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.BackgroundImage = global::smartSprite.Properties.Resources.Huck;
-            this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Cursor = System.Windows.Forms.Cursors.Cross;
-            this.Name = "HuckControlcs";
-            this.Size = new System.Drawing.Size(23, 21);
+            this.Cursor = System.Windows.Forms.Cursors.SizeAll;
+            this.Name = "HuckControl";
+            this.Size = new System.Drawing.Size(22, 22);
             this.ResumeLayout(false);
 
         }

@@ -287,6 +287,7 @@
             // draftControl1
             // 
             this.draftControl1.AutoSize = true;
+            this.draftControl1.LastSettings = null;
             this.draftControl1.Location = new System.Drawing.Point(0, 0);
             this.draftControl1.Name = "draftControl1";
             this.draftControl1.Size = new System.Drawing.Size(742, 374);
@@ -299,7 +300,7 @@
             this.toolHuckButton});
             this.toolStrip1.Location = new System.Drawing.Point(3, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(35, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(66, 25);
             this.toolStrip1.TabIndex = 0;
             // 
             // toolHuckButton
@@ -311,6 +312,7 @@
             this.toolHuckButton.Name = "toolHuckButton";
             this.toolHuckButton.Size = new System.Drawing.Size(23, 22);
             this.toolHuckButton.ToolTipText = "Huck";
+            this.toolHuckButton.Click += new System.EventHandler(this.toolHuckButton_Click);
             // 
             // openDraftFileDialog1
             // 

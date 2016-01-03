@@ -13,6 +13,27 @@ namespace smartSprite.Controls
 {
     public partial class DraftControl : UserControl
     {
+        /// <summary>
+        /// It is the last settings
+        /// </summary>
+        private DraftSettings _lastSettings;
+
+        /// <summary>
+        /// Gets or sets the last settings
+        /// </summary>
+        public DraftSettings LastSettings
+        {
+            get
+            {
+                return _lastSettings;
+            }
+
+            set
+            {
+                this._lastSettings = value;
+            }
+        }
+
         public DraftControl()
         {
             InitializeComponent();
@@ -45,13 +66,28 @@ namespace smartSprite.Controls
 
         #endregion
 
+        /// <summary>
+        /// Updates the cursor style
+        /// </summary>
+        private void UpdateCursorStyle()
+        {
+            if (this._lastSettings != null && this._lastSettings.HuckOn)
+            {
+                imgDraft.Cursor = Cursors.Cross;
+            }
+            else
+            {
+                imgDraft.Cursor = Cursors.Default;
+            }
+        }
+
         #region Events
 
         private void imgDraft_MouseClick(object sender, MouseEventArgs e)
         {
-            var settings = this.OnGettingSettings();
+            this._lastSettings = this.OnGettingSettings();
 
-            if (settings.HuckOn)
+            if (this._lastSettings.HuckOn)
             {
                 HuckControl huckControl = new HuckControl();
 
@@ -60,6 +96,11 @@ namespace smartSprite.Controls
 
                 this.imgDraft.Controls.Add(huckControl);
             }
+        }
+
+        private void imgDraft_MouseMove(object sender, MouseEventArgs e)
+        {
+            UpdateCursorStyle();
         }
 
         #endregion
