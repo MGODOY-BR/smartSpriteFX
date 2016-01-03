@@ -14,6 +14,11 @@ namespace smartSprite.Controls
     public partial class DraftControl : UserControl
     {
         /// <summary>
+        /// Gets or sets the last huck added
+        /// </summary>
+        private HuckControl _lastHuck;
+
+        /// <summary>
         /// It is the last settings
         /// </summary>
         private DraftSettings _lastSettings;
@@ -89,12 +94,34 @@ namespace smartSprite.Controls
 
             if (this._lastSettings.HuckOn)
             {
-                HuckControl huckControl = new HuckControl();
+                AddNewHuck(e);
+            }
+        }
 
-                huckControl.Top = e.Y - huckControl.Height / 2;
-                huckControl.Left = e.X - huckControl.Width / 2;
+        /// <summary>
+        /// Adds a new huck
+        /// </summary>
+        /// <param name="e"></param>
+        private void AddNewHuck(MouseEventArgs e)
+        {
+            HuckControl newHuck = new HuckControl();
 
-                this.imgDraft.Controls.Add(huckControl);
+            newHuck.Top = e.Y - newHuck.Height / 2;
+            newHuck.Left = e.X - newHuck.Width / 2;
+            newHuck.Pair = this._lastHuck;
+
+            if (this._lastHuck != null)
+            {
+                this._lastHuck.Pair = newHuck;
+                this._lastHuck = null;
+            }
+
+            this._lastHuck = newHuck;
+            this.imgDraft.Controls.Add(newHuck);
+            if (newHuck.Pair != null)
+            {
+                newHuck.UpdateLines();
+                this._lastHuck = null;
             }
         }
 

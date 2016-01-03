@@ -59,6 +59,13 @@
     <Compile Include="Controls\HuckControl.Designer.cs">
       <DependentUpon>HuckControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\LineControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\LineControl.Designer.cs">
+      <DependentUpon>LineControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\LineControlState\LineControlStyle.cs" />
     <Compile Include="Controls\ToolboxState\DraftSettings.cs" />
     <Compile Include="Forms\PieceManager.cs" />
     <Compile Include="Forms\PrincipalForm.cs">
@@ -81,6 +88,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\HuckControl.resx">
       <DependentUpon>HuckControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\LineControl.resx">
+      <DependentUpon>LineControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\PrincipalForm.resx">
       <DependentUpon>PrincipalForm.cs</DependentUpon>
@@ -120,6 +130,7 @@
   <ItemGroup>
     <None Include="Resources\Huck.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
