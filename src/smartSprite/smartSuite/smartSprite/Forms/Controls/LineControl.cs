@@ -11,8 +11,13 @@ using smartSprite.Forms.Controls.LineControlState;
 
 namespace smartSprite.Forms.Controls
 {
-    public partial class LineControl : UserControl
+    public partial class LineControl : UserControl, IRemarkable
     {
+        /// <summary>
+        /// Gets or sets the huck owner
+        /// </summary>
+        private HuckControl _huckOwner;
+
         /// <summary>
         /// Defines the style of linecontrol
         /// </summary>
@@ -21,6 +26,19 @@ namespace smartSprite.Forms.Controls
         public LineControl()
         {
             InitializeComponent();
+
+            this.GotFocus += LineControl_GotFocus;
+            this.LostFocus += LineControl_LostFocus;
+        }
+
+        public LineControl(HuckControl huckControl)
+        {
+            InitializeComponent();
+
+            this.GotFocus += LineControl_GotFocus;
+            this.LostFocus += LineControl_LostFocus;
+
+            this._huckOwner = huckControl;
         }
 
         /// <summary>
@@ -33,13 +51,13 @@ namespace smartSprite.Forms.Controls
             switch (style)
             {
                 case LineControlStyle.Horizontal:
-                    this.Height = 3;
+                    this.Height = 5;
                     this.Width = (int)size;
                     break;
 
                 case LineControlStyle.Vertical:
                     this.Height = (int)size;
-                    this.Width = 3;
+                    this.Width = 5;
                     break;
 
                 default:
@@ -48,5 +66,38 @@ namespace smartSprite.Forms.Controls
 
             this.Style = style;
         }
+
+        #region Events
+
+        private void LineControl_LostFocus(object sender, EventArgs e)
+        {
+            this.Mark(false);
+            this._huckOwner.Mark(false);
+        }
+
+        private void LineControl_GotFocus(object sender, EventArgs e)
+        {
+            this.Mark(true);
+            this._huckOwner.Mark(true);
+        }
+
+        #endregion
+
+        #region IRemarkable operations
+
+        public void Mark(bool bold)
+        {
+            if (bold)
+            {
+                this.BorderStyle = BorderStyle.Fixed3D;
+            }
+            else
+            {
+                this.BorderStyle = BorderStyle.None;
+            }
+        }
+
+        #endregion
+
     }
 }

@@ -11,8 +11,13 @@ using smartSprite.Utilities;
 
 namespace smartSprite.Forms.Controls
 {
-    public partial class HuckControl : UserControl
+    public partial class HuckControl : UserControl, IRemarkable
     {
+        /// <summary>
+        /// Gets or sets the current item as selected
+        /// </summary>
+        public bool Selected { get; private set; }
+
         /// <summary>
         /// Sets or gets the pair of huck
         /// </summary>
@@ -42,6 +47,9 @@ namespace smartSprite.Forms.Controls
             InitializeComponent();
 
             this.MouseMove += HuckControl_MouseMove;
+            this.GotFocus += HuckControl_GotFocus;
+            this.LostFocus += HuckControl_LostFocus;
+
             this._createdWhen = DateTime.Now;
         }
 
@@ -70,10 +78,10 @@ namespace smartSprite.Forms.Controls
             HuckControl older = this.GetOlderHuckFromPair();
             HuckControl newer = this.GetNewerHuckFromPair();
 
-            older.LineHorizontal = new LineControl();
-            older.LineVertical = new LineControl();
-            newer.LineHorizontal = new LineControl();
-            newer.LineVertical = new LineControl();
+            older.LineHorizontal = new LineControl(older);
+            older.LineVertical = new LineControl(older);
+            newer.LineHorizontal = new LineControl(newer);
+            newer.LineVertical = new LineControl(newer);
 
             var AC = older.LineHorizontal;
             var AD = older.LineVertical;
@@ -191,6 +199,51 @@ namespace smartSprite.Forms.Controls
                         older,
                         newer);
                 }
+            }
+        }
+
+        private void HuckControl_GotFocus(object sender, EventArgs e)
+        {
+            this.Mark(true);
+        }
+
+        private void HuckControl_LostFocus(object sender, EventArgs e)
+        {
+            this.Mark(false);
+        }
+
+        #endregion
+
+        #region IRemarkable operations
+
+        public void Mark(bool bold)
+        {
+            #region Entries validation
+
+            if (bold == this.Selected)
+            {
+                return;
+            }
+
+            #endregion
+
+            this.Selected = bold;
+
+            if (bold)
+            {
+                this.BorderStyle = BorderStyle.Fixed3D;
+            }
+            else
+            {
+                this.BorderStyle = BorderStyle.None;
+            }
+
+            this.LineHorizontal.Mark(bold);
+            this.LineVertical.Mark(bold);
+
+            if (this.Pair != null)
+            {
+                this.Pair.Mark(bold);
             }
         }
 
