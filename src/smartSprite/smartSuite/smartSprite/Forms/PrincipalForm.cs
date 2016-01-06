@@ -328,7 +328,7 @@ namespace smartSprite.Forms
         /// <param name="e"></param>
         private void DraftControl1_GettingSettings(object sender, Controls.ToolboxState.DraftSettings e)
         {
-            e.HuckOn = this.toolHuckButton.Checked;  
+            e.HookOn = this.toolHookButton.Checked;  
         }
 
         /// <summary>
@@ -379,12 +379,12 @@ namespace smartSprite.Forms
             this.RefreshForm();
         }
 
-        private void toolHuckButton_Click(object sender, EventArgs e)
+        private void toolHookButton_Click(object sender, EventArgs e)
         {
             this.draftControl1.LastSettings =
                 new smartSprite.Forms.Controls.ToolboxState.DraftSettings
                 {
-                    HuckOn = toolHuckButton.Checked
+                    HookOn = toolHookButton.Checked
                 };
         }
 

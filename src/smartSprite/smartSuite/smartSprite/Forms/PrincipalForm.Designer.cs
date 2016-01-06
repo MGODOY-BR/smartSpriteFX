@@ -49,7 +49,7 @@
             this.pnlImage = new System.Windows.Forms.Panel();
             this.draftControl1 = new smartSprite.Forms.Controls.DraftControl();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolHuckButton = new System.Windows.Forms.ToolStripButton();
+            this.toolHookButton = new System.Windows.Forms.ToolStripButton();
             this.openDraftFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.openSmartSpriteFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.statusStrip1.SuspendLayout();
@@ -297,22 +297,22 @@
             // 
             this.toolStrip1.Dock = System.Windows.Forms.DockStyle.None;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolHuckButton});
+            this.toolHookButton});
             this.toolStrip1.Location = new System.Drawing.Point(3, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(66, 25);
             this.toolStrip1.TabIndex = 0;
             // 
-            // toolHuckButton
+            // toolHookButton
             // 
-            this.toolHuckButton.CheckOnClick = true;
-            this.toolHuckButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolHuckButton.Image = global::smartSprite.Properties.Resources.Huck;
-            this.toolHuckButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolHuckButton.Name = "toolHuckButton";
-            this.toolHuckButton.Size = new System.Drawing.Size(23, 22);
-            this.toolHuckButton.ToolTipText = "Huck";
-            this.toolHuckButton.Click += new System.EventHandler(this.toolHuckButton_Click);
+            this.toolHookButton.CheckOnClick = true;
+            this.toolHookButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolHookButton.Image = global::smartSprite.Properties.Resources.Hook;
+            this.toolHookButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolHookButton.Name = "toolHookButton";
+            this.toolHookButton.Size = new System.Drawing.Size(23, 22);
+            this.toolHookButton.ToolTipText = "Hook";
+            this.toolHookButton.Click += new System.EventHandler(this.toolHookButton_Click);
             // 
             // openDraftFileDialog1
             // 
@@ -384,7 +384,7 @@
         private System.Windows.Forms.ToolStripContainer toolStripContainer1;
         private System.Windows.Forms.Panel pnlImage;
         private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton toolHuckButton;
+        private System.Windows.Forms.ToolStripButton toolHookButton;
         private Controls.DraftControl draftControl1;
     }
 }

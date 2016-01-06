@@ -1,6 +1,6 @@
 ﻿namespace smartSprite.Forms.Controls
 {
-    partial class HuckControl
+    partial class HookControl
     {
         /// <summary> 
         /// Required designer variable.
@@ -30,15 +30,15 @@
         {
             this.SuspendLayout();
             // 
-            // HuckControl
+            // HookControl
             // 
             this.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.BackgroundImage = global::smartSprite.Properties.Resources.Huck;
+            this.BackgroundImage = global::smartSprite.Properties.Resources.Hook;
             this.Cursor = System.Windows.Forms.Cursors.SizeAll;
-            this.Name = "HuckControl";
+            this.Name = "HookControl";
             this.Size = new System.Drawing.Size(22, 22);
             this.ResumeLayout(false);
 

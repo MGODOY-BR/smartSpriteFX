@@ -53,11 +53,11 @@
     <Compile Include="Forms\Controls\DraftControl.Designer.cs">
       <DependentUpon>DraftControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Controls\HuckControl.cs">
+    <Compile Include="Forms\Controls\HookControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Forms\Controls\HuckControl.Designer.cs">
-      <DependentUpon>HuckControl.cs</DependentUpon>
+    <Compile Include="Forms\Controls\HookControl.Designer.cs">
+      <DependentUpon>HookControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Controls\IRemarkable.cs" />
     <Compile Include="Forms\Controls\LineControl.cs">
@@ -88,8 +88,8 @@
     <EmbeddedResource Include="Forms\Controls\DraftControl.resx">
       <DependentUpon>DraftControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Controls\HuckControl.resx">
-      <DependentUpon>HuckControl.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Controls\HookControl.resx">
+      <DependentUpon>HookControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Controls\LineControl.resx">
       <DependentUpon>LineControl.cs</DependentUpon>
@@ -130,7 +130,7 @@
     <None Include="Resources\logo.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Huck.png" />
+    <None Include="Resources\Hook.png" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

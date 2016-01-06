@@ -11,7 +11,7 @@ using smartSprite.Utilities;
 
 namespace smartSprite.Forms.Controls
 {
-    public partial class HuckControl : UserControl, IRemarkable
+    public partial class HookControl : UserControl, IRemarkable
     {
         /// <summary>
         /// Gets or sets the current item as selected
@@ -21,7 +21,7 @@ namespace smartSprite.Forms.Controls
         /// <summary>
         /// Sets or gets the pair of huck
         /// </summary>
-        public HuckControl Pair
+        public HookControl Pair
         {
             get;
             set;
@@ -42,7 +42,7 @@ namespace smartSprite.Forms.Controls
         /// </summary>
         public LineControl LineVertical { get; set; }
 
-        public HuckControl()
+        public HookControl()
         {
             InitializeComponent();
 
@@ -75,8 +75,8 @@ namespace smartSprite.Forms.Controls
             D-------B
             
             */
-            HuckControl older = this.GetOlderHuckFromPair();
-            HuckControl newer = this.GetNewerHuckFromPair();
+            HookControl older = this.GetOlderHuckFromPair();
+            HookControl newer = this.GetNewerHuckFromPair();
 
             older.LineHorizontal = new LineControl(older);
             older.LineVertical = new LineControl(older);
@@ -104,7 +104,7 @@ namespace smartSprite.Forms.Controls
         /// <summary>
         /// Resizes the lines
         /// </summary>
-        private void ResizeLines(HuckControl older, HuckControl newer)
+        private void ResizeLines(HookControl older, HookControl newer)
         {
             Point currentPoint = new Point(newer.Left + (newer.Width / 2), newer.Top + (newer.Height / 2));
             Point pairPoint = new Point(older.Left + (older.Width / 2), older.Top + (older.Height / 2));
@@ -136,7 +136,7 @@ namespace smartSprite.Forms.Controls
         /// <summary>
         /// Gets the older huck from pair
         /// </summary>
-        private HuckControl GetOlderHuckFromPair()
+        private HookControl GetOlderHuckFromPair()
         {
             #region Entries validation
 
@@ -160,7 +160,7 @@ namespace smartSprite.Forms.Controls
         /// <summary>
         /// Gets the newer huck from pair
         /// </summary>
-        private HuckControl GetNewerHuckFromPair()
+        private HookControl GetNewerHuckFromPair()
         {
             #region Entries validation
 
@@ -190,8 +190,8 @@ namespace smartSprite.Forms.Controls
                 this.Top += e.Y - this.Height / 2;
                 this.Left += e.X - this.Width / 2;
 
-                HuckControl older = this.GetOlderHuckFromPair();
-                HuckControl newer = this.GetNewerHuckFromPair();
+                HookControl older = this.GetOlderHuckFromPair();
+                HookControl newer = this.GetNewerHuckFromPair();
 
                 if (this.Pair != null)
                 {

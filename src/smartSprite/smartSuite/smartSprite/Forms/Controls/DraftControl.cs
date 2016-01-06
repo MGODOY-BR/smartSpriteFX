@@ -14,9 +14,9 @@ namespace smartSprite.Forms.Controls
     public partial class DraftControl : UserControl
     {
         /// <summary>
-        /// Gets or sets the last huck added
+        /// Gets or sets the last hook added
         /// </summary>
-        private HuckControl _lastHuck;
+        private HookControl _lastHook;
 
         /// <summary>
         /// It is the last settings
@@ -76,7 +76,7 @@ namespace smartSprite.Forms.Controls
         /// </summary>
         private void UpdateCursorStyle()
         {
-            if (this._lastSettings != null && this._lastSettings.HuckOn)
+            if (this._lastSettings != null && this._lastSettings.HookOn)
             {
                 imgDraft.Cursor = Cursors.Cross;
             }
@@ -92,36 +92,36 @@ namespace smartSprite.Forms.Controls
         {
             this._lastSettings = this.OnGettingSettings();
 
-            if (this._lastSettings.HuckOn)
+            if (this._lastSettings.HookOn)
             {
-                AddNewHuck(e);
+                AddNewHook(e);
             }
         }
 
         /// <summary>
-        /// Adds a new huck
+        /// Adds a new hook
         /// </summary>
         /// <param name="e"></param>
-        private void AddNewHuck(MouseEventArgs e)
+        private void AddNewHook(MouseEventArgs e)
         {
-            HuckControl newHuck = new HuckControl();
+            HookControl newHook = new HookControl();
 
-            newHuck.Top = e.Y - newHuck.Height / 2;
-            newHuck.Left = e.X - newHuck.Width / 2;
-            newHuck.Pair = this._lastHuck;
+            newHook.Top = e.Y - newHook.Height / 2;
+            newHook.Left = e.X - newHook.Width / 2;
+            newHook.Pair = this._lastHook;
 
-            if (this._lastHuck != null)
+            if (this._lastHook != null)
             {
-                this._lastHuck.Pair = newHuck;
-                this._lastHuck = null;
+                this._lastHook.Pair = newHook;
+                this._lastHook = null;
             }
 
-            this._lastHuck = newHuck;
-            this.imgDraft.Controls.Add(newHuck);
-            if (newHuck.Pair != null)
+            this._lastHook = newHook;
+            this.imgDraft.Controls.Add(newHook);
+            if (newHook.Pair != null)
             {
-                newHuck.CreateLines();
-                this._lastHuck = null;
+                newHook.CreateLines();
+                this._lastHook = null;
             }
         }
 

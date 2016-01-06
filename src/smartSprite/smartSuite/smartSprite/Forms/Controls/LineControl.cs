@@ -14,9 +14,9 @@ namespace smartSprite.Forms.Controls
     public partial class LineControl : UserControl, IRemarkable
     {
         /// <summary>
-        /// Gets or sets the huck owner
+        /// Gets or sets the hook owner
         /// </summary>
-        private HuckControl _huckOwner;
+        private HookControl _hookOwner;
 
         /// <summary>
         /// Defines the style of linecontrol
@@ -31,14 +31,14 @@ namespace smartSprite.Forms.Controls
             this.LostFocus += LineControl_LostFocus;
         }
 
-        public LineControl(HuckControl huckControl)
+        public LineControl(HookControl huckControl)
         {
             InitializeComponent();
 
             this.GotFocus += LineControl_GotFocus;
             this.LostFocus += LineControl_LostFocus;
 
-            this._huckOwner = huckControl;
+            this._hookOwner = huckControl;
         }
 
         /// <summary>
@@ -72,13 +72,13 @@ namespace smartSprite.Forms.Controls
         private void LineControl_LostFocus(object sender, EventArgs e)
         {
             this.Mark(false);
-            this._huckOwner.Mark(false);
+            this._hookOwner.Mark(false);
         }
 
         private void LineControl_GotFocus(object sender, EventArgs e)
         {
             this.Mark(true);
-            this._huckOwner.Mark(true);
+            this._hookOwner.Mark(true);
         }
 
         #endregion

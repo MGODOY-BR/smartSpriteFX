@@ -83,9 +83,9 @@ namespace smartSprite.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Huck {
+        internal static System.Drawing.Bitmap Hook {
             get {
-                object obj = ResourceManager.GetObject("Huck", resourceCulture);
+                object obj = ResourceManager.GetObject("Hook", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

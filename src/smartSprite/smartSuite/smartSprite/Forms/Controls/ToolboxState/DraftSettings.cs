@@ -12,8 +12,8 @@ namespace smartSprite.Forms.Controls.ToolboxState
     public class DraftSettings
     {
         /// <summary>
-        /// Specifies if huck is on to create new pieces
+        /// Specifies if hook is on to create new pieces
         /// </summary>
-        public bool HuckOn { get; set; }
+        public bool HookOn { get; set; }
     }
 }
