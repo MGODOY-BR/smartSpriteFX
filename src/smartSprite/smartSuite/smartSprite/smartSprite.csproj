@@ -59,6 +59,8 @@
     <Compile Include="Forms\Controls\HookControl.Designer.cs">
       <DependentUpon>HookControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Controls\HookState\HookEventArgs.cs" />
+    <Compile Include="Forms\Controls\IDestroyable.cs" />
     <Compile Include="Forms\Controls\IRemarkable.cs" />
     <Compile Include="Forms\Controls\LineControl.cs">
       <SubType>UserControl</SubType>

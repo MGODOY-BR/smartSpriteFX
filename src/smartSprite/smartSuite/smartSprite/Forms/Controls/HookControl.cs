@@ -8,10 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using smartSprite.Utilities;
+using smartSprite.Forms.Controls.HookState;
 
 namespace smartSprite.Forms.Controls
 {
-    public partial class HookControl : UserControl, IRemarkable
+    public partial class HookControl : UserControl, IRemarkable, IDestroyable
     {
         /// <summary>
         /// Gets or sets the current item as selected
@@ -49,8 +50,55 @@ namespace smartSprite.Forms.Controls
             this.MouseMove += HuckControl_MouseMove;
             this.GotFocus += HuckControl_GotFocus;
             this.LostFocus += HuckControl_LostFocus;
+            this.KeyDown += HookControl_KeyDown;
 
             this._createdWhen = DateTime.Now;
+        }
+
+        #region Delegates
+
+        /// <summary>
+        /// Occurs before deleting
+        /// </summary>
+        public event EventHandler<HookEventArgs> Deleting;
+
+        /// <summary>
+        /// Throws the respective event
+        /// </summary>
+        private void OnDeleting()
+        {
+            #region Entries validation
+
+            if (this.Deleting == null)
+            {
+                throw new NotImplementedException("this.Deleting");
+            }
+
+            #endregion
+
+            this.Deleting(
+                this,
+                new HookEventArgs
+                {
+                    MainHook = this.GetOlderHuckFromPair()
+                });
+        }
+
+        #endregion
+
+        private void HookControl_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Escape:          // ESC
+
+                    this.Mark(false);
+                    break;
+
+                case Keys.Delete:
+                    this.OnDeleting();
+                    break;
+            }
         }
 
         /// <summary>
@@ -245,6 +293,15 @@ namespace smartSprite.Forms.Controls
             {
                 this.Pair.Mark(bold);
             }
+        }
+
+        #endregion
+
+        #region IDestroyable operations
+
+        public void DestroyYourSelf()
+        {
+            throw new NotImplementedException();
         }
 
         #endregion

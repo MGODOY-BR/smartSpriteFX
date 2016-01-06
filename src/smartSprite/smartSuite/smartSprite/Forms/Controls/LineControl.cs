@@ -11,7 +11,7 @@ using smartSprite.Forms.Controls.LineControlState;
 
 namespace smartSprite.Forms.Controls
 {
-    public partial class LineControl : UserControl, IRemarkable
+    public partial class LineControl : UserControl, IRemarkable, IDestroyable
     {
         /// <summary>
         /// Gets or sets the hook owner
@@ -99,5 +99,13 @@ namespace smartSprite.Forms.Controls
 
         #endregion
 
+        #region IDestroyable operations
+
+        public void DestroyYourSelf()
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
     }
 }

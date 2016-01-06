@@ -14,6 +14,11 @@ namespace smartSprite.Forms.Controls
     public partial class DraftControl : UserControl
     {
         /// <summary>
+        /// It´s a collection of main (older) hooks.
+        /// </summary>
+        private List<HookControl> _hookSet = new List<HookControl>();
+
+        /// <summary>
         /// Gets or sets the last hook added
         /// </summary>
         private HookControl _lastHook;
@@ -105,6 +110,7 @@ namespace smartSprite.Forms.Controls
         private void AddNewHook(MouseEventArgs e)
         {
             HookControl newHook = new HookControl();
+            newHook.Deleting += NewHook_Deleting;
 
             newHook.Top = e.Y - newHook.Height / 2;
             newHook.Left = e.X - newHook.Width / 2;
@@ -121,8 +127,15 @@ namespace smartSprite.Forms.Controls
             if (newHook.Pair != null)
             {
                 newHook.CreateLines();
+                this._hookSet.Add(newHook.Pair);
                 this._lastHook = null;
             }
+        }
+
+        private void NewHook_Deleting(object sender, HookState.HookEventArgs e)
+        {
+            this._hookSet.Remove(e.MainHook);
+            e.MainHook.DestroyYourSelf();
         }
 
         private void imgDraft_MouseMove(object sender, MouseEventArgs e)
