@@ -301,7 +301,17 @@ namespace smartSprite.Forms.Controls
 
         public void DestroyYourSelf()
         {
-            throw new NotImplementedException();
+            this.Parent.Controls.Remove(this.LineHorizontal);
+            this.Parent.Controls.Remove(this.LineVertical);
+            this.Parent.Controls.Remove(this);
+
+            if (this.GetOlderHuckFromPair() == this)
+            {
+                if (this.Pair != null)
+                {
+                    this.Pair.DestroyYourSelf();
+                }
+            }
         }
 
         #endregion

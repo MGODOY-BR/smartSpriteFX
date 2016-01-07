@@ -134,7 +134,6 @@ namespace smartSprite.Forms.Controls
 
         private void NewHook_Deleting(object sender, HookState.HookEventArgs e)
         {
-            this._hookSet.Remove(e.MainHook);
             e.MainHook.DestroyYourSelf();
         }
 
