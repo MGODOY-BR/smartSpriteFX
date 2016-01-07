@@ -79,6 +79,7 @@ namespace smartSprite.Forms.Controls
         {
             this.Mark(true);
             this._hookOwner.Mark(true);
+            this._hookOwner.Focus();
         }
 
         #endregion
