@@ -120,6 +120,5 @@ namespace smartSuite.smartSprite.Pictures{
         {
             return new Piece(this._referencePicture, this.PointA, this.PointB);
 		}
-
 	}
 }

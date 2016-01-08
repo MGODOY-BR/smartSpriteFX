@@ -15,6 +15,11 @@ namespace smartSprite.Forms.Controls
     public partial class HookControl : UserControl, IRemarkable, IDestroyable
     {
         /// <summary>
+        /// It´s a respective point in the model
+        /// </summary>
+        public smartSuite.smartSprite.Pictures.Point Point { get; set; }
+
+        /// <summary>
         /// Gets or sets the current item as selected
         /// </summary>
         public bool Selected { get; private set; }
@@ -53,6 +58,7 @@ namespace smartSprite.Forms.Controls
             this.KeyDown += HookControl_KeyDown;
 
             this._createdWhen = DateTime.Now;
+            this.Point = new smartSuite.smartSprite.Pictures.Point(this.Left, this.Top);
         }
 
         #region Delegates
@@ -184,7 +190,7 @@ namespace smartSprite.Forms.Controls
         /// <summary>
         /// Gets the older huck from pair
         /// </summary>
-        private HookControl GetOlderHuckFromPair()
+        public HookControl GetOlderHuckFromPair()
         {
             #region Entries validation
 
@@ -208,7 +214,7 @@ namespace smartSprite.Forms.Controls
         /// <summary>
         /// Gets the newer huck from pair
         /// </summary>
-        private HookControl GetNewerHuckFromPair()
+        public HookControl GetNewerHuckFromPair()
         {
             #region Entries validation
 
@@ -238,11 +244,14 @@ namespace smartSprite.Forms.Controls
                 this.Top += e.Y - this.Height / 2;
                 this.Left += e.X - this.Width / 2;
 
-                HookControl older = this.GetOlderHuckFromPair();
-                HookControl newer = this.GetNewerHuckFromPair();
+                this.Point.X = this.Left;
+                this.Point.Y = this.Top;
 
                 if (this.Pair != null)
                 {
+                    HookControl older = this.GetOlderHuckFromPair();
+                    HookControl newer = this.GetNewerHuckFromPair();
+
                     this.ResizeLines(
                         older,
                         newer);

@@ -33,5 +33,5 @@ namespace smartSuite.smartSprite.Pictures{
             get;
             set;
         }
-	}
+    }
 }

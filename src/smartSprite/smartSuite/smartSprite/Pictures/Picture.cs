@@ -19,7 +19,7 @@ namespace smartSuite.smartSprite.Pictures{
             
             if (String.IsNullOrEmpty(fullPath))
             {
-                throw new ArgumentNullException("fullPath");
+                // throw new ArgumentNullException("fullPath");
             }
 
             #endregion

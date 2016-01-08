@@ -8,11 +8,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using smartSprite.Forms.Controls.ToolboxState;
+using smartSuite.smartSprite.Pictures;
 
 namespace smartSprite.Forms.Controls
 {
     public partial class DraftControl : UserControl
     {
+        /// <summary>
+        /// Relates the owner hook control with a piece
+        /// </summary>
+        private Dictionary<HookControl, Piece> _pieceSet = new Dictionary<HookControl, Piece>();
+
         /// <summary>
         /// It´s a collection of main (older) hooks.
         /// </summary>
@@ -129,12 +135,20 @@ namespace smartSprite.Forms.Controls
                 newHook.CreateLines();
                 this._hookSet.Add(newHook.Pair);
                 this._lastHook = null;
+
+                this._pieceSet.Add(
+                    newHook.GetOlderHuckFromPair(),
+                    new Piece(
+                        new Picture(this.imgDraft.ImageLocation),
+                        newHook.GetOlderHuckFromPair().Point,
+                        newHook.GetNewerHuckFromPair().Point));
             }
         }
 
         private void NewHook_Deleting(object sender, HookState.HookEventArgs e)
         {
             e.MainHook.DestroyYourSelf();
+            this._pieceSet.Remove(e.MainHook);
         }
 
         private void imgDraft_MouseMove(object sender, MouseEventArgs e)
