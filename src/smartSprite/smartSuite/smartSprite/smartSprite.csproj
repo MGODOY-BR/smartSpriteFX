@@ -53,6 +53,8 @@
     <Compile Include="Forms\Controls\DraftControl.Designer.cs">
       <DependentUpon>DraftControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Controls\DraftControlState\ActionEnum.cs" />
+    <Compile Include="Forms\Controls\DraftControlState\PieceEventArgs.cs" />
     <Compile Include="Forms\Controls\HookControl.cs">
       <SubType>UserControl</SubType>
     </Compile>

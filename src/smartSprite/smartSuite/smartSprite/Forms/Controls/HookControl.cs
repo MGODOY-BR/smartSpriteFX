@@ -90,6 +90,31 @@ namespace smartSprite.Forms.Controls
                 });
         }
 
+        /// <summary>
+        /// Occurs when the hook are selected
+        /// </summary>
+        public event EventHandler<HookEventArgs> BeenSelected;
+
+        /// <summary>
+        /// Throws the event
+        /// </summary>
+        private void OnBeenSelected()
+        {
+            #region Entries validation
+
+            if (this.BeenSelected == null)
+            {
+                return;
+            }
+
+            #endregion
+
+            this.BeenSelected(this, new HookEventArgs
+            {
+                MainHook = this.GetOlderHuckFromPair()
+            });
+        }
+
         #endregion
 
         private void HookControl_KeyDown(object sender, KeyEventArgs e)
@@ -262,6 +287,14 @@ namespace smartSprite.Forms.Controls
         private void HuckControl_GotFocus(object sender, EventArgs e)
         {
             this.Mark(true);
+
+            if (this.Selected && sender == this)
+            {
+                if (this.GetOlderHuckFromPair() == this)
+                {
+                    this.OnBeenSelected();
+                }
+            }
         }
 
         private void HuckControl_LostFocus(object sender, EventArgs e)

@@ -1,4 +1,5 @@
 ﻿using smartSprite.Properties;
+using smartSuite.smartSprite.Pictures;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,107 +18,9 @@ namespace smartSprite.Forms
         public PrincipalForm()
         {
             InitializeComponent();
-        }
 
-        /// <summary>
-        /// Refresh the tree view list
-        /// </summary>
-        private void RefreshTreeViewList(String sourceFolder, TreeNodeCollection nodes)
-        {
-            #region Entries validation
-
-            if (String.IsNullOrEmpty(sourceFolder))
-            {
-                throw new ArgumentNullException("sourceFolder");
-            }
-            if (nodes == null)
-            {
-                throw new ArgumentNullException("nodes");
-            }
-
-            #endregion
-
-            this.ShowRunningResult(false);
-
-            nodes.Clear();
-
-            var directoryList = Directory.GetDirectories(sourceFolder);
-            var directoryNodeList = ConvertNodeList(directoryList, false);
-
-            /*
-            this.treeView1.CheckBoxes = true;
-            this.treeView1.AfterCheck += TreeView1_AfterCheck;
-            this.treeView1.Nodes.AddRange(directoryNodeList.ToArray());
-            this.treeView1.ExpandAll();
-            */
-        }
-
-        /// <summary>
-        /// Converts the list to list of treenodes.
-        /// </summary>
-        private List<TreeNode> ConvertNodeList(string[] uriList, bool handleUriAsFiles)
-        {
-            #region Entries validation
-
-            if (uriList == null)
-            {
-                throw new ArgumentNullException("directoryList");
-            }
-
-            #endregion
-
-            List<TreeNode> returnList = new List<TreeNode>();
-
-            foreach (var uriItem in uriList)
-            {
-                try
-                {
-                    TreeNode treeNode = new TreeNode();
-                    treeNode.Tag = uriItem;
-                    treeNode.Text = Path.GetFileName(uriItem);
-
-                    // Adding files
-                    if (!handleUriAsFiles)
-                    {
-                        // Adding sub directories
-                        treeNode.Nodes.AddRange(
-                            ConvertNodeList(
-                                Directory.GetDirectories(uriItem),
-                                false).ToArray());
-
-                        treeNode.Nodes.AddRange(
-                            ConvertNodeList(
-                                GetExceptSmartMap(
-                                    Directory.GetFiles(uriItem, "*.png")),
-                                true).ToArray());
-
-                        treeNode.Nodes.AddRange(
-                            ConvertNodeList(
-                                GetExceptSmartMap(
-                                    Directory.GetFiles(uriItem, "*.bmp")),
-                                true).ToArray());
-                    }
-                    // Handling files
-                    else
-                    {
-                        treeNode.Checked = true;
-                    }
-
-                    returnList.Add(treeNode);
-                }
-                catch (IOException)
-                {
-                    // Errors of this kind in this location cannot turns around the normal flow of algoritmn
-                    continue;
-                }
-                catch (UnauthorizedAccessException)
-                {
-                    // Errors of this kind in this location cannot turns around the normal flow of algoritmn
-                    continue;
-                }
-            }
-
-            return returnList;
+            this.draftControl1.PieceSetChanged += DraftControl1_PieceSetChanged;
+            this.treeView1.AfterSelect += TreeView1_AfterSelect;
         }
 
         /// <summary>
@@ -305,6 +208,27 @@ namespace smartSprite.Forms
             }
         }
 
+        /// <summary>
+        /// Convert a piece to a TreeNode object
+        /// </summary>
+        /// <param name="piece"></param>
+        /// <returns></returns>
+        private TreeNode ConvertToTreeNode(Piece piece)
+        {
+            #region Entries validation
+            
+            if (piece == null)
+            {
+                throw new ArgumentNullException("piece");
+            }
+
+            #endregion
+
+            TreeNode treeNode = new TreeNode(piece.Name);
+            treeNode.Tag = piece;
+            return treeNode;
+        }
+
         #region Events
 
         /// <summary>
@@ -386,6 +310,115 @@ namespace smartSprite.Forms
                 {
                     HookOn = toolHookButton.Checked
                 };
+        }
+
+        /// <summary>
+        /// Occurs then any piece was modified in somehow in draft board
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void DraftControl1_PieceSetChanged(object sender, Controls.DraftControlState.PieceEventArgs e)
+        {
+            TreeNode treeNode = null;
+
+            switch (e.Action)
+            {
+                case Forms.Controls.DraftControlState.ActionEnum.SELECTED:
+
+                    treeNode = this.GetTreeNode(e.Piece, this.treeView1.Nodes);
+                    if (treeNode == null)
+                    {
+                        throw new ArgumentException("The piece " + e.Piece.Name + " hasn't found.");
+                    }
+                    this.treeView1.SelectedNode = treeNode;
+                    break;
+
+                case Forms.Controls.DraftControlState.ActionEnum.DELETED:
+
+                    treeNode = this.GetTreeNode(e.Piece, this.treeView1.Nodes);
+                    if (treeNode == null)
+                    {
+                        throw new ArgumentException("The piece " + e.Piece.Name + " hasn't found.");
+                    }
+
+                    if (treeNode.Parent != null)
+                    {
+                        treeNode.Parent.Nodes.Remove(treeNode);
+                    }
+                    else
+                    {
+                        this.treeView1.Nodes.Remove(treeNode);
+                    }
+                    break;
+
+                case Forms.Controls.DraftControlState.ActionEnum.CREATED:
+
+                    this.treeView1.Nodes.Add(
+                        this.ConvertToTreeNode(e.Piece));
+                    break;
+
+                default:
+                    break;
+            }
+        }
+
+        /// <summary>
+        /// Gets the treeNode from node collection
+        /// </summary>
+        /// <param name="piece"></param>
+        /// <param name="nodes"></param>
+        /// <returns></returns>
+        private TreeNode GetTreeNode(Piece piece, TreeNodeCollection nodes)
+        {
+            #region Entries validation
+
+            if (piece == null)
+            {
+                throw new ArgumentNullException("piece");
+            }
+            if (nodes == null)
+            {
+                throw new ArgumentNullException("nodes");
+            }
+            if (nodes.Count == 0)
+            {
+                return null;
+            }
+
+            #endregion
+
+            foreach (TreeNode treeNode in nodes)
+            {
+                if (treeNode.Tag == piece)
+                {
+                    return treeNode;
+                }
+                
+                if(treeNode.Nodes.Count > 0)
+                {
+                    return this.GetTreeNode(piece, treeNode.Nodes);
+                }
+            }
+
+            return null;
+        }
+
+        /// <summary>
+        /// Occurs when a node is selected
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TreeView1_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            object tag = e.Node.Tag;
+
+            if (!(tag is Piece))
+            {
+                return;
+            }
+
+            Piece piece = (Piece)tag;
+            this.draftControl1.SelectPiece(piece);
         }
 
         #endregion
