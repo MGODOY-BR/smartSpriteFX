@@ -147,6 +147,7 @@ namespace smartSprite.Forms.Controls
             newHook.Top = e.Y - newHook.Height / 2;
             newHook.Left = e.X - newHook.Width / 2;
             newHook.Pair = this._lastHook;
+            newHook.RefreshCoordinates();
 
             if (this._lastHook != null)
             {
@@ -168,7 +169,7 @@ namespace smartSprite.Forms.Controls
                         newHook.GetOlderHuckFromPair().Point,
                         newHook.GetNewerHuckFromPair().Point);
 
-                newPiece.Name = "Piece " + (this._pieceSet.Count + 1).ToString();
+                newPiece.Name = "Sprite2DObject " + (this._pieceSet.Count + 1).ToString();
 
                 this._pieceSet.Add(
                     newHook.GetOlderHuckFromPair(),

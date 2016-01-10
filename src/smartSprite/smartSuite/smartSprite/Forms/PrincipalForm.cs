@@ -1,4 +1,5 @@
-﻿using smartSprite.Properties;
+﻿using smartSprite.Forms.Controls.TreeViewState;
+using smartSprite.Properties;
 using smartSuite.smartSprite.Pictures;
 using System;
 using System.Collections.Generic;
@@ -21,6 +22,18 @@ namespace smartSprite.Forms
 
             this.draftControl1.PieceSetChanged += DraftControl1_PieceSetChanged;
             this.treeView1.AfterSelect += TreeView1_AfterSelect;
+            this.KeyDown += PrincipalForm_KeyDown;
+        }
+
+        private void PrincipalForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Escape:
+                    this.toolHookButton.Checked = false;
+                    this.RefreshHookCreationMode();
+                    break;
+            }
         }
 
         /// <summary>
@@ -229,6 +242,216 @@ namespace smartSprite.Forms
             return treeNode;
         }
 
+        /// <summary>
+        /// Rebuild the treeView
+        /// </summary>
+        /// <returns></returns>
+        private void RebuidTreeView()
+        {
+            #region Entries validation
+
+            if (this.treeView1.Nodes.Count == 0)
+            {
+                return;
+            }
+
+            #endregion
+
+            List<TreeNode> treeNodeList = new List<TreeNode>();
+            var completeNodeList = this.GetAllTreeNodes(this.treeView1.Nodes);
+            foreach (TreeNode item in this.GetAllTreeNodes(this.treeView1.Nodes))
+            {
+                #region Entries validation
+
+                if (item == null)
+                {
+                    continue;
+                }
+                if (item.Tag == null)
+                {
+                    continue;
+                }
+                if (!(item.Tag is Piece))
+                {
+                    continue;
+                }
+
+                #endregion
+                
+                List<TreeNode> children =
+                    this.DetermineChildren(item, completeNodeList);
+
+                if (children.Count > 0)
+                {
+                    TreeNode treeNodeGroup;
+                    TreeNode childrenNode;
+                    if (item.Parent != null && item.Parent.Tag is GroupTag)
+                    {
+                        treeNodeGroup = item.Parent;
+                        childrenNode = treeNodeGroup.Nodes[treeNodeGroup.Nodes.Count - 1];
+
+                        this.MoveToNodeList(item, treeNodeGroup);
+
+                        treeNodeList.Add(treeNodeGroup);
+                    }
+                    else
+                    {
+                        treeNodeGroup = new TreeNode(item.Name + " Group");
+                        treeNodeGroup.Tag = new GroupTag();
+
+                        this.MoveToNodeList(item, treeNodeGroup);
+
+                        treeNodeList.Add(treeNodeGroup);
+
+                        childrenNode = new TreeNode(item.Name + " Childen");
+                        treeNodeGroup.Nodes.Add(childrenNode);
+                    }
+
+                    foreach (var child in children)
+                    {
+                        if (childrenNode.Nodes.Contains(child))
+                        {
+                            continue;
+                        }
+                        childrenNode.Nodes.Add((TreeNode)child.Clone());
+                    }
+                    treeNodeGroup.ExpandAll();
+                }
+                else
+                {
+                    if (!treeNodeList.Contains(item))
+                    {
+                        treeNodeList.Add(item);
+                    }
+                }
+            }
+
+            this.treeView1.Nodes.Clear();
+            this.treeView1.Nodes.AddRange(treeNodeList.ToArray());
+        }
+
+        /// <summary>
+        /// Move node to a nodelist
+        /// </summary>
+        /// <param name="item"></param>
+        /// <param name="treeNodeGroup"></param>
+        private void MoveToNodeList(TreeNode item, TreeNode treeNodeGroup)
+        {
+            #region Entries validation
+
+            if (item == null)
+            {
+                throw new ArgumentNullException("item");
+            }
+            if (treeNodeGroup == null)
+            {
+                throw new ArgumentNullException("treeNodeGroup");
+            }
+
+            #endregion
+
+            treeNodeGroup.Nodes.Add((TreeNode)item.Clone());
+            if (item.Parent != null)
+            {
+                item.Parent.Nodes.Remove(item);
+            }
+            else
+            {
+                this.treeView1.Nodes.Remove(item);
+            }
+        }
+
+        /// <summary>
+        /// Determines the children of treeNode
+        /// </summary>
+        /// <param name="treeNode"></param>
+        /// <param name="nodeList"></param>
+        /// <returns></returns>
+        private List<TreeNode> DetermineChildren(TreeNode treeNode, List<TreeNode> nodeList)
+        {
+            #region Entries validation
+
+            if (treeNode == null)
+            {
+                throw new ArgumentNullException("treeNode");
+            }
+            if (nodeList == null)
+            {
+                throw new ArgumentNullException("nodeList");
+            }
+            if (!(treeNode.Tag is Piece))
+            {
+                return new List<TreeNode>();
+            }
+
+            #endregion
+
+            List<TreeNode> list = new List<TreeNode>();
+            Piece piece = (Piece)treeNode.Tag;
+            foreach (TreeNode treeNodeItem in nodeList)
+            {
+                #region Entries validation
+
+                if (treeNodeItem == null)
+                {
+                    throw new ArgumentNullException("treeNodeItem");
+                }
+                if (treeNodeItem.Tag == null)
+                {
+                    continue;
+                }
+                if (!(treeNodeItem.Tag is Piece))
+                {
+                    continue;
+                }
+
+                #endregion
+
+                Piece pieceItem = (Piece)treeNodeItem.Tag;
+
+                if (
+                    piece.PointA.X < pieceItem.PointA.X &&
+                    piece.PointA.Y < pieceItem.PointA.Y &&
+                    piece.PointB.X > pieceItem.PointB.X &&
+                    piece.PointB.Y > pieceItem.PointB.Y)
+                {
+                    list.Add(treeNodeItem);
+                }
+            }
+
+            return list;
+        }
+
+        /// <summary>
+        /// Gets all the treenodes, regardless of levels, from the treeNodeList
+        /// </summary>
+        /// <returns></returns>
+        private List<TreeNode> GetAllTreeNodes(TreeNodeCollection treeNodeList)
+        {
+            #region Entries validation
+
+            if (treeNodeList == null)
+            {
+                throw new ArgumentNullException("treeNodeList");
+            }
+
+            #endregion
+
+            List<TreeNode> list = new List<TreeNode>();
+            foreach (TreeNode item in treeNodeList)
+            {
+                list.Add(item);
+
+                if (item.Nodes.Count > 0)
+                {
+                    list.AddRange(
+                        this.GetAllTreeNodes(item.Nodes));
+                }
+            }
+
+            return list;
+        }
+
         #region Events
 
         /// <summary>
@@ -305,6 +528,14 @@ namespace smartSprite.Forms
 
         private void toolHookButton_Click(object sender, EventArgs e)
         {
+            RefreshHookCreationMode();
+        }
+
+        /// <summary>
+        /// Refresh the hook creation mode
+        /// </summary>
+        private void RefreshHookCreationMode()
+        {
             this.draftControl1.LastSettings =
                 new smartSprite.Forms.Controls.ToolboxState.DraftSettings
                 {
@@ -350,12 +581,18 @@ namespace smartSprite.Forms
                     {
                         this.treeView1.Nodes.Remove(treeNode);
                     }
+
+                    this.RebuidTreeView();
+
                     break;
 
                 case Forms.Controls.DraftControlState.ActionEnum.CREATED:
 
                     this.treeView1.Nodes.Add(
                         this.ConvertToTreeNode(e.Piece));
+
+                    this.RebuidTreeView();
+
                     break;
 
                 default:

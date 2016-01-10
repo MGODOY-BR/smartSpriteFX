@@ -72,6 +72,7 @@
     </Compile>
     <Compile Include="Forms\Controls\LineControlState\LineControlStyle.cs" />
     <Compile Include="Forms\Controls\ToolboxState\DraftSettings.cs" />
+    <Compile Include="Forms\Controls\TreeViewState\GroupTag.cs" />
     <Compile Include="Forms\PieceManager.cs" />
     <Compile Include="Forms\PrincipalForm.cs">
       <SubType>Form</SubType>

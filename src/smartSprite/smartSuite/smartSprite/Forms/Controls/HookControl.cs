@@ -260,6 +260,14 @@ namespace smartSprite.Forms.Controls
             }
         }
 
+        /// <summary>
+        /// Refreshes the coordinates
+        /// </summary>
+        public void RefreshCoordinates()
+        {
+            this.Point = new smartSuite.smartSprite.Pictures.Point(this.Left, this.Top);
+        }
+
         #region Events
 
         private void HuckControl_MouseMove(object sender, MouseEventArgs e)
