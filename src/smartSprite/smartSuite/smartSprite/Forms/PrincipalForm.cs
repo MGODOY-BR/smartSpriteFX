@@ -331,6 +331,7 @@ namespace smartSprite.Forms
                         throw new ArgumentException("The piece " + e.Piece.Name + " hasn't found.");
                     }
                     this.treeView1.SelectedNode = treeNode;
+                    // this.treeView1.Focus(); // <-- This solves the problem with bold item in treeview, but breaks the selection on draft board.
                     break;
 
                 case Forms.Controls.DraftControlState.ActionEnum.DELETED:

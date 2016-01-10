@@ -248,6 +248,7 @@
             // 
             // treeView1
             // 
+            this.treeView1.CheckBoxes = true;
             this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeView1.Location = new System.Drawing.Point(3, 32);
             this.treeView1.Name = "treeView1";
@@ -300,7 +301,7 @@
             this.toolHookButton});
             this.toolStrip1.Location = new System.Drawing.Point(3, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(66, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(35, 25);
             this.toolStrip1.TabIndex = 0;
             // 
             // toolHookButton

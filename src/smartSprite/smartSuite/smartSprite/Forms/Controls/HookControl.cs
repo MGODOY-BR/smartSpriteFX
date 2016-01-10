@@ -288,13 +288,10 @@ namespace smartSprite.Forms.Controls
         {
             this.Mark(true);
 
-            if (this.Selected && sender == this)
+            if (this.Selected)
             {
-                if (this.GetOlderHuckFromPair() == this)
-                {
-                    this.OnBeenSelected();
-                }
-            }
+                this.OnBeenSelected();
+            }            
         }
 
         private void HuckControl_LostFocus(object sender, EventArgs e)
