@@ -21,6 +21,11 @@ namespace smartSprite.Forms
         /// </summary>
         private List<TreeNode> _dataTreeNodeList = new List<TreeNode>();
 
+        /// <summary>
+        /// It´s a cach of groups
+        /// </summary>
+        private Dictionary<GroupTag, TreeNode> _groupList = new Dictionary<GroupTag, TreeNode>();
+
         public PrincipalForm()
         {
             InitializeComponent();
@@ -281,7 +286,8 @@ namespace smartSprite.Forms
 
                 if (dataChildenList.Count > 0)
                 {
-                    TreeNode groupNode = new TreeNode("Group " + dataTreeNode.Text);    // <-- TODO: It´s still needed discovered when a group is above another group.
+                    TreeNode groupNode = GetGroupNode(dataTreeNode, treeNodeList);
+
                     groupNode.Nodes.Add(
                         (TreeNode)dataTreeNode.Clone());
 
@@ -294,7 +300,6 @@ namespace smartSprite.Forms
 
                         childrenTreeNodeList.Add(dataChildrenItem);
                     }
-                    treeNodeList.Add(groupNode);
                 }
                 else
                 {
@@ -306,6 +311,37 @@ namespace smartSprite.Forms
             this.treeView1.Nodes.Clear();
             this.treeView1.Nodes.AddRange(treeNodeList.ToArray());
             this.treeView1.ExpandAll();
+        }
+
+        /// <summary>
+        /// Gets the group applicable to treeNodeList
+        /// </summary>
+        /// <param name="dataTreeNode"></param>
+        /// <param name="treeNodeList"></param>
+        /// <returns></returns>
+        private TreeNode GetGroupNode(TreeNode dataTreeNode, List<TreeNode> treeNodeList)
+        {
+            #region Entries validation
+
+            if (dataTreeNode == null)
+            {
+                throw new ArgumentNullException("dataTreeNode");
+            }
+            if (treeNodeList == null)
+            {
+                throw new ArgumentNullException("treeNodeList");
+            }
+
+            #endregion
+
+            TreeNode groupNode = new TreeNode("Group " + dataTreeNode.Text);    // <-- TODO: dataTreeNode.Parent.Tag <-- It´s still needed discovered when a group is above another group.
+            GroupTag groupTag = new GroupTag((Piece)dataTreeNode.Tag);
+            groupNode.Tag = groupTag;
+            treeNodeList.Add(groupNode);
+
+            this._groupList.Add(groupTag, dataTreeNode);
+
+            return groupNode;
         }
 
         /// <summary>
