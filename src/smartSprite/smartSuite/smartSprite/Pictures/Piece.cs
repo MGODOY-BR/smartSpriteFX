@@ -9,7 +9,8 @@ namespace smartSuite.smartSprite.Pictures{
 	/// <summary>
 	/// Represents a piece of picture, created by user
 	/// </summary>
-	public class Piece : IGameObject {
+	public class Piece : IGameObject, IComparable
+    {
 
 		/// <summary>
 		/// It´s the name of piece of picture
@@ -120,5 +121,65 @@ namespace smartSuite.smartSprite.Pictures{
         {
             return new Piece(this._referencePicture, this.PointA, this.PointB);
 		}
-	}
+
+        /// <summary>
+        /// Checks if a piece is a child of this one
+        /// </summary>
+        /// <returns></returns>
+        public bool IsChild(Piece other)
+        {
+            #region Entries validation
+
+            if (other == null)
+            {
+                throw new ArgumentNullException("other");
+            }
+            if (this == other)
+            {
+                return false;
+            }
+
+            #endregion
+
+            return this.PointA.X < other.PointA.X &&
+                    this.PointA.Y < other.PointA.Y &&
+                    this.PointB.X > other.PointB.X &&
+                    this.PointB.Y > other.PointB.Y;
+        }
+
+        #region IComparable elements
+
+        public int CompareTo(object obj)
+        {
+            #region Entries validation
+
+            if (obj == null)
+            {
+                return 1;
+            }
+            if (!(obj is Piece))
+            {
+                throw new NotSupportedException(obj.GetType().Name);
+            }
+
+            #endregion
+
+            Piece other = (Piece)obj;
+
+            if (this.PointA.Y < other.PointA.Y)
+            {
+                return -1;
+            }
+            else if (this.PointA.Y > other.PointA.Y)
+            {
+                return 1;
+            }
+            else
+            {
+                return this.PointA.X.CompareTo(other.PointA.X);
+            }
+        }
+
+        #endregion
+    }
 }

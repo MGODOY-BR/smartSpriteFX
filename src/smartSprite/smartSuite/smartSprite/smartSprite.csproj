@@ -80,6 +80,7 @@
     <Compile Include="Forms\PrincipalForm.Designer.cs">
       <DependentUpon>PrincipalForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Utilities\TreeViewUtil.cs" />
     <Compile Include="Pictures\Group.cs" />
     <Compile Include="Pictures\Picture.cs" />
     <Compile Include="Pictures\Piece.cs" />
