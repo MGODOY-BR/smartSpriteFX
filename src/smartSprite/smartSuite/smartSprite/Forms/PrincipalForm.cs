@@ -2,6 +2,7 @@
 using smartSprite.Properties;
 using smartSuite.smartSprite.Pictures;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,11 +21,6 @@ namespace smartSprite.Forms
         /// Contains just the relevant treenode
         /// </summary>
         private List<TreeNode> _dataTreeNodeList = new List<TreeNode>();
-
-        /// <summary>
-        /// It´s a cach of groups
-        /// </summary>
-        private Dictionary<GroupTag, TreeNode> _groupList = new Dictionary<GroupTag, TreeNode>();
 
         public PrincipalForm()
         {
@@ -268,58 +264,68 @@ namespace smartSprite.Forms
             #endregion
 
             List<TreeNode> treeNodeList = new List<TreeNode>();
-            List<TreeNode> childrenTreeNodeList = new List<TreeNode>();
+            this.treeView1.Nodes.Clear();
 
-            foreach (var dataTreeNode in this._dataTreeNodeList)
+            foreach (var dataTreeNode in this.CloneDataTreeNodeList(this._dataTreeNodeList))
             {
-                #region Validation
-
-                if (childrenTreeNodeList.Contains(dataTreeNode))
-                {
-                    continue;
-                }
-
-                #endregion
-
                 var dataChildenList =
-                this.DetermineChildren(dataTreeNode, this._dataTreeNodeList);
+                    this.DetermineChildren(dataTreeNode, this._dataTreeNodeList);
 
                 if (dataChildenList.Count > 0)
                 {
-                    TreeNode groupNode = GetGroupNode(dataTreeNode, treeNodeList);
-
-                    groupNode.Nodes.Add(
-                        (TreeNode)dataTreeNode.Clone());
-
-                    TreeNode childrenNode = new TreeNode("Children " + dataTreeNode.Text);
-                    groupNode.Nodes.Add(childrenNode);
                     foreach (var dataChildrenItem in dataChildenList)
                     {
-                        childrenNode.Nodes.Add(
-                            (TreeNode)dataChildrenItem.Clone());
+                        if (!dataTreeNode.Nodes.Contains(dataChildrenItem))
+                        {
+                            dataTreeNode.Nodes.Add(dataChildrenItem);
+                        }
+                    }
+                }
 
-                        childrenTreeNodeList.Add(dataChildrenItem);
+                TreeNode parentNode = GetParentNode(dataTreeNode, treeNodeList);
+
+                if (parentNode != null)
+                {
+                    if (!this.ContainsTreeNodeList(dataTreeNode, parentNode.Nodes))
+                    {
+                        parentNode.Nodes.Add(dataTreeNode);
                     }
                 }
                 else
                 {
-                    treeNodeList.Add(
-                        (TreeNode)dataTreeNode.Clone());
+                    if (!treeNodeList.Contains(dataTreeNode))
+                    {
+                        treeNodeList.Add(dataTreeNode);
+                    }
                 }
             }
 
-            this.treeView1.Nodes.Clear();
             this.treeView1.Nodes.AddRange(treeNodeList.ToArray());
             this.treeView1.ExpandAll();
         }
 
         /// <summary>
+        /// Gets a clone of list
+        /// </summary>
+        /// <param name="dataTreeNodeList"></param>
+        /// <returns></returns>
+        private List<TreeNode> CloneDataTreeNodeList(List<TreeNode> dataTreeNodeList)
+        {
+            List<TreeNode> returneValue = new List<TreeNode>();
+
+            foreach (TreeNode treeNodeItem in dataTreeNodeList)
+            {
+                returneValue.Add((TreeNode)treeNodeItem.Clone());
+            }
+
+            return returneValue;
+        }
+
+        /// <summary>
         /// Gets the group applicable to treeNodeList
         /// </summary>
-        /// <param name="dataTreeNode"></param>
-        /// <param name="treeNodeList"></param>
         /// <returns></returns>
-        private TreeNode GetGroupNode(TreeNode dataTreeNode, List<TreeNode> treeNodeList)
+        private TreeNode GetParentNode(TreeNode dataTreeNode, List<TreeNode> treeNodeSet)
         {
             #region Entries validation
 
@@ -327,19 +333,32 @@ namespace smartSprite.Forms
             {
                 throw new ArgumentNullException("dataTreeNode");
             }
-            if (treeNodeList == null)
+            if (treeNodeSet == null)
             {
-                throw new ArgumentNullException("treeNodeList");
+                throw new ArgumentNullException("treeNodeSet");
             }
 
             #endregion
 
-            TreeNode groupNode = new TreeNode("Group " + dataTreeNode.Text);    // <-- TODO: dataTreeNode.Parent.Tag <-- It´s still needed discovered when a group is above another group.
-            GroupTag groupTag = new GroupTag((Piece)dataTreeNode.Tag);
-            groupNode.Tag = groupTag;
-            treeNodeList.Add(groupNode);
+            Piece piece = dataTreeNode.Tag as Piece;
+            var parentList = from treeNodeItem in treeNodeSet
+                             where this.IsChild((Piece)treeNodeItem.Tag, (Piece)dataTreeNode.Tag)
+                             select treeNodeItem;
 
-            this._groupList.Add(groupTag, dataTreeNode);
+            TreeNode groupNode = null;
+
+            if (parentList.Count() > 0)
+            {
+                groupNode = parentList.FirstOrDefault();
+                if (groupNode == dataTreeNode)
+                {
+                    return null;
+                }
+            }
+            else
+            {
+                groupNode = null;
+            }
 
             return groupNode;
         }
@@ -348,6 +367,22 @@ namespace smartSprite.Forms
         /// Checks if the data tree node exists in data buffer, based on Piece associed
         /// </summary>
         private bool ContainsTreeNodeList(TreeNode dataTreeNode, List<TreeNode> treeNodeList)
+        {
+            return this.DoContainsTreeNodeList(dataTreeNode, treeNodeList);
+        }
+
+        /// <summary>
+        /// Checks if the data tree node exists in data buffer, based on Piece associed
+        /// </summary>
+        private bool ContainsTreeNodeList(TreeNode dataTreeNode, TreeNodeCollection treeNodeList)
+        {
+            return this.DoContainsTreeNodeList(dataTreeNode, treeNodeList);
+        }
+
+        /// <summary>
+        /// Checks if the data tree node exists in data buffer, based on Piece associed
+        /// </summary>
+        private bool DoContainsTreeNodeList(TreeNode dataTreeNode, IList treeNodeList)
         {
             #region Entries validation
 
@@ -364,7 +399,9 @@ namespace smartSprite.Forms
 
             foreach (var dataTreeNodeItem in treeNodeList)
             {
-                if (dataTreeNodeItem.Tag == dataTreeNode.Tag && dataTreeNodeItem.Tag != null)
+                if (
+                    ((TreeNode)dataTreeNodeItem).Tag == dataTreeNode.Tag && 
+                    ((TreeNode)dataTreeNodeItem).Tag != null)
                 {
                     if (dataTreeNode.Tag is Piece)
                     {
@@ -455,17 +492,13 @@ namespace smartSprite.Forms
 
                 Piece pieceItem = (Piece)treeNodeItem.Tag;
 
-                if (
-                    piece.PointA.X < pieceItem.PointA.X &&
-                    piece.PointA.Y < pieceItem.PointA.Y &&
-                    piece.PointB.X > pieceItem.PointB.X &&
-                    piece.PointB.Y > pieceItem.PointB.Y)
+                if (this.IsChild(piece, pieceItem))
                 {
                     list.Add(treeNodeItem);
                 }
             }
 
-            // Mainteining just the first child
+            // Maintaining just the first child
             List<TreeNode> rejectedChildrenList = new List<TreeNode>();
             foreach (var item in list)
             {
@@ -480,6 +513,37 @@ namespace smartSprite.Forms
             });
 
             return list;
+        }
+
+        /// <summary>
+        /// Checks if pieceItem is a child of piece
+        /// </summary>
+        /// <param name="piece"></param>
+        /// <param name="pieceItem"></param>
+        /// <returns></returns>
+        private bool IsChild(Piece piece, Piece pieceItem)
+        {
+            #region Entries validation
+
+            if (piece == null)
+            {
+                throw new ArgumentNullException("piece");
+            }
+            if (pieceItem == null)
+            {
+                throw new ArgumentNullException("pieceItem");
+            }
+            if (piece == pieceItem)
+            {
+                return false;
+            }
+
+            #endregion
+
+            return piece.PointA.X < pieceItem.PointA.X &&
+                    piece.PointA.Y < pieceItem.PointA.Y &&
+                    piece.PointB.X > pieceItem.PointB.X &&
+                    piece.PointB.Y > pieceItem.PointB.Y;
         }
 
         /// <summary>
