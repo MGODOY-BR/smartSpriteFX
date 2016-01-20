@@ -11,7 +11,6 @@ namespace smartSuite.smartSprite.Pictures{
 	/// </summary>
 	public class Piece : IGameObject, IComparable
     {
-
 		/// <summary>
 		/// It´s the name of piece of picture
 		/// </summary>
@@ -21,10 +20,15 @@ namespace smartSuite.smartSprite.Pictures{
             set;
         }
 
-		/// <summary>
-		/// It's the reference picture about the piece is part of it
-		/// </summary>
-		private Picture _referencePicture;
+        /// <summary>
+        /// It´s the parent of piece
+        /// </summary>
+        public Piece Parent { get; set; }
+
+        /// <summary>
+        /// It's the reference picture about the piece is part of it
+        /// </summary>
+        private Picture _referencePicture;
 
 		/// <summary>
 		/// It's the first point of a hypotenuse
@@ -123,10 +127,10 @@ namespace smartSuite.smartSprite.Pictures{
 		}
 
         /// <summary>
-        /// Checks if a piece is a child of this one
+        /// Checks if a piece contains another one
         /// </summary>
         /// <returns></returns>
-        public bool IsChild(Piece other)
+        public bool Contains(Piece other)
         {
             #region Entries validation
 

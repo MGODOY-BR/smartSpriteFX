@@ -74,7 +74,7 @@ namespace smartSprite.Forms.Utilities
 
             Piece piece = dataTreeNode.Tag as Piece;
             var parentList = from treeNodeItem in treeNodeSet
-                             where ((Piece)treeNodeItem.Tag).IsChild((Piece)dataTreeNode.Tag)
+                             where ((Piece)treeNodeItem.Tag).Contains((Piece)dataTreeNode.Tag)
                              select treeNodeItem;
 
             TreeNode groupNode = null;
@@ -224,25 +224,37 @@ namespace smartSprite.Forms.Utilities
 
                 Piece pieceItem = (Piece)treeNodeItem.Tag;
 
-                if (piece.IsChild(pieceItem))
+                if (piece.Contains(pieceItem))
                 {
                     list.Add(treeNodeItem);
                 }
             }
 
-            // Maintaining just the first child
+            // Maintaining unique children
             List<TreeNode> rejectedChildrenList = new List<TreeNode>();
             foreach (var item in list)
             {
+                /*
                 if (TreeViewUtil.DetermineChildren(item, list).Count > 0)
                 {
                     rejectedChildrenList.Add(item);
                 }
+                */
+                if (((Piece)item.Tag).Parent != null)
+                {
+                    rejectedChildrenList.Add(item);
+                }
             }
+
             list.RemoveAll(delegate (TreeNode item)
             {
                 return rejectedChildrenList.Contains(item);
             });
+
+            foreach (var item in list)
+            {
+                ((Piece)item.Tag).Parent = piece;
+            }
 
             return list;
         }
@@ -277,6 +289,144 @@ namespace smartSprite.Forms.Utilities
             return list;
         }
 
+        /// <summary>
+        /// Sets the family of pieces
+        /// </summary>
+        /// <param name="dataTreeNodeList"></param>
+        public static List<Piece> OrganizeFamily(List<TreeNode> dataTreeNodeList)
+        {
+            // Extracting Pieces
+            List<Piece> pieceList = GetPieceList(dataTreeNodeList);
 
+            // Cleaning the previous bindings
+            foreach (var piece in pieceList)
+            {
+                piece.Parent = null;
+            }
+
+            #region Setting parents
+
+            Piece previousPiece = null;
+
+            for (int i = pieceList.Count - 1; i >= 0; i--)
+            {
+                var pieceItem = pieceList[i];
+                if (previousPiece != null)
+                {
+                    if (pieceItem.Contains(previousPiece))
+                    {
+                        pieceItem.Parent = previousPiece;
+                    }
+                }
+
+                previousPiece = pieceItem;
+            }
+
+            #endregion
+
+            return pieceList;
+        }
+
+        /// <summary>
+        /// Gets a build of tree hierarchy created from dataTreeNode
+        /// </summary>
+        /// <param name="pieceList"></param>
+        /// <param name="dataTreeNodeList"></param>
+        /// <returns></returns>
+        public static List<TreeNode> BuildTreeHierarchy(List<Piece> pieceList, List<TreeNode> dataTreeNodeList)
+        {
+            #region Entries validation
+
+            if (pieceList == null)
+            {
+                throw new ArgumentNullException("pieceList");
+            }
+            if (dataTreeNodeList == null)
+            {
+                throw new ArgumentNullException("dataTreeNodeList");
+            }
+
+            #endregion
+
+            List<TreeNode> returnValue = new List<TreeNode>();
+
+            foreach (var pieceItem in pieceList)
+            {
+                // Getting the node
+                TreeNode treeNode = TreeViewUtil.GetTreeNode(dataTreeNodeList, pieceItem);
+
+                #region Getting the parentNode
+
+                if (pieceItem.Parent != null)
+                {
+                    TreeNode parentTreeNode = TreeViewUtil.GetTreeNode(dataTreeNodeList, pieceItem.Parent);
+                    parentTreeNode.Nodes.Add(treeNode);
+                }
+                else
+                {
+                    returnValue.Add(treeNode);
+                }
+
+                #endregion
+            }
+
+            return returnValue;
+        }
+
+        /// <summary>
+        /// Gets a treenode
+        /// </summary>
+        /// <param name="dataTreeNodeList"></param>
+        /// <param name="pieceItem"></param>
+        /// <returns></returns>
+        private static TreeNode GetTreeNode(List<TreeNode> dataTreeNodeList, Piece pieceItem)
+        {
+            #region Entries validation
+
+            if (dataTreeNodeList == null)
+            {
+                throw new ArgumentNullException("dataTreeNodeList");
+            }
+            if (pieceItem == null)
+            {
+                throw new ArgumentNullException("pieceItem");
+            }
+
+            #endregion
+
+            var treeViewList = from treeNodeItem in dataTreeNodeList
+                               where treeNodeItem.Tag == pieceItem
+                               select treeNodeItem;
+
+            return treeViewList.FirstOrDefault();
+        }
+
+        /// <summary>
+        /// Gets the piece list from TreeNode
+        /// </summary>
+        /// <param name="dataTreeNodeList"></param>
+        /// <returns></returns>
+        private static List<Piece> GetPieceList(List<TreeNode> dataTreeNodeList)
+        {
+            #region Entries validation
+
+            if (dataTreeNodeList == null)
+            {
+                throw new ArgumentNullException("dataTreeNodeList");
+            }
+
+            #endregion
+            List<Piece> pieceList = new List<Piece>();
+
+            foreach (TreeNode dataTreeNodeItem in dataTreeNodeList)
+            {
+                pieceList.Add(
+                    (Piece)dataTreeNodeItem.Tag);
+            }
+
+            // Ordering pieces
+            pieceList.Sort();
+            return pieceList;
+        }
     }
 }

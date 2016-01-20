@@ -243,45 +243,62 @@ namespace smartSprite.Forms
 
             #endregion
 
-            List<TreeNode> treeNodeList = new List<TreeNode>();
+            #region Obsolete code
+
+            //List<TreeNode> treeNodeList = new List<TreeNode>();
+            //this.treeView1.Nodes.Clear();
+
+            //var dataTreeNodeList = TreeViewUtil.CloneDataTreeNodeList(this._dataTreeNodeList);
+
+            //foreach (var dataTreeNode in dataTreeNodeList)
+            //{
+            //    var dataChildenList =
+            //        TreeViewUtil.DetermineChildren(dataTreeNode, this._dataTreeNodeList);
+
+            //    if (dataChildenList.Count > 0)
+            //    {
+            //        foreach (var dataChildrenItem in dataChildenList)
+            //        {
+            //            if (!dataTreeNode.Nodes.Contains(dataChildrenItem))
+            //            {
+            //                dataTreeNode.Nodes.Add(dataChildrenItem);
+            //            }
+            //        }
+            //    }
+
+            //    TreeNode parentNode = TreeViewUtil.GetParentNode(dataTreeNode, treeNodeList);
+
+            //    if (parentNode != null)
+            //    {
+            //        if (!TreeViewUtil.ContainsTreeNodeList(dataTreeNode, parentNode.Nodes))
+            //        {
+            //            parentNode.Nodes.Add(dataTreeNode);
+            //        }
+            //    }
+            //    else
+            //    {
+            //        if (!treeNodeList.Contains(dataTreeNode))
+            //        {
+            //            treeNodeList.Add(dataTreeNode);
+            //        }
+            //    }
+            //}
+
+            //this.treeView1.Nodes.AddRange(treeNodeList.ToArray());
+            //this.treeView1.ExpandAll();
+
+            #endregion
+
+            // Organizing all parent the pieces
+            var pieceList = TreeViewUtil.OrganizeFamily(this._dataTreeNodeList);
+
+            //Build the hierarquy
+            var treeviewList = TreeViewUtil.BuildTreeHierarchy(pieceList, this._dataTreeNodeList);
+
             this.treeView1.Nodes.Clear();
+            this.treeView1.Nodes.AddRange(treeviewList.ToArray());
 
-            foreach (var dataTreeNode in TreeViewUtil.CloneDataTreeNodeList(this._dataTreeNodeList))
-            {
-                var dataChildenList =
-                    TreeViewUtil.DetermineChildren(dataTreeNode, this._dataTreeNodeList);
-
-                if (dataChildenList.Count > 0)
-                {
-                    foreach (var dataChildrenItem in dataChildenList)
-                    {
-                        if (!dataTreeNode.Nodes.Contains(dataChildrenItem))
-                        {
-                            dataTreeNode.Nodes.Add(dataChildrenItem);
-                        }
-                    }
-                }
-
-                TreeNode parentNode = TreeViewUtil.GetParentNode(dataTreeNode, treeNodeList);
-
-                if (parentNode != null)
-                {
-                    if (!TreeViewUtil.ContainsTreeNodeList(dataTreeNode, parentNode.Nodes))
-                    {
-                        parentNode.Nodes.Add(dataTreeNode);
-                    }
-                }
-                else
-                {
-                    if (!treeNodeList.Contains(dataTreeNode))
-                    {
-                        treeNodeList.Add(dataTreeNode);
-                    }
-                }
-            }
-
-            this.treeView1.Nodes.AddRange(treeNodeList.ToArray());
-            this.treeView1.ExpandAll();
+            // TODO: Test it!!!
         }
 
         #region Events
