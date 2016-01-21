@@ -33,5 +33,10 @@ namespace smartSuite.smartSprite.Pictures{
             get;
             set;
         }
+
+        public override string ToString()
+        {
+            return String.Format("X = {0}, Y = {1}", this.X, this.Y);
+        }
     }
 }

@@ -170,18 +170,7 @@ namespace smartSuite.smartSprite.Pictures{
 
             Piece other = (Piece)obj;
 
-            if (this.PointA.Y < other.PointA.Y)
-            {
-                return -1;
-            }
-            else if (this.PointA.Y > other.PointA.Y)
-            {
-                return 1;
-            }
-            else
-            {
-                return this.PointA.X.CompareTo(other.PointA.X);
-            }
+            return this.PointA.X.CompareTo(other.PointA.X);
         }
 
         #endregion
