@@ -308,12 +308,14 @@ namespace smartSprite.Forms.Utilities
 
             Piece previousPiece = null;
 
-            for (int i = pieceList.Count - 1; i >= 0; i--)
+            // for (int i = pieceList.Count - 1; i >= 0; i--)
+            for (int i = 0; i < pieceList.Count; i++)
             {
                 var pieceItem = pieceList[i];
                 if (previousPiece != null)
                 {
-                    if (pieceItem.Contains(previousPiece))
+                    // if (pieceItem.Contains(previousPiece))
+                    if (previousPiece.Contains(pieceItem))
                     {
                         pieceItem.Parent = previousPiece;
                     }
@@ -355,12 +357,22 @@ namespace smartSprite.Forms.Utilities
                 // Getting the node
                 TreeNode treeNode = TreeViewUtil.GetTreeNode(dataTreeNodeList, pieceItem);
 
+                if (treeNode.TreeView != null)
+                {
+                    treeNode.TreeView.Nodes.Remove(treeNode);
+                }
+                if (treeNode.Parent != null)
+                {
+                    treeNode.Parent.Nodes.Remove(treeNode);
+                }
+
                 #region Getting the parentNode
 
                 if (pieceItem.Parent != null)
                 {
                     TreeNode parentTreeNode = TreeViewUtil.GetTreeNode(dataTreeNodeList, pieceItem.Parent);
                     parentTreeNode.Nodes.Add(treeNode);
+                    parentTreeNode.ExpandAll();
                 }
                 else
                 {
@@ -374,7 +386,7 @@ namespace smartSprite.Forms.Utilities
         }
 
         /// <summary>
-        /// Gets a treenode
+        /// Gets a treenode respective to piece item.
         /// </summary>
         /// <param name="dataTreeNodeList"></param>
         /// <param name="pieceItem"></param>
