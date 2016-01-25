@@ -371,6 +371,18 @@ namespace smartSprite.Forms.Utilities
                 if (pieceItem.Parent != null)
                 {
                     TreeNode parentTreeNode = TreeViewUtil.GetTreeNode(dataTreeNodeList, pieceItem.Parent);
+                    var childList = TreeViewUtil.DetermineChildren(parentTreeNode, dataTreeNodeList);
+
+                    foreach (TreeNode childNode in childList)
+                    {
+                        if (parentTreeNode.Nodes.Contains(childNode))
+                        {
+                            continue;
+                        }
+
+                        parentTreeNode.Nodes.Add(childNode);
+                    }
+
                     parentTreeNode.Nodes.Add(treeNode);
                     parentTreeNode.ExpandAll();
                 }
