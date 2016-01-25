@@ -357,14 +357,7 @@ namespace smartSprite.Forms.Utilities
                 // Getting the node
                 TreeNode treeNode = TreeViewUtil.GetTreeNode(dataTreeNodeList, pieceItem);
 
-                if (treeNode.TreeView != null)
-                {
-                    treeNode.TreeView.Nodes.Remove(treeNode);
-                }
-                if (treeNode.Parent != null)
-                {
-                    treeNode.Parent.Nodes.Remove(treeNode);
-                }
+                TreeViewUtil.RemoveFromParent(treeNode);
 
                 #region Getting the parentNode
 
@@ -380,6 +373,7 @@ namespace smartSprite.Forms.Utilities
                             continue;
                         }
 
+                        TreeViewUtil.RemoveFromParent(childNode);
                         parentTreeNode.Nodes.Add(childNode);
                     }
 
@@ -395,6 +389,31 @@ namespace smartSprite.Forms.Utilities
             }
 
             return returnValue;
+        }
+
+        /// <summary>
+        /// Removesa node from its parent
+        /// </summary>
+        /// <param name="treeNode"></param>
+        private static void RemoveFromParent(TreeNode treeNode)
+        {
+            #region Entries validation
+
+            if (treeNode == null)
+            {
+                throw new ArgumentNullException("treeNode");
+            }
+
+            #endregion
+
+            if (treeNode.TreeView != null)
+            {
+                treeNode.TreeView.Nodes.Remove(treeNode);
+            }
+            if (treeNode.Parent != null)
+            {
+                treeNode.Parent.Nodes.Remove(treeNode);
+            }
         }
 
         /// <summary>
