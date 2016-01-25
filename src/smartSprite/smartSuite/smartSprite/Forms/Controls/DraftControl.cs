@@ -143,6 +143,7 @@ namespace smartSprite.Forms.Controls
             HookControl newHook = new HookControl();
             newHook.BeenSelected += NewHook_BeenSelected;
             newHook.Deleting += NewHook_Deleting;
+            newHook.PositionChanged += NewHook_PositionChanged;
 
             newHook.Top = e.Y - newHook.Height / 2;
             newHook.Left = e.X - newHook.Width / 2;
@@ -180,7 +181,23 @@ namespace smartSprite.Forms.Controls
         }
 
         /// <summary>
-        /// Occurrs when hook as been selected
+        /// Occurs when hook has moved
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void NewHook_PositionChanged(object sender, HookState.HookEventArgs e)
+        {
+            var piece = this._pieceSet[e.MainHook];
+
+            piece.Fix();
+
+            this.OnPieceSetChanged(
+                piece,
+                ActionEnum.UPDATED);
+        }
+
+        /// <summary>
+        /// Occurs when hook as been selected
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>

@@ -260,6 +260,31 @@ namespace smartSprite.Forms.Utilities
         }
 
         /// <summary>
+        /// Reset the parent of each nodes
+        /// </summary>
+        /// <param name="dataTreeNodeList"></param>
+        public static void ResetParent(List<TreeNode> dataTreeNodeList)
+        {
+            #region Entries validation
+
+            if (dataTreeNodeList == null)
+            {
+                throw new ArgumentNullException("dataTreeNodeList");
+            }
+
+            #endregion
+
+            foreach (TreeNode treeNodeItem in dataTreeNodeList)
+            {
+                Piece piece = (Piece)treeNodeItem.Tag;
+
+                piece.Parent = null;
+
+                TreeViewUtil.RemoveFromParent(treeNodeItem);
+            }
+        }
+
+        /// <summary>
         /// Gets all the treenodes, regardless of levels, from the treeNodeList
         /// </summary>
         /// <returns></returns>
@@ -308,13 +333,12 @@ namespace smartSprite.Forms.Utilities
 
             Piece previousPiece = null;
 
-            // for (int i = pieceList.Count - 1; i >= 0; i--)
             for (int i = 0; i < pieceList.Count; i++)
             {
                 var pieceItem = pieceList[i];
+
                 if (previousPiece != null)
                 {
-                    // if (pieceItem.Contains(previousPiece))
                     if (previousPiece.Contains(pieceItem))
                     {
                         pieceItem.Parent = previousPiece;

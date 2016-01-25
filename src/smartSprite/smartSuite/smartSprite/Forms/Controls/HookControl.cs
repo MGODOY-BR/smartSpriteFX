@@ -53,6 +53,7 @@ namespace smartSprite.Forms.Controls
             InitializeComponent();
 
             this.MouseMove += HuckControl_MouseMove;
+            this.MouseUp += HookControl_MouseUp;
             this.GotFocus += HuckControl_GotFocus;
             this.LostFocus += HuckControl_LostFocus;
             this.KeyDown += HookControl_KeyDown;
@@ -96,6 +97,11 @@ namespace smartSprite.Forms.Controls
         public event EventHandler<HookEventArgs> BeenSelected;
 
         /// <summary>
+        /// Occurs when the hook has changed
+        /// </summary>
+        public event EventHandler<HookEventArgs> PositionChanged;
+
+        /// <summary>
         /// Throws the event
         /// </summary>
         private void OnBeenSelected()
@@ -115,22 +121,26 @@ namespace smartSprite.Forms.Controls
             });
         }
 
-        #endregion
-
-        private void HookControl_KeyDown(object sender, KeyEventArgs e)
+        /// <summary>
+        /// Throws the event associated
+        /// </summary>
+        private void OnPositionChanged()
         {
-            switch (e.KeyCode)
+            #region Entries validation
+
+            if (this.PositionChanged == null)
             {
-                case Keys.Escape:          // ESC
-
-                    this.Mark(false);
-                    break;
-
-                case Keys.Delete:
-                    this.OnDeleting();
-                    break;
+                throw new NotImplementedException();
             }
+            this.PositionChanged(this, new HookEventArgs
+            {
+                MainHook = this.GetOlderHuckFromPair()
+            });
+
+            #endregion
         }
+
+        #endregion
 
         /// <summary>
         /// Creates the lines between the pairs
@@ -269,6 +279,38 @@ namespace smartSprite.Forms.Controls
         }
 
         #region Events
+        
+        private void HookControl_MouseUp(object sender, MouseEventArgs e)
+        {
+            #region Entries validation
+
+            if (sender != this)
+            {
+                return;
+            }
+
+            #endregion
+
+            this.Point.X = this.Left;
+            this.Point.Y = this.Top;
+
+            this.OnPositionChanged();
+        }
+
+        private void HookControl_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Escape:          // ESC
+
+                    this.Mark(false);
+                    break;
+
+                case Keys.Delete:
+                    this.OnDeleting();
+                    break;
+            }
+        }
 
         private void HuckControl_MouseMove(object sender, MouseEventArgs e)
         {

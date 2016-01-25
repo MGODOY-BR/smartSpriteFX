@@ -243,62 +243,17 @@ namespace smartSprite.Forms
 
             #endregion
 
-            #region Obsolete code
-
-            //List<TreeNode> treeNodeList = new List<TreeNode>();
-            //this.treeView1.Nodes.Clear();
-
-            //var dataTreeNodeList = TreeViewUtil.CloneDataTreeNodeList(this._dataTreeNodeList);
-
-            //foreach (var dataTreeNode in dataTreeNodeList)
-            //{
-            //    var dataChildenList =
-            //        TreeViewUtil.DetermineChildren(dataTreeNode, this._dataTreeNodeList);
-
-            //    if (dataChildenList.Count > 0)
-            //    {
-            //        foreach (var dataChildrenItem in dataChildenList)
-            //        {
-            //            if (!dataTreeNode.Nodes.Contains(dataChildrenItem))
-            //            {
-            //                dataTreeNode.Nodes.Add(dataChildrenItem);
-            //            }
-            //        }
-            //    }
-
-            //    TreeNode parentNode = TreeViewUtil.GetParentNode(dataTreeNode, treeNodeList);
-
-            //    if (parentNode != null)
-            //    {
-            //        if (!TreeViewUtil.ContainsTreeNodeList(dataTreeNode, parentNode.Nodes))
-            //        {
-            //            parentNode.Nodes.Add(dataTreeNode);
-            //        }
-            //    }
-            //    else
-            //    {
-            //        if (!treeNodeList.Contains(dataTreeNode))
-            //        {
-            //            treeNodeList.Add(dataTreeNode);
-            //        }
-            //    }
-            //}
-
-            //this.treeView1.Nodes.AddRange(treeNodeList.ToArray());
-            //this.treeView1.ExpandAll();
-
-            #endregion
+            // Reset the dataTreeNodeList
+            TreeViewUtil.ResetParent(this._dataTreeNodeList);
 
             // Organizing all parent the pieces
             var pieceList = TreeViewUtil.OrganizeFamily(this._dataTreeNodeList);
 
-            //Build the hierarquy
+            // Build the hierarchy
             var treeviewList = TreeViewUtil.BuildTreeHierarchy(pieceList, this._dataTreeNodeList);
 
             this.treeView1.Nodes.Clear();
             this.treeView1.Nodes.AddRange(treeviewList.ToArray());
-
-            // TODO: Test it!!!
         }
 
         #region Events
@@ -437,8 +392,13 @@ namespace smartSprite.Forms
 
                     break;
 
-                default:
+                case Forms.Controls.DraftControlState.ActionEnum.UPDATED:
+
+                    this.RebuidTreeView();
                     break;
+
+                default:
+                    throw new NotSupportedException(e.Action.ToString() + " isn't supported.");
             }
         }
 

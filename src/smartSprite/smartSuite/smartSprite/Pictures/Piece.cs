@@ -94,16 +94,27 @@ namespace smartSuite.smartSprite.Pictures{
             this._referencePicture = picture;
             this.PointA = pointA;
             this.PointB = pointB;
-
             this.PointC = new Point(pointB.X, pointA.Y);
             this.PointD = new Point(pointA.X, pointB.Y);
 		}
 
-		/// <summary>
-		/// Changesthe name of piece
-		/// </summary>
-		/// <param name="newName"></param>
-		public void ChangeName(String newName)
+        /// <summary>
+        /// Corrects points based on main points
+        /// </summary>
+        public void Fix()
+        {
+            this.PointC.X = this.PointB.X;
+            this.PointC.Y = this.PointA.Y;
+
+            this.PointD.X = this.PointA.X;
+            this.PointD.Y = this.PointB.Y;
+        }
+
+        /// <summary>
+        /// Changesthe name of piece
+        /// </summary>
+        /// <param name="newName"></param>
+        public void ChangeName(String newName)
         {
             this.Name = newName;
 		}
