@@ -19,10 +19,10 @@ namespace smartSuite.smartSprite.Unity{
 		/// <summary>
 		/// It´s the game object represented by the meta sprite
 		/// </summary>
-		public GameObject RelatedGameObject;
+		public IGameObject RelatedGameObject;
 
-		/// <param name="piece"></param>
-		public void MetaSprite(Piece piece) {
+		/// <param name="gameObject"></param>
+		public void MetaSprite(IGameObject gameObject ) {
 			// TODO implement here
 		}
 

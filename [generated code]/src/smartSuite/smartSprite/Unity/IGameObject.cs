@@ -8,7 +8,7 @@ namespace smartSuite.smartSprite.Unity{
 	/// <summary>
 	/// Represents a generic element which can be an object or empty one
 	/// </summary>
-	public interface GameObject {
+	public interface IGameObject {
 
 	}
 }

@@ -29,7 +29,7 @@ namespace smartSuite.smartSprite.Pictures{
 		/// <summary>
 		/// It´s list of groups
 		/// </summary>
-		public Group GroupList;
+		public HashSet<Group> GroupList;
 
 		/// <summary>
 		/// Generates the pieces created

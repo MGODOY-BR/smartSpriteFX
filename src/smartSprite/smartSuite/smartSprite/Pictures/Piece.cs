@@ -162,6 +162,15 @@ namespace smartSuite.smartSprite.Pictures{
                     this.PointB.Y > other.PointB.Y;
         }
 
+        /// <summary>
+        /// Covers the area of piece with a supposedly existent part behind of image
+        /// </summary>
+        /// <param name="other">Normally, this parameter is the parent</param>
+        private void OverCover(Piece other)
+        {
+            throw new NotImplementedException();
+        }
+
         #region IComparable elements
 
         public int CompareTo(object obj)

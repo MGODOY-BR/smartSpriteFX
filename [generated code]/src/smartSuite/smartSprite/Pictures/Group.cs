@@ -8,7 +8,7 @@ namespace smartSuite.smartSprite.Pictures{
 	/// <summary>
 	/// Represents a group of piece to join the related pieces of image
 	/// </summary>
-	public class Group : GameObject {
+	public class Group : IGameObject {
 
 		/// <summary>
 		/// Represents a group of piece to join the related pieces of image

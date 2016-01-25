@@ -8,7 +8,7 @@ namespace smartSuite.smartSprite.Pictures{
 	/// <summary>
 	/// Represents a piece of picture, created by user
 	/// </summary>
-	public class Piece : GameObject {
+	public class Piece : IGameObject {
 
 		/// <summary>
 		/// Represents a piece of picture, created by user
@@ -39,12 +39,17 @@ namespace smartSuite.smartSprite.Pictures{
 		/// <summary>
 		/// 
 		/// </summary>
-		public Point PointD;
+		public Point PointC;
 
 		/// <summary>
 		/// 
 		/// </summary>
-		public Point PointC;
+		public Point PointD;
+
+		/// <summary>
+		/// It´s the parent of piece
+		/// </summary>
+		public Piece Parent;
 
 		/// <summary>
 		/// Creates  instance of an object
@@ -79,6 +84,16 @@ namespace smartSuite.smartSprite.Pictures{
 		public Piece Duplicate() {
 			// TODO implement here
 			return null;
+		}
+
+		/// <summary>
+		/// Covers the area of piece with a supposedly existent part behind of image
+		/// </summary>
+		/// <summary>
+		/// @param other Normally, this parameter is the parent
+		/// </summary>
+		private void OverCover(Piece other) {
+			// TODO implement here
 		}
 
 	}

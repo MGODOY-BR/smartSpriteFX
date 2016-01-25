@@ -28,7 +28,7 @@ namespace smartSuite.smartSprite.Forms{
 		/// <param name="pointA"></param>
 		/// <param name="pointB"></param>
 		/// <returns></returns>
-		public Piece GetInstance(Picture picture, Point pointA, Point pointB) {
+		public static Piece GetInstance(Picture picture, Point pointA, Point pointB) {
 			// TODO implement here
 			return null;
 		}
@@ -37,7 +37,7 @@ namespace smartSuite.smartSprite.Forms{
 		/// Loads a collection of piece of pictures
 		/// </summary>
 		/// <param name="fileName"></param>
-		public void Load(String fileName) {
+		public static void Load(String fileName) {
 			// TODO implement here
 		}
 
