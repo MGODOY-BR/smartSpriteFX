@@ -2,6 +2,8 @@
 using smartSuite.smartSprite.Unity;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -125,14 +127,63 @@ namespace smartSuite.smartSprite.Pictures{
 		/// <param name="fullPath"></param>
 		public void TakePicture(String fullPath)
         {
-            throw new NotImplementedException();
-		}
+            #region Entries validation
 
-		/// <summary>
-		/// Duplicates the current piece
-		/// </summary>
-		/// <returns></returns>
-		public Piece Duplicate()
+            if (String.IsNullOrEmpty(fullPath))
+            {
+                throw new ArgumentNullException("fullPath");
+            }
+            if (this._referencePicture == null)
+            {
+                throw new ArgumentNullException("this._referencePicture");
+            }
+            if (this.PointB == null)
+            {
+                throw new ArgumentNullException("this.PointB");
+            }
+            if (this.PointA == null)
+            {
+                throw new ArgumentNullException("this.PointA");
+            }
+            if (this.PointC == null)
+            {
+                throw new ArgumentNullException("this.PointC");
+            }
+            if (this.PointD == null)
+            {
+                throw new ArgumentNullException("this.PointD");
+            }
+            if (String.IsNullOrEmpty(this.Name))
+            {
+                throw new ArgumentNullException("this.Name");
+            }
+
+            #endregion
+
+            var pieceBitmap =
+                new Bitmap(
+                    (int)(this.PointB.X - this.PointD.X),
+                    (int)(this.PointB.Y - this.PointC.Y));
+
+            for (float y = this.PointA.Y; y < this.PointB.Y; y++)
+            {
+                for (float x = this.PointA.X; x < this.PointB.X; x++)
+                {
+                    var piecePixel = this._referencePicture.GetPixel((int)x, (int)y);
+                    pieceBitmap.SetPixel((int)x, (int)y, piecePixel);
+                }
+            }
+
+            // Getting the name of piece file
+            String name = Path.Combine(fullPath, this.Name) + ".png";
+            pieceBitmap.Save(name);
+        }
+
+        /// <summary>
+        /// Duplicates the current piece
+        /// </summary>
+        /// <returns></returns>
+        public Piece Duplicate()
         {
             return new Piece(this._referencePicture, this.PointA, this.PointB);
 		}
