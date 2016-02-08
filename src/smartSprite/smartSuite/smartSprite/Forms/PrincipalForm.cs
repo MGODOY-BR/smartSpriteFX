@@ -224,6 +224,11 @@ namespace smartSprite.Forms
             if (openDialog.FileName != null)
             {
                 sourceFolder.Text = openDialog.FileName;
+
+                // Loading the picture
+                this.draftControl1.LoadDraftPicture(this.txtDraftSourceFolder.Text.Trim());
+                this.draftControl1.Visible = true;
+
                 this.RefreshForm();
             }
         }
@@ -495,6 +500,13 @@ namespace smartSprite.Forms
 
             Piece piece = (Piece)tag;
             this.draftControl1.SelectPiece(piece);
+        }
+
+        private void btnExportToUnity_Click(object sender, EventArgs e)
+        {
+            this.draftControl1.SendToUnity(
+                Path.GetDirectoryName(
+                    this.txtDraftSourceFolder.Text));
         }
 
         #endregion

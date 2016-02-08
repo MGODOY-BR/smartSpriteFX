@@ -265,6 +265,29 @@ namespace smartSprite.Forms.Controls
         }
 
         /// <summary>
+        /// Loads the draft picture
+        /// </summary>
+        /// <param name="draftPicture"></param>
+        internal void LoadDraftPicture(string draftPicture)
+        {
+            #region Entries validation
+            
+            if (String.IsNullOrEmpty(draftPicture))
+            {
+                throw new ArgumentNullException("draftPicture");
+            }
+
+            #endregion
+
+            this.imgDraft.Load(draftPicture);
+            this.Pieces = new PieceCollection(new Picture(draftPicture));
+            this._hookSet.Clear();
+            this._lastHook = null;
+            this._lastSettings = null;
+            this._pieceSet.Clear();
+        }
+
+        /// <summary>
         /// Gets a hook control from a piece
         /// </summary>
         /// <param name="piece"></param>
@@ -280,6 +303,26 @@ namespace smartSprite.Forms.Controls
             }
 
             return null;
+        }
+
+        /// <summary>
+        /// Send pieces to Unity
+        /// </summary>
+        /// <param name="folderDestination"></param>
+        internal void SendToUnity(string folderDestination)
+        {
+            #region Entries validation
+
+            if (String.IsNullOrEmpty(folderDestination))
+            {
+                throw new ArgumentNullException("folderDestination");
+            }
+
+            #endregion
+
+            this.Pieces.Generate(folderDestination);
+
+            MessageBox.Show("Pieces has been sent with success!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

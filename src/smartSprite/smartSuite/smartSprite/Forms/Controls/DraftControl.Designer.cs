@@ -35,7 +35,6 @@
             // imgDraft
             // 
             this.imgDraft.Cursor = System.Windows.Forms.Cursors.Default;
-            this.imgDraft.Image = global::smartSprite.Properties.Resources.DraftSample;
             this.imgDraft.Location = new System.Drawing.Point(3, 0);
             this.imgDraft.Name = "imgDraft";
             this.imgDraft.Size = new System.Drawing.Size(736, 371);

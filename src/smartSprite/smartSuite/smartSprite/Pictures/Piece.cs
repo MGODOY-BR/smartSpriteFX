@@ -169,8 +169,15 @@ namespace smartSuite.smartSprite.Pictures{
             {
                 for (float x = this.PointA.X; x < this.PointB.X; x++)
                 {
-                    var piecePixel = this._referencePicture.GetPixel((int)x, (int)y);
-                    pieceBitmap.SetPixel((int)x, (int)y, piecePixel);
+                    var piecePixel = 
+                        this._referencePicture.GetPixel(
+                            (int)x, 
+                            (int)y);
+
+                    pieceBitmap.SetPixel(
+                        Math.Abs((int)this.PointA.X - (int)x), 
+                        Math.Abs((int)this.PointC.Y - (int)y), 
+                        piecePixel);
                 }
             }
 
