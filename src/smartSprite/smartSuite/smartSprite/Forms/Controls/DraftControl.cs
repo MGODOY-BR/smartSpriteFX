@@ -15,6 +15,8 @@ namespace smartSprite.Forms.Controls
 {
     public partial class DraftControl : UserControl
     {
+        #region Attributes
+
         /// <summary>
         /// It´s the main collection of pieces
         /// </summary>
@@ -49,12 +51,13 @@ namespace smartSprite.Forms.Controls
             {
                 return _lastSettings;
             }
-
             set
             {
                 this._lastSettings = value;
             }
         }
+
+        #endregion
 
         public DraftControl()
         {
@@ -167,7 +170,7 @@ namespace smartSprite.Forms.Controls
             newHook.Top = e.Y - newHook.Height / 2;
             newHook.Left = e.X - newHook.Width / 2;
             newHook.Pair = this._lastHook;
-            newHook.RefreshCoordinates();
+            newHook.CreatePoint();
 
             if (this._lastHook != null)
             {

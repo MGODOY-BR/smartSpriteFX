@@ -59,7 +59,7 @@ namespace smartSprite.Forms.Controls
             this.KeyDown += HookControl_KeyDown;
 
             this._createdWhen = DateTime.Now;
-            this.Point = new smartSuite.smartSprite.Pictures.Point(this.Left, this.Top);
+            this.CreatePoint();
         }
 
         #region Delegates
@@ -271,11 +271,14 @@ namespace smartSprite.Forms.Controls
         }
 
         /// <summary>
-        /// Refreshes the coordinates
+        /// Creates the point
         /// </summary>
-        public void RefreshCoordinates()
+        public void CreatePoint()
         {
-            this.Point = new smartSuite.smartSprite.Pictures.Point(this.Left, this.Top);
+            this.Point = 
+                new smartSuite.smartSprite.Pictures.Point(
+                    this.Left + (this.Width / 2), 
+                    this.Top + (this.Height / 2));
         }
 
         #region Events
@@ -291,8 +294,8 @@ namespace smartSprite.Forms.Controls
 
             #endregion
 
-            this.Point.X = this.Left;
-            this.Point.Y = this.Top;
+            this.Point.X = this.Left + (this.Width / 2);
+            this.Point.Y = this.Top + (this.Height / 2);
 
             this.OnPositionChanged();
         }
