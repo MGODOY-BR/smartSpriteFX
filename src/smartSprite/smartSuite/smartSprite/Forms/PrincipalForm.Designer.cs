@@ -41,7 +41,7 @@
             this.txtLoadSprite = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnOpenDraft = new System.Windows.Forms.Button();
-            this.txtDraftSourceFolder = new System.Windows.Forms.TextBox();
+            this.txtDraftPicture = new System.Windows.Forms.TextBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.pnlImage = new System.Windows.Forms.Panel();
@@ -51,11 +51,11 @@
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.treeView1 = new System.Windows.Forms.TreeView();
-            this.openDraftFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.openSmartSpriteFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.btnSaveState = new System.Windows.Forms.Button();
             this.btnExportToUnity = new System.Windows.Forms.Button();
+            this.openDraftFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.openSmartSpriteFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.statusStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -198,7 +198,7 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.btnOpenDraft);
-            this.groupBox1.Controls.Add(this.txtDraftSourceFolder);
+            this.groupBox1.Controls.Add(this.txtDraftPicture);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
@@ -217,16 +217,16 @@
             this.btnOpenDraft.UseVisualStyleBackColor = true;
             this.btnOpenDraft.Click += new System.EventHandler(this.btnOpenDraft_Click);
             // 
-            // txtDraftSourceFolder
+            // txtDraftPicture
             // 
-            this.txtDraftSourceFolder.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtDraftPicture.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtDraftSourceFolder.Location = new System.Drawing.Point(6, 49);
-            this.txtDraftSourceFolder.Multiline = true;
-            this.txtDraftSourceFolder.Name = "txtDraftSourceFolder";
-            this.txtDraftSourceFolder.Size = new System.Drawing.Size(160, 44);
-            this.txtDraftSourceFolder.TabIndex = 2;
-            this.txtDraftSourceFolder.Leave += new System.EventHandler(this.txtSourceFolder_Leave);
+            this.txtDraftPicture.Location = new System.Drawing.Point(6, 49);
+            this.txtDraftPicture.Multiline = true;
+            this.txtDraftPicture.Name = "txtDraftPicture";
+            this.txtDraftPicture.Size = new System.Drawing.Size(160, 44);
+            this.txtDraftPicture.TabIndex = 2;
+            this.txtDraftPicture.Leave += new System.EventHandler(this.txtSourceFolder_Leave);
             // 
             // splitContainer1
             // 
@@ -345,16 +345,6 @@
             this.treeView1.Size = new System.Drawing.Size(211, 331);
             this.treeView1.TabIndex = 1;
             // 
-            // openDraftFileDialog1
-            // 
-            this.openDraftFileDialog1.Filter = "PNG Files|*.png|JPEG files|*.JPEG|JPG files|*.JPG|All files|*.*";
-            this.openDraftFileDialog1.SupportMultiDottedExtensions = true;
-            this.openDraftFileDialog1.Title = "Open draft";
-            // 
-            // openSmartSpriteFileDialog1
-            // 
-            this.openSmartSpriteFileDialog1.Filter = "smartSprite File|*.smartSprite";
-            // 
             // tableLayoutPanel4
             // 
             this.tableLayoutPanel4.ColumnCount = 2;
@@ -390,6 +380,16 @@
             this.btnExportToUnity.Text = "Send to Unity";
             this.btnExportToUnity.UseVisualStyleBackColor = true;
             this.btnExportToUnity.Click += new System.EventHandler(this.btnExportToUnity_Click);
+            // 
+            // openDraftFileDialog1
+            // 
+            this.openDraftFileDialog1.Filter = "PNG Files|*.png|JPEG files|*.JPEG|JPG files|*.JPG|All files|*.*";
+            this.openDraftFileDialog1.SupportMultiDottedExtensions = true;
+            this.openDraftFileDialog1.Title = "Open draft";
+            // 
+            // openSmartSpriteFileDialog1
+            // 
+            this.openSmartSpriteFileDialog1.Filter = "smartSprite File|*.smartSprite";
             // 
             // PrincipalForm
             // 
@@ -449,7 +449,7 @@
         private System.Windows.Forms.TextBox txtLoadSprite;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnOpenDraft;
-        private System.Windows.Forms.TextBox txtDraftSourceFolder;
+        private System.Windows.Forms.TextBox txtDraftPicture;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.ToolStripContainer toolStripContainer1;
         private System.Windows.Forms.Panel pnlImage;

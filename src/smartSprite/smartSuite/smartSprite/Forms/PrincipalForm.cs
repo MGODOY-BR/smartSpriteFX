@@ -142,12 +142,12 @@ namespace smartSprite.Forms
         {
             if (!String.IsNullOrEmpty(Settings.Default.lastSourceFolder))
             {
-                this.txtDraftSourceFolder.Text = Settings.Default.lastSourceFolder;
-                this.openDraftFileDialog1.FileName = this.txtDraftSourceFolder.Text.Trim();
+                this.txtDraftPicture.Text = Settings.Default.lastSourceFolder;
+                this.openDraftFileDialog1.FileName = this.txtDraftPicture.Text.Trim();
             }
             else
             {
-                this.txtDraftSourceFolder.Text = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
+                this.txtDraftPicture.Text = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
             }
 
             this.lblVersion.Text = this.GetType().Assembly.GetName().Version.ToString() + "(Alpha)";
@@ -160,7 +160,7 @@ namespace smartSprite.Forms
         /// </summary>
         private void RefreshForm()
         {
-            if (!Directory.Exists(this.txtDraftSourceFolder.Text))
+            if (!Directory.Exists(this.txtDraftPicture.Text))
             {
                 return;
             }
@@ -169,8 +169,8 @@ namespace smartSprite.Forms
             {
                 this.Interrupt();
 
-                this.openDraftFileDialog1.FileName = this.txtDraftSourceFolder.Text.Trim();
-                Settings.Default.lastSourceFolder = this.txtDraftSourceFolder.Text.Trim();
+                this.openDraftFileDialog1.FileName = this.txtDraftPicture.Text.Trim();
+                Settings.Default.lastSourceFolder = this.txtDraftPicture.Text.Trim();
                 Settings.Default.Save();
             }
             finally
@@ -226,7 +226,7 @@ namespace smartSprite.Forms
                 sourceFolder.Text = openDialog.FileName;
 
                 // Loading the picture
-                this.draftControl1.LoadDraftPicture(this.txtDraftSourceFolder.Text.Trim());
+                this.draftControl1.LoadDraftPicture(this.txtDraftPicture.Text.Trim());
                 this.draftControl1.Visible = true;
 
                 this.RefreshForm();
@@ -317,7 +317,7 @@ namespace smartSprite.Forms
 
         private void btnOpenDraft_Click(object sender, EventArgs e)
         {
-            this.DoOpenSourceDialog(this.txtDraftSourceFolder, this.openDraftFileDialog1);
+            this.DoOpenSourceDialog(this.txtDraftPicture, this.openDraftFileDialog1);
         }
 
         private void btnOpenResumeWork_Click(object sender, EventArgs e)
@@ -505,8 +505,11 @@ namespace smartSprite.Forms
         private void btnExportToUnity_Click(object sender, EventArgs e)
         {
             this.draftControl1.SendToUnity(
-                Path.GetDirectoryName(
-                    this.txtDraftSourceFolder.Text));
+                Path.Combine(
+                    Path.GetDirectoryName(
+                        this.txtDraftPicture.Text),
+                    Path.GetFileNameWithoutExtension(
+                        this.txtDraftPicture.Text)));
         }
 
         #endregion

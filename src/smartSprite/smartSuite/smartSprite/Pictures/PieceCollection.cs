@@ -1,6 +1,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -71,6 +72,11 @@ namespace smartSuite.smartSprite.Pictures{
             }
 
             #endregion
+
+            if (!Directory.Exists(folder))
+            {
+                Directory.CreateDirectory(folder);
+            }
 
             foreach (var piece in this.PieceList)
             {
