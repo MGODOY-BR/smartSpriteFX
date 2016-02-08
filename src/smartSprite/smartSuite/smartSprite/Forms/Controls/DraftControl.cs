@@ -16,6 +16,11 @@ namespace smartSprite.Forms.Controls
     public partial class DraftControl : UserControl
     {
         /// <summary>
+        /// It´s the main collection of pieces
+        /// </summary>
+        private PieceCollection Pieces;
+
+        /// <summary>
         /// Relates the owner hook control with a piece
         /// </summary>
         private Dictionary<HookControl, Piece> _pieceSet = new Dictionary<HookControl, Piece>();
@@ -86,6 +91,20 @@ namespace smartSprite.Forms.Controls
             #endregion
 
             this.PieceSetChanged(this, new PieceEventArgs(piece, action));
+
+            // Updating main piece list
+            if (this.Pieces != null)
+            {
+                switch (action)
+                {
+                    case ActionEnum.DELETED:
+                        this.Pieces.PieceList.Remove(piece);
+                        break;
+                    case ActionEnum.CREATED:
+                        this.Pieces.PieceList.Add(piece);
+                        break;
+                }
+            }
         }
 
         /// <summary>

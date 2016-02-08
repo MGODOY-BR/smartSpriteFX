@@ -61,11 +61,21 @@ namespace smartSuite.smartSprite.Pictures{
             {
                 throw new ArgumentNullException("folder");
             }
+            if (this.PieceList == null)
+            {
+                throw new ArgumentNullException("this.PieceList");
+            }
+            if (this.PieceList.Count == 0)
+            {
+                throw new ArgumentNullException("There is no pieces in picture.");
+            }
 
             #endregion
 
-            // TODO implement here
-            throw new NotImplementedException();
+            foreach (var piece in this.PieceList)
+            {
+                piece.TakePicture(folder);
+            }
 		}
 
 		/// <summary>
