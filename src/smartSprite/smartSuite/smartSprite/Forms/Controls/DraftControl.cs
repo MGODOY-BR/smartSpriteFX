@@ -399,14 +399,7 @@ namespace smartSprite.Forms.Controls
 
             #endregion
 
-            try
-            {
-                this.imgDraft.Load(pieces.ReferencePicture.FullPath);
-            }
-            catch (Exception ex)
-            {
-                throw new ApplicationException("Error loading image " + pieces.ReferencePicture.FullPath + ". Maybe the file doesn't exist anymore", ex); 
-            }
+            this.LoadDraftPicture(pieces.ReferencePicture.FullPath);
 
             this._pieces = pieces;
             this.RebuildHookSet(this._pieces);
@@ -427,6 +420,8 @@ namespace smartSprite.Forms.Controls
             }
 
             #endregion
+
+            this.Controls.Clear();
 
             foreach (Piece piece in pieces.PieceList)
             {
@@ -449,6 +444,8 @@ namespace smartSprite.Forms.Controls
                 this.BindEvents(mainHook);
                 this.BindEvents(otherHook);
             }
+
+            //this.Refresh();
         }
     }
 }

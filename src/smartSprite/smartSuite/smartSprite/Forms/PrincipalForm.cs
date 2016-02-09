@@ -243,8 +243,9 @@ namespace smartSprite.Forms
             {
                 sourceFolder.Text = openDialog.FileName;
 
+                this._dataTreeNodeList.Clear();
                 // Loading the picture
-                this.draftControl1.LoadProject(this.txtLoadSprite.Text.Trim());
+                this.draftControl1.LoadProject(sourceFolder.Text.Trim());
                 // Filling TreeNodeList
                 foreach (var pieceItem in this.draftControl1.Pieces.PieceList)
                 {
@@ -252,6 +253,7 @@ namespace smartSprite.Forms
                 }
                 this.RebuidTreeView();
                 this.RefreshForm();
+                this.Refresh();
             }
         }
 
