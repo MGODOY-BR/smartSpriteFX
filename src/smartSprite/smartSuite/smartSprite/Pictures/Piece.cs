@@ -8,10 +8,11 @@ using System.Linq;
 using System.Text;
 
 namespace smartSuite.smartSprite.Pictures{
-	/// <summary>
-	/// Represents a piece of picture, created by user
-	/// </summary>
-	public class Piece : IGameObject, IComparable
+    /// <summary>
+    /// Represents a piece of picture, created by user
+    /// </summary>
+    [Serializable]
+    public class Piece : IGameObject, IComparable
     {
 		/// <summary>
 		/// It´s the name of piece of picture

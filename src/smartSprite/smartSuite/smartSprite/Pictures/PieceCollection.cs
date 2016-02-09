@@ -3,12 +3,14 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 
 namespace smartSuite.smartSprite.Pictures{
 	/// <summary>
 	/// Represents a collection of pieces of a picture
 	/// </summary>
+    [Serializable]
 	public class PieceCollection {
 
 		/// <summary>
@@ -32,6 +34,17 @@ namespace smartSuite.smartSprite.Pictures{
         {
             get;
             set;
+        }
+
+        /// <summary>
+        /// Gets the reference picture
+        /// </summary>
+        public Picture ReferencePicture
+        {
+            get
+            {
+                return _referencePicture;
+            }
         }
 
         public PieceCollection(Picture picture)
@@ -98,8 +111,12 @@ namespace smartSuite.smartSprite.Pictures{
             }
 
             #endregion
-            // TODO implement here
-            throw new NotImplementedException();
+
+            using (FileStream stream = new FileStream(fileName, FileMode.OpenOrCreate))
+            {
+                BinaryFormatter formatter = new BinaryFormatter();
+                formatter.Serialize(stream, this);
+            }
         }
 
         /// <summary>
@@ -107,18 +124,26 @@ namespace smartSuite.smartSprite.Pictures{
         /// </summary>
         /// <param name="fileName"></param>
         /// <returns></returns>
-        public static PieceCollection Load(String fileName) {
-
+        public static PieceCollection Load(String fileName)
+        {
             #region Entries validation
 
             if (String.IsNullOrEmpty(fileName))
             {
                 throw new ArgumentNullException("fileName");
             }
+            if (!File.Exists(fileName))
+            {
+                throw new FileNotFoundException("File not found.");
+            }
 
             #endregion
-            // TODO implement here
-            throw new NotImplementedException();
+
+            using (FileStream stream = new FileStream(fileName, FileMode.Open))
+            {
+                BinaryFormatter formatter = new BinaryFormatter();
+                return (PieceCollection)formatter.Deserialize(stream);
+            }
         }
 
     }

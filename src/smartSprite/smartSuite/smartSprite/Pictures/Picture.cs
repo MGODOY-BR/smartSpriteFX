@@ -3,12 +3,14 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 
 namespace smartSuite.smartSprite.Pictures{
 	/// <summary>
 	/// Represents an image
 	/// </summary>
+    [Serializable]
 	public class Picture {
 
         /// <summary>
@@ -49,6 +51,17 @@ namespace smartSuite.smartSprite.Pictures{
         {
             get;
             set;
+        }
+
+        /// <summary>
+        /// Gets the fullpath of image
+        /// </summary>
+        public string FullPath
+        {
+            get
+            {
+                return _fullPath;
+            }
         }
 
         /// <summary>
@@ -124,6 +137,17 @@ namespace smartSuite.smartSprite.Pictures{
                 this._buffer.Clear();
             }
         }
+
+        /*
+        [OnDeserialized()]
+        internal void OnDeserializedMethod(StreamingContext context)
+        {
+        }
+
+        [OnSerialized]
+        private void SetValuesOnSerialized(StreamingContext context)
+        {
+        }*/
 
     }
 }

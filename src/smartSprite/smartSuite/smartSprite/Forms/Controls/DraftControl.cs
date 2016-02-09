@@ -20,7 +20,7 @@ namespace smartSprite.Forms.Controls
         /// <summary>
         /// It´s the main collection of pieces
         /// </summary>
-        private PieceCollection Pieces;
+        private PieceCollection _pieces;
 
         /// <summary>
         /// Relates the owner hook control with a piece
@@ -54,6 +54,26 @@ namespace smartSprite.Forms.Controls
             set
             {
                 this._lastSettings = value;
+            }
+        }
+
+        /// <summary>
+        /// Returns or sets the full path of the file used to save all the work
+        /// </summary>
+        public String ProjectFullPath
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// Gets the collecion of pieces
+        /// </summary>
+        public PieceCollection Pieces
+        {
+            get
+            {
+                return _pieces;
             }
         }
 
@@ -96,15 +116,15 @@ namespace smartSprite.Forms.Controls
             this.PieceSetChanged(this, new PieceEventArgs(piece, action));
 
             // Updating main piece list
-            if (this.Pieces != null)
+            if (this._pieces != null)
             {
                 switch (action)
                 {
                     case ActionEnum.DELETED:
-                        this.Pieces.PieceList.Remove(piece);
+                        this._pieces.PieceList.Remove(piece);
                         break;
                     case ActionEnum.CREATED:
-                        this.Pieces.PieceList.Add(piece);
+                        this._pieces.PieceList.Add(piece);
                         break;
                 }
             }
@@ -163,9 +183,7 @@ namespace smartSprite.Forms.Controls
         private void AddNewHook(MouseEventArgs e)
         {
             HookControl newHook = new HookControl();
-            newHook.BeenSelected += NewHook_BeenSelected;
-            newHook.Deleting += NewHook_Deleting;
-            newHook.PositionChanged += NewHook_PositionChanged;
+            this.BindEvents(newHook);
 
             newHook.Top = e.Y - newHook.Height / 2;
             newHook.Left = e.X - newHook.Width / 2;
@@ -200,6 +218,44 @@ namespace smartSprite.Forms.Controls
 
                 this.OnPieceSetChanged(newPiece, ActionEnum.CREATED);
             }
+        }
+
+        /// <summary>
+        /// Binds all the events of a hook
+        /// </summary>
+        /// <param name="newHook"></param>
+        private void BindEvents(HookControl newHook)
+        {
+            #region Entries validation
+
+            if (newHook == null)
+            {
+                throw new ArgumentNullException("newHook");
+            }
+
+            #endregion
+
+            newHook.BeenSelected += NewHook_BeenSelected;
+            newHook.Deleting += NewHook_Deleting;
+            newHook.PositionChanged += NewHook_PositionChanged;
+        }
+
+        /// <summary>
+        /// Loads the project file
+        /// </summary>
+        /// <param name="fileName"></param>
+        internal void LoadProject(string fileName)
+        {
+            #region Entries validation
+
+            if (String.IsNullOrEmpty(fileName))
+            {
+                throw new ArgumentNullException("fileName");
+            }
+
+            #endregion
+
+            this.LoadPieces(PieceCollection.Load(fileName));
         }
 
         /// <summary>
@@ -283,11 +339,12 @@ namespace smartSprite.Forms.Controls
             #endregion
 
             this.imgDraft.Load(draftPicture);
-            this.Pieces = new PieceCollection(new Picture(draftPicture));
+            this._pieces = new PieceCollection(new Picture(draftPicture));
             this._hookSet.Clear();
             this._lastHook = null;
             this._lastSettings = null;
             this._pieceSet.Clear();
+            this.Visible = true;
         }
 
         /// <summary>
@@ -323,9 +380,75 @@ namespace smartSprite.Forms.Controls
 
             #endregion
 
-            this.Pieces.Generate(folderDestination);
+            this._pieces.Generate(folderDestination);
 
             MessageBox.Show("Pieces has been sent with success!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        /// <summary>
+        /// Loads the piece collection
+        /// </summary>
+        private void LoadPieces(PieceCollection pieces)
+        {
+            #region Entries validation
+
+            if (pieces == null)
+            {
+                throw new ArgumentNullException("pieces");
+            }
+
+            #endregion
+
+            try
+            {
+                this.imgDraft.Load(pieces.ReferencePicture.FullPath);
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Error loading image " + pieces.ReferencePicture.FullPath + ". Maybe the file doesn't exist anymore", ex); 
+            }
+
+            this._pieces = pieces;
+            this.RebuildHookSet(this._pieces);
+            this.Visible = true;
+        }
+
+        /// <summary>
+        /// Rebuild the hookset, based on the pieces
+        /// </summary>
+        /// <param name="pieces"></param>
+        private void RebuildHookSet(PieceCollection pieces)
+        {
+            #region Entries validation
+
+            if (pieces == null)
+            {
+                throw new ArgumentNullException("pieces");
+            }
+
+            #endregion
+
+            foreach (Piece piece in pieces.PieceList)
+            {
+                HookControl mainHook = new HookControl();
+                mainHook.Point = piece.PointA;
+
+                HookControl otherHook = new HookControl();
+                otherHook.Point = piece.PointB;
+
+                mainHook.Pair = otherHook;
+                otherHook.Pair = mainHook;
+
+                this.Controls.AddRange(new Control[2] { mainHook, otherHook });
+                mainHook.CreateLines();
+                otherHook.CreateLines();
+
+                this._hookSet.Add(mainHook);
+                this._pieceSet.Add(mainHook, piece);
+
+                this.BindEvents(mainHook);
+                this.BindEvents(otherHook);
+            }
         }
     }
 }

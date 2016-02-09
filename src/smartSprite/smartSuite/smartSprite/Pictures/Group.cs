@@ -6,10 +6,11 @@ using System.Linq;
 using System.Text;
 
 namespace smartSuite.smartSprite.Pictures{
-	/// <summary>
-	/// Represents a group of piece to join the related pieces of image
-	/// </summary>
-	public class Group : IGameObject {
+    /// <summary>
+    /// Represents a group of piece to join the related pieces of image
+    /// </summary>
+    [Serializable]
+    public class Group : IGameObject {
 
 		/// <summary>
 		/// It´s the name of group

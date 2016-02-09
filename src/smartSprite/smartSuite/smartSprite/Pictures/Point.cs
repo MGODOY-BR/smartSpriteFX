@@ -5,10 +5,11 @@ using System.Linq;
 using System.Text;
 
 namespace smartSuite.smartSprite.Pictures{
-	/// <summary>
-	/// Represents a cartesyan coordinate
-	/// </summary>
-	public class Point {
+    /// <summary>
+    /// Represents a cartesyan coordinate
+    /// </summary>
+    [Serializable]
+    public class Point {
 
         public Point(float x, float y)
         {

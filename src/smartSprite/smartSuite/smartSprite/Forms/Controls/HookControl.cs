@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using smartSprite.Utilities;
 using smartSprite.Forms.Controls.HookState;
+using System.Threading;
 
 namespace smartSprite.Forms.Controls
 {
@@ -17,7 +18,34 @@ namespace smartSprite.Forms.Controls
         /// <summary>
         /// It´s a respective point in the model
         /// </summary>
-        public smartSuite.smartSprite.Pictures.Point Point { get; set; }
+        private smartSuite.smartSprite.Pictures.Point _point;
+
+        /// <summary>
+        /// It´s a respective point in the model
+        /// </summary>
+        public smartSuite.smartSprite.Pictures.Point Point
+        {
+            get
+            {
+                return this._point;
+            }
+            set
+            {
+                this._point = value;
+
+                #region Entries validation
+
+                if (value == null)
+                {
+                    return;
+                }
+
+                #endregion
+
+                this.Left = (int)this._point.X - (this.Width / 2);
+                this.Top = (int)this._point.Y - (this.Height / 2);
+            }
+        }
 
         /// <summary>
         /// Gets or sets the current item as selected
@@ -58,7 +86,12 @@ namespace smartSprite.Forms.Controls
             this.LostFocus += HuckControl_LostFocus;
             this.KeyDown += HookControl_KeyDown;
 
-            this._createdWhen = DateTime.Now;
+            lock(this.GetType())
+            {
+                this._createdWhen = DateTime.Now;
+                Thread.Sleep(1);
+            }
+
             this.CreatePoint();
         }
 
@@ -275,7 +308,7 @@ namespace smartSprite.Forms.Controls
         /// </summary>
         public void CreatePoint()
         {
-            this.Point = 
+            this._point = 
                 new smartSuite.smartSprite.Pictures.Point(
                     this.Left + (this.Width / 2), 
                     this.Top + (this.Height / 2));
@@ -294,8 +327,8 @@ namespace smartSprite.Forms.Controls
 
             #endregion
 
-            this.Point.X = this.Left + (this.Width / 2);
-            this.Point.Y = this.Top + (this.Height / 2);
+            this._point.X = this.Left + (this.Width / 2);
+            this._point.Y = this.Top + (this.Height / 2);
 
             this.OnPositionChanged();
         }
@@ -322,8 +355,8 @@ namespace smartSprite.Forms.Controls
                 this.Top += e.Y - this.Height / 2;
                 this.Left += e.X - this.Width / 2;
 
-                this.Point.X = this.Left;
-                this.Point.Y = this.Top;
+                this._point.X = this.Left;
+                this._point.Y = this.Top;
 
                 if (this.Pair != null)
                 {

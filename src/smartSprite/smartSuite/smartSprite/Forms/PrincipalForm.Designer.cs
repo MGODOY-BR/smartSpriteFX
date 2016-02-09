@@ -56,6 +56,7 @@
             this.btnExportToUnity = new System.Windows.Forms.Button();
             this.openDraftFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.openSmartSpriteFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.statusStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -194,6 +195,7 @@
             this.txtLoadSprite.Name = "txtLoadSprite";
             this.txtLoadSprite.Size = new System.Drawing.Size(160, 44);
             this.txtLoadSprite.TabIndex = 4;
+            this.txtLoadSprite.Leave += new System.EventHandler(this.txtLoadSprite_Leave);
             // 
             // groupBox1
             // 
@@ -226,7 +228,7 @@
             this.txtDraftPicture.Name = "txtDraftPicture";
             this.txtDraftPicture.Size = new System.Drawing.Size(160, 44);
             this.txtDraftPicture.TabIndex = 2;
-            this.txtDraftPicture.Leave += new System.EventHandler(this.txtSourceFolder_Leave);
+            this.txtDraftPicture.Leave += new System.EventHandler(this.txtDraftPicture_Leave);
             // 
             // splitContainer1
             // 
@@ -369,6 +371,7 @@
             this.btnSaveState.TabIndex = 0;
             this.btnSaveState.Text = "Save";
             this.btnSaveState.UseVisualStyleBackColor = true;
+            this.btnSaveState.Click += new System.EventHandler(this.btnSaveState_Click);
             // 
             // btnExportToUnity
             // 
@@ -390,6 +393,13 @@
             // openSmartSpriteFileDialog1
             // 
             this.openSmartSpriteFileDialog1.Filter = "smartSprite File|*.smartSprite";
+            this.openSmartSpriteFileDialog1.Title = "Open project";
+            // 
+            // saveFileDialog1
+            // 
+            this.saveFileDialog1.DefaultExt = "smartSprite";
+            this.saveFileDialog1.Filter = "SmartSprite Project|*.smartSprite";
+            this.saveFileDialog1.Title = "Save project as";
             // 
             // PrincipalForm
             // 
@@ -462,5 +472,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.Button btnSaveState;
         private System.Windows.Forms.Button btnExportToUnity;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }

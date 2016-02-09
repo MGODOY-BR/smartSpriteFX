@@ -227,8 +227,30 @@ namespace smartSprite.Forms
 
                 // Loading the picture
                 this.draftControl1.LoadDraftPicture(this.txtDraftPicture.Text.Trim());
-                this.draftControl1.Visible = true;
+                this.RefreshForm();
+            }
+        }
 
+        /// <summary>
+        /// Opens the open project dialog
+        /// </summary>
+        /// <param name="sourceFolder"></param>
+        /// <param name="openDialog"></param>
+        private void DoOpenProjectDialog(TextBox sourceFolder, OpenFileDialog openDialog)
+        {
+            openDialog.ShowDialog();
+            if (openDialog.FileName != null)
+            {
+                sourceFolder.Text = openDialog.FileName;
+
+                // Loading the picture
+                this.draftControl1.LoadProject(this.txtLoadSprite.Text.Trim());
+                // Filling TreeNodeList
+                foreach (var pieceItem in this.draftControl1.Pieces.PieceList)
+                {
+                    this.FillTreeNodeList(pieceItem);
+                }
+                this.RebuidTreeView();
                 this.RefreshForm();
             }
         }
@@ -322,16 +344,18 @@ namespace smartSprite.Forms
 
         private void btnOpenResumeWork_Click(object sender, EventArgs e)
         {
-            this.DoOpenSourceDialog(this.txtLoadSprite, this.openSmartSpriteFileDialog1);
+            this.DoOpenProjectDialog(this.txtLoadSprite, this.openSmartSpriteFileDialog1);
         }
 
         /// <summary>
-        /// Ocurrs when the user leaves the focus of source folder
+        /// Occurs when the user leaves the focus of source folder
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void txtSourceFolder_Leave(object sender, EventArgs e)
+        private void txtDraftPicture_Leave(object sender, EventArgs e)
         {
+            // Loading the picture
+            this.draftControl1.LoadDraftPicture(this.txtDraftPicture.Text.Trim());
             this.RefreshForm();
         }
 
@@ -388,13 +412,7 @@ namespace smartSprite.Forms
 
                 case Forms.Controls.DraftControlState.ActionEnum.CREATED:
 
-                    this._dataTreeNodeList.Add(
-                        TreeViewUtil.ConvertToTreeNode(e.Piece));
-
-                    this.RebuidTreeView();
-                    this.treeView1.SelectedNode = this.GetTreeNode(e.Piece, this.treeView1.Nodes);
-                    this.treeView1.Focus();
-
+                    FillTreeNodeList(e.Piece);
                     break;
 
                 case Forms.Controls.DraftControlState.ActionEnum.UPDATED:
@@ -405,6 +423,29 @@ namespace smartSprite.Forms
                 default:
                     throw new NotSupportedException(e.Action.ToString() + " isn't supported.");
             }
+        }
+
+        /// <summary>
+        /// Fills and refresh the treeNodeList with the piece assigned
+        /// </summary>
+        /// <param name="piece"></param>
+        private void FillTreeNodeList(Piece piece)
+        {
+            #region Entries validation
+
+            if (piece == null)
+            {
+                throw new ArgumentNullException("piece");
+            }
+
+            #endregion
+
+            this._dataTreeNodeList.Add(
+                TreeViewUtil.ConvertToTreeNode(piece));
+
+            this.RebuidTreeView();
+            this.treeView1.SelectedNode = this.GetTreeNode(piece, this.treeView1.Nodes);
+            this.treeView1.Focus();
         }
 
         /// <summary>
@@ -510,6 +551,57 @@ namespace smartSprite.Forms
                         this.txtDraftPicture.Text),
                     Path.GetFileNameWithoutExtension(
                         this.txtDraftPicture.Text)));
+        }
+
+        /// <summary>
+        /// Loads a PieceCollection saved in disk
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void txtLoadSprite_Leave(object sender, EventArgs e)
+        {
+            openDraftFileDialog1.ShowDialog();
+
+            #region Entries validation
+
+            if (String.IsNullOrEmpty(this.openDraftFileDialog1.FileName))
+            {
+                return;
+            }
+
+            #endregion
+
+            this.draftControl1.LoadProject(this.txtLoadSprite.Text.Trim());
+        }
+
+        /// <summary>
+        /// Saves the PieceCollection to resume the work in the next time
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnSaveState_Click(object sender, EventArgs e)
+        {
+            #region Entries validation
+
+            if (this.draftControl1.Pieces == null)
+            {
+                throw new ArgumentNullException("this.draftControl1.Pieces");
+            }
+
+            #endregion
+
+            if (String.IsNullOrEmpty(this.draftControl1.ProjectFullPath))
+            {
+                this.saveFileDialog1.ShowDialog();
+                if (this.saveFileDialog1.FileName != null)
+                {
+                    this.draftControl1.ProjectFullPath = this.saveFileDialog1.FileName;
+                }
+            }
+
+            this.draftControl1.Pieces.Save(this.draftControl1.ProjectFullPath);
+
+            MessageBox.Show("Project has been saved with success!!", "Save project", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         #endregion
