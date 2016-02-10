@@ -177,50 +177,6 @@ namespace smartSprite.Forms.Controls
         }
 
         /// <summary>
-        /// Adds a new hook
-        /// </summary>
-        /// <param name="e"></param>
-        private void AddNewHook(MouseEventArgs e)
-        {
-            HookControl newHook = new HookControl();
-            this.BindEvents(newHook);
-
-            newHook.Top = e.Y - newHook.Height / 2;
-            newHook.Left = e.X - newHook.Width / 2;
-            newHook.Pair = this._lastHook;
-            newHook.CreatePoint();
-
-            if (this._lastHook != null)
-            {
-                this._lastHook.Pair = newHook;
-                this._lastHook = null;
-            }
-
-            this._lastHook = newHook;
-            this.imgDraft.Controls.Add(newHook);
-            if (newHook.Pair != null)
-            {
-                newHook.CreateLines();
-                this._hookSet.Add(newHook.Pair);
-                this._lastHook = null;
-
-                Piece newPiece =
-                    new Piece(
-                        new Picture(this.imgDraft.ImageLocation),
-                        newHook.GetOlderHuckFromPair().Point,
-                        newHook.GetNewerHuckFromPair().Point);
-
-                newPiece.Name = "Sprite2DObject " + (this._pieceSet.Count + 1).ToString();
-
-                this._pieceSet.Add(
-                    newHook.GetOlderHuckFromPair(),
-                    newPiece);
-
-                this.OnPieceSetChanged(newPiece, ActionEnum.CREATED);
-            }
-        }
-
-        /// <summary>
         /// Binds all the events of a hook
         /// </summary>
         /// <param name="newHook"></param>
@@ -238,24 +194,6 @@ namespace smartSprite.Forms.Controls
             newHook.BeenSelected += NewHook_BeenSelected;
             newHook.Deleting += NewHook_Deleting;
             newHook.PositionChanged += NewHook_PositionChanged;
-        }
-
-        /// <summary>
-        /// Loads the project file
-        /// </summary>
-        /// <param name="fileName"></param>
-        internal void LoadProject(string fileName)
-        {
-            #region Entries validation
-
-            if (String.IsNullOrEmpty(fileName))
-            {
-                throw new ArgumentNullException("fileName");
-            }
-
-            #endregion
-
-            this.LoadPieces(PieceCollection.Load(fileName));
         }
 
         /// <summary>
@@ -303,10 +241,72 @@ namespace smartSprite.Forms.Controls
         #endregion
 
         /// <summary>
+        /// Adds a new hook
+        /// </summary>
+        /// <param name="e"></param>
+        private void AddNewHook(MouseEventArgs e)
+        {
+            HookControl newHook = new HookControl();
+            this.BindEvents(newHook);
+
+            newHook.Top = e.Y - newHook.Height / 2;
+            newHook.Left = e.X - newHook.Width / 2;
+            newHook.Pair = this._lastHook;
+            newHook.CreatePoint();
+
+            if (this._lastHook != null)
+            {
+                this._lastHook.Pair = newHook;
+                this._lastHook = null;
+            }
+
+            this._lastHook = newHook;
+            this.imgDraft.Controls.Add(newHook);
+            if (newHook.Pair != null)
+            {
+                newHook.CreateLines();
+                this._hookSet.Add(newHook.Pair);
+                this._lastHook = null;
+
+                Piece newPiece =
+                    new Piece(
+                        new Picture(this.imgDraft.ImageLocation),
+                        newHook.GetOlderHuckFromPair().Point,
+                        newHook.GetNewerHuckFromPair().Point);
+
+                newPiece.Name = "Sprite2DObject " + (this._pieceSet.Count + 1).ToString();
+
+                this._pieceSet.Add(
+                    newHook.GetOlderHuckFromPair(),
+                    newPiece);
+
+                this.OnPieceSetChanged(newPiece, ActionEnum.CREATED);
+            }
+        }
+
+        /// <summary>
+        /// Loads the project file
+        /// </summary>
+        /// <param name="fileName"></param>
+        public void LoadProject(string fileName)
+        {
+            #region Entries validation
+
+            if (String.IsNullOrEmpty(fileName))
+            {
+                throw new ArgumentNullException("fileName");
+            }
+
+            #endregion
+
+            this.LoadPieces(PieceCollection.Load(fileName));
+        }
+
+        /// <summary>
         /// Selects a piece
         /// </summary>
         /// <param name="piece"></param>
-        internal void SelectPiece(Piece piece)
+        public void SelectPiece(Piece piece)
         {
             HookControl mainHook = this.GetHookControl(piece);
 
@@ -327,7 +327,7 @@ namespace smartSprite.Forms.Controls
         /// Loads the draft picture
         /// </summary>
         /// <param name="draftPicture"></param>
-        internal void LoadDraftPicture(string draftPicture)
+        public void LoadDraftPicture(string draftPicture)
         {
             #region Entries validation
             
@@ -369,7 +369,7 @@ namespace smartSprite.Forms.Controls
         /// Send pieces to Unity
         /// </summary>
         /// <param name="folderDestination"></param>
-        internal void SendToUnity(string folderDestination)
+        public void SendToUnity(string folderDestination)
         {
             #region Entries validation
 
@@ -399,11 +399,11 @@ namespace smartSprite.Forms.Controls
 
             #endregion
 
-            this.LoadDraftPicture(pieces.ReferencePicture.FullPath);
+            this.LoadDraftPicture(
+                pieces.ReferencePicture.FullPath);
 
             this._pieces = pieces;
             this.RebuildHookSet(this._pieces);
-            this.Visible = true;
         }
 
         /// <summary>
@@ -421,7 +421,7 @@ namespace smartSprite.Forms.Controls
 
             #endregion
 
-            this.Controls.Clear();
+            this.imgDraft.Controls.Clear();
 
             foreach (Piece piece in pieces.PieceList)
             {
@@ -434,7 +434,7 @@ namespace smartSprite.Forms.Controls
                 mainHook.Pair = otherHook;
                 otherHook.Pair = mainHook;
 
-                this.Controls.AddRange(new Control[2] { mainHook, otherHook });
+                this.imgDraft.Controls.AddRange(new Control[2] { mainHook, otherHook });
                 mainHook.CreateLines();
                 otherHook.CreateLines();
 
@@ -444,8 +444,6 @@ namespace smartSprite.Forms.Controls
                 this.BindEvents(mainHook);
                 this.BindEvents(otherHook);
             }
-
-            //this.Refresh();
         }
     }
 }

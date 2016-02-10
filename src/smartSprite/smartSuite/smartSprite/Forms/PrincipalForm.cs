@@ -151,32 +151,6 @@ namespace smartSprite.Forms
             }
 
             this.lblVersion.Text = this.GetType().Assembly.GetName().Version.ToString() + "(Alpha)";
-
-            this.RefreshForm();
-        }
-
-        /// <summary>
-        /// Refreshes the form
-        /// </summary>
-        private void RefreshForm()
-        {
-            if (!Directory.Exists(this.txtDraftPicture.Text))
-            {
-                return;
-            }
-
-            try
-            {
-                this.Interrupt();
-
-                this.openDraftFileDialog1.FileName = this.txtDraftPicture.Text.Trim();
-                Settings.Default.lastSourceFolder = this.txtDraftPicture.Text.Trim();
-                Settings.Default.Save();
-            }
-            finally
-            {
-                this.Resume();
-            }
         }
 
         /// <summary>
@@ -227,7 +201,6 @@ namespace smartSprite.Forms
 
                 // Loading the picture
                 this.draftControl1.LoadDraftPicture(this.txtDraftPicture.Text.Trim());
-                this.RefreshForm();
             }
         }
 
@@ -238,6 +211,16 @@ namespace smartSprite.Forms
         /// <param name="openDialog"></param>
         private void DoOpenProjectDialog(TextBox sourceFolder, OpenFileDialog openDialog)
         {
+            /*
+            openDialog.ShowDialog();
+            if (openDialog.FileName != null)
+            {
+                sourceFolder.Text = openDialog.FileName;
+
+                // Loading the picture
+                this.draftControl1.LoadDraftPicture(@"C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\[imageLibrary]\DraftSample.png");
+            }
+            */
             openDialog.ShowDialog();
             if (openDialog.FileName != null)
             {
@@ -251,9 +234,8 @@ namespace smartSprite.Forms
                 {
                     this.FillTreeNodeList(pieceItem);
                 }
+
                 this.RebuidTreeView();
-                this.RefreshForm();
-                this.Refresh();
             }
         }
 
@@ -358,7 +340,6 @@ namespace smartSprite.Forms
         {
             // Loading the picture
             this.draftControl1.LoadDraftPicture(this.txtDraftPicture.Text.Trim());
-            this.RefreshForm();
         }
 
         private void toolHookButton_Click(object sender, EventArgs e)
