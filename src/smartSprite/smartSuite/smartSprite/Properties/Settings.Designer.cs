@@ -26,12 +26,36 @@ namespace smartSprite.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string lastSourceFolder {
+        public string lastDraftFolder {
             get {
-                return ((string)(this["lastSourceFolder"]));
+                return ((string)(this["lastDraftFolder"]));
             }
             set {
-                this["lastSourceFolder"] = value;
+                this["lastDraftFolder"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string lastProjectFolder {
+            get {
+                return ((string)(this["lastProjectFolder"]));
+            }
+            set {
+                this["lastProjectFolder"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string lastExportFolder {
+            get {
+                return ((string)(this["lastExportFolder"]));
+            }
+            set {
+                this["lastExportFolder"] = value;
             }
         }
     }

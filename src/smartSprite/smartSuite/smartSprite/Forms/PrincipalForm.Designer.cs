@@ -57,6 +57,7 @@
             this.openDraftFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.openSmartSpriteFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.exportToUnityDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.statusStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -286,6 +287,7 @@
             this.draftControl1.LastSettings = null;
             this.draftControl1.Location = new System.Drawing.Point(0, 0);
             this.draftControl1.Name = "draftControl1";
+            this.draftControl1.ProjectFullPath = null;
             this.draftControl1.Size = new System.Drawing.Size(742, 374);
             this.draftControl1.TabIndex = 0;
             this.draftControl1.Visible = false;
@@ -401,6 +403,11 @@
             this.saveFileDialog1.Filter = "SmartSprite Project|*.smartSprite";
             this.saveFileDialog1.Title = "Save project as";
             // 
+            // exportToUnityDialog1
+            // 
+            this.exportToUnityDialog1.Description = "Select an Unity Asset folder";
+            this.exportToUnityDialog1.RootFolder = System.Environment.SpecialFolder.MyDocuments;
+            // 
             // PrincipalForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -473,5 +480,6 @@
         private System.Windows.Forms.Button btnSaveState;
         private System.Windows.Forms.Button btnExportToUnity;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.FolderBrowserDialog exportToUnityDialog1;
     }
 }

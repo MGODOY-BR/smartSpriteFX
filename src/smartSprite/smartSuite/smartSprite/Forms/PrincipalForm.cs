@@ -140,17 +140,41 @@ namespace smartSprite.Forms
         /// </summary>
         private void LoadSettings()
         {
-            if (!String.IsNullOrEmpty(Settings.Default.lastSourceFolder))
+            LoadDefaultSetting(Settings.Default.lastDraftFolder, this.txtDraftPicture, this.openDraftFileDialog1);
+            LoadDefaultSetting(Settings.Default.lastProjectFolder, this.txtLoadSprite, this.openSmartSpriteFileDialog1);
+            LoadDefaultSetting(Settings.Default.lastExportFolder, null, this.exportToUnityDialog1);
+
+            this.lblVersion.Text = this.GetType().Assembly.GetName().Version.ToString() + "(Alpha)";
+        }
+
+        /// <summary>
+        /// Loads the specific default value
+        /// </summary>
+        private static void LoadDefaultSetting(string lastFolder, TextBox txtFile, CommonDialog openDialog)
+        {
+            if (!string.IsNullOrEmpty(lastFolder))
             {
-                this.txtDraftPicture.Text = Settings.Default.lastSourceFolder;
-                this.openDraftFileDialog1.FileName = this.txtDraftPicture.Text.Trim();
+                if (txtFile != null)
+                {
+                    txtFile.Text = lastFolder;
+                }
+
+                if (openDialog is OpenFileDialog)
+                {
+                    ((OpenFileDialog)openDialog).FileName = lastFolder;
+                }
+                else if (openDialog is FolderBrowserDialog)
+                {
+                    ((FolderBrowserDialog)openDialog).SelectedPath = lastFolder;
+                }
             }
             else
             {
-                this.txtDraftPicture.Text = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
+                if (txtFile != null)
+                {
+                    txtFile.Text = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                }
             }
-
-            this.lblVersion.Text = this.GetType().Assembly.GetName().Version.ToString() + "(Alpha)";
         }
 
         /// <summary>
@@ -211,16 +235,6 @@ namespace smartSprite.Forms
         /// <param name="openDialog"></param>
         private void DoOpenProjectDialog(TextBox sourceFolder, OpenFileDialog openDialog)
         {
-            /*
-            openDialog.ShowDialog();
-            if (openDialog.FileName != null)
-            {
-                sourceFolder.Text = openDialog.FileName;
-
-                // Loading the picture
-                this.draftControl1.LoadDraftPicture(@"C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\[imageLibrary]\DraftSample.png");
-            }
-            */
             openDialog.ShowDialog();
             if (openDialog.FileName != null)
             {
@@ -526,14 +540,23 @@ namespace smartSprite.Forms
             this.draftControl1.SelectPiece(piece);
         }
 
+        /// <summary>
+        /// Occurs when the user exports the project to Unity
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnExportToUnity_Click(object sender, EventArgs e)
         {
-            this.draftControl1.SendToUnity(
-                Path.Combine(
-                    Path.GetDirectoryName(
-                        this.txtDraftPicture.Text),
-                    Path.GetFileNameWithoutExtension(
-                        this.txtDraftPicture.Text)));
+            this.exportToUnityDialog1.ShowDialog();
+
+            var selectedPath = this.exportToUnityDialog1.SelectedPath;
+            if (selectedPath != null)
+            {
+                this.draftControl1.SendToUnity(selectedPath);
+
+                Settings.Default.lastExportFolder = selectedPath;
+                Settings.Default.Save();
+            }
         }
 
         /// <summary>
@@ -573,16 +596,21 @@ namespace smartSprite.Forms
 
             #endregion
 
-            if (String.IsNullOrEmpty(this.draftControl1.ProjectFullPath))
+            var projectFullPath = this.draftControl1.ProjectFullPath;
+
+            if (string.IsNullOrEmpty(projectFullPath))
             {
                 this.saveFileDialog1.ShowDialog();
                 if (this.saveFileDialog1.FileName != null)
                 {
-                    this.draftControl1.ProjectFullPath = this.saveFileDialog1.FileName;
+                    projectFullPath = this.saveFileDialog1.FileName;
                 }
             }
 
-            this.draftControl1.Pieces.Save(this.draftControl1.ProjectFullPath);
+            this.draftControl1.Pieces.Save(projectFullPath);
+
+            Settings.Default.lastProjectFolder = projectFullPath;
+            Settings.Default.Save();
 
             MessageBox.Show("Project has been saved with success!!", "Save project", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }

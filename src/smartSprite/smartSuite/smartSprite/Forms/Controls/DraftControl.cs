@@ -299,7 +299,17 @@ namespace smartSprite.Forms.Controls
 
             #endregion
 
-            this.LoadPieces(PieceCollection.Load(fileName));
+            try
+            {
+                this.ParentForm.Cursor = Cursors.WaitCursor;
+
+                var pieces = PieceCollection.Load(fileName);
+                this.LoadPieces(pieces);
+            }
+            finally
+            {
+                this.ParentForm.Cursor = Cursors.Default;
+            }
         }
 
         /// <summary>

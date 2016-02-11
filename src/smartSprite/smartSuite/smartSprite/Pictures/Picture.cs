@@ -16,6 +16,7 @@ namespace smartSuite.smartSprite.Pictures{
         /// <summary>
         /// It´s a buffer of picture, where key it's a combination of x and y coordinates. 
         /// </summary>
+        [NonSerialized]
         private Dictionary<String, Color> _buffer;
 
         /// <summary>
@@ -24,7 +25,7 @@ namespace smartSuite.smartSprite.Pictures{
         public Picture(String fullPath)
         {
             #region Entries validation
-            
+
             if (String.IsNullOrEmpty(fullPath))
             {
                 throw new ArgumentNullException("fullPath");
@@ -35,8 +36,7 @@ namespace smartSuite.smartSprite.Pictures{
             this._fullPath = fullPath;
 
             // Loading the bit array
-            Image image = Image.FromFile(fullPath);
-            this.LoadBuffer((Bitmap)image);
+            this.LoadBuffer(fullPath);
         }
 
         /// <summary>
@@ -62,6 +62,25 @@ namespace smartSuite.smartSprite.Pictures{
             {
                 return _fullPath;
             }
+        }
+
+        /// <summary>
+        /// Loads the buffer of image
+        /// </summary>
+        /// <param name="fullPath"></param>
+        private void LoadBuffer(string fullPath)
+        {
+            #region Entries validation
+
+            if (String.IsNullOrEmpty(fullPath))
+            {
+                throw new ArgumentNullException("fullPath");
+            }
+
+            #endregion
+
+            Image image = Image.FromFile(fullPath);
+            this.LoadBuffer((Bitmap)image);
         }
 
         /// <summary>
@@ -121,6 +140,14 @@ namespace smartSuite.smartSprite.Pictures{
         {
             var key = this.FormatKey(x, y);
 
+            if (String.IsNullOrEmpty(this._fullPath))
+            {
+                throw new ArgumentNullException("this._fullPath");
+            }
+            if (this._buffer == null)
+            {
+                this.LoadBuffer(this._fullPath);
+            }
             if (!this._buffer.ContainsKey(key))
             {
                 throw new IndexOutOfRangeException("Coordinates out of range of picture.");
@@ -137,17 +164,6 @@ namespace smartSuite.smartSprite.Pictures{
                 this._buffer.Clear();
             }
         }
-
-        /*
-        [OnDeserialized()]
-        internal void OnDeserializedMethod(StreamingContext context)
-        {
-        }
-
-        [OnSerialized]
-        private void SetValuesOnSerialized(StreamingContext context)
-        {
-        }*/
 
     }
 }
