@@ -3,6 +3,7 @@ using smartSuite.smartSprite.Unity;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -14,6 +15,11 @@ namespace smartSuite.smartSprite.Pictures{
     [Serializable]
     public class Piece : IGameObject, IComparable
     {
+        /// <summary>
+        /// Gets the generated file name from <see cref="TakePicture(string)"/> method.
+        /// </summary>
+        private String _takenPictureFullFileName;
+
 		/// <summary>
 		/// It´s the name of piece of picture
 		/// </summary>
@@ -122,11 +128,11 @@ namespace smartSuite.smartSprite.Pictures{
             this.Name = newName;
 		}
 
-		/// <summary>
-		/// Generates a file with the content of piece of image
-		/// </summary>
-		/// <param name="fullPath"></param>
-		public void TakePicture(String fullPath)
+        /// <summary>
+        /// Generates a file with the content of piece of image
+        /// </summary>
+        /// <param name="fullPath"></param>
+        public void TakePicture(String fullPath)
         {
             #region Entries validation
 
@@ -161,30 +167,40 @@ namespace smartSuite.smartSprite.Pictures{
 
             #endregion
 
-            var pieceBitmap =
+            using (var pieceBitmap =
                 new Bitmap(
                     (int)(this.PointB.X - this.PointD.X),
-                    (int)(this.PointB.Y - this.PointC.Y));
-
-            for (float y = this.PointA.Y; y < this.PointB.Y; y++)
+                    (int)(this.PointB.Y - this.PointC.Y)))
             {
-                for (float x = this.PointA.X; x < this.PointB.X; x++)
-                {
-                    var piecePixel = 
-                        this._referencePicture.GetPixel(
-                            (int)x, 
-                            (int)y);
 
-                    pieceBitmap.SetPixel(
-                        Math.Abs((int)this.PointA.X - (int)x), 
-                        Math.Abs((int)this.PointC.Y - (int)y), 
-                        piecePixel);
+                for (float y = this.PointA.Y; y < this.PointB.Y; y++)
+                {
+                    for (float x = this.PointA.X; x < this.PointB.X; x++)
+                    {
+                        var piecePixel =
+                            this._referencePicture.GetPixel(
+                                (int)x,
+                                (int)y);
+
+                        pieceBitmap.SetPixel(
+                            Math.Abs((int)this.PointA.X - (int)x),
+                            Math.Abs((int)this.PointC.Y - (int)y),
+                            piecePixel);
+                    }
                 }
+
+                // Getting the name of piece file
+                this._takenPictureFullFileName = Path.Combine(fullPath, this.Name) + ".png";
+
+                // Saving piece bitmap
+                pieceBitmap.Save(this._takenPictureFullFileName, ImageFormat.Png);
             }
 
-            // Getting the name of piece file
-            String name = Path.Combine(fullPath, this.Name) + ".png";
-            pieceBitmap.Save(name);
+            if (this.Parent != null)
+            {
+                // Covering the parent
+                this.Parent.OverCover(this);
+            }
         }
 
         /// <summary>
@@ -227,7 +243,39 @@ namespace smartSuite.smartSprite.Pictures{
         /// <param name="other">Normally, this parameter is the parent</param>
         private void OverCover(Piece other)
         {
-            throw new NotImplementedException();
+            #region Entries validation
+
+            if (other == null)
+            {
+                throw new ArgumentNullException("other");
+            }
+            if (String.IsNullOrEmpty(this._takenPictureFullFileName))
+            {
+                throw new ArgumentNullException("this._takenPictureFullFileName");
+            }
+            if (!this.Contains(other))
+            {
+                return;
+            }
+
+            #endregion
+
+            // Loading the generated main piece
+            using (Bitmap bitmap = new Bitmap(this._takenPictureFullFileName))
+            {
+                for (float y = other.PointA.Y; y < other.PointB.Y; y++)
+                {
+                    for (float x = other.PointA.X; x < other.PointB.X; x++)
+                    {
+                        bitmap.SetPixel(
+                            Math.Abs((int)this.PointA.X - (int)x),
+                            Math.Abs((int)this.PointC.Y - (int)y),
+                            Color.Blue);    // <-- TODO: Change to some pattern based on [other]
+                    }
+                }
+
+                bitmap.Save(this._takenPictureFullFileName, ImageFormat.Png);    // <-- TODO: Review to override the original file
+            }
         }
 
         #region IComparable elements

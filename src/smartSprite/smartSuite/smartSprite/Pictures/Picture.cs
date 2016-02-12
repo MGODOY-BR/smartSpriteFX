@@ -79,8 +79,7 @@ namespace smartSuite.smartSprite.Pictures{
 
             #endregion
 
-            Image image = Image.FromFile(fullPath);
-            this.LoadBuffer((Bitmap)image);
+            this.LoadBuffer((Bitmap)Image.FromFile(fullPath));
         }
 
         /// <summary>
@@ -99,25 +98,32 @@ namespace smartSuite.smartSprite.Pictures{
 
             lock (this)
             {
-                #region Entries validation
-
-                if (this._buffer != null)
+                try
                 {
-                    return;
-                }
+                    #region Entries validation
 
-                #endregion
-
-                this._buffer = new Dictionary<string, Color>();
-
-                for (int y = 0; y < image.Height; y++)
-                {
-                    for (int x = 0; x < image.Width; x++)
+                    if (this._buffer != null)
                     {
-                        this._buffer.Add(
-                            this.FormatKey(x, y),
-                            image.GetPixel(x, y));
+                        return;
                     }
+
+                    #endregion
+
+                    this._buffer = new Dictionary<string, Color>();
+
+                    for (int y = 0; y < image.Height; y++)
+                    {
+                        for (int x = 0; x < image.Width; x++)
+                        {
+                            this._buffer.Add(
+                                this.FormatKey(x, y),
+                                image.GetPixel(x, y));
+                        }
+                    }
+                }
+                finally
+                {
+                    image.Dispose();
                 }
             }
         }
