@@ -260,22 +260,42 @@ namespace smartSuite.smartSprite.Pictures{
 
             #endregion
 
+            // OverwrittenBitmap function is to overcome the Bitmap object bug when used with the same Stream to load and written
+            Bitmap overwrittenBitmap = null;
+            
             // Loading the generated main piece
-            using (Bitmap bitmap = new Bitmap(this._takenPictureFullFileName))
+            using (Bitmap loadBitmap = new Bitmap(this._takenPictureFullFileName))
             {
-                for (float y = other.PointA.Y; y < other.PointB.Y; y++)
+                overwrittenBitmap = new Bitmap(loadBitmap.Width, loadBitmap.Height);
+
+                for (int y = 0; y < loadBitmap.Height; y++)
                 {
-                    for (float x = other.PointA.X; x < other.PointB.X; x++)
+                    for (int x = 0; x < loadBitmap.Width; x++)
                     {
-                        bitmap.SetPixel(
-                            Math.Abs((int)this.PointA.X - (int)x),
-                            Math.Abs((int)this.PointC.Y - (int)y),
-                            Color.Blue);    // <-- TODO: Change to some pattern based on [other]
+                        int absoluteX = (int)this.PointA.X + x;
+                        int absoluteY = (int)this.PointA.Y + y;
+
+                        // Covering the pixel
+                        if (absoluteX >= other.PointA.X && absoluteX <= other.PointB.X)
+                        {
+                            if (absoluteY >= other.PointA.Y && absoluteY <= other.PointB.Y)
+                            {
+                                loadBitmap.SetPixel(
+                                    Math.Abs(x),
+                                    Math.Abs(y),
+                                    Color.Blue);    // <-- TODO: Change to some pattern based on [other]
+
+                                continue;
+                            }
+                        }
+
+                        // Copying the pixel
+                        overwrittenBitmap.SetPixel(x, y, loadBitmap.GetPixel(x, y));
                     }
                 }
-
-                bitmap.Save(this._takenPictureFullFileName, ImageFormat.Png);    // <-- TODO: Review to override the original file
             }
+
+            overwrittenBitmap.Save(this._takenPictureFullFileName, ImageFormat.Png);
         }
 
         #region IComparable elements
