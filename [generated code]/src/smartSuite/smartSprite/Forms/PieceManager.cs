@@ -36,8 +36,7 @@ namespace smartSuite.smartSprite.Forms{
 		/// <summary>
 		/// Loads a collection of piece of pictures
 		/// </summary>
-		/// <param name="fileName"></param>
-		public static void Load(String fileName) {
+		/// <param name="fileName">		public static void Load(String fileName) {</param>
 			// TODO implement here
 		}
 

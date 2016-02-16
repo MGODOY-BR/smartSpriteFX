@@ -39,8 +39,7 @@ namespace smartSuite.smartSprite.Pictures{
 		/// <summary>
 		/// Generates a group structure
 		/// </summary>
-		/// <param name="folder"></param>
-		public void Generate(String folder) {
+		/// <param name="folder">		public void Generate(String folder) {</param>
 			// TODO implement here
 		}
 

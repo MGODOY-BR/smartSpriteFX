@@ -34,16 +34,14 @@ namespace smartSuite.smartSprite.Pictures{
 		/// <summary>
 		/// Generates the pieces created
 		/// </summary>
-		/// <param name="folder"></param>
-		public void Generate(String folder) {
+		/// <param name="folder">		public void Generate(String folder) {</param>
 			// TODO implement here
 		}
 
 		/// <summary>
 		/// Saves the piece collection information
 		/// </summary>
-		/// <param name="fileName"></param>
-		public void Save(String fileName) {
+		/// <param name="fileName">		public void Save(String fileName) {</param>
 			// TODO implement here
 		}
 

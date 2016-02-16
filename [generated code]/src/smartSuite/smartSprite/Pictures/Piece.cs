@@ -56,24 +56,21 @@ namespace smartSuite.smartSprite.Pictures{
 		/// </summary>
 		/// <param name="picture"></param>
 		/// <param name="pointA"></param>
-		/// <param name="pointB"></param>
-		public void Piece(Picture picture, Point pointA, Point pointB) {
+		/// <param name="pointB">		public void Piece(Picture picture, Point pointA, Point pointB) {</param>
 			// TODO implement here
 		}
 
 		/// <summary>
 		/// Changesthe name of piece
 		/// </summary>
-		/// <param name="newName"></param>
-		public void ChangeName(String newName) {
+		/// <param name="newName">		public void ChangeName(String newName) {</param>
 			// TODO implement here
 		}
 
 		/// <summary>
 		/// Generates a file with the content of piece of image
 		/// </summary>
-		/// <param name="fullPath"></param>
-		public void TakePicture(String fullPath) {
+		/// <param name="fullPath">		public void TakePicture(String fullPath) {</param>
 			// TODO implement here
 		}
 
@@ -89,9 +86,7 @@ namespace smartSuite.smartSprite.Pictures{
 		/// <summary>
 		/// Covers the area of piece with a supposedly existent part behind of image
 		/// </summary>
-		/// <summary>
-		/// @param other Normally, this parameter is the parent
-		/// </summary>
+		/// <param name="other">Normally, this parameter is the parent</param>
 		private void OverCover(Piece other) {
 			// TODO implement here
 		}

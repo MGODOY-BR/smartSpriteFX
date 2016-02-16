@@ -21,16 +21,14 @@ namespace smartSuite.smartSprite.Unity{
 		/// </summary>
 		public IGameObject RelatedGameObject;
 
-		/// <param name="gameObject"></param>
-		public void MetaSprite(IGameObject gameObject ) {
+		/// <param name="gameObject">		public void MetaSprite(IGameObject gameObject ) {</param>
 			// TODO implement here
 		}
 
 		/// <summary>
 		/// Generates a meta file in specified path.
 		/// </summary>
-		/// <param name="fullPath"></param>
-		public void Generate(String fullPath) {
+		/// <param name="fullPath">		public void Generate(String fullPath) {</param>
 			// TODO implement here
 		}
 
