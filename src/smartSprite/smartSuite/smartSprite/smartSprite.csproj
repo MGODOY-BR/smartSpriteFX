@@ -85,7 +85,9 @@
     <Compile Include="Pictures\Picture.cs" />
     <Compile Include="Pictures\Piece.cs" />
     <Compile Include="Pictures\PieceCollection.cs" />
-    <Compile Include="Pictures\PixelPattern.cs" />
+    <Compile Include="Pictures\PixelPatterns\DefaultReferentialCoordinateCriteria.cs" />
+    <Compile Include="Pictures\PixelPatterns\IReferentialCoordinateCriteria.cs" />
+    <Compile Include="Pictures\PixelPatterns\PixelPattern.cs" />
     <Compile Include="Pictures\Point.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

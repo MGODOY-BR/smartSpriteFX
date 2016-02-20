@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace smartSuite.smartSprite.Pictures{
+namespace smartSuite.smartSprite.Pictures.PixelPatterns{
 	/// <summary>
 	/// Represents a pattern analyser to study the pixel patterns of a image.
 	/// </summary>
@@ -36,9 +36,10 @@ namespace smartSuite.smartSprite.Pictures{
 		/// </summary>
 		/// <param name="x">It´s the x coordinate</param>
 		/// <param name="y">It´s the y coordinate</param>
-		/// <param name="color">It´s the color of pixel</param>
-		public void GetPattern(int x, int y, Color color) {
+		/// <returns></returns>
+		public Color GetPattern(int x, int y) {
 			// TODO implement here
+			return null;
 		}
 
 		/// <summary>
@@ -46,9 +47,10 @@ namespace smartSuite.smartSprite.Pictures{
 		/// </summary>
 		/// <param name="x">It´s the x coordinate</param>
 		/// <param name="y">It´s the y coordinate</param>
-		/// <param name="color">It´s the color of pixel</param>
-		private void formatKey(int x, int y, Color color) {
+		/// <returns></returns>
+		private string formatKey(int x, int y) {
 			// TODO implement here
+			return "";
 		}
 
 	}

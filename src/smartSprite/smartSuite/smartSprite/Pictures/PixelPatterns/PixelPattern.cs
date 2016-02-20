@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace smartSuite.smartSprite.Pictures{
+namespace smartSuite.smartSprite.Pictures.PixelPatterns{
 	/// <summary>
 	/// Represents a pattern analyser to study the pixel patterns of a image.
 	/// </summary>
@@ -57,6 +57,8 @@ namespace smartSuite.smartSprite.Pictures{
                                 item.Key.StartsWith(x.ToString() + "_")
                                 orderby regEx.Match(item.Key).Groups[1].Value
                             select item.Key;
+
+            // TODO: Filtering using IReferentialCoordinateCriteria/DefaultReferentialCoordinateCriteria
 
             return regEx.Match(
                 validKeys.LastOrDefault()).Groups[1].Value;
