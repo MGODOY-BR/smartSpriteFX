@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace smartSuite.smartSprite.Pictures{
 	/// <summary>
@@ -29,7 +30,9 @@ namespace smartSuite.smartSprite.Pictures{
 		/// <param name="y">It´s the y coordinate</param>
 		/// <param name="color">It´s the color of pixel</param>
 		public void Learn(int x, int y, Color color) {
-			// TODO implement here
+
+            string key = this.formatKey(x, y);
+            this.learntCache.Add(key, color);
 		}
 
 		/// <summary>
@@ -37,19 +40,36 @@ namespace smartSuite.smartSprite.Pictures{
 		/// </summary>
 		/// <param name="x">It´s the x coordinate</param>
 		/// <param name="y">It´s the y coordinate</param>
-		/// <param name="color">It´s the color of pixel</param>
-		public void GetPattern(int x, int y, Color color) {
-			// TODO implement here
-		}
+		public Color GetPattern(int x, int y)
+        {
+            string key = this.getLastKeyForX(x);
+        }
 
-		/// <summary>
-		/// Returns a key ready for be included on learntCache
-		/// </summary>
-		/// <param name="x">It´s the x coordinate</param>
-		/// <param name="y">It´s the y coordinate</param>
-		/// <param name="color">It´s the color of pixel</param>
-		private void formatKey(int x, int y, Color color) {
-			// TODO implement here
+        /// <summary>
+        /// Gets the last key for x learnt
+        /// </summary>
+        private string getLastKeyForX(int x)
+        {
+            Regex regEx = new Regex(@"\d+_(\d+)", RegexOptions.Compiled);
+
+            var validKeys = from item in this.learntCache
+                            where 
+                                item.Key.StartsWith(x.ToString() + "_")
+                                orderby regEx.Match(item.Key).Groups[1].Value
+                            select item.Key;
+
+            return regEx.Match(
+                validKeys.LastOrDefault()).Groups[1].Value;
+        }
+
+        /// <summary>
+        /// Returns a key ready for be included on learntCache
+        /// </summary>
+        /// <param name="x">It´s the x coordinate</param>
+        /// <param name="y">It´s the y coordinate</param>
+        private string formatKey(int x, int y)
+        {
+            return string.Format("{0}_{1}", x, y);
 		}
 
 	}
