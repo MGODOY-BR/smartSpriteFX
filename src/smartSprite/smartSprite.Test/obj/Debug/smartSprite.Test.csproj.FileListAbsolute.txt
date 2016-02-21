@@ -8,7 +8,6 @@ C:\Users\Marcelo\Documents\Repositório GIT\smartSprite\src\smartSprite\smartSpr
 C:\Users\Marcelo\Documents\Repositório GIT\smartSprite\src\smartSprite\smartSprite.Test\obj\Debug\smartSprite.Test.pdb
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.Test\bin\Debug\smartSprite.Test.dll
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.Test\bin\Debug\smartSprite.Test.pdb
-C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.Test\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.Test\bin\Debug\smartSprite.exe
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.Test\bin\Debug\smartSprite.pdb
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.Test\obj\Debug\smartSprite.Test.csprojResolveAssemblyReference.cache

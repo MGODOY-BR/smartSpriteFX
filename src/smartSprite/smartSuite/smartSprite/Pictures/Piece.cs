@@ -1,4 +1,5 @@
 
+using smartSuite.smartSprite.Pictures.PixelPatterns;
 using smartSuite.smartSprite.Unity;
 using System;
 using System.Collections.Generic;
@@ -262,6 +263,9 @@ namespace smartSuite.smartSprite.Pictures{
 
             // OverwrittenBitmap function is to overcome the Bitmap object bug when used with the same Stream to load and written
             Bitmap overwrittenBitmap = null;
+
+            // Creating the object to study the patterns
+            PixelPattern pixelPattern = new PixelPattern();
             
             // Loading the generated main piece
             using (Bitmap loadBitmap = new Bitmap(this._takenPictureFullFileName))
@@ -283,11 +287,17 @@ namespace smartSuite.smartSprite.Pictures{
                                 loadBitmap.SetPixel(
                                     Math.Abs(x),
                                     Math.Abs(y),
-                                    Color.Blue);    // <-- TODO: Change to some pattern based on [other]
+                                    pixelPattern.GetPattern(x, y));    // <-- Covering the gap
 
                                 continue;
                             }
                         }
+
+                        // Getting original color
+                        var color = loadBitmap.GetPixel(x, y);
+
+                        // Studing the original image
+                        pixelPattern.Learn(x, y, color);  
 
                         // Copying the pixel
                         overwrittenBitmap.SetPixel(x, y, loadBitmap.GetPixel(x, y));
