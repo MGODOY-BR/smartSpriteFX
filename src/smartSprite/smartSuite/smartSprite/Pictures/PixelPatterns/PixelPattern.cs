@@ -21,7 +21,7 @@ namespace smartSuite.smartSprite.Pictures.PixelPatterns{
 		/// <summary>
 		/// It´s a cache dictionary where key is formed by coordinate x and y and the value is the color.
 		/// </summary>
-		private Dictionary<String, Color> learntCache = new Dictionary<String, Color>();
+		private Dictionary<String, Color> _learntCache = new Dictionary<String, Color>();
 
 		/// <summary>
 		/// Includes the coordinates to study the pattern
@@ -32,7 +32,7 @@ namespace smartSuite.smartSprite.Pictures.PixelPatterns{
 		public void Learn(int x, int y, Color color) {
 
             string key = this.formatKey(x, y);
-            this.learntCache.Add(key, color);
+            this._learntCache.Add(key, color);
 		}
 
 		/// <summary>
@@ -43,6 +43,7 @@ namespace smartSuite.smartSprite.Pictures.PixelPatterns{
 		public Color GetPattern(int x, int y)
         {
             string key = this.getLastKeyForX(x);
+            return this._learntCache[key];
         }
 
         /// <summary>
@@ -52,16 +53,19 @@ namespace smartSuite.smartSprite.Pictures.PixelPatterns{
         {
             Regex regEx = new Regex(@"\d+_(\d+)", RegexOptions.Compiled);
 
-            var validKeys = from item in this.learntCache
+            IReferentialCoordinateCriteria criteria = new DefaultReferentialCoordinateCriteria();
+
+            var keyListForX = from item in this._learntCache
                             where 
-                                item.Key.StartsWith(x.ToString() + "_")
-                                orderby regEx.Match(item.Key).Groups[1].Value
+                                item.Key.StartsWith(x.ToString() + "_") &&
+                                criteria.IsValid(
+                                    this._learntCache, 
+                                    x, 
+                                    int.Parse(regEx.Match(item.Key).Groups[1].Value))
+                            orderby int.Parse(regEx.Match(item.Key).Groups[1].Value)
                             select item.Key;
 
-            // TODO: Filtering using IReferentialCoordinateCriteria/DefaultReferentialCoordinateCriteria
-
-            return regEx.Match(
-                validKeys.LastOrDefault()).Groups[1].Value;
+            return keyListForX.LastOrDefault();
         }
 
         /// <summary>

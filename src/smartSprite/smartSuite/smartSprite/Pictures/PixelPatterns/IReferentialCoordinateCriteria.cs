@@ -1,6 +1,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 
@@ -13,11 +14,7 @@ namespace smartSuite.smartSprite.Pictures.PixelPatterns{
 		/// <summary>
 		/// Gets a boolean informing the validation of  the coordinate
 		/// </summary>
-		/// <param name="leanrtCache"></param>
-		/// <param name="int">x </param>
-		/// <param name="int">y </param>
-		/// <returns></returns>
-		public boolean IsValid(Dictionary leanrtCache, void int x, void int y);
+		bool IsValid(Dictionary<String, Color> leanrtCache, int x, int y);
 
 	}
 }
