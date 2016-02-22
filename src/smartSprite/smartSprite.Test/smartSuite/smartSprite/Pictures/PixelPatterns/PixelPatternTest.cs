@@ -14,12 +14,20 @@ namespace smartSprite.Test.smartSuite.smartSprite.Pictures.PixelPatterns
             #region Scenario setup
 
             PixelPattern pixelPattern = new PixelPattern();
-            pixelPattern.Learn(1, 1, Color.White);
-            pixelPattern.Learn(10, 1, Color.White);
-            pixelPattern.Learn(10, 15, Color.White);
-            pixelPattern.Learn(100, 100, Color.Yellow);
-            pixelPattern.Learn(200, 120, Color.White);
-            pixelPattern.Learn(201, 1500, Color.White);
+            for (int y = 1; y < 1500; y++)
+            {
+                for (int x = 1; x < 300; x++)
+                {
+                    if (y == 109)
+                    {
+                        pixelPattern.Learn(x, y, Color.Yellow);
+                    }
+                    else
+                    {
+                        pixelPattern.Learn(x, y, Color.White);
+                    }
+                }
+            }
 
             #endregion
 

@@ -54,7 +54,6 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="smartSuite\smartSprite\Pictures\PixelPatterns\DefaultReferentialCoordinateCriteriaTest.cs" />
     <Compile Include="smartSuite\smartSprite\Pictures\PixelPatterns\PixelPatternTest.cs" />
   </ItemGroup>
   <ItemGroup>

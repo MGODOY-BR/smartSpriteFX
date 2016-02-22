@@ -17,9 +17,9 @@ namespace smartSuite.smartSprite.Pictures.PixelPatterns{
 		}
 
 		/// <summary>
-		/// It´s a cache dictionary where key is formed by coordinate x and y and the value is the color.
+		/// 
 		/// </summary>
-		private HashSet<Dictionary> learntCache;
+		private HashSet<PixelInfo> _learntCache;
 
 		/// <summary>
 		/// Includes the coordinates to study the pattern

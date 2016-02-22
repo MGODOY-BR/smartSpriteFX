@@ -284,7 +284,7 @@ namespace smartSuite.smartSprite.Pictures{
                         {
                             if (absoluteY >= other.PointA.Y && absoluteY <= other.PointB.Y)
                             {
-                                loadBitmap.SetPixel(
+                                overwrittenBitmap.SetPixel(
                                     Math.Abs(x),
                                     Math.Abs(y),
                                     pixelPattern.GetPattern(x, y));    // <-- Covering the gap
