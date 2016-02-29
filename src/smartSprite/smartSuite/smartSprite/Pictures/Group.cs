@@ -1,7 +1,9 @@
 
+using smartSprite.Templates;
 using smartSuite.smartSprite.Unity;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -66,10 +68,41 @@ namespace smartSuite.smartSprite.Pictures{
             {
                 throw new ArgumentNullException("folder");
             }
+            if (String.IsNullOrEmpty(this.Name))
+            {
+                throw new ArgumentNullException("this.Name");
+            }
 
             #endregion
 
-            throw new NotImplementedException();
+            // Creating group folder
+            if (!Directory.Exists(folder))
+            {
+                Directory.CreateDirectory(folder);
+            }
+
+            // Generating group data
+            string metaFileName = folder + ".meta";
+            using (StreamWriter stream = new StreamWriter(metaFileName))
+            {
+                // Setting Guid
+                stream.Write(
+                    UnityMetaFile.EmptyGameObject.Replace(
+                        UnityMetaFile.GuidPlaceHolder,
+                        Guid.NewGuid().ToString().Replace("-", "")));
+            }
+
+            // Generating pieces
+            foreach (var piece in this.RelatedPieceList)
+            {
+                piece.TakePicture(folder);
+            }
+
+            // Generating group children
+            foreach (var group in this.ChildGroupList)
+            {
+                group.Generate(folder);
+            }
 		}
 
 	}

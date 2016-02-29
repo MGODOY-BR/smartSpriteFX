@@ -1,8 +1,10 @@
 
+using smartSprite.Templates;
 using smartSuite.smartSprite.Pictures.PixelPatterns;
 using smartSuite.smartSprite.Unity;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
@@ -121,6 +123,44 @@ namespace smartSuite.smartSprite.Pictures{
         }
 
         /// <summary>
+        /// Gets the full path, based on the parent pieces
+        /// </summary>
+        /// <returns></returns>
+        internal String GetFullPath()
+        {
+            #region Entries validation
+
+            if (this.Parent == null)
+            {
+                return "";
+            }
+
+            #endregion
+
+            Piece parent = this.Parent;
+            StringCollection pathList = new StringCollection();
+            while (parent != null)
+            {
+                pathList.Add(parent.Name);
+
+                parent = parent.Parent;
+            }
+
+            StringBuilder stringBuilder = new StringBuilder();
+            for (int i = pathList.Count - 1; i >= 0; i--)
+            {
+                stringBuilder.Append(pathList[i]);
+
+                if (i < 0)
+                {
+                    stringBuilder.Append(@"\");
+                }
+            }
+
+            return stringBuilder.ToString();
+        }
+
+        /// <summary>
         /// Changesthe name of piece
         /// </summary>
         /// <param name="newName"></param>
@@ -195,6 +235,18 @@ namespace smartSuite.smartSprite.Pictures{
 
                 // Saving piece bitmap
                 pieceBitmap.Save(this._takenPictureFullFileName, ImageFormat.Png);
+
+                // Saving Unity metadata
+                string metaFileName = this._takenPictureFullFileName + ".meta";
+                using (StreamWriter stream = new StreamWriter(metaFileName))
+                {
+                    // Setting Guid
+                    stream.Write(
+                        UnityMetaFile.GameObject2D.Replace(
+                            UnityMetaFile.GuidPlaceHolder,
+                            Guid.NewGuid().ToString().Replace("-", "")));
+                }
+
             }
 
             if (this.Parent != null)

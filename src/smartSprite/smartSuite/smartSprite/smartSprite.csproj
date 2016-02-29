@@ -92,6 +92,11 @@
     <Compile Include="Pictures\Point.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Templates\UnityMetaFile.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UnityMetaFile.resx</DependentUpon>
+    </Compile>
     <Compile Include="Unity\IGameObject.cs" />
     <Compile Include="Unity\MetaSprite.cs" />
     <Compile Include="Utilities\MathUtil.cs" />
@@ -117,6 +122,10 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Templates\UnityMetaFile.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>UnityMetaFile.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -141,6 +150,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Hook.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EmptyGameObject.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2DGameObject.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

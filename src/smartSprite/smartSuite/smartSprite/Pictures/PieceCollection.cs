@@ -86,22 +86,64 @@ namespace smartSuite.smartSprite.Pictures{
 
             #endregion
 
-            if (!Directory.Exists(folder))
+            // Cleaning files
+            DirectoryInfo directoryInfo = new DirectoryInfo(folder);
+            foreach (var file in directoryInfo.GetFiles())
             {
-                Directory.CreateDirectory(folder);
+                file.Delete();
+            }
+            foreach (var directory in directoryInfo.GetDirectories())
+            {
+                directory.Delete(true);
             }
 
+            // It´s a list of group references
+            Dictionary<String, Group> groupReferenceList = new Dictionary<string, Group>();
             foreach (var piece in this.PieceList)
             {
-                piece.TakePicture(folder);
+                // Creating group
+                if (piece.Parent != null)
+                {
+                    // Infering the name of group
+                    var groupName = 
+                        piece.Parent.Name + " Group";
+                    var fullParentName = 
+                        piece.GetFullPath() + " Group";
+
+                    Group group;
+                    if (!groupReferenceList.ContainsKey(fullParentName))
+                    {
+                        group = new Group();
+                        group.Name = groupName;
+                        groupReferenceList.Add(fullParentName, group);
+                    }
+                    else
+                    {
+                        group = groupReferenceList[fullParentName];
+                    }
+
+                    group.RelatedPieceList.Add(piece);
+                }
+                else
+                {
+                    // Generating pieces with no groups
+                    piece.TakePicture(folder);
+                }
+            }
+
+            // Group generation
+            foreach (var groupReference in groupReferenceList)
+            {
+                string groupFolder = Path.Combine(folder, groupReference.Key);
+                groupReference.Value.Generate(groupFolder);
             }
 		}
-
-		/// <summary>
-		/// Saves the piece collection information
-		/// </summary>
-		/// <param name="fileName"></param>
-		public void Save(String fileName) {
+        
+        /// <summary>
+        /// Saves the piece collection information
+        /// </summary>
+        /// <param name="fileName"></param>
+        public void Save(String fileName) {
 
             #region Entries validation
             
