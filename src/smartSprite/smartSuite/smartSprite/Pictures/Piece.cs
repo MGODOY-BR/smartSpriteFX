@@ -233,6 +233,11 @@ namespace smartSuite.smartSprite.Pictures{
                 // Getting the name of piece file
                 this._takenPictureFullFileName = Path.Combine(fullPath, this.Name) + ".png";
 
+                if (!Directory.Exists(fullPath))
+                {
+                    Directory.CreateDirectory(fullPath);
+                }
+
                 // Saving piece bitmap
                 pieceBitmap.Save(this._takenPictureFullFileName, ImageFormat.Png);
 
