@@ -212,16 +212,16 @@ namespace smartSprite.Forms
         }
 
         /// <summary>
-        /// Opens the open source dialog
+        /// Opens the open draft dialog
         /// </summary>
-        /// <param name="sourceFolder"></param>
+        /// <param name="draftTextBox"></param>
         /// <param name="openDialog"></param>
-        private void DoOpenSourceDialog(TextBox sourceFolder, OpenFileDialog openDialog)
+        private void DoOpenDraftDialog(TextBox draftTextBox, OpenFileDialog openDialog)
         {
             openDialog.ShowDialog();
             if (openDialog.FileName != null)
             {
-                sourceFolder.Text = openDialog.FileName;
+                draftTextBox.Text = openDialog.FileName;
 
                 // Loading the picture
                 this.draftControl1.LoadDraftPicture(this.txtDraftPicture.Text.Trim());
@@ -337,7 +337,7 @@ namespace smartSprite.Forms
 
         private void btnOpenDraft_Click(object sender, EventArgs e)
         {
-            this.DoOpenSourceDialog(this.txtDraftPicture, this.openDraftFileDialog1);
+            this.DoOpenDraftDialog(this.txtDraftPicture, this.openDraftFileDialog1);
         }
 
         private void btnOpenResumeWork_Click(object sender, EventArgs e)
@@ -352,6 +352,15 @@ namespace smartSprite.Forms
         /// <param name="e"></param>
         private void txtDraftPicture_Leave(object sender, EventArgs e)
         {
+            #region Entries validation
+
+            if (String.IsNullOrEmpty(this.txtDraftPicture.Text.Trim()))
+            {
+                return;
+            }
+
+            #endregion
+
             // Loading the picture
             this.draftControl1.LoadDraftPicture(this.txtDraftPicture.Text.Trim());
         }
@@ -566,11 +575,9 @@ namespace smartSprite.Forms
         /// <param name="e"></param>
         private void txtLoadSprite_Leave(object sender, EventArgs e)
         {
-            openDraftFileDialog1.ShowDialog();
-
             #region Entries validation
 
-            if (String.IsNullOrEmpty(this.openDraftFileDialog1.FileName))
+            if (String.IsNullOrEmpty(this.txtLoadSprite.Text.Trim()))
             {
                 return;
             }

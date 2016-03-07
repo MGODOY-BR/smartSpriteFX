@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using smartSprite.Forms.Controls.ToolboxState;
 using smartSuite.smartSprite.Pictures;
 using smartSprite.Forms.Controls.DraftControlState;
+using smartSprite.Properties;
 
 namespace smartSprite.Forms.Controls
 {
@@ -305,6 +306,9 @@ namespace smartSprite.Forms.Controls
 
                 var pieces = PieceCollection.Load(fileName);
                 this.LoadPieces(pieces);
+
+                Settings.Default.lastProjectFolder = fileName;
+                Settings.Default.Save();
             }
             finally
             {
@@ -355,6 +359,10 @@ namespace smartSprite.Forms.Controls
             this._lastSettings = null;
             this._pieceSet.Clear();
             this.Visible = true;
+
+            // Saving settings
+            Settings.Default.lastDraftFolder = draftPicture;
+            Settings.Default.Save();
         }
 
         /// <summary>
