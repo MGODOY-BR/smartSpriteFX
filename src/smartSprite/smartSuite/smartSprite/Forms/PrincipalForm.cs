@@ -29,6 +29,7 @@ namespace smartSprite.Forms
 
             this.draftControl1.PieceSetChanged += DraftControl1_PieceSetChanged;
             this.treeView1.AfterSelect += TreeView1_AfterSelect;
+            this.treeView1.AfterLabelEdit += TreeView1_AfterLabelEdit;
             this.KeyDown += PrincipalForm_KeyDown;
         }
 
@@ -295,6 +296,8 @@ namespace smartSprite.Forms
 
             this.FormClosed += PrincipalForm_FormClosed;
             this.draftControl1.GettingSettings += DraftControl1_GettingSettings;
+            this.treeView1.LabelEdit = true;
+            this.treeView1.PreviewKeyDown += TreeView1_PreviewKeyDown;
         }
 
         /// <summary>
@@ -627,5 +630,38 @@ namespace smartSprite.Forms
         }
 
         #endregion
+
+        private void TreeView1_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.F2:
+                    treeView1.SelectedNode.BeginEdit();
+                    break;
+
+                case Keys.Enter:
+                    treeView1.SelectedNode.EndEdit(false);
+                    break;
+
+                case Keys.Escape:
+                    treeView1.SelectedNode.EndEdit(true);
+                    break;
+            }
+        }
+
+        private void TreeView1_AfterLabelEdit(object sender, NodeLabelEditEventArgs e)
+        {
+            #region Entries validation
+
+            if (String.IsNullOrEmpty(e.Label))
+            {
+                throw new ArgumentNullException("You must give a name to item");
+            }
+
+            #endregion
+
+            ((Piece)e.Node.Tag).Name = e.Label;
+        }
+
     }
 }
