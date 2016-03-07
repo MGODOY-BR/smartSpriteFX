@@ -172,7 +172,7 @@ namespace smartSprite.Forms
             {
                 if (txtFile != null)
                 {
-                    txtFile.Text = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                    txtFile.Text = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
                 }
             }
         }
@@ -488,7 +488,11 @@ namespace smartSprite.Forms
                 
                 if(treeNode.Nodes.Count > 0)
                 {
-                    return this.GetTreeNode(piece, treeNode.Nodes);
+                    var subTreeNode = this.GetTreeNode(piece, treeNode.Nodes);
+                    if (subTreeNode != null)
+                    {
+                        return subTreeNode;
+                    }
                 }
             }
 

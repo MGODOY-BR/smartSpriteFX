@@ -388,5 +388,15 @@ namespace smartSuite.smartSprite.Pictures{
         }
 
         #endregion
+
+        public override string ToString()
+        {
+            return String.Format(
+                "A[{0}], B[{1}], C[{2}], D[{3}]",
+                this.PointA.ToString(),
+                this.PointB.ToString(),
+                this.PointC.ToString(),
+                this.PointD.ToString());
+        }
     }
 }
