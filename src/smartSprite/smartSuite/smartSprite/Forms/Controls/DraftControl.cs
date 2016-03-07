@@ -454,7 +454,7 @@ namespace smartSprite.Forms.Controls
 
                 this.imgDraft.Controls.AddRange(new Control[2] { mainHook, otherHook });
                 mainHook.CreateLines();
-                otherHook.CreateLines();
+                //otherHook.CreateLines();      <--- This can't bee made because mainHook already do that (we would have repeated lines)
 
                 this._hookSet.Add(mainHook);
                 this._pieceSet.Add(mainHook, piece);

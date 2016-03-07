@@ -411,8 +411,14 @@ namespace smartSprite.Forms.Controls
                 this.BorderStyle = BorderStyle.None;
             }
 
-            this.LineHorizontal.Mark(bold);
-            this.LineVertical.Mark(bold);
+            if (this.LineHorizontal != null)
+            {
+                this.LineHorizontal.Mark(bold);
+            }
+            if (this.LineVertical != null)
+            {
+                this.LineVertical.Mark(bold);
+            }
 
             if (this.Pair != null)
             {
