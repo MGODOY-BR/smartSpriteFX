@@ -210,8 +210,8 @@ namespace smartSuite.smartSprite.Pictures{
 
             using (var pieceBitmap =
                 new Bitmap(
-                    (int)(this.PointB.X - this.PointD.X),
-                    (int)(this.PointB.Y - this.PointC.Y)))
+                    (int)(Math.Abs(this.PointB.X - this.PointD.X)),
+                    (int)(Math.Abs(this.PointB.Y - this.PointC.Y))))
             {
 
                 for (float y = this.PointA.Y; y < this.PointB.Y; y++)

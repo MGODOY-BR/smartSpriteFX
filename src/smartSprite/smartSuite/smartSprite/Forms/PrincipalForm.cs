@@ -568,8 +568,16 @@ namespace smartSprite.Forms
             var selectedPath = this.exportToUnityDialog1.SelectedPath;
             if (!string.IsNullOrWhiteSpace(selectedPath))
             {
-                this.draftControl1.SendToUnity(selectedPath);
+                try
+                {
+                    this.Cursor = Cursors.WaitCursor;
 
+                    this.draftControl1.SendToUnity(selectedPath);
+                }
+                finally
+                {
+                    this.Cursor = Cursors.Default;
+                }
                 Settings.Default.lastExportFolder = selectedPath;
                 Settings.Default.Save();
             }
