@@ -566,7 +566,7 @@ namespace smartSprite.Forms
             this.exportToUnityDialog1.ShowDialog();
 
             var selectedPath = this.exportToUnityDialog1.SelectedPath;
-            if (selectedPath != null)
+            if (!string.IsNullOrWhiteSpace(selectedPath))
             {
                 this.draftControl1.SendToUnity(selectedPath);
 
@@ -615,9 +615,13 @@ namespace smartSprite.Forms
             if (string.IsNullOrEmpty(projectFullPath))
             {
                 this.saveFileDialog1.ShowDialog();
-                if (this.saveFileDialog1.FileName != null)
+                if (!string.IsNullOrEmpty(this.saveFileDialog1.FileName))
                 {
                     projectFullPath = this.saveFileDialog1.FileName;
+                }
+                else
+                {
+                    return;
                 }
             }
 
@@ -625,6 +629,8 @@ namespace smartSprite.Forms
 
             Settings.Default.lastProjectFolder = projectFullPath;
             Settings.Default.Save();
+
+            this.draftControl1.ProjectFullPath = projectFullPath;
 
             MessageBox.Show("Project has been saved with success!!", "Save project", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
