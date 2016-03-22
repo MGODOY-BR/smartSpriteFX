@@ -220,7 +220,7 @@ namespace smartSprite.Forms
         private void DoOpenDraftDialog(TextBox draftTextBox, OpenFileDialog openDialog)
         {
             openDialog.ShowDialog();
-            if (openDialog.FileName != null)
+            if(!String.IsNullOrEmpty(openDialog.FileName))
             {
                 draftTextBox.Text = openDialog.FileName;
 
@@ -237,7 +237,7 @@ namespace smartSprite.Forms
         private void DoOpenProjectDialog(TextBox sourceFolder, OpenFileDialog openDialog)
         {
             openDialog.ShowDialog();
-            if (openDialog.FileName != null)
+            if(!String.IsNullOrEmpty(openDialog.FileName))
             {
                 sourceFolder.Text = openDialog.FileName;
 
