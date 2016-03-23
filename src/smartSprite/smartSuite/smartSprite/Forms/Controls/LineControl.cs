@@ -51,13 +51,13 @@ namespace smartSprite.Forms.Controls
             switch (style)
             {
                 case LineControlStyle.Horizontal:
-                    this.Height = 5;
+                    this.Height = 1;
                     this.Width = (int)size;
                     break;
 
                 case LineControlStyle.Vertical:
                     this.Height = (int)size;
-                    this.Width = 5;
+                    this.Width = 1;
                     break;
 
                 default:
