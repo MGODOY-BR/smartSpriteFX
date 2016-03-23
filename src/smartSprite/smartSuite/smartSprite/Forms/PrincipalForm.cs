@@ -401,7 +401,8 @@ namespace smartSprite.Forms
                     treeNode = this.GetTreeNode(e.Piece, this.treeView1.Nodes);
                     if (treeNode == null)
                     {
-                        throw new ArgumentException("The piece " + e.Piece.Name + " hasn't found.");
+                        return;
+                        // throw new ArgumentException("The piece " + e.Piece.Name + " hasn't found.");
                     }
                     this.treeView1.SelectedNode = treeNode;
                     // this.treeView1.Focus(); // <-- This solves the problem with bold item in treeview, but breaks the selection on draft board.
@@ -599,7 +600,17 @@ namespace smartSprite.Forms
 
             #endregion
 
+            this._dataTreeNodeList.Clear();
+            // Loading the picture
             this.draftControl1.LoadProject(this.txtLoadSprite.Text.Trim());
+            // Filling TreeNodeList
+            foreach (var pieceItem in this.draftControl1.Pieces.PieceList)
+            {
+                this.FillTreeNodeList(pieceItem);
+            }
+
+            this.RebuidTreeView();
+
         }
 
         /// <summary>

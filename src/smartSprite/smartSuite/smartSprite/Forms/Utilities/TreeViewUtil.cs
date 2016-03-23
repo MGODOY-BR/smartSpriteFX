@@ -330,22 +330,20 @@ namespace smartSprite.Forms.Utilities
             }
 
             #region Setting parents
-
-            Piece previousPiece = null;
-
-            for (int i = 0; i < pieceList.Count; i++)
+            foreach (var previousPiece in pieceList)
             {
-                var pieceItem = pieceList[i];
-
-                if (previousPiece != null)
+                for (int i = 0; i < pieceList.Count; i++)
                 {
-                    if (previousPiece.Contains(pieceItem))
+                    var pieceItem = pieceList[i];
+
+                    if (previousPiece != null)
                     {
-                        pieceItem.Parent = previousPiece;
+                        if (previousPiece.Contains(pieceItem))
+                        {
+                            pieceItem.Parent = previousPiece;
+                        }
                     }
                 }
-
-                previousPiece = pieceItem;
             }
 
             #endregion

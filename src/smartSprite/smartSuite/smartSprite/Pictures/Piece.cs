@@ -384,7 +384,25 @@ namespace smartSuite.smartSprite.Pictures{
 
             Piece other = (Piece)obj;
 
-            return this.PointA.X.CompareTo(other.PointA.X);
+            var referenceX = this.PointA.X;
+            var otherX = other.PointA.X;
+
+            var referenceY = this.PointA.Y;
+            var otherY = other.PointA.Y;
+
+            if (referenceX < this.PointD.X)
+            {
+                referenceX = this.PointD.X;
+            }
+            if (otherX < other.PointD.X)
+            {
+                otherX = other.PointD.X;
+            }
+
+            int compareX = referenceX.CompareTo(otherX);
+            int compareY = referenceY.CompareTo(otherY);
+
+            return compareY;
         }
 
         #endregion
@@ -392,7 +410,8 @@ namespace smartSuite.smartSprite.Pictures{
         public override string ToString()
         {
             return String.Format(
-                "A[{0}], B[{1}], C[{2}], D[{3}]",
+                "{0} - A[{1}], B[{2}], C[{3}], D[{4}]",
+                this.Name,
                 this.PointA.ToString(),
                 this.PointB.ToString(),
                 this.PointC.ToString(),
