@@ -39,7 +39,7 @@
             this.BackgroundImage = global::smartSprite.Properties.Resources.Hook;
             this.Cursor = System.Windows.Forms.Cursors.SizeAll;
             this.Name = "HookControl";
-            this.Size = new System.Drawing.Size(12, 12);
+            this.Size = new System.Drawing.Size(11, 11);
             this.ResumeLayout(false);
 
         }

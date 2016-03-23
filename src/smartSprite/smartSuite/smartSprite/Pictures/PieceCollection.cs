@@ -108,7 +108,7 @@ namespace smartSuite.smartSprite.Pictures{
                     var groupName = 
                         piece.Parent.Name + " Group";
                     var fullParentName = 
-                        piece.GetFullPath() + @"\Items";
+                        piece.GetFullPath();
 
                     Group group;
                     if (!groupReferenceList.ContainsKey(fullParentName))
@@ -135,6 +135,7 @@ namespace smartSuite.smartSprite.Pictures{
             foreach (var groupReference in groupReferenceList)
             {
                 string groupFolder = Path.Combine(folder, groupReference.Key);
+                Console.WriteLine(groupFolder);
                 groupReference.Value.Generate(groupFolder);
             }
 		}

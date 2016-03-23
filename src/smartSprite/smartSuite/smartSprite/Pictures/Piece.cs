@@ -150,14 +150,12 @@ namespace smartSuite.smartSprite.Pictures{
             for (int i = pathList.Count - 1; i >= 0; i--)
             {
                 stringBuilder.Append(pathList[i]);
-
-                if (i < 0)
-                {
-                    stringBuilder.Append(@"\");
-                }
+                stringBuilder.Append(@"\Items\");
             }
 
-            return stringBuilder.ToString();
+            String retorno = stringBuilder.ToString();
+
+            return retorno;
         }
 
         /// <summary>
