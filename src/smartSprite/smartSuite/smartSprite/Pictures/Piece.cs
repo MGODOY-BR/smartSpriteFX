@@ -213,7 +213,8 @@ namespace smartSuite.smartSprite.Pictures{
             using (var pieceBitmap =
                 new Bitmap(
                     (int)(Math.Abs(this.PointB.X - this.PointD.X)),
-                    (int)(Math.Abs(this.PointB.Y - this.PointC.Y))))
+                    (int)(Math.Abs(this.PointB.Y - this.PointC.Y)), 
+                    PixelFormat.Format32bppArgb))
             {
                 int extraMargin = 3;    // <-- Extra Margin allows to backgroundPattern learn about the parent image
 

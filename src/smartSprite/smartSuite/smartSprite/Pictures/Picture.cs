@@ -224,7 +224,7 @@ namespace smartSuite.smartSprite.Pictures{
 
             #endregion
 
-            using (var pieceBitmap = new Bitmap(this._width, this._height))
+            using (var pieceBitmap = new Bitmap(this._width, this._height, PixelFormat.Format32bppArgb))
             {
                 for (int y = 0; y < this._height; y++)
                 {
