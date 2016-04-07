@@ -176,17 +176,11 @@ namespace smartSuite.smartSprite.Pictures.ColorPattern
                     piece.PointD,
                     piece.PointB);
 
-            for (int absoluteY = (int)piece.PointA.Y; absoluteY < piece.PointB.Y; absoluteY++)
+            for (int y = (int)piece.PointA.Y; y < piece.PointB.Y; y++)
             {
-                // Searching for relative Y
-                int y = absoluteY - (int)piece.PointB.Y;
-
                 // Scanning the taken picture
-                for (int absoluteX = (int)piece.PointA.X; absoluteX < piece.PointB.X; absoluteX++)
+                for (int x = (int)piece.PointA.X; x < piece.PointB.X; x++)
                 {
-                    // Searching for relative X
-                    int x = absoluteX - (int)piece.PointA.X;
-
                     try
                     {
                         // Getting pixel
