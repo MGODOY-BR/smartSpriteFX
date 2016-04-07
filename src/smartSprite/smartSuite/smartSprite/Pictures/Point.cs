@@ -9,7 +9,8 @@ namespace smartSuite.smartSprite.Pictures{
     /// Represents a cartesyan coordinate
     /// </summary>
     [Serializable]
-    public class Point {
+    public class Point : IComparable<Point>
+    {
 
         public Point(float x, float y)
         {
@@ -33,6 +34,35 @@ namespace smartSuite.smartSprite.Pictures{
         {
             get;
             set;
+        }
+
+        public int CompareTo(Point other)
+        {
+            #region Entries validation
+
+            if (other == null)
+            {
+                throw new ArgumentNullException("other");
+            }
+
+            #endregion
+
+            if (this.Y < other.Y)
+            {
+                return -1;
+            }
+            if (this.X < other.X)
+            {
+                return -1;
+            }
+            if (this.Y.CompareTo(other.Y) == 0 && this.X.CompareTo(other.X) == 0)
+            {
+                return 0;
+            }
+            else
+            {
+                return 1;
+            }
         }
 
         public override string ToString()

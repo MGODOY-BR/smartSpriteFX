@@ -37,5 +37,23 @@ namespace smartSuite.smartSprite.Pictures{
 			return null;
 		}
 
+		/// <summary>
+		/// Replaces a pixel in the buffer
+		/// </summary>
+		/// <param name="x"></param>
+		/// <param name="y"></param>
+		/// <param name="newColor" />		
+		public void ReplacePixel(int x, int y, Color newColor)
+		{
+			// TODO implement here
+		}
+
+		/// <summary>
+		/// Overwrites the picture
+		/// </summary>
+		public void Overwrite() {
+			// TODO implement here
+		}
+
 	}
 }

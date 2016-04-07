@@ -4,27 +4,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace smartSuite.smartSprite.Pictures.PixelPatterns{
+namespace smartSuite.smartSprite.Pictures.ColorPattern{
 	/// <summary>
-	/// Represents a pattern analyser to study the pixel patterns of a image.
+	/// It´s an object which studies the pixels to detect background pattern
 	/// </summary>
-	public class PixelPattern {
+	public class BackgroundPattern {
 
 		/// <summary>
-		/// Represents a pattern analyser to study the pixel patterns of a image.
+		/// It´s an object which studies the pixels to detect background pattern
 		/// </summary>
-		public PixelPattern() {
+		public BackgroundPattern() {
 		}
 
 		/// <summary>
-		/// 
+		/// It´s the cache of pixel information
 		/// </summary>
 		private HashSet<PixelInfo> _learntCache;
-
-		/// <summary>
-		/// 
-		/// </summary>
-		private ICoveringPattern _coveringPattern;
 
 		/// <summary>
 		/// Includes the coordinates to study the pattern
@@ -37,17 +32,6 @@ namespace smartSuite.smartSprite.Pictures.PixelPatterns{
 		}
 
 		/// <summary>
-		/// Gets the learnt pixel pattern for the coordinate
-		/// </summary>
-		/// <param name="x">It´s the x coordinate</param>
-		/// <param name="y">It´s the y coordinate</param>
-		/// <returns></returns>
-		public Color GetPattern(int x, int y) {
-			// TODO implement here
-			return null;
-		}
-
-		/// <summary>
 		/// Returns a key ready for be included on learntCache
 		/// </summary>
 		/// <param name="x">It´s the x coordinate</param>
@@ -56,6 +40,14 @@ namespace smartSuite.smartSprite.Pictures.PixelPatterns{
 		private string formatKey(int x, int y) {
 			// TODO implement here
 			return "";
+		}
+
+		/// <summary>
+		/// Does the transparent border
+		/// </summary>
+		/// <param name="piece">It´s a piece to deal.</param>
+		public void DoTransparentBorder(Piece piece) {
+			// TODO implement here
 		}
 
 	}

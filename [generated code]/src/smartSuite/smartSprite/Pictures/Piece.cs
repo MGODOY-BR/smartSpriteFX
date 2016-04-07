@@ -84,11 +84,20 @@ namespace smartSuite.smartSprite.Pictures{
 		}
 
 		/// <summary>
-		/// Covers the area of piece with a supposedly existent part behind of image
+		/// Covers the area of piece with a suppose existent part behind of image
 		/// </summary>
 		/// <param name="other">Normally, this parameter is the parent</param>
 		private void OverCover(Piece other) {
 			// TODO implement here
+		}
+
+		/// <summary>
+		/// Gets the taken picture file name, correspondent to piece
+		/// </summary>
+		/// <returns></returns>
+		public String GetTakenPictureFullFileName() {
+			// TODO implement here
+			return null;
 		}
 
 	}

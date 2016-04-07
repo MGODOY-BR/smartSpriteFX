@@ -1,5 +1,6 @@
 
 using smartSprite.Templates;
+using smartSuite.smartSprite.Pictures.ColorPattern;
 using smartSuite.smartSprite.Pictures.PixelPatterns;
 using smartSuite.smartSprite.Unity;
 using System;
@@ -206,25 +207,53 @@ namespace smartSuite.smartSprite.Pictures{
 
             #endregion
 
+            // Creating an object to dettect the transparent background
+            BackgroundPattern backgroundPattern = new BackgroundPattern();
+
             using (var pieceBitmap =
                 new Bitmap(
                     (int)(Math.Abs(this.PointB.X - this.PointD.X)),
                     (int)(Math.Abs(this.PointB.Y - this.PointC.Y))))
             {
+                int extraMargin = 3;    // <-- Extra Margin allows to backgroundPattern learn about the parent image
 
-                for (float y = this.PointA.Y; y < this.PointB.Y; y++)
+                int minY = (int)this.PointA.Y - extraMargin;
+                int maxY = (int)this.PointB.Y + extraMargin;
+
+                for (int y = minY; y < maxY; y++)
                 {
-                    for (float x = this.PointA.X; x < this.PointB.X; x++)
-                    {
-                        var piecePixel =
-                            this._referencePicture.GetPixel(
-                                (int)x,
-                                (int)y);
+                    int minX = (int)this.PointA.X - extraMargin;
+                    int maxX = (int)this.PointB.X + extraMargin;
 
-                        pieceBitmap.SetPixel(
-                            Math.Abs((int)this.PointA.X - (int)x),
-                            Math.Abs((int)this.PointC.Y - (int)y),
-                            piecePixel);
+                    for (int x = minX; x < maxX; x++)
+                    {
+                        try
+                        {
+                            var piecePixel =
+                                this._referencePicture.GetPixel(x, y);
+
+                            #region Creating fragment image
+
+                            if (y > this.PointA.Y && y < this.PointB.Y)
+                            {
+                                if (x > this.PointA.X && x < this.PointB.X)
+                                {
+                                    pieceBitmap.SetPixel(
+                                        Math.Abs((int)this.PointA.X - x),
+                                        Math.Abs((int)this.PointC.Y - y),
+                                        piecePixel);
+                                }
+                            }
+
+                            #endregion
+
+                            // Learning pattern
+                            backgroundPattern.Learn(x, y, piecePixel);
+                        }
+                        catch (IndexOutOfRangeException)
+                        {
+                            continue;
+                        }
                     }
                 }
 
@@ -238,6 +267,9 @@ namespace smartSuite.smartSprite.Pictures{
 
                 // Saving piece bitmap
                 pieceBitmap.Save(this._takenPictureFullFileName, ImageFormat.Png);
+
+                // Making transparent background
+                backgroundPattern.DoTransparentBorder(this);
 
                 // Saving Unity metadata
                 string metaFileName = this._takenPictureFullFileName + ".meta";
@@ -294,7 +326,7 @@ namespace smartSuite.smartSprite.Pictures{
         }
 
         /// <summary>
-        /// Covers the area of piece with a supposedly existent part behind of image
+        /// Covers the area of piece with a suppose existent part behind of image
         /// </summary>
         /// <param name="other">Normally, this parameter is the parent</param>
         private void OverCover(Piece other)
@@ -404,6 +436,14 @@ namespace smartSuite.smartSprite.Pictures{
         }
 
         #endregion
+
+        /// <summary>
+        /// Gets the taken picture file name, correspondent to piece
+        /// </summary>
+        public string GetTakenPictureFullFileName()
+        {
+            return this._takenPictureFullFileName;
+        }
 
         public override string ToString()
         {

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
@@ -12,6 +13,16 @@ namespace smartSuite.smartSprite.Pictures{
 	/// </summary>
     [Serializable]
 	public class Picture {
+
+        /// <summary>
+        /// Represents the width of picture
+        /// </summary>
+        private int _width;
+
+        /// <summary>
+        /// Represents whe height of picture
+        /// </summary>
+        private int _height;
 
         /// <summary>
         /// It´s a buffer of picture, where key it's a combination of x and y coordinates. 
@@ -81,6 +92,9 @@ namespace smartSuite.smartSprite.Pictures{
 
             using (var bitmap = new Bitmap(fullPath))
             {
+                this._height = bitmap.Height;
+                this._width = bitmap.Width;
+
                 this.LoadBuffer(bitmap);
             }
         }
@@ -157,6 +171,74 @@ namespace smartSuite.smartSprite.Pictures{
 
             Color pixel = this._buffer[key];
             return pixel;
+        }
+
+        /// <summary>
+        /// Replaces a pixel in the buffer
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="newColor" />		
+        public void ReplacePixel(int x, int y, Color newColor)
+        {
+            #region Entries validation
+
+            if (newColor == null)
+            {
+                throw new ArgumentNullException("newColor");
+            }
+            if (this._buffer == null || this._buffer.Count == 0)
+            {
+                throw new ArgumentNullException("Empty buffer!!!");
+            }
+
+            #endregion
+
+            var key = this.FormatKey(x, y);
+
+            if (!this._buffer.ContainsKey(key))
+            {
+                this._buffer.Add(key, newColor);
+            }
+            else
+            {
+                this._buffer[key] = newColor;
+            }
+        }
+
+        /// <summary>
+        /// Overwrites the picture
+        /// </summary>
+        public void Overwrite()
+        {
+            #region Entries validation
+
+            if (this._width <= 0)
+            {
+                throw new ArgumentOutOfRangeException("Width not setted");
+            }
+            if (this._height <= 0)
+            {
+                throw new ArgumentOutOfRangeException("Height not setted");
+            }
+
+            #endregion
+
+            using (var pieceBitmap = new Bitmap(this._width, this._height))
+            {
+                for (int y = 0; y < this._height; y++)
+                {
+                    for (int x = 0; x < this._width; x++)
+                    {
+                        var piecePixel = this.GetPixel(x, y);
+
+                        pieceBitmap.SetPixel(x, y, piecePixel);
+                    }
+                }
+
+                // Overwriting piece bitmap
+                pieceBitmap.Save(this._fullPath, ImageFormat.Png);
+            }
         }
 
         public void Dispose()

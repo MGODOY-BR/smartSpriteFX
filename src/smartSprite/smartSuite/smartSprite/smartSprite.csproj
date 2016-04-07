@@ -82,6 +82,9 @@
       <DependentUpon>PrincipalForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Utilities\TreeViewUtil.cs" />
+    <Compile Include="Pictures\ColorPattern\BackgroundPattern.cs" />
+    <Compile Include="Pictures\ColorPattern\ColorEqualityComparer.cs" />
+    <Compile Include="Pictures\ColorPattern\ColorFrequency.cs" />
     <Compile Include="Pictures\Group.cs" />
     <Compile Include="Pictures\Picture.cs" />
     <Compile Include="Pictures\Piece.cs" />
