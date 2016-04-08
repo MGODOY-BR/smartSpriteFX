@@ -209,7 +209,7 @@ namespace smartSuite.smartSprite.Pictures{
         /// <summary>
         /// Overwrites the picture
         /// </summary>
-        public void Overwrite()
+        public void Overwrite(Color transparentColor)
         {
             #region Entries validation
 
@@ -237,6 +237,7 @@ namespace smartSuite.smartSprite.Pictures{
                 }
 
                 // Overwriting piece bitmap
+                pieceBitmap.MakeTransparent(transparentColor);
                 pieceBitmap.Save(this._fullPath, ImageFormat.Png);
             }
         }

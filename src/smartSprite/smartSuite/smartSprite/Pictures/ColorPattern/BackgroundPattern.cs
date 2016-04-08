@@ -189,7 +189,7 @@ namespace smartSuite.smartSprite.Pictures.ColorPattern
                         // Checking if it is replacement color
                         if (replacementColorList.Contains(pixel, new ColorEqualityComparer()))
                         {
-                            pixel = Color.Transparent;
+                            pixel = replacementColorList[0];
                         }
                         // If it found a different color, considers an obstacle and ignore
                         else
@@ -208,7 +208,7 @@ namespace smartSuite.smartSprite.Pictures.ColorPattern
             }
 
             // Refreshing picture
-            takenPicture.Overwrite();
+            takenPicture.Overwrite(replacementColorList[0]);
         }
 
         /// <summary>
@@ -299,7 +299,12 @@ namespace smartSuite.smartSprite.Pictures.ColorPattern
 
             if (frequentlyColor == null)
             {
-                throw new ArgumentNullException("frequentlyColor");
+                // throw new ArgumentNullException("frequentlyColor");
+                frequentlyColor = new ColorFrequency
+                {
+                    Color = Color.Black,
+                    Frequency = 1
+                };
             }
 
             #endregion
