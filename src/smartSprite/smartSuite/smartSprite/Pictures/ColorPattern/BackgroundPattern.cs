@@ -21,6 +21,16 @@ namespace smartSuite.smartSprite.Pictures.ColorPattern
         private Dictionary<String, PixelInfo> _learntCache = new Dictionary<string, PixelInfo>();
 
         /// <summary>
+        /// A comparator for colors
+        /// </summary>
+        private ColorEqualityComparer _colorComparer = new ColorEqualityComparer();
+
+        /// <summary>
+        /// It´s a list of learnt colors
+        /// </summary>
+        private HashSet<Color> _learntColors = new HashSet<Color>();
+
+        /// <summary>
         /// It´s the point of left coordinate
         /// </summary>
         private Point _topLeft;
@@ -74,7 +84,14 @@ namespace smartSuite.smartSprite.Pictures.ColorPattern
                 Color = color
             };
 
+            // Updating the cash of pixels
             this._learntCache.Add(this.FormatKey(x, y), pixelInfo);
+
+            // Updating the cash of colors
+            if (!this._learntColors.Contains(color, this._colorComparer))
+            {
+                this._learntColors.Add(color);
+            }
 
             var refPoint = new Point(x, y);
 
@@ -175,16 +192,12 @@ namespace smartSuite.smartSprite.Pictures.ColorPattern
 
             #endregion
 
-            // Getting replacement colors
-            this._replacementColorList.AddRange(
-                this.GetReplacementColors(this._learntCache, this._topLeft, this._topRight, this._lowerLeft, this._lowerRight));
-
             // Getting the taken picture
             Picture takenPicture = new Picture(piece.GetTakenPictureFullFileName());
 
             // Getting the replacement colors
-            var replacementColorList =
-                this.GetReplacementColors(
+            var replacementColor =
+                this.GetReplacementColor(
                     this._learntCache,
                     piece.PointA,
                     piece.PointC,
@@ -202,12 +215,7 @@ namespace smartSuite.smartSprite.Pictures.ColorPattern
                         var pixel = takenPicture.GetPixel(x, y);
 
                         // Checking if it is replacement color
-                        if (replacementColorList.Contains(pixel, new ColorEqualityComparer()))
-                        {
-                            pixel = replacementColorList[0];
-                        }
-                        // If it found a different color, considers an obstacle and ignore
-                        else
+                        if (!this._colorComparer.Equals(replacementColor, pixel))
                         {
                             break;
                         }
@@ -223,27 +231,43 @@ namespace smartSuite.smartSprite.Pictures.ColorPattern
             }
 
             // Refreshing picture
-            takenPicture.Overwrite(replacementColorList[0]);
+            takenPicture.Overwrite(replacementColor);
         }
 
         /// <summary>
         /// Gets the replacement colors
         /// </summary>
         /// <returns></returns>
-        private List<Color> GetReplacementColors(Dictionary<String, PixelInfo> learntCache, Point topLeft, Point topRight, Point lowerLeft, Point lowerRight)
+        private Color GetReplacementColor(Dictionary<String, PixelInfo> learntCache, Point topLeft, Point topRight, Point lowerLeft, Point lowerRight)
         {
-            return new List<Color>
+            List<Color> invalidColorList = new List<Color>();
+            Color horizontalColor = Color.Transparent;
+            Color verticalColor = Color.Transparent;
+
+            int counter = 0;
+
+            while (
+                !this._colorComparer.Equals(horizontalColor, verticalColor) && 
+                counter < this._learntColors.Count)
             {
-                this.GetHorizontalReplacementColor(learntCache, topLeft, topRight),
-                this.GetVerticalReplacementColor(learntCache, lowerLeft, lowerRight)
-            };
+                horizontalColor = this.GetHorizontalReplacementColor(learntCache, topLeft, topRight, invalidColorList);
+                verticalColor = this.GetVerticalReplacementColor(learntCache, topLeft, topRight, invalidColorList);
+
+                invalidColorList.Add(horizontalColor);
+                invalidColorList.Add(verticalColor);
+
+                counter++;
+            }
+
+            return horizontalColor;
         }
 
         /// <summary>
         /// Gets a replacement color for horizontal coordinates
         /// </summary>
+        /// <param name="invalidColorList">It´s a list of colors to ignore</param>
         /// <returns></returns>
-        private Color GetHorizontalReplacementColor(Dictionary<String, PixelInfo> learntCache, Point topLeft, Point topRight)
+        private Color GetHorizontalReplacementColor(Dictionary<String, PixelInfo> learntCache, Point topLeft, Point topRight, List<Color> invalidColorList)
         {
             #region Entries validation
 
@@ -281,6 +305,17 @@ namespace smartSuite.smartSprite.Pictures.ColorPattern
 
                 var pixelInfo = learntCache[key];
 
+                #region Applying filter to avoid ignored colors
+
+                if (invalidColorList.Contains(pixelInfo.Color))
+                {
+                    continue;
+                }
+
+                #endregion
+
+                #region Counting
+
                 if (!patternList.ContainsKey(pixelInfo.Color))
                 {
                     patternList.Add(pixelInfo.Color, 1);
@@ -289,6 +324,8 @@ namespace smartSuite.smartSprite.Pictures.ColorPattern
                 {
                     patternList[pixelInfo.Color]++;
                 }
+
+                #endregion
 
                 if (frequentlyColor == null)
                 {
@@ -330,8 +367,9 @@ namespace smartSuite.smartSprite.Pictures.ColorPattern
         /// <summary>
         /// Gets a replacement color for vertical coordinates
         /// </summary>
+        /// <param name="invalidColorList">It´s a list of colors to ignore</param>
         /// <returns></returns>
-        private Color GetVerticalReplacementColor(Dictionary<String, PixelInfo> learntCache, Point lowerLeft, Point lowerRight)
+        private Color GetVerticalReplacementColor(Dictionary<String, PixelInfo> learntCache, Point lowerLeft, Point lowerRight, List<Color> invalidColorList)
         {
             #region Entries validation
 
@@ -369,6 +407,17 @@ namespace smartSuite.smartSprite.Pictures.ColorPattern
 
                 var pixelInfo = learntCache[key];
 
+                #region Applying filter to avoid ignored colors
+
+                if (invalidColorList.Contains(pixelInfo.Color))
+                {
+                    continue;
+                }
+
+                #endregion
+
+                #region Counting
+
                 if (!patternList.ContainsKey(pixelInfo.Color))
                 {
                     patternList.Add(pixelInfo.Color, 1);
@@ -377,6 +426,8 @@ namespace smartSuite.smartSprite.Pictures.ColorPattern
                 {
                     patternList[pixelInfo.Color]++;
                 }
+
+                #endregion
 
                 if (frequentlyColor == null)
                 {
