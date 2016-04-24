@@ -1,5 +1,6 @@
 
 using smartSprite.Templates;
+using smartSprite.Utilities;
 using smartSuite.smartSprite.Pictures.ColorPattern;
 using smartSuite.smartSprite.Pictures.PixelPatterns;
 using smartSuite.smartSprite.Unity;
@@ -11,6 +12,7 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 
 namespace smartSuite.smartSprite.Pictures{
     /// <summary>
@@ -216,7 +218,7 @@ namespace smartSuite.smartSprite.Pictures{
                     (int)(Math.Abs(this.PointB.Y - this.PointC.Y)), 
                     PixelFormat.Format32bppArgb))
             {
-                int extraMargin = 3;    // <-- Extra Margin allows to backgroundPattern learn about the parent image
+                int extraMargin = 10;    // <-- Extra Margin allows to backgroundPattern learn about the parent image
 
                 int minY = (int)this.PointA.Y - extraMargin;
                 int maxY = (int)this.PointB.Y + extraMargin;
@@ -233,29 +235,26 @@ namespace smartSuite.smartSprite.Pictures{
                             var piecePixel =
                                 this._referencePicture.GetPixel(x, y);
 
-                            #region Creating fragment image
-
-                            if (y > this.PointA.Y && y < this.PointB.Y)
+                            if ((y > this.PointA.Y && y < this.PointB.Y) && (x > this.PointA.X && x < this.PointB.X))
                             {
-                                if (x > this.PointA.X && x < this.PointB.X)
-                                {
-                                    pieceBitmap.SetPixel(
-                                        Math.Abs((int)this.PointA.X - x),
-                                        Math.Abs((int)this.PointC.Y - y),
-                                        piecePixel);
-                                }
+                                // Creating fragment image
+                                pieceBitmap.SetPixel(
+                                    Math.Abs((int)this.PointA.X - x),
+                                    Math.Abs((int)this.PointC.Y - y),
+                                    piecePixel);
                             }
-
-                            #endregion
-
-                            // Learning pattern
-                            backgroundPattern.Learn(x, y, piecePixel);
+                            else
+                            {
+                                // Learning pattern
+                                backgroundPattern.Learn(x, y, piecePixel);
+                            }
                         }
                         catch (IndexOutOfRangeException)
                         {
                             continue;
                         }
                     }
+                    StaminaUtil.GetRestSometimes();
                 }
 
                 // Getting the name of piece file
@@ -329,20 +328,20 @@ namespace smartSuite.smartSprite.Pictures{
         /// <summary>
         /// Covers the area of piece with a suppose existent part behind of image
         /// </summary>
-        /// <param name="other">Normally, this parameter is the parent</param>
-        private void OverCover(Piece other)
+        /// <param name="child">Normally, this parameter is the child</param>
+        private void OverCover(Piece child)
         {
             #region Entries validation
 
-            if (other == null)
+            if (child == null)
             {
-                throw new ArgumentNullException("other");
+                throw new ArgumentNullException("child");
             }
             if (String.IsNullOrEmpty(this._takenPictureFullFileName))
             {
                 throw new ArgumentNullException("this._takenPictureFullFileName");
             }
-            if (!this.Contains(other))
+            if (!this.Contains(child))
             {
                 return;
             }
@@ -354,41 +353,41 @@ namespace smartSuite.smartSprite.Pictures{
 
             // Creating the object to study the patterns
             PixelPattern pixelPattern = new PixelPattern();
-            
+
             // Loading the generated main piece
             using (Bitmap loadBitmap = new Bitmap(this._takenPictureFullFileName))
             {
                 overwrittenBitmap = new Bitmap(loadBitmap.Width, loadBitmap.Height);
 
+                int deltaX = (int)this.PointA.X;
+                int deltaY = (int)this.PointA.Y;
+
                 for (int y = 0; y < loadBitmap.Height; y++)
                 {
                     for (int x = 0; x < loadBitmap.Width; x++)
                     {
-                        int absoluteX = (int)this.PointA.X + x;
-                        int absoluteY = (int)this.PointA.Y + y;
+                        // Getting original color
+                        var color = loadBitmap.GetPixel(x, y);
+
+                        // Studing the original image
+                        pixelPattern.Learn(x, y, color);
 
                         // Covering the pixel
-                        if (absoluteX >= other.PointA.X && absoluteX <= other.PointB.X)
+                        if (x >= child.PointA.X - deltaX && x <= child.PointB.X - deltaX)
                         {
-                            if (absoluteY >= other.PointA.Y && absoluteY <= other.PointB.Y)
+                            if (y >= child.PointA.Y - deltaY && y <= child.PointB.Y - deltaY)
                             {
                                 overwrittenBitmap.SetPixel(
-                                    Math.Abs(x),
-                                    Math.Abs(y),
+                                    x,
+                                    y,
                                     pixelPattern.GetPattern(x, y));    // <-- Covering the gap
 
                                 continue;
                             }
                         }
 
-                        // Getting original color
-                        var color = loadBitmap.GetPixel(x, y);
-
-                        // Studing the original image
-                        pixelPattern.Learn(x, y, color);  
-
-                        // Copying the pixel
-                        overwrittenBitmap.SetPixel(x, y, loadBitmap.GetPixel(x, y));
+                        // Copying the original pixel
+                        overwrittenBitmap.SetPixel(x, y, color);
                     }
                 }
             }

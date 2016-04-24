@@ -104,6 +104,7 @@
     <Compile Include="Unity\IGameObject.cs" />
     <Compile Include="Unity\MetaSprite.cs" />
     <Compile Include="Utilities\MathUtil.cs" />
+    <Compile Include="Utilities\StaminaUtil.cs" />
     <EmbeddedResource Include="Forms\Controls\DraftControl.resx">
       <DependentUpon>DraftControl.cs</DependentUpon>
     </EmbeddedResource>

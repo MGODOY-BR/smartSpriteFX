@@ -1,4 +1,5 @@
 
+using smartSprite.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -6,6 +7,7 @@ using System.Drawing.Imaging;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
+using System.Threading;
 
 namespace smartSuite.smartSprite.Pictures{
 	/// <summary>
@@ -234,6 +236,8 @@ namespace smartSuite.smartSprite.Pictures{
 
                         pieceBitmap.SetPixel(x, y, piecePixel);
                     }
+
+                    StaminaUtil.GetRestSometimes();
                 }
 
                 // Overwriting piece bitmap

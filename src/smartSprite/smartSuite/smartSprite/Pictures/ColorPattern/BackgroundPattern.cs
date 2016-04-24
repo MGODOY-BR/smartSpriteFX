@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 
 namespace smartSuite.smartSprite.Pictures.ColorPattern
 {
@@ -52,6 +53,20 @@ namespace smartSuite.smartSprite.Pictures.ColorPattern
         /// <param name="color">It´s the color of pixel</param>
         public void Learn(int x, int y, Color color)
         {
+            #region Entries validation
+
+            if (
+                this._lowerLeft != null &&
+                this._lowerRight != null &&
+                this._topLeft != null &&
+                this._topRight != null)
+            {
+                // Stop learning, boarder are detected already
+                return;
+            }
+
+            #endregion
+
             PixelInfo pixelInfo = new PixelInfo()
             {
                 X = x,
@@ -387,7 +402,8 @@ namespace smartSuite.smartSprite.Pictures.ColorPattern
 
             if (frequentlyColor == null)
             {
-                throw new ArgumentNullException("frequentlyColor");
+                // throw new ArgumentNullException("frequentlyColor");
+                return Color.Transparent;
             }
 
             #endregion
