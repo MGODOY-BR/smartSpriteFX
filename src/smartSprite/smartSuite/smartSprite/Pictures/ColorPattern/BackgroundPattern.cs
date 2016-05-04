@@ -65,16 +65,6 @@ namespace smartSuite.smartSprite.Pictures.ColorPattern
         {
             #region Entries validation
 
-            if (
-                this._lowerLeft != null &&
-                this._lowerRight != null &&
-                this._topLeft != null &&
-                this._topRight != null)
-            {
-                // Stop learning, boarder are detected already
-                return;
-            }
-
             #endregion
 
             PixelInfo pixelInfo = new PixelInfo()
@@ -100,11 +90,11 @@ namespace smartSuite.smartSprite.Pictures.ColorPattern
             if (this._topLeft == null)
             {
                 this._topLeft = refPoint;
-                this._lowerLeft = refPoint;
             }
             else
             {
-                if (this._topLeft.CompareTo(refPoint) == 1)
+                if (refPoint.X <= this._topLeft.X &&
+                    refPoint.Y <= this._topLeft.Y)
                 {
                     this._topLeft = refPoint;
                 }
@@ -117,11 +107,12 @@ namespace smartSuite.smartSprite.Pictures.ColorPattern
             if (this._topRight == null)
             {
                 this._topRight = refPoint;
-                this._lowerRight = refPoint;
             }
             else
             {
-                if (this._topRight.CompareTo(refPoint) == -1)
+                if (refPoint.Y == this._topLeft.Y &&
+                    refPoint.X >= this._topRight.X &&
+                    refPoint.X >= this._topLeft.X)
                 {
                     this._topRight = refPoint;
                 }
@@ -137,7 +128,8 @@ namespace smartSuite.smartSprite.Pictures.ColorPattern
             }
             else
             {
-                if (this._lowerLeft.CompareTo(refPoint) == -1)
+                if (refPoint.Y >= this._topLeft.Y &&
+                    refPoint.X == this._topLeft.X)
                 {
                     this._lowerLeft = refPoint;
                 }
@@ -153,7 +145,9 @@ namespace smartSuite.smartSprite.Pictures.ColorPattern
             }
             else
             {
-                if (this._lowerRight.CompareTo(refPoint) == -1)
+                if (refPoint.Y == this._lowerLeft.Y &&
+                    refPoint.X >= this._lowerLeft.X &&
+                    refPoint.X >= this._lowerRight.X)
                 {
                     this._lowerRight = refPoint;
                 }
@@ -171,6 +165,44 @@ namespace smartSuite.smartSprite.Pictures.ColorPattern
         private string FormatKey(int x, int y)
         {
             return x + "_" + y;
+        }
+
+        /// <summary>
+        /// Gets the X component from a key gotten from learntCahce
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        private int GetFromKeyX(String key)
+        {
+            #region Entries validation
+
+            if (String.IsNullOrEmpty(key))
+            {
+                throw new ArgumentNullException("key");
+            }
+
+            #endregion
+
+            return int.Parse(key.Split('_')[0]);
+        }
+
+        /// <summary>
+        /// Gets the Y component from a key gotten from learntCahce
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        private int GetFromKeyY(String key)
+        {
+            #region Entries validation
+
+            if (String.IsNullOrEmpty(key))
+            {
+                throw new ArgumentNullException("key");
+            }
+
+            #endregion
+
+            return int.Parse(key.Split('_')[1]);
         }
 
         /// <summary>
@@ -238,7 +270,7 @@ namespace smartSuite.smartSprite.Pictures.ColorPattern
         /// Gets the replacement colors
         /// </summary>
         /// <returns></returns>
-        private Color GetReplacementColor(Dictionary<String, PixelInfo> learntCache, Point topLeft, Point topRight, Point lowerLeft, Point lowerRight)
+        private Color GetReplacementColor(Dictionary<String, PixelInfo> learntCache, Point topLeftPiece, Point topRightPiece, Point lowerLeftPiece, Point lowerRightPiece)
         {
             List<Color> invalidColorList = new List<Color>();
             Color horizontalColor = Color.Transparent;
@@ -250,8 +282,8 @@ namespace smartSuite.smartSprite.Pictures.ColorPattern
                 !this._colorComparer.Equals(horizontalColor, verticalColor) && 
                 counter < this._learntColors.Count)
             {
-                horizontalColor = this.GetHorizontalReplacementColor(learntCache, topLeft, topRight, invalidColorList);
-                verticalColor = this.GetVerticalReplacementColor(learntCache, topLeft, topRight, invalidColorList);
+                horizontalColor = this.GetHorizontalReplacementColor(learntCache, topLeftPiece, topRightPiece, invalidColorList);
+                verticalColor = this.GetVerticalReplacementColor(learntCache, topLeftPiece, topRightPiece, invalidColorList);
 
                 invalidColorList.Add(horizontalColor);
                 invalidColorList.Add(verticalColor);
@@ -267,7 +299,7 @@ namespace smartSuite.smartSprite.Pictures.ColorPattern
         /// </summary>
         /// <param name="invalidColorList">It´s a list of colors to ignore</param>
         /// <returns></returns>
-        private Color GetHorizontalReplacementColor(Dictionary<String, PixelInfo> learntCache, Point topLeft, Point topRight, List<Color> invalidColorList)
+        private Color GetHorizontalReplacementColor(Dictionary<String, PixelInfo> learntCache, Point topLeftPiece, Point topRightPiece, List<Color> invalidColorList)
         {
             #region Entries validation
 
@@ -275,13 +307,22 @@ namespace smartSuite.smartSprite.Pictures.ColorPattern
             {
                 throw new ArgumentNullException("learntCache");
             }
-            if (topLeft == null)
+            if (topLeftPiece == null)
             {
                 throw new ArgumentNullException("topLeft");
             }
-            if (topRight == null)
+            if (topRightPiece == null)
             {
                 throw new ArgumentNullException("topRight");
+            }
+
+            if (this._topLeft == null)
+            {
+                throw new ArgumentNullException("this._topLeft");
+            }
+            if (this._topRight == null)
+            {
+                throw new ArgumentNullException("this._topRight");
             }
 
             #endregion
@@ -290,9 +331,9 @@ namespace smartSuite.smartSprite.Pictures.ColorPattern
             ColorFrequency frequentlyColor = null;
 
             // Getting the horizontal pattern
-            for (int x = (int)topLeft.X; x < (int)topRight.X; x++)
+            for (int x = (int)this._topLeft.X; x < (int)this._topRight.X; x++)
             {
-                var key = this.FormatKey(x, (int)topLeft.Y);
+                var key = this.FormatKey(x, (int)this._topLeft.Y);
 
                 #region Entries validation
 
@@ -327,6 +368,8 @@ namespace smartSuite.smartSprite.Pictures.ColorPattern
 
                 #endregion
 
+                #region Frequency color algoritmn
+
                 if (frequentlyColor == null)
                 {
                     frequentlyColor = new ColorFrequency
@@ -345,6 +388,17 @@ namespace smartSuite.smartSprite.Pictures.ColorPattern
                         Frequency = patternList[pixelInfo.Color]
                     };
                 }
+
+                #endregion
+
+                #region Piece border validation
+
+                if (x + 1 >= topLeftPiece.X)
+                {
+                    break;
+                }
+
+                #endregion
             }
 
             #region Entries validation
@@ -369,7 +423,7 @@ namespace smartSuite.smartSprite.Pictures.ColorPattern
         /// </summary>
         /// <param name="invalidColorList">It´s a list of colors to ignore</param>
         /// <returns></returns>
-        private Color GetVerticalReplacementColor(Dictionary<String, PixelInfo> learntCache, Point lowerLeft, Point lowerRight, List<Color> invalidColorList)
+        private Color GetVerticalReplacementColor(Dictionary<String, PixelInfo> learntCache, Point lowerLeftPiece, Point lowerRightPiece, List<Color> invalidColorList)
         {
             #region Entries validation
 
@@ -377,13 +431,22 @@ namespace smartSuite.smartSprite.Pictures.ColorPattern
             {
                 throw new ArgumentNullException("learntCache");
             }
-            if (lowerLeft == null)
+            if (lowerLeftPiece == null)
             {
                 throw new ArgumentNullException("lowerLeft");
             }
-            if (lowerRight == null)
+            if (lowerRightPiece == null)
             {
                 throw new ArgumentNullException("lowerRight");
+            }
+
+            if (this._lowerLeft == null)
+            {
+                throw new ArgumentNullException("this._lowerLeft");
+            }
+            if (this._lowerRight == null)
+            {
+                throw new ArgumentNullException("this._lowerRight");
             }
 
             #endregion
@@ -392,9 +455,9 @@ namespace smartSuite.smartSprite.Pictures.ColorPattern
             ColorFrequency frequentlyColor = null;
 
             // Getting the horizontal pattern
-            for (int i = (int)lowerLeft.Y - 1; i < (int)lowerRight.Y + 1; i++)
+            for (int y = (int)this._topLeft.Y - 1; y < (int)this._lowerLeft.Y + 1; y++)
             {
-                var key = this.FormatKey((int)lowerLeft.X, i);
+                var key = this.FormatKey((int)this._lowerLeft.X, y);
 
                 #region Entries validation
 
@@ -429,6 +492,8 @@ namespace smartSuite.smartSprite.Pictures.ColorPattern
 
                 #endregion
 
+                #region Frequency color algoritmn
+
                 if (frequentlyColor == null)
                 {
                     frequentlyColor = new ColorFrequency
@@ -447,6 +512,17 @@ namespace smartSuite.smartSprite.Pictures.ColorPattern
                         Frequency = patternList[pixelInfo.Color]
                     };
                 }
+
+                #endregion
+                
+                #region Piece border validation
+
+                if (y + 1 >= lowerLeftPiece.Y)
+                {
+                    break;
+                }
+
+                #endregion
             }
 
             #region Entries validation
