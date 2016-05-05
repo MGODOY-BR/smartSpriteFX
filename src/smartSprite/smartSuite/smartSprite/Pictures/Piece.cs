@@ -218,7 +218,8 @@ namespace smartSuite.smartSprite.Pictures{
                     (int)(Math.Abs(this.PointB.Y - this.PointC.Y)), 
                     PixelFormat.Format32bppArgb))
             {
-                int extraMargin = 10;    // <-- Extra Margin allows to backgroundPattern learn about the parent image
+                // TODO: Necessary give to user the option to set the extra margin
+                int extraMargin = 5;    // <-- Extra Margin allows to backgroundPattern learn about the parent image
 
                 int minY = (int)this.PointA.Y - extraMargin;
                 int maxY = (int)this.PointB.Y + extraMargin;

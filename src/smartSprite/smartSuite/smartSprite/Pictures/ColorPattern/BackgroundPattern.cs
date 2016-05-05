@@ -278,9 +278,7 @@ namespace smartSuite.smartSprite.Pictures.ColorPattern
 
             int counter = 0;
 
-            while (
-                !this._colorComparer.Equals(horizontalColor, verticalColor) && 
-                counter < this._learntColors.Count)
+            while (counter < this._learntColors.Count)
             {
                 horizontalColor = this.GetHorizontalReplacementColor(learntCache, topLeftPiece, topRightPiece, invalidColorList);
                 verticalColor = this.GetVerticalReplacementColor(learntCache, topLeftPiece, topRightPiece, invalidColorList);
@@ -289,6 +287,15 @@ namespace smartSuite.smartSprite.Pictures.ColorPattern
                 invalidColorList.Add(verticalColor);
 
                 counter++;
+
+                #region New color validation
+
+                if (this._colorComparer.Equals(horizontalColor, verticalColor))
+                {
+                    break;
+                }
+
+                #endregion
             }
 
             return horizontalColor;
