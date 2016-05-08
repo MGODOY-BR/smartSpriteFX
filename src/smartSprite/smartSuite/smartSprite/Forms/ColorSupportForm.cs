@@ -24,6 +24,11 @@ namespace smartSprite.Forms
         private Picture _piecePicture;
 
         /// <summary>
+        /// It´s a piece which owns the image
+        /// </summary>
+        private Piece _piece;
+
+        /// <summary>
         /// It´s a selected color
         /// </summary>
         private Color _selectedColor;
@@ -33,6 +38,7 @@ namespace smartSprite.Forms
             InitializeComponent();
 
             this.pieceImageBox.MouseClick += PieceImageBox_MouseClick;
+            this.zoomFactor.ValueChanged += ZoomFactor_ValueChanged;
         }
 
         /// <summary>
@@ -67,6 +73,8 @@ namespace smartSprite.Forms
             this.pieceImageBox.Load(
                 piece.GetTakenPictureFullFileName());
 
+            this._piece = piece;
+
             this.ShowDialog();
 
             this._piecePicture.Dispose();
@@ -79,10 +87,25 @@ namespace smartSprite.Forms
         private void PieceImageBox_MouseClick(object sender, MouseEventArgs e)
         {
             var pixelInfo =
-                this._piecePicture.GetPixel(e.X, e.Y);
+                this._piecePicture.GetPixel(
+                    e.X / (int)zoomFactor.Value, 
+                    e.Y / (int)zoomFactor.Value);
 
             colorBox.BackColor = pixelInfo;
             this._selectedColor = pixelInfo;
+        }
+
+        private void ZoomFactor_ValueChanged(object sender, EventArgs e)
+        {
+            int currentZoomFactor = (int)zoomFactor.Value;
+
+            this.pieceImageBox.SizeMode = PictureBoxSizeMode.Zoom;
+
+            var width = Math.Abs(this._piece.PointC.X - this._piece.PointA.X);
+            var height = Math.Abs(this._piece.PointB.Y - this._piece.PointA.Y);
+
+            this.pieceImageBox.Width = (int)(width * currentZoomFactor);
+            this.pieceImageBox.Height = (int)(height * currentZoomFactor);
         }
 
         private void btnAccept_Click(object sender, EventArgs e)

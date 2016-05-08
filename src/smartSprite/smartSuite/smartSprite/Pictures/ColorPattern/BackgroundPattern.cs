@@ -324,7 +324,7 @@ namespace smartSuite.smartSprite.Pictures.ColorPattern
 
             #region Handling with undefined color
 
-            if (counter < this._learntColors.Count) // <-- This means that there no common color among the axis. We need help from user
+            if (counter == this._learntColors.Count) // <-- This means that there no common color among the axis. We need help from user
             {
                 horizontalColor =
                     askingForColorDelegate.AnswerMe(piece, invalidColorList);

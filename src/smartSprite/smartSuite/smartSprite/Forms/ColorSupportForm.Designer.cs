@@ -35,6 +35,8 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.pieceImageBox = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.zoomFactor = new System.Windows.Forms.NumericUpDown();
             this.btnAccept = new System.Windows.Forms.Button();
             this.colorBox = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -44,6 +46,7 @@
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pieceImageBox)).BeginInit();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.zoomFactor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.colorBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -120,6 +123,8 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.label2);
+            this.panel3.Controls.Add(this.zoomFactor);
             this.panel3.Controls.Add(this.btnAccept);
             this.panel3.Controls.Add(this.colorBox);
             this.panel3.Controls.Add(this.label1);
@@ -128,6 +133,37 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(111, 259);
             this.panel3.TabIndex = 1;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(26, 119);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(64, 13);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Zoom factor";
+            // 
+            // zoomFactor
+            // 
+            this.zoomFactor.Increment = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            this.zoomFactor.Location = new System.Drawing.Point(36, 135);
+            this.zoomFactor.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.zoomFactor.Name = "zoomFactor";
+            this.zoomFactor.Size = new System.Drawing.Size(40, 20);
+            this.zoomFactor.TabIndex = 3;
+            this.zoomFactor.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // btnAccept
             // 
@@ -163,9 +199,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(424, 316);
+            this.ControlBox = false;
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "ColorSupportForm";
-            this.Text = "I need you help!";
+            this.Text = "I need your help!";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -175,6 +212,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pieceImageBox)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.zoomFactor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.colorBox)).EndInit();
             this.ResumeLayout(false);
 
@@ -192,5 +230,7 @@
         private System.Windows.Forms.PictureBox colorBox;
         private System.Windows.Forms.Button btnAccept;
         private System.Windows.Forms.PictureBox pieceImageBox;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.NumericUpDown zoomFactor;
     }
 }
