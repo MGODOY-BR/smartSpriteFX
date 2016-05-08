@@ -46,7 +46,8 @@ namespace smartSuite.smartSprite.Pictures.ColorPattern{
 		/// Does the transparent border
 		/// </summary>
 		/// <param name="piece">It´s a piece to deal.</param>
-		public void DoTransparentBorder(Piece piece) {
+		/// <param name="askingForColorDelegate">An instance used to support the algorithm after an indefinition of a color.</param>
+		public void DoTransparentBorder(Piece piece, IAskingForColorDelegate askingForColorDelegate) {
 			// TODO implement here
 		}
 

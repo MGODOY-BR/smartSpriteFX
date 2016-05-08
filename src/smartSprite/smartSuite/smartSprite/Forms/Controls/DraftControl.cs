@@ -14,6 +14,9 @@ using smartSprite.Properties;
 
 namespace smartSprite.Forms.Controls
 {
+    /// <summary>
+    /// Represents a board to work with draft to define pieces
+    /// </summary>
     public partial class DraftControl : UserControl
     {
         #region Attributes

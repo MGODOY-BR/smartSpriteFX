@@ -42,16 +42,14 @@ namespace smartSuite.smartSprite.Pictures{
 		/// </summary>
 		/// <param name="x"></param>
 		/// <param name="y"></param>
-		/// <param name="newColor" />		
-		public void ReplacePixel(int x, int y, Color newColor)
-		{
+		/// <param name="newColor">		public void ReplacePixel(int x, int y, Color newColor) {</param>
 			// TODO implement here
 		}
 
 		/// <summary>
 		/// Overwrites the picture
 		/// </summary>
-		public void Overwrite() {
+		/// <param name="transparentColor">		public void Overwrite(Color transparentColor) {</param>
 			// TODO implement here
 		}
 

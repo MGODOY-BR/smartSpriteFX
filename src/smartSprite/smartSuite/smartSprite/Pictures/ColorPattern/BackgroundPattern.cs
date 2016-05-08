@@ -209,7 +209,8 @@ namespace smartSuite.smartSprite.Pictures.ColorPattern
         /// Does the transparent border
         /// </summary>
         /// <param name="piece">It´s a piece to deal.</param>
-        public void DoTransparentBorder(Piece piece)
+        /// <param name="askingForColorDelegate">An instance used to support the algorithm after an indefinition of a color.</param>
+        public void DoTransparentBorder(Piece piece, IAskingForColorDelegate askingForColorDelegate)
         {
             #region Entries validation
 
@@ -234,7 +235,9 @@ namespace smartSuite.smartSprite.Pictures.ColorPattern
                     piece.PointA,
                     piece.PointC,
                     piece.PointD,
-                    piece.PointB);
+                    piece.PointB,
+                    piece,
+                    askingForColorDelegate);
 
             for (int y = (int)piece.PointA.Y; y < piece.PointB.Y; y++)
             {
@@ -270,8 +273,29 @@ namespace smartSuite.smartSprite.Pictures.ColorPattern
         /// Gets the replacement colors
         /// </summary>
         /// <returns></returns>
-        private Color GetReplacementColor(Dictionary<String, PixelInfo> learntCache, Point topLeftPiece, Point topRightPiece, Point lowerLeftPiece, Point lowerRightPiece)
+        private Color GetReplacementColor(
+            Dictionary<String, PixelInfo> learntCache, 
+            Point topLeftPiece, 
+            Point topRightPiece, 
+            Point lowerLeftPiece, 
+            Point lowerRightPiece,
+            Piece piece,
+            IAskingForColorDelegate askingForColorDelegate
+            )
         {
+            #region Entries validation
+
+            if (askingForColorDelegate == null)
+            {
+                throw new ArgumentNullException("askingForColorDelegate");
+            }
+            if (piece == null)
+            {
+                throw new ArgumentNullException("piece");
+            }
+
+            #endregion
+
             List<Color> invalidColorList = new List<Color>();
             Color horizontalColor = Color.Transparent;
             Color verticalColor = Color.Transparent;
@@ -297,6 +321,16 @@ namespace smartSuite.smartSprite.Pictures.ColorPattern
 
                 #endregion
             }
+
+            #region Handling with undefined color
+
+            if (counter < this._learntColors.Count) // <-- This means that there no common color among the axis. We need help from user
+            {
+                horizontalColor =
+                    askingForColorDelegate.AnswerMe(piece, invalidColorList);
+            }
+
+            #endregion
 
             return horizontalColor;
         }

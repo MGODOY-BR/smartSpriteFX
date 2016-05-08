@@ -1,4 +1,5 @@
 
+using smartSprite.Forms;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -188,6 +189,5 @@ namespace smartSuite.smartSprite.Pictures{
                 return (PieceCollection)formatter.Deserialize(stream);
             }
         }
-
     }
 }

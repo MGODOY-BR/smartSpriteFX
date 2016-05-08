@@ -1,4 +1,5 @@
 
+using smartSprite.Forms.Utilities;
 using smartSprite.Templates;
 using smartSprite.Utilities;
 using smartSuite.smartSprite.Pictures.ColorPattern;
@@ -26,10 +27,10 @@ namespace smartSuite.smartSprite.Pictures{
         /// </summary>
         private String _takenPictureFullFileName;
 
-		/// <summary>
-		/// It´s the name of piece of picture
-		/// </summary>
-		public String Name
+        /// <summary>
+        /// It´s the name of piece of picture
+        /// </summary>
+        public String Name
         {
             get;
             set;
@@ -81,13 +82,10 @@ namespace smartSuite.smartSprite.Pictures{
             set;
         }
 
-		/// <summary>
-		/// Creates  instance of an object
-		/// </summary>
-		/// <param name="picture"></param>
-		/// <param name="pointA"></param>
-		/// <param name="pointB"></param>
-		public Piece(Picture picture, Point pointA, Point pointB)
+        /// <summary>
+        /// Creates  instance of an object
+        /// </summary>
+        public Piece(Picture picture, Point pointA, Point pointB)
         {
             #region Entries validation
 
@@ -111,7 +109,7 @@ namespace smartSuite.smartSprite.Pictures{
             this.PointB = pointB;
             this.PointC = new Point(pointB.X, pointA.Y);
             this.PointD = new Point(pointA.X, pointB.Y);
-		}
+        }
 
         /// <summary>
         /// Corrects points based on main points
@@ -218,7 +216,6 @@ namespace smartSuite.smartSprite.Pictures{
                     (int)(Math.Abs(this.PointB.Y - this.PointC.Y)), 
                     PixelFormat.Format32bppArgb))
             {
-                // TODO: Necessary give to user the option to set the extra margin
                 int extraMargin = 5;    // <-- Extra Margin allows to backgroundPattern learn about the parent image
 
                 int minY = (int)this.PointA.Y - extraMargin;
@@ -270,7 +267,9 @@ namespace smartSuite.smartSprite.Pictures{
                 pieceBitmap.Save(this._takenPictureFullFileName, ImageFormat.Png);
 
                 // Making transparent background
-                backgroundPattern.DoTransparentBorder(this);
+                backgroundPattern.DoTransparentBorder(
+                    this, 
+                    this.OnAskingForBackgroundColorDelegate());
 
                 // Saving Unity metadata
                 string metaFileName = this._takenPictureFullFileName + ".meta";
@@ -290,6 +289,15 @@ namespace smartSuite.smartSprite.Pictures{
                 // Covering the parent
                 this.Parent.OverCover(this);
             }
+        }
+
+        /// <summary>
+        /// Returns a delegate for asking color for background
+        /// </summary>
+        /// <returns></returns>
+        private IAskingForColorDelegate OnAskingForBackgroundColorDelegate()
+        {
+            return AskingForColorDelegateFactory.GetInstanceForBackgroundColor();
         }
 
         /// <summary>
