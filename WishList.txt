@@ -2,6 +2,9 @@ smartSprite
 -------------
 Handles sprite for Unity
 
+TODO: Necessary improve the background of doubts and certainess
+TODO: Including BMP and possible turn it to default when application opens 
+
 Functions
 	- texture2sprite
 		- Function
