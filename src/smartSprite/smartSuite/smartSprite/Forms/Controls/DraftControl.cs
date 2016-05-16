@@ -274,7 +274,7 @@ namespace smartSprite.Forms.Controls
 
                 Piece newPiece =
                     new Piece(
-                        new Picture(this.imgDraft.ImageLocation),
+                        Picture.GetInstance(this.imgDraft.ImageLocation),
                         newHook.GetOlderHuckFromPair().Point,
                         newHook.GetNewerHuckFromPair().Point);
 
@@ -316,6 +316,7 @@ namespace smartSprite.Forms.Controls
             finally
             {
                 this.ParentForm.Cursor = Cursors.Default;
+                Picture.ClearCache();
             }
         }
 
@@ -356,7 +357,7 @@ namespace smartSprite.Forms.Controls
             #endregion
 
             this.imgDraft.Load(draftPicture);
-            this._pieces = new PieceCollection(new Picture(draftPicture));
+            this._pieces = new PieceCollection(Picture.GetInstance(draftPicture));
             this._hookSet.Clear();
             this._lastHook = null;
             this._lastSettings = null;
@@ -420,11 +421,18 @@ namespace smartSprite.Forms.Controls
 
             #endregion
 
-            this.LoadDraftPicture(
-                pieces.ReferencePicture.FullPath);
+            try
+            {
+                this.LoadDraftPicture(
+                    pieces.ReferencePicture.FullPath);
 
-            this._pieces = pieces;
-            this.RebuildHookSet(this._pieces);
+                this._pieces = pieces;
+                this.RebuildHookSet(this._pieces);
+            }
+            finally
+            {
+                Picture.ClearCache();
+            }
         }
 
         /// <summary>

@@ -68,7 +68,7 @@ namespace smartSprite.Forms
             #endregion
 
             this._piecePicture =
-                new Picture(piece.GetTakenPictureFullFileName());
+               Picture.GetInstance(piece.GetTakenPictureFullFileName());
 
             this.pieceImageBox.Load(
                 piece.GetTakenPictureFullFileName());

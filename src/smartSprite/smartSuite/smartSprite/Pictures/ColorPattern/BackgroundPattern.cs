@@ -226,7 +226,7 @@ namespace smartSuite.smartSprite.Pictures.ColorPattern
             #endregion
 
             // Getting the taken picture
-            Picture takenPicture = new Picture(piece.GetTakenPictureFullFileName());
+            Picture takenPicture = Picture.GetInstance(piece.GetTakenPictureFullFileName());
 
             // Getting the replacement colors
             var replacementColor =
@@ -297,8 +297,17 @@ namespace smartSuite.smartSprite.Pictures.ColorPattern
             #endregion
 
             List<Color> invalidColorList = new List<Color>();
-            Color horizontalColor = Color.Transparent;
-            Color verticalColor = Color.Transparent;
+            ColorFrequency horizontalColor = new ColorFrequency
+            {
+                Color = Color.Transparent,
+                Frequency = 0
+            };
+
+            ColorFrequency verticalColor = new ColorFrequency
+            {
+                Color = Color.Transparent,
+                Frequency = 0
+            };
 
             int counter = 0;
 
@@ -307,16 +316,19 @@ namespace smartSuite.smartSprite.Pictures.ColorPattern
                 horizontalColor = this.GetHorizontalReplacementColor(learntCache, topLeftPiece, topRightPiece, invalidColorList);
                 verticalColor = this.GetVerticalReplacementColor(learntCache, topLeftPiece, topRightPiece, invalidColorList);
 
-                invalidColorList.Add(horizontalColor);
-                invalidColorList.Add(verticalColor);
+                invalidColorList.Add(horizontalColor.Color);
+                invalidColorList.Add(verticalColor.Color);
 
                 counter++;
 
                 #region New color validation
 
-                if (this._colorComparer.Equals(horizontalColor, verticalColor))
+                if (horizontalColor.GetPercentage() > 50 && verticalColor.GetPercentage() > 50)
                 {
-                    break;
+                    if (this._colorComparer.Equals(horizontalColor.Color, verticalColor.Color))
+                    {
+                        break;
+                    }
                 }
 
                 #endregion
@@ -327,13 +339,13 @@ namespace smartSuite.smartSprite.Pictures.ColorPattern
             // TODO: It necessary to improve this condiction to avoid bad interpretation of background mistakes
             if (counter == this._learntColors.Count) // <-- This means that there no common color among the axis. We need help from user
             {
-                horizontalColor =
+                return
                     askingForColorDelegate.AnswerMe(piece, invalidColorList);
             }
 
             #endregion
 
-            return horizontalColor;
+            return horizontalColor.Color;
         }
 
         /// <summary>
@@ -341,7 +353,7 @@ namespace smartSuite.smartSprite.Pictures.ColorPattern
         /// </summary>
         /// <param name="invalidColorList">It´s a list of colors to ignore</param>
         /// <returns></returns>
-        private Color GetHorizontalReplacementColor(Dictionary<String, PixelInfo> learntCache, Point topLeftPiece, Point topRightPiece, List<Color> invalidColorList)
+        private ColorFrequency GetHorizontalReplacementColor(Dictionary<String, PixelInfo> learntCache, Point topLeftPiece, Point topRightPiece, List<Color> invalidColorList)
         {
             #region Entries validation
 
@@ -371,6 +383,7 @@ namespace smartSuite.smartSprite.Pictures.ColorPattern
 
             Dictionary<Color, int> patternList = new Dictionary<Color, int>();
             ColorFrequency frequentlyColor = null;
+            int counter = 0;
 
             // Getting the horizontal pattern
             for (int x = (int)this._topLeft.X; x < (int)this._topRight.X; x++)
@@ -407,6 +420,7 @@ namespace smartSuite.smartSprite.Pictures.ColorPattern
                 {
                     patternList[pixelInfo.Color]++;
                 }
+                counter++;
 
                 #endregion
 
@@ -447,17 +461,21 @@ namespace smartSuite.smartSprite.Pictures.ColorPattern
 
             if (frequentlyColor == null)
             {
-                // throw new ArgumentNullException("frequentlyColor");
                 frequentlyColor = new ColorFrequency
                 {
-                    Color = Color.Black,
-                    Frequency = 1
+                    Color = Color.Transparent,
+                    Frequency = 0,
+                    Length = counter
                 };
+            }
+            else
+            {
+                frequentlyColor.Length = counter;
             }
 
             #endregion
 
-            return frequentlyColor.Color;
+            return frequentlyColor;
         }
 
         /// <summary>
@@ -465,7 +483,7 @@ namespace smartSuite.smartSprite.Pictures.ColorPattern
         /// </summary>
         /// <param name="invalidColorList">It´s a list of colors to ignore</param>
         /// <returns></returns>
-        private Color GetVerticalReplacementColor(Dictionary<String, PixelInfo> learntCache, Point lowerLeftPiece, Point lowerRightPiece, List<Color> invalidColorList)
+        private ColorFrequency GetVerticalReplacementColor(Dictionary<String, PixelInfo> learntCache, Point lowerLeftPiece, Point lowerRightPiece, List<Color> invalidColorList)
         {
             #region Entries validation
 
@@ -495,6 +513,7 @@ namespace smartSuite.smartSprite.Pictures.ColorPattern
 
             Dictionary<Color, int> patternList = new Dictionary<Color, int>();
             ColorFrequency frequentlyColor = null;
+            int counter = 0;
 
             // Getting the horizontal pattern
             for (int y = (int)this._topLeft.Y - 1; y < (int)this._lowerLeft.Y + 1; y++)
@@ -531,6 +550,7 @@ namespace smartSuite.smartSprite.Pictures.ColorPattern
                 {
                     patternList[pixelInfo.Color]++;
                 }
+                counter++;
 
                 #endregion
 
@@ -571,13 +591,21 @@ namespace smartSuite.smartSprite.Pictures.ColorPattern
 
             if (frequentlyColor == null)
             {
-                // throw new ArgumentNullException("frequentlyColor");
-                return Color.Transparent;
+                return new ColorFrequency
+                {
+                    Color = Color.Transparent,
+                    Frequency = 0,
+                    Length = counter
+                };
+            }
+            else
+            {
+                frequentlyColor.Length = counter;
             }
 
             #endregion
 
-            return frequentlyColor.Color;
+            return frequentlyColor;
         }
 
     }

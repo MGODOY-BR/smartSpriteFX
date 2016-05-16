@@ -91,6 +91,7 @@
     <Compile Include="Pictures\ColorPattern\BackgroundPattern.cs" />
     <Compile Include="Pictures\ColorPattern\ColorEqualityComparer.cs" />
     <Compile Include="Pictures\ColorPattern\ColorFrequency.cs" />
+    <Compile Include="Pictures\ColorPattern\ColorInfo.cs" />
     <Compile Include="Pictures\ColorPattern\IAskingForColorDelegate.cs" />
     <Compile Include="Pictures\Group.cs" />
     <Compile Include="Pictures\Picture.cs" />

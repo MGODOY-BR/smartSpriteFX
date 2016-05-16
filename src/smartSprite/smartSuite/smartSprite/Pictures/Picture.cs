@@ -1,4 +1,5 @@
 
+using smartSprite.Pictures.ColorPattern;
 using smartSprite.Utilities;
 using System;
 using System.Collections.Generic;
@@ -27,15 +28,25 @@ namespace smartSuite.smartSprite.Pictures{
         private int _height;
 
         /// <summary>
+        /// It´s a cache of picture
+        /// </summary>
+        private static Dictionary<String, Picture> _pictureCache = new Dictionary<String, Picture>();
+
+        /// <summary>
         /// It´s a buffer of picture, where key it's a combination of x and y coordinates. 
         /// </summary>
         [NonSerialized]
-        private Dictionary<String, Color> _buffer;
+        private Dictionary<String, ColorInfo> _buffer;
+
+        /// <summary>
+        /// It´s a cache of color info
+        /// </summary>
+        private static Dictionary<int, ColorInfo> _colorInfoBuffer = new Dictionary<int, ColorInfo>();
 
         /// <summary>
         /// Creates an image
         /// </summary>
-        public Picture(String fullPath)
+        private Picture(String fullPath)
         {
             #region Entries validation
 
@@ -115,7 +126,7 @@ namespace smartSuite.smartSprite.Pictures{
 
             #endregion
 
-            lock (this)
+            lock (_colorInfoBuffer)
             {
                 #region Entries validation
 
@@ -126,15 +137,29 @@ namespace smartSuite.smartSprite.Pictures{
 
                 #endregion
 
-                this._buffer = new Dictionary<string, Color>();
+                this._buffer = new Dictionary<string, ColorInfo>();
 
                 for (int y = 0; y < image.Height; y++)
                 {
                     for (int x = 0; x < image.Width; x++)
                     {
+                        var colorInfo =
+                            new ColorInfo(
+                                image.GetPixel(x, y));
+
+                        var colorInfoKey = 
+                            colorInfo.GetInnerColor().ToArgb();
+
+                        // Save color info
+                        if (!_colorInfoBuffer.ContainsKey(colorInfoKey))
+                        {
+                            _colorInfoBuffer.Add(colorInfoKey, colorInfo);
+                        }
+
+                        // Save private picture
                         this._buffer.Add(
                             this.FormatKey(x, y),
-                            image.GetPixel(x, y));
+                            _colorInfoBuffer[colorInfoKey]);
                     }
                 }
             }
@@ -171,7 +196,7 @@ namespace smartSuite.smartSprite.Pictures{
                 throw new IndexOutOfRangeException("Coordinates out of range of picture.");
             }
 
-            Color pixel = this._buffer[key];
+            Color pixel = this._buffer[key].GetInnerColor();
             return pixel;
         }
 
@@ -198,13 +223,22 @@ namespace smartSuite.smartSprite.Pictures{
 
             var key = this.FormatKey(x, y);
 
-            if (!this._buffer.ContainsKey(key))
+            lock (_colorInfoBuffer)
             {
-                this._buffer.Add(key, newColor);
-            }
-            else
-            {
-                this._buffer[key] = newColor;
+                var colorInfo = new ColorInfo(newColor);
+                colorInfo = _colorInfoBuffer[colorInfo.GetInnerColor().ToArgb()];
+
+                var colorInfoKey =
+                    colorInfo.GetInnerColor().ToArgb();
+
+                if (!this._buffer.ContainsKey(key))
+                {
+                    this._buffer.Add(key, colorInfo);
+                }
+                else
+                {
+                    this._buffer[key] = colorInfo;
+                }
             }
         }
 
@@ -250,9 +284,83 @@ namespace smartSuite.smartSprite.Pictures{
         {
             if (this._buffer != null)
             {
-                this._buffer.Clear();
+                // this._buffer.Clear();
             }
         }
 
+        public override string ToString()
+        {
+            return this._fullPath;
+        }
+
+        public override bool Equals(object obj)
+        {
+            #region Entries validation
+
+            if (obj == null)
+            {
+                throw new ArgumentNullException("obj");
+            }
+            if (String.IsNullOrEmpty(this._fullPath))
+            {
+                throw new ArgumentNullException("this._fullPath");
+            }
+            
+            #endregion
+
+            return this._fullPath.Equals(obj.ToString());
+        }
+
+        public override int GetHashCode()
+        {
+            #region Entries validation
+
+            if (String.IsNullOrEmpty(this._fullPath))
+            {
+                throw new ArgumentNullException("this._fullPath");
+            }
+
+            #endregion
+
+            return this._fullPath.GetHashCode();
+        }
+
+        /// <summary>
+        /// Clears the picture cache
+        /// </summary>
+        public static void ClearCache()
+        {
+            lock (Picture._pictureCache)
+            {
+                Picture._pictureCache.Clear();
+            }
+        }
+
+        /// <summary>
+        /// Gets a instance of picture
+        /// </summary>
+        /// <param name="fullFileName"></param>
+        /// <returns></returns>
+        public static Picture GetInstance(String fullFileName)
+        {
+            #region Entries validation
+
+            if (String.IsNullOrEmpty(fullFileName))
+            {
+                throw new ArgumentNullException("fullFileName");
+            }
+
+            #endregion
+
+            lock (Picture._pictureCache)
+            {
+                if (!Picture._pictureCache.ContainsKey(fullFileName))
+                {
+                    Picture._pictureCache.Add(fullFileName, new Picture(fullFileName));
+                }
+
+                return Picture._pictureCache[fullFileName];
+            }
+        }
     }
 }
