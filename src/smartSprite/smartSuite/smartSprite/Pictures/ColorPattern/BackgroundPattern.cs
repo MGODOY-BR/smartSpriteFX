@@ -323,11 +323,18 @@ namespace smartSuite.smartSprite.Pictures.ColorPattern
 
                 #region New color validation
 
-                if (horizontalColor.GetPercentage() > 50 && verticalColor.GetPercentage() > 50)
+                if (horizontalColor.Color == Color.Transparent || verticalColor.Color == Color.Transparent)
                 {
-                    if (this._colorComparer.Equals(horizontalColor.Color, verticalColor.Color))
+                    return Color.Transparent;
+                }
+                else
+                {
+                    if (horizontalColor.GetPercentage() > 50 && verticalColor.GetPercentage() > 50)
                     {
-                        break;
+                        if (this._colorComparer.Equals(horizontalColor.Color, verticalColor.Color))
+                        {
+                            break;
+                        }
                     }
                 }
 
@@ -403,6 +410,15 @@ namespace smartSuite.smartSprite.Pictures.ColorPattern
 
                 #region Applying filter to avoid ignored colors
 
+                if (pixelInfo.Color == Color.Transparent)
+                {
+                    frequentlyColor = new ColorFrequency
+                    {
+                        Color = pixelInfo.Color,
+                        Frequency = 1
+                    };
+                    break;
+                }
                 if (invalidColorList.Contains(pixelInfo.Color))
                 {
                     continue;
@@ -533,6 +549,15 @@ namespace smartSuite.smartSprite.Pictures.ColorPattern
 
                 #region Applying filter to avoid ignored colors
 
+                if (pixelInfo.Color == Color.Transparent)
+                {
+                    frequentlyColor = new ColorFrequency
+                    {
+                        Color = pixelInfo.Color,
+                        Frequency = 1
+                    };
+                    break;
+                }
                 if (invalidColorList.Contains(pixelInfo.Color))
                 {
                     continue;
