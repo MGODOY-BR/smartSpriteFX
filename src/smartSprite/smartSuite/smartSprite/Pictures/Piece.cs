@@ -271,6 +271,8 @@ namespace smartSuite.smartSprite.Pictures{
                     this, 
                     this.OnAskingForBackgroundColorDelegate());
 
+                // HACK: This function was disabled due to the fact that it couldn't reachs the holped effect
+                /*
                 // Saving Unity metadata
                 string metaFileName = this._takenPictureFullFileName + ".meta";
                 using (StreamWriter stream = new StreamWriter(metaFileName))
@@ -281,7 +283,7 @@ namespace smartSuite.smartSprite.Pictures{
                             UnityMetaFile.GuidPlaceHolder,
                             Guid.NewGuid().ToString().Replace("-", "")));
                 }
-
+                */
             }
 
             if (this.Parent != null)

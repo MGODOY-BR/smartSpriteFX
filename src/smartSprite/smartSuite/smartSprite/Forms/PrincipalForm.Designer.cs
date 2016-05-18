@@ -371,24 +371,26 @@
             this.btnSaveState.Name = "btnSaveState";
             this.btnSaveState.Size = new System.Drawing.Size(99, 57);
             this.btnSaveState.TabIndex = 0;
-            this.btnSaveState.Text = "Save";
+            this.btnSaveState.Text = "Save Project";
             this.btnSaveState.UseVisualStyleBackColor = true;
             this.btnSaveState.Click += new System.EventHandler(this.btnSaveState_Click);
             // 
             // btnExportToUnity
             // 
+            this.btnExportToUnity.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.btnExportToUnity.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExportToUnity.Location = new System.Drawing.Point(108, 3);
             this.btnExportToUnity.Name = "btnExportToUnity";
             this.btnExportToUnity.Size = new System.Drawing.Size(100, 57);
             this.btnExportToUnity.TabIndex = 1;
-            this.btnExportToUnity.Text = "Send to Unity";
-            this.btnExportToUnity.UseVisualStyleBackColor = true;
+            this.btnExportToUnity.Text = "Save/Cut in Pieces";
+            this.btnExportToUnity.UseVisualStyleBackColor = false;
             this.btnExportToUnity.Click += new System.EventHandler(this.btnExportToUnity_Click);
             // 
             // openDraftFileDialog1
             // 
-            this.openDraftFileDialog1.Filter = "PNG Files|*.png|JPEG files|*.JPEG|JPG files|*.JPG|All files|*.*";
+            this.openDraftFileDialog1.Filter = "Bitmap Files|*.bmp|PNG Files|*.png|JPEG files|*.JPEG|JPG files|*.JPG|All files|*." +
+    "*";
             this.openDraftFileDialog1.SupportMultiDottedExtensions = true;
             this.openDraftFileDialog1.Title = "Open draft";
             // 
