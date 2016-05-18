@@ -81,6 +81,9 @@ namespace smartSuite.smartSprite.Pictures{
                 Directory.CreateDirectory(folder);
             }
 
+            /*
+             * HACK: This haven't the expected effect
+             * 
             // Generating group data
             string metaFileName = folder + ".meta";
             using (StreamWriter stream = new StreamWriter(metaFileName))
@@ -91,6 +94,7 @@ namespace smartSuite.smartSprite.Pictures{
                         UnityMetaFile.GuidPlaceHolder,
                         Guid.NewGuid().ToString().Replace("-", "")));
             }
+            */
 
             // Generating pieces
             foreach (var piece in this.RelatedPieceList)

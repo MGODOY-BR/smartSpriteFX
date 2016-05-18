@@ -569,18 +569,13 @@ namespace smartSprite.Forms
             var selectedPath = this.exportToUnityDialog1.SelectedPath;
             if (!string.IsNullOrWhiteSpace(selectedPath))
             {
-                try
-                {
-                    this.Cursor = Cursors.WaitCursor;
+                this.Cursor = Cursors.WaitCursor;
+                this.toolStripStatusLabel1.Text = "Please wait and stay on touch! I can need you to ask for some doubts.";
+                this.Enabled = false;
 
-                    this.draftControl1.SendToUnity(selectedPath);
-                }
-                finally
-                {
-                    this.Cursor = Cursors.Default;
-                }
-                Settings.Default.lastExportFolder = selectedPath;
-                Settings.Default.Save();
+                toolStripProgressBar1.Visible = true;
+                progressTime.Enabled = true;
+                this.savePiecesBackgroundWorker.RunWorkerAsync(selectedPath);
             }
         }
 
@@ -624,7 +619,7 @@ namespace smartSprite.Forms
 
             if (this.draftControl1.Pieces == null)
             {
-                throw new ArgumentNullException("this.draftControl1.Pieces");
+                throw new ArgumentNullException("You need open a draft picture and draw some pieces before use this function.");
             }
 
             #endregion
@@ -688,5 +683,37 @@ namespace smartSprite.Forms
             ((Piece)e.Node.Tag).Name = e.Label;
         }
 
+        private void savePiecesBackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            String selectedPath = e.Argument as String;
+            this.draftControl1.SendToUnity(selectedPath);
+            e.Result = selectedPath;
+       }
+
+        private void savePiecesBackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            progressTime.Enabled = false;
+            toolStripProgressBar1.Value = 0;
+            toolStripProgressBar1.Visible = false;
+            this.Enabled = true;
+            this.toolStripStatusLabel1.Text = "";
+            this.Cursor = Cursors.Default;
+            String selectedPath = e.Result as String;
+
+            Settings.Default.lastExportFolder = selectedPath;
+            Settings.Default.Save();
+
+            MessageBox.Show("Pieces has cut with success!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void progressTime_Tick(object sender, EventArgs e)
+        {
+            toolStripProgressBar1.Value++;
+
+            if (toolStripProgressBar1.Value == 100)
+            {
+                toolStripProgressBar1.Value = 0;
+            }
+        }
     }
 }

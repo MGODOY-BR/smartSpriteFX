@@ -89,6 +89,8 @@ namespace smartSuite.smartSprite.Pictures{
 
             // Cleaning files
             DirectoryInfo directoryInfo = new DirectoryInfo(folder);
+            /*
+            HACK: This can be very dangerous, for this reason I quit for now:
             foreach (var file in directoryInfo.GetFiles())
             {
                 file.Delete();
@@ -97,6 +99,7 @@ namespace smartSuite.smartSprite.Pictures{
             {
                 directory.Delete(true);
             }
+            */
 
             // It´s a list of group references
             Dictionary<String, Group> groupReferenceList = new Dictionary<string, Group>();

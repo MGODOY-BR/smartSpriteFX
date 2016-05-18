@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -45,7 +46,6 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.pnlImage = new System.Windows.Forms.Panel();
-            this.draftControl1 = new smartSprite.Forms.Controls.DraftControl();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolHookButton = new System.Windows.Forms.ToolStripButton();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
@@ -58,6 +58,11 @@
             this.openSmartSpriteFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.exportToUnityDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.savePiecesBackgroundWorker = new System.ComponentModel.BackgroundWorker();
+            this.draftControl1 = new smartSprite.Forms.Controls.DraftControl();
+            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
+            this.progressTime = new System.Windows.Forms.Timer(this.components);
             this.statusStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -82,7 +87,9 @@
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel1});
+            this.toolStripStatusLabel1,
+            this.toolStripStatusLabel2,
+            this.toolStripProgressBar1});
             this.statusStrip1.Location = new System.Drawing.Point(0, 494);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(1102, 22);
@@ -281,17 +288,6 @@
             this.pnlImage.Size = new System.Drawing.Size(687, 407);
             this.pnlImage.TabIndex = 0;
             // 
-            // draftControl1
-            // 
-            this.draftControl1.AutoSize = true;
-            this.draftControl1.LastSettings = null;
-            this.draftControl1.Location = new System.Drawing.Point(0, 0);
-            this.draftControl1.Name = "draftControl1";
-            this.draftControl1.ProjectFullPath = null;
-            this.draftControl1.Size = new System.Drawing.Size(742, 374);
-            this.draftControl1.TabIndex = 0;
-            this.draftControl1.Visible = false;
-            // 
             // toolStrip1
             // 
             this.toolStrip1.Dock = System.Windows.Forms.DockStyle.None;
@@ -366,6 +362,7 @@
             // 
             // btnSaveState
             // 
+            this.btnSaveState.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnSaveState.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSaveState.Location = new System.Drawing.Point(3, 3);
             this.btnSaveState.Name = "btnSaveState";
@@ -377,6 +374,7 @@
             // 
             // btnExportToUnity
             // 
+            this.btnExportToUnity.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnExportToUnity.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.btnExportToUnity.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExportToUnity.Location = new System.Drawing.Point(108, 3);
@@ -409,6 +407,37 @@
             // 
             this.exportToUnityDialog1.Description = "Select an Unity Asset folder";
             this.exportToUnityDialog1.RootFolder = System.Environment.SpecialFolder.MyDocuments;
+            // 
+            // savePiecesBackgroundWorker
+            // 
+            this.savePiecesBackgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.savePiecesBackgroundWorker_DoWork);
+            this.savePiecesBackgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.savePiecesBackgroundWorker_RunWorkerCompleted);
+            // 
+            // draftControl1
+            // 
+            this.draftControl1.AutoSize = true;
+            this.draftControl1.LastSettings = null;
+            this.draftControl1.Location = new System.Drawing.Point(0, 0);
+            this.draftControl1.Name = "draftControl1";
+            this.draftControl1.ProjectFullPath = null;
+            this.draftControl1.Size = new System.Drawing.Size(742, 374);
+            this.draftControl1.TabIndex = 0;
+            this.draftControl1.Visible = false;
+            // 
+            // toolStripStatusLabel2
+            // 
+            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(0, 17);
+            // 
+            // toolStripProgressBar1
+            // 
+            this.toolStripProgressBar1.Name = "toolStripProgressBar1";
+            this.toolStripProgressBar1.Size = new System.Drawing.Size(100, 16);
+            // 
+            // progressTime
+            // 
+            this.progressTime.Interval = 5;
+            this.progressTime.Tick += new System.EventHandler(this.progressTime_Tick);
             // 
             // PrincipalForm
             // 
@@ -483,5 +512,9 @@
         private System.Windows.Forms.Button btnExportToUnity;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.FolderBrowserDialog exportToUnityDialog1;
+        private System.ComponentModel.BackgroundWorker savePiecesBackgroundWorker;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
+        private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
+        private System.Windows.Forms.Timer progressTime;
     }
 }

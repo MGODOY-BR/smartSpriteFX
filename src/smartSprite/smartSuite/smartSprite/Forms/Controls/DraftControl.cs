@@ -399,12 +399,14 @@ namespace smartSprite.Forms.Controls
             {
                 throw new ArgumentNullException("folderDestination");
             }
+            if (this._pieces == null || this._pieces.PieceList == null || this._pieces.PieceList.Count == 0)
+            {
+                throw new ApplicationException("You need draw some piece before use this function.");
+            }
 
             #endregion
 
             this._pieces.Generate(folderDestination);
-
-            MessageBox.Show("Pieces has been sent with success!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         /// <summary>
