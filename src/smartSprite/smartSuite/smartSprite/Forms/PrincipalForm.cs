@@ -564,10 +564,10 @@ namespace smartSprite.Forms
         /// <param name="e"></param>
         private void btnExportToUnity_Click(object sender, EventArgs e)
         {
-            this.exportToUnityDialog1.ShowDialog();
+            var result = this.exportToUnityDialog1.ShowDialog();
 
             var selectedPath = this.exportToUnityDialog1.SelectedPath;
-            if (!string.IsNullOrWhiteSpace(selectedPath))
+            if (result == DialogResult.OK)
             {
                 this.Cursor = Cursors.WaitCursor;
                 this.toolStripStatusLabel1.Text = "Please wait and stay on touch! I can need you to ask for some doubts.";

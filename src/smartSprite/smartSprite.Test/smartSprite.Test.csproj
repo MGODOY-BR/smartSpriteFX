@@ -57,6 +57,10 @@
     <Compile Include="smartSuite\smartSprite\Pictures\PixelPatterns\PixelPatternTest.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\smartSprite.PictureEngine\smartSprite.PictureEngine.csproj">
+      <Project>{d374dac6-55c3-465a-b27f-ef762e7f0cc5}</Project>
+      <Name>smartSprite.PictureEngine</Name>
+    </ProjectReference>
     <ProjectReference Include="..\smartSuite\smartSprite\smartSprite.csproj">
       <Project>{4b45999c-8bb2-4134-ba02-653293bf42c3}</Project>
       <Name>smartSprite</Name>

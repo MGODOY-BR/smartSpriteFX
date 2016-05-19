@@ -1,7 +1,0 @@
-C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.Test\bin\Release\smartSprite.Test.dll
-C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.Test\bin\Release\smartSprite.Test.pdb
-C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.Test\bin\Release\smartSprite.exe
-C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.Test\bin\Release\smartSprite.pdb
-C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.Test\obj\Release\smartSprite.Test.csprojResolveAssemblyReference.cache
-C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.Test\obj\Release\smartSprite.Test.dll
-C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.Test\obj\Release\smartSprite.Test.pdb

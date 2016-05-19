@@ -48,12 +48,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Forms\ColorSupportForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\ColorSupportForm.Designer.cs">
-      <DependentUpon>ColorSupportForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\Controls\DraftControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -86,36 +80,9 @@
     <Compile Include="Forms\PrincipalForm.Designer.cs">
       <DependentUpon>PrincipalForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Utilities\AskingForColorDelegateFactory.cs" />
     <Compile Include="Forms\Utilities\TreeViewUtil.cs" />
-    <Compile Include="Pictures\ColorPattern\BackgroundPattern.cs" />
-    <Compile Include="Pictures\ColorPattern\ColorEqualityComparer.cs" />
-    <Compile Include="Pictures\ColorPattern\ColorFrequency.cs" />
-    <Compile Include="Pictures\ColorPattern\ColorInfo.cs" />
-    <Compile Include="Pictures\ColorPattern\IAskingForColorDelegate.cs" />
-    <Compile Include="Pictures\Group.cs" />
-    <Compile Include="Pictures\Picture.cs" />
-    <Compile Include="Pictures\Piece.cs" />
-    <Compile Include="Pictures\PieceCollection.cs" />
-    <Compile Include="Pictures\PixelPatterns\ConstantCoveringPattern.cs" />
-    <Compile Include="Pictures\PixelPatterns\ICoveringPattern.cs" />
-    <Compile Include="Pictures\PixelPatterns\PixelInfo.cs" />
-    <Compile Include="Pictures\PixelPatterns\PixelPattern.cs" />
-    <Compile Include="Pictures\Point.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Templates\UnityMetaFile.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>UnityMetaFile.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Unity\IGameObject.cs" />
-    <Compile Include="Unity\MetaSprite.cs" />
-    <Compile Include="Utilities\MathUtil.cs" />
-    <Compile Include="Utilities\StaminaUtil.cs" />
-    <EmbeddedResource Include="Forms\ColorSupportForm.resx">
-      <DependentUpon>ColorSupportForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Controls\DraftControl.resx">
       <DependentUpon>DraftControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -138,10 +105,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Templates\UnityMetaFile.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>UnityMetaFile.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -168,10 +131,10 @@
     <None Include="Resources\Hook.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\EmptyGameObject.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\2DGameObject.txt" />
+    <ProjectReference Include="..\..\smartSprite.PictureEngine\smartSprite.PictureEngine.csproj">
+      <Project>{D374DAC6-55C3-465A-B27F-EF762E7F0CC5}</Project>
+      <Name>smartSprite.PictureEngine</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
