@@ -356,6 +356,7 @@ namespace smartSprite.Forms.Controls
 
             #endregion
 
+            this.imgDraft.Controls.Clear();
             this.imgDraft.Load(draftPicture);
             this._pieces = new PieceCollection(Picture.GetInstance(draftPicture));
             this._hookSet.Clear();

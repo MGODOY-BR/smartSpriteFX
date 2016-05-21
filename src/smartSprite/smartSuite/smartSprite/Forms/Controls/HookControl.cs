@@ -377,7 +377,7 @@ namespace smartSprite.Forms.Controls
             if (this.Selected)
             {
                 this.OnBeenSelected();
-            }            
+            }
         }
 
         private void HuckControl_LostFocus(object sender, EventArgs e)
