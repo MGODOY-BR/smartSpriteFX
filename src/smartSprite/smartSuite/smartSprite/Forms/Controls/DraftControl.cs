@@ -475,6 +475,8 @@ namespace smartSprite.Forms.Controls
 
                 this.BindEvents(mainHook);
                 this.BindEvents(otherHook);
+
+                mainHook.Mark(false);
             }
         }
     }

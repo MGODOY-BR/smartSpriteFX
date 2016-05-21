@@ -1,6 +1,5 @@
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.PictureEngine\bin\Debug\smartSprite.PictureEngine.dll
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.PictureEngine\bin\Debug\smartSprite.PictureEngine.pdb
-C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.PictureEngine\obj\Debug\smartSprite.PictureEngine.csprojResolveAssemblyReference.cache
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.PictureEngine\obj\Debug\smartSprite.Forms.ColorSupportForm.resources
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.PictureEngine\obj\Debug\smartSprite.PictureEngine.Templates.UnityMetaFile.resources
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.PictureEngine\obj\Debug\smartSprite.PictureEngine.csproj.GenerateResource.Cache
