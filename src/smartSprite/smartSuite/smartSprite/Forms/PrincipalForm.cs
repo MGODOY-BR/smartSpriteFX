@@ -29,17 +29,6 @@ namespace smartSprite.Forms
             InitializeComponent();
         }
 
-        private void PrincipalForm_KeyDown(object sender, KeyEventArgs e)
-        {
-            switch (e.KeyCode)
-            {
-                case Keys.Escape:
-                    this.toolHookButton.Checked = false;
-                    this.RefreshHookCreationMode();
-                    break;
-            }
-        }
-
         /// <summary>
         /// Get a list informed, except for the smartMaps files.
         /// </summary>
@@ -215,8 +204,8 @@ namespace smartSprite.Forms
         /// <param name="openDialog"></param>
         private void DoOpenDraftDialog(TextBox draftTextBox, OpenFileDialog openDialog)
         {
-            openDialog.ShowDialog();
-            if(!String.IsNullOrEmpty(openDialog.FileName))
+            var result = openDialog.ShowDialog();
+            if(result == DialogResult.OK)
             {
                 draftTextBox.Text = openDialog.FileName;
 
@@ -233,8 +222,8 @@ namespace smartSprite.Forms
         /// <param name="openDialog"></param>
         private void DoOpenProjectDialog(TextBox sourceFolder, OpenFileDialog openDialog)
         {
-            openDialog.ShowDialog();
-            if(!String.IsNullOrEmpty(openDialog.FileName))
+            var result = openDialog.ShowDialog();
+            if(result == DialogResult.OK)
             {
                 sourceFolder.Text = openDialog.FileName;
 
@@ -278,6 +267,8 @@ namespace smartSprite.Forms
 
             this.treeView1.Nodes.Clear();
             this.treeView1.Nodes.AddRange(treeviewList.ToArray());
+
+            this.toolStrip1.Visible = true;
         }
 
         /// <summary>
@@ -289,6 +280,9 @@ namespace smartSprite.Forms
         /// </remarks>
         private void SetupScroll()
         {
+            this.hScrollBar1.Visible = true;
+            this.vScrollBar1.Visible = true;
+
             this.hScrollBar1.Maximum = Math.Abs(this.draftControl1.Width - this.pnlImage.Width);
             this.vScrollBar1.Maximum = Math.Abs(this.draftControl1.Height - this.pnlImage.Height);
 
@@ -297,6 +291,168 @@ namespace smartSprite.Forms
 
             this.hScrollBar1.SmallChange = 1;
             this.vScrollBar1.SmallChange = 1;
+        }
+
+        /// <summary>
+        /// Refresh the hook creation mode
+        /// </summary>
+        private void RefreshHookCreationMode()
+        {
+            this.draftControl1.LastSettings =
+                new smartSprite.Forms.Controls.ToolboxState.DraftSettings
+                {
+                    HookOn = toolHookButton.Checked
+                };
+        }
+
+        /// <summary>
+        /// Fills and refresh the treeNodeList with the piece assigned
+        /// </summary>
+        /// <param name="piece"></param>
+        private void FillTreeNodeList(Piece piece)
+        {
+            #region Entries validation
+
+            if (piece == null)
+            {
+                throw new ArgumentNullException("piece");
+            }
+
+            #endregion
+
+            this._dataTreeNodeList.Add(
+                TreeViewUtil.ConvertToTreeNode(piece));
+
+            this.RebuidTreeView();
+            this.treeView1.SelectedNode = this.GetTreeNode(piece, this.treeView1.Nodes);
+            this.treeView1.Focus();
+        }
+
+        /// <summary>
+        /// Gets the treeNode from node collection
+        /// </summary>
+        /// <param name="piece"></param>
+        /// <param name="nodes"></param>
+        /// <returns></returns>
+        private TreeNode GetTreeNode(Piece piece, TreeNodeCollection nodes)
+        {
+            #region Entries validation
+
+            if (piece == null)
+            {
+                throw new ArgumentNullException("piece");
+            }
+            if (nodes == null)
+            {
+                throw new ArgumentNullException("nodes");
+            }
+            if (nodes.Count == 0)
+            {
+                return null;
+            }
+
+            #endregion
+
+            foreach (TreeNode treeNode in nodes)
+            {
+                if (treeNode.Tag == piece)
+                {
+                    return treeNode;
+                }
+
+                if (treeNode.Nodes.Count > 0)
+                {
+                    var subTreeNode = this.GetTreeNode(piece, treeNode.Nodes);
+                    if (subTreeNode != null)
+                    {
+                        return subTreeNode;
+                    }
+                }
+            }
+
+            return null;
+        }
+
+        /// <summary>
+        /// Gets the treeNode from node collection
+        /// </summary>
+        /// <param name="piece"></param>
+        /// <param name="nodes"></param>
+        /// <returns></returns>
+        private TreeNode GetTreeNode(Piece piece, List<TreeNode> nodes)
+        {
+            #region Entries validation
+
+            if (piece == null)
+            {
+                throw new ArgumentNullException("piece");
+            }
+            if (nodes == null)
+            {
+                throw new ArgumentNullException("nodes");
+            }
+            if (nodes.Count == 0)
+            {
+                return null;
+            }
+
+            #endregion
+
+            foreach (TreeNode treeNode in nodes)
+            {
+                if (treeNode.Tag == piece)
+                {
+                    return treeNode;
+                }
+            }
+
+            return null;
+        }
+
+        /// <summary>
+        /// Applies the text in textBox to project
+        /// </summary>
+        private void ApplyProject()
+        {
+            #region Entries validation
+
+            if (String.IsNullOrEmpty(this.txtLoadSprite.Text.Trim()))
+            {
+                return;
+            }
+
+            #endregion
+
+            this._dataTreeNodeList.Clear();
+            // Loading the picture
+            this.draftControl1.LoadProject(this.txtLoadSprite.Text.Trim());
+            // Filling TreeNodeList
+            foreach (var pieceItem in this.draftControl1.Pieces.PieceList)
+            {
+                this.FillTreeNodeList(pieceItem);
+            }
+
+            this.RebuidTreeView();
+            this.SetupScroll();
+        }
+
+        /// <summary>
+        /// Applies the draft
+        /// </summary>
+        private void ApplyDraft()
+        {
+            #region Entries validation
+
+            if (String.IsNullOrEmpty(this.txtDraftPicture.Text.Trim()))
+            {
+                return;
+            }
+
+            #endregion
+
+            // Loading the picture
+            this.draftControl1.LoadDraftPicture(this.txtDraftPicture.Text.Trim());
+            this.SetupScroll();
         }
 
         #region Events
@@ -325,15 +481,117 @@ namespace smartSprite.Forms
             this.treeView1.AfterLabelEdit += TreeView1_AfterLabelEdit;
             this.KeyDown += PrincipalForm_KeyDown;
 
+            this.hScrollBar1.Visible = false;
+            this.vScrollBar1.Visible = false;
             this.hScrollBar1.Scroll += HScrollBar1_Scroll;
             this.vScrollBar1.Scroll += VScrollBar1_Scroll;
+
+            // Only enable this in debug progresses
+            //
+            // this.txtDraftPicture.Leave += txtDraftPicture_Leave;
+            // this.txtLoadSprite.Leave += txtLoadSprite_Leave;
 
             this.MouseWheel += PrincipalForm_MouseWheel;
         }
 
+        private void TreeView1_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.F2:
+                    treeView1.SelectedNode.BeginEdit();
+                    break;
+
+                case Keys.Enter:
+                    treeView1.SelectedNode.EndEdit(false);
+                    break;
+
+                case Keys.Escape:
+                    treeView1.SelectedNode.EndEdit(true);
+                    break;
+            }
+        }
+
+        private void TreeView1_AfterLabelEdit(object sender, NodeLabelEditEventArgs e)
+        {
+            #region Entries validation
+
+            if (String.IsNullOrEmpty(e.Label))
+            {
+                throw new ArgumentNullException("You must give a name to item");
+            }
+
+            #endregion
+
+            ((Piece)e.Node.Tag).Name = e.Label;
+        }
+
+        private void savePiecesBackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            String selectedPath = e.Argument as String;
+            this.draftControl1.SendToUnity(selectedPath);
+            e.Result = selectedPath;
+        }
+
+        private void savePiecesBackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            progressTime.Enabled = false;
+            toolStripProgressBar1.Value = 0;
+            toolStripProgressBar1.Visible = false;
+            this.Enabled = true;
+            this.toolStripStatusLabel1.Text = "";
+            this.Cursor = Cursors.Default;
+            String selectedPath = e.Result as String;
+
+            Settings.Default.lastExportFolder = selectedPath;
+            Settings.Default.Save();
+
+            MessageBox.Show("Pieces has cut with success!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void progressTime_Tick(object sender, EventArgs e)
+        {
+            toolStripProgressBar1.Value++;
+
+            if (toolStripProgressBar1.Value == 100)
+            {
+                toolStripProgressBar1.Value = 0;
+            }
+        }
+
+        private void btnDraftApply_Click(object sender, EventArgs e)
+        {
+            this.ApplyDraft();
+        }
+
+        private void btnProjectApply_Click(object sender, EventArgs e)
+        {
+            this.ApplyProject();
+        }
+
+        private void PrincipalForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Escape:
+                    this.toolHookButton.Checked = false;
+                    this.RefreshHookCreationMode();
+                    break;
+            }
+        }
+
         private void PrincipalForm_MouseWheel(object sender, MouseEventArgs e)
         {
-            int newValue = this.vScrollBar1.Value + (e.Delta * -1) / 120;
+            #region Entries validation
+
+            if (this.vScrollBar1.Visible == false)
+            {
+                return;
+            }
+
+            #endregion
+
+            int newValue = this.vScrollBar1.Value + (e.Delta * -1) / 20;
 
             if (newValue > this.vScrollBar1.Maximum)
             {
@@ -413,35 +671,12 @@ namespace smartSprite.Forms
         /// <param name="e"></param>
         private void txtDraftPicture_Leave(object sender, EventArgs e)
         {
-            #region Entries validation
-
-            if (String.IsNullOrEmpty(this.txtDraftPicture.Text.Trim()))
-            {
-                return;
-            }
-
-            #endregion
-
-            // Loading the picture
-            this.draftControl1.LoadDraftPicture(this.txtDraftPicture.Text.Trim());
-            this.SetupScroll();
+            ApplyDraft();
         }
 
         private void toolHookButton_Click(object sender, EventArgs e)
         {
             RefreshHookCreationMode();
-        }
-
-        /// <summary>
-        /// Refresh the hook creation mode
-        /// </summary>
-        private void RefreshHookCreationMode()
-        {
-            this.draftControl1.LastSettings =
-                new smartSprite.Forms.Controls.ToolboxState.DraftSettings
-                {
-                    HookOn = toolHookButton.Checked
-                };
         }
 
         /// <summary>
@@ -495,110 +730,6 @@ namespace smartSprite.Forms
         }
 
         /// <summary>
-        /// Fills and refresh the treeNodeList with the piece assigned
-        /// </summary>
-        /// <param name="piece"></param>
-        private void FillTreeNodeList(Piece piece)
-        {
-            #region Entries validation
-
-            if (piece == null)
-            {
-                throw new ArgumentNullException("piece");
-            }
-
-            #endregion
-
-            this._dataTreeNodeList.Add(
-                TreeViewUtil.ConvertToTreeNode(piece));
-
-            this.RebuidTreeView();
-            this.treeView1.SelectedNode = this.GetTreeNode(piece, this.treeView1.Nodes);
-            this.treeView1.Focus();
-        }
-
-        /// <summary>
-        /// Gets the treeNode from node collection
-        /// </summary>
-        /// <param name="piece"></param>
-        /// <param name="nodes"></param>
-        /// <returns></returns>
-        private TreeNode GetTreeNode(Piece piece, TreeNodeCollection nodes)
-        {
-            #region Entries validation
-
-            if (piece == null)
-            {
-                throw new ArgumentNullException("piece");
-            }
-            if (nodes == null)
-            {
-                throw new ArgumentNullException("nodes");
-            }
-            if (nodes.Count == 0)
-            {
-                return null;
-            }
-
-            #endregion
-
-            foreach (TreeNode treeNode in nodes)
-            {
-                if (treeNode.Tag == piece)
-                {
-                    return treeNode;
-                }
-                
-                if(treeNode.Nodes.Count > 0)
-                {
-                    var subTreeNode = this.GetTreeNode(piece, treeNode.Nodes);
-                    if (subTreeNode != null)
-                    {
-                        return subTreeNode;
-                    }
-                }
-            }
-
-            return null;
-        }
-
-        /// <summary>
-        /// Gets the treeNode from node collection
-        /// </summary>
-        /// <param name="piece"></param>
-        /// <param name="nodes"></param>
-        /// <returns></returns>
-        private TreeNode GetTreeNode(Piece piece, List<TreeNode> nodes)
-        {
-            #region Entries validation
-
-            if (piece == null)
-            {
-                throw new ArgumentNullException("piece");
-            }
-            if (nodes == null)
-            {
-                throw new ArgumentNullException("nodes");
-            }
-            if (nodes.Count == 0)
-            {
-                return null;
-            }
-
-            #endregion
-
-            foreach (TreeNode treeNode in nodes)
-            {
-                if (treeNode.Tag == piece)
-                {
-                    return treeNode;
-                }
-            }
-
-            return null;
-        }
-
-        /// <summary>
         /// Occurs when a node is selected
         /// </summary>
         /// <param name="sender"></param>
@@ -645,26 +776,7 @@ namespace smartSprite.Forms
         /// <param name="e"></param>
         private void txtLoadSprite_Leave(object sender, EventArgs e)
         {
-            #region Entries validation
-
-            if (String.IsNullOrEmpty(this.txtLoadSprite.Text.Trim()))
-            {
-                return;
-            }
-
-            #endregion
-
-            this._dataTreeNodeList.Clear();
-            // Loading the picture
-            this.draftControl1.LoadProject(this.txtLoadSprite.Text.Trim());
-            // Filling TreeNodeList
-            foreach (var pieceItem in this.draftControl1.Pieces.PieceList)
-            {
-                this.FillTreeNodeList(pieceItem);
-            }
-
-            this.RebuidTreeView();
-            this.SetupScroll();
+            ApplyProject();
         }
 
         /// <summary>
@@ -687,8 +799,8 @@ namespace smartSprite.Forms
 
             if (string.IsNullOrEmpty(projectFullPath))
             {
-                this.saveFileDialog1.ShowDialog();
-                if (!string.IsNullOrEmpty(this.saveFileDialog1.FileName))
+                var result = this.saveFileDialog1.ShowDialog();
+                if (result == DialogResult.OK)
                 {
                     projectFullPath = this.saveFileDialog1.FileName;
                 }
@@ -709,70 +821,5 @@ namespace smartSprite.Forms
         }
 
         #endregion
-
-        private void TreeView1_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
-        {
-            switch (e.KeyCode)
-            {
-                case Keys.F2:
-                    treeView1.SelectedNode.BeginEdit();
-                    break;
-
-                case Keys.Enter:
-                    treeView1.SelectedNode.EndEdit(false);
-                    break;
-
-                case Keys.Escape:
-                    treeView1.SelectedNode.EndEdit(true);
-                    break;
-            }
-        }
-
-        private void TreeView1_AfterLabelEdit(object sender, NodeLabelEditEventArgs e)
-        {
-            #region Entries validation
-
-            if (String.IsNullOrEmpty(e.Label))
-            {
-                throw new ArgumentNullException("You must give a name to item");
-            }
-
-            #endregion
-
-            ((Piece)e.Node.Tag).Name = e.Label;
-        }
-
-        private void savePiecesBackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
-        {
-            String selectedPath = e.Argument as String;
-            this.draftControl1.SendToUnity(selectedPath);
-            e.Result = selectedPath;
-       }
-
-        private void savePiecesBackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            progressTime.Enabled = false;
-            toolStripProgressBar1.Value = 0;
-            toolStripProgressBar1.Visible = false;
-            this.Enabled = true;
-            this.toolStripStatusLabel1.Text = "";
-            this.Cursor = Cursors.Default;
-            String selectedPath = e.Result as String;
-
-            Settings.Default.lastExportFolder = selectedPath;
-            Settings.Default.Save();
-
-            MessageBox.Show("Pieces has cut with success!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
-        private void progressTime_Tick(object sender, EventArgs e)
-        {
-            toolStripProgressBar1.Value++;
-
-            if (toolStripProgressBar1.Value == 100)
-            {
-                toolStripProgressBar1.Value = 0;
-            }
-        }
     }
 }
