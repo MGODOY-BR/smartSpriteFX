@@ -1,4 +1,5 @@
-﻿using smartSprite.Forms.Controls.TreeViewState;
+﻿using smartSprite.Forms.Controls;
+using smartSprite.Forms.Controls.TreeViewState;
 using smartSprite.Forms.Utilities;
 using smartSprite.Properties;
 using smartSuite.smartSprite.Pictures;
@@ -26,11 +27,6 @@ namespace smartSprite.Forms
         public PrincipalForm()
         {
             InitializeComponent();
-
-            this.draftControl1.PieceSetChanged += DraftControl1_PieceSetChanged;
-            this.treeView1.AfterSelect += TreeView1_AfterSelect;
-            this.treeView1.AfterLabelEdit += TreeView1_AfterLabelEdit;
-            this.KeyDown += PrincipalForm_KeyDown;
         }
 
         private void PrincipalForm_KeyDown(object sender, KeyEventArgs e)
@@ -226,6 +222,7 @@ namespace smartSprite.Forms
 
                 // Loading the picture
                 this.draftControl1.LoadDraftPicture(this.txtDraftPicture.Text.Trim());
+                this.SetupScroll();
             }
         }
 
@@ -251,6 +248,7 @@ namespace smartSprite.Forms
                 }
 
                 this.RebuidTreeView();
+                this.SetupScroll();
             }
         }
 
@@ -282,6 +280,25 @@ namespace smartSprite.Forms
             this.treeView1.Nodes.AddRange(treeviewList.ToArray());
         }
 
+        /// <summary>
+        /// Setup the scroll bars
+        /// </summary>
+        /// <remarks>
+        /// I prefered use this than AutoScroll because of the behavior of scroll towards form use.
+        /// We are using image when it focused, that is a different aproach.
+        /// </remarks>
+        private void SetupScroll()
+        {
+            this.hScrollBar1.Maximum = Math.Abs(this.draftControl1.Width - this.pnlImage.Width);
+            this.vScrollBar1.Maximum = Math.Abs(this.draftControl1.Height - this.pnlImage.Height);
+
+            this.hScrollBar1.LargeChange = this.hScrollBar1.Maximum / 4;
+            this.vScrollBar1.LargeChange = this.vScrollBar1.Maximum / 4;
+
+            this.hScrollBar1.SmallChange = 1;
+            this.vScrollBar1.SmallChange = 1;
+        }
+
         #region Events
 
         /// <summary>
@@ -294,10 +311,51 @@ namespace smartSprite.Forms
 
             this.LoadSettings();
 
+            this.draftControl1 = new DraftControl();
+            this.draftControl1.BorderStyle = BorderStyle.FixedSingle;
+            this.pnlImage.Controls.Add(this.draftControl1);
+
             this.FormClosed += PrincipalForm_FormClosed;
             this.draftControl1.GettingSettings += DraftControl1_GettingSettings;
             this.treeView1.LabelEdit = true;
             this.treeView1.PreviewKeyDown += TreeView1_PreviewKeyDown;
+
+            this.draftControl1.PieceSetChanged += DraftControl1_PieceSetChanged;
+            this.treeView1.AfterSelect += TreeView1_AfterSelect;
+            this.treeView1.AfterLabelEdit += TreeView1_AfterLabelEdit;
+            this.KeyDown += PrincipalForm_KeyDown;
+
+            this.hScrollBar1.Scroll += HScrollBar1_Scroll;
+            this.vScrollBar1.Scroll += VScrollBar1_Scroll;
+
+            this.MouseWheel += PrincipalForm_MouseWheel;
+        }
+
+        private void PrincipalForm_MouseWheel(object sender, MouseEventArgs e)
+        {
+            int newValue = this.vScrollBar1.Value + (e.Delta * -1) / 120;
+
+            if (newValue > this.vScrollBar1.Maximum)
+            {
+                newValue = this.vScrollBar1.Maximum;
+            }
+            else if (newValue < this.vScrollBar1.Minimum)
+            {
+                newValue = 0;
+            }
+
+            this.vScrollBar1.Value = newValue;
+            this.VScrollBar1_Scroll(this, new ScrollEventArgs(ScrollEventType.LargeDecrement, newValue));
+        }
+
+        private void VScrollBar1_Scroll(object sender, ScrollEventArgs e)
+        {
+            this.draftControl1.Top = e.NewValue * -1;
+        }
+
+        private void HScrollBar1_Scroll(object sender, ScrollEventArgs e)
+        {
+            this.draftControl1.Left = e.NewValue * -1;
         }
 
         /// <summary>
@@ -366,6 +424,7 @@ namespace smartSprite.Forms
 
             // Loading the picture
             this.draftControl1.LoadDraftPicture(this.txtDraftPicture.Text.Trim());
+            this.SetupScroll();
         }
 
         private void toolHookButton_Click(object sender, EventArgs e)
@@ -605,7 +664,7 @@ namespace smartSprite.Forms
             }
 
             this.RebuidTreeView();
-
+            this.SetupScroll();
         }
 
         /// <summary>

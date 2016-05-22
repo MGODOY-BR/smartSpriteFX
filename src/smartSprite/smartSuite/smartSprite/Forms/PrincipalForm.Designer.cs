@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblVersion = new System.Windows.Forms.Label();
@@ -59,10 +61,9 @@
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.exportToUnityDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.savePiecesBackgroundWorker = new System.ComponentModel.BackgroundWorker();
-            this.draftControl1 = new smartSprite.Forms.Controls.DraftControl();
-            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
             this.progressTime = new System.Windows.Forms.Timer(this.components);
+            this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
+            this.hScrollBar1 = new System.Windows.Forms.HScrollBar();
             this.statusStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -100,6 +101,16 @@
             // 
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
             this.toolStripStatusLabel1.Size = new System.Drawing.Size(0, 17);
+            // 
+            // toolStripStatusLabel2
+            // 
+            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(0, 17);
+            // 
+            // toolStripProgressBar1
+            // 
+            this.toolStripProgressBar1.Name = "toolStripProgressBar1";
+            this.toolStripProgressBar1.Size = new System.Drawing.Size(100, 16);
             // 
             // tableLayoutPanel1
             // 
@@ -278,10 +289,10 @@
             // 
             // pnlImage
             // 
-            this.pnlImage.AutoScroll = true;
             this.pnlImage.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.pnlImage.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pnlImage.Controls.Add(this.draftControl1);
+            this.pnlImage.Controls.Add(this.hScrollBar1);
+            this.pnlImage.Controls.Add(this.vScrollBar1);
             this.pnlImage.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlImage.Location = new System.Drawing.Point(0, 0);
             this.pnlImage.Name = "pnlImage";
@@ -413,31 +424,26 @@
             this.savePiecesBackgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.savePiecesBackgroundWorker_DoWork);
             this.savePiecesBackgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.savePiecesBackgroundWorker_RunWorkerCompleted);
             // 
-            // draftControl1
-            // 
-            this.draftControl1.AutoSize = true;
-            this.draftControl1.LastSettings = null;
-            this.draftControl1.Location = new System.Drawing.Point(0, 0);
-            this.draftControl1.Name = "draftControl1";
-            this.draftControl1.ProjectFullPath = null;
-            this.draftControl1.Size = new System.Drawing.Size(742, 374);
-            this.draftControl1.TabIndex = 0;
-            this.draftControl1.Visible = false;
-            // 
-            // toolStripStatusLabel2
-            // 
-            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            this.toolStripStatusLabel2.Size = new System.Drawing.Size(0, 17);
-            // 
-            // toolStripProgressBar1
-            // 
-            this.toolStripProgressBar1.Name = "toolStripProgressBar1";
-            this.toolStripProgressBar1.Size = new System.Drawing.Size(100, 16);
-            // 
             // progressTime
             // 
             this.progressTime.Interval = 5;
             this.progressTime.Tick += new System.EventHandler(this.progressTime_Tick);
+            // 
+            // vScrollBar1
+            // 
+            this.vScrollBar1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.vScrollBar1.Location = new System.Drawing.Point(666, 0);
+            this.vScrollBar1.Name = "vScrollBar1";
+            this.vScrollBar1.Size = new System.Drawing.Size(17, 403);
+            this.vScrollBar1.TabIndex = 0;
+            // 
+            // hScrollBar1
+            // 
+            this.hScrollBar1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.hScrollBar1.Location = new System.Drawing.Point(0, 386);
+            this.hScrollBar1.Name = "hScrollBar1";
+            this.hScrollBar1.Size = new System.Drawing.Size(666, 17);
+            this.hScrollBar1.TabIndex = 1;
             // 
             // PrincipalForm
             // 
@@ -469,7 +475,6 @@
             this.toolStripContainer1.ResumeLayout(false);
             this.toolStripContainer1.PerformLayout();
             this.pnlImage.ResumeLayout(false);
-            this.pnlImage.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
@@ -516,5 +521,7 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
         private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
         private System.Windows.Forms.Timer progressTime;
+        private System.Windows.Forms.HScrollBar hScrollBar1;
+        private System.Windows.Forms.VScrollBar vScrollBar1;
     }
 }
