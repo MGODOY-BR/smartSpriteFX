@@ -269,6 +269,7 @@ namespace smartSprite.Forms
             this.treeView1.Nodes.AddRange(treeviewList.ToArray());
 
             this.toolStrip1.Visible = true;
+            tableLayoutPieceBlock.Visible = true;
         }
 
         /// <summary>

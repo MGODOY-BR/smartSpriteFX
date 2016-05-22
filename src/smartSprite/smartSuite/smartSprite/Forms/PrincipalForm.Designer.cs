@@ -36,9 +36,11 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblVersion = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.pnlSourceFolder = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnProjectApply = new System.Windows.Forms.Button();
             this.btnOpenResumeWork = new System.Windows.Forms.Button();
             this.txtLoadSprite = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -51,7 +53,8 @@
             this.hScrollBar1 = new System.Windows.Forms.HScrollBar();
             this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.toolHookButton = new System.Windows.Forms.ToolStripButton();
+            this.tableLayoutPieceBlock = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
@@ -64,12 +67,10 @@
             this.savePiecesBackgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.progressTime = new System.Windows.Forms.Timer(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.toolHookButton = new System.Windows.Forms.ToolStripButton();
-            this.btnProjectApply = new System.Windows.Forms.Button();
             this.statusStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
             this.pnlSourceFolder.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -83,9 +84,8 @@
             this.toolStripContainer1.SuspendLayout();
             this.pnlImage.SuspendLayout();
             this.toolStrip1.SuspendLayout();
-            this.tableLayoutPanel3.SuspendLayout();
+            this.tableLayoutPieceBlock.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // statusStrip1
@@ -150,6 +150,16 @@
             this.lblVersion.TabIndex = 2;
             this.lblVersion.Text = "Indefined";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::smartSprite.Properties.Resources.logo;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 16);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(494, 28);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 2;
@@ -188,6 +198,17 @@
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Resume work...";
+            // 
+            // btnProjectApply
+            // 
+            this.btnProjectApply.Image = global::smartSprite.Properties.Resources.arrow;
+            this.btnProjectApply.Location = new System.Drawing.Point(128, 18);
+            this.btnProjectApply.Name = "btnProjectApply";
+            this.btnProjectApply.Size = new System.Drawing.Size(38, 23);
+            this.btnProjectApply.TabIndex = 5;
+            this.toolTip1.SetToolTip(this.btnProjectApply, "Click here to start if yourself fullfilled the file name below");
+            this.btnProjectApply.UseVisualStyleBackColor = true;
+            this.btnProjectApply.Click += new System.EventHandler(this.btnProjectApply_Click);
             // 
             // btnOpenResumeWork
             // 
@@ -271,7 +292,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.BackColor = System.Drawing.SystemColors.WindowFrame;
-            this.splitContainer1.Panel2.Controls.Add(this.tableLayoutPanel3);
+            this.splitContainer1.Panel2.Controls.Add(this.tableLayoutPieceBlock);
             this.splitContainer1.Size = new System.Drawing.Size(912, 432);
             this.splitContainer1.SplitterDistance = 687;
             this.splitContainer1.SplitterWidth = 8;
@@ -283,7 +304,7 @@
             // toolStripContainer1.ContentPanel
             // 
             this.toolStripContainer1.ContentPanel.Controls.Add(this.pnlImage);
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(687, 407);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(687, 432);
             this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolStripContainer1.Location = new System.Drawing.Point(0, 0);
             this.toolStripContainer1.Name = "toolStripContainer1";
@@ -304,13 +325,13 @@
             this.pnlImage.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlImage.Location = new System.Drawing.Point(0, 0);
             this.pnlImage.Name = "pnlImage";
-            this.pnlImage.Size = new System.Drawing.Size(687, 407);
+            this.pnlImage.Size = new System.Drawing.Size(687, 432);
             this.pnlImage.TabIndex = 0;
             // 
             // hScrollBar1
             // 
             this.hScrollBar1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.hScrollBar1.Location = new System.Drawing.Point(0, 386);
+            this.hScrollBar1.Location = new System.Drawing.Point(0, 411);
             this.hScrollBar1.Name = "hScrollBar1";
             this.hScrollBar1.Size = new System.Drawing.Size(666, 17);
             this.hScrollBar1.TabIndex = 1;
@@ -320,7 +341,7 @@
             this.vScrollBar1.Dock = System.Windows.Forms.DockStyle.Right;
             this.vScrollBar1.Location = new System.Drawing.Point(666, 0);
             this.vScrollBar1.Name = "vScrollBar1";
-            this.vScrollBar1.Size = new System.Drawing.Size(17, 403);
+            this.vScrollBar1.Size = new System.Drawing.Size(17, 428);
             this.vScrollBar1.TabIndex = 0;
             // 
             // toolStrip1
@@ -330,27 +351,39 @@
             this.toolHookButton});
             this.toolStrip1.Location = new System.Drawing.Point(3, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(66, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(35, 25);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Visible = false;
             // 
-            // tableLayoutPanel3
+            // toolHookButton
             // 
-            this.tableLayoutPanel3.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.tableLayoutPanel3.ColumnCount = 1;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Controls.Add(this.label1, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.treeView1, 0, 1);
-            this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel4, 0, 2);
-            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 3;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.260726F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 92.73927F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 68F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(217, 432);
-            this.tableLayoutPanel3.TabIndex = 1;
+            this.toolHookButton.CheckOnClick = true;
+            this.toolHookButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolHookButton.Image = global::smartSprite.Properties.Resources.Hook;
+            this.toolHookButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolHookButton.Name = "toolHookButton";
+            this.toolHookButton.Size = new System.Drawing.Size(23, 22);
+            this.toolHookButton.ToolTipText = "Hook";
+            this.toolHookButton.Click += new System.EventHandler(this.toolHookButton_Click);
+            // 
+            // tableLayoutPieceBlock
+            // 
+            this.tableLayoutPieceBlock.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.tableLayoutPieceBlock.ColumnCount = 1;
+            this.tableLayoutPieceBlock.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPieceBlock.Controls.Add(this.label1, 0, 0);
+            this.tableLayoutPieceBlock.Controls.Add(this.treeView1, 0, 1);
+            this.tableLayoutPieceBlock.Controls.Add(this.tableLayoutPanel4, 0, 2);
+            this.tableLayoutPieceBlock.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPieceBlock.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPieceBlock.Name = "tableLayoutPieceBlock";
+            this.tableLayoutPieceBlock.RowCount = 3;
+            this.tableLayoutPieceBlock.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.260726F));
+            this.tableLayoutPieceBlock.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 92.73927F));
+            this.tableLayoutPieceBlock.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 68F));
+            this.tableLayoutPieceBlock.Size = new System.Drawing.Size(217, 432);
+            this.tableLayoutPieceBlock.TabIndex = 1;
+            this.tableLayoutPieceBlock.Visible = false;
             // 
             // label1
             // 
@@ -395,6 +428,7 @@
             this.btnSaveState.Size = new System.Drawing.Size(99, 57);
             this.btnSaveState.TabIndex = 0;
             this.btnSaveState.Text = "Save Project";
+            this.toolTip1.SetToolTip(this.btnSaveState, "Click to save your work");
             this.btnSaveState.UseVisualStyleBackColor = true;
             this.btnSaveState.Click += new System.EventHandler(this.btnSaveState_Click);
             // 
@@ -408,6 +442,7 @@
             this.btnExportToUnity.Size = new System.Drawing.Size(100, 57);
             this.btnExportToUnity.TabIndex = 1;
             this.btnExportToUnity.Text = "Save/Cut in Pieces";
+            this.toolTip1.SetToolTip(this.btnExportToUnity, "Click to procced to cut the pieces and use them in Unity");
             this.btnExportToUnity.UseVisualStyleBackColor = false;
             this.btnExportToUnity.Click += new System.EventHandler(this.btnExportToUnity_Click);
             // 
@@ -431,7 +466,7 @@
             // 
             // exportToUnityDialog1
             // 
-            this.exportToUnityDialog1.Description = "Select an Unity Asset folder";
+            this.exportToUnityDialog1.Description = "Select an piece folder";
             this.exportToUnityDialog1.RootFolder = System.Environment.SpecialFolder.MyDocuments;
             // 
             // savePiecesBackgroundWorker
@@ -443,38 +478,6 @@
             // 
             this.progressTime.Interval = 5;
             this.progressTime.Tick += new System.EventHandler(this.progressTime_Tick);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::smartSprite.Properties.Resources.logo;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 16);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(494, 28);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
-            // toolHookButton
-            // 
-            this.toolHookButton.CheckOnClick = true;
-            this.toolHookButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolHookButton.Image = global::smartSprite.Properties.Resources.Hook;
-            this.toolHookButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolHookButton.Name = "toolHookButton";
-            this.toolHookButton.Size = new System.Drawing.Size(23, 22);
-            this.toolHookButton.ToolTipText = "Hook";
-            this.toolHookButton.Click += new System.EventHandler(this.toolHookButton_Click);
-            // 
-            // btnProjectApply
-            // 
-            this.btnProjectApply.Image = global::smartSprite.Properties.Resources.arrow;
-            this.btnProjectApply.Location = new System.Drawing.Point(128, 18);
-            this.btnProjectApply.Name = "btnProjectApply";
-            this.btnProjectApply.Size = new System.Drawing.Size(38, 23);
-            this.btnProjectApply.TabIndex = 5;
-            this.toolTip1.SetToolTip(this.btnProjectApply, "Click here to start if yourself fullfilled the file name below");
-            this.btnProjectApply.UseVisualStyleBackColor = true;
-            this.btnProjectApply.Click += new System.EventHandler(this.btnProjectApply_Click);
             // 
             // PrincipalForm
             // 
@@ -489,6 +492,7 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.pnlSourceFolder.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
@@ -507,10 +511,9 @@
             this.pnlImage.ResumeLayout(false);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
-            this.tableLayoutPanel3.ResumeLayout(false);
-            this.tableLayoutPanel3.PerformLayout();
+            this.tableLayoutPieceBlock.ResumeLayout(false);
+            this.tableLayoutPieceBlock.PerformLayout();
             this.tableLayoutPanel4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -540,7 +543,7 @@
         private Controls.DraftControl draftControl1;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton toolHookButton;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPieceBlock;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TreeView treeView1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;

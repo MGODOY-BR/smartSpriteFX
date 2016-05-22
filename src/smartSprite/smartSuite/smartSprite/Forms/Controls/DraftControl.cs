@@ -389,7 +389,8 @@ namespace smartSprite.Forms.Controls
         }
 
         /// <summary>
-        /// Send pieces to Unity
+        /// Send pieces to 
+        /// 
         /// </summary>
         /// <param name="folderDestination"></param>
         public void SendToUnity(string folderDestination)
