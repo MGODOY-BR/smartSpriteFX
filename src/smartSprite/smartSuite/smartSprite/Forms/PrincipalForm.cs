@@ -212,6 +212,7 @@ namespace smartSprite.Forms
                 // Loading the picture
                 this.draftControl1.LoadDraftPicture(this.txtDraftPicture.Text.Trim());
                 this.SetupScroll();
+                this.ShowControls();
             }
         }
 
@@ -267,7 +268,14 @@ namespace smartSprite.Forms
 
             this.treeView1.Nodes.Clear();
             this.treeView1.Nodes.AddRange(treeviewList.ToArray());
+            this.ShowControls();
+        }
 
+        /// <summary>
+        /// Show main controls
+        /// </summary>
+        private void ShowControls()
+        {
             this.toolStrip1.Visible = true;
             tableLayoutPieceBlock.Visible = true;
         }
@@ -519,7 +527,7 @@ namespace smartSprite.Forms
 
             if (String.IsNullOrEmpty(e.Label))
             {
-                throw new ArgumentNullException("You must give a name to item");
+                return;
             }
 
             #endregion
@@ -755,6 +763,10 @@ namespace smartSprite.Forms
         /// <param name="e"></param>
         private void btnExportToUnity_Click(object sender, EventArgs e)
         {
+            if (!String.IsNullOrEmpty(this.txtLoadSprite.Text))
+            {
+                this.exportToUnityDialog1.SelectedPath = Path.GetDirectoryName(this.txtLoadSprite.Text);
+            }
             var result = this.exportToUnityDialog1.ShowDialog();
 
             var selectedPath = this.exportToUnityDialog1.SelectedPath;
@@ -796,7 +808,7 @@ namespace smartSprite.Forms
 
             #endregion
 
-            var projectFullPath = this.draftControl1.ProjectFullPath;
+            var projectFullPath = this.txtLoadSprite.Text;
 
             if (string.IsNullOrEmpty(projectFullPath))
             {

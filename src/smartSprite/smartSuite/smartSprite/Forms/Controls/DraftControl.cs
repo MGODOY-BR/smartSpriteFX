@@ -272,11 +272,28 @@ namespace smartSprite.Forms.Controls
                 this._hookSet.Add(newHook.Pair);
                 this._lastHook = null;
 
+                var hook1 = newHook.GetOlderHuckFromPair();
+                var hook2 = newHook.GetNewerHuckFromPair();
+
+                smartSuite.smartSprite.Pictures.Point point1;
+                smartSuite.smartSprite.Pictures.Point point2;
+
+                if (hook1.Point.CompareTo(hook2.Point) == -1)
+                {
+                    point1 = hook1.Point;
+                    point2 = hook2.Point;
+                }
+                else
+                {
+                    point1 = hook2.Point;
+                    point2 = hook1.Point;
+                }
+
                 Piece newPiece =
                     new Piece(
                         Picture.GetInstance(this.imgDraft.ImageLocation),
-                        newHook.GetOlderHuckFromPair().Point,
-                        newHook.GetNewerHuckFromPair().Point);
+                        point1,
+                        point2);
 
                 newPiece.Name = "Sprite2DObject " + (this._pieceSet.Count + 1).ToString();
 
