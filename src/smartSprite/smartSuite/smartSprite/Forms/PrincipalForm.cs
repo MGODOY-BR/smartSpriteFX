@@ -445,6 +445,7 @@ namespace smartSprite.Forms
 
             this.RebuidTreeView();
             this.SetupScroll();
+            this.ShowControls();
             this.txtDraftPicture.Text = "";
         }
 
@@ -465,6 +466,7 @@ namespace smartSprite.Forms
             // Loading the picture
             this.draftControl1.LoadDraftPicture(this.txtDraftPicture.Text.Trim());
             this.SetupScroll();
+            this.ShowControls();
             this.txtLoadSprite.Text = "";
         }
 
