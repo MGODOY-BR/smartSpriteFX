@@ -213,6 +213,7 @@ namespace smartSprite.Forms
                 this.draftControl1.LoadDraftPicture(this.txtDraftPicture.Text.Trim());
                 this.SetupScroll();
                 this.ShowControls();
+                this.txtLoadSprite.Text = "";
             }
         }
 
@@ -239,6 +240,7 @@ namespace smartSprite.Forms
 
                 this.RebuidTreeView();
                 this.SetupScroll();
+                this.txtDraftPicture.Text = "";
             }
         }
 
@@ -443,6 +445,7 @@ namespace smartSprite.Forms
 
             this.RebuidTreeView();
             this.SetupScroll();
+            this.txtDraftPicture.Text = "";
         }
 
         /// <summary>
@@ -462,6 +465,7 @@ namespace smartSprite.Forms
             // Loading the picture
             this.draftControl1.LoadDraftPicture(this.txtDraftPicture.Text.Trim());
             this.SetupScroll();
+            this.txtLoadSprite.Text = "";
         }
 
         #region Events
