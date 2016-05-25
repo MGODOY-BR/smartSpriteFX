@@ -212,8 +212,9 @@ namespace smartSprite.Forms
                 // Loading the picture
                 this.draftControl1.LoadDraftPicture(this.txtDraftPicture.Text.Trim());
                 this.SetupScroll();
-                this.ShowControls();
+                this._dataTreeNodeList.Clear();
                 this.txtLoadSprite.Text = "";
+                this.RebuidTreeView();
             }
         }
 
@@ -254,6 +255,8 @@ namespace smartSprite.Forms
 
             if (this._dataTreeNodeList.Count == 0)
             {
+                this.treeView1.Nodes.Clear();
+                this.ShowControls();
                 return;
             }
 
@@ -466,7 +469,7 @@ namespace smartSprite.Forms
             // Loading the picture
             this.draftControl1.LoadDraftPicture(this.txtDraftPicture.Text.Trim());
             this.SetupScroll();
-            this.ShowControls();
+            this.RebuidTreeView();
             this.txtLoadSprite.Text = "";
         }
 
