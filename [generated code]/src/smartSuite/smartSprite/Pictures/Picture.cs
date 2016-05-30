@@ -260,8 +260,6 @@ namespace smartSuite.smartSprite.Pictures{
 
             #endregion
 
-            ColorEqualityComparer colorComparer = new ColorEqualityComparer();
-
             using (var pieceBitmap = new Bitmap(this._width, this._height, PixelFormat.Format32bppArgb))
             {
                 for (int y = 0; y < this._height; y++)
@@ -270,15 +268,10 @@ namespace smartSuite.smartSprite.Pictures{
                     {
                         var piecePixel = this.GetPixel(x, y);
 
-                        if (colorComparer.LooksLike(piecePixel, transparentColor))
-                        {
-                            piecePixel = transparentColor;
-                        }
-
                         pieceBitmap.SetPixel(x, y, piecePixel);
                     }
 
-                    // StaminaUtil.GetRestSometimes();
+                    StaminaUtil.GetRestSometimes();
                 }
 
                 // Overwriting piece bitmap

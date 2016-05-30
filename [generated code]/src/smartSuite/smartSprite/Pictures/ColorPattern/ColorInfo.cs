@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace smartSprite.Pictures.ColorPattern
 {
     /// <summary>
-    /// Represents an information from a color
+    /// Represents a information from a color
     /// </summary>
     public class ColorInfo
     {

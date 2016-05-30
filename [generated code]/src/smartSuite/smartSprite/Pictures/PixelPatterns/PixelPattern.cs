@@ -1,8 +1,10 @@
 
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace smartSuite.smartSprite.Pictures.PixelPatterns{
 	/// <summary>
@@ -17,14 +19,14 @@ namespace smartSuite.smartSprite.Pictures.PixelPatterns{
 		}
 
 		/// <summary>
-		/// 
+		/// It´s a cache dictionary where key is formed by coordinate x and y and the value is the color.
 		/// </summary>
-		private HashSet<PixelInfo> _learntCache;
+		private List<PixelInfo> _learntCache = new List<PixelInfo>();
 
-		/// <summary>
-		/// 
-		/// </summary>
-		private ICoveringPattern _coveringPattern;
+        /// <summary>
+        /// It´s the covering pattern
+        /// </summary>
+        private ICoveringPattern _coveringPattern = new ConstantCoveringPattern();
 
 		/// <summary>
 		/// Includes the coordinates to study the pattern
@@ -33,7 +35,14 @@ namespace smartSuite.smartSprite.Pictures.PixelPatterns{
 		/// <param name="y">It´s the y coordinate</param>
 		/// <param name="color">It´s the color of pixel</param>
 		public void Learn(int x, int y, Color color) {
-			// TODO implement here
+
+            this._learntCache.Add(
+                new PixelInfo
+                {
+                    X = x,
+                    Y = y,
+                    Color = color
+                });
 		}
 
 		/// <summary>
@@ -41,22 +50,11 @@ namespace smartSuite.smartSprite.Pictures.PixelPatterns{
 		/// </summary>
 		/// <param name="x">It´s the x coordinate</param>
 		/// <param name="y">It´s the y coordinate</param>
-		/// <returns></returns>
-		public Color GetPattern(int x, int y) {
-			// TODO implement here
-			return null;
-		}
+		public Color GetPattern(int x, int y)
+        {
+            return this._coveringPattern.GetPixel(this._learntCache, x, y);
+        }
 
-		/// <summary>
-		/// Returns a key ready for be included on learntCache
-		/// </summary>
-		/// <param name="x">It´s the x coordinate</param>
-		/// <param name="y">It´s the y coordinate</param>
-		/// <returns></returns>
-		private string formatKey(int x, int y) {
-			// TODO implement here
-			return "";
-		}
 
 	}
 }

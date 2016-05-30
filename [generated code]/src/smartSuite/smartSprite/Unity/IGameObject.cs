@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 
 namespace smartSuite.smartSprite.Unity{
-	/// <summary>
-	/// Represents a generic element which can be an object or empty one
-	/// </summary>
+	/**
+	 * Represents a generic element which can be an object or empty one
+	 */
 	public interface IGameObject {
 
 	}

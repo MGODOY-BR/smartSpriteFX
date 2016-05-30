@@ -8,6 +8,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -130,7 +131,11 @@ namespace smartSprite.Forms
             LoadDefaultSetting(Settings.Default.lastProjectFolder, this.txtLoadSprite, this.openSmartSpriteFileDialog1);
             LoadDefaultSetting(Settings.Default.lastExportFolder, null, this.exportToUnityDialog1);
 
-            this.lblVersion.Text = this.GetType().Assembly.GetName().Version.ToString() + "(Alpha)";
+            // this.lblVersion.Text = this.GetType().Assembly.GetName().Version.ToString() + "(Alpha)";
+            var myFileVersionInfo =
+                FileVersionInfo.GetVersionInfo(
+                    this.GetType().Assembly.Location);
+            this.lblVersion.Text = myFileVersionInfo.FileVersion + "(Alpha)";
         }
 
         /// <summary>

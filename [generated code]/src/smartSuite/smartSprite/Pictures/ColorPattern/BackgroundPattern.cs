@@ -21,7 +21,7 @@ namespace smartSuite.smartSprite.Pictures.ColorPattern
         private Dictionary<String, PixelInfo> _learntCache = new Dictionary<string, PixelInfo>();
 
         /// <summary>
-        /// It´s a comparator for colors
+        /// A comparator for colors
         /// </summary>
         private ColorEqualityComparer _colorComparer = new ColorEqualityComparer();
 
@@ -226,10 +226,10 @@ namespace smartSuite.smartSprite.Pictures.ColorPattern
             #endregion
 
             // Getting the taken picture
-            Picture pieceTakenPicture = Picture.GetInstance(piece.GetTakenPictureFullFileName());
+            Picture takenPicture = Picture.GetInstance(piece.GetTakenPictureFullFileName());
 
             // Getting the replacement colors
-            var transparentReplacementColor =
+            var replacementColor =
                 this.GetReplacementColor(
                     this._learntCache,
                     piece.PointA,
@@ -239,7 +239,6 @@ namespace smartSuite.smartSprite.Pictures.ColorPattern
                     piece,
                     askingForColorDelegate);
 
-            /*
             for (int y = (int)piece.PointA.Y; y < piece.PointB.Y; y++)
             {
                 // Scanning the taken picture
@@ -248,14 +247,16 @@ namespace smartSuite.smartSprite.Pictures.ColorPattern
                     try
                     {
                         // Getting pixel
-                        var pixel = pieceTakenPicture.GetPixel(x, y);
+                        var pixel = takenPicture.GetPixel(x, y);
 
                         // Checking if it is replacement color
-                        if (this._colorComparer.LooksLike(transparentReplacementColor, pixel))
+                        if (!this._colorComparer.Equals(replacementColor, pixel))
                         {
-                            // Replacing picture
-                            pieceTakenPicture.ReplacePixel(x, y, pixel);
+                            break;
                         }
+
+                        // Replacing picture
+                        takenPicture.ReplacePixel(x, y, pixel);
                     }
                     catch (IndexOutOfRangeException)
                     {
@@ -263,10 +264,9 @@ namespace smartSuite.smartSprite.Pictures.ColorPattern
                     }
                 }
             }
-            */
 
             // Refreshing picture
-            pieceTakenPicture.Overwrite(transparentReplacementColor);   // <-- TODO: Change replacementColor to put a pattern
+            takenPicture.Overwrite(replacementColor);
         }
 
         /// <summary>
@@ -331,7 +331,7 @@ namespace smartSuite.smartSprite.Pictures.ColorPattern
                 {
                     if (horizontalColor.GetPercentage() > 50 && verticalColor.GetPercentage() > 50)
                     {
-                        if (this._colorComparer.LooksLike(horizontalColor.Color, verticalColor.Color))
+                        if (this._colorComparer.Equals(horizontalColor.Color, verticalColor.Color))
                         {
                             break;
                         }
@@ -428,17 +428,13 @@ namespace smartSuite.smartSprite.Pictures.ColorPattern
 
                 #region Counting
 
-                //if (!patternList.ContainsKey(pixelInfo.Color))
-                var similarColor = this.GetSimilarColor(patternList.Keys, pixelInfo.Color);
-                if(!patternList.ContainsKey(similarColor))
+                if (!patternList.ContainsKey(pixelInfo.Color))
                 {
-                    // patternList.Add(pixelInfo.Color, 1);
-                    patternList.Add(similarColor, 1);
+                    patternList.Add(pixelInfo.Color, 1);
                 }
                 else
                 {
-                    // patternList[pixelInfo.Color]++;
-                    patternList[similarColor]++;
+                    patternList[pixelInfo.Color]++;
                 }
                 counter++;
 
@@ -456,14 +452,12 @@ namespace smartSuite.smartSprite.Pictures.ColorPattern
                 }
 
                 // Testing the frequency
-                //if (patternList[pixelInfo.Color] > frequentlyColor.Frequency)
-                if (patternList[similarColor] > frequentlyColor.Frequency)
+                if (patternList[pixelInfo.Color] > frequentlyColor.Frequency)
                 {
                     frequentlyColor = new ColorFrequency
                     {
                         Color = pixelInfo.Color,
-                        // Frequency = patternList[pixelInfo.Color]
-                        Frequency = patternList[similarColor]
+                        Frequency = patternList[pixelInfo.Color]
                     };
                 }
 
@@ -498,38 +492,6 @@ namespace smartSuite.smartSprite.Pictures.ColorPattern
             #endregion
 
             return frequentlyColor;
-        }
-
-        /// <summary>
-        /// Gets a color similar in collection
-        /// </summary>
-        /// <param name="keys"></param>
-        /// <param name="colorList"></param>
-        /// <returns></returns>
-        private Color GetSimilarColor(Dictionary<Color, int>.KeyCollection colorList, Color color)
-        {
-            #region Entries validation
-
-            if (color == null)
-            {
-                throw new ArgumentNullException("color");
-            }
-            if (colorList == null)
-            {
-                throw new ArgumentNullException("colorList");
-            }
-
-            #endregion
-
-            foreach (var item in colorList)
-            {
-                if (this._colorComparer.LooksLike(item, color))
-                {
-                    return item;
-                }
-            }
-
-            return color;
         }
 
         /// <summary>
