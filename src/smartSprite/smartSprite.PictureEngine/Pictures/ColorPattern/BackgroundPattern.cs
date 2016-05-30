@@ -329,7 +329,7 @@ namespace smartSuite.smartSprite.Pictures.ColorPattern
                 }
                 else
                 {
-                    if (horizontalColor.GetPercentage() > 50 && verticalColor.GetPercentage() > 50)
+                    if (horizontalColor.GetPercentage() > 25 && verticalColor.GetPercentage() > 25)
                     {
                         if (this._colorComparer.LooksLike(horizontalColor.Color, verticalColor.Color))
                         {

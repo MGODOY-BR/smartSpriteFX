@@ -263,13 +263,10 @@ namespace smartSuite.smartSprite.Pictures
                 // Saving piece bitmap
                 pieceBitmap.Save(this._takenPictureFullFileName, ImageFormat.Png);
 
-                if (this.Parent != null)
-                {
-                    // Making transparent background
-                    backgroundPattern.DoTransparentBorder(
-                        this,
-                        this.OnAskingForBackgroundColorDelegate());
-                }
+                // Making transparent background
+                backgroundPattern.DoTransparentBorder(
+                    this,
+                    this.OnAskingForBackgroundColorDelegate());
 
                 // HACK: This function was disabled due to the fact that it couldn't reachs the holped effect
                 /*

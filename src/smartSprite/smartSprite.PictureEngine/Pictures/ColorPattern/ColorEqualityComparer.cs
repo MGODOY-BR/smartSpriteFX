@@ -63,12 +63,21 @@ namespace smartSprite.Pictures.ColorPattern
             bool similarity = true;
             for (int i = 0; i < factorArray.Length; i++)
             {
-                similarity =
-                    (refFactor == factorArray[i] || factorArray[i] == 0)
+                similarity &=
+                    (CheckSimiliarity(refFactor, factorArray[i]) || factorArray[i] == 0)
                     && refFactor < 20;
             }
 
             return similarity;
+        }
+
+        /// <summary>
+        /// Checks if there's some similiarity between the comparer factor
+        /// </summary>
+        private static bool CheckSimiliarity(int refFactor, int factor)
+        {
+            int compareFactor = Math.Abs(factor - refFactor);
+            return compareFactor == 0 || compareFactor < 10;
         }
 
         public bool Equals(Color comparing, Color compareTo)
