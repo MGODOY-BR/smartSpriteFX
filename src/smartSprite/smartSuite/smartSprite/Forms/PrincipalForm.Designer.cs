@@ -486,6 +486,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.statusStrip1);
             this.Name = "PrincipalForm";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);

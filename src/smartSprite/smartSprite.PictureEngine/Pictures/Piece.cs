@@ -215,13 +215,16 @@ namespace smartSuite.smartSprite.Pictures
             {
                 int extraMargin = 5;    // <-- Extra Margin allows to backgroundPattern learn about the parent image
 
-                int minY = (int)this.PointA.Y - extraMargin;
-                int maxY = (int)this.PointB.Y + extraMargin;
+                Point minorPoint = this.PointA.CompareTo(this.PointB).Equals(-1) ? this.PointA : this.PointB;
+                Point majorPoint = this.PointA.CompareTo(this.PointB).Equals(1) ? this.PointA : this.PointB; ;
+
+                int minY = (int)minorPoint.Y - extraMargin;
+                int maxY = (int)majorPoint.Y + extraMargin;
 
                 for (int y = minY; y < maxY; y++)
                 {
-                    int minX = (int)this.PointA.X - extraMargin;
-                    int maxX = (int)this.PointB.X + extraMargin;
+                    int minX = (int)minorPoint.X - extraMargin;
+                    int maxX = (int)majorPoint.X + extraMargin;
 
                     for (int x = minX; x < maxX; x++)
                     {
@@ -230,12 +233,12 @@ namespace smartSuite.smartSprite.Pictures
                             var piecePixel =
                                 this._referencePicture.GetPixel(x, y);
 
-                            if ((y > this.PointA.Y && y < this.PointB.Y) && (x > this.PointA.X && x < this.PointB.X))
+                            if ((y > minorPoint.Y && y < majorPoint.Y) && (x > minorPoint.X && x < majorPoint.X))
                             {
                                 // Creating fragment image
                                 pieceBitmap.SetPixel(
-                                    Math.Abs((int)this.PointA.X - x),
-                                    Math.Abs((int)this.PointC.Y - y),
+                                    Math.Abs((int)minorPoint.X - x),
+                                    Math.Abs((int)minorPoint.Y - y),
                                     piecePixel);
                             }
                             else

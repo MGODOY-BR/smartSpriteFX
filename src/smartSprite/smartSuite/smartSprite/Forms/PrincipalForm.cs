@@ -302,8 +302,8 @@ namespace smartSprite.Forms
             this.hScrollBar1.Visible = true;
             this.vScrollBar1.Visible = true;
 
-            this.hScrollBar1.Maximum = Math.Abs(this.draftControl1.Width - this.pnlImage.Width);
-            this.vScrollBar1.Maximum = Math.Abs(this.draftControl1.Height - this.pnlImage.Height);
+            this.hScrollBar1.Maximum = Math.Abs(this.draftControl1.Width - this.pnlImage.Width) + 100;
+            this.vScrollBar1.Maximum = Math.Abs(this.draftControl1.Height - this.pnlImage.Height) + 100;
 
             this.hScrollBar1.LargeChange = this.hScrollBar1.Maximum / 4;
             this.vScrollBar1.LargeChange = this.vScrollBar1.Maximum / 4;

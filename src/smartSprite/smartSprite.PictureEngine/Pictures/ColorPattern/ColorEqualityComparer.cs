@@ -13,6 +13,11 @@ namespace smartSprite.Pictures.ColorPattern
     public class ColorEqualityComparer : IEqualityComparer<Color>
     {
         /// <summary>
+        /// It´s a sensibility, used to check similiar colors
+        /// </summary>
+        private const int SENSIBILITY = 30;
+
+        /// <summary>
         /// Gets a indicator informing if whe colors are similar
         /// </summary>
         /// <param name="comparing"></param>
@@ -58,13 +63,15 @@ namespace smartSprite.Pictures.ColorPattern
             factorArray[1] = comparingG - compareToG;
             factorArray[2] = comparingB - compareToB;
 
-            int refFactor = factorArray[0];
+            int refFactor = Math.Abs(factorArray[0]);
 
             bool similarity = true;
             for (int i = 0; i < factorArray.Length; i++)
             {
                 similarity &=
-                    (CheckSimiliarity(refFactor, factorArray[i]) || factorArray[i] == 0)
+                    (
+                        CheckSimiliarity(refFactor, factorArray[i]) || factorArray[i] == 0
+                    )
                     && refFactor < 20;
             }
 
@@ -77,7 +84,7 @@ namespace smartSprite.Pictures.ColorPattern
         private static bool CheckSimiliarity(int refFactor, int factor)
         {
             int compareFactor = Math.Abs(factor - refFactor);
-            return compareFactor == 0 || compareFactor < 10;
+            return compareFactor == 0 || compareFactor < SENSIBILITY;
         }
 
         public bool Equals(Color comparing, Color compareTo)
