@@ -215,30 +215,31 @@ namespace smartSuite.smartSprite.Pictures
             {
                 int extraMargin = 5;    // <-- Extra Margin allows to backgroundPattern learn about the parent image
 
-                Point minorPoint = this.PointA.CompareTo(this.PointB).Equals(-1) ? this.PointA : this.PointB;
-                Point majorPoint = this.PointA.CompareTo(this.PointB).Equals(1) ? this.PointA : this.PointB; ;
+                int minY = MathUtil.GetLower<int>((int)this.PointA.Y, (int)this.PointB.Y);
+                int maxY = MathUtil.GetBigger<int>((int)this.PointA.Y, (int)this.PointB.Y);
+                int minX = MathUtil.GetLower<int>((int)this.PointA.X, (int)this.PointB.X);
+                int maxX = MathUtil.GetBigger<int>((int)this.PointA.X, (int)this.PointB.X);
 
-                int minY = (int)minorPoint.Y - extraMargin;
-                int maxY = (int)majorPoint.Y + extraMargin;
+                int minYBorder = minY - extraMargin;
+                int maxYBorder = maxY + extraMargin;
+                int minXBorder = minX - extraMargin;
+                int maxXBorder = maxX + extraMargin;
 
-                for (int y = minY; y < maxY; y++)
+                for (int y = minYBorder; y < maxYBorder; y++)
                 {
-                    int minX = (int)minorPoint.X - extraMargin;
-                    int maxX = (int)majorPoint.X + extraMargin;
-
-                    for (int x = minX; x < maxX; x++)
+                    for (int x = minXBorder; x < maxXBorder; x++)
                     {
                         try
                         {
                             var piecePixel =
                                 this._referencePicture.GetPixel(x, y);
 
-                            if ((y > minorPoint.Y && y < majorPoint.Y) && (x > minorPoint.X && x < majorPoint.X))
+                            if ((y > minY && y < maxY) && (x > minX && x < maxX))
                             {
                                 // Creating fragment image
                                 pieceBitmap.SetPixel(
-                                    Math.Abs((int)minorPoint.X - x),
-                                    Math.Abs((int)minorPoint.Y - y),
+                                    Math.Abs(minX - x),
+                                    Math.Abs(minY - y),
                                     piecePixel);
                             }
                             else
