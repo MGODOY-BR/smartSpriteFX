@@ -1,2 +1,1 @@
-- Improvement of scroll boundaries
-- Some pieces could be generated all empty
+- Treatment of animations

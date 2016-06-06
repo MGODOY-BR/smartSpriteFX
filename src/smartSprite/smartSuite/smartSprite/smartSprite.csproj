@@ -49,6 +49,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\Controls\Browsers\SmartBrowser.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Controls\Browsers\SmartBrowser.Designer.cs">
+      <DependentUpon>SmartBrowser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Controls\Browsers\SmartBrowserEventArgs.cs" />
     <Compile Include="Forms\Controls\DraftControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -84,6 +91,9 @@
     <Compile Include="Forms\Utilities\TreeViewUtil.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\Controls\Browsers\SmartBrowser.resx">
+      <DependentUpon>SmartBrowser.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Controls\DraftControl.resx">
       <DependentUpon>DraftControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -140,6 +150,7 @@
   <ItemGroup>
     <None Include="Resources\arrow.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
