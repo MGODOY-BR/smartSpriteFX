@@ -18,6 +18,8 @@ namespace smartSprite.Forms.Controls.Browsers
         public SmartBrowser()
         {
             InitializeComponent();
+
+            this.Load += SmartBrowser_Load;
         }
 
         #region Events
@@ -25,7 +27,7 @@ namespace smartSprite.Forms.Controls.Browsers
         /// <summary>
         /// Occurs when the user concludes the choice
         /// </summary>
-        public EventHandler<SmartBrowserEventArgs> ChosenByUserEvent;
+        public event EventHandler<SmartBrowserEventArgs> ChosenByUserEvent;
 
         #endregion
 
@@ -134,6 +136,36 @@ namespace smartSprite.Forms.Controls.Browsers
                 default:
                     throw new NotSupportedException(this.BrowserType.ToString());
             }
+        }
+
+        private void SmartBrowser_Load(object sender, EventArgs e)
+        {
+            Reload();
+        }
+
+        /// <summary>
+        /// Updates the controls
+        /// </summary>
+        public void Reload()
+        {
+            this.groupBox1.Text = this.FrameTitle;
+            this.openFileDialog1.Filter = this.DialogFilter;
+
+            this.txtFileName.Text = this.UserChoice;
+        }
+
+        /// <summary>
+        /// Clears the textbox
+        /// </summary>
+        public void ClearText()
+        {
+            this.txtFileName.Text = "";
+            this.UserChoice = "";
+        }
+
+        private void btnApply_Click(object sender, EventArgs e)
+        {
+            this.DoChoice(this.txtFileName.Text);
         }
     }
 

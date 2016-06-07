@@ -1,4 +1,5 @@
 ﻿using smartSprite.Forms.Controls;
+using smartSprite.Forms.Controls.Browsers;
 using smartSprite.Forms.Controls.TreeViewState;
 using smartSprite.Forms.Utilities;
 using smartSprite.Properties;
@@ -25,9 +26,37 @@ namespace smartSprite.Forms
         /// </summary>
         private List<TreeNode> _dataTreeNodeList = new List<TreeNode>();
 
+        /// <summary>
+        /// It´s a browser for start from draft
+        /// </summary>
+        private SmartBrowser _draftBrowser = new SmartBrowser();
+
+        /// <summary>
+        /// It´s a browser for load project
+        /// </summary>
+        private SmartBrowser _projectBrowser = new SmartBrowser();
+
         public PrincipalForm()
         {
             InitializeComponent();
+
+            this._draftBrowser.Width = 200;
+            this._projectBrowser.Width = this._draftBrowser.Width;
+
+            this._draftBrowser.FrameTitle = "New from DRAFT...";
+            this._projectBrowser.FrameTitle = "RESUME Work...";
+
+            this._draftBrowser.DialogTitle = "Select an image to use like a DRAFT";
+            this._projectBrowser.DialogTitle = "Select a smartSprite Project to resume your work";
+
+            this._draftBrowser.DialogFilter = "PNG Files (*.PNG)|*.PNG|Bitmap Files (*.BMP)|*.BMP|JPG Files(*.JPG;*.JPEG)|*.JPG;*.JPEG|All files (*.*)|*.*";
+            this._projectBrowser.DialogFilter = "smartSprite Project|*.smartSprite";
+
+            this._draftBrowser.ChosenByUserEvent += _draftBrowser_ChosenByUserEvent;
+            this._projectBrowser.ChosenByUserEvent += _projectBrowser_ChosenByUserEvent;
+
+            this.browserPanel.Controls.Add(this._draftBrowser);
+            this.browserPanel.Controls.Add(this._projectBrowser);
         }
 
         /// <summary>
@@ -127,9 +156,9 @@ namespace smartSprite.Forms
         /// </summary>
         private void LoadSettings()
         {
-            LoadDefaultSetting(Settings.Default.lastDraftFolder, this.txtDraftPicture, this.openDraftFileDialog1);
-            LoadDefaultSetting(Settings.Default.lastProjectFolder, this.txtLoadSprite, this.openSmartSpriteFileDialog1);
-            LoadDefaultSetting(Settings.Default.lastExportFolder, null, this.exportToUnityDialog1);
+            LoadDefaultSetting(Settings.Default.lastDraftFolder, this._draftBrowser);
+            LoadDefaultSetting(Settings.Default.lastProjectFolder, this._projectBrowser);
+            // LoadDefaultSetting(Settings.Default.lastExportFolder, null, this.exportToUnityDialog1);
 
             // this.lblVersion.Text = this.GetType().Assembly.GetName().Version.ToString() + "(Alpha)";
             var myFileVersionInfo =
@@ -141,31 +170,18 @@ namespace smartSprite.Forms
         /// <summary>
         /// Loads the specific default value
         /// </summary>
-        private static void LoadDefaultSetting(string lastFolder, TextBox txtFile, CommonDialog openDialog)
+        private static void LoadDefaultSetting(string lastFolder, SmartBrowser smartBrowser)
         {
             if (!string.IsNullOrEmpty(lastFolder))
             {
-                if (txtFile != null)
-                {
-                    txtFile.Text = lastFolder;
-                }
-
-                if (openDialog is OpenFileDialog)
-                {
-                    ((OpenFileDialog)openDialog).FileName = lastFolder;
-                }
-                else if (openDialog is FolderBrowserDialog)
-                {
-                    ((FolderBrowserDialog)openDialog).SelectedPath = lastFolder;
-                }
+                smartBrowser.UserChoice = lastFolder;
             }
             else
             {
-                if (txtFile != null)
-                {
-                    txtFile.Text = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
-                }
+                smartBrowser.UserChoice = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
             }
+
+            smartBrowser.Reload();
         }
 
         /// <summary>
@@ -199,55 +215,39 @@ namespace smartSprite.Forms
                 this.Cursor = Cursors.WaitCursor;
             }
 
-            this.pnlSourceFolder.Enabled = enabled;
+            this.browserPanel.Enabled = enabled;
         }
 
         /// <summary>
-        /// Opens the open draft dialog
+        /// Opens the draft
         /// </summary>
-        /// <param name="draftTextBox"></param>
-        /// <param name="openDialog"></param>
-        private void DoOpenDraftDialog(TextBox draftTextBox, OpenFileDialog openDialog)
+        private void DoOpenDraft(String fileName)
         {
-            var result = openDialog.ShowDialog();
-            if(result == DialogResult.OK)
-            {
-                draftTextBox.Text = openDialog.FileName;
-
-                // Loading the picture
-                this.draftControl1.LoadDraftPicture(this.txtDraftPicture.Text.Trim());
-                this.SetupScroll();
-                this._dataTreeNodeList.Clear();
-                this.txtLoadSprite.Text = "";
-                this.RebuidTreeView();
-            }
+            // Loading the picture
+            this.draftControl1.LoadDraftPicture(fileName);
+            this.SetupScroll();
+            this._dataTreeNodeList.Clear();
+            this._projectBrowser.ClearText();
+            this.RebuidTreeView();
         }
 
         /// <summary>
-        /// Opens the open project dialog
+        /// Opens the project
         /// </summary>
-        /// <param name="sourceFolder"></param>
-        /// <param name="openDialog"></param>
-        private void DoOpenProjectDialog(TextBox sourceFolder, OpenFileDialog openDialog)
+        private void DoOpenProject(String fileName)
         {
-            var result = openDialog.ShowDialog();
-            if(result == DialogResult.OK)
+            this._dataTreeNodeList.Clear();
+            // Loading the picture
+            this.draftControl1.LoadProject(fileName);
+            // Filling TreeNodeList
+            foreach (var pieceItem in this.draftControl1.Pieces.PieceList)
             {
-                sourceFolder.Text = openDialog.FileName;
-
-                this._dataTreeNodeList.Clear();
-                // Loading the picture
-                this.draftControl1.LoadProject(sourceFolder.Text.Trim());
-                // Filling TreeNodeList
-                foreach (var pieceItem in this.draftControl1.Pieces.PieceList)
-                {
-                    this.FillTreeNodeList(pieceItem);
-                }
-
-                this.RebuidTreeView();
-                this.SetupScroll();
-                this.txtDraftPicture.Text = "";
+                this.FillTreeNodeList(pieceItem);
             }
+
+            this.RebuidTreeView();
+            this.SetupScroll();
+            this._draftBrowser.ClearText();
         }
 
         /// <summary>
@@ -435,7 +435,7 @@ namespace smartSprite.Forms
         {
             #region Entries validation
 
-            if (String.IsNullOrEmpty(this.txtLoadSprite.Text.Trim()))
+            if (String.IsNullOrEmpty(this._projectBrowser.UserChoice))
             {
                 return;
             }
@@ -444,7 +444,7 @@ namespace smartSprite.Forms
 
             this._dataTreeNodeList.Clear();
             // Loading the picture
-            this.draftControl1.LoadProject(this.txtLoadSprite.Text.Trim());
+            this.draftControl1.LoadProject(this._projectBrowser.UserChoice);
             // Filling TreeNodeList
             foreach (var pieceItem in this.draftControl1.Pieces.PieceList)
             {
@@ -454,7 +454,7 @@ namespace smartSprite.Forms
             this.RebuidTreeView();
             this.SetupScroll();
             this.ShowControls();
-            this.txtDraftPicture.Text = "";
+            this._draftBrowser.ClearText();
         }
 
         /// <summary>
@@ -464,7 +464,7 @@ namespace smartSprite.Forms
         {
             #region Entries validation
 
-            if (String.IsNullOrEmpty(this.txtDraftPicture.Text.Trim()))
+            if (String.IsNullOrEmpty(this._draftBrowser.UserChoice))
             {
                 return;
             }
@@ -472,10 +472,10 @@ namespace smartSprite.Forms
             #endregion
 
             // Loading the picture
-            this.draftControl1.LoadDraftPicture(this.txtDraftPicture.Text.Trim());
+            this.draftControl1.LoadDraftPicture(this._draftBrowser.UserChoice);
             this.SetupScroll();
             this.RebuidTreeView();
-            this.txtLoadSprite.Text = "";
+            this._projectBrowser.ClearText();
         }
 
         #region Events
@@ -677,26 +677,6 @@ namespace smartSprite.Forms
             }
         }
 
-        private void btnOpenDraft_Click(object sender, EventArgs e)
-        {
-            this.DoOpenDraftDialog(this.txtDraftPicture, this.openDraftFileDialog1);
-        }
-
-        private void btnOpenResumeWork_Click(object sender, EventArgs e)
-        {
-            this.DoOpenProjectDialog(this.txtLoadSprite, this.openSmartSpriteFileDialog1);
-        }
-
-        /// <summary>
-        /// Occurs when the user leaves the focus of source folder
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void txtDraftPicture_Leave(object sender, EventArgs e)
-        {
-            ApplyDraft();
-        }
-
         private void toolHookButton_Click(object sender, EventArgs e)
         {
             RefreshHookCreationMode();
@@ -777,10 +757,10 @@ namespace smartSprite.Forms
         /// <param name="e"></param>
         private void btnExportToUnity_Click(object sender, EventArgs e)
         {
-            if (!String.IsNullOrEmpty(this.txtLoadSprite.Text))
-            {
-                this.exportToUnityDialog1.SelectedPath = Path.GetDirectoryName(this.txtLoadSprite.Text);
-            }
+            //if (!String.IsNullOrEmpty(this.txtLoadSprite.Text))
+            //{
+            //    this.exportToUnityDialog1.SelectedPath = Path.GetDirectoryName(this.txtLoadSprite.Text);
+            //}
             var result = this.exportToUnityDialog1.ShowDialog();
 
             var selectedPath = this.exportToUnityDialog1.SelectedPath;
@@ -794,16 +774,6 @@ namespace smartSprite.Forms
                 progressTime.Enabled = true;
                 this.savePiecesBackgroundWorker.RunWorkerAsync(selectedPath);
             }
-        }
-
-        /// <summary>
-        /// Loads a PieceCollection saved in disk
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void txtLoadSprite_Leave(object sender, EventArgs e)
-        {
-            ApplyProject();
         }
 
         /// <summary>
@@ -822,7 +792,7 @@ namespace smartSprite.Forms
 
             #endregion
 
-            var projectFullPath = this.txtLoadSprite.Text;
+            String projectFullPath = this._projectBrowser.UserChoice;
 
             if (string.IsNullOrEmpty(projectFullPath))
             {
@@ -845,6 +815,16 @@ namespace smartSprite.Forms
             this.draftControl1.ProjectFullPath = projectFullPath;
 
             MessageBox.Show("Project has been saved with success!!", "Save project", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void _projectBrowser_ChosenByUserEvent(object sender, SmartBrowserEventArgs e)
+        {
+            this.DoOpenProject(e.UserChoice);
+        }
+
+        private void _draftBrowser_ChosenByUserEvent(object sender, SmartBrowserEventArgs e)
+        {
+            this.DoOpenDraft(e.UserChoice);
         }
 
         #endregion

@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnApply = new System.Windows.Forms.Button();
             this.btnOpen = new System.Windows.Forms.Button();
             this.txtFileName = new System.Windows.Forms.TextBox();
-            this.btnApply = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.groupBox1.SuspendLayout();
@@ -49,6 +49,17 @@
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "BrowserTitle";
+            // 
+            // btnApply
+            // 
+            this.btnApply.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnApply.Image = global::smartSprite.Properties.Resources.arrow;
+            this.btnApply.Location = new System.Drawing.Point(215, 19);
+            this.btnApply.Name = "btnApply";
+            this.btnApply.Size = new System.Drawing.Size(38, 23);
+            this.btnApply.TabIndex = 3;
+            this.btnApply.UseVisualStyleBackColor = true;
+            this.btnApply.Click += new System.EventHandler(this.btnApply_Click);
             // 
             // btnOpen
             // 
@@ -70,16 +81,6 @@
             this.txtFileName.Name = "txtFileName";
             this.txtFileName.Size = new System.Drawing.Size(248, 47);
             this.txtFileName.TabIndex = 2;
-            // 
-            // btnApply
-            // 
-            this.btnApply.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnApply.Image = global::smartSprite.Properties.Resources.arrow;
-            this.btnApply.Location = new System.Drawing.Point(215, 19);
-            this.btnApply.Name = "btnApply";
-            this.btnApply.Size = new System.Drawing.Size(38, 23);
-            this.btnApply.TabIndex = 3;
-            this.btnApply.UseVisualStyleBackColor = true;
             // 
             // openFileDialog1
             // 

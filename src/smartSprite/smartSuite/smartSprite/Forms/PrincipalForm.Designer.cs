@@ -36,20 +36,15 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblVersion = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.pnlSourceFolder = new System.Windows.Forms.Panel();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btnOpenResumeWork = new System.Windows.Forms.Button();
-            this.txtLoadSprite = new System.Windows.Forms.TextBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnOpenDraft = new System.Windows.Forms.Button();
-            this.txtDraftPicture = new System.Windows.Forms.TextBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.pnlImage = new System.Windows.Forms.Panel();
             this.hScrollBar1 = new System.Windows.Forms.HScrollBar();
             this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolHookButton = new System.Windows.Forms.ToolStripButton();
             this.tableLayoutPieceBlock = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.treeView1 = new System.Windows.Forms.TreeView();
@@ -63,17 +58,12 @@
             this.savePiecesBackgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.progressTime = new System.Windows.Forms.Timer(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnProjectApply = new System.Windows.Forms.Button();
-            this.btnDraftApply = new System.Windows.Forms.Button();
-            this.toolHookButton = new System.Windows.Forms.ToolStripButton();
+            this.browserPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.statusStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
-            this.pnlSourceFolder.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -85,7 +75,6 @@
             this.toolStrip1.SuspendLayout();
             this.tableLayoutPieceBlock.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // statusStrip1
@@ -150,12 +139,22 @@
             this.lblVersion.TabIndex = 2;
             this.lblVersion.Text = "Indefined";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::smartSprite.Properties.Resources.logo;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 16);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(494, 28);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 2;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.27648F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 83.72353F));
-            this.tableLayoutPanel2.Controls.Add(this.pnlSourceFolder, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.browserPanel, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.splitContainer1, 1, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 53);
@@ -164,87 +163,6 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(1013, 333);
             this.tableLayoutPanel2.TabIndex = 1;
-            // 
-            // pnlSourceFolder
-            // 
-            this.pnlSourceFolder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.pnlSourceFolder.Controls.Add(this.groupBox2);
-            this.pnlSourceFolder.Controls.Add(this.groupBox1);
-            this.pnlSourceFolder.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlSourceFolder.Location = new System.Drawing.Point(3, 3);
-            this.pnlSourceFolder.Name = "pnlSourceFolder";
-            this.pnlSourceFolder.Size = new System.Drawing.Size(158, 327);
-            this.pnlSourceFolder.TabIndex = 0;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.btnProjectApply);
-            this.groupBox2.Controls.Add(this.btnOpenResumeWork);
-            this.groupBox2.Controls.Add(this.txtLoadSprite);
-            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox2.Location = new System.Drawing.Point(0, 100);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(158, 113);
-            this.groupBox2.TabIndex = 4;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Resume work...";
-            // 
-            // btnOpenResumeWork
-            // 
-            this.btnOpenResumeWork.Location = new System.Drawing.Point(6, 18);
-            this.btnOpenResumeWork.Name = "btnOpenResumeWork";
-            this.btnOpenResumeWork.Size = new System.Drawing.Size(37, 24);
-            this.btnOpenResumeWork.TabIndex = 3;
-            this.btnOpenResumeWork.Text = "...";
-            this.toolTip1.SetToolTip(this.btnOpenResumeWork, "Opens a project for resume");
-            this.btnOpenResumeWork.UseVisualStyleBackColor = true;
-            this.btnOpenResumeWork.Click += new System.EventHandler(this.btnOpenResumeWork_Click);
-            // 
-            // txtLoadSprite
-            // 
-            this.txtLoadSprite.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtLoadSprite.Location = new System.Drawing.Point(6, 48);
-            this.txtLoadSprite.Multiline = true;
-            this.txtLoadSprite.Name = "txtLoadSprite";
-            this.txtLoadSprite.Size = new System.Drawing.Size(146, 44);
-            this.txtLoadSprite.TabIndex = 4;
-            this.toolTip1.SetToolTip(this.txtLoadSprite, "If you knew already the file name, just write down hear and click on arrow above");
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.btnDraftApply);
-            this.groupBox1.Controls.Add(this.btnOpenDraft);
-            this.groupBox1.Controls.Add(this.txtDraftPicture);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox1.Location = new System.Drawing.Point(0, 0);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(158, 100);
-            this.groupBox1.TabIndex = 3;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "New from draft...";
-            // 
-            // btnOpenDraft
-            // 
-            this.btnOpenDraft.Location = new System.Drawing.Point(6, 19);
-            this.btnOpenDraft.Name = "btnOpenDraft";
-            this.btnOpenDraft.Size = new System.Drawing.Size(37, 24);
-            this.btnOpenDraft.TabIndex = 1;
-            this.btnOpenDraft.Text = "...";
-            this.toolTip1.SetToolTip(this.btnOpenDraft, "Opens a image for start a new project");
-            this.btnOpenDraft.UseVisualStyleBackColor = true;
-            this.btnOpenDraft.Click += new System.EventHandler(this.btnOpenDraft_Click);
-            // 
-            // txtDraftPicture
-            // 
-            this.txtDraftPicture.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtDraftPicture.Location = new System.Drawing.Point(6, 49);
-            this.txtDraftPicture.Multiline = true;
-            this.txtDraftPicture.Name = "txtDraftPicture";
-            this.txtDraftPicture.Size = new System.Drawing.Size(146, 44);
-            this.txtDraftPicture.TabIndex = 2;
-            this.toolTip1.SetToolTip(this.txtDraftPicture, "If you knew already the file name, just write down hear and click on arrow above");
             // 
             // splitContainer1
             // 
@@ -322,6 +240,17 @@
             this.toolStrip1.Size = new System.Drawing.Size(35, 25);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Visible = false;
+            // 
+            // toolHookButton
+            // 
+            this.toolHookButton.CheckOnClick = true;
+            this.toolHookButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolHookButton.Image = global::smartSprite.Properties.Resources.Hook;
+            this.toolHookButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolHookButton.Name = "toolHookButton";
+            this.toolHookButton.Size = new System.Drawing.Size(23, 22);
+            this.toolHookButton.ToolTipText = "Hook";
+            this.toolHookButton.Click += new System.EventHandler(this.toolHookButton_Click);
             // 
             // tableLayoutPieceBlock
             // 
@@ -435,48 +364,14 @@
             this.progressTime.Interval = 5;
             this.progressTime.Tick += new System.EventHandler(this.progressTime_Tick);
             // 
-            // pictureBox1
+            // browserPanel
             // 
-            this.pictureBox1.Image = global::smartSprite.Properties.Resources.logo;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 16);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(494, 28);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
-            // btnProjectApply
-            // 
-            this.btnProjectApply.Image = global::smartSprite.Properties.Resources.arrow;
-            this.btnProjectApply.Location = new System.Drawing.Point(128, 18);
-            this.btnProjectApply.Name = "btnProjectApply";
-            this.btnProjectApply.Size = new System.Drawing.Size(38, 23);
-            this.btnProjectApply.TabIndex = 5;
-            this.toolTip1.SetToolTip(this.btnProjectApply, "Click here to start if yourself fullfilled the file name below");
-            this.btnProjectApply.UseVisualStyleBackColor = true;
-            this.btnProjectApply.Click += new System.EventHandler(this.btnProjectApply_Click);
-            // 
-            // btnDraftApply
-            // 
-            this.btnDraftApply.Image = global::smartSprite.Properties.Resources.arrow;
-            this.btnDraftApply.Location = new System.Drawing.Point(128, 19);
-            this.btnDraftApply.Name = "btnDraftApply";
-            this.btnDraftApply.Size = new System.Drawing.Size(38, 23);
-            this.btnDraftApply.TabIndex = 3;
-            this.toolTip1.SetToolTip(this.btnDraftApply, "Click here to start if yourself fullfilled the file name below");
-            this.btnDraftApply.UseVisualStyleBackColor = true;
-            this.btnDraftApply.Click += new System.EventHandler(this.btnDraftApply_Click);
-            // 
-            // toolHookButton
-            // 
-            this.toolHookButton.CheckOnClick = true;
-            this.toolHookButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolHookButton.Image = global::smartSprite.Properties.Resources.Hook;
-            this.toolHookButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolHookButton.Name = "toolHookButton";
-            this.toolHookButton.Size = new System.Drawing.Size(23, 22);
-            this.toolHookButton.ToolTipText = "Hook";
-            this.toolHookButton.Click += new System.EventHandler(this.toolHookButton_Click);
+            this.browserPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.browserPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.browserPanel.Location = new System.Drawing.Point(3, 3);
+            this.browserPanel.Name = "browserPanel";
+            this.browserPanel.Size = new System.Drawing.Size(158, 327);
+            this.browserPanel.TabIndex = 0;
             // 
             // PrincipalForm
             // 
@@ -492,12 +387,8 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
-            this.pnlSourceFolder.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
@@ -513,7 +404,6 @@
             this.tableLayoutPieceBlock.ResumeLayout(false);
             this.tableLayoutPieceBlock.PerformLayout();
             this.tableLayoutPanel4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -530,13 +420,6 @@
         private System.Windows.Forms.OpenFileDialog openDraftFileDialog1;
         private System.Windows.Forms.OpenFileDialog openSmartSpriteFileDialog1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.Panel pnlSourceFolder;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button btnOpenResumeWork;
-        private System.Windows.Forms.TextBox txtLoadSprite;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button btnOpenDraft;
-        private System.Windows.Forms.TextBox txtDraftPicture;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.ToolStripContainer toolStripContainer1;
         private System.Windows.Forms.Panel pnlImage;
@@ -558,7 +441,6 @@
         private System.Windows.Forms.HScrollBar hScrollBar1;
         private System.Windows.Forms.VScrollBar vScrollBar1;
         private System.Windows.Forms.ToolTip toolTip1;
-        private System.Windows.Forms.Button btnDraftApply;
-        private System.Windows.Forms.Button btnProjectApply;
+        private System.Windows.Forms.FlowLayoutPanel browserPanel;
     }
 }
