@@ -1,27 +1,41 @@
-﻿using System;
+
+using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace smartSprite.Pictures.ColorPattern
-{
-    /// <summary>
-    /// Represents a frequency of a color
-    /// </summary>
-    class ColorFrequency
-    {
-        public Color Color { get; set; }
-        public int Frequency { get; set; }
-        public int Length { get; set; }
-        /// <summary>
-        /// Gets the percentage of frequency after length
-        /// </summary>
-        /// <returns></returns>
-        public float GetPercentage()
-        {
-            return ((float)this.Frequency / (float)this.Length) * 100;
-        }
-    }
+namespace smartSuite.smartSprite.Pictures.ColorPattern{
+	/// <summary>
+	/// 
+	/// </summary>
+	class ColorFrequency {
+
+		/// <summary>
+		/// 
+		/// </summary>
+		ColorFrequency() {
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public Color Color;
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public int Frequency;
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public int Length;
+
+		/// <returns></returns>
+		public float GetPercentage() {
+			// TODO implement here
+			return 0.0F;
+		}
+
+	}
 }

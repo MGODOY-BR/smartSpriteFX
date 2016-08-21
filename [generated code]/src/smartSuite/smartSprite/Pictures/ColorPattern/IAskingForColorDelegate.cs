@@ -1,7 +1,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
 using System.Text;
 
@@ -17,6 +16,7 @@ namespace smartSuite.smartSprite.Pictures.ColorPattern{
 		/// <param name="piece">The piece that has been analysed.</param>
 		/// <param name="colorList"></param>
 		/// <returns></returns>
-		Color AnswerMe(Piece piece, List<Color> colorList);
+		public Color AnswerMe(Piece piece, HashSet<Color> colorList);
+
 	}
 }

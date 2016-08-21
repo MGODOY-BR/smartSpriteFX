@@ -1,47 +1,35 @@
-﻿using System;
+
+using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace smartSprite.Pictures.ColorPattern
-{
-    /// <summary>
-    /// Represents a color equality comparer for colors
-    /// </summary>
-    public class ColorEqualityComparer : IEqualityComparer<Color>
-    {
-        public bool Equals(Color comparing, Color compareTo)
-        {
-            #region Entries validation
+namespace smartSuite.smartSprite.Pictures.ColorPattern{
+	/// <summary>
+	/// Represents a color equality comparer for colors
+	/// </summary>
+	public class ColorEqualityComparer {
 
-            if (comparing == null)
-            {
-                return false;
-            }
-            if (compareTo == null)
-            {
-                return false;
-            }
+		/// <summary>
+		/// Represents a color equality comparer for colors
+		/// </summary>
+		public ColorEqualityComparer() {
+		}
 
-            #endregion
+		/// <param name="comparing"></param>
+		/// <param name="compareTo"></param>
+		/// <returns></returns>
+		public bool Equals(void comparing, void compareTo) {
+			// TODO implement here
+			return False;
+		}
 
-            return comparing.ToArgb() == compareTo.ToArgb();
-        }
+		/// <param name="obj"></param>
+		/// <returns></returns>
+		public int GetHashCode(void obj) {
+			// TODO implement here
+			return 0;
+		}
 
-        public int GetHashCode(Color obj)
-        {
-            #region Entries validation
-
-            if (obj == null)
-            {
-                throw new ArgumentNullException("obj");
-            }
-
-            #endregion
-
-            return obj.ToArgb();
-        }
-    }
+	}
 }

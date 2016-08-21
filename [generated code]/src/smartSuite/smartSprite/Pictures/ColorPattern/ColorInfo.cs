@@ -1,82 +1,60 @@
-﻿using System;
+
+using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace smartSprite.Pictures.ColorPattern
-{
-    /// <summary>
-    /// Represents a information from a color
-    /// </summary>
-    public class ColorInfo
-    {
-        /// <summary>
-        /// It´s an inner color
-        /// </summary>
-        private Color _innerColor;
+namespace smartSuite.smartSprite.Pictures.ColorPattern{
+	/// <summary>
+	/// Represents an information from a color
+	/// </summary>
+	public class ColorInfo {
 
-        /// <summary>
-        /// Creates an instance of the object
-        /// </summary>
-        /// <param name="innerColor"></param>
-        public ColorInfo(Color innerColor)
-        {
-            this._innerColor = innerColor;
-        }
+		/// <summary>
+		/// Represents an information from a color
+		/// </summary>
+		public ColorInfo() {
+		}
 
-        /// <summary>
-        /// Gets the inner color
-        /// </summary>
-        /// <returns></returns>
-        public Color GetInnerColor()
-        {
-            return this._innerColor;
-        }
+		/// <summary>
+		/// It´s an inner color
+		/// </summary>
+		private void _innerColor;
 
-        // override object.Equals
-        public override bool Equals(object obj)
-        {
-            //       
-            // See the full list of guidelines at
-            //   http://go.microsoft.com/fwlink/?LinkID=85237  
-            // and also the guidance for operator== at
-            //   http://go.microsoft.com/fwlink/?LinkId=85238
-            //
+		/// <summary>
+		/// Creates an instance of the object
+		/// </summary>
+		public void ColorInfo() {
+			// TODO implement here
+		}
 
-            if (obj == null || GetType() != obj.GetType())
-            {
-                return false;
-            }
-            ColorInfo other = obj as ColorInfo;
-            if (other == null)
-            {
-                return false;
-            }
+		/// <summary>
+		/// Gets the inner color
+		/// </summary>
+		/// <returns></returns>
+		public void GetInnerColor() {
+			// TODO implement here
+			return null;
+		}
 
-            return this._innerColor.ToArgb().Equals(
-                other._innerColor.ToArgb());
-        }
+		/// <param name="obj"></param>
+		/// <returns></returns>
+		public bool Equals(object obj) {
+			// TODO implement here
+			return False;
+		}
 
-        // override object.GetHashCode
-        public override int GetHashCode()
-        {
-            #region Entries validation
+		/// <returns></returns>
+		public int GetHashCode() {
+			// TODO implement here
+			return 0;
+		}
 
-            if (this._innerColor == null)
-            {
-                throw new ArgumentNullException("this._innerColor");
-            }
+		/// <returns></returns>
+		public ColorInfo Clone() {
+			// TODO implement here
+			return null;
+		}
 
-            #endregion
-
-            return this._innerColor.ToArgb().GetHashCode();
-        }
-
-        public ColorInfo Clone()
-        {
-            return new ColorInfo(this._innerColor);
-        }
-    }
+	}
 }

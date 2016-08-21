@@ -5,34 +5,30 @@ using System.Linq;
 using System.Text;
 
 namespace smartSuite.smartSprite.Unity{
-	/**
-	 * Represents a meta class of sprites
-	 */
+	/// <summary>
+	/// Represents a meta class of sprites
+	/// </summary>
 	public class MetaSprite {
 
-		/**
-		 * Represents a meta class of sprites
-		 */
+		/// <summary>
+		/// Represents a meta class of sprites
+		/// </summary>
 		public MetaSprite() {
 		}
 
-		/**
-		 * It´s the game object represented by the meta sprite
-		 */
+		/// <summary>
+		/// It´s the game object represented by the meta sprite
+		/// </summary>
 		public IGameObject RelatedGameObject;
 
-		/**
-		 * @param gameObject
-		 */
-		public void MetaSprite(IGameObject gameObject ) {
+		/// <param name="gameObject">		public void MetaSprite(IGameObject gameObject ) {</param>
 			// TODO implement here
 		}
 
-		/**
-		 * Generates a meta file in specified path.
-		 * @param fullPath
-		 */
-		public void Generate(String fullPath) {
+		/// <summary>
+		/// Generates a meta file in specified path.
+		/// </summary>
+		/// <param name="fullPath">		public void Generate(String fullPath) {</param>
 			// TODO implement here
 		}
 
