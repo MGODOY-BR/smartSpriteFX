@@ -86,7 +86,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "16BitFilter",
+											"text": "_16BitFilter",
 											"horizontalAlignment": 2,
 											"verticalAlignment": 5
 										},
@@ -42035,7 +42035,7 @@
 													"_parent": {
 														"$ref": "AAAAAAFWLzVRNLWdguA="
 													},
-													"name": "16BitFilter",
+													"name": "_16BitFilter",
 													"ownedElements": [
 														{
 															"_type": "UMLGeneralization",

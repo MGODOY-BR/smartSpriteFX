@@ -5,4 +5,3 @@ C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSpri
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.PictureEngine\obj\Release\smartSprite.PictureEngine.csproj.GenerateResource.Cache
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.PictureEngine\obj\Release\smartSprite.PictureEngine.dll
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.PictureEngine\obj\Release\smartSprite.PictureEngine.pdb
-C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.PictureEngine\obj\Release\smartSprite.PictureEngine.csprojResolveAssemblyReference.cache
