@@ -146,6 +146,10 @@
       <Project>{D374DAC6-55C3-465A-B27F-EF762E7F0CC5}</Project>
       <Name>smartSprite.PictureEngine</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\smartSprite.SpriteEffectModule\smartSprite.SpriteEffectModule.csproj">
+      <Project>{09dee0f5-2b1a-44e9-be7c-9dc0eb93bee8}</Project>
+      <Name>smartSprite.SpriteEffectModule</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\arrow.png" />
