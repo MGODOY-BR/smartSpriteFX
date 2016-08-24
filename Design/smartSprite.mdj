@@ -5810,7 +5810,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+Apply(picture: Picture): Picture",
+											"text": "+Apply(picture: Picture, frameIndex: int): Picture",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5
 										}
@@ -5826,7 +5826,7 @@
 									"containerExtending": false,
 									"left": 248,
 									"top": 276,
-									"width": 268.99072265625,
+									"width": 286.3642578125,
 									"height": 113,
 									"autoResize": false
 								},
@@ -11815,7 +11815,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "16BitFilter",
+											"text": "_16BitFilter",
 											"horizontalAlignment": 2,
 											"verticalAlignment": 5
 										},
@@ -42797,7 +42797,7 @@
 															"_parent": {
 																"$ref": "AAAAAAFWjdgj+yR5bbc="
 															},
-															"documentation": "It´s a originl picture",
+															"documentation": "It´s a original picture",
 															"end1": {
 																"_type": "UMLAssociationEnd",
 																"_id": "AAAAAAFWjeqp0CnfJPY=",
@@ -43122,6 +43122,23 @@
 																	"isOrdered": false,
 																	"isUnique": false,
 																	"direction": "return"
+																},
+																{
+																	"_type": "UMLParameter",
+																	"_id": "AAAAAAFWumCn7gpxwTY=",
+																	"_parent": {
+																		"$ref": "AAAAAAFWjeXk3ige+Ng="
+																	},
+																	"name": "frameIndex",
+																	"documentation": "It´s the index of frame in animation",
+																	"visibility": "public",
+																	"isStatic": false,
+																	"isLeaf": false,
+																	"type": "int",
+																	"isReadOnly": false,
+																	"isOrdered": false,
+																	"isUnique": false,
+																	"direction": "in"
 																}
 															],
 															"concurrency": "sequential",

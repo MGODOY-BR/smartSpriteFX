@@ -112,6 +112,11 @@ namespace smartSuite.smartSprite.Pictures{
             }
         }
 
+        public Picture Clone()
+        {
+            throw new NotImplementedException();
+        }
+
         /// <summary>
         /// Load the buffer
         /// </summary>
