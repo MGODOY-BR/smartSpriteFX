@@ -48,28 +48,25 @@ namespace smartSuite.smartSprite.Pictures{
 		/// </summary>
 		/// <param name="x"></param>
 		/// <param name="y"></param>
-		/// <param name="newColor">		public void ReplacePixel(int x, int y, Color newColor) {</param>
+		/// <param name="newColor" />		
+		public void ReplacePixel(int x, int y, Color newColor) {
 			// TODO implement here
 		}
 
 		/// <summary>
 		/// Overwrites the picture
 		/// </summary>
-		/// <param name="transparentColor">		public void Overwrite(Color transparentColor) {</param>
+		/// <param name="transparentColor" />		
+		public void Overwrite(Color transparentColor) {
 			// TODO implement here
 		}
 
 		/// <summary>
 		/// Saves a copy of picture.
 		/// </summary>
-		/// <param name="copyFileName">		void SaveCopy(String copyFileName) {</param>
-			// TODO implement here
-		}
-
-		/// <summary>
-		/// Loads buffer
-		/// </summary>
-		public void LoadBuffer() {
+		/// <param name="copyFileName" />		
+		void SaveCopy(String copyFileName)
+		{
 			// TODO implement here
 		}
 
@@ -77,6 +74,13 @@ namespace smartSuite.smartSprite.Pictures{
 		/// Releases buffer
 		/// </summary>
 		public void ReleaseBuffer() {
+			// TODO implement here
+		}
+
+		/// <summary>
+		/// Loads buffer
+		/// </summary>
+		public void LoadBuffer() {
 			// TODO implement here
 		}
 

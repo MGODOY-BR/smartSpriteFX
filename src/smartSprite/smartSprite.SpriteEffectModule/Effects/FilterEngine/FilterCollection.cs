@@ -105,10 +105,9 @@ namespace smartSuite.smartSprite.Effects.FilterEngine{
             {
                 var filter = this._filterBufferList[i];
 
-                Picture frame = this._picture.Clone();
-                if(filter.ApplyFilter(frame, frameIndex));
+                if(filter.ApplyFilter(this._picture, frameIndex))
                 {
-                    // frame.Save(...
+                    // this._picture.SaveCopy("...
                 }
             }
 

@@ -112,15 +112,10 @@ namespace smartSuite.smartSprite.Pictures{
             }
         }
 
-        public Picture Clone()
-        {
-            throw new NotImplementedException();
-        }
-
         /// <summary>
         /// Load the buffer
         /// </summary>
-        private void LoadBuffer(Bitmap image)
+        internal void LoadBuffer(Bitmap image)
         {
             #region Entries validation
 
@@ -250,7 +245,7 @@ namespace smartSuite.smartSprite.Pictures{
         /// <summary>
         /// Overwrites the picture
         /// </summary>
-        public void Overwrite(Color transparentColor)
+        internal void Overwrite(Color transparentColor)
         {
             #region Entries validation
 
@@ -373,6 +368,25 @@ namespace smartSuite.smartSprite.Pictures{
 
                 return Picture._pictureCache[fullFileName];
             }
+        }
+
+        /// <summary>
+        /// Saves a copy of picture.
+        /// </summary>
+        /// <param name="copyFileName" />		
+        internal void SaveCopy(String copyFileName)
+        {
+            // TODO implement here
+            throw new NotImplementedException();
+        }
+        
+        /// <summary>
+        /// Releases buffer
+        /// </summary>
+        internal void ReleaseBuffer()
+        {
+            // TODO implement here
+            throw new NotImplementedException();
         }
     }
 }
