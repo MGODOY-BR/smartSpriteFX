@@ -3,6 +3,7 @@ using smartSuite.smartSprite.Effects.Filters;
 using smartSuite.smartSprite.Pictures;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -88,7 +89,7 @@ namespace smartSuite.smartSprite.Effects.FilterEngine{
 		/// <param name="picture"></param>
         /// <param name="frameIndex">It´s the frame index in an animation</param>
 		/// <returns></returns>
-		public Picture Apply(Picture picture, int frameIndex)
+		public void Apply(Picture picture, int frameIndex)
         {
             #region Entries validation
 
@@ -107,11 +108,30 @@ namespace smartSuite.smartSprite.Effects.FilterEngine{
 
                 if(filter.ApplyFilter(this._picture, frameIndex))
                 {
-                    // this._picture.SaveCopy("...
+                    String baseFolder =
+                        Path.GetDirectoryName(
+                            this._picture.FullPath);
+
+                    String baseFile =
+                        Path.GetFileName(
+                            this._picture.FullPath);
+
+                    String folder =
+                        Path.Combine(baseFolder, "filtered");
+
+                    String file =
+                        Path.Combine(
+                            folder,
+                            Path.GetFileNameWithoutExtension(baseFile) + "." + frameIndex.ToString() + ".filtered." + Path.GetExtension(baseFile));
+
+                    if (!Directory.Exists(folder))
+                    {
+                        Directory.CreateDirectory(folder);
+                    }
+
+                    this._picture.SaveCopy(file);
                 }
             }
-
-            throw new NotImplementedException();
         }
 
 	}

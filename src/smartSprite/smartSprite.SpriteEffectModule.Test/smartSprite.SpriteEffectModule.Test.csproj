@@ -34,7 +34,17 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>effectModuleKey.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Rhino.Mocks, Version=3.6.0.0, Culture=neutral, PublicKeyToken=0b3305902db7183f, processorArchitecture=MSIL">
+      <HintPath>..\packages\RhinoMocks.3.6.1\lib\net\Rhino.Mocks.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
   </ItemGroup>
   <Choose>
@@ -45,18 +55,29 @@
     </When>
     <Otherwise>
       <ItemGroup>
-        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" />
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework">
+          <Private>False</Private>
+        </Reference>
       </ItemGroup>
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="FilterCollectionTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\smartSprite.PictureEngine\smartSprite.PictureEngine.csproj">
+      <Project>{D374DAC6-55C3-465A-B27F-EF762E7F0CC5}</Project>
+      <Name>smartSprite.PictureEngine</Name>
+    </ProjectReference>
     <ProjectReference Include="..\smartSprite.SpriteEffectModule\smartSprite.SpriteEffectModule.csproj">
       <Project>{09dee0f5-2b1a-44e9-be7c-9dc0eb93bee8}</Project>
       <Name>smartSprite.SpriteEffectModule</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="effectModuleKey.snk" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

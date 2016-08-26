@@ -34,3 +34,8 @@ using System.Runtime.InteropServices;
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: InternalsVisibleTo("smartSprite.SpriteEffectModule.Test, PublicKey=0024000004800000940000000602000000240000525341310004000001000100557fb6b3e29cee" +
+"5ed10406ae61f9f135cc7b0749f0a23e5ce45a5a14b054ee5329bff949a674600c21e9d40fa054" +
+"0b880aa81e87c9846cfb042ae7c07bffabc49065fed456be92cc3db6240eeaf0fe288b87c20894" +
+"3dc9bcef8a2e6ba5e56e806f348c994cc77cbb1d277b23353770e87c1b68ebc24891c75496ec56" +
+"854feeda")]
