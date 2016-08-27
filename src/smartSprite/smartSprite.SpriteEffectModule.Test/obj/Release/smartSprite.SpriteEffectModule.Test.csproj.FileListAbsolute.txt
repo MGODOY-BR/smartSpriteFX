@@ -1,11 +1,12 @@
+C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.SpriteEffectModule.Test\bin\Release\Stubs\Circle.stub.bmp
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.SpriteEffectModule.Test\bin\Release\smartSprite.SpriteEffectModule.Test.dll
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.SpriteEffectModule.Test\bin\Release\smartSprite.SpriteEffectModule.Test.pdb
-C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.SpriteEffectModule.Test\bin\Release\smartSprite.SpriteEffectModule.dll
+C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.SpriteEffectModule.Test\bin\Release\Rhino.Mocks.dll
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.SpriteEffectModule.Test\bin\Release\smartSprite.PictureEngine.dll
-C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.SpriteEffectModule.Test\bin\Release\smartSprite.SpriteEffectModule.pdb
+C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.SpriteEffectModule.Test\bin\Release\smartSprite.SpriteEffectModule.dll
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.SpriteEffectModule.Test\bin\Release\smartSprite.PictureEngine.pdb
+C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.SpriteEffectModule.Test\bin\Release\smartSprite.SpriteEffectModule.pdb
+C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.SpriteEffectModule.Test\bin\Release\Rhino.Mocks.xml
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.SpriteEffectModule.Test\obj\Release\smartSprite.SpriteEffectModule.Test.csprojResolveAssemblyReference.cache
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.SpriteEffectModule.Test\obj\Release\smartSprite.SpriteEffectModule.Test.dll
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.SpriteEffectModule.Test\obj\Release\smartSprite.SpriteEffectModule.Test.pdb
-C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.SpriteEffectModule.Test\bin\Release\Rhino.Mocks.dll
-C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.SpriteEffectModule.Test\bin\Release\Rhino.Mocks.xml

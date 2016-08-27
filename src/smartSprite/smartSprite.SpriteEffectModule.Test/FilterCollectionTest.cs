@@ -12,6 +12,8 @@ namespace smartSprite.SpriteEffectModule.Test
         public void ApplyTest()
         {
             #region Scenario setup
+
+            Picture frame = Picture.GetInstance(@"Stubs\Circle.stub.bmp");
             
             #endregion
 
