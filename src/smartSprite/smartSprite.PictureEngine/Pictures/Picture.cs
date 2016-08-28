@@ -28,6 +28,11 @@ namespace smartSuite.smartSprite.Pictures{
         private int _height;
 
         /// <summary>
+        /// It´s the transparent color
+        /// </summary>
+        private Color _transparentColor = Color.Transparent;
+
+        /// <summary>
         /// It´s a cache of picture
         /// </summary>
         private static Dictionary<String, Picture> _pictureCache = new Dictionary<String, Picture>();
@@ -260,6 +265,27 @@ namespace smartSuite.smartSprite.Pictures{
 
             #endregion
 
+            this._transparentColor = transparentColor;
+
+            this.Save(this._fullPath, transparentColor);
+        }
+
+        /// <summary>
+        /// Saves the file
+        /// </summary>
+        /// <param name="fileName"></param>
+        /// <param name="transparentColor"></param>
+        private void Save(string fileName, Color transparentColor)
+        {
+            #region Entries validation
+            
+            if (String.IsNullOrEmpty(fileName))
+            {
+                throw new ArgumentNullException("fileName");
+            }
+
+            #endregion
+
             ColorEqualityComparer colorComparer = new ColorEqualityComparer();
 
             using (var pieceBitmap = new Bitmap(this._width, this._height, PixelFormat.Format32bppArgb))
@@ -283,7 +309,7 @@ namespace smartSuite.smartSprite.Pictures{
 
                 // Overwriting piece bitmap
                 pieceBitmap.MakeTransparent(transparentColor);
-                pieceBitmap.Save(this._fullPath, ImageFormat.Png);
+                pieceBitmap.Save(fileName, ImageFormat.Png);
             }
         }
 
@@ -376,8 +402,16 @@ namespace smartSuite.smartSprite.Pictures{
         /// <param name="copyFileName" />		
         internal void SaveCopy(String copyFileName)
         {
-            // TODO implement here
-            throw new NotImplementedException();
+            #region Entries validation
+            
+            if (String.IsNullOrEmpty(copyFileName))
+            {
+                throw new ArgumentNullException("copyFileName");
+            }
+
+            #endregion
+
+            this.Save(copyFileName, this._transparentColor);
         }
         
         /// <summary>

@@ -64,15 +64,32 @@ namespace smartSuite.smartSprite.Effects.FilterEngine{
 		/// <param name="filterOrderIndex">An index of filter to apply the filter.</param>
 		public void Register(IEffectFilter filter, int filterOrderIndex)
         {
-			// TODO implement here
-		}
+            #region Entries validation
+
+            if (filter == null)
+            {
+                throw new ArgumentNullException("filter");
+            }
+
+            #endregion
+
+            if (this._filterBufferList.Count == 0)
+            {
+                this._filterBufferList.Add(filter);
+            }
+            else
+            {
+                this._filterBufferList.Insert(filterOrderIndex, filter);
+            }
+        }
 
 		/// <summary>
 		/// Registers a filter to work.
 		/// </summary>
 		/// <param name="filter">A filter to apply</param>
-		public void Register(IEffectFilter filter) {
-			// TODO implement here
+		public void Register(IEffectFilter filter)
+        {
+            this.Register(filter, 0);
 		}
 
 		/// <summary>
