@@ -96,8 +96,18 @@ namespace smartSuite.smartSprite.Effects.FilterEngine{
 		/// Removes the filter
 		/// </summary>
 		/// <param name="filter" />		
-        public void UnRegister(IEffectFilter filter) {
-			// TODO implement here
+        public void UnRegister(IEffectFilter filter)
+        {
+            #region Entries validation
+
+            if (filter == null)
+            {
+                throw new ArgumentNullException("filter");
+            }
+
+            #endregion
+
+            this._filterBufferList.Remove(filter);
 		}
 
 		/// <summary>
