@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 
 namespace smartSuite.smartSprite.Effects.FilterEngine{
@@ -13,10 +14,15 @@ namespace smartSuite.smartSprite.Effects.FilterEngine{
 	/// </summary>
 	public class FilterCollection {
 
-		/// <summary>
-		/// It´s a collection of all filters that can be used.
-		/// </summary>
-		private static List<IEffectFilter> _filterPallete = new List<IEffectFilter>();
+        /// <summary>
+        /// It´s the error list collection occurred during the Load method
+        /// </summary>
+        private static List<String> _loadErrorList = new List<string>();
+
+        /// <summary>
+        /// It´s a collection of all filters that can be used.
+        /// </summary>
+        private static List<IEffectFilter> _filterPallete = new List<IEffectFilter>();
 
 		/// <summary>
 		/// It´s a collection of filter to apply
@@ -33,13 +39,52 @@ namespace smartSuite.smartSprite.Effects.FilterEngine{
 		/// </summary>
 		public static void Load()
         {
-		}
+            FilterCollection._filterPallete.Clear();
+            FilterCollection._loadErrorList.Clear();
 
-		/// <summary>
-		/// Gets the list pallete
-		/// </summary>
-		/// <returns></returns>
-		public static List<IEffectFilter> GetFilterPallete() {
+            List<Type> typeList = new List<Type>();
+
+            // Adding the built-in plugins
+            typeList.AddRange(
+                typeof(FilterCollection).Assembly.GetTypes().Where(t => typeof(IEffectFilter).IsAssignableFrom(t) && t.IsClass && !t.IsAbstract));
+
+            // Getting the third-party plugins
+            foreach (var fileName in Directory.GetFiles(@"ThirdPartyEffectModulePlugin"))
+            {
+                if (!fileName.EndsWith("dll"))
+                {
+                    continue;
+                }
+
+                String fullFileName =
+                    Path.Combine(
+                        Path.GetDirectoryName(typeof(FilterCollection).Assembly.GetName().FullName),
+                        fileName);
+
+                typeList.AddRange(
+                        Assembly.LoadFile(fullFileName).GetTypes().Where(t => typeof(IEffectFilter).IsAssignableFrom(t) && t.IsClass && !t.IsAbstract));
+            }
+
+            // Creating objects
+            foreach (var type in typeList)
+            {
+                try
+                {
+                    FilterCollection._filterPallete.Add(
+                        (IEffectFilter)Activator.CreateInstance(type));
+                }
+                catch (Exception ex)
+                {
+                    FilterCollection._loadErrorList.Add(ex.ToString());
+                }
+            }
+        }
+
+        /// <summary>
+        /// Gets the list pallete
+        /// </summary>
+        /// <returns></returns>
+        public static List<IEffectFilter> GetFilterPallete() {
             return _filterPallete;
 		}
 
@@ -155,5 +200,13 @@ namespace smartSuite.smartSprite.Effects.FilterEngine{
             }
         }
 
-	}
+        /// <summary>
+        /// Gets error list eventually occurred during the Load() method.
+        /// </summary>
+        /// <returns></returns>
+        public static List<String> GetLoadErrorList()
+        {
+            return FilterCollection._loadErrorList;
+        }
+    }
 }

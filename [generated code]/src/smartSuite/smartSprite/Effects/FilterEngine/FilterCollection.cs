@@ -84,8 +84,18 @@ namespace smartSuite.smartSprite.Effects.FilterEngine{
 		/// Applies all the filter buffer list in order and returns a new frame
 		/// </summary>
 		/// <param name="picture"></param>
+		/// <param name="frameIndex">It´s the index of frame in animation</param>
 		/// <returns></returns>
-		public Picture Apply(Picture picture) {
+		public void Apply(Picture picture, int frameIndex) {
+			// TODO implement here
+			return null;
+		}
+
+		/// <summary>
+		/// Gets error list eventually occurred during the Load() method.
+		/// </summary>
+		/// <returns></returns>
+		public static HashSet<String> GetLoadErrorList() {
 			// TODO implement here
 			return null;
 		}

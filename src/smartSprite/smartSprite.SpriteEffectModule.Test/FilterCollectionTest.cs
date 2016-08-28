@@ -199,5 +199,33 @@ namespace smartSprite.SpriteEffectModule.Test
 
             #endregion
         }
+
+        [TestMethod]
+        public void LoadTest()
+        {
+            #region Scenario setup
+
+            #endregion
+
+            #region Running the tested operation
+
+            FilterCollection.Load();
+
+            #endregion
+
+            #region Getting the evidences
+
+            var evidenciaLoadErrorList = FilterCollection.GetLoadErrorList();
+            var evidenciaFilterPalleteList = FilterCollection.GetFilterPallete();
+
+            #endregion
+
+            #region Validating the evidences
+
+            Assert.AreEqual(0, evidenciaLoadErrorList.Count);
+            Assert.AreNotEqual(0, evidenciaFilterPalleteList.Count);
+
+            #endregion
+        }
     }
 }

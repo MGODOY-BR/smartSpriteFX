@@ -22,14 +22,14 @@ namespace smartSuite.smartSprite.Effects.Tools{
 		private float _resolutionTax;
 
 		/// <summary>
-		/// It´s the original picture
-		/// </summary>
-		private Picture _originalPicture;
-
-		/// <summary>
 		/// 
 		/// </summary>
 		private ColorBuffer _colorBuffer;
+
+		/// <summary>
+		/// It´s the original picture
+		/// </summary>
+		private Picture _originalPicture;
 
 		/// <summary>
 		/// 
