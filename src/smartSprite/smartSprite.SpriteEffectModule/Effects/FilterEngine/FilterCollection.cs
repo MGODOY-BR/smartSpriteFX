@@ -14,12 +14,6 @@ namespace smartSuite.smartSprite.Effects.FilterEngine{
 	public class FilterCollection {
 
 		/// <summary>
-		/// It´s a collection of filters
-		/// </summary>
-		public FilterCollection() {
-		}
-
-		/// <summary>
 		/// It´s a collection of all filters that can be used.
 		/// </summary>
 		private static List<IEffectFilter> _filterPallete = new List<IEffectFilter>();
@@ -37,8 +31,8 @@ namespace smartSuite.smartSprite.Effects.FilterEngine{
 		/// <summary>
 		/// Load the filter pallete
 		/// </summary>
-		public static void Load() {
-			// TODO implement here
+		public static void Load()
+        {
 		}
 
 		/// <summary>
