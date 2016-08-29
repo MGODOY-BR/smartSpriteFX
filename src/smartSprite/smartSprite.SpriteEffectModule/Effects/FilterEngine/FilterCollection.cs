@@ -58,7 +58,7 @@ namespace smartSuite.smartSprite.Effects.FilterEngine{
 
                 String fullFileName =
                     Path.Combine(
-                        Path.GetDirectoryName(typeof(FilterCollection).Assembly.GetName().FullName),
+                        Path.GetDirectoryName(typeof(FilterCollection).Assembly.Location),
                         fileName);
 
                 typeList.AddRange(

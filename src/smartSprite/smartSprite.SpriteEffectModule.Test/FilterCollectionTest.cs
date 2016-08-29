@@ -4,6 +4,12 @@ using Rhino.Mocks;
 using smartSuite.smartSprite.Pictures;
 using smartSuite.smartSprite.Effects.FilterEngine;
 using smartSuite.smartSprite.Effects.Filters;
+using System.IO;
+using System.Reflection;
+using Microsoft.CSharp;
+using System.CodeDom.Compiler;
+using smartSuite.smartSprite.Effects.Infra;
+using smartSuite.smartSprite.Effects.Infra.UI.Configuratons;
 
 namespace smartSprite.SpriteEffectModule.Test
 {
@@ -39,6 +45,14 @@ namespace smartSprite.SpriteEffectModule.Test
         public void Setup()
         {
             this._appliedFilteresCount = 0;
+            var thirdPartyPluginList = Directory.GetFiles(@"ThirdPartyEffectModulePlugin");
+            foreach (var plugin in thirdPartyPluginList)
+            {
+                if (plugin.EndsWith(".dll"))
+                {
+                    File.Delete(plugin);
+                }
+            }
         }
 
         [TestMethod]
@@ -224,6 +238,75 @@ namespace smartSprite.SpriteEffectModule.Test
 
             Assert.AreEqual(0, evidenciaLoadErrorList.Count);
             Assert.AreNotEqual(0, evidenciaFilterPalleteList.Count);
+
+            #endregion
+        }
+
+        [TestMethod]
+        public void LoadThirdPartyPluginsTest()
+        {
+            #region Scenario setup
+
+            CSharpCodeProvider codeProvider = new CSharpCodeProvider();
+#pragma warning disable CS0618 // Type or member is obsolete
+            ICodeCompiler compiler = codeProvider.CreateCompiler();
+#pragma warning restore CS0618 // Type or member is obsolete
+            System.CodeDom.Compiler.CompilerParameters parameters = new CompilerParameters();
+            parameters.GenerateExecutable = false;
+            parameters.OutputAssembly = @"ThirdPartyEffectModulePlugin\ThirdPartyPluginMock.dll";
+
+            parameters.ReferencedAssemblies.Add(
+                    typeof(IEffectFilter).Assembly.Location);
+            parameters.ReferencedAssemblies.Add(
+                    typeof(Picture).Assembly.Location);
+            parameters.ReferencedAssemblies.Add(
+                    typeof(System.Windows.Forms.Panel).Assembly.Location);
+
+            CompilerResults results = compiler.CompileAssemblyFromSource(parameters, @"
+
+                using smartSuite.smartSprite.Effects.Filters;
+                using smartSuite.smartSprite.Pictures;
+                using smartSuite.smartSprite.Effects.Infra;
+                using smartSuite.smartSprite.Effects.Infra.UI.Configuratons;
+                using System;
+                using System.Collections.Generic;
+                using System.Text;
+
+                namespace ThirdPartyEffectMock
+                {
+                    public class ThirdPartyEffectMock : IEffectFilter
+                    {
+                        public bool ApplyFilter(Picture frame, int index){return false;}
+
+                        public Identification GetIdentification(){return null;}
+
+                        public IConfigurationPanel ShowConfigurationPanel(){return null;}
+
+                        public void Reset(){}
+                    }
+                }");
+
+            #endregion
+
+            #region Running the tested operation
+
+            FilterCollection.Load();
+
+            #endregion
+
+            #region Getting the evidences
+
+            var evidenciaLoadErrorList = FilterCollection.GetLoadErrorList();
+            var evidenciaFilterPalleteList = FilterCollection.GetFilterPallete();
+
+            #endregion
+
+            #region Validating the evidences
+
+            Assert.AreEqual(0, results.Output.Count);
+            Assert.AreEqual(0, evidenciaLoadErrorList.Count);
+            Assert.AreNotEqual(0, evidenciaFilterPalleteList.Count);
+            Assert.IsNotNull(evidenciaFilterPalleteList.Find(x => x.GetType().Name == "ThirdPartyEffectMock"));
 
             #endregion
         }

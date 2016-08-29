@@ -13,7 +13,6 @@ namespace smartSuite.smartSprite.Effects.Filters{
 	/// </summary>
 	public interface IEffectFilter
     {
-
 		/// <summary>
 		/// Changes the frame
 		/// </summary>
