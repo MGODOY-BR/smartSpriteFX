@@ -6,6 +6,7 @@ C:\Users\Marcelo\Documents\Repositório GIT\smartSprite\src\smartSprite\smartSpr
 C:\Users\Marcelo\Documents\Repositório GIT\smartSprite\src\smartSprite\smartSprite.Test\obj\Debug\smartSprite.Test.csprojResolveAssemblyReference.cache
 C:\Users\Marcelo\Documents\Repositório GIT\smartSprite\src\smartSprite\smartSprite.Test\obj\Debug\smartSprite.Test.dll
 C:\Users\Marcelo\Documents\Repositório GIT\smartSprite\src\smartSprite\smartSprite.Test\obj\Debug\smartSprite.Test.pdb
+C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.Test\bin\Debug\ThirdPartyEffectModulePlugin\READ-ME.txt
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.Test\bin\Debug\smartSprite.Test.dll
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.Test\bin\Debug\smartSprite.Test.pdb
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.Test\bin\Debug\smartSprite.exe
@@ -15,4 +16,3 @@ C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSpri
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.Test\obj\Debug\smartSprite.Test.csprojResolveAssemblyReference.cache
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.Test\obj\Debug\smartSprite.Test.dll
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.Test\obj\Debug\smartSprite.Test.pdb
-C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.Test\bin\Debug\ThirdPartyEffectModulePlugin\READ-ME.txt
