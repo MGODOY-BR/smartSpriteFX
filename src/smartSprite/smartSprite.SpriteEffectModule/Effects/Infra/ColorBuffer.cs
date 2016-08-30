@@ -62,15 +62,6 @@ namespace smartSuite.smartSprite.Effects.Infra{
         /// <returns></returns>
         public void Register(Color color)
         {
-            #region Entries validation
-
-            if (this._colorCacheList.Count > this._maxLength)
-            {
-                return;
-            }
-
-            #endregion
-
             bool found = false;
             foreach (var colorItem in this._colorCacheList)
             {
@@ -81,9 +72,12 @@ namespace smartSuite.smartSprite.Effects.Infra{
                 }
             }
 
-            if (!found)
+            if (!found && (this._colorCacheList.Count < this._maxLength) || this._maxLength == 0)
             {
-                this._colorCacheList.Add(color);
+                if (!this._colorCacheList.Contains(color))
+                {
+                    this._colorCacheList.Add(color);
+                }
             }
         }
 
@@ -102,7 +96,7 @@ namespace smartSuite.smartSprite.Effects.Infra{
                 }
             }
 
-            return Color.Black;
+            return this._colorCacheList[0];
         }
 
         /// <summary>
@@ -112,6 +106,15 @@ namespace smartSuite.smartSprite.Effects.Infra{
         {
             this._colorCacheList.Clear();
 		}
+
+        /// <summary>
+        /// Counts the amount of buffer
+        /// </summary>
+        /// <returns></returns>
+        public int Count()
+        {
+            return this._colorCacheList.Count;
+        }
 
 	}
 }
