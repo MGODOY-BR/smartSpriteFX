@@ -15,7 +15,22 @@ namespace smartSprite.Pictures.ColorPattern
         /// <summary>
         /// It´s a sensibility, used to check similiar colors
         /// </summary>
-        private const int SENSIBILITY = 30;
+        private int _sensibility = 30;
+
+        /// <summary>
+        /// Creates an instance of the object
+        /// </summary>
+        public ColorEqualityComparer()
+        {
+            this._sensibility = 30;
+        }
+        /// <summary>
+        /// Creates an instance of the object
+        /// </summary>
+        public ColorEqualityComparer(int sensibility)
+        {
+            this._sensibility = sensibility;
+        }
 
         /// <summary>
         /// Gets a indicator informing if whe colors are similar
@@ -81,10 +96,12 @@ namespace smartSprite.Pictures.ColorPattern
         /// <summary>
         /// Checks if there's some similiarity between the comparer factor
         /// </summary>
-        private static bool CheckSimiliarity(int refFactor, int factor)
+        /// <param name="refFactor">It´s a referecial color factor</param>
+        /// <param name="factor">It´s a comparative color factor, applied to another color components.</param>
+        private bool CheckSimiliarity(int refFactor, int factor)
         {
             int compareFactor = Math.Abs(factor - refFactor);
-            return compareFactor == 0 || compareFactor < SENSIBILITY;
+            return compareFactor == 0 || compareFactor < this._sensibility;
         }
 
         public bool Equals(Color comparing, Color compareTo)
