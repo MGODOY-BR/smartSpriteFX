@@ -14,12 +14,6 @@ namespace smartSuite.smartSprite.Effects.Tools{
 	public class ResolutionTranslator {
 
 		/// <summary>
-		/// Represents a translator to lower image resolution
-		/// </summary>
-		public ResolutionTranslator() {
-		}
-
-		/// <summary>
 		/// It´s a calculated resolution tax.
 		/// </summary>
 		private float _resolutionTax;
@@ -30,14 +24,14 @@ namespace smartSuite.smartSprite.Effects.Tools{
 		private Picture _originalPicture;
 
 		/// <summary>
-		/// 
+		/// It´s the color buffer
 		/// </summary>
 		private ColorBuffer _colorBuffer;
 
 		/// <summary>
-		/// 
+		/// Is a dictionary made of colors and collection of pixels
 		/// </summary>
-		private Dictionary _translatedPixel;
+		private Dictionary<Color, PointCollection> _translatedPixel = new Dictionary<Color, PointCollection>();
 
 		/// <summary>
 		/// Creates an instance of the object
@@ -46,28 +40,108 @@ namespace smartSuite.smartSprite.Effects.Tools{
 		/// <param name="newWidth">It´s the lenght of new image</param>
 		/// <param name="newHeight">It´s the height of destination image</param>
 		/// <param name="newColorAmount">It´s a number of simultaneous color</param>
-		public ResolutionTranslator(Picture originalPicture, int newWidth, int newHeight, int newColorAmount) {
-			// TODO implement here
-		}
+		public ResolutionTranslator(Picture originalPicture, int newWidth, int newHeight, int newColorAmount)
+        {
+            #region Entries validation
 
-		/// <summary>
-		/// Translate a pixel for new new resolution
-		/// </summary>
-		/// <param name="x"></param>
-		/// <param name="y"></param>
-		/// <param name="color" />
+            if (originalPicture == null)
+            {
+                throw new ArgumentNullException("originalPicture");
+            }
+            if (newWidth < 80)
+            {
+                throw new ArgumentException("Invalid newWidth argument");
+            }
+            if (newHeight < 40)
+            {
+                throw new ArgumentException("Invalid newHeight argument");
+            }
+
+            #endregion
+
+            this._originalPicture = originalPicture;
+            this._colorBuffer = new ColorBuffer(newColorAmount);
+
+            // Getting the picture boundaries
+            int width = originalPicture.Width;
+            int height = originalPicture.Height;
+
+            // Calculating the hipotenuse of originalPicture
+            double hipotenuseOriginalPicture =
+                Math.Sqrt((width * width) + (height * height));
+
+            // Calculating the hipotenuse of new picture
+            double hipotenuseNewPicture =
+                Math.Sqrt((newWidth * newWidth) + (newHeight * newHeight));
+
+            // Calculating the tax of resolution
+            this._resolutionTax =
+                (float)hipotenuseNewPicture / (float)hipotenuseOriginalPicture;
+        }
+
+        /// <summary>
+        /// Translate a pixel for a new resolution
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="color" />
         public void Translate(int x, int y, Color color)
         {
-			// TODO implement here
-		}
+            #region Entries validation
 
-		/// <summary>
-		/// Gets the color buffer
-		/// </summary>
-		/// <returns></returns>
-		public ColorBuffer GetColorBuffer() {
-			// TODO implement here
-			return null;
+            if (x < 0 || x > this._originalPicture.Width)
+            {
+                throw new ArgumentOutOfRangeException("Invalid x coordinate");
+            }
+            if (y < 0 || y > this._originalPicture.Height)
+            {
+                throw new ArgumentOutOfRangeException("Invalid y coordinate");
+            }
+
+            #endregion
+
+            // Feeding the color buffer
+            this._colorBuffer.Register(color);
+            // Getting the color compatible with the destination resolution
+            Color newColor = this._colorBuffer.GetSimilarColor(color);
+
+            // Set the measurements of destination pixel
+            int initialX = x;
+            int initialY = y;
+            int finalX = x + (int)this._resolutionTax;
+            int finalY = y + (int)this._resolutionTax;
+
+            // Round whatever the decimal to next integer number
+            if (this._resolutionTax != (int)this._resolutionTax)
+            {
+                finalX++;
+                finalY++;
+            }
+
+            // Getting the points to translate
+            if (!this._translatedPixel.ContainsKey(newColor))
+            {
+                this._translatedPixel.Add(newColor, new PointCollection());
+            }
+            var points = this._translatedPixel[newColor];
+
+            // Translating...
+            for (int yy = 0; yy < finalY; yy++)
+            {
+                for (int xx = 0; xx < finalX; xx++)
+                {
+                    points.SetPoint(xx, yy);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Gets the color buffer
+        /// </summary>
+        /// <returns></returns>
+        public ColorBuffer GetColorBuffer()
+        {
+			return this._colorBuffer;
 		}
 
 		/// <summary>
@@ -75,32 +149,7 @@ namespace smartSuite.smartSprite.Effects.Tools{
 		/// </summary>
 		/// <returns></returns>
 		public Picture CreatedTranslatedPicture() {
-			// TODO implement here
-			return null;
-		}
-
-		/// <summary>
-		/// 
-		/// </summary>
-		public class Dictionary {
-
-			/// <summary>
-			/// 
-			/// </summary>
-			public Dictionary() {
-			}
-
-			/// <summary>
-			/// 
-			/// </summary>
-			public Color TKey;
-
-			/// <summary>
-			/// 
-			/// </summary>
-			public PointCollection TValue;
-
-
+            throw new NotImplementedException();
 		}
 
 	}

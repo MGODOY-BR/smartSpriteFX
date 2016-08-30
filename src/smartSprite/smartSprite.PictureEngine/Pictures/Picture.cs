@@ -94,6 +94,28 @@ namespace smartSuite.smartSprite.Pictures{
         }
 
         /// <summary>
+        /// Gets the width of picture
+        /// </summary>
+        public int Width
+        {
+            get
+            {
+                return _width;
+            }
+        }
+
+        /// <summary>
+        /// Gets the height of picture
+        /// </summary>
+        public int Height
+        {
+            get
+            {
+                return _height;
+            }
+        }
+
+        /// <summary>
         /// Loads the buffer of image
         /// </summary>
         /// <param name="fullPath"></param>

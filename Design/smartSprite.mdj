@@ -44846,7 +44846,7 @@
 																"$ref": "AAAAAAFWrWhLmpwVOrE="
 															},
 															"name": "Translate",
-															"documentation": "Translate a pixel for new new resolution",
+															"documentation": "Translate a pixel for a new resolution",
 															"visibility": "public",
 															"isStatic": false,
 															"isLeaf": false,
