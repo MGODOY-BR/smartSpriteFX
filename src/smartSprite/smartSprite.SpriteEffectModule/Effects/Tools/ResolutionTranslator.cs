@@ -130,6 +130,15 @@ namespace smartSuite.smartSprite.Effects.Tools{
             {
                 for (int xx = 0; xx < finalX; xx++)
                 {
+                    #region Entries validation
+
+                    if (!this.PointNotOcuppied(xx, yy, this._translatedPixel))
+                    {
+                        break;
+                    }
+
+                    #endregion
+
                     points.SetPoint(xx, yy);
                 }
             }
@@ -152,5 +161,32 @@ namespace smartSuite.smartSprite.Effects.Tools{
             throw new NotImplementedException();
 		}
 
-	}
+        /// <summary>
+        /// Gets a indicator informing if the point is occupied.
+        /// </summary>
+        /// <returns></returns>
+        private bool PointNotOcuppied(int x, int y, Dictionary<Color, PointCollection> translatedPointList)
+        {
+            #region Entries validation
+
+            if (translatedPointList == null)
+            {
+                throw new ArgumentNullException("translatedPointList");
+            }
+
+            #endregion
+
+            bool found = false;
+            foreach (var values in translatedPointList.Values)
+            {
+                found = values.InnerPointList.Find(item => item.X == x && item.Y == y) != null;
+                if (found)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+    }
 }
