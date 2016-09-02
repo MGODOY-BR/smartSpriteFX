@@ -134,7 +134,7 @@ namespace smartSuite.smartSprite.Effects.Tools{
 
                     if (!this.PointNotOcuppied(xx, yy, this._translatedPixel))
                     {
-                        break;
+                        continue;
                     }
 
                     #endregion
