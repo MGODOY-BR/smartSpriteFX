@@ -112,7 +112,7 @@ namespace smartSuite.smartSprite.Effects.Tools{
             int finalY = y + (int)this._resolutionTax;
 
             // Round whatever the decimal to next integer number
-            if (this._resolutionTax != (int)this._resolutionTax)
+            if (this._resolutionTax != (int)this._resolutionTax)    // <-- TODO: think in extract cathethus and angle from hypotenuse to maintain the proportion
             {
                 finalX++;
                 finalY++;
@@ -132,7 +132,7 @@ namespace smartSuite.smartSprite.Effects.Tools{
                 {
                     #region Entries validation
 
-                    if (!this.PointNotOcuppied(xx, yy, this._translatedPixel))
+                    if (this.PointOcuppied(xx, yy, this._translatedPixel))
                     {
                         continue;
                     }
@@ -157,15 +157,31 @@ namespace smartSuite.smartSprite.Effects.Tools{
 		/// Creates a picture from translated pixel cache
 		/// </summary>
 		/// <returns></returns>
-		public Picture CreatedTranslatedPicture() {
-            throw new NotImplementedException();
-		}
+		public Picture CreatedTranslatedPicture()
+        {
+            // Copying picture
+            Picture clonePicture = this._originalPicture.Clone();
+
+            // Changing the internal buffer
+            foreach (var translatedPixelItem in this._translatedPixel)
+            {
+                foreach (var pointItem in translatedPixelItem.Value.InnerPointList)
+                {
+                    clonePicture.ReplacePixel(
+                        (int)pointItem.X,
+                        (int)pointItem.Y,
+                        translatedPixelItem.Key);
+                }
+            }
+
+            return clonePicture;
+        }
 
         /// <summary>
         /// Gets a indicator informing if the point is occupied.
         /// </summary>
         /// <returns></returns>
-        private bool PointNotOcuppied(int x, int y, Dictionary<Color, PointCollection> translatedPointList)
+        private bool PointOcuppied(int x, int y, Dictionary<Color, PointCollection> translatedPointList)
         {
             #region Entries validation
 

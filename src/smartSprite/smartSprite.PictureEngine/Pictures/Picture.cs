@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
@@ -69,6 +70,16 @@ namespace smartSuite.smartSprite.Pictures{
         }
 
         /// <summary>
+        /// Creates an instance of the object.
+        /// </summary>
+        /// <remarks>
+        /// This constructor was intented to be used internally only.
+        /// </remarks>
+        private Picture()
+        {
+        }
+
+        /// <summary>
         /// It´s the fullname of picture
         /// </summary>
         private String _fullPath;
@@ -126,6 +137,10 @@ namespace smartSuite.smartSprite.Pictures{
             if (String.IsNullOrEmpty(fullPath))
             {
                 throw new ArgumentNullException("fullPath");
+            }
+            if (!File.Exists(fullPath))
+            {
+                throw new ArgumentNullException("File [" + fullPath + "] not found");
             }
 
             #endregion
@@ -198,6 +213,30 @@ namespace smartSuite.smartSprite.Pictures{
         private string FormatKey(int x, int y)
         {
             return String.Format("{0}_{1}", x, y);
+        }
+
+        /// <summary>
+        /// Creates and returns a copy of the object
+        /// </summary>
+        /// <returns></returns>
+        internal Picture Clone()
+        {
+            Picture clone = new Picture();
+
+            // Copying the buffer
+            foreach (var bufferItem in this._buffer)
+            {
+                clone._buffer.Add(
+                    bufferItem.Key, bufferItem.Value.Clone());
+            }
+
+            // Copying another attributes
+            clone._height = this._height;
+            clone._width = this._width;
+            clone._transparentColor = this._transparentColor;
+            clone._buffer = this._buffer;
+
+            return clone;
         }
 
         /// <summary>
