@@ -19,12 +19,14 @@ namespace smartSprite.SpriteEffectModule.Test.Tools
 
             #region Running the tested operation
 
-            ResolutionTranslator test = new ResolutionTranslator(frame, frame.Width, frame.Height, 512);
+            ResolutionTranslator test = new ResolutionTranslator(frame, frame.Width / 2, frame.Height / 2, 512);
             for (int y = 0; y < frame.Height; y++)
             {
                 for (int x = 0; x < frame.Width; x++)
                 {
                     test.Translate(x, y, frame.GetPixel(x, y));
+
+                    x = (int)test.LastScannedPoint.X;   // <-- This was made because we known that horizontaly X coordinator has not changed 
                 }
             }
 
