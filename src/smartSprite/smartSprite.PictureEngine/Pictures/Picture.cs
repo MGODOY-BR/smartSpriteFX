@@ -77,6 +77,7 @@ namespace smartSuite.smartSprite.Pictures{
         /// </remarks>
         private Picture()
         {
+            this._buffer = new Dictionary<string, ColorInfo>();
         }
 
         /// <summary>

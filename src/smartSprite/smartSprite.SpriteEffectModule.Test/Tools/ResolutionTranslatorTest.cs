@@ -45,5 +45,34 @@ namespace smartSprite.SpriteEffectModule.Test.Tools
 
             #endregion
         }
+
+        [TestMethod]
+        public void CreatedTranslatedPictureTest()
+        {
+            #region Scenario setup
+
+            Picture frame = Picture.GetInstance(@"Stubs\Character.stub.png");
+
+            #endregion
+
+            #region Running the tested operation
+
+            ResolutionTranslator test = new ResolutionTranslator(frame, frame.Width / 2, frame.Height / 2, 512);
+            var evidence = test.CreatedTranslatedPicture();
+
+            #endregion
+
+            #region Getting the evidences
+
+            #endregion
+
+            #region Validating the evidences
+
+            Assert.AreEqual(frame.Width, evidence.Width);
+            Assert.AreEqual(frame.Height, evidence.Height);
+            // Assert... <-- This assert is too complex to be done here. The real test should be done in CreatedTranslatedPicture()
+
+            #endregion
+        }
     }
 }
