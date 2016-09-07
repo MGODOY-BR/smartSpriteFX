@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using smartSuite.smartSprite.Effects.Filters;
 using smartSuite.smartSprite.Pictures;
+using System.IO;
 
 namespace smartSprite.SpriteEffectModule.Test.Effects.Filters
 {
@@ -22,13 +23,14 @@ namespace smartSprite.SpriteEffectModule.Test.Effects.Filters
             #region Running the tested operation
 
             _16BitFilter test = new _16BitFilter();
+            test.Reset();
             var appliedEvidence = test.ApplyFilter(frame, 0);
 
             #endregion
 
             #region Getting the evidences
 
-            //frame.
+            frame.SaveCopy("16bit.png");
 
             #endregion
 
@@ -37,6 +39,7 @@ namespace smartSprite.SpriteEffectModule.Test.Effects.Filters
             Assert.IsTrue(appliedEvidence);
             Assert.AreEqual(originalWidth, frame.Width);
             Assert.AreEqual(originalHeight, frame.Height);
+            Assert.IsTrue(File.Exists("16bit.png"));
 
             #endregion
         }

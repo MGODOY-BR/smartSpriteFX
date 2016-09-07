@@ -276,7 +276,6 @@ namespace smartSuite.smartSprite.Pictures{
             clone._height = this._height;
             clone._width = this._width;
             clone._transparentColor = this._transparentColor;
-            clone._buffer = this._buffer;
 
             return clone;
         }
@@ -291,10 +290,6 @@ namespace smartSuite.smartSprite.Pictures{
         {
             var key = this.FormatKey(x, y);
 
-            if (String.IsNullOrEmpty(this._fullPath))
-            {
-                throw new ArgumentNullException("this._fullPath");
-            }
             if (this._buffer == null)
             {
                 this.LoadBuffer(this._fullPath);
@@ -321,10 +316,6 @@ namespace smartSuite.smartSprite.Pictures{
             if (newColor == null)
             {
                 throw new ArgumentNullException("newColor");
-            }
-            if (this._buffer == null || this._buffer.Count == 0)
-            {
-                throw new ArgumentNullException("Empty buffer!!!");
             }
 
             #endregion

@@ -73,14 +73,19 @@ namespace smartSuite.smartSprite.Pictures{
         {
             #region Entries validation
 
-            if (this._startPoint == null || this._endPoint == null)
+            if (this._startPoint == null)
             {
-                throw new ApplicationException("The point range hasn't been initialized yet. It´s needed called SetPoint at least twice.");
+                throw new ApplicationException("The point range hasn't been initialized yet. It´s needed called SetPoint at least at once.");
+            }
+            List<Point> returnList = new List<Point>();
+            if (this._endPoint == null)
+            {
+                returnList.Add(this._startPoint);
+                return returnList;
             }
 
             #endregion
 
-            List<Point> returnList = new List<Point>();
             for (int y = (int)this._startPoint.Y; y < this._endPoint.Y; y++)
             {
                 for (int x = (int)this._startPoint.X; x < this._endPoint.X; x++)
