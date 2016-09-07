@@ -32,7 +32,7 @@
     <PlatformTarget>x64</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup>
-    <SignAssembly>false</SignAssembly>
+    <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
     <AssemblyOriginatorKeyFile>effectModuleKey.snk</AssemblyOriginatorKeyFile>
@@ -64,18 +64,18 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\smartSprite.PictureEngine\smartSprite.PictureEngine.csproj">
-      <Project>{d374dac6-55c3-465a-b27f-ef762e7f0cc5}</Project>
-      <Name>smartSprite.PictureEngine</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="effectModuleKey.snk" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="ThirdPartyEffectModulePlugin\READ-ME.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\smartSprite.PictureEngine\smartSprite.PictureEngine.csproj">
+      <Project>{D374DAC6-55C3-465A-B27F-EF762E7F0CC5}</Project>
+      <Name>smartSprite.PictureEngine</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

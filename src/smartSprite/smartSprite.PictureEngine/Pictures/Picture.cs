@@ -70,6 +70,36 @@ namespace smartSuite.smartSprite.Pictures{
         }
 
         /// <summary>
+        /// Merge the buffer of another picture
+        /// </summary>
+        /// <param name="other"></param>
+        internal void Merge(Picture other)
+        {
+            #region Entries validation
+
+            if (other == null)
+            {
+                throw new ArgumentNullException("other");
+            }
+
+            #endregion
+
+            if (other._transparentColor != Color.Transparent)
+            {
+                this._transparentColor = other._transparentColor;
+            }
+
+            for (int y = 0; y < other.Height; y++)
+            {
+                for (int x = 0; x < other.Width; x++)
+                {
+                    var color = other.GetPixel(x, y);
+                    this.ReplacePixel(x, y, color);
+                }
+            }
+        }
+
+        /// <summary>
         /// Creates an instance of the object.
         /// </summary>
         /// <remarks>
@@ -190,22 +220,33 @@ namespace smartSuite.smartSprite.Pictures{
                             new ColorInfo(
                                 image.GetPixel(x, y));
 
-                        var colorInfoKey = 
-                            colorInfo.GetInnerColor().ToArgb();
-
-                        // Save color info
-                        if (!_colorInfoBuffer.ContainsKey(colorInfoKey))
-                        {
-                            _colorInfoBuffer.Add(colorInfoKey, colorInfo);
-                        }
-
-                        // Save private picture
-                        this._buffer.Add(
-                            this.FormatKey(x, y),
-                            _colorInfoBuffer[colorInfoKey]);
+                        this.LoadColorInfoCache(y, x, colorInfo);
                     }
                 }
             }
+        }
+
+        /// <summary>
+        /// Loads the color info cache
+        /// </summary>
+        /// <param name="y"></param>
+        /// <param name="x"></param>
+        /// <param name="colorInfo"></param>
+        private void LoadColorInfoCache(int y, int x, ColorInfo colorInfo)
+        {
+            var colorInfoKey =
+                colorInfo.GetInnerColor().ToArgb();
+
+            // Save color info
+            if (!_colorInfoBuffer.ContainsKey(colorInfoKey))
+            {
+                _colorInfoBuffer.Add(colorInfoKey, colorInfo);
+            }
+
+            // Save private picture
+            this._buffer.Add(
+                this.FormatKey(x, y),
+                _colorInfoBuffer[colorInfoKey]);
         }
 
         /// <summary>
@@ -481,8 +522,8 @@ namespace smartSuite.smartSprite.Pictures{
         /// </summary>
         internal void ReleaseBuffer()
         {
-            // TODO implement here
-            throw new NotImplementedException();
+            this._buffer.Clear();
+            this._transparentColor = Color.Transparent;
         }
     }
 }

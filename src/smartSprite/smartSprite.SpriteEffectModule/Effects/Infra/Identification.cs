@@ -29,9 +29,9 @@ namespace smartSuite.smartSprite.Effects.Infra{
 		/// Get the description of filter
 		/// </summary>
 		/// <returns></returns>
-		public String GetDescription() {
-			// TODO implement here
-			return null;
+		public String GetDescription()
+        {
+        	return this._description;
 		}
 
 		/// <summary>
@@ -39,8 +39,7 @@ namespace smartSuite.smartSprite.Effects.Infra{
 		/// </summary>
 		/// <returns></returns>
 		public String GetAuthor() {
-			// TODO implement here
-			return null;
+			return this._author;
 		}
 
 		/// <summary>
@@ -48,8 +47,7 @@ namespace smartSuite.smartSprite.Effects.Infra{
 		/// </summary>
 		/// <returns></returns>
 		public String GetName() {
-			// TODO implement here
-			return null;
+			return this._name;
 		}
 
 		/// <summary>
@@ -58,9 +56,28 @@ namespace smartSuite.smartSprite.Effects.Infra{
 		/// <param name="name">It´s the name of component</param>
 		/// <param name="author">It´s the name of vendor</param>
 		/// <param name="description">It´s the description of filter</param>
-		public Identification(String name, String author, String description) {
-			// TODO implement here
-		}
+		public Identification(String name, String author, String description)
+        {
+            #region Entries validation
 
+            if (String.IsNullOrEmpty(name))
+            {
+                throw new ArgumentNullException("name");
+            }
+            if (String.IsNullOrEmpty(author))
+            {
+                throw new ArgumentNullException("author");
+            }
+            if (String.IsNullOrEmpty(description))
+            {
+                throw new ArgumentNullException("description");
+            }
+
+            #endregion
+
+            this._name = name;
+            this._author = author;
+            this._description = description;
+		}
 	}
 }
