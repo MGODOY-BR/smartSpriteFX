@@ -92,7 +92,7 @@ namespace smartSuite.smartSprite.Effects.Tools{
             this._originalPicture = originalPicture;
 
             // float sensibility = ((float)newColorAmount / (float)this._originalPicture.ColorCount);
-            float sensibility = 0.2f;
+            float sensibility = 0.5f;
 
             this._colorBuffer = new ColorBuffer(newColorAmount, sensibility);
 

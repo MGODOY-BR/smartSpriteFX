@@ -75,10 +75,10 @@ namespace smartSuite.smartSprite.Effects.Filters{
 
         public override void Reset()
         {
-            // This specification are initially based on NEO-GEO consoles
-            this._colorBufferAmount = 4096;
+            // This specification are initially based on Sega-Genesis Console
+            this._colorBufferAmount = 512;
             this._destinationScreenWidth = 320;
-            this._destinationScreenHeight = 224;
+            this._destinationScreenHeight = 240;
 
             this._screenWidth = 1366;
             this._screenHeight = 768;
