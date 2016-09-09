@@ -6,16 +6,21 @@ using System.Text;
 
 namespace smartSuite.smartSprite.Pictures{
 	/// <summary>
-	/// It´s a collection of points
+	/// It´s a range of points
 	/// </summary>
-	public class PointCollection {
+	public class PointRange {
 
 		/// <summary>
-		/// It´s a collection of points
+		/// It´s a range of points
 		/// </summary>
-		public PointCollection() {
+		public PointRange() {
 		}
 
+
+		/// <summary>
+		/// 
+		/// </summary>
+		private Point _endPoint;
 
 	}
 }

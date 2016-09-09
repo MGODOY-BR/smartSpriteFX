@@ -23,6 +23,7 @@ namespace smartSuite.smartSprite.Effects.Infra{
 
 
 
+
 		/// <summary>
 		/// Creates an instance of object
 		/// </summary>

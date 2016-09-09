@@ -17,7 +17,7 @@ namespace smartSprite.SpriteEffectModule.Test.Infra
 
             #region Running the tested operation
 
-            ColorBuffer test = new ColorBuffer(4);
+            ColorBuffer test = new ColorBuffer(4, 0);
             test.Register(System.Drawing.Color.Blue);
             test.Register(System.Drawing.Color.Green);
             test.Register(System.Drawing.Color.Yellow);
@@ -47,7 +47,7 @@ namespace smartSprite.SpriteEffectModule.Test.Infra
 
             #region Running the tested operation
 
-            ColorBuffer test = new ColorBuffer(4);
+            ColorBuffer test = new ColorBuffer(4, 0);
             test.Register(System.Drawing.Color.Blue);
             test.Register(System.Drawing.Color.BlueViolet);
             test.Register(System.Drawing.Color.Green);
@@ -78,7 +78,7 @@ namespace smartSprite.SpriteEffectModule.Test.Infra
 
             #region Running the tested operation
 
-            ColorBuffer test = new ColorBuffer(4);
+            ColorBuffer test = new ColorBuffer(4, 25);
             for (int i = 0; i < 4; i++)
             {
                 test.Register(
@@ -109,7 +109,7 @@ namespace smartSprite.SpriteEffectModule.Test.Infra
 
             #region Running the tested operation
 
-            ColorBuffer test = new ColorBuffer(4);
+            ColorBuffer test = new ColorBuffer(4, 0);
             for (int i = 0; i < 255; i += 255/4)
             {
                 test.Register(
@@ -140,7 +140,7 @@ namespace smartSprite.SpriteEffectModule.Test.Infra
 
             #region Running the tested operation
 
-            ColorBuffer test = new ColorBuffer(0);
+            ColorBuffer test = new ColorBuffer(0, 0);
             for (int i = 0; i < 4; i++)
             {
                 test.Register(
@@ -167,7 +167,7 @@ namespace smartSprite.SpriteEffectModule.Test.Infra
         {
             #region Scenario setup
 
-            ColorBuffer test = new ColorBuffer(4);
+            ColorBuffer test = new ColorBuffer(4, 0);
             for (int i = 0; i < 255; i += 255 / 4)
             {
                 test.Register(
@@ -227,7 +227,7 @@ namespace smartSprite.SpriteEffectModule.Test.Infra
         {
             #region Scenario setup
 
-            ColorBuffer test = new ColorBuffer(4);
+            ColorBuffer test = new ColorBuffer(4, 0);
             for (int i = 0; i < 255; i += 255 / 4)
             {
                 test.Register(

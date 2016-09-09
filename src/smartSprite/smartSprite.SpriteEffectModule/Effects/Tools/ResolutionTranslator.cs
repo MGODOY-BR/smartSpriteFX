@@ -65,10 +65,12 @@ namespace smartSuite.smartSprite.Effects.Tools{
         /// Creates an instance of the object
         /// </summary>
         /// <param name="originalPicture">It´s the original picture</param>
-        /// <param name="newWidth">It´s the lenght of new image</param>
-        /// <param name="newHeight">It´s the height of destination image</param>
+        /// <param name="screenWidth">It´s the lenght of new image</param>
+        /// <param name="screenHeight">It´s a height of screen</param>
+        /// <param name="newScreenWidth">It´s the length of the screen of  new resolution</param>
+        /// <param name="newScreenHeight">It´s the height of screen of new resolution</param>
         /// <param name="newColorAmount">It´s a number of simultaneous color</param>
-        public ResolutionTranslator(Picture originalPicture, int newWidth, int newHeight, int newColorAmount)
+        public ResolutionTranslator(Picture originalPicture, int screenWidth, int screenHeight, int newScreenWidth, int newScreenHeight, int newColorAmount)
         {
             #region Entries validation
 
@@ -76,19 +78,23 @@ namespace smartSuite.smartSprite.Effects.Tools{
             {
                 throw new ArgumentNullException("originalPicture");
             }
-            if (newWidth < 80)
+            if (newScreenWidth < 80)
             {
-                throw new ArgumentException("Invalid newWidth argument");
+                throw new ArgumentException("Invalid newScreenWidth argument");
             }
-            if (newHeight < 40)
+            if (newColorAmount < 40)
             {
-                throw new ArgumentException("Invalid newHeight argument");
+                throw new ArgumentException("Invalid newColorAmount argument");
             }
 
             #endregion
 
             this._originalPicture = originalPicture;
-            this._colorBuffer = new ColorBuffer(newColorAmount);
+
+            // float sensibility = ((float)newColorAmount / (float)this._originalPicture.ColorCount);
+            float sensibility = 0.2f;
+
+            this._colorBuffer = new ColorBuffer(newColorAmount, sensibility);
 
             // Getting the picture boundaries
             int width = originalPicture.Width;
@@ -96,11 +102,11 @@ namespace smartSuite.smartSprite.Effects.Tools{
 
             // Calculating the hipotenuse of originalPicture
             double hipotenuseOriginalPicture =
-                Math.Sqrt((width * width) + (height * height));
+                Math.Sqrt((screenWidth * screenWidth) + (screenHeight * screenHeight));
 
             // Calculating the hipotenuse of new picture
             double hipotenuseNewPicture =
-                Math.Sqrt((newWidth * newWidth) + (newHeight * newHeight));
+                Math.Sqrt((newScreenWidth * newScreenWidth) + (newScreenHeight * newScreenHeight));
 
             // Calculating the tax of resolution
             this._resolutionTax =

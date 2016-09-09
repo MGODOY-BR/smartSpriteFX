@@ -19,7 +19,7 @@ namespace smartSprite.SpriteEffectModule.Test.Tools
 
             #region Running the tested operation
 
-            ResolutionTranslator test = new ResolutionTranslator(frame, frame.Width / 2, frame.Height / 2, 512);
+            ResolutionTranslator test = new ResolutionTranslator(frame, 1366, 768, 320, 224, 512);
             for (int y = 0; y < frame.Height; y++)
             {
                 for (int x = 0; x < frame.Width; x++)
@@ -57,7 +57,7 @@ namespace smartSprite.SpriteEffectModule.Test.Tools
 
             #region Running the tested operation
 
-            ResolutionTranslator test = new ResolutionTranslator(frame, frame.Width / 2, frame.Height / 2, 512);
+            ResolutionTranslator test = new ResolutionTranslator(frame, 1366, 768, 320, 224, 512);
             var evidence = test.CreatedTranslatedPicture();
 
             #endregion

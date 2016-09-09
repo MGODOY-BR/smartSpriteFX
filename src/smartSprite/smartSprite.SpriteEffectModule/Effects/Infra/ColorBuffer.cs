@@ -31,7 +31,8 @@ namespace smartSuite.smartSprite.Effects.Infra{
 		/// Creates an instance of object
 		/// </summary>
 		/// <param name="length">It´s the maximum amount of allowed colors.</param>
-		public ColorBuffer(int length)
+        /// <param name="sensibility">It´s a percentage of tolerance to consider colors as equals</param>
+		public ColorBuffer(int length, float sensibility)
         {
             #region Entries validation
 
@@ -50,8 +51,7 @@ namespace smartSuite.smartSprite.Effects.Infra{
             }
             else
             {
-                float percentage = 1f / (float)length * 100f;
-                this._comparer = new ColorEqualityComparer((int)percentage);
+                this._comparer = new ColorEqualityComparer((int)sensibility);
             }
         }
 
@@ -90,13 +90,13 @@ namespace smartSuite.smartSprite.Effects.Infra{
         {
             foreach (var colorItem in this._colorCacheList)
             {
-                if (this._comparer.LooksLike(color, colorItem))
+                if (this._comparer.LooksLike2(color, colorItem))
                 {
                     return colorItem;
                 }
             }
 
-            return this._colorCacheList[0];
+            return color;
         }
 
         /// <summary>

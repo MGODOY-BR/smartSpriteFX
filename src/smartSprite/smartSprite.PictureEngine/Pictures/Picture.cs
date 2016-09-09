@@ -50,6 +50,15 @@ namespace smartSuite.smartSprite.Pictures{
         private static Dictionary<int, ColorInfo> _colorInfoBuffer = new Dictionary<int, ColorInfo>();
 
         /// <summary>
+        /// Gets the amount of color of current picture
+        /// </summary>
+        public long ColorCount
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
         /// Creates an image
         /// </summary>
         private Picture(String fullPath)
@@ -89,14 +98,23 @@ namespace smartSuite.smartSprite.Pictures{
                 this._transparentColor = other._transparentColor;
             }
 
+            HashSet<int> colorSet = new HashSet<int>();
             for (int y = 0; y < other.Height; y++)
             {
                 for (int x = 0; x < other.Width; x++)
                 {
                     var color = other.GetPixel(x, y);
                     this.ReplacePixel(x, y, color);
+
+                    var argb = color.ToArgb();
+                    if (!colorSet.Contains(argb))
+                    {
+                        colorSet.Add(argb);
+                    }
                 }
             }
+
+            this.ColorCount = colorSet.LongCount();
         }
 
         /// <summary>
@@ -211,6 +229,7 @@ namespace smartSuite.smartSprite.Pictures{
                 #endregion
 
                 this._buffer = new Dictionary<string, ColorInfo>();
+                HashSet<int> colorSet = new HashSet<int>();
 
                 for (int y = 0; y < image.Height; y++)
                 {
@@ -220,9 +239,17 @@ namespace smartSuite.smartSprite.Pictures{
                             new ColorInfo(
                                 image.GetPixel(x, y));
 
+                        var argb = colorInfo.GetInnerColor().ToArgb();
+                        if (!colorSet.Contains(argb))
+                        {
+                            colorSet.Add(argb);
+                        }
+
                         this.LoadColorInfoCache(y, x, colorInfo);
                     }
                 }
+
+                this.ColorCount = colorSet.LongCount();
             }
         }
 

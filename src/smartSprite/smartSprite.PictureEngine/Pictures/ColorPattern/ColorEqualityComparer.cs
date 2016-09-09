@@ -38,6 +38,7 @@ namespace smartSprite.Pictures.ColorPattern
         /// <param name="comparing"></param>
         /// <param name="compareTo"></param>
         /// <returns></returns>
+        [Obsolete("Rather to use LooksLike2 method")]
         public bool LooksLike(Color comparing, Color compareTo)
         {
             #region Entries validation
@@ -94,10 +95,62 @@ namespace smartSprite.Pictures.ColorPattern
         }
 
         /// <summary>
+        /// Gets a indicator informing if whe colors are similar
+        /// </summary>
+        /// <param name="comparing"></param>
+        /// <param name="compareTo"></param>
+        /// <returns></returns>
+        public bool LooksLike2(Color comparing, Color compareTo)
+        {
+            #region Entries validation
+
+            if (comparing == null)
+            {
+                return false;
+            }
+            if (compareTo == null)
+            {
+                return false;
+            }
+            if (comparing.Equals(compareTo))
+            {
+                return true;
+            }
+            if (this.Equals(compareTo, Color.Transparent))
+            {
+                return false;
+            }
+            if (this.Equals(comparing, Color.Transparent))
+            {
+                return false;
+            }
+
+            #endregion
+
+            var comparingR = comparing.R;
+            var comparingG = comparing.G;
+            var comparingB = comparing.B;
+
+            var compareToR = compareTo.R;
+            var compareToG = compareTo.G;
+            var compareToB = compareTo.B;
+
+            var factorR = (float)comparingR / (float)compareToR;
+            var factorG = (float)comparingG / (float)compareToG;
+            var factorB = (float)comparingB / (float)compareToB;
+
+            return
+                factorR <= this._sensibility ||
+                factorG <= this._sensibility ||
+                factorB <= this._sensibility;
+        }
+
+        /// <summary>
         /// Checks if there's some similiarity between the comparer factor
         /// </summary>
         /// <param name="refFactor">It´s a referecial color factor</param>
         /// <param name="factor">It´s a comparative color factor, applied to another color components.</param>
+        [Obsolete]
         private bool CheckSimiliarity(int refFactor, int factor)
         {
             int compareFactor = Math.Abs(factor - refFactor);

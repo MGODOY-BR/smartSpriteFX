@@ -21,11 +21,20 @@ namespace smartSuite.smartSprite.Effects.Filters{
         /// <summary>
         /// It큦 the destination width
         /// </summary>
-        private int _destinationWidth;
+        private int _destinationScreenWidth;
         /// <summary>
         /// It큦 the destination height
         /// </summary>
-        private int _destinationHeight;
+        private int _destinationScreenHeight;
+
+        /// <summary>
+        /// It큦 the origin width
+        /// </summary>
+        private int _screenWidth;
+        /// <summary>
+        /// It큦 the origin height
+        /// </summary>
+        private int _screenHeight;
 
         /// <summary>
         /// Applies the filter
@@ -38,8 +47,10 @@ namespace smartSuite.smartSprite.Effects.Filters{
             ResolutionTranslator translator =
                 new ResolutionTranslator(
                     frame,
-                    this._destinationWidth,
-                    this._destinationHeight,
+                    this._screenWidth,
+                    this._screenHeight,
+                    this._destinationScreenWidth,
+                    this._destinationScreenHeight,
                     this._colorBufferAmount);
 
             for (int y = 0; y < frame.Height; y++)
@@ -66,8 +77,11 @@ namespace smartSuite.smartSprite.Effects.Filters{
         {
             // This specification are initially based on NEO-GEO consoles
             this._colorBufferAmount = 4096;
-            this._destinationWidth = 320;
-            this._destinationHeight = 224;
+            this._destinationScreenWidth = 320;
+            this._destinationScreenHeight = 224;
+
+            this._screenWidth = 1366;
+            this._screenHeight = 768;
         }
 
         public override IConfigurationPanel ShowConfigurationPanel()

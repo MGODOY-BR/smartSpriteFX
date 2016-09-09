@@ -19,11 +19,6 @@ namespace smartSuite.smartSprite.Effects.Filters{
 		/// <summary>
 		/// 
 		/// </summary>
-		private ResolutionTranslator _translator;
-
-		/// <summary>
-		/// 
-		/// </summary>
 		private ColorBuffer _buffer;
 
 	}

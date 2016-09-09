@@ -19,7 +19,7 @@ namespace smartSuite.smartSprite.Effects.Tools{
 		/// <summary>
 		/// It´s a calculated resolution tax.
 		/// </summary>
-		private float _resolutionTax;
+		private int _resolutionTax;
 
 		/// <summary>
 		/// 
@@ -40,15 +40,18 @@ namespace smartSuite.smartSprite.Effects.Tools{
 		/// Creates an instance of the object
 		/// </summary>
 		/// <param name="originalPicture">It´s the original picture</param>
-		/// <param name="newWidth">It´s the lenght of new image</param>
-		/// <param name="newHeight">It´s the height of destination image</param>
+		/// <param name="screenWidth">It´s the lenght of new image</param>
+		/// <param name="screenHeight">It´s a height of screen</param>
+		/// <param name="newScreenWidth">It´s the length of the screen of  new resolution</param>
+		/// <param name="newScreenHeight">It´s the height of screen of new resolution</param>
 		/// <param name="newColorAmount">It´s a number of simultaneous color</param>
-		public void ResolutionTranslator(Picture originalPicture, int newWidth, int newHeight, int newColorAmount) {
+		public void ResolutionTranslator(Picture originalPicture, int screenWidth, int screenHeight, int newScreenWidth, int newScreenHeight, int newColorAmount) 
+		{
 			// TODO implement here
 		}
 
 		/// <summary>
-		/// Translate a pixel for new new resolution
+		/// Translate a pixel for a new resolution
 		/// </summary>
 		/// <param name="x"></param>
 		/// <param name="y"></param>
@@ -93,7 +96,7 @@ namespace smartSuite.smartSprite.Effects.Tools{
 			/// <summary>
 			/// 
 			/// </summary>
-			public PointCollection TValue;
+			public PointRange TValue;
 
 
 		}
