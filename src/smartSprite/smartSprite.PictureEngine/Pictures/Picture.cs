@@ -352,7 +352,13 @@ namespace smartSuite.smartSprite.Pictures{
             lock (_colorInfoBuffer)
             {
                 var colorInfo = new ColorInfo(newColor);
-                colorInfo = _colorInfoBuffer[colorInfo.GetInnerColor().ToArgb()];
+                var keyArgb = colorInfo.GetInnerColor().ToArgb();
+
+                if (!_colorInfoBuffer.ContainsKey(keyArgb))
+                {
+                    _colorInfoBuffer.Add(keyArgb, colorInfo);
+                }
+                colorInfo = _colorInfoBuffer[keyArgb];
 
                 var colorInfoKey =
                     colorInfo.GetInnerColor().ToArgb();

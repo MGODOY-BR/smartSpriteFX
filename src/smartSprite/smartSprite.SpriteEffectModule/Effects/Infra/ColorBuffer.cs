@@ -65,7 +65,7 @@ namespace smartSuite.smartSprite.Effects.Infra{
             bool found = false;
             foreach (var colorItem in this._colorCacheList)
             {
-                if (this._comparer.LooksLike(color, colorItem))
+                if (this._comparer.LooksLike2(color, colorItem))
                 {
                     found = true;
                     break;
@@ -96,8 +96,7 @@ namespace smartSuite.smartSprite.Effects.Infra{
                 }
             }
 
-            return this._colorCacheList[
-                this._colorCacheList.Count - 1];
+            throw new InvalidOperationException("Incompatible color - " + color.ToArgb().ToString());
         }
 
         /// <summary>
