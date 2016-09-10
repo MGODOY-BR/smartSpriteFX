@@ -96,7 +96,8 @@ namespace smartSuite.smartSprite.Effects.Infra{
                 }
             }
 
-            return color;
+            return this._colorCacheList[
+                this._colorCacheList.Count - 1];
         }
 
         /// <summary>

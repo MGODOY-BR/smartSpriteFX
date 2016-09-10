@@ -132,6 +132,10 @@ namespace smartSuite.smartSprite.Effects.Tools{
             {
                 throw new ArgumentOutOfRangeException("Invalid y coordinate");
             }
+            if (this.PointOcuppied(x, y, color, this._translatedPixel))
+            {
+                return;
+            }
 
             #endregion
 
@@ -152,21 +156,13 @@ namespace smartSuite.smartSprite.Effects.Tools{
                 this._translatedPixel.Add(newColor, new PointRange());
             }
             var points = this._translatedPixel[newColor];
+            points.Prepare();
 
             // Translating...
             for (int yy = y; yy < finalY; yy++)
             {
                 for (int xx = x; xx < finalX; xx++)
                 {
-                    #region Entries validation
-
-                    if (this.PointOcuppied(xx, yy, color, newColor, this._translatedPixel))
-                    {
-                        continue;
-                    }
-
-                    #endregion
-
                     points.SetPoint(xx, yy);
                     this._lastScannedPoint = new Pictures.Point(xx, yy);
                 }
@@ -210,7 +206,7 @@ namespace smartSuite.smartSprite.Effects.Tools{
         /// Gets a indicator informing if the point is occupied.
         /// </summary>
         /// <returns></returns>
-        private bool PointOcuppied(int x, int y, Color originColor, Color destinationColor, Dictionary<Color, PointRange> translatedPointList)
+        private bool PointOcuppied(int x, int y, Color originColor, Dictionary<Color, PointRange> translatedPointList)
         {
             #region Entries validation
 
@@ -221,14 +217,6 @@ namespace smartSuite.smartSprite.Effects.Tools{
             if(this._originalPicture == null)
             {
                 throw new ArgumentNullException("this._originalPicture");
-            }
-            ColorEqualityComparer comparer = new ColorEqualityComparer();
-            if (
-                !comparer.Equals(
-                    destinationColor,
-                    this._colorBuffer.GetSimilarColor(originColor)))
-            {
-                return true;
             }
 
             #endregion

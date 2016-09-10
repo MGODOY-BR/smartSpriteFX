@@ -36,6 +36,7 @@ namespace smartSprite.SpriteEffectModule.Test.Effects.Filters
 
             #region Validating the evidences
 
+            Assert.IsTrue(frame.ColorCount <= 512);
             Assert.IsTrue(appliedEvidence);
             Assert.AreEqual(originalWidth, frame.Width);
             Assert.AreEqual(originalHeight, frame.Height);

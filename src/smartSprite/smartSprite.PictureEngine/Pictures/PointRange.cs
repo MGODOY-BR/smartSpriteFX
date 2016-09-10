@@ -21,24 +21,43 @@ namespace smartSuite.smartSprite.Pictures{
         private Point _endPoint;
 
         /// <summary>
+        /// It´s a list of different point ranges
+        /// </summary>
+        private List<PointRange> _rangeList = new List<PointRange>();
+
+        /// <summary>
+        /// It´s the current Point range.
+        /// </summary>
+        private PointRange _currentRange;
+
+        /// <summary>
+        /// Prepare the range
+        /// </summary>
+        public void Prepare()
+        {
+            this._currentRange = new PointRange();
+            this._rangeList.Add(this._currentRange);
+        }
+
+        /// <summary>
         /// Set a point
         /// </summary>
         /// <param name="x"></param>
         /// <param name="y"></param>
         public void SetPoint(int x, int y)
         {
-            if (this._startPoint == null)
+            if (this._currentRange._startPoint == null)
             {
-                this._startPoint = new Point(x, y);
+                this._currentRange._startPoint = new Point(x, y);
             }
             else
             {
-                this._endPoint = new Point(x, y);
+                this._currentRange._endPoint = new Point(x, y);
 
-                if (this._startPoint.CompareTo(this._endPoint) == 1)
+                if (this._currentRange._startPoint.CompareTo(this._currentRange._endPoint) == 1)
                 {
-                    Point tempPoint = this._startPoint;
-                    this._endPoint = this._startPoint;
+                    Point tempPoint = this._currentRange._startPoint;
+                    this._endPoint = this._currentRange._startPoint;
                     this._endPoint = tempPoint;
                 }
             }
@@ -61,6 +80,25 @@ namespace smartSuite.smartSprite.Pictures{
 
             #endregion
 
+            foreach (var pointRange in this._rangeList)
+            {
+                if (pointRange.HaveIThisContained(x, y))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Verifies if the current point range have the X and Y contained.
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns></returns>
+        private bool HaveIThisContained(int x, int y)
+        {
             return x >= this._startPoint.X && x <= this._endPoint.X &&
                     y >= this._startPoint.Y && y <= this._endPoint.Y;
         }
@@ -70,6 +108,22 @@ namespace smartSuite.smartSprite.Pictures{
         /// </summary>
         /// <returns></returns>
         public List<Point> ToPointList()
+        {
+            List<Point> returnList = new List<Point>();
+
+            foreach (var rangeItem in this._rangeList)
+            {
+                returnList.AddRange(rangeItem.ConvertMeToPointList());
+            }
+
+            return returnList;
+        }
+
+        /// <summary>
+        /// Converts the current point list to a set of points
+        /// </summary>
+        /// <returns></returns>
+        private List<Point> ConvertMeToPointList()
         {
             #region Entries validation
 
