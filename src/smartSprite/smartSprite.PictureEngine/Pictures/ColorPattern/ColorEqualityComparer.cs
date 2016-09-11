@@ -127,22 +127,12 @@ namespace smartSprite.Pictures.ColorPattern
 
             #endregion
 
-            var comparingR = comparing.R;
-            var comparingG = comparing.G;
-            var comparingB = comparing.B;
-
-            var compareToR = compareTo.R;
-            var compareToG = compareTo.G;
-            var compareToB = compareTo.B;
-
-            var factorR = (float)comparingR / (float)compareToR;
-            var factorG = (float)comparingG / (float)compareToG;
-            var factorB = (float)comparingB / (float)compareToB;
+            ColorFactor colorFactor = ColorFactor.GetColorFactorByDivision(comparing, compareTo);
 
             return
-                factorR <= this._sensibility ||
-                factorG <= this._sensibility ||
-                factorB <= this._sensibility;
+                colorFactor.R <= this._sensibility ||
+                colorFactor.G <= this._sensibility ||
+                colorFactor.B <= this._sensibility;
         }
 
         /// <summary>
@@ -178,22 +168,12 @@ namespace smartSprite.Pictures.ColorPattern
 
             #endregion
 
-            var comparingR = comparing.R;
-            var comparingG = comparing.G;
-            var comparingB = comparing.B;
-
-            var compareToR = compareTo.R;
-            var compareToG = compareTo.G;
-            var compareToB = compareTo.B;
-
-            var factorR = (float)comparingR / (float)compareToR;
-            var factorG = (float)comparingG / (float)compareToG;
-            var factorB = (float)comparingB / (float)compareToB;
+            ColorFactor colorFactor = ColorFactor.GetColorFactorByDivision(comparing, compareTo);
 
             return
-                factorR <= this._sensibility &&
-                factorG <= this._sensibility &&
-                factorB <= this._sensibility;
+                colorFactor.R <= this._sensibility &&
+                colorFactor.G <= this._sensibility &&
+                colorFactor.B <= this._sensibility;
         }
 
         /// <summary>
@@ -204,47 +184,12 @@ namespace smartSprite.Pictures.ColorPattern
         /// <returns></returns>
         public bool LooksLikeBySensibility2(Color comparing, Color compareTo)
         {
-            #region Entries validation
-
-            if (comparing == null)
-            {
-                return false;
-            }
-            if (compareTo == null)
-            {
-                return false;
-            }
-            if (comparing.Equals(compareTo))
-            {
-                return true;
-            }
-            if (this.Equals(compareTo, Color.Transparent))
-            {
-                return false;
-            }
-            if (this.Equals(comparing, Color.Transparent))
-            {
-                return false;
-            }
-
-            #endregion
-
-            var comparingR = comparing.R;
-            var comparingG = comparing.G;
-            var comparingB = comparing.B;
-
-            var compareToR = compareTo.R;
-            var compareToG = compareTo.G;
-            var compareToB = compareTo.B;
-
-            var factorR = Math.Abs((float)comparingR - (float)compareToR);
-            var factorG = Math.Abs((float)comparingG - (float)compareToG);
-            var factorB = Math.Abs((float)comparingB - (float)compareToB);
-
+            ColorFactor colorFactor = ColorFactor.GetColorFactorByDifference(comparing, compareTo);
+             
             return
-                factorR <= this._sensibility &&
-                factorG <= this._sensibility &&
-                factorB <= this._sensibility;
+                colorFactor.R <= this._sensibility &&
+                colorFactor.G <= this._sensibility &&
+                colorFactor.B <= this._sensibility;
         }
 
         /// <summary>

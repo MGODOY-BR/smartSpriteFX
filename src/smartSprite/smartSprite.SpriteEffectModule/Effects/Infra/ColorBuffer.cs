@@ -68,6 +68,8 @@ namespace smartSuite.smartSprite.Effects.Infra{
         /// <returns></returns>
         public void Register(Color color)
         {
+            // TODO: Use ColorFactory by ColorEqualityComparer to avoid to add colors to similar.
+            // Use the amount of color to check them.
             bool found = false;
             foreach (var colorItem in this._colorCacheList) 
             {
