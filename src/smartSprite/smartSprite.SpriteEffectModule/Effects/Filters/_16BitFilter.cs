@@ -77,8 +77,9 @@ namespace smartSuite.smartSprite.Effects.Filters{
         {
             // This specification are initially based on Sega-Genesis Console
             this._colorBufferAmount = 512;
-            this._destinationScreenWidth = 320;
-            this._destinationScreenHeight = 240;
+            //this._colorBufferAmount = 4096;
+            this._destinationScreenWidth = 256;
+            this._destinationScreenHeight = 224;
 
             this._screenWidth = 1366;
             this._screenHeight = 768;

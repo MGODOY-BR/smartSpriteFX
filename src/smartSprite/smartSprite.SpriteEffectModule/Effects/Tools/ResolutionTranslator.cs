@@ -91,11 +91,6 @@ namespace smartSuite.smartSprite.Effects.Tools{
 
             this._originalPicture = originalPicture;
 
-            // float sensibility = ((float)newColorAmount / (float)this._originalPicture.ColorCount);
-            float sensibility = 1.6f;
-
-            this._colorBuffer = new ColorBuffer(newColorAmount, sensibility);
-
             // Getting the picture boundaries
             int width = originalPicture.Width;
             int height = originalPicture.Height;
@@ -111,6 +106,10 @@ namespace smartSuite.smartSprite.Effects.Tools{
             // Calculating the tax of resolution
             this._resolutionTax =
                  (int)hipotenuseOriginalPicture / (int)hipotenuseNewPicture;
+
+            float sensibility = ((float)newColorAmount / (float)this._originalPicture.ColorCount);
+
+            this._colorBuffer = new ColorBuffer(newColorAmount, sensibility);
         }
 
         /// <summary>

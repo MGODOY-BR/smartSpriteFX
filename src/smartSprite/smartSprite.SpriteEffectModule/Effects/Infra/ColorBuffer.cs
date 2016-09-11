@@ -27,6 +27,11 @@ namespace smartSuite.smartSprite.Effects.Infra{
         /// </summary>
         private List<Color> _colorCacheList = new List<Color>();
 
+        /// <summary>
+        /// It´s a sensibility of colors.
+        /// </summary>
+        private float _sensibility;
+
 		/// <summary>
 		/// Creates an instance of object
 		/// </summary>
@@ -44,6 +49,7 @@ namespace smartSuite.smartSprite.Effects.Infra{
             #endregion
 
             this._maxLength = length;
+            this._sensibility = sensibility;
 
             if (this._maxLength == 0)
             {
@@ -51,7 +57,7 @@ namespace smartSuite.smartSprite.Effects.Infra{
             }
             else
             {
-                this._comparer = new ColorEqualityComparer((int)sensibility);
+                this._comparer = new ColorEqualityComparer(this._sensibility);
             }
         }
 
@@ -65,7 +71,7 @@ namespace smartSuite.smartSprite.Effects.Infra{
             bool found = false;
             foreach (var colorItem in this._colorCacheList)
             {
-                if (this._comparer.LooksLike2(color, colorItem))
+                if (this._comparer.LooksLikeBySensibility(color, colorItem))
                 {
                     found = true;
                     break;
@@ -90,13 +96,16 @@ namespace smartSuite.smartSprite.Effects.Infra{
         {
             foreach (var colorItem in this._colorCacheList)
             {
-                if (this._comparer.LooksLike2(color, colorItem))
+                if (this._comparer.LooksLikeBySensibility(color, colorItem))
                 {
                     return colorItem;
                 }
             }
 
-            throw new InvalidOperationException("Incompatible color - " + color.ToArgb().ToString());
+            this._sensibility += 0.001f;
+            this._comparer = new ColorEqualityComparer(this._sensibility);
+
+            return this.GetSimilarColor(color); // TODO: Melhorar isto para não resultar na primeira cor encontrada, mas na mais parecida
         }
 
         /// <summary>

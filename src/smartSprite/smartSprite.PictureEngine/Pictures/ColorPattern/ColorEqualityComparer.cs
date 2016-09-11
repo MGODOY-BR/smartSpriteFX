@@ -15,7 +15,7 @@ namespace smartSprite.Pictures.ColorPattern
         /// <summary>
         /// It´s a sensibility, used to check similiar colors
         /// </summary>
-        private int _sensibility = 30;
+        private float _sensibility = 30;
 
         /// <summary>
         /// Creates an instance of the object
@@ -27,7 +27,7 @@ namespace smartSprite.Pictures.ColorPattern
         /// <summary>
         /// Creates an instance of the object
         /// </summary>
-        public ColorEqualityComparer(int sensibility)
+        public ColorEqualityComparer(float sensibility)
         {
             this._sensibility = sensibility;
         }
@@ -38,7 +38,7 @@ namespace smartSprite.Pictures.ColorPattern
         /// <param name="comparing"></param>
         /// <param name="compareTo"></param>
         /// <returns></returns>
-        [Obsolete("Rather to use LooksLike2 method")]
+        [Obsolete("Rather to use LooksLikeBySensibility method")]
         public bool LooksLike(Color comparing, Color compareTo)
         {
             #region Entries validation
@@ -100,7 +100,7 @@ namespace smartSprite.Pictures.ColorPattern
         /// <param name="comparing"></param>
         /// <param name="compareTo"></param>
         /// <returns></returns>
-        public bool LooksLike2(Color comparing, Color compareTo)
+        public bool LooksLikeByBright(Color comparing, Color compareTo)
         {
             #region Entries validation
 
@@ -142,6 +142,57 @@ namespace smartSprite.Pictures.ColorPattern
             return
                 factorR <= this._sensibility ||
                 factorG <= this._sensibility ||
+                factorB <= this._sensibility;
+        }
+
+        /// <summary>
+        /// Gets a indicator informing if whe colors are similar
+        /// </summary>
+        /// <param name="comparing"></param>
+        /// <param name="compareTo"></param>
+        /// <returns></returns>
+        public bool LooksLikeBySensibility(Color comparing, Color compareTo)
+        {
+            #region Entries validation
+
+            if (comparing == null)
+            {
+                return false;
+            }
+            if (compareTo == null)
+            {
+                return false;
+            }
+            if (comparing.Equals(compareTo))
+            {
+                return true;
+            }
+            if (this.Equals(compareTo, Color.Transparent))
+            {
+                return false;
+            }
+            if (this.Equals(comparing, Color.Transparent))
+            {
+                return false;
+            }
+
+            #endregion
+
+            var comparingR = comparing.R;
+            var comparingG = comparing.G;
+            var comparingB = comparing.B;
+
+            var compareToR = compareTo.R;
+            var compareToG = compareTo.G;
+            var compareToB = compareTo.B;
+
+            var factorR = (float)comparingR / (float)compareToR;
+            var factorG = (float)comparingG / (float)compareToG;
+            var factorB = (float)comparingB / (float)compareToB;
+
+            return
+                factorR <= this._sensibility &&
+                factorG <= this._sensibility &&
                 factorB <= this._sensibility;
         }
 
