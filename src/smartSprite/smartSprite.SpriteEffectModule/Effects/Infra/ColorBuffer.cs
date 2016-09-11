@@ -69,9 +69,9 @@ namespace smartSuite.smartSprite.Effects.Infra{
         public void Register(Color color)
         {
             bool found = false;
-            foreach (var colorItem in this._colorCacheList)
+            foreach (var colorItem in this._colorCacheList) 
             {
-                if (this._comparer.LooksLikeBySensibility(color, colorItem))
+                if (this._comparer.LooksLikeBySensibility2(color, colorItem))
                 {
                     found = true;
                     break;
@@ -96,7 +96,7 @@ namespace smartSuite.smartSprite.Effects.Infra{
         {
             foreach (var colorItem in this._colorCacheList)
             {
-                if (this._comparer.LooksLikeBySensibility(color, colorItem))
+                if (this._comparer.LooksLikeBySensibility2(color, colorItem))
                 {
                     return colorItem;
                 }

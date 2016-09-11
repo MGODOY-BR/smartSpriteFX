@@ -107,7 +107,7 @@ namespace smartSuite.smartSprite.Effects.Tools{
             this._resolutionTax =
                  (int)hipotenuseOriginalPicture / (int)hipotenuseNewPicture;
 
-            float sensibility = ((float)newColorAmount / (float)this._originalPicture.ColorCount);
+            float sensibility = ((float)newColorAmount / (float)this._originalPicture.ColorCount) + 1;
 
             this._colorBuffer = new ColorBuffer(newColorAmount, sensibility);
         }
