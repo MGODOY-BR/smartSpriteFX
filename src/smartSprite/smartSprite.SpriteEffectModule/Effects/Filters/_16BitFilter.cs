@@ -37,6 +37,11 @@ namespace smartSuite.smartSprite.Effects.Filters{
         private int _screenHeight;
 
         /// <summary>
+        /// It´s a contrast among the colors
+        /// </summary>
+        private float _contrast;
+
+        /// <summary>
         /// Applies the filter
         /// </summary>
         /// <param name="frame"></param>
@@ -52,7 +57,7 @@ namespace smartSuite.smartSprite.Effects.Filters{
                     this._destinationScreenWidth,
                     this._destinationScreenHeight,
                     this._colorBufferAmount,
-                    0.10f);     // <-- TODO: Ajustar este coeficiente
+                    _contrast);     
 
             for (int y = 0; y < frame.Height; y++)
             {
@@ -80,6 +85,7 @@ namespace smartSuite.smartSprite.Effects.Filters{
             this._colorBufferAmount = 256;
             this._destinationScreenWidth = 256;
             this._destinationScreenHeight = 224;
+            this._contrast = 0.45f;
 
             this._screenWidth = 1366;
             this._screenHeight = 768;

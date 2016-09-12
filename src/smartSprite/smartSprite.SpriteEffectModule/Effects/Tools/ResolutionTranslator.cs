@@ -99,8 +99,8 @@ namespace smartSuite.smartSprite.Effects.Tools{
         /// <param name="newScreenWidth">It´s the length of the screen of  new resolution</param>
         /// <param name="newScreenHeight">It´s the height of screen of new resolution</param>
         /// <param name="newColorAmount">It´s a number of simultaneous color</param>
-        /// <param name="diluteColorFactor">It´s a factor used to dilute color</param>
-        private void Initialize(Picture originalPicture, int screenWidth, int screenHeight, int newScreenWidth, int newScreenHeight, int newColorAmount, float diluteColorFactor)
+        /// <param name="contrast">It´s a factor used to contrast color</param>
+        private void Initialize(Picture originalPicture, int screenWidth, int screenHeight, int newScreenWidth, int newScreenHeight, int newColorAmount, float contrast)
         {
             #region Entries validation
 
@@ -137,9 +137,9 @@ namespace smartSuite.smartSprite.Effects.Tools{
             this._resolutionTax =
                  (int)hipotenuseOriginalPicture / (int)hipotenuseNewPicture;
 
-            float bandWidth =  // <-- As higher as this be, brighter and vary the colors is going to be (just inform multiple by 5
+            float bandWidth = 
                  (float)hipotenuseNewPicture / (float)hipotenuseOriginalPicture *
-                 2.15f + diluteColorFactor;
+                 2.15f + contrast;
 
             float sensibility =
                 ((float)newColorAmount / (float)this._originalPicture.ColorCount) +
