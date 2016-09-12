@@ -12,7 +12,7 @@ namespace smartSuite.smartSprite.Effects.Filters{
 	/// <summary>
 	/// Represents a filter to convert the frame to 16 bit appearence.
 	/// </summary>
-	public class _16BitFilter : SmartSpriteOriginalFilterBase {
+	public class _24BitFilter : SmartSpriteOriginalFilterBase {
 
         /// <summary>
         /// It´s the color buffer amount
@@ -51,8 +51,7 @@ namespace smartSuite.smartSprite.Effects.Filters{
                     this._screenHeight,
                     this._destinationScreenWidth,
                     this._destinationScreenHeight,
-                    this._colorBufferAmount,
-                    0.10f);     // <-- TODO: Ajustar este coeficiente
+                    this._colorBufferAmount);
 
             for (int y = 0; y < frame.Height; y++)
             {
@@ -76,9 +75,9 @@ namespace smartSuite.smartSprite.Effects.Filters{
 
         public override void Reset()
         {
-            // This specification are initially based on SNES Console
-            this._colorBufferAmount = 256;
-            this._destinationScreenWidth = 256;
+            // This specification are initially based on Neo Geo Console
+            this._colorBufferAmount = 4096;
+            this._destinationScreenWidth = 320;
             this._destinationScreenHeight = 224;
 
             this._screenWidth = 1366;

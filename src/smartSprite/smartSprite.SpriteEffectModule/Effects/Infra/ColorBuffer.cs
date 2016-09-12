@@ -68,12 +68,10 @@ namespace smartSuite.smartSprite.Effects.Infra{
         /// <returns></returns>
         public void Register(Color color)
         {
-            // TODO: Use ColorFactory by ColorEqualityComparer to avoid to add colors to similar.
-            // Use the amount of color to check them.
             bool found = false;
             foreach (var colorItem in this._colorCacheList) 
             {
-                if (this._comparer.LooksLikeBySensibility2(color, colorItem))
+                if (this._comparer.LooksLikeBySensibility(color, colorItem))
                 {
                     found = true;
                     break;
@@ -98,7 +96,7 @@ namespace smartSuite.smartSprite.Effects.Infra{
         {
             foreach (var colorItem in this._colorCacheList)
             {
-                if (this._comparer.LooksLikeBySensibility2(color, colorItem))
+                if (this._comparer.LooksLikeBySensibility(color, colorItem))
                 {
                     return colorItem;
                 }
@@ -107,7 +105,7 @@ namespace smartSuite.smartSprite.Effects.Infra{
             this._sensibility += 0.001f;
             this._comparer = new ColorEqualityComparer(this._sensibility);
 
-            return this.GetSimilarColor(color); // TODO: Melhorar isto para não resultar na primeira cor encontrada, mas na mais parecida
+            return this.GetSimilarColor(color);
         }
 
         /// <summary>
@@ -126,6 +124,5 @@ namespace smartSuite.smartSprite.Effects.Infra{
         {
             return this._colorCacheList.Count;
         }
-
 	}
 }

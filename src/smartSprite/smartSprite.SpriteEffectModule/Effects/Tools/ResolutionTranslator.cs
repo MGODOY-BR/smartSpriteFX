@@ -72,6 +72,36 @@ namespace smartSuite.smartSprite.Effects.Tools{
         /// <param name="newColorAmount">It´s a number of simultaneous color</param>
         public ResolutionTranslator(Picture originalPicture, int screenWidth, int screenHeight, int newScreenWidth, int newScreenHeight, int newColorAmount)
         {
+            this.Initialize(originalPicture, screenWidth, screenHeight, newScreenWidth, newScreenHeight, newColorAmount, 0f);
+        }
+
+        /// <summary>
+        /// Creates an instance of the object
+        /// </summary>
+        /// <param name="originalPicture">It´s the original picture</param>
+        /// <param name="screenWidth">It´s the lenght of new image</param>
+        /// <param name="screenHeight">It´s a height of screen</param>
+        /// <param name="newScreenWidth">It´s the length of the screen of  new resolution</param>
+        /// <param name="newScreenHeight">It´s the height of screen of new resolution</param>
+        /// <param name="newColorAmount">It´s a number of simultaneous color</param>
+        /// <param name="diluteColorFactor">It´s a factor used to dilute color</param>
+        public ResolutionTranslator(Picture originalPicture, int screenWidth, int screenHeight, int newScreenWidth, int newScreenHeight, int newColorAmount, float diluteColorFactor)
+        {
+            this.Initialize(originalPicture, screenWidth, screenHeight, newScreenWidth, newScreenHeight, newColorAmount, diluteColorFactor);
+        }
+
+        /// <summary>
+        /// Initializes the object
+        /// </summary>
+        /// <param name="originalPicture">It´s the original picture</param>
+        /// <param name="screenWidth">It´s the lenght of new image</param>
+        /// <param name="screenHeight">It´s a height of screen</param>
+        /// <param name="newScreenWidth">It´s the length of the screen of  new resolution</param>
+        /// <param name="newScreenHeight">It´s the height of screen of new resolution</param>
+        /// <param name="newColorAmount">It´s a number of simultaneous color</param>
+        /// <param name="diluteColorFactor">It´s a factor used to dilute color</param>
+        private void Initialize(Picture originalPicture, int screenWidth, int screenHeight, int newScreenWidth, int newScreenHeight, int newColorAmount, float diluteColorFactor)
+        {
             #region Entries validation
 
             if (originalPicture == null)
@@ -107,7 +137,13 @@ namespace smartSuite.smartSprite.Effects.Tools{
             this._resolutionTax =
                  (int)hipotenuseOriginalPicture / (int)hipotenuseNewPicture;
 
-            float sensibility = ((float)newColorAmount / (float)this._originalPicture.ColorCount) + 1;
+            float bandWidth =  // <-- As higher as this be, brighter and vary the colors is going to be (just inform multiple by 5
+                 (float)hipotenuseNewPicture / (float)hipotenuseOriginalPicture *
+                 2.15f + diluteColorFactor;
+
+            float sensibility =
+                ((float)newColorAmount / (float)this._originalPicture.ColorCount) +
+                bandWidth;
 
             this._colorBuffer = new ColorBuffer(newColorAmount, sensibility);
         }

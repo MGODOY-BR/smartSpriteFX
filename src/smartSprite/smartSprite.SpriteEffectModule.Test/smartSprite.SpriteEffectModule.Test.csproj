@@ -67,6 +67,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Effects\FilterEngine\FilterCollectionTest.cs" />
+    <Compile Include="Effects\Filters\_24BitFilterTest.cs" />
     <Compile Include="Effects\Filters\_16BitFilterTest.cs" />
     <Compile Include="Infra\ColorBufferTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

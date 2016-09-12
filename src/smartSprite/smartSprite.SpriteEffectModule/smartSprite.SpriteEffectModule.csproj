@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="Animations\Animation.cs" />
     <Compile Include="Effects\FilterEngine\FilterCollection.cs" />
+    <Compile Include="Effects\Filters\_24BitFilter.cs" />
     <Compile Include="Effects\Filters\_16BitFilter.cs" />
     <Compile Include="Effects\Filters\IEffectFilter.cs" />
     <Compile Include="Effects\Filters\SmartSpriteOriginalFilterBase.cs" />
