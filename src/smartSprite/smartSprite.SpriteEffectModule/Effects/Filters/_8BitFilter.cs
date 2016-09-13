@@ -12,7 +12,7 @@ namespace smartSuite.smartSprite.Effects.Filters{
 	/// <summary>
 	/// Represents a filter to convert the frame to 16 bit appearence.
 	/// </summary>
-	public class _16BitFilter : SmartSpriteOriginalFilterBase {
+	public class _8BitFilter : SmartSpriteOriginalFilterBase {
 
         /// <summary>
         /// It´s the color buffer amount
@@ -81,11 +81,11 @@ namespace smartSuite.smartSprite.Effects.Filters{
 
         public override void Reset()
         {
-            // This specification are initially based on SNES Console
-            this._colorBufferAmount = 256;
+            // This specification are initially based on Sega Master System Console
+            this._colorBufferAmount = 32;
             this._destinationScreenWidth = 256;
-            this._destinationScreenHeight = 224;
-            this._contrast = 0.50f;
+            this._destinationScreenHeight = 192;
+            this._contrast = 0.70f;
 
             this._screenWidth = 1366;
             this._screenHeight = 768;

@@ -9,6 +9,12 @@ namespace smartSprite.SpriteEffectModule.Test.Effects.Filters
     [TestClass]
     public class _24BitFilterTest
     {
+        [TestInitialize]
+        public void Setup()
+        {
+            Picture.ClearCache();
+        }
+
         [TestMethod]
         public void ApplyFilterTest()
         {

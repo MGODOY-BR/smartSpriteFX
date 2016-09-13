@@ -112,7 +112,7 @@ namespace smartSuite.smartSprite.Effects.Tools{
             {
                 throw new ArgumentException("Invalid newScreenWidth argument");
             }
-            if (newColorAmount < 40)
+            if (newColorAmount < 2)
             {
                 throw new ArgumentException("Invalid newColorAmount argument");
             }

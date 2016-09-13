@@ -7,7 +7,7 @@ using System.IO;
 namespace smartSprite.SpriteEffectModule.Test.Effects.Filters
 {
     [TestClass]
-    public class _16BitFilterTest
+    public class _8BitFilterTest
     {
         [TestInitialize]
         public void Setup()
@@ -28,7 +28,7 @@ namespace smartSprite.SpriteEffectModule.Test.Effects.Filters
 
             #region Running the tested operation
 
-            _16BitFilter test = new _16BitFilter();
+            _8BitFilter test = new _8BitFilter();
             test.Reset();
             var appliedEvidence = test.ApplyFilter(frame, 0);
 
@@ -36,7 +36,7 @@ namespace smartSprite.SpriteEffectModule.Test.Effects.Filters
 
             #region Getting the evidences
 
-            frame.SaveCopy("16bit.png");
+            frame.SaveCopy("8bit.png");
 
             Console.WriteLine(frame.ColorCount);
 
@@ -44,11 +44,11 @@ namespace smartSprite.SpriteEffectModule.Test.Effects.Filters
 
             #region Validating the evidences
 
-            Assert.AreEqual(256, frame.ColorCount);
+            Assert.AreEqual(32, frame.ColorCount);
             Assert.IsTrue(appliedEvidence);
             Assert.AreEqual(originalWidth, frame.Width);
             Assert.AreEqual(originalHeight, frame.Height);
-            Assert.IsTrue(File.Exists("16bit.png"));
+            Assert.IsTrue(File.Exists("8bit.png"));
 
             #endregion
         }
