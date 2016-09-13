@@ -68,38 +68,7 @@ namespace smartSprite.SpriteEffectModule.Test.Infra
 
             #endregion
         }
-
-        [TestMethod]
-        public void RegisterTooCloseColorTest()
-        {
-            #region Scenario setup
-
-            #endregion
-
-            #region Running the tested operation
-
-            ColorBuffer test = new ColorBuffer(4, 25);
-            for (int i = 0; i < 4; i++)
-            {
-                test.Register(
-                    System.Drawing.Color.FromArgb(255, 255, i));
-            }
-
-            #endregion
-
-            #region Getting the evidences
-
-            var evidence = test.Count();
-
-            #endregion
-
-            #region Validating the evidences
-
-            Assert.AreEqual(1, evidence);
-
-            #endregion
-        }
-
+        
         [TestMethod]
         public void RegisterNotSoCloseColorTest()
         {
