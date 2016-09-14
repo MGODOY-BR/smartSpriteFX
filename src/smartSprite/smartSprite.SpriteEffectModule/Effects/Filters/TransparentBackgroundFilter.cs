@@ -42,13 +42,15 @@ namespace smartSuite.smartSprite.Effects.Filters{
                 }
             }
 
-            backgroundPattern.DoTransparentBorder(
-                new Piece(frame, 
-                    new Pictures.Point(0f, 0f), 
-                    new Pictures.Point((float)frame.Width, (float)frame.Height)), 
-                new ColorSupportFormForAnimation());
+            this.TransparentColor = 
+                backgroundPattern.GetReplacementColor(
+                    new Piece(frame, 
+                        new Pictures.Point(0f, 0f), 
+                        new Pictures.Point((float)frame.Width, (float)frame.Height)), 
+                    new ColorSupportFormForAnimation());
 
-            this.TransparentColor = backgroundPattern.TransparentColor;
+            // Changing transparent color
+            frame.TransparentColor = this.TransparentColor;
 
             return true;
         }

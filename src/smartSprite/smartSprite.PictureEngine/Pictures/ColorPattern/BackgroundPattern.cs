@@ -51,6 +51,22 @@ namespace smartSuite.smartSprite.Pictures.ColorPattern
         private Point _lowerRight;
 
         /// <summary>
+        /// Gets the replacement colors
+        /// </summary>
+        /// <returns></returns>
+        internal Color GetReplacementColor(Piece piece, IAskingForColorDelegate askingForColorDelegate)
+        {
+            return this.GetReplacementColor(
+                    this._learntCache,
+                    piece.PointA,
+                    piece.PointC,
+                    piece.PointD,
+                    piece.PointB,
+                    piece,
+                    askingForColorDelegate);
+        }
+
+        /// <summary>
         /// It´s a color to replace
         /// </summary>
         private List<Color> _replacementColorList = new List<Color>();
@@ -248,6 +264,8 @@ namespace smartSuite.smartSprite.Pictures.ColorPattern
                     piece,
                     askingForColorDelegate);
 
+            this.TransparentColor = transparentReplacementColor;
+
             /*
             for (int y = (int)piece.PointA.Y; y < piece.PointB.Y; y++)
             {
@@ -276,8 +294,6 @@ namespace smartSuite.smartSprite.Pictures.ColorPattern
 
             // Refreshing picture
             pieceTakenPicture.Overwrite(transparentReplacementColor);   // <-- TODO: Change replacementColor to put a pattern
-
-            this.TransparentColor = transparentReplacementColor;
         }
 
         /// <summary>

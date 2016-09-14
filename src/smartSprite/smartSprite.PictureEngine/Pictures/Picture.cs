@@ -176,6 +176,21 @@ namespace smartSuite.smartSprite.Pictures{
         }
 
         /// <summary>
+        /// Sets or gets the transparent color
+        /// </summary>
+        internal Color TransparentColor
+        {
+            get
+            {
+                return _transparentColor;
+            }
+            set
+            {
+                this._transparentColor = value;
+            }
+        }
+
+        /// <summary>
         /// Loads the buffer of image
         /// </summary>
         /// <param name="fullPath"></param>
