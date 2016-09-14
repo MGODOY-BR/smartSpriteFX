@@ -56,6 +56,15 @@ namespace smartSuite.smartSprite.Pictures.ColorPattern
         private List<Color> _replacementColorList = new List<Color>();
 
         /// <summary>
+        /// Gets the transparentColor got after <see cref="DoTransparentBorder"/> method.
+        /// </summary>
+        public Color TransparentColor
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
         /// Includes the coordinates to study the pattern
         /// </summary>
         /// <param name="x">It´s the x coordinate</param>
@@ -267,6 +276,8 @@ namespace smartSuite.smartSprite.Pictures.ColorPattern
 
             // Refreshing picture
             pieceTakenPicture.Overwrite(transparentReplacementColor);   // <-- TODO: Change replacementColor to put a pattern
+
+            this.TransparentColor = transparentReplacementColor;
         }
 
         /// <summary>

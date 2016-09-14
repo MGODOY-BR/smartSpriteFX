@@ -51,7 +51,7 @@ namespace smartSprite.Forms
         /// <param name="piece">The piece that has been analysed.</param>
         /// <param name="colorList"></param>
         /// <returns></returns>
-        public Color AnswerMe(Piece piece, List<Color> colorList)
+        public virtual Color AnswerMe(Piece piece, List<Color> colorList)
         {
             #region Entries validation
 
