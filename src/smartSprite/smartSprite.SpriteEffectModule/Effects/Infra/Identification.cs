@@ -25,11 +25,24 @@ namespace smartSuite.smartSprite.Effects.Infra{
 		/// </summary>
 		private String _name;
 
-		/// <summary>
-		/// Get the description of filter
-		/// </summary>
-		/// <returns></returns>
-		public String GetDescription()
+        /// <summary>
+        /// It´s a string to group by
+        /// </summary>
+        private String _group;
+
+        /// <summary>
+        /// It´s a string to group by
+        /// </summary>
+        public String getGroup()
+        {
+            return this._group;
+        }
+
+        /// <summary>
+        /// Get the description of filter
+        /// </summary>
+        /// <returns></returns>
+        public String GetDescription()
         {
         	return this._description;
 		}
@@ -56,7 +69,8 @@ namespace smartSuite.smartSprite.Effects.Infra{
 		/// <param name="name">It´s the name of component</param>
 		/// <param name="author">It´s the name of vendor</param>
 		/// <param name="description">It´s the description of filter</param>
-		public Identification(String name, String author, String description)
+        /// <param name="group">It´s a information to group by</param>
+		public Identification(String name, String author, String description, String group)
         {
             #region Entries validation
 
@@ -72,12 +86,17 @@ namespace smartSuite.smartSprite.Effects.Infra{
             {
                 throw new ArgumentNullException("description");
             }
+            if (String.IsNullOrEmpty(group))
+            {
+                throw new ArgumentNullException("group");
+            }
 
             #endregion
 
             this._name = name;
             this._author = author;
             this._description = description;
+            this._group = group;
 		}
 	}
 }

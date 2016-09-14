@@ -42,7 +42,8 @@ namespace smartSuite.smartSprite.Effects.Filters{
                 new Identification(
                     "SmartSprite Built-In Plugin",
                     "Atelier do Software",
-                    "It´s a official SmartSprite Plugin");
+                    "It´s a official SmartSprite Plugin",
+                    "Built in");
         }
 
     }
