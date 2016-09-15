@@ -34,18 +34,18 @@ namespace smartSuite.smartSprite.Pictures{
         private Color _transparentColor = Color.Transparent;
 
         /// <summary>
-        /// It´s a cache of picture
+        /// It´s a cache of pictures
         /// </summary>
         private static Dictionary<String, Picture> _pictureCache = new Dictionary<String, Picture>();
 
         /// <summary>
-        /// It´s a buffer of picture, where key it's a combination of x and y coordinates. 
+        /// It´s a buffer of colors, where key it's a combination of x and y coordinates. 
         /// </summary>
         [NonSerialized]
         private Dictionary<String, ColorInfo> _buffer;
 
         /// <summary>
-        /// It´s a cache of color info
+        /// It´s a cache of colors, used to save memory
         /// </summary>
         private static Dictionary<int, ColorInfo> _colorInfoBuffer = new Dictionary<int, ColorInfo>();
 
@@ -300,6 +300,26 @@ namespace smartSuite.smartSprite.Pictures{
         }
 
         /// <summary>
+        /// Converts key used on cache to point
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        private Point ToPoint(String key)
+        {
+            #region Entries validation
+            
+            if (String.IsNullOrEmpty(key))
+            {
+                throw new ArgumentNullException("key");
+            }
+
+            #endregion
+
+            var keyComponents = key.Split('_');
+            return new Point(float.Parse(keyComponents[0]), float.Parse(keyComponents[1]));
+        }
+
+        /// <summary>
         /// Creates and returns a copy of the object
         /// </summary>
         /// <returns></returns>
@@ -343,6 +363,59 @@ namespace smartSuite.smartSprite.Pictures{
 
             Color pixel = this._buffer[key].GetInnerColor();
             return pixel;
+        }
+
+        /// <summary>
+        /// Finds a list of points for the color list
+        /// </summary>
+        /// <returns></returns>
+        public List<Point> Find(params Color[] colorList)
+        {
+            #region Entries validation
+
+            if (colorList == null)
+            {
+                throw new ArgumentNullException("colorList");
+            }
+            if (colorList.Length == 0)
+            {
+                throw new ArgumentOutOfRangeException("It´s needed one color at least");
+            }
+            if (this._buffer == null)
+            {
+                return new List<Point>();
+            }
+
+            #endregion
+
+            List<Point> returnList = new List<Point>();
+            var colorCacheList = this._buffer;
+            foreach (KeyValuePair<String, ColorInfo> colorCacheItem in colorCacheList)
+            {
+                foreach (var findColorItem in colorList)
+                {
+                    ColorInfo findColorInfo = new ColorInfo(findColorItem);
+
+                    if (findColorInfo.Equals(colorCacheItem.Value))
+                    {
+                        returnList.Add(
+                            this.ToPoint(colorCacheItem.Key));
+                    }
+                }
+            }
+
+            return returnList;
+        }
+
+        /// <summary>
+        /// Finds a list of point for the colorPattern
+        /// </summary>
+        /// <param name="colorPattern"></param>
+        /// <returns></returns>
+        public List<Point> FindPattern(List<Color> colorPattern)
+        {
+            // TODO: Continue from here
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -455,6 +528,8 @@ namespace smartSuite.smartSprite.Pictures{
             }
         }
 
+        #region Elements to manage of object
+
         public void Dispose()
         {
             if (this._buffer != null)
@@ -499,6 +574,8 @@ namespace smartSuite.smartSprite.Pictures{
 
             return this._fullPath.GetHashCode();
         }
+
+        #endregion
 
         /// <summary>
         /// Clears the picture cache
