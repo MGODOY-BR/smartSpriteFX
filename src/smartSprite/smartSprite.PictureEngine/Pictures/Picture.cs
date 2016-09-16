@@ -178,13 +178,13 @@ namespace smartSuite.smartSprite.Pictures{
         /// <summary>
         /// Sets or gets the transparent color
         /// </summary>
-        internal Color TransparentColor
+        public Color TransparentColor
         {
             get
             {
                 return _transparentColor;
             }
-            set
+            internal set
             {
                 this._transparentColor = value;
             }
@@ -408,14 +408,69 @@ namespace smartSuite.smartSprite.Pictures{
         }
 
         /// <summary>
-        /// Finds a list of point for the colorPattern
+        /// Gets the point of image considered borderers
         /// </summary>
-        /// <param name="colorPattern"></param>
         /// <returns></returns>
-        public List<Point> FindPattern(List<Color> colorPattern)
+        public List<Point> ListBorder()
         {
-            // TODO: Continue from here
-            throw new NotImplementedException();
+            #region Entries validation
+
+            if (this._buffer == null)
+            {
+                return new List<Point>();
+            }
+
+            #endregion
+
+            List<Point> returnList = new List<Point>();
+
+            foreach (var bufferItem in this._buffer)
+            {
+                var pointItem = this.ToPoint(bufferItem.Key);
+
+                string keyLeft = this.FormatKey((int)pointItem.X - 1, (int)pointItem.Y);
+                string keyRight = this.FormatKey((int)pointItem.X + 1, (int)pointItem.Y);
+                string keyTop = this.FormatKey((int)pointItem.X, (int)pointItem.Y - 1);
+                string keyBottom = this.FormatKey((int)pointItem.X, (int)pointItem.Y + 1);
+
+                string keyCornerTopLeft = this.FormatKey((int)pointItem.X - 1, (int)pointItem.Y - 1);
+                string keyCornerTopRight = this.FormatKey((int)pointItem.X + 1, (int)pointItem.Y - 1);
+                string keyCornerBottomLeft = this.FormatKey((int)pointItem.X - 1, (int)pointItem.Y + 1);
+                string keyCornerBottomRight = this.FormatKey((int)pointItem.X + 1, (int)pointItem.Y + 1);
+
+                String[] keyArray =
+                    new String[8]{
+                            keyLeft,
+                            keyRight,
+                            keyTop,
+                            keyBottom,
+                            keyCornerTopLeft,
+                            keyCornerTopRight,
+                            keyCornerBottomLeft,
+                            keyCornerBottomRight
+                        };
+
+                foreach (var keyItem in keyArray)
+                {
+                    #region Entries validation
+
+                    if (!this._buffer.ContainsKey(keyItem))
+                    {
+                        continue;
+                    }
+
+                    #endregion
+
+                    var colorItem = this._buffer[keyItem];
+
+                    if (colorItem.GetInnerColor().ToArgb().Equals(this._transparentColor.ToArgb()))
+                    {
+                        returnList.Add(pointItem);
+                    }
+                }
+            }
+
+            return returnList;
         }
 
         /// <summary>

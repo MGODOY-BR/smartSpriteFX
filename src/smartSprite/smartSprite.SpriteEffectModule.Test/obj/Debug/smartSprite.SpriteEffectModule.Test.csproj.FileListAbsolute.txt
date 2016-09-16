@@ -1,5 +1,6 @@
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.SpriteEffectModule.Test\bin\Debug\ThirdPartyEffectModulePlugin\READ-ME.txt
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.SpriteEffectModule.Test\bin\Debug\Stubs\Circle.stub.bmp
+C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.SpriteEffectModule.Test\bin\Debug\Stubs\Character.stub.png
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.SpriteEffectModule.Test\bin\Debug\smartSprite.SpriteEffectModule.Test.dll
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.SpriteEffectModule.Test\bin\Debug\smartSprite.SpriteEffectModule.Test.pdb
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.SpriteEffectModule.Test\bin\Debug\Rhino.Mocks.dll
@@ -11,4 +12,3 @@ C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSpri
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.SpriteEffectModule.Test\obj\Debug\smartSprite.SpriteEffectModule.Test.csprojResolveAssemblyReference.cache
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.SpriteEffectModule.Test\obj\Debug\smartSprite.SpriteEffectModule.Test.dll
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.SpriteEffectModule.Test\obj\Debug\smartSprite.SpriteEffectModule.Test.pdb
-C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.SpriteEffectModule.Test\bin\Debug\Stubs\Character.stub.png
