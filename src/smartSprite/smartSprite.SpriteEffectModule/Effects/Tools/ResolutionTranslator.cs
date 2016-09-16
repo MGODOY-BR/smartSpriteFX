@@ -174,10 +174,26 @@ namespace smartSuite.smartSprite.Effects.Tools{
 
             #endregion
 
-            // Feeding the color buffer
-            this._colorBuffer.Register(color);
-            // Getting the color compatible with the destination resolution
-            Color newColor = this._colorBuffer.GetSimilarColor(color);
+            bool ignoreCache = false;
+            if (this._originalPicture.TransparentColor != null)
+            {
+                ignoreCache =
+                    color.ToArgb().Equals(this._originalPicture.TransparentColor.ToArgb());
+            }
+
+            Color newColor;
+
+            if (!ignoreCache)
+            {
+                // Feeding the color buffer
+                this._colorBuffer.Register(color);
+                // Getting the color compatible with the destination resolution
+                newColor = this._colorBuffer.GetSimilarColor(color);
+            }
+            else
+            {
+                newColor = color;
+            }
 
             // Set the measurements of destination pixel
             int initialX = x;
