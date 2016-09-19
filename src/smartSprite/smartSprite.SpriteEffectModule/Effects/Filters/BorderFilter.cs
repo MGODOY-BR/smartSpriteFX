@@ -53,21 +53,22 @@ namespace smartSprite.SpriteEffectModule.Effects.Filters
 
                 // Enphasizing the color
                 var newColor = ColorUtil.Invert(originalColor);
-                if (!traceBorderPointList.ContainsKey(pointBorderItem.ToString()))
-                {
-                    traceBorderPointList.Add(pointBorderItem.ToString(), new PointInfo(pointBorderItem, newColor));
-                }
-                // Getting the trace border
-                // var list = this.MakeTraceBorder(pointBorderItem);
-
-                //foreach (var item in list)
+                //if (!traceBorderPointList.ContainsKey(pointBorderItem.ToString()))
                 //{
-                //    var key = item.ToString();
-                //    if (!traceBorderPointList.ContainsKey(key))
-                //    {
-                //        traceBorderPointList.Add(key, new PointInfo(item.Value, newColor));
-                //    }
+                //    traceBorderPointList.Add(pointBorderItem.ToString(), new PointInfo(pointBorderItem, newColor));
                 //}
+
+                // Getting the trace border
+                var list = this.MakeTraceBorder(pointBorderItem);
+
+                foreach (var item in list)
+                {
+                    var key = item.ToString();
+                    if (!traceBorderPointList.ContainsKey(key))
+                    {
+                        traceBorderPointList.Add(key, new PointInfo(item.Value, newColor));
+                    }
+                }
             }
 
             // Drawing the trace border
@@ -111,29 +112,20 @@ namespace smartSprite.SpriteEffectModule.Effects.Filters
             Dictionary<string, smartSuite.smartSprite.Pictures.Point> returnList = 
                 new Dictionary<string, smartSuite.smartSprite.Pictures.Point>();
 
-            double lastAngle = 0;
-
-            // Looping through angle in degrees
-            for (int i = 0; i < 360; i++)
+            // Looping through angle (in radians)
+            for (double i = 0; i < 2 * Math.PI * 180; i++)
             {
-                double radianAngle = Math.Round(i * Math.PI / 180, 1);
+                var list = this.CalculatePoint(refPoint, ray, i);
 
-                if (lastAngle != radianAngle)
+                foreach (var item in list)
                 {
-                    var list = this.CalculatePoint(refPoint, ray, radianAngle);
+                    var key = item.ToString();
 
-                    foreach (var item in list)
+                    if (!returnList.ContainsKey(key))
                     {
-                        var key = item.ToString();
-
-                        if (!returnList.ContainsKey(key))
-                        {
-                            returnList.Add(key, item.Value);
-                        }
+                        returnList.Add(key, item.Value);
                     }
                 }
-
-                lastAngle = radianAngle;
             }
 
             return returnList;
