@@ -72,6 +72,7 @@
     <Compile Include="Pictures\PixelPatterns\PixelInfo.cs" />
     <Compile Include="Pictures\PixelPatterns\PixelPattern.cs" />
     <Compile Include="Pictures\Point.cs" />
+    <Compile Include="Pictures\PointInfo.cs" />
     <Compile Include="Pictures\PointRange.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Unity\IGameObject.cs" />

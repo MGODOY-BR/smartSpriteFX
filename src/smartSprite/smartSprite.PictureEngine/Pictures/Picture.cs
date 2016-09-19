@@ -428,6 +428,16 @@ namespace smartSuite.smartSprite.Pictures{
             {
                 var pointItem = this.ToPoint(bufferItem.Key);
 
+                #region Entries validation
+
+                // The point can't be transparent
+                if (bufferItem.Value.GetInnerColor().ToArgb().Equals(this._transparentColor.ToArgb()))
+                {
+                    continue;
+                }
+
+                #endregion
+
                 string keyLeft = this.FormatKey((int)pointItem.X - 1, (int)pointItem.Y);
                 string keyRight = this.FormatKey((int)pointItem.X + 1, (int)pointItem.Y);
                 string keyTop = this.FormatKey((int)pointItem.X, (int)pointItem.Y - 1);

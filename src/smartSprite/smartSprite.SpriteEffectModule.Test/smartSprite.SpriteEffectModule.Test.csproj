@@ -67,6 +67,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Effects\FilterEngine\FilterCollectionTest.cs" />
+    <Compile Include="Effects\Filters\BorderFilterTest.cs" />
     <Compile Include="Effects\Filters\TransparentBackgroundFilterTest.cs" />
     <Compile Include="Effects\Filters\_8BitFilterTest.cs" />
     <Compile Include="Effects\Filters\_24BitFilterTest.cs" />
