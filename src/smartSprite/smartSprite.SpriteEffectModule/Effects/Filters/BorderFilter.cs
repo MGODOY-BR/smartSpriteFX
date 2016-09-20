@@ -112,54 +112,21 @@ namespace smartSprite.SpriteEffectModule.Effects.Filters
             Dictionary<string, smartSuite.smartSprite.Pictures.Point> returnList = 
                 new Dictionary<string, smartSuite.smartSprite.Pictures.Point>();
 
-            // Looping through angle (in radians)
-            for (double i = 0; i < 2 * Math.PI * 180; i++)
+            // Looping through angles x
+            for (double x = 0; x < 2 * Math.PI * 180; x++)
             {
-                var list = this.CalculatePoint(refPoint, ray, i);
+                // Getting the y
+                double y = Math.Sin(x);
 
-                foreach (var item in list)
-                {
-                    var key = item.ToString();
+                var point = new smartSuite.smartSprite.Pictures.Point((float)x, (float)y);
+                point.X += refPoint.X;
+                point.Y += refPoint.Y;
 
-                    if (!returnList.ContainsKey(key))
-                    {
-                        returnList.Add(key, item.Value);
-                    }
-                }
+                returnList.Add(point.ToString(), point);
             }
 
             return returnList;
         }
-
-        /// <summary>
-        /// Calculates the points using ray and angle
-        /// </summary>
-        /// <param name="centerPoint">It´s the center point of circle</param>
-        /// <param name="ray">It´s the ray of circle</param>
-        /// <param name="angle">It´s the angle calcated in radians</param>
-        /// <returns></returns>
-        private Dictionary<string, smartSuite.smartSprite.Pictures.Point> CalculatePoint(smartSuite.smartSprite.Pictures.Point centerPoint, float ray, double angle)
-        {
-            var minX = centerPoint.X - ray;
-            var maxX = centerPoint.X + ray;
-
-            double cos = Math.Cos(angle);
-
-            Dictionary<string, smartSuite.smartSprite.Pictures.Point> returnList = 
-                new Dictionary<string, smartSuite.smartSprite.Pictures.Point>();
-
-            for (var x = minX; x < maxX; x++)
-            {
-                double y = x / cos;    // hipotenuse = adjacent cathetus / cos, according to trigonometric circle, y is hipotenuse
-                var point = new smartSuite.smartSprite.Pictures.Point(x, (float)y);
-
-                if (!returnList.ContainsKey(point.ToString()))
-                {
-                    returnList.Add(point.ToString(), point);
-                }
-            }
-
-            return returnList;
-        }
+        
     }
 }
