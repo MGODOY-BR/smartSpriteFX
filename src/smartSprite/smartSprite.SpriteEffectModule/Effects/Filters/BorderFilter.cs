@@ -23,6 +23,11 @@ namespace smartSprite.SpriteEffectModule.Effects.Filters
         private float _traceBorderWidth;
 
         /// <summary>
+        /// It´s the borderColor
+        /// </summary>
+        private Color _borderColor = Color.Transparent;
+
+        /// <summary>
         /// Applies the filter
         /// </summary>
         /// <param name="frame"></param>
@@ -44,19 +49,18 @@ namespace smartSprite.SpriteEffectModule.Effects.Filters
             Dictionary<string, PointInfo> traceBorderPointList =
                 new Dictionary<string, PointInfo>();
 
-            for(int i = 0; i < pointBorderList.Count; i++)
+            // Enphasizing the color
+            if (this._borderColor == Color.Transparent)
+            {
+                this._borderColor = ColorUtil.Invert(frame.TransparentColor);
+            }
+
+            for (int i = 0; i < pointBorderList.Count; i++)
             {
                 var pointBorderItem = pointBorderList[i];
 
                 // Getting the original color
                 var originalColor = frame.GetPixel((int)pointBorderItem.X, (int)pointBorderItem.Y);
-
-                // Enphasizing the color
-                var newColor = ColorUtil.Invert(originalColor);
-                //if (!traceBorderPointList.ContainsKey(pointBorderItem.ToString()))
-                //{
-                //    traceBorderPointList.Add(pointBorderItem.ToString(), new PointInfo(pointBorderItem, newColor));
-                //}
 
                 // Getting the trace border
                 var list = this.MakeTraceBorder(pointBorderItem);
@@ -66,7 +70,7 @@ namespace smartSprite.SpriteEffectModule.Effects.Filters
                     var key = item.ToString();
                     if (!traceBorderPointList.ContainsKey(key))
                     {
-                        traceBorderPointList.Add(key, new PointInfo(item.Value, newColor));
+                        traceBorderPointList.Add(key, new PointInfo(item.Value, this._borderColor));
                     }
                 }
             }
@@ -83,7 +87,8 @@ namespace smartSprite.SpriteEffectModule.Effects.Filters
 
         public override void Reset()
         {
-            this._traceBorderWidth = 6;
+            this._traceBorderWidth = 2;
+            this._borderColor = Color.Transparent;
         }
 
         public override IConfigurationPanel ShowConfigurationPanel()
@@ -107,22 +112,19 @@ namespace smartSprite.SpriteEffectModule.Effects.Filters
             #endregion
 
             // Calculating the ray of circle
-            float ray = this._traceBorderWidth / (float)2;
-
             Dictionary<string, smartSuite.smartSprite.Pictures.Point> returnList = 
                 new Dictionary<string, smartSuite.smartSprite.Pictures.Point>();
 
-            // Looping through angles x
-            for (double x = 0; x < 2 * Math.PI * 180; x++)
+            for (float x = refPoint.X; x < refPoint.X + this._traceBorderWidth; x++)
             {
-                // Getting the y
-                double y = Math.Sin(x);
+                var point =
+                    new smartSuite.smartSprite.Pictures.Point(
+                        x,
+                        refPoint.Y);
 
-                var point = new smartSuite.smartSprite.Pictures.Point((float)x, (float)y);
-                point.X += refPoint.X;
-                point.Y += refPoint.Y;
-
-                returnList.Add(point.ToString(), point);
+                returnList.Add(
+                    point.ToString(),
+                    point);
             }
 
             return returnList;
