@@ -20,11 +20,6 @@ namespace smartSuite.smartSprite.Effects.Filters{
         private int _frameCount = 0;
 
         /// <summary>
-        /// It´s the previous checked time
-        /// </summary>
-        private DateTime _previousTime = DateTime.Now;
-
-        /// <summary>
         /// It´s the last handled frame index
         /// </summary>
         private int _lastFrameIndex;
@@ -51,12 +46,11 @@ namespace smartSuite.smartSprite.Effects.Filters{
         {
             this._frameCount++;
             this._lastFrameIndex = index;
-            float currentFrameRate = this._frameCount / (float)DateTime.Now.Subtract(this._previousTime).TotalMilliseconds;
-            float framesPerSecRate = 1 / this._framesPerSec;
+            float currentFrameRate = this._frameCount;
+            float framesPerSecRate = this._framesPerSec;
 
-            if (framesPerSecRate >= currentFrameRate)
+            if (framesPerSecRate <= currentFrameRate)
             {
-                this._previousTime = DateTime.Now;
                 this._frameCount = 0;
                 return true;
             }

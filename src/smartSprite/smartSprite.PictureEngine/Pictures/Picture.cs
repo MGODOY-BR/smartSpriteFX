@@ -123,7 +123,7 @@ namespace smartSuite.smartSprite.Pictures{
         /// <remarks>
         /// This constructor was intented to be used internally only.
         /// </remarks>
-        private Picture()
+        internal Picture()
         {
             this._buffer = new Dictionary<string, ColorInfo>();
         }
