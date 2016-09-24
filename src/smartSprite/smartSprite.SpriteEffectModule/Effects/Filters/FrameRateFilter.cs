@@ -7,10 +7,10 @@ using smartSuite.smartSprite.Effects.Infra.UI.Configuratons;
 using smartSuite.smartSprite.Pictures;
 
 namespace smartSuite.smartSprite.Effects.Filters{
-	/// <summary>
-	/// It´s a filter that handle an animation
-	/// </summary>
-	public class AnimationFilter : SmartSpriteOriginalFilterBase {
+    /// <summary>
+    /// It´s a filter that simulates changing of frame rate of an animation
+    /// </summary>
+    public class FrameRateFilter : SmartSpriteOriginalFilterBase {
 
         #region Not configurable state
 

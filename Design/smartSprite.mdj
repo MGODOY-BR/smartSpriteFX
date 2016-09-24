@@ -10414,7 +10414,7 @@
 									"left": 664,
 									"top": 279,
 									"width": 290.7568359375,
-									"height": 83,
+									"height": 68,
 									"autoResize": false
 								},
 								{
@@ -12277,7 +12277,7 @@
 									"left": 456,
 									"top": 399,
 									"width": 425.8857421875,
-									"height": 83,
+									"height": 68,
 									"autoResize": false
 								},
 								{
@@ -13343,7 +13343,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "AnimationFilter",
+											"text": "FrameRateFilter",
 											"horizontalAlignment": 2,
 											"verticalAlignment": 5
 										},
@@ -45285,6 +45285,50 @@
 												},
 												{
 													"_type": "UMLClass",
+													"_id": "AAAAAAFWO9yG5KrAwiQ=",
+													"_parent": {
+														"$ref": "AAAAAAFWLzVRNLWdguA="
+													},
+													"name": "FrameRateFilter",
+													"ownedElements": [
+														{
+															"_type": "UMLInterfaceRealization",
+															"_id": "AAAAAAFWO99Iiar0BVw=",
+															"_parent": {
+																"$ref": "AAAAAAFWO9yG5KrAwiQ="
+															},
+															"source": {
+																"$ref": "AAAAAAFWO9yG5KrAwiQ="
+															},
+															"target": {
+																"$ref": "AAAAAAFWKjVfsfNB2nA="
+															},
+															"visibility": "public"
+														},
+														{
+															"_type": "UMLGeneralization",
+															"_id": "AAAAAAFWPRmGPquCwdQ=",
+															"_parent": {
+																"$ref": "AAAAAAFWO9yG5KrAwiQ="
+															},
+															"source": {
+																"$ref": "AAAAAAFWO9yG5KrAwiQ="
+															},
+															"target": {
+																"$ref": "AAAAAAFWPRY7XasFyDo="
+															},
+															"visibility": "public"
+														}
+													],
+													"documentation": "It´s a filter that simulates changing of frame rate of an animation",
+													"visibility": "public",
+													"isAbstract": false,
+													"isFinalSpecialization": false,
+													"isLeaf": false,
+													"isActive": false
+												},
+												{
+													"_type": "UMLClass",
 													"_id": "AAAAAAFWLze+NLWi2Qg=",
 													"_parent": {
 														"$ref": "AAAAAAFWLzVRNLWdguA="
@@ -45321,50 +45365,6 @@
 														}
 													],
 													"documentation": "Represents a filter to infers transparent background",
-													"visibility": "public",
-													"isAbstract": false,
-													"isFinalSpecialization": false,
-													"isLeaf": false,
-													"isActive": false
-												},
-												{
-													"_type": "UMLClass",
-													"_id": "AAAAAAFWO9yG5KrAwiQ=",
-													"_parent": {
-														"$ref": "AAAAAAFWLzVRNLWdguA="
-													},
-													"name": "AnimationFilter",
-													"ownedElements": [
-														{
-															"_type": "UMLInterfaceRealization",
-															"_id": "AAAAAAFWO99Iiar0BVw=",
-															"_parent": {
-																"$ref": "AAAAAAFWO9yG5KrAwiQ="
-															},
-															"source": {
-																"$ref": "AAAAAAFWO9yG5KrAwiQ="
-															},
-															"target": {
-																"$ref": "AAAAAAFWKjVfsfNB2nA="
-															},
-															"visibility": "public"
-														},
-														{
-															"_type": "UMLGeneralization",
-															"_id": "AAAAAAFWPRmGPquCwdQ=",
-															"_parent": {
-																"$ref": "AAAAAAFWO9yG5KrAwiQ="
-															},
-															"source": {
-																"$ref": "AAAAAAFWO9yG5KrAwiQ="
-															},
-															"target": {
-																"$ref": "AAAAAAFWPRY7XasFyDo="
-															},
-															"visibility": "public"
-														}
-													],
-													"documentation": "It´s a filter that handle an animation",
 													"visibility": "public",
 													"isAbstract": false,
 													"isFinalSpecialization": false,

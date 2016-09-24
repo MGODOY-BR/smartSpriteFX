@@ -8,7 +8,7 @@ using System.Collections.Generic;
 namespace smartSprite.SpriteEffectModule.Test.Effects.Filters
 {
     [TestClass]
-    public class AnimationFilterTest
+    public class FrameRateFilterTest
     {
         [TestMethod]
         public void TestApplyFilter()
@@ -22,7 +22,7 @@ namespace smartSprite.SpriteEffectModule.Test.Effects.Filters
             }
 
             List<Picture> evidenceList = new List<Picture>();
-            AnimationFilter test = new AnimationFilter();
+            FrameRateFilter test = new FrameRateFilter();
             test.Reset();
 
             #endregion
@@ -82,7 +82,7 @@ namespace smartSprite.SpriteEffectModule.Test.Effects.Filters
             }
 
             List<Picture> evidenceList = new List<Picture>();
-            AnimationFilter test = new AnimationFilter();
+            FrameRateFilter test = new FrameRateFilter();
             test.Reset();
             // Adding favorite keyframes
             test.KeyFrames.Add(1);

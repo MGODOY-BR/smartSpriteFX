@@ -31,7 +31,6 @@ namespace smartSuite.smartSprite.Pictures{
 		/// </summary>
 		private HashSet<ColorInfo> _buffer;
 
-
 		/// <summary>
 		/// Gets a pixel from coordinate
 		/// </summary>

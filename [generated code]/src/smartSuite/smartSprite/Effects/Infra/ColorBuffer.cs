@@ -28,7 +28,7 @@ namespace smartSuite.smartSprite.Effects.Infra{
 		/// Creates an instance of object
 		/// </summary>
 		/// <param name="length">It´s the maximum amount of allowed colors.</param>
-		public void ColorBuffer(int length) {
+		/// <param name="sensibility">		public void ColorBuffer(int length, float sensibility) {</param>
 			// TODO implement here
 		}
 

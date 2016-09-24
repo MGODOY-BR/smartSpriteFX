@@ -45,8 +45,7 @@ namespace smartSuite.smartSprite.Effects.Tools{
 		/// <param name="newScreenWidth">It´s the length of the screen of  new resolution</param>
 		/// <param name="newScreenHeight">It´s the height of screen of new resolution</param>
 		/// <param name="newColorAmount">It´s a number of simultaneous color</param>
-		public void ResolutionTranslator(Picture originalPicture, int screenWidth, int screenHeight, int newScreenWidth, int newScreenHeight, int newColorAmount) 
-		{
+		public void ResolutionTranslator(Picture originalPicture, int screenWidth, int screenHeight, int newScreenWidth, int newScreenHeight, int newColorAmount) {
 			// TODO implement here
 		}
 
