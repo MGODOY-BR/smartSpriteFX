@@ -50,7 +50,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Animations\Animation.cs" />
+    <Compile Include="Animations\EngineFacade.cs" />
+    <Compile Include="Animations\FrameIterator.cs" />
     <Compile Include="Effects\FilterEngine\FilterCollection.cs" />
     <Compile Include="Effects\Filters\BorderFilter.cs" />
     <Compile Include="Effects\Filters\_8BitFilter.cs" />
@@ -83,6 +84,9 @@
       <Project>{D374DAC6-55C3-465A-B27F-EF762E7F0CC5}</Project>
       <Name>smartSprite.PictureEngine</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Effects\Animations\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
