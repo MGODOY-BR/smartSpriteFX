@@ -37,6 +37,17 @@ namespace smartSuite.smartSprite.Effects.Filters{
         private List<int> _keyFrames = new List<int>();
 
         /// <summary>
+        /// Gets the keyFrames
+        /// </summary>
+        internal List<int> KeyFrames
+        {
+            get
+            {
+                return _keyFrames;
+            }
+        }
+
+        /// <summary>
         /// Aplies the filter
         /// </summary>
         /// <param name="frame"></param>
@@ -49,7 +60,7 @@ namespace smartSuite.smartSprite.Effects.Filters{
             float currentFrameRate = this._frameCount;
             float framesPerSecRate = this._framesPerSec;
 
-            if (framesPerSecRate <= currentFrameRate)
+            if (framesPerSecRate <= currentFrameRate || this._keyFrames.Contains(index))
             {
                 this._frameCount = 0;
                 return true;
