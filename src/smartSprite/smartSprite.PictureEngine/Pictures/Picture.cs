@@ -620,10 +620,10 @@ namespace smartSuite.smartSprite.Pictures{
             {
                 throw new ArgumentNullException("this._fullPath");
             }
-            
+
             #endregion
 
-            return this._fullPath.Equals(obj.ToString());
+            return this._fullPath.Equals(((Picture)obj)._fullPath);
         }
 
         public override int GetHashCode()
