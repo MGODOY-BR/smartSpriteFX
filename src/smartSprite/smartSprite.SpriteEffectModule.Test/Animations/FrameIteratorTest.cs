@@ -51,5 +51,104 @@ namespace smartSprite.SpriteEffectModule.Test.Animations
 
             #endregion
         }
+
+        [TestMethod]
+        public void NextTest()
+        {
+            #region Scenario setup
+
+            #endregion
+
+            #region Running the tested operation
+
+            FrameIterator test = FrameIterator.Open(@"StubAnimation\Enumerated");
+
+            #endregion
+
+            #region Getting the evidences
+
+            var evidence = test.Next();
+            var evidencePicture = test.GetCurrent();
+
+            var evidence2 = test.Next();
+            var evidencePicture2 = test.GetCurrent();
+
+            #endregion
+
+            #region Validating the evidences
+
+            Assert.IsTrue(evidence);
+            Assert.IsNotNull(evidencePicture);
+            Assert.AreEqual(
+                @"StubAnimation\Enumerated\1_Circle.stub.bmp", evidencePicture.FullPath);
+
+            Assert.IsTrue(evidence2);
+            Assert.IsNotNull(evidencePicture2);
+            Assert.AreEqual(
+                @"StubAnimation\Enumerated\2_Circle.stub.bmp", evidencePicture2.FullPath);
+
+            #endregion
+        }
+
+        [TestMethod]
+        public void MoveFirstTest()
+        {
+            #region Scenario setup
+
+            #endregion
+
+            #region Running the tested operation
+
+            FrameIterator test = FrameIterator.Open(@"StubAnimation\Enumerated");
+            test.Next();
+            test.Next();
+
+            #endregion
+
+            #region Getting the evidences
+
+            test.MoveFirst();
+            var evidencePicture = test.GetCurrent();
+
+            #endregion
+
+            #region Validating the evidences
+
+            Assert.IsNotNull(evidencePicture);
+            Assert.AreEqual(
+                @"StubAnimation\Enumerated\1_Circle.stub.bmp", evidencePicture.FullPath);
+
+            #endregion
+        }
+
+        [TestMethod]
+        public void MoveLastTest()
+        {
+            #region Scenario setup
+
+            #endregion
+
+            #region Running the tested operation
+
+            FrameIterator test = FrameIterator.Open(@"StubAnimation\Enumerated");
+
+            #endregion
+
+            #region Getting the evidences
+
+            test.MoveLast();
+            var evidencePicture = test.GetCurrent();
+
+            #endregion
+
+            #region Validating the evidences
+
+            Assert.IsNotNull(evidencePicture);
+            Assert.AreEqual(
+                @"StubAnimation\Enumerated\10_Circle.stub.bmp", evidencePicture.FullPath);
+
+            #endregion
+        }
+
     }
 }
