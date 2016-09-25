@@ -37,6 +37,15 @@ namespace smartSuite.smartSprite.Animations{
         }
 
         /// <summary>
+        /// Gets the file list discovered through Open method
+        /// </summary>
+        /// <returns></returns>
+        internal List<String> GetFileList()
+        {
+            return this._fileList;
+        }
+
+        /// <summary>
         /// Gets the curent picture
         /// </summary>
         /// <returns></returns>
@@ -131,14 +140,7 @@ namespace smartSuite.smartSprite.Animations{
 
             FrameIterator iterator = new FrameIterator();
 
-            iterator._fileList.AddRange(
-                Directory.GetFiles(fullPath, "*.png", SearchOption.AllDirectories));
-            iterator._fileList.AddRange(
-                Directory.GetFiles(fullPath, "*.bmp", SearchOption.AllDirectories));
-            iterator._fileList.AddRange(
-                Directory.GetFiles(fullPath, "*.jpg", SearchOption.AllDirectories));
-            iterator._fileList.AddRange(
-                Directory.GetFiles(fullPath, "*.jpeg", SearchOption.AllDirectories));
+            FrameIterator.FillFileList(fullPath, iterator._fileList);
 
             #region Entries validation
 
@@ -150,7 +152,7 @@ namespace smartSuite.smartSprite.Animations{
 
             #endregion
 
-            Regex regEx = new Regex(@"^(\d+)", RegexOptions.Compiled);
+            Regex regEx = new Regex(@"(\d+).*", RegexOptions.Compiled);
 
             // ordering the list, following the prefix number
             iterator._fileList.Sort(delegate (String path, String other)
@@ -161,7 +163,7 @@ namespace smartSuite.smartSprite.Animations{
                     var otherRegEx = regEx.Match(other);
 
                     return
-                        int.Parse(pathRegEx.Groups[2].Value)
+                        int.Parse(pathRegEx.Groups[1].Value)
                             .CompareTo(
                                 int.Parse(otherRegEx.Groups[1].Value));
                 }
@@ -172,7 +174,52 @@ namespace smartSuite.smartSprite.Animations{
             });
 
             return iterator;
-		}
+        }
+
+        /// <summary>
+        /// Fills the file list
+        /// </summary>
+        private static void FillFileList(string fullPath, List<string> fileList)
+        {
+            #region Entries validation
+
+            if (String.IsNullOrEmpty(fullPath))
+            {
+                throw new ArgumentNullException("fullPath");
+            }
+            if (fileList == null)
+            {
+                throw new ArgumentNullException("fileList");
+            }
+
+            #endregion
+
+            fileList.AddRange(
+                Directory.GetFiles(fullPath, "*.png", SearchOption.AllDirectories));
+            fileList.AddRange(
+                Directory.GetFiles(fullPath, "*.bmp", SearchOption.AllDirectories));
+            fileList.AddRange(
+                Directory.GetFiles(fullPath, "*.jpg", SearchOption.AllDirectories));
+            fileList.AddRange(
+                Directory.GetFiles(fullPath, "*.jpeg", SearchOption.AllDirectories));
+        }
+
+        /// <summary>
+        /// Sets the current picture.
+        /// </summary>
+        /// <param name="picture"></param>
+        private void SetCurrent(Picture picture)
+        {
+            #region Entries validation
+
+            if (picture == null)
+            {
+                throw new ArgumentNullException("picture");
+            }
+
+            #endregion
+            this._current = picture;
+        }
 
         /// <summary>
         /// Loads the current picture
@@ -200,7 +247,8 @@ namespace smartSuite.smartSprite.Animations{
 
             #endregion
 
-            this._current = Picture.GetInstance(newFilePath);
+            this.SetCurrent(
+                Picture.GetInstance(newFilePath));
         }
 
     }

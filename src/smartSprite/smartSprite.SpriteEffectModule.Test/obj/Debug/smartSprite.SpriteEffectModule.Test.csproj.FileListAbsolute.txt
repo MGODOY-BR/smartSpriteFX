@@ -12,3 +12,13 @@ C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSpri
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.SpriteEffectModule.Test\obj\Debug\smartSprite.SpriteEffectModule.Test.csprojResolveAssemblyReference.cache
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.SpriteEffectModule.Test\obj\Debug\smartSprite.SpriteEffectModule.Test.dll
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.SpriteEffectModule.Test\obj\Debug\smartSprite.SpriteEffectModule.Test.pdb
+C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.SpriteEffectModule.Test\bin\Debug\StubAnimation\Enumerated\2_Circle.stub.bmp
+C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.SpriteEffectModule.Test\bin\Debug\StubAnimation\Enumerated\3_Circle.stub.bmp
+C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.SpriteEffectModule.Test\bin\Debug\StubAnimation\Enumerated\4_Circle.stub.bmp
+C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.SpriteEffectModule.Test\bin\Debug\StubAnimation\Enumerated\5_Circle.stub.bmp
+C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.SpriteEffectModule.Test\bin\Debug\StubAnimation\Enumerated\6_Circle.stub.bmp
+C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.SpriteEffectModule.Test\bin\Debug\StubAnimation\Enumerated\7_Circle.stub.bmp
+C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.SpriteEffectModule.Test\bin\Debug\StubAnimation\Enumerated\8_Circle.stub.bmp
+C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.SpriteEffectModule.Test\bin\Debug\StubAnimation\Enumerated\9_Circle.stub.bmp
+C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.SpriteEffectModule.Test\bin\Debug\StubAnimation\Enumerated\10_Circle.stub.bmp
+C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.SpriteEffectModule.Test\bin\Debug\StubAnimation\Enumerated\1_Circle.stub.bmp

@@ -66,6 +66,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Animations\FrameIteratorTest.cs" />
     <Compile Include="Effects\FilterEngine\FilterCollectionTest.cs" />
     <Compile Include="Effects\Filters\FrameRateFilterTest.cs" />
     <Compile Include="Effects\Filters\BorderFilterTest.cs" />
@@ -92,6 +93,36 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="StubAnimation\Enumerated\2_Circle.stub.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="StubAnimation\Enumerated\3_Circle.stub.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="StubAnimation\Enumerated\4_Circle.stub.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="StubAnimation\Enumerated\5_Circle.stub.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="StubAnimation\Enumerated\6_Circle.stub.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="StubAnimation\Enumerated\7_Circle.stub.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="StubAnimation\Enumerated\8_Circle.stub.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="StubAnimation\Enumerated\9_Circle.stub.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="StubAnimation\Enumerated\10_Circle.stub.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="StubAnimation\Enumerated\1_Circle.stub.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Stubs\Circle.stub.bmp">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
