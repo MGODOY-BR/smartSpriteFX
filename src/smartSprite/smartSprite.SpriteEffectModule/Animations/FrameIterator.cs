@@ -118,12 +118,30 @@ namespace smartSuite.smartSprite.Animations{
             this._frameIndex = -1;
 		}
 
+        /// <summary>
+        /// Moves the current cursor to the selected frame
+        /// </summary>
+        /// <param name="frameIndex"></param>
+        public void MoveTo(int frameIndex)
+        {
+            #region Entries validation
+
+            if (frameIndex < 0 || frameIndex > this._fileList.Count)
+            {
+                throw new ArgumentOutOfRangeException("frameIndex", frameIndex, "frameIndex should be greater then 0 and lower then " + this._fileList.Count);
+            }
+
+            #endregion
+
+            this._frameIndex = frameIndex;
+        }
+
 		/// <summary>
 		/// Gets a frameIterator from path
 		/// </summary>
 		/// <param name="fullPath">A path of a file or directory</param>
 		/// <returns></returns>
-		public static FrameIterator Open(String fullPath)
+		internal static FrameIterator Open(String fullPath)
         {
             #region Entries validation
 

@@ -50,8 +50,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Animations\EngineFacade.cs" />
     <Compile Include="Animations\FrameIterator.cs" />
+    <Compile Include="Effects\Core\EffectEngine.cs" />
+    <Compile Include="Effects\Facade\EffectFacade.cs" />
     <Compile Include="Effects\FilterEngine\FilterCollection.cs" />
     <Compile Include="Effects\Filters\BorderFilter.cs" />
     <Compile Include="Effects\Filters\_8BitFilter.cs" />
@@ -85,9 +86,7 @@
       <Name>smartSprite.PictureEngine</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Effects\Animations\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

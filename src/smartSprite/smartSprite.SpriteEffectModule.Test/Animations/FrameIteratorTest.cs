@@ -150,5 +150,33 @@ namespace smartSprite.SpriteEffectModule.Test.Animations
             #endregion
         }
 
+        [TestMethod]
+        public void MoveToTest()
+        {
+            #region Scenario setup
+
+            #endregion
+
+            #region Running the tested operation
+
+            FrameIterator test = FrameIterator.Open(@"StubAnimation\Enumerated");
+
+            #endregion
+
+            #region Getting the evidences
+
+            test.MoveTo(3);
+            var evidencePicture = test.GetCurrent();
+
+            #endregion
+
+            #region Validating the evidences
+
+            Assert.IsNotNull(evidencePicture);
+            Assert.AreEqual(
+                @"StubAnimation\Enumerated\4_Circle.stub.bmp", evidencePicture.FullPath);
+
+            #endregion
+        }
     }
 }
