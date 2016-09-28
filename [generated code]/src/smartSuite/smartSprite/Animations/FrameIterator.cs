@@ -70,11 +70,18 @@ namespace smartSuite.smartSprite.Animations{
 		}
 
 		/// <summary>
+		/// Moves the current cursor to the selected frame
+		/// </summary>
+		/// <param name="frameIndex">		public void MoveTo(int frameIndex) {</param>
+			// TODO implement here
+		}
+
+		/// <summary>
 		/// Gets a frameIterator from path
 		/// </summary>
 		/// <param name="fullPath">A path of a file or directory</param>
 		/// <returns></returns>
-		public static FrameIterator Open(String fullPath) {
+		static FrameIterator Open(String fullPath) {
 			// TODO implement here
 			return null;
 		}

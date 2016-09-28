@@ -37,5 +37,11 @@ namespace smartSuite.smartSprite.Effects.Filters{
 		/// </summary>
 		public void Reset();
 
+		/// <summary>
+		/// Gets the execution of current execution of apply method.
+		/// </summary>
+		/// <returns></returns>
+		public float GetCurrentPercentageExecution();
+
 	}
 }
