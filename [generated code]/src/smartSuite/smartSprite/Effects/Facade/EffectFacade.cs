@@ -34,5 +34,22 @@ namespace smartSuite.smartSprite.Effects.Facade{
 			return null;
 		}
 
+		/// <summary>
+		/// Registers a filter
+		/// </summary>
+		/// <param name="effectFilter">A effect</param>
+		/// <param name="frameIndex">An order of filter</param>
+		public static void RegisterFilter(IEffectFilter effectFilter, int frameIndex) {
+			// TODO implement here
+		}
+
+		/// <summary>
+		/// Unregisters a filter
+		/// </summary>
+		/// <param name="effectFilter">A effect</param>
+		public static void UnRegisterFilter(IEffectFilter effectFilter) {
+			// TODO implement here
+		}
+
 	}
 }

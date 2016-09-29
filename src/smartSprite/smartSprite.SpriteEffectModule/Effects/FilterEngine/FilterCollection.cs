@@ -122,11 +122,87 @@ namespace smartSuite.smartSprite.Effects.FilterEngine{
             }
         }
 
-		/// <summary>
-		/// Registers a filter to work.
-		/// </summary>
-		/// <param name="filter">A filter to apply</param>
-		public void Register(IEffectFilter filter)
+        /// <summary>
+        /// Ups the filter in list order
+        /// </summary>
+        /// <param name="filter">An instance of filter</param>
+        public void UpOrder(IEffectFilter filter)
+        {
+            #region Entries validation
+
+            if (filter == null)
+            {
+                throw new ArgumentNullException("filter");
+            }
+            if (this._filterBufferList.Count == 0)
+            {
+                throw new InvalidOperationException("Some filter should be registered before change order");
+            }
+
+            #endregion
+
+            int oldIndex = -1;
+            for (int i = 0; i < this._filterBufferList.Count; i++)
+            {
+                if (this._filterBufferList[i] == filter)
+                {
+                    oldIndex = i;
+                    break;
+                }
+            }
+
+            if (oldIndex == -1)
+            {
+                throw new InvalidOperationException("Filter should be registered before change order");
+            }
+
+            this._filterBufferList.Insert(oldIndex - 1, filter);
+            this._filterBufferList.RemoveAt(oldIndex);
+        }
+
+        /// <summary>
+        /// Downs the filter in list order
+        /// </summary>
+        /// <param name="filter">An instance of filter</param>
+        public void DownOrder(IEffectFilter filter)
+        {
+            #region Entries validation
+
+            if (filter == null)
+            {
+                throw new ArgumentNullException("filter");
+            }
+            if (this._filterBufferList.Count == 0)
+            {
+                throw new InvalidOperationException("Some filter should be registered before change order");
+            }
+
+            #endregion
+
+            int oldIndex = -1;
+            for (int i = 0; i < this._filterBufferList.Count; i++)
+            {
+                if (this._filterBufferList[i] == filter)
+                {
+                    oldIndex = i;
+                    break;
+                }
+            }
+
+            if (oldIndex == -1)
+            {
+                throw new InvalidOperationException("Filter should be registered before change order");
+            }
+
+            this._filterBufferList.Insert(oldIndex + 1, filter);
+            this._filterBufferList.RemoveAt(oldIndex);
+        }
+
+        /// <summary>
+        /// Registers a filter to work.
+        /// </summary>
+        /// <param name="filter">A filter to apply</param>
+        public void Register(IEffectFilter filter)
         {
             this.Register(filter, 0);
 		}
@@ -150,7 +226,7 @@ namespace smartSuite.smartSprite.Effects.FilterEngine{
 		}
 
 		/// <summary>
-		/// Applies all the filter buffer list in order and returns a new frame
+		/// Applies all the filter buffer list in order
 		/// </summary>
 		/// <param name="picture"></param>
         /// <param name="frameIndex">It´s the frame index in an animation</param>

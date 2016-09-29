@@ -412,5 +412,18 @@ namespace smartSprite.SpriteEffectModule.Test
 
             #endregion
         }
+
+        [TestMethod]
+        public void UpFilterOrderTest(IEffectFilter filter)
+        {
+            Assert.Inconclusive();
+        }
+
+        [TestMethod]
+        public static void DownFilterOrderTest(IEffectFilter filter)
+        {
+            Assert.Inconclusive();
+        }
+
     }
 }
