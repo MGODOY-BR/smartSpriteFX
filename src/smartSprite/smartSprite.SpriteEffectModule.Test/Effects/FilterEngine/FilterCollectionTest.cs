@@ -414,16 +414,89 @@ namespace smartSprite.SpriteEffectModule.Test
         }
 
         [TestMethod]
-        public void UpFilterOrderTest(IEffectFilter filter)
+        public void UpFilterOrderTest()
         {
-            Assert.Inconclusive();
+            #region Scenario setup
+
+            Picture frame = Picture.GetInstance(@"Stubs\Circle.stub.bmp");
+
+            IEffectFilter[] filterList = new IEffectFilter[3];
+
+            FilterCollection test = new FilterCollection();
+
+            filterList[0] = new _16BitFilter();
+            test.Register(filterList[0], 1);
+
+            filterList[1] = new _24BitFilter();
+            test.Register(filterList[1], 0);
+
+            filterList[2] = new _8BitFilter();
+            test.Register(filterList[2], 2);
+
+            #endregion
+
+            #region Running the tested operation
+
+            test.UpOrder(filterList[2]);
+
+            #endregion
+
+            #region Getting the evidences
+
+            var evidenceList = test.GetFilterBufferList();
+
+            #endregion
+
+            #region Validating the evidences
+
+            Assert.AreSame(filterList[1], evidenceList[0]);
+            Assert.AreSame(filterList[2], evidenceList[1]);
+            Assert.AreSame(filterList[0], evidenceList[2]);
+
+            #endregion
         }
 
         [TestMethod]
-        public static void DownFilterOrderTest(IEffectFilter filter)
+        public void DownFilterOrderTest()
         {
-            Assert.Inconclusive();
-        }
+            #region Scenario setup
 
+            Picture frame = Picture.GetInstance(@"Stubs\Circle.stub.bmp");
+
+            IEffectFilter[] filterList = new IEffectFilter[3];
+
+            FilterCollection test = new FilterCollection();
+
+            filterList[0] = new _16BitFilter();
+            test.Register(filterList[0], 1);
+
+            filterList[1] = new _24BitFilter();
+            test.Register(filterList[1], 0);
+
+            filterList[2] = new _8BitFilter();
+            test.Register(filterList[2], 2);
+
+            #endregion
+
+            #region Running the tested operation
+
+            test.DownOrder(filterList[1]);
+
+            #endregion
+
+            #region Getting the evidences
+
+            var evidenceList = test.GetFilterBufferList();
+
+            #endregion
+
+            #region Validating the evidences
+
+            Assert.AreSame(filterList[1], evidenceList[0]);
+            Assert.AreSame(filterList[0], evidenceList[1]);
+            Assert.AreSame(filterList[2], evidenceList[2]);
+
+            #endregion
+        }
     }
 }

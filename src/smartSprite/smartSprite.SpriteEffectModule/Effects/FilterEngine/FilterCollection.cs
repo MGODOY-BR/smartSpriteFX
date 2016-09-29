@@ -155,9 +155,13 @@ namespace smartSuite.smartSprite.Effects.FilterEngine{
             {
                 throw new InvalidOperationException("Filter should be registered before change order");
             }
+            if (oldIndex == 0)
+            {
+                return;
+            }
 
-            this._filterBufferList.Insert(oldIndex - 1, filter);
             this._filterBufferList.RemoveAt(oldIndex);
+            this._filterBufferList.Insert(oldIndex - 1, filter);
         }
 
         /// <summary>
@@ -193,9 +197,13 @@ namespace smartSuite.smartSprite.Effects.FilterEngine{
             {
                 throw new InvalidOperationException("Filter should be registered before change order");
             }
+            if (oldIndex + 1 == this._filterBufferList.Count)
+            {
+                return;
+            }
 
-            this._filterBufferList.Insert(oldIndex + 1, filter);
             this._filterBufferList.RemoveAt(oldIndex);
+            this._filterBufferList.Insert(oldIndex + 1, filter);
         }
 
         /// <summary>
