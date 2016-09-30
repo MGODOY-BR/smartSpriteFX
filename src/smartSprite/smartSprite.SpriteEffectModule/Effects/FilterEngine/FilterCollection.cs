@@ -202,8 +202,8 @@ namespace smartSuite.smartSprite.Effects.FilterEngine{
                 return;
             }
 
-            this._filterBufferList.RemoveAt(oldIndex);
             this._filterBufferList.Insert(oldIndex + 1, filter);
+            this._filterBufferList.RemoveAt(oldIndex);
         }
 
         /// <summary>
