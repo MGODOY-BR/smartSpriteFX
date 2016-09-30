@@ -81,7 +81,7 @@ namespace smartSuite.smartSprite.Effects.FilterEngine{
 		}
 
 		/// <summary>
-		/// Applies all the filter buffer list in order and returns a new frame
+		/// Applies all the filter buffer list in order
 		/// </summary>
 		/// <param name="picture"></param>
 		/// <param name="frameIndex">It´s the index of frame in animation</param>
@@ -98,6 +98,22 @@ namespace smartSuite.smartSprite.Effects.FilterEngine{
 		public static HashSet<String> GetLoadErrorList() {
 			// TODO implement here
 			return null;
+		}
+
+		/// <summary>
+		/// Ups the filter in list order
+		/// </summary>
+		/// <param name="filter">An instance of filter</param>
+		public void UpOrder(IEffectFilter filter) {
+			// TODO implement here
+		}
+
+		/// <summary>
+		/// Downs the filter in list order
+		/// </summary>
+		/// <param name="filter">An instance of filter</param>
+		public void DownOrder(IEffectFilter filter) {
+			// TODO implement here
 		}
 
 	}

@@ -67,6 +67,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Animations\FrameIteratorTest.cs" />
+    <Compile Include="Effects\Core\EffectEngineTest.cs" />
     <Compile Include="Effects\FilterEngine\FilterCollectionTest.cs" />
     <Compile Include="Effects\Filters\FrameRateFilterTest.cs" />
     <Compile Include="Effects\Filters\BorderFilterTest.cs" />

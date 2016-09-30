@@ -37,6 +37,15 @@ namespace smartSuite.smartSprite.Animations{
         }
 
         /// <summary>
+        /// Gets the current frame index
+        /// </summary>
+        /// <returns></returns>
+        internal int GetFrameIndex()
+        {
+            return this._frameIndex;
+        }
+
+        /// <summary>
         /// Gets the file list discovered through Open method
         /// </summary>
         /// <returns></returns>

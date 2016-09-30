@@ -76,6 +76,9 @@
     <None Include="effectModuleKey.snk" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Temp\empty.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="ThirdPartyEffectModulePlugin\READ-ME.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

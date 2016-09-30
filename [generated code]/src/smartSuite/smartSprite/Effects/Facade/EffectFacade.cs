@@ -51,5 +51,19 @@ namespace smartSuite.smartSprite.Effects.Facade{
 			// TODO implement here
 		}
 
+		/// <summary>
+		/// Ups the filter in list order
+		/// </summary>
+		/// <param name="effectFilter">		public static void UpFilterOrder(IEffectFilter effectFilter ) {</param>
+			// TODO implement here
+		}
+
+		/// <summary>
+		/// Downs the filter in list order
+		/// </summary>
+		/// <param name="effectFilter">		public static void DownFilterOrder(IEffectFilter effectFilter) {</param>
+			// TODO implement here
+		}
+
 	}
 }

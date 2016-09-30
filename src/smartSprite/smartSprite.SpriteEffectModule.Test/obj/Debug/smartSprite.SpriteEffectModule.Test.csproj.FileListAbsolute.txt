@@ -22,3 +22,4 @@ C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSpri
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.SpriteEffectModule.Test\bin\Debug\StubAnimation\Enumerated\9_Circle.stub.bmp
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.SpriteEffectModule.Test\bin\Debug\StubAnimation\Enumerated\10_Circle.stub.bmp
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.SpriteEffectModule.Test\bin\Debug\StubAnimation\Enumerated\1_Circle.stub.bmp
+C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.SpriteEffectModule.Test\bin\Debug\Temp\empty.txt
