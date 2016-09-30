@@ -118,7 +118,14 @@ namespace smartSuite.smartSprite.Effects.FilterEngine{
             }
             else
             {
-                this._filterBufferList.Insert(filterOrderIndex, filter);
+                if (filterOrderIndex > this._filterBufferList.Count)
+                {
+                    this._filterBufferList.Add(filter);
+                }
+                else
+                {
+                    this._filterBufferList.Insert(filterOrderIndex, filter);
+                }
             }
         }
 
@@ -256,7 +263,8 @@ namespace smartSuite.smartSprite.Effects.FilterEngine{
             {
                 var filter = this._filterBufferList[i];
 
-                if(filter.ApplyFilter(this._picture, frameIndex))
+                filter.Reset();
+                if (filter.ApplyFilter(this._picture, frameIndex))
                 {
                     String baseFolder =
                         Path.GetDirectoryName(

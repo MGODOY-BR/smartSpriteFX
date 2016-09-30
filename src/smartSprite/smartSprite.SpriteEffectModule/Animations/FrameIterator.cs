@@ -259,6 +259,10 @@ namespace smartSuite.smartSprite.Animations{
             {
                 throw new InvalidOperationException("Empty picture cache");
             }
+            if (this._frameIndex == -1)
+            {
+                throw new InvalidOperationException("Cursor is empty. Call MoveFirst or MoveNext before invoke this operation");
+            }
             var newFilePath = this._fileList[this._frameIndex];
             if (this._current != null)
             {

@@ -73,7 +73,7 @@ namespace smartSuite.smartSprite.Effects.Core{
 
             #endregion
 
-            if (EffectEngine._iterator.GetCurrent() == null)
+            if (EffectEngine._iterator.GetFrameIndex() == -1)
             {
                 EffectEngine._iterator.MoveFirst();
             }
@@ -83,6 +83,7 @@ namespace smartSuite.smartSprite.Effects.Core{
             foreach (var filterItem in EffectEngine._filterList.GetFilterBufferList())
             {
                 var draftFrame = previewFrame.Clone();
+                filterItem.Reset();
                 if (filterItem.ApplyFilter(draftFrame, frameIndex))
                 {
                     previewFrame = draftFrame;
