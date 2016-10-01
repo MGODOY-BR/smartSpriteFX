@@ -29,6 +29,15 @@ namespace smartSprite.Pictures.ColorPattern
         /// </summary>
         public ColorEqualityComparer(float sensibility)
         {
+            #region Entries validation
+
+            if (float.IsInfinity(sensibility))
+            {
+                throw new InvalidOperationException("Sensibility can´t be infinite.");
+            }
+
+            #endregion
+
             this._sensibility = sensibility;
         }
 

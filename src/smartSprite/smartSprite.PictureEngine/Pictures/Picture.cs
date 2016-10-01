@@ -337,6 +337,7 @@ namespace smartSuite.smartSprite.Pictures{
             // Copying another attributes
             clone._height = this._height;
             clone._width = this._width;
+            clone.ColorCount = this.ColorCount;
             clone._transparentColor = this._transparentColor;
 
             return clone;

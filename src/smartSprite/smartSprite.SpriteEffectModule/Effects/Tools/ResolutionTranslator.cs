@@ -141,9 +141,18 @@ namespace smartSuite.smartSprite.Effects.Tools{
                  (float)hipotenuseNewPicture / (float)hipotenuseOriginalPicture *
                  2.15f + contrast;
 
-            float sensibility =
-                ((float)newColorAmount / (float)this._originalPicture.ColorCount) +
-                bandWidth;
+            float sensibility;
+
+            if (this._originalPicture.ColorCount <= newColorAmount)
+            {
+                sensibility = 0;
+            }
+            else
+            {
+                sensibility =
+                    ((float)newColorAmount / (float)this._originalPicture.ColorCount) +
+                    bandWidth;
+            }
 
             this._colorBuffer = new ColorBuffer(newColorAmount, sensibility);
         }
