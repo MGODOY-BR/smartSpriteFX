@@ -112,7 +112,15 @@ namespace smartSuite.smartSprite.Effects.Core{
             var tempFiles = Directory.GetFiles("Temp", "*.*");
             foreach (var tempFileItem in tempFiles)
             {
-                File.Delete(tempFileItem);
+                try
+                {
+                    File.Delete(tempFileItem);
+                }
+                catch (IOException ex)
+                {
+                    // Errors in this operation cannot impact the whole operation
+                    Console.WriteLine("Error during cleanup initialize operation: " + ex.Message);
+                }
             }
 
             // Loads the filteres

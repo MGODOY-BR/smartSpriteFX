@@ -74,7 +74,7 @@ namespace smartSuite.smartSprite.Animations{
 
             #region Entries validation
 
-            if (this._fileList.Count < this._frameIndex)
+            if (this._fileList.Count <= this._frameIndex)
             {
                 this._frameIndex--;
                 return false;
@@ -222,13 +222,13 @@ namespace smartSuite.smartSprite.Animations{
             #endregion
 
             fileList.AddRange(
-                Directory.GetFiles(fullPath, "*.png", SearchOption.AllDirectories));
+                Directory.GetFiles(fullPath, "*.png", SearchOption.TopDirectoryOnly));
             fileList.AddRange(
-                Directory.GetFiles(fullPath, "*.bmp", SearchOption.AllDirectories));
+                Directory.GetFiles(fullPath, "*.bmp", SearchOption.TopDirectoryOnly));
             fileList.AddRange(
-                Directory.GetFiles(fullPath, "*.jpg", SearchOption.AllDirectories));
+                Directory.GetFiles(fullPath, "*.jpg", SearchOption.TopDirectoryOnly));
             fileList.AddRange(
-                Directory.GetFiles(fullPath, "*.jpeg", SearchOption.AllDirectories));
+                Directory.GetFiles(fullPath, "*.jpeg", SearchOption.TopDirectoryOnly));
         }
 
         /// <summary>

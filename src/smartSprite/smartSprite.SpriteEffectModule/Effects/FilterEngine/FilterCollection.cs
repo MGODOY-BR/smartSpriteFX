@@ -280,7 +280,7 @@ namespace smartSuite.smartSprite.Effects.FilterEngine{
                     String file =
                         Path.Combine(
                             folder,
-                            Path.GetFileNameWithoutExtension(baseFile) + "." + frameIndex.ToString() + ".filtered." + Path.GetExtension(baseFile));
+                            Path.GetFileNameWithoutExtension(baseFile) + "." + frameIndex.ToString() + ".filtered" + Path.GetExtension(baseFile));
 
                     if (!Directory.Exists(folder))
                     {
