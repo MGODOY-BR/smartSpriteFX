@@ -1,4 +1,5 @@
 
+using smartSprite.SpriteEffectModule.Animations;
 using smartSuite.smartSprite.Pictures;
 using System;
 using System.Collections.Generic;
@@ -27,6 +28,11 @@ namespace smartSuite.smartSprite.Animations{
         /// It´s the containt of files
         /// </summary>
         private List<String> _fileList = new List<string>();
+
+        /// <summary>
+        /// It´s a comparer used to sort files
+        /// </summary>
+        private static AnimationComparer _animationComparer = new AnimationComparer();
 
         /// <summary>
         /// Creats a instance of the object.
@@ -145,12 +151,12 @@ namespace smartSuite.smartSprite.Animations{
             this._frameIndex = frameIndex;
         }
 
-		/// <summary>
-		/// Gets a frameIterator from path
-		/// </summary>
-		/// <param name="fullPath">A path of a file or directory</param>
-		/// <returns></returns>
-		internal static FrameIterator Open(String fullPath)
+        /// <summary>
+        /// Gets a frameIterator from path
+        /// </summary>
+        /// <param name="fullPath">A path of a file or directory</param>
+        /// <returns></returns>
+        internal static FrameIterator Open(String fullPath)
         {
             #region Entries validation
 
@@ -179,26 +185,8 @@ namespace smartSuite.smartSprite.Animations{
 
             #endregion
 
-            Regex regEx = new Regex(@"(\d+).*", RegexOptions.Compiled);
-
             // ordering the list, following the prefix number
-            iterator._fileList.Sort(delegate (String path, String other)
-            {
-                if (regEx.IsMatch(path) && regEx.IsMatch(other))
-                {
-                    var pathRegEx = regEx.Match(path);
-                    var otherRegEx = regEx.Match(other);
-
-                    return
-                        int.Parse(pathRegEx.Groups[1].Value)
-                            .CompareTo(
-                                int.Parse(otherRegEx.Groups[1].Value));
-                }
-                else
-                {
-                    return path.CompareTo(other);
-                }
-            });
+            iterator._fileList.Sort(_animationComparer);
 
             return iterator;
         }
