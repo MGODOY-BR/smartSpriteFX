@@ -33,11 +33,14 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.previewBoard = new System.Windows.Forms.PictureBox();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.topPanel = new System.Windows.Forms.Panel();
+            this.panelBrowser = new System.Windows.Forms.Panel();
+            this.frameBox = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.previewBoard)).BeginInit();
+            this.topPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -68,11 +71,11 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.66667F));
             this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 36);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(126, 112);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(675, 342);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(549, 266);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
             // panel1
@@ -82,7 +85,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(516, 336);
+            this.panel1.Size = new System.Drawing.Size(418, 260);
             this.panel1.TabIndex = 0;
             // 
             // previewBoard
@@ -93,21 +96,41 @@
             this.previewBoard.TabIndex = 0;
             this.previewBoard.TabStop = false;
             // 
-            // panel2
+            // topPanel
             // 
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 36);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(675, 28);
-            this.panel2.TabIndex = 3;
+            this.topPanel.Controls.Add(this.frameBox);
+            this.topPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.topPanel.Location = new System.Drawing.Point(0, 36);
+            this.topPanel.Name = "topPanel";
+            this.topPanel.Size = new System.Drawing.Size(675, 76);
+            this.topPanel.TabIndex = 3;
+            // 
+            // panelBrowser
+            // 
+            this.panelBrowser.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panelBrowser.Location = new System.Drawing.Point(0, 112);
+            this.panelBrowser.Name = "panelBrowser";
+            this.panelBrowser.Size = new System.Drawing.Size(126, 266);
+            this.panelBrowser.TabIndex = 4;
+            // 
+            // frameBox
+            // 
+            this.frameBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frameBox.Location = new System.Drawing.Point(0, 0);
+            this.frameBox.Name = "frameBox";
+            this.frameBox.Size = new System.Drawing.Size(675, 76);
+            this.frameBox.TabIndex = 0;
+            this.frameBox.TabStop = false;
+            this.frameBox.Text = "Frames";
             // 
             // AnimationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(675, 400);
-            this.Controls.Add(this.panel2);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.Controls.Add(this.panelBrowser);
+            this.Controls.Add(this.topPanel);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.pictureBox1);
             this.Name = "AnimationForm";
@@ -116,6 +139,7 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.previewBoard)).EndInit();
+            this.topPanel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -128,6 +152,8 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox previewBoard;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel topPanel;
+        private System.Windows.Forms.Panel panelBrowser;
+        private System.Windows.Forms.GroupBox frameBox;
     }
 }

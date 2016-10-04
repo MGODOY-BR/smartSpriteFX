@@ -1,4 +1,6 @@
-﻿using System;
+﻿using smartSprite.Forms.Controls.Animations.Frames;
+using smartSprite.Forms.Controls.Browsers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +17,23 @@ namespace smartSprite.Forms
         public AnimationForm()
         {
             InitializeComponent();
+
+            // Animation browser
+            SmartBrowser smartBrowser = new SmartBrowser();
+            smartBrowser.BrowserType = SmartBrowserTypeEnum.Folder;
+            smartBrowser.DialogTitle = "Open a animation folder";
+            smartBrowser.FrameTitle = "Animation folder";
+            smartBrowser.Dock = DockStyle.Top;
+            smartBrowser.ChosenByUserEvent += SmartBrowser_ChosenByUserEvent;
+            this.panelBrowser.Controls.Add(smartBrowser);
+        }
+
+        private void SmartBrowser_ChosenByUserEvent(object sender, SmartBrowserEventArgs e)
+        {
+            FrameSelectionControl frameSelectionControl = new FrameSelectionControl();
+            frameSelectionControl.Dock = DockStyle.Fill;
+
+            this.frameBox.Controls.Add(frameSelectionControl);
         }
     }
 }

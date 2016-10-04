@@ -36,40 +36,27 @@ namespace smartSprite.Forms
         /// </summary>
         private SmartBrowser _projectBrowser = new SmartBrowser();
 
-        /// <summary>
-        /// It´s a browser for animation mode
-        /// </summary>
-        private SmartBrowser _amimationModeBrowser = new SmartBrowser();
-
         public PrincipalForm()
         {
             InitializeComponent();
 
             this._draftBrowser.Width = 200;
             this._projectBrowser.Width = this._draftBrowser.Width;
-            this._amimationModeBrowser.Width = this._draftBrowser.Width;
 
             this._draftBrowser.FrameTitle = "New from DRAFT...";
             this._projectBrowser.FrameTitle = "RESUME Work...";
-            this._amimationModeBrowser.FrameTitle = "Work on an ANIMATION...";
 
             this._draftBrowser.DialogTitle = "Select an image to use like a DRAFT";
             this._projectBrowser.DialogTitle = "Select a smartSprite Project to resume your work";
-            this._amimationModeBrowser.DialogTitle = "Select a folder containing an animation separeted in serial frames";
 
             this._draftBrowser.DialogFilter = "PNG Files (*.PNG)|*.PNG|Bitmap Files (*.BMP)|*.BMP|JPG Files(*.JPG;*.JPEG)|*.JPG;*.JPEG|All files (*.*)|*.*";
             this._projectBrowser.DialogFilter = "smartSprite Project|*.smartSprite";
-            this._amimationModeBrowser.DialogFilter = "PNG Files (*.PNG)|*.PNG|Bitmap Files (*.BMP)|*.BMP|JPG Files(*.JPG;*.JPEG)|*.JPG;*.JPEG|All files (*.*)|*.*";
-
-            this._amimationModeBrowser.BrowserType = SmartBrowserTypeEnum.Folder;
 
             this._draftBrowser.ChosenByUserEvent += _draftBrowser_ChosenByUserEvent;
             this._projectBrowser.ChosenByUserEvent += _projectBrowser_ChosenByUserEvent;
-            this._amimationModeBrowser.ChosenByUserEvent += _amimationModeBrowser_ChosenByUserEvent;
 
             this.browserPanel.Controls.Add(this._draftBrowser);
             this.browserPanel.Controls.Add(this._projectBrowser);
-            this.browserPanel.Controls.Add(this._amimationModeBrowser);
         }
 
         /// <summary>
