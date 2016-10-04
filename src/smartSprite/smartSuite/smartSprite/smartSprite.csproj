@@ -67,6 +67,12 @@
     <Compile Include="Forms\Controls\Animations\Effects\EffectControl.Designer.cs">
       <DependentUpon>EffectControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Controls\Animations\Frames\FrameSelectionControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Controls\Animations\Frames\FrameSelectionControl.Designer.cs">
+      <DependentUpon>FrameSelectionControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Controls\Browsers\SmartBrowser.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -114,6 +120,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Controls\Animations\Effects\EffectControl.resx">
       <DependentUpon>EffectControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Controls\Animations\Frames\FrameSelectionControl.resx">
+      <DependentUpon>FrameSelectionControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Controls\Browsers\SmartBrowser.resx">
       <DependentUpon>SmartBrowser.cs</DependentUpon>
