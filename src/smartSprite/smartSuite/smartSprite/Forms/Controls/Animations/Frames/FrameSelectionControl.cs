@@ -66,7 +66,20 @@ namespace smartSprite.Forms.Controls.Animations.Frames
 
             this._fileList.Sort(_animationComparer);
 
-            throw new NotImplementedException();
+            for(int i = 0; i < this._fileList.Count; i++)
+            {
+                var fileItem = this._fileList[i];
+                var image = Image.FromFile(fileItem);
+
+                PictureBox pictureBox = new PictureBox();
+                pictureBox.Image = image;
+                pictureBox.Height = this.Height - 10;
+                pictureBox.Width = this.Height;
+                pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+                pictureBox.BorderStyle = BorderStyle.FixedSingle;
+
+                flowLayoutPanel1.Controls.Add(pictureBox);
+            }
         }
     }
 }

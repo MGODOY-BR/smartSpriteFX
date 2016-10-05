@@ -32,6 +32,8 @@ namespace smartSprite.Forms
         {
             FrameSelectionControl frameSelectionControl = new FrameSelectionControl();
             frameSelectionControl.Dock = DockStyle.Fill;
+            frameSelectionControl.SetPath(e.UserChoice);
+            frameSelectionControl.LoadThumbNails();
 
             this.frameBox.Controls.Add(frameSelectionControl);
         }

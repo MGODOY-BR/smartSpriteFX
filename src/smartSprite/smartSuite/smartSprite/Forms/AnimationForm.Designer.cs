@@ -34,8 +34,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.previewBoard = new System.Windows.Forms.PictureBox();
             this.topPanel = new System.Windows.Forms.Panel();
-            this.panelBrowser = new System.Windows.Forms.Panel();
             this.frameBox = new System.Windows.Forms.GroupBox();
+            this.panelBrowser = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -71,11 +71,11 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.66667F));
             this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(126, 112);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(126, 144);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(549, 266);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(549, 234);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
             // panel1
@@ -85,7 +85,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(418, 260);
+            this.panel1.Size = new System.Drawing.Size(418, 228);
             this.panel1.TabIndex = 0;
             // 
             // previewBoard
@@ -102,26 +102,26 @@
             this.topPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.topPanel.Location = new System.Drawing.Point(0, 36);
             this.topPanel.Name = "topPanel";
-            this.topPanel.Size = new System.Drawing.Size(675, 76);
+            this.topPanel.Size = new System.Drawing.Size(675, 108);
             this.topPanel.TabIndex = 3;
-            // 
-            // panelBrowser
-            // 
-            this.panelBrowser.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelBrowser.Location = new System.Drawing.Point(0, 112);
-            this.panelBrowser.Name = "panelBrowser";
-            this.panelBrowser.Size = new System.Drawing.Size(126, 266);
-            this.panelBrowser.TabIndex = 4;
             // 
             // frameBox
             // 
             this.frameBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.frameBox.Location = new System.Drawing.Point(0, 0);
             this.frameBox.Name = "frameBox";
-            this.frameBox.Size = new System.Drawing.Size(675, 76);
+            this.frameBox.Size = new System.Drawing.Size(675, 108);
             this.frameBox.TabIndex = 0;
             this.frameBox.TabStop = false;
             this.frameBox.Text = "Frames";
+            // 
+            // panelBrowser
+            // 
+            this.panelBrowser.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panelBrowser.Location = new System.Drawing.Point(0, 144);
+            this.panelBrowser.Name = "panelBrowser";
+            this.panelBrowser.Size = new System.Drawing.Size(126, 234);
+            this.panelBrowser.TabIndex = 4;
             // 
             // AnimationForm
             // 
