@@ -35,13 +35,17 @@ namespace smartSprite.Forms
         /// <param name="e"></param>
         private void SmartBrowser_ChosenByUserEvent(object sender, SmartBrowserEventArgs e)
         {
+            // FrameSelectionControl
             FrameSelectionControl frameSelectionControl = new FrameSelectionControl();
             frameSelectionControl.Dock = DockStyle.Fill;
             frameSelectionControl.SetPath(e.UserChoice);
             frameSelectionControl.SelectingFrame += FrameSelectionControl_SelectingFrame;
             frameSelectionControl.LoadThumbNails();
-
             this.frameBox.Controls.Add(frameSelectionControl);
+
+            // Showing pallete tool window
+            EffectFilterPalleteForm effectFilterPalleteForm = new EffectFilterPalleteForm();
+            effectFilterPalleteForm.ShowDialog();
         }
 
         /// <summary>

@@ -33,7 +33,7 @@ namespace smartSuite.smartSprite.Effects.Infra{
         /// <summary>
         /// It´s a string to group by
         /// </summary>
-        public String getGroup()
+        public String GetGroup()
         {
             return this._group;
         }
