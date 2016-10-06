@@ -93,6 +93,7 @@
             this.previewBoard.Location = new System.Drawing.Point(0, 0);
             this.previewBoard.Name = "previewBoard";
             this.previewBoard.Size = new System.Drawing.Size(100, 50);
+            this.previewBoard.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.previewBoard.TabIndex = 0;
             this.previewBoard.TabStop = false;
             // 
@@ -138,6 +139,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.previewBoard)).EndInit();
             this.topPanel.ResumeLayout(false);
             this.ResumeLayout(false);

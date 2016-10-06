@@ -32,6 +32,11 @@ namespace smartSprite.Forms.Controls.Animations.Frames
         /// </summary>
         private AnimationComparer _animationComparer = new AnimationComparer();
 
+        /// <summary>
+        /// It happens when a frame is selected
+        /// </summary>
+        public event EventHandler<FrameSelectionEventArgs> SelectingFrame;
+
         public FrameSelectionControl()
         {
             InitializeComponent();
@@ -77,9 +82,37 @@ namespace smartSprite.Forms.Controls.Animations.Frames
                 pictureBox.Width = this.Height;
                 pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
                 pictureBox.BorderStyle = BorderStyle.FixedSingle;
+                pictureBox.Tag = new FrameSelectionEventArgs
+                {
+                    FilePath = fileItem,
+                    FrameIndex = i
+                };
+                pictureBox.Click += PictureBox_Click;
 
                 flowLayoutPanel1.Controls.Add(pictureBox);
             }
+        }
+
+        /// <summary>
+        /// It ocurrs when user click in picture
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void PictureBox_Click(object sender, EventArgs e)
+        {
+            #region Entries validation
+
+            if (this.SelectingFrame == null)
+            {
+                return;
+            }
+
+            #endregion
+
+            PictureBox pictureBox = (PictureBox)sender;
+            FrameSelectionEventArgs eventArgs = (FrameSelectionEventArgs)pictureBox.Tag;
+
+            this.SelectingFrame(sender, eventArgs);
         }
     }
 }
