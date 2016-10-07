@@ -9,6 +9,7 @@ using smartSuite.smartSprite.Pictures;
 using smartSprite.SpriteEffectModule.Effects.Tools;
 using System.Drawing;
 using smartSprite.PictureEngine.Pictures;
+using smartSuite.smartSprite.Effects.Infra;
 
 namespace smartSprite.SpriteEffectModule.Effects.Filters
 {
@@ -26,6 +27,19 @@ namespace smartSprite.SpriteEffectModule.Effects.Filters
         /// It´s the borderColor
         /// </summary>
         private Color _borderColor = Color.Transparent;
+
+        /// <summary>
+        /// Gets the identification
+        /// </summary>
+        /// <returns></returns>
+        public override Identification GetIdentification()
+        {
+            var identification = base.GetIdentification();
+            identification.SetName("Border Line");
+            identification.setDescription("A filter which adds a border line around the picture (requires a Transparent Background filter before)");
+
+            return identification;
+        }
 
         /// <summary>
         /// Applies the filter

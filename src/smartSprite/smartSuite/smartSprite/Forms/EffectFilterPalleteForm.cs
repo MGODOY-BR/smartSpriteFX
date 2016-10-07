@@ -30,7 +30,7 @@ namespace smartSprite.Forms
             var effectByFunctionList = from palleteItem in pallete
                                        group palleteItem by palleteItem.GetIdentification().GetGroup();
 
-            // Creating TreeViewItens
+            // Creating TreeView items
             foreach (var effectByFunctionGroup in effectByFunctionList)
             {
                 TreeNode treeNode = new TreeNode(effectByFunctionGroup.Key);

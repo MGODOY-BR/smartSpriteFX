@@ -63,14 +63,50 @@ namespace smartSuite.smartSprite.Effects.Infra{
 			return this._name;
 		}
 
-		/// <summary>
-		/// Creates an instance of object
-		/// </summary>
-		/// <param name="name">It´s the name of component</param>
-		/// <param name="author">It´s the name of vendor</param>
-		/// <param name="description">It´s the description of filter</param>
+        /// <summary>
+        /// Sets the description
+        /// </summary>
+        /// <param name="description"></param>
+        public void setDescription(string description)
+        {
+            #region Entries validation
+            
+            if (String.IsNullOrEmpty(description))
+            {
+                throw new ArgumentNullException("description");
+            }
+
+            #endregion
+
+            this._description = description;
+        }
+
+        /// <summary>
+        /// Sets the name of filter
+        /// </summary>
+        /// <param name="v"></param>
+        public void SetName(string name)
+        {
+            #region Entries validation
+            
+            if (String.IsNullOrEmpty(name))
+            {
+                throw new ArgumentNullException("name");
+            }
+
+            #endregion
+
+            this._name = name;
+        }
+
+        /// <summary>
+        /// Creates an instance of object
+        /// </summary>
+        /// <param name="name">It´s the name of component</param>
+        /// <param name="author">It´s the name of vendor</param>
+        /// <param name="description">It´s the description of filter</param>
         /// <param name="group">It´s a information to group by</param>
-		public Identification(String name, String author, String description, String group)
+        public Identification(String name, String author, String description, String group)
         {
             #region Entries validation
 

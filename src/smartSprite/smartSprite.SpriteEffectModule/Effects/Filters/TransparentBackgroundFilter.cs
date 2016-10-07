@@ -8,6 +8,7 @@ using smartSuite.smartSprite.Pictures;
 using smartSuite.smartSprite.Pictures.ColorPattern;
 using smartSprite.SpriteEffectModule.Forms;
 using System.Drawing;
+using smartSuite.smartSprite.Effects.Infra;
 
 namespace smartSuite.smartSprite.Effects.Filters{
 	/// <summary>
@@ -22,6 +23,19 @@ namespace smartSuite.smartSprite.Effects.Filters{
         {
             get;
             private set;
+        }
+
+        /// <summary>
+        /// Gets the identification
+        /// </summary>
+        /// <returns></returns>
+        public override Identification GetIdentification()
+        {
+            var identification = base.GetIdentification();
+            identification.SetName("Transparent Background");
+            identification.setDescription("A filter which detects the background and turn it to transparent");
+
+            return identification;
         }
 
         /// <summary>

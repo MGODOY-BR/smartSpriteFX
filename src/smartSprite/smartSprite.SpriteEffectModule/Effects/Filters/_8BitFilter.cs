@@ -42,6 +42,19 @@ namespace smartSuite.smartSprite.Effects.Filters{
         private float _contrast;
 
         /// <summary>
+        /// Gets the identification
+        /// </summary>
+        /// <returns></returns>
+        public override Identification GetIdentification()
+        {
+            var identification = base.GetIdentification();
+            identification.SetName("8 bit");
+            identification.setDescription("A filter which turns the image in a 8 bit style, similar to Sega Master System or NES");
+
+            return identification;
+        }
+
+        /// <summary>
         /// Applies the filter
         /// </summary>
         /// <param name="frame"></param>

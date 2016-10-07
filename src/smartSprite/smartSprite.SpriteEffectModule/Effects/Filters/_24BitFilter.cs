@@ -42,6 +42,19 @@ namespace smartSuite.smartSprite.Effects.Filters{
         private float _contrast;
 
         /// <summary>
+        /// Gets the identification
+        /// </summary>
+        /// <returns></returns>
+        public override Identification GetIdentification()
+        {
+            var identification = base.GetIdentification();
+            identification.SetName("24 bit");
+            identification.setDescription("A filter which turns the image in a 24 bit style, similar to Neo Geo");
+
+            return identification;
+        }
+
+        /// <summary>
         /// Applies the filter
         /// </summary>
         /// <param name="frame"></param>

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using smartSuite.smartSprite.Effects.Infra.UI.Configuratons;
 using smartSuite.smartSprite.Pictures;
+using smartSuite.smartSprite.Effects.Infra;
 
 namespace smartSuite.smartSprite.Effects.Filters{
     /// <summary>
@@ -45,6 +46,19 @@ namespace smartSuite.smartSprite.Effects.Filters{
             {
                 return _keyFrames;
             }
+        }
+
+        /// <summary>
+        /// Gets the identification
+        /// </summary>
+        /// <returns></returns>
+        public override Identification GetIdentification()
+        {
+            var identification = base.GetIdentification();
+            identification.SetName("Frame rate");
+            identification.setDescription("A filter which is applied to entire animation to reduce the frames among it to give the aspect of old-school fighting games.");
+
+            return identification;
         }
 
         /// <summary>
