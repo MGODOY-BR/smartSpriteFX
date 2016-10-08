@@ -1,4 +1,5 @@
-﻿using smartSprite.Forms.Controls.Animations.Frames;
+﻿using smartSprite.Forms.Controls.Animations.Effects;
+using smartSprite.Forms.Controls.Animations.Frames;
 using smartSprite.Forms.Controls.Browsers;
 using System;
 using System.Collections.Generic;
@@ -45,7 +46,22 @@ namespace smartSprite.Forms
 
             // Showing pallete tool window
             EffectFilterPalleteForm effectFilterPalleteForm = new EffectFilterPalleteForm();
-            effectFilterPalleteForm.ShowDialog();
+            effectFilterPalleteForm.Show();
+            effectFilterPalleteForm.SelectedFilterEvent += EffectFilterPalleteForm_SelectedFilterEvent;
+        }
+
+        /// <summary>
+        /// Occurs when the user selects a filter
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void EffectFilterPalleteForm_SelectedFilterEvent(object sender, EffectFilterPalleteForm.SelectionFilterEventArgs e)
+        {
+            EffectControl effectControl = new EffectControl();
+            effectControl.SetFilter(e.Filter);
+            effectControl.Dock = DockStyle.Top;
+
+            pnlFilterPanel.Controls.Add(effectControl);
         }
 
         /// <summary>

@@ -60,7 +60,6 @@
             this.MinimizeBox = false;
             this.Name = "EffectFilterPalleteForm";
             this.ShowIcon = false;
-            this.ShowInTaskbar = false;
             this.Text = "Effect pallete";
             this.Load += new System.EventHandler(this.EffectFilterPalleteForm_Load);
             this.ResumeLayout(false);

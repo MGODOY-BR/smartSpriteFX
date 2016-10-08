@@ -1,4 +1,5 @@
 ﻿using smartSuite.smartSprite.Effects.FilterEngine;
+using smartSuite.smartSprite.Effects.Filters;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,6 +14,11 @@ namespace smartSprite.Forms
 {
     public partial class EffectFilterPalleteForm : Form
     {
+        /// <summary>
+        /// Occurs when the selection of some filter is seleted by user.
+        /// </summary>
+        public event EventHandler<SelectionFilterEventArgs> SelectedFilterEvent;
+
         public EffectFilterPalleteForm()
         {
             InitializeComponent();
@@ -42,6 +48,47 @@ namespace smartSprite.Forms
                 }
                 this.treeView1.Nodes.Add(treeNode);
             }
+
+            this.treeView1.DoubleClick += TreeView1_DoubleClick;
+        }
+
+        /// <summary>
+        /// Occurs then the user selects the filter
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TreeView1_DoubleClick(object sender, EventArgs e)
+        {
+            #region Entries validation
+
+            if (this.SelectedFilterEvent == null)
+            {
+                return;
+            }
+            if (this.treeView1.SelectedNode == null)
+            {
+                return;
+            }
+
+            #endregion
+
+            this.SelectedFilterEvent(
+                this.treeView1,
+                new SelectionFilterEventArgs
+                {
+                    Filter = (IEffectFilter)this.treeView1.SelectedNode.Tag
+                });
+        }
+
+        /// <summary>
+        /// Represents states to events of selection of filters
+        /// </summary>
+        public class SelectionFilterEventArgs : EventArgs
+        {
+            /// <summary>
+            /// It´s the selected filter
+            /// </summary>
+            public IEffectFilter Filter { get; set; }
         }
     }
 }
