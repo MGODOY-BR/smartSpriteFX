@@ -58,5 +58,17 @@ namespace smartSprite.Properties {
                 this["lastExportFolder"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string lastAnimationFolder {
+            get {
+                return ((string)(this["lastAnimationFolder"]));
+            }
+            set {
+                this["lastAnimationFolder"] = value;
+            }
+        }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using smartSprite.Forms.Controls.Animations.Effects;
 using smartSprite.Forms.Controls.Animations.Frames;
 using smartSprite.Forms.Controls.Browsers;
+using smartSprite.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -30,6 +31,10 @@ namespace smartSprite.Forms
             smartBrowser.DialogTitle = "Open a animation folder";
             smartBrowser.FrameTitle = "Animation folder";
             smartBrowser.Dock = DockStyle.Top;
+            if (!String.IsNullOrEmpty(Settings.Default.lastAnimationFolder))
+            {
+                smartBrowser.LoadLastUserChoice(Settings.Default.lastAnimationFolder);
+            }
             smartBrowser.ChosenByUserEvent += SmartBrowser_ChosenByUserEvent;
             this.panelBrowser.Controls.Add(smartBrowser);
         }
@@ -48,6 +53,9 @@ namespace smartSprite.Forms
             frameSelectionControl.SelectingFrame += FrameSelectionControl_SelectingFrame;
             frameSelectionControl.LoadThumbNails();
             this.frameBox.Controls.Add(frameSelectionControl);
+
+            Settings.Default.lastAnimationFolder = e.UserChoice;
+            Settings.Default.Save();
 
             // Showing pallete tool window
             EffectFilterPalleteForm effectFilterPalleteForm = new EffectFilterPalleteForm();
