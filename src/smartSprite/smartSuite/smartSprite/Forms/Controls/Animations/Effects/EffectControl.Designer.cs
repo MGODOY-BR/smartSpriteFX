@@ -67,6 +67,7 @@
             this.btnExclude.TabIndex = 2;
             this.btnExclude.Text = "X";
             this.btnExclude.UseVisualStyleBackColor = true;
+            this.btnExclude.Click += new System.EventHandler(this.btnExclude_Click);
             // 
             // btnDown
             // 
@@ -78,6 +79,7 @@
             this.btnDown.Size = new System.Drawing.Size(50, 23);
             this.btnDown.TabIndex = 3;
             this.btnDown.UseVisualStyleBackColor = true;
+            this.btnDown.Click += new System.EventHandler(this.btnDown_Click);
             // 
             // btnUp
             // 
@@ -88,6 +90,7 @@
             this.btnUp.Size = new System.Drawing.Size(50, 23);
             this.btnUp.TabIndex = 1;
             this.btnUp.UseVisualStyleBackColor = true;
+            this.btnUp.Click += new System.EventHandler(this.btnUp_Click);
             // 
             // EffectControl
             // 
@@ -99,6 +102,7 @@
             this.Controls.Add(this.btnExclude);
             this.Controls.Add(this.btnUp);
             this.Controls.Add(this.panel1);
+            this.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.Name = "EffectControl";
             this.Size = new System.Drawing.Size(268, 53);
             this.panel1.ResumeLayout(false);

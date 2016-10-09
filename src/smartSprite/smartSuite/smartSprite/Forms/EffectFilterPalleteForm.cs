@@ -88,7 +88,7 @@ namespace smartSprite.Forms
             /// <summary>
             /// It´s the selected filter
             /// </summary>
-            public IEffectFilter Filter { get; set; }
+            public IEffectFilter Filter { get; internal set; }
         }
     }
 }
