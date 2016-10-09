@@ -38,7 +38,7 @@ namespace smartSprite.Forms.Controls.Animations.Effects
 
             if (filter == null)
             {
-                throw new ArgumentNullException("filter");
+                return;
             }
 
             #endregion

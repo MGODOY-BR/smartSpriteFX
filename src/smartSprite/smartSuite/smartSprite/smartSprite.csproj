@@ -198,7 +198,9 @@
   <ItemGroup>
     <None Include="Resources\arrow.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\EffectControl.png" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="Resources\up.png" />
   </ItemGroup>
