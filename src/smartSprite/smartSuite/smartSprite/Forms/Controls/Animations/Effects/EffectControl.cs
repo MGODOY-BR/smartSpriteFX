@@ -102,6 +102,7 @@ namespace smartSprite.Forms.Controls.Animations.Effects
             EXCLUDE,
             UP,
             DOW,
+            SETTINGS
         }
 
         /// <summary>
@@ -118,6 +119,11 @@ namespace smartSprite.Forms.Controls.Animations.Effects
             /// It´s the EffectControl
             /// </summary>
             public EffectControl Control { get; internal set; }
+        }
+
+        private void btnSettings_Click(object sender, EventArgs e)
+        {
+            this.OnUserInteracted(EffectControlCommandEnum.SETTINGS);
         }
     }
 }

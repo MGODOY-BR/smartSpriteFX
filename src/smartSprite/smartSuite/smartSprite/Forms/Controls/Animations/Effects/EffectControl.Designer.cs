@@ -33,6 +33,7 @@
             this.btnExclude = new System.Windows.Forms.Button();
             this.btnDown = new System.Windows.Forms.Button();
             this.btnUp = new System.Windows.Forms.Button();
+            this.btnSettings = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -92,6 +93,17 @@
             this.btnUp.UseVisualStyleBackColor = true;
             this.btnUp.Click += new System.EventHandler(this.btnUp_Click);
             // 
+            // btnSettings
+            // 
+            this.btnSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnSettings.Location = new System.Drawing.Point(3, 27);
+            this.btnSettings.Name = "btnSettings";
+            this.btnSettings.Size = new System.Drawing.Size(24, 23);
+            this.btnSettings.TabIndex = 1;
+            this.btnSettings.Text = "...";
+            this.btnSettings.UseVisualStyleBackColor = true;
+            this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
+            // 
             // EffectControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -100,6 +112,7 @@
             this.BackgroundImage = global::smartSprite.Properties.Resources.EffectControl;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Controls.Add(this.btnSettings);
             this.Controls.Add(this.btnDown);
             this.Controls.Add(this.btnExclude);
             this.Controls.Add(this.btnUp);
@@ -120,5 +133,6 @@
         private System.Windows.Forms.Button btnExclude;
         private System.Windows.Forms.Button btnDown;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnSettings;
     }
 }

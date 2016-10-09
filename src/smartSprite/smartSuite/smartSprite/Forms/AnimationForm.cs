@@ -11,6 +11,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using smartSuite.smartSprite.Effects.Filters;
+using smartSuite.smartSprite.Effects.Infra;
 
 namespace smartSprite.Forms
 {
@@ -100,6 +102,7 @@ namespace smartSprite.Forms
         /// <param name="e"></param>
         private void EffectControl_UserInteracted(object sender, EffectControl.EffectControlEventArgs e)
         {
+            txtSettingsDescription.Clear();
             switch (e.CommandType)
             {
                 case EffectControl.EffectControlCommandEnum.EXCLUDE:
@@ -114,11 +117,76 @@ namespace smartSprite.Forms
                     this._effectControlOrderCollection.Down(e.Control);
                     break;
 
+                case EffectControl.EffectControlCommandEnum.SETTINGS:
+                    this.ShowSettings(e.Control.GetFilter());
+                    break;
+
                 default:
                     throw new NotSupportedException(e.CommandType.ToString());
             }
 
             this.EffectBind(this._effectControlOrderCollection);
+        }
+
+        /// <summary>
+        /// Shows the Setting panel
+        /// </summary>
+        /// <param name="effectFilter"></param>
+        private void ShowSettings(IEffectFilter effectFilter)
+        {
+            #region Entries validation
+
+            if (effectFilter == null)
+            {
+                throw new ArgumentNullException("effectFilter");
+            }
+
+            #endregion
+
+            Identification identification = null;
+
+            try
+            {
+                identification = 
+                    effectFilter.GetIdentification();
+            }
+            catch
+            {
+                // Errors in this part doesn't interrupt the flow
+            }
+
+            if (identification != null)
+            {
+                try
+                {
+                    txtSettingsDescription.Text =
+                        String.Format(
+                            "Filter: {0}\r\n\r\nAuthor: {1}\r\n\r\nDescription: {2}",
+                            identification.GetName(),
+                            identification.GetAuthor(),
+                            identification.GetDescription());
+                }
+                catch (Exception ex)
+                {
+                    txtSettingsDescription.Text = "Ops! The effect panel returns an error! - " + ex.ToString();
+                }
+            }
+
+            try
+            {
+                var configurationPanel = effectFilter.ShowConfigurationPanel();
+                pnlSettingsMain.Controls.Clear();
+                if (configurationPanel != null)
+                {
+                    pnlSettingsMain.Controls.Add(
+                        configurationPanel.GetPanel(effectFilter));
+                }
+            }
+            catch (Exception ex)
+            {
+                txtSettingsDescription.Text = "Ops! The effect panel returns an error! - " + ex.ToString();
+            }
+            
         }
 
         /// <summary>
