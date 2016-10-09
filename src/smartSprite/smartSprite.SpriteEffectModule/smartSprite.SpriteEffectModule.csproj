@@ -66,6 +66,7 @@
     <Compile Include="Effects\Infra\ColorBuffer.cs" />
     <Compile Include="Effects\Infra\Identification.cs" />
     <Compile Include="Effects\Infra\UI\Configuratons\IConfigurationPanel.cs" />
+    <Compile Include="Effects\Infra\UI\Configuratons\DefaultConfigurationPanel.cs" />
     <Compile Include="Effects\Tools\ColorUtil.cs" />
     <Compile Include="Effects\Tools\ResolutionTranslator.cs" />
     <Compile Include="Forms\ColorSupportFormForAnimation.cs">
