@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using smartSuite.smartSprite.Effects.Infra.UI.Configuratons;
 using smartSuite.smartSprite.Pictures;
+using smartSprite.SpriteEffectModule.Effects.Infra.UI.Configuratons;
+using smartSprite.SpriteEffectModule.Effects.Filters.UI;
+using System.Windows.Forms;
 
 namespace smartSuite.smartSprite.Effects.Filters{
 	/// <summary>
@@ -106,7 +109,12 @@ namespace smartSuite.smartSprite.Effects.Filters{
 
         public override IConfigurationPanel ShowConfigurationPanel()
         {
-            throw new NotImplementedException();
+            var control = new CustomResolutionControl();
+            control.Dock = DockStyle.Fill;
+
+            Panel panel = new Panel();
+            panel.Controls.Add(control);
+            return new GenericConfigurationPanel(panel);
         }
     }
 }

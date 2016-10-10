@@ -56,6 +56,12 @@
     <Compile Include="Effects\Facade\EffectFacade.cs" />
     <Compile Include="Effects\FilterEngine\FilterCollection.cs" />
     <Compile Include="Effects\Filters\BorderFilter.cs" />
+    <Compile Include="Effects\Filters\UI\CustomResolutionControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Effects\Filters\UI\CustomResolutionControl.Designer.cs">
+      <DependentUpon>CustomResolutionControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Effects\Filters\_8BitFilter.cs" />
     <Compile Include="Effects\Filters\_24BitFilter.cs" />
     <Compile Include="Effects\Filters\_16BitFilter.cs" />
@@ -66,7 +72,7 @@
     <Compile Include="Effects\Infra\ColorBuffer.cs" />
     <Compile Include="Effects\Infra\Identification.cs" />
     <Compile Include="Effects\Infra\UI\Configuratons\IConfigurationPanel.cs" />
-    <Compile Include="Effects\Infra\UI\Configuratons\DefaultConfigurationPanel.cs" />
+    <Compile Include="Effects\Infra\UI\Configuratons\GenericConfigurationPanel.cs" />
     <Compile Include="Effects\Tools\ColorUtil.cs" />
     <Compile Include="Effects\Tools\ResolutionTranslator.cs" />
     <Compile Include="Forms\ColorSupportFormForAnimation.cs">
@@ -91,7 +97,11 @@
       <Name>smartSprite.PictureEngine</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Effects\Filters\UI\CustomResolutionControl.resx">
+      <DependentUpon>CustomResolutionControl.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
