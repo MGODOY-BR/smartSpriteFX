@@ -109,12 +109,7 @@ namespace smartSuite.smartSprite.Effects.Filters{
 
         public override IConfigurationPanel ShowConfigurationPanel()
         {
-            var control = new CustomResolutionControl();
-            control.Dock = DockStyle.Fill;
-
-            Panel panel = new Panel();
-            panel.Controls.Add(control);
-            return new GenericConfigurationPanel(panel);
+            return new GenericConfigurationPanel(new CustomResolutionControl());
         }
     }
 }

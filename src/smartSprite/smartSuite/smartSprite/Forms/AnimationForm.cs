@@ -165,6 +165,9 @@ namespace smartSprite.Forms
                             identification.GetName(),
                             identification.GetAuthor(),
                             identification.GetDescription());
+
+                    txtSettingsDescription.SelectionStart = 0;
+                    txtSettingsDescription.SelectionLength = 0;
                 }
                 catch (Exception ex)
                 {

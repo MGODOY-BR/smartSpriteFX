@@ -17,23 +17,23 @@ namespace smartSprite.SpriteEffectModule.Effects.Infra.UI.Configuratons
         /// <summary>
         /// It´s the panel
         /// </summary>
-        private Panel _panel;
+        private UserControl _userControl;
 
-        public GenericConfigurationPanel(Panel panel)
+        public GenericConfigurationPanel(UserControl userControl)
         {
             #region Entries validation
 
-            if (panel == null)
+            if (userControl == null)
             {
-                throw new ArgumentNullException("panel");
+                throw new ArgumentNullException("userControl");
             }
 
             #endregion
 
-            _panel = panel;
+            _userControl = userControl;
         }
 
-        public Panel GetPanel(IEffectFilter effectFilter)
+        public UserControl GetPanel(IEffectFilter effectFilter)
         {
             #region Entries validation
 
@@ -44,8 +44,9 @@ namespace smartSprite.SpriteEffectModule.Effects.Infra.UI.Configuratons
 
             #endregion
 
-            _panel.Tag = effectFilter;
-            return this._panel;
+            _userControl.Tag = effectFilter;
+            _userControl.BackColor = System.Drawing.Color.Silver;
+            return this._userControl;
         }
     }
 }

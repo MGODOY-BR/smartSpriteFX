@@ -16,7 +16,7 @@ namespace smartSuite.smartSprite.Effects.Infra.UI.Configuratons{
 		/// </summary>
 		/// <param name="effectFilter">It´s the effect filter that is being configurated.</param>
 		/// <returns></returns>
-		System.Windows.Forms.Panel GetPanel(IEffectFilter effectFilter);
+		System.Windows.Forms.UserControl GetPanel(IEffectFilter effectFilter);
 
 	}
 }
