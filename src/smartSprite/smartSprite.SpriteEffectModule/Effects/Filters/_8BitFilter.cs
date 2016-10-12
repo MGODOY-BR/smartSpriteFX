@@ -112,35 +112,79 @@ namespace smartSuite.smartSprite.Effects.Filters{
             return new ResolutionConfigurationPanelControl();
         }
 
-        void IResolutionFilterSetter.setColorBufferAmount(int amount)
+
+        int IResolutionFilterSetter.ColorBufferAmount
         {
-            this._colorBufferAmount = amount;
+            get
+            {
+                return this._colorBufferAmount;
+            }
+            set
+            {
+                this._colorBufferAmount = value;
+            }
         }
 
-        void IResolutionFilterSetter.setDestinationScreenWidth(int amount)
+        int IResolutionFilterSetter.DestinationScreenWidth
         {
-            this._destinationScreenWidth = amount;
+            get
+            {
+                return this._destinationScreenWidth;
+            }
+            set
+            {
+                this._destinationScreenWidth = value;
+            }
         }
 
-        void IResolutionFilterSetter.setDestinationScreenHeight(int amount)
+        int IResolutionFilterSetter.DestinationScreenHeight
         {
-            this._destinationScreenHeight = amount;
+            get
+            {
+                return this._destinationScreenHeight;
+            }
+            set
+            {
+                this._destinationScreenHeight = value;
+            }
         }
 
-        void IResolutionFilterSetter.setContrast(float factor)
+        float IResolutionFilterSetter.Contrast
         {
-            this._contrast = factor;
+            get
+            {
+                return this._contrast;
+            }
+            set
+            {
+                this._contrast = value;
+            }
         }
 
-        void IResolutionFilterSetter.setTotalScreenWidth(int screenWidth)
+        int IResolutionFilterSetter.TotalScreenWidth
         {
-            this._screenWidth = screenWidth;
+            get
+            {
+                return this._screenWidth;
+            }
+            set
+            {
+                this._screenWidth = value;
+            }
         }
 
-        void IResolutionFilterSetter.setTotalScreenHeight(int screenHeight)
+        int IResolutionFilterSetter.TotalScreenHeight
         {
-            this._screenHeight = screenHeight;
+            get
+            {
+                return this._screenHeight;
+            }
+            set
+            {
+                this._screenHeight = value;
+            }
         }
+
 
     }
 }

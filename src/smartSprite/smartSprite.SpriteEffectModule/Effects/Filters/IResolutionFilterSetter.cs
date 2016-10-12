@@ -12,34 +12,52 @@ namespace smartSprite.SpriteEffectModule.Effects.Filters
     public interface IResolutionFilterSetter
     {
         /// <summary>
-        /// Sets the amount of color in new resolution
+        /// Gets or gets the amount of color in new resolution
         /// </summary>
-        /// <param name="amount"></param>
-        void setColorBufferAmount(int amount);
+        int ColorBufferAmount
+        {
+            get;
+            set;
+        }
         /// <summary>
-        /// Sets the screen width in new resolution
+        /// Gets or gets the screen width in new resolution
         /// </summary>
-        /// <param name="amount"></param>
-        void setDestinationScreenWidth(int amount);
+        int DestinationScreenWidth
+        {
+            get;
+            set;
+        }
         /// <summary>
-        /// Sets the screen height in new resolution
+        /// Gets or gets the screen height in new resolution
         /// </summary>
-        /// <param name="amount"></param>
-        void setDestinationScreenHeight(int amount);
+        int DestinationScreenHeight
+        {
+            get;
+            set;
+        }
         /// <summary>
-        /// Sets the contrast of colors
+        /// Gets or gets the contrast of colors
         /// </summary>
-        /// <param name="factor"></param>
-        void setContrast(float factor);
+        float Contrast
+        {
+            get;
+            set;
+        }
         /// <summary>
-        /// Sets the total of width of screen
+        /// Gets or gets the total of width of screen
         /// </summary>
-        /// <param name="screenWidth"></param>
-        void setTotalScreenWidth(int screenWidth);
+        int TotalScreenWidth
+        {
+            get;
+            set;
+        }
         /// <summary>
-        /// Sets the total of height of screen
+        /// Gets or gets the total of height of screen
         /// </summary>
-        /// <param name="screenHeight"></param>
-        void setTotalScreenHeight(int screenHeight);
+        int TotalScreenHeight
+        {
+            get;
+            set;
+        }
     }
 }
