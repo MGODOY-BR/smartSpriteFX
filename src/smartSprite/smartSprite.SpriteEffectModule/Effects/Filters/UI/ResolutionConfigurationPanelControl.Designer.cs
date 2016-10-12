@@ -1,6 +1,6 @@
 ﻿namespace smartSprite.SpriteEffectModule.Effects.Filters.UI
 {
-    partial class CustomResolutionControl
+    partial class ResolutionConfigurationPanelControl
     {
         /// <summary> 
         /// Required designer variable.

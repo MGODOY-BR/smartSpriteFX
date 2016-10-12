@@ -56,11 +56,12 @@
     <Compile Include="Effects\Facade\EffectFacade.cs" />
     <Compile Include="Effects\FilterEngine\FilterCollection.cs" />
     <Compile Include="Effects\Filters\BorderFilter.cs" />
-    <Compile Include="Effects\Filters\UI\CustomResolutionControl.cs">
+    <Compile Include="Effects\Filters\IResolutionFilterSetter.cs" />
+    <Compile Include="Effects\Filters\UI\ResolutionConfigurationPanelControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Effects\Filters\UI\CustomResolutionControl.Designer.cs">
-      <DependentUpon>CustomResolutionControl.cs</DependentUpon>
+    <Compile Include="Effects\Filters\UI\ResolutionConfigurationPanelControl.Designer.cs">
+      <DependentUpon>ResolutionConfigurationPanelControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Effects\Filters\_8BitFilter.cs" />
     <Compile Include="Effects\Filters\_24BitFilter.cs" />
@@ -98,8 +99,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Effects\Filters\UI\CustomResolutionControl.resx">
-      <DependentUpon>CustomResolutionControl.cs</DependentUpon>
+    <EmbeddedResource Include="Effects\Filters\UI\ResolutionConfigurationPanelControl.resx">
+      <DependentUpon>ResolutionConfigurationPanelControl.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

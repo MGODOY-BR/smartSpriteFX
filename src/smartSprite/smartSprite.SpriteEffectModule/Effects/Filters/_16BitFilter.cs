@@ -10,12 +10,14 @@ using smartSuite.smartSprite.Pictures;
 using smartSprite.SpriteEffectModule.Effects.Infra.UI.Configuratons;
 using smartSprite.SpriteEffectModule.Effects.Filters.UI;
 using System.Windows.Forms;
+using smartSprite.SpriteEffectModule.Effects.Filters;
 
 namespace smartSuite.smartSprite.Effects.Filters{
 	/// <summary>
 	/// Represents a filter to convert the frame to 16 bit appearence.
 	/// </summary>
-	public class _16BitFilter : SmartSpriteOriginalFilterBase {
+	public class _16BitFilter : SmartSpriteOriginalFilterBase, IResolutionFilterSetter
+    {
 
         /// <summary>
         /// It´s the color buffer amount
@@ -109,7 +111,37 @@ namespace smartSuite.smartSprite.Effects.Filters{
 
         public override IConfigurationPanel ShowConfigurationPanel()
         {
-            return new GenericConfigurationPanel(new CustomResolutionControl());
+            return new ResolutionConfigurationPanelControl();
+        }
+
+        void IResolutionFilterSetter.setColorBufferAmount(int amount)
+        {
+            this._colorBufferAmount = amount;
+        }
+
+        void IResolutionFilterSetter.setDestinationScreenWidth(int amount)
+        {
+            this._destinationScreenWidth = amount;
+        }
+
+        void IResolutionFilterSetter.setDestinationScreenHeight(int amount)
+        {
+            this._destinationScreenHeight = amount;
+        }
+
+        void IResolutionFilterSetter.setContrast(float factor)
+        {
+            this._contrast = factor;
+        }
+
+        void IResolutionFilterSetter.setTotalScreenWidth(int screenWidth)
+        {
+            this._screenWidth = screenWidth;
+        }
+
+        void IResolutionFilterSetter.setTotalScreenHeight(int screenHeight)
+        {
+            this._screenHeight = screenHeight;
         }
     }
 }
