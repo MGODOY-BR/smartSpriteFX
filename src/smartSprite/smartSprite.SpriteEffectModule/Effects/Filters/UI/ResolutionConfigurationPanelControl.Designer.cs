@@ -100,9 +100,11 @@
             // tckContrast
             // 
             this.tckContrast.Location = new System.Drawing.Point(154, 89);
+            this.tckContrast.Minimum = -10;
             this.tckContrast.Name = "tckContrast";
             this.tckContrast.Size = new System.Drawing.Size(116, 45);
             this.tckContrast.TabIndex = 21;
+            this.tckContrast.Scroll += new System.EventHandler(this.tckContrast_Scroll);
             // 
             // txtMaxColorAmount
             // 
@@ -110,6 +112,7 @@
             this.txtMaxColorAmount.Name = "txtMaxColorAmount";
             this.txtMaxColorAmount.Size = new System.Drawing.Size(100, 20);
             this.txtMaxColorAmount.TabIndex = 24;
+            this.txtMaxColorAmount.TextChanged += new System.EventHandler(this.txtMaxColorAmount_TextChanged);
             // 
             // txtMaxScreenWidth
             // 
@@ -117,6 +120,7 @@
             this.txtMaxScreenWidth.Name = "txtMaxScreenWidth";
             this.txtMaxScreenWidth.Size = new System.Drawing.Size(100, 20);
             this.txtMaxScreenWidth.TabIndex = 25;
+            this.txtMaxScreenWidth.TextChanged += new System.EventHandler(this.txtMaxScreenWidth_TextChanged);
             // 
             // txtMaxScreenHeight
             // 
@@ -124,6 +128,7 @@
             this.txtMaxScreenHeight.Name = "txtMaxScreenHeight";
             this.txtMaxScreenHeight.Size = new System.Drawing.Size(100, 20);
             this.txtMaxScreenHeight.TabIndex = 26;
+            this.txtMaxScreenHeight.TextChanged += new System.EventHandler(this.txtMaxScreenHeight_TextChanged);
             // 
             // txtScreenWidth
             // 
@@ -131,6 +136,7 @@
             this.txtScreenWidth.Name = "txtScreenWidth";
             this.txtScreenWidth.Size = new System.Drawing.Size(100, 20);
             this.txtScreenWidth.TabIndex = 27;
+            this.txtScreenWidth.TextChanged += new System.EventHandler(this.txtScreenWidth_TextChanged);
             // 
             // txtScreenHeight
             // 
@@ -138,8 +144,9 @@
             this.txtScreenHeight.Name = "txtScreenHeight";
             this.txtScreenHeight.Size = new System.Drawing.Size(100, 20);
             this.txtScreenHeight.TabIndex = 28;
+            this.txtScreenHeight.TextChanged += new System.EventHandler(this.txtScreenHeight_TextChanged);
             // 
-            // CustomResolutionControl
+            // ResolutionConfigurationPanelControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -155,7 +162,7 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.tckContrast);
-            this.Name = "CustomResolutionControl";
+            this.Name = "ResolutionConfigurationPanelControl";
             this.Size = new System.Drawing.Size(332, 181);
             ((System.ComponentModel.ISupportInitialize)(this.tckContrast)).EndInit();
             this.ResumeLayout(false);

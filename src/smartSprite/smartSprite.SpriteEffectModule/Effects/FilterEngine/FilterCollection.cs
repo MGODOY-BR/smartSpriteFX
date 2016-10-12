@@ -70,8 +70,9 @@ namespace smartSuite.smartSprite.Effects.FilterEngine{
             {
                 try
                 {
-                    FilterCollection._filterPallete.Add(
-                        (IEffectFilter)Activator.CreateInstance(type));
+                    var effectFilter = (IEffectFilter)Activator.CreateInstance(type);
+                    effectFilter.Reset();
+                    FilterCollection._filterPallete.Add(effectFilter);
                 }
                 catch (Exception ex)
                 {

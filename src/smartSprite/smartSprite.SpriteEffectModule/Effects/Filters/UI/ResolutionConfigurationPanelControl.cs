@@ -49,6 +49,13 @@ namespace smartSprite.SpriteEffectModule.Effects.Filters.UI
             this.Tag = effectFilter;
             this.BackColor = System.Drawing.Color.Silver;
 
+            this.txtMaxColorAmount.Text = this._filterSettable.ColorBufferAmount.ToString();
+            this.txtMaxScreenHeight.Text = this._filterSettable.DestinationScreenHeight.ToString();
+            this.txtMaxScreenWidth.Text = this._filterSettable.DestinationScreenWidth.ToString();
+            this.txtScreenHeight.Text = this._filterSettable.TotalScreenHeight.ToString();
+            this.txtScreenWidth.Text = this._filterSettable.TotalScreenWidth.ToString();
+            this.tckContrast.Value = (int)this._filterSettable.Contrast * 100;
+
             return this;
         }
 
@@ -67,6 +74,81 @@ namespace smartSprite.SpriteEffectModule.Effects.Filters.UI
             {
                 e.Handled = true;
             }
+        }
+
+        private void txtMaxColorAmount_TextChanged(object sender, EventArgs e)
+        {
+            #region Entries validation
+
+            if (String.IsNullOrEmpty(((TextBox)sender).Text))
+            {
+                throw new ArgumentNullException("The value can´t be empty");
+            }
+
+            #endregion
+
+            this._filterSettable.ColorBufferAmount = int.Parse(((TextBox)sender).Text);
+        }
+
+        private void txtMaxScreenWidth_TextChanged(object sender, EventArgs e)
+        {
+            #region Entries validation
+
+            if (String.IsNullOrEmpty(((TextBox)sender).Text))
+            {
+                throw new ArgumentNullException("The value can´t be empty");
+            }
+
+            #endregion
+
+            this._filterSettable.DestinationScreenWidth = int.Parse(((TextBox)sender).Text);
+        }
+
+        private void txtMaxScreenHeight_TextChanged(object sender, EventArgs e)
+        {
+            #region Entries validation
+
+            if (String.IsNullOrEmpty(((TextBox)sender).Text))
+            {
+                throw new ArgumentNullException("The value can´t be empty");
+            }
+
+            #endregion
+
+            this._filterSettable.DestinationScreenHeight = int.Parse(((TextBox)sender).Text);
+        }
+
+        private void txtScreenWidth_TextChanged(object sender, EventArgs e)
+        {
+            #region Entries validation
+
+            if (String.IsNullOrEmpty(((TextBox)sender).Text))
+            {
+                throw new ArgumentNullException("The value can´t be empty");
+            }
+
+            #endregion
+
+            this._filterSettable.TotalScreenWidth = int.Parse(((TextBox)sender).Text);
+        }
+
+        private void txtScreenHeight_TextChanged(object sender, EventArgs e)
+        {
+            #region Entries validation
+
+            if (String.IsNullOrEmpty(((TextBox)sender).Text))
+            {
+                throw new ArgumentNullException("The value can´t be empty");
+            }
+
+            #endregion
+
+            this._filterSettable.TotalScreenHeight = int.Parse(((TextBox)sender).Text);
+        }
+
+        private void tckContrast_Scroll(object sender, EventArgs e)
+        {
+            this._filterSettable.Contrast = (float)tckContrast.Value / 100f;
         }
     }
 }
