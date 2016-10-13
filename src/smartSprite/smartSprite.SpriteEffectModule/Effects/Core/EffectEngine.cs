@@ -2,6 +2,7 @@
 using smartSuite.smartSprite.Animations;
 using smartSuite.smartSprite.Effects.FilterEngine;
 using smartSuite.smartSprite.Effects.Filters;
+using smartSuite.smartSprite.Pictures;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -83,7 +84,6 @@ namespace smartSuite.smartSprite.Effects.Core{
             foreach (var filterItem in EffectEngine._filterList.GetFilterBufferList())
             {
                 var draftFrame = previewFrame.Clone();
-                filterItem.Reset();
                 if (filterItem.ApplyFilter(draftFrame, frameIndex))
                 {
                     previewFrame = draftFrame;
