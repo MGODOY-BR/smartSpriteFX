@@ -1,4 +1,5 @@
-﻿using smartSuite.smartSprite.Effects.FilterEngine;
+﻿using smartSuite.smartSprite.Effects.Core;
+using smartSuite.smartSprite.Effects.FilterEngine;
 using smartSuite.smartSprite.Effects.Filters;
 using System;
 using System.Collections.Generic;
@@ -25,10 +26,7 @@ namespace smartSprite.Forms
         }
 
         private void EffectFilterPalleteForm_Load(object sender, EventArgs e)
-        {
-            // Loading the filtercollection
-            FilterCollection.Load();
-
+        {            
             // Filling the list
             var pallete = FilterCollection.GetFilterPallete();
 

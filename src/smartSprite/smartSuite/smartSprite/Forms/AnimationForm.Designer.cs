@@ -70,15 +70,15 @@
             this.pictureBox1.Image = global::smartSprite.Properties.Resources.logo;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(630, 36);
+            this.pictureBox1.Size = new System.Drawing.Size(806, 36);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
             // statusStrip1
             // 
-            this.statusStrip1.Location = new System.Drawing.Point(0, 612);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 455);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(630, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(806, 22);
             this.statusStrip1.TabIndex = 1;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -90,7 +90,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(327, 468);
+            this.panel1.Size = new System.Drawing.Size(441, 311);
             this.panel1.TabIndex = 0;
             // 
             // previewBoard
@@ -108,7 +108,7 @@
             this.topPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.topPanel.Location = new System.Drawing.Point(0, 36);
             this.topPanel.Name = "topPanel";
-            this.topPanel.Size = new System.Drawing.Size(630, 108);
+            this.topPanel.Size = new System.Drawing.Size(806, 108);
             this.topPanel.TabIndex = 3;
             // 
             // frameBox
@@ -117,7 +117,7 @@
             this.frameBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.frameBox.Location = new System.Drawing.Point(0, 0);
             this.frameBox.Name = "frameBox";
-            this.frameBox.Size = new System.Drawing.Size(630, 108);
+            this.frameBox.Size = new System.Drawing.Size(806, 108);
             this.frameBox.TabIndex = 0;
             this.frameBox.TabStop = false;
             this.frameBox.Text = "Frames";
@@ -128,7 +128,7 @@
             this.panelBrowser.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelBrowser.Location = new System.Drawing.Point(0, 144);
             this.panelBrowser.Name = "panelBrowser";
-            this.panelBrowser.Size = new System.Drawing.Size(126, 468);
+            this.panelBrowser.Size = new System.Drawing.Size(126, 311);
             this.panelBrowser.TabIndex = 4;
             // 
             // splitContainer1
@@ -144,8 +144,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(504, 468);
-            this.splitContainer1.SplitterDistance = 327;
+            this.splitContainer1.Size = new System.Drawing.Size(680, 311);
+            this.splitContainer1.SplitterDistance = 441;
             this.splitContainer1.TabIndex = 5;
             // 
             // splitContainer2
@@ -165,8 +165,8 @@
             this.splitContainer2.Panel2.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.splitContainer2.Panel2.Controls.Add(this.splitContainer3);
             this.splitContainer2.Panel2.Controls.Add(this.pnlSettingTop);
-            this.splitContainer2.Size = new System.Drawing.Size(173, 468);
-            this.splitContainer2.SplitterDistance = 153;
+            this.splitContainer2.Size = new System.Drawing.Size(235, 311);
+            this.splitContainer2.SplitterDistance = 101;
             this.splitContainer2.TabIndex = 0;
             // 
             // pnlFilterPanel
@@ -178,7 +178,7 @@
             this.pnlFilterPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlFilterPanel.Location = new System.Drawing.Point(0, 28);
             this.pnlFilterPanel.Name = "pnlFilterPanel";
-            this.pnlFilterPanel.Size = new System.Drawing.Size(173, 125);
+            this.pnlFilterPanel.Size = new System.Drawing.Size(235, 73);
             this.pnlFilterPanel.TabIndex = 0;
             // 
             // panel2
@@ -187,7 +187,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(173, 28);
+            this.panel2.Size = new System.Drawing.Size(235, 28);
             this.panel2.TabIndex = 1;
             // 
             // splitContainer3
@@ -204,8 +204,8 @@
             // splitContainer3.Panel2
             // 
             this.splitContainer3.Panel2.Controls.Add(this.pnlSettingsMain);
-            this.splitContainer3.Size = new System.Drawing.Size(173, 278);
-            this.splitContainer3.SplitterDistance = 106;
+            this.splitContainer3.Size = new System.Drawing.Size(235, 173);
+            this.splitContainer3.SplitterDistance = 65;
             this.splitContainer3.TabIndex = 2;
             // 
             // txtSettingsDescription
@@ -219,7 +219,7 @@
             this.txtSettingsDescription.Name = "txtSettingsDescription";
             this.txtSettingsDescription.ReadOnly = true;
             this.txtSettingsDescription.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtSettingsDescription.Size = new System.Drawing.Size(173, 106);
+            this.txtSettingsDescription.Size = new System.Drawing.Size(235, 65);
             this.txtSettingsDescription.TabIndex = 0;
             // 
             // pnlSettingsMain
@@ -231,7 +231,7 @@
             this.pnlSettingsMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlSettingsMain.Location = new System.Drawing.Point(0, 0);
             this.pnlSettingsMain.Name = "pnlSettingsMain";
-            this.pnlSettingsMain.Size = new System.Drawing.Size(173, 168);
+            this.pnlSettingsMain.Size = new System.Drawing.Size(235, 104);
             this.pnlSettingsMain.TabIndex = 1;
             // 
             // pnlSettingTop
@@ -241,7 +241,7 @@
             this.pnlSettingTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlSettingTop.Location = new System.Drawing.Point(0, 0);
             this.pnlSettingTop.Name = "pnlSettingTop";
-            this.pnlSettingTop.Size = new System.Drawing.Size(173, 33);
+            this.pnlSettingTop.Size = new System.Drawing.Size(235, 33);
             this.pnlSettingTop.TabIndex = 0;
             // 
             // label1
@@ -257,7 +257,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(630, 634);
+            this.ClientSize = new System.Drawing.Size(806, 477);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.panelBrowser);
             this.Controls.Add(this.topPanel);

@@ -29,7 +29,6 @@ namespace smartSuite.smartSprite.Effects.Facade{
 		public static Image UpdatePreviewBoard()
         {
             return EffectEngine.UpdatePreviewBoard();
-
         }
 
         /// <summary>

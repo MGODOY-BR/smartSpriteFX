@@ -173,6 +173,14 @@ namespace smartSuite.smartSprite.Effects.FilterEngine{
         }
 
         /// <summary>
+        /// Clears the filter buffer list
+        /// </summary>
+        public void Clear()
+        {
+            this._filterBufferList.Clear();
+        }
+
+        /// <summary>
         /// Downs the filter in list order
         /// </summary>
         /// <param name="filter">An instance of filter</param>

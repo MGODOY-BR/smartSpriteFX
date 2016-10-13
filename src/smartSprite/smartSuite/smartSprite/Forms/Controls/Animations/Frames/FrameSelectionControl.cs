@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using smartSprite.SpriteEffectModule.Animations;
+using smartSuite.smartSprite.Effects.Core;
 
 namespace smartSprite.Forms.Controls.Animations.Frames
 {
@@ -111,6 +112,7 @@ namespace smartSprite.Forms.Controls.Animations.Frames
 
             PictureBox pictureBox = (PictureBox)sender;
             FrameSelectionEventArgs eventArgs = (FrameSelectionEventArgs)pictureBox.Tag;
+            EffectEngine.GetIterator().MoveTo(eventArgs.FrameIndex);
 
             this.SelectingFrame(sender, eventArgs);
         }

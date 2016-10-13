@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -40,6 +41,7 @@
             this.txtMaxScreenHeight = new System.Windows.Forms.TextBox();
             this.txtScreenWidth = new System.Windows.Forms.TextBox();
             this.txtScreenHeight = new System.Windows.Forms.TextBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.tckContrast)).BeginInit();
             this.SuspendLayout();
             // 
@@ -104,7 +106,7 @@
             this.tckContrast.Name = "tckContrast";
             this.tckContrast.Size = new System.Drawing.Size(116, 45);
             this.tckContrast.TabIndex = 21;
-            this.tckContrast.Scroll += new System.EventHandler(this.tckContrast_Scroll);
+            this.tckContrast.MouseUp += new System.Windows.Forms.MouseEventHandler(this.tckContrast_MouseUp);
             // 
             // txtMaxColorAmount
             // 
@@ -112,7 +114,7 @@
             this.txtMaxColorAmount.Name = "txtMaxColorAmount";
             this.txtMaxColorAmount.Size = new System.Drawing.Size(100, 20);
             this.txtMaxColorAmount.TabIndex = 24;
-            this.txtMaxColorAmount.TextChanged += new System.EventHandler(this.txtMaxColorAmount_TextChanged);
+            this.txtMaxColorAmount.Leave += new System.EventHandler(this.txtMaxColorAmount_Leave);
             // 
             // txtMaxScreenWidth
             // 
@@ -120,7 +122,7 @@
             this.txtMaxScreenWidth.Name = "txtMaxScreenWidth";
             this.txtMaxScreenWidth.Size = new System.Drawing.Size(100, 20);
             this.txtMaxScreenWidth.TabIndex = 25;
-            this.txtMaxScreenWidth.TextChanged += new System.EventHandler(this.txtMaxScreenWidth_TextChanged);
+            this.txtMaxScreenWidth.Leave += new System.EventHandler(this.txtMaxScreenWidth_Leave);
             // 
             // txtMaxScreenHeight
             // 
@@ -128,7 +130,7 @@
             this.txtMaxScreenHeight.Name = "txtMaxScreenHeight";
             this.txtMaxScreenHeight.Size = new System.Drawing.Size(100, 20);
             this.txtMaxScreenHeight.TabIndex = 26;
-            this.txtMaxScreenHeight.TextChanged += new System.EventHandler(this.txtMaxScreenHeight_TextChanged);
+            this.txtMaxScreenHeight.Leave += new System.EventHandler(this.txtMaxScreenHeight_Leave);
             // 
             // txtScreenWidth
             // 
@@ -136,7 +138,7 @@
             this.txtScreenWidth.Name = "txtScreenWidth";
             this.txtScreenWidth.Size = new System.Drawing.Size(100, 20);
             this.txtScreenWidth.TabIndex = 27;
-            this.txtScreenWidth.TextChanged += new System.EventHandler(this.txtScreenWidth_TextChanged);
+            this.txtScreenWidth.Leave += new System.EventHandler(this.txtScreenWidth_Leave);
             // 
             // txtScreenHeight
             // 
@@ -144,7 +146,13 @@
             this.txtScreenHeight.Name = "txtScreenHeight";
             this.txtScreenHeight.Size = new System.Drawing.Size(100, 20);
             this.txtScreenHeight.TabIndex = 28;
-            this.txtScreenHeight.TextChanged += new System.EventHandler(this.txtScreenHeight_TextChanged);
+            this.txtScreenHeight.Leave += new System.EventHandler(this.txtScreenHeight_Leave);
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // ResolutionConfigurationPanelControl
             // 
@@ -183,5 +191,6 @@
         private System.Windows.Forms.TextBox txtMaxScreenHeight;
         private System.Windows.Forms.TextBox txtScreenWidth;
         private System.Windows.Forms.TextBox txtScreenHeight;
+        private System.Windows.Forms.Timer timer1;
     }
 }

@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using smartSuite.smartSprite.Effects.Filters;
 using smartSuite.smartSprite.Effects.Infra;
+using smartSuite.smartSprite.Effects.Core;
 
 namespace smartSprite.Forms
 {
@@ -48,6 +49,9 @@ namespace smartSprite.Forms
         /// <param name="e"></param>
         private void SmartBrowser_ChosenByUserEvent(object sender, SmartBrowserEventArgs e)
         {
+            EffectEngine.Initializate(e.UserChoice);
+            EffectEngine.SetPreviewBoard(previewBoard);
+
             // FrameSelectionControl
             FrameSelectionControl frameSelectionControl = new FrameSelectionControl();
             frameSelectionControl.Dock = DockStyle.Fill;
@@ -88,9 +92,12 @@ namespace smartSprite.Forms
         {
             var effectList = effectControlOrderCollection.GetSortedList();
 
+            EffectEngine.ClearFilter();
+
             this.pnlFilterPanel.Controls.Clear();
             foreach (var item in effectControlOrderCollection.GetSortedList())
             {
+                EffectEngine.RegisterFilter(item.GetFilter());
                 this.pnlFilterPanel.Controls.Add(item);
             }
         }

@@ -104,8 +104,7 @@ namespace smartSuite.smartSprite.Effects.Core{
         /// <summary>
         /// Initializates the engine
         /// </summary>
-        /// <param name="fullPath">		
-        /// </param>
+        /// <param name="fullPath">It´s the path of animation</param>
         public static void Initializate(String fullPath)
         {
             // Cleaning the Temp directory
@@ -131,13 +130,30 @@ namespace smartSuite.smartSprite.Effects.Core{
         }
 
         /// <summary>
+        /// Clears all the filter buffer
+        /// </summary>
+        public static void ClearFilter()
+        {
+            EffectEngine._filterList.Clear();
+        }
+
+        /// <summary>
         /// Registers a filter
         /// </summary>
         /// <param name="effectFilter">A effect</param>
-        /// <param name="frameIndex">An order of filter</param>
-        public static void RegisterFilter(IEffectFilter effectFilter, int frameIndex)
+        public static void RegisterFilter(IEffectFilter effectFilter)
         {
-            EffectEngine._filterList.Register(effectFilter, frameIndex);
+            EffectEngine._filterList.Register(effectFilter);
+        }
+
+        /// <summary>
+        /// Registers a filter
+        /// </summary>
+        /// <param name="effectFilter">A effect</param>
+        /// <param name="filterOrderIndex">An order of filter</param>
+        public static void RegisterFilter(IEffectFilter effectFilter, int filterOrderIndex)
+        {
+            EffectEngine._filterList.Register(effectFilter, filterOrderIndex);
         }
 
         /// <summary>
