@@ -16,11 +16,6 @@ namespace smartSprite.SpriteEffectModule.Effects.Filters.UI
     public partial class ResolutionConfigurationPanelControl : UserControl, IConfigurationPanel
     {
         /// <summary>
-        /// Indicates whether the form has changed.
-        /// </summary>
-        private bool _formChanged = false;
-
-        /// <summary>
         /// It´s the filter controlled by this control
         /// </summary>
         private IResolutionFilterSetter _filterSettable;
@@ -82,19 +77,9 @@ namespace smartSprite.SpriteEffectModule.Effects.Filters.UI
             }
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            if (this._formChanged)
-            {
-                EffectFacade.UpdatePreviewBoard();
-                this._formChanged = false;
-            }
-        }
-
         private void tckContrast_MouseUp(object sender, MouseEventArgs e)
         {
             this._filterSettable.Contrast = (float)tckContrast.Value / 100f;
-            _formChanged = true;
         }
 
         private void txtMaxColorAmount_Leave(object sender, EventArgs e)
@@ -109,7 +94,6 @@ namespace smartSprite.SpriteEffectModule.Effects.Filters.UI
             #endregion
 
             this._filterSettable.ColorBufferAmount = int.Parse(((TextBox)sender).Text);
-            this._formChanged = true;
         }
 
         private void txtMaxScreenWidth_Leave(object sender, EventArgs e)
@@ -124,7 +108,6 @@ namespace smartSprite.SpriteEffectModule.Effects.Filters.UI
             #endregion
 
             this._filterSettable.DestinationScreenWidth = int.Parse(((TextBox)sender).Text);
-            this._formChanged = true;
         }
 
         private void txtMaxScreenHeight_Leave(object sender, EventArgs e)
@@ -139,7 +122,6 @@ namespace smartSprite.SpriteEffectModule.Effects.Filters.UI
             #endregion
 
             this._filterSettable.DestinationScreenHeight = int.Parse(((TextBox)sender).Text);
-            this._formChanged = true;
         }
 
         private void txtScreenWidth_Leave(object sender, EventArgs e)
@@ -154,7 +136,6 @@ namespace smartSprite.SpriteEffectModule.Effects.Filters.UI
             #endregion
 
             this._filterSettable.TotalScreenWidth = int.Parse(((TextBox)sender).Text);
-            this._formChanged = true;
         }
 
         private void txtScreenHeight_Leave(object sender, EventArgs e)
@@ -169,7 +150,19 @@ namespace smartSprite.SpriteEffectModule.Effects.Filters.UI
             #endregion
 
             this._filterSettable.TotalScreenHeight = int.Parse(((TextBox)sender).Text);
-            this._formChanged = true;
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.Cursor = Cursors.WaitCursor;
+                EffectFacade.UpdatePreviewBoard();
+            }
+            finally
+            {
+                this.Cursor = Cursors.Default;
+            }
         }
     }
 }

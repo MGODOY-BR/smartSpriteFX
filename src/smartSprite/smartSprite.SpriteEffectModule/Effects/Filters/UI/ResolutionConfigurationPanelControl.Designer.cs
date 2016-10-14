@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -41,7 +40,7 @@
             this.txtMaxScreenHeight = new System.Windows.Forms.TextBox();
             this.txtScreenWidth = new System.Windows.Forms.TextBox();
             this.txtScreenHeight = new System.Windows.Forms.TextBox();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.btnRefresh = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.tckContrast)).BeginInit();
             this.SuspendLayout();
             // 
@@ -148,16 +147,21 @@
             this.txtScreenHeight.TabIndex = 28;
             this.txtScreenHeight.Leave += new System.EventHandler(this.txtScreenHeight_Leave);
             // 
-            // timer1
+            // btnRefresh
             // 
-            this.timer1.Enabled = true;
-            this.timer1.Interval = 1000;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            this.btnRefresh.Location = new System.Drawing.Point(188, 175);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(75, 23);
+            this.btnRefresh.TabIndex = 29;
+            this.btnRefresh.Text = "REFRESH";
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // ResolutionConfigurationPanelControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.txtScreenHeight);
             this.Controls.Add(this.txtScreenWidth);
             this.Controls.Add(this.txtMaxScreenHeight);
@@ -171,7 +175,7 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.tckContrast);
             this.Name = "ResolutionConfigurationPanelControl";
-            this.Size = new System.Drawing.Size(332, 181);
+            this.Size = new System.Drawing.Size(338, 219);
             ((System.ComponentModel.ISupportInitialize)(this.tckContrast)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -191,6 +195,6 @@
         private System.Windows.Forms.TextBox txtMaxScreenHeight;
         private System.Windows.Forms.TextBox txtScreenWidth;
         private System.Windows.Forms.TextBox txtScreenHeight;
-        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Button btnRefresh;
     }
 }
