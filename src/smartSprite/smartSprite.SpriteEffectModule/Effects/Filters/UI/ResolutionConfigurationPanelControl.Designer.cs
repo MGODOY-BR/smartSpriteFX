@@ -101,10 +101,13 @@
             // 
             // tckContrast
             // 
+            this.tckContrast.LargeChange = 10;
             this.tckContrast.Location = new System.Drawing.Point(154, 89);
-            this.tckContrast.Minimum = -10;
+            this.tckContrast.Maximum = 25;
+            this.tckContrast.Minimum = -25;
             this.tckContrast.Name = "tckContrast";
             this.tckContrast.Size = new System.Drawing.Size(116, 45);
+            this.tckContrast.SmallChange = 2;
             this.tckContrast.TabIndex = 21;
             this.tckContrast.MouseUp += new System.Windows.Forms.MouseEventHandler(this.tckContrast_MouseUp);
             // 

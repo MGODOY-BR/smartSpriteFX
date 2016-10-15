@@ -65,7 +65,10 @@ namespace smartSprite.SpriteEffectModule.Effects.Filters.UI
             this.txtMaxScreenWidth.Text = this._filterSettable.DestinationScreenWidth.ToString();
             this.txtScreenHeight.Text = this._filterSettable.TotalScreenHeight.ToString();
             this.txtScreenWidth.Text = this._filterSettable.TotalScreenWidth.ToString();
-            this.tckContrast.Value = (int)this._filterSettable.Contrast * 100;
+
+            this.tckContrast.Minimum = (int)(this._filterSettable.Contrast / 2 * 100);
+            this.tckContrast.Maximum = (int)(this._filterSettable.Contrast * 2 * 100);
+            this.tckContrast.Value = (int)(this._filterSettable.Contrast * 100);
         }
 
         /// <summary>
