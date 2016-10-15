@@ -40,7 +40,7 @@
             this.txtMaxScreenHeight = new System.Windows.Forms.TextBox();
             this.txtScreenWidth = new System.Windows.Forms.TextBox();
             this.txtScreenHeight = new System.Windows.Forms.TextBox();
-            this.btnRefresh = new System.Windows.Forms.Button();
+            this.btnPreview = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.tckContrast)).BeginInit();
             this.SuspendLayout();
             // 
@@ -147,21 +147,21 @@
             this.txtScreenHeight.TabIndex = 28;
             this.txtScreenHeight.Leave += new System.EventHandler(this.txtScreenHeight_Leave);
             // 
-            // btnRefresh
+            // btnPreview
             // 
-            this.btnRefresh.Location = new System.Drawing.Point(188, 175);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(75, 23);
-            this.btnRefresh.TabIndex = 29;
-            this.btnRefresh.Text = "REFRESH";
-            this.btnRefresh.UseVisualStyleBackColor = true;
-            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            this.btnPreview.Location = new System.Drawing.Point(188, 175);
+            this.btnPreview.Name = "btnPreview";
+            this.btnPreview.Size = new System.Drawing.Size(75, 23);
+            this.btnPreview.TabIndex = 29;
+            this.btnPreview.Text = "PREVIEW";
+            this.btnPreview.UseVisualStyleBackColor = true;
+            this.btnPreview.Click += new System.EventHandler(this.btnPreview_Click);
             // 
             // ResolutionConfigurationPanelControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.btnRefresh);
+            this.Controls.Add(this.btnPreview);
             this.Controls.Add(this.txtScreenHeight);
             this.Controls.Add(this.txtScreenWidth);
             this.Controls.Add(this.txtMaxScreenHeight);
@@ -195,6 +195,6 @@
         private System.Windows.Forms.TextBox txtMaxScreenHeight;
         private System.Windows.Forms.TextBox txtScreenWidth;
         private System.Windows.Forms.TextBox txtScreenHeight;
-        private System.Windows.Forms.Button btnRefresh;
+        private System.Windows.Forms.Button btnPreview;
     }
 }

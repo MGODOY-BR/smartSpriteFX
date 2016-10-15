@@ -14,6 +14,7 @@ using System.Windows.Forms;
 using smartSuite.smartSprite.Effects.Filters;
 using smartSuite.smartSprite.Effects.Infra;
 using smartSuite.smartSprite.Effects.Core;
+using smartSprite.Forms.Controls.EffectFilterPallete;
 
 namespace smartSprite.Forms
 {
@@ -24,6 +25,11 @@ namespace smartSprite.Forms
         /// </summary>
         private EffectControlOrderCollection _effectControlOrderCollection = new EffectControlOrderCollection();
 
+        /// <summary>
+        /// It´s the control that shows the filters to select
+        /// </summary>
+        private EffectFilterPalleteControl _effectFilterPalleteControl = new EffectFilterPalleteControl();
+
         public AnimationForm()
         {
             InitializeComponent();
@@ -33,13 +39,38 @@ namespace smartSprite.Forms
             smartBrowser.BrowserType = SmartBrowserTypeEnum.Folder;
             smartBrowser.DialogTitle = "Open a animation folder";
             smartBrowser.FrameTitle = "Animation folder";
-            smartBrowser.Dock = DockStyle.Top;
+            smartBrowser.Dock = DockStyle.Fill;
             if (!String.IsNullOrEmpty(Settings.Default.lastAnimationFolder))
             {
                 smartBrowser.LoadLastUserChoice(Settings.Default.lastAnimationFolder);
             }
             smartBrowser.ChosenByUserEvent += SmartBrowser_ChosenByUserEvent;
             this.panelBrowser.Controls.Add(smartBrowser);
+
+            // Showing pallete tool window
+            _effectFilterPalleteControl.Dock = DockStyle.Fill;
+            this.panelTool.Controls.Add(_effectFilterPalleteControl);
+            _effectFilterPalleteControl.SelectedFilterEvent += EffectFilterPalleteControl_SelectedFilterEvent;
+        }
+
+        private void AnimationForm_Load(object sender, EventArgs e)
+        {
+        }
+
+        /// <summary>
+        /// Occurs when the user selects a filter
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void EffectFilterPalleteControl_SelectedFilterEvent(object sender, EffectFilterPalleteControl.SelectionFilterEventArgs e)
+        {
+            EffectControl effectControl = new EffectControl();
+            effectControl.SetFilter(e.Filter);
+            effectControl.Dock = DockStyle.Top;
+            effectControl.UserInteracted += EffectControl_UserInteracted;
+
+            _effectControlOrderCollection.Register(effectControl);
+            this.EffectBind(_effectControlOrderCollection);
         }
 
         /// <summary>
@@ -63,26 +94,7 @@ namespace smartSprite.Forms
             Settings.Default.lastAnimationFolder = e.UserChoice;
             Settings.Default.Save();
 
-            // Showing pallete tool window
-            EffectFilterPalleteForm effectFilterPalleteForm = new EffectFilterPalleteForm();
-            effectFilterPalleteForm.Show();
-            effectFilterPalleteForm.SelectedFilterEvent += EffectFilterPalleteForm_SelectedFilterEvent;
-        }
-
-        /// <summary>
-        /// Occurs when the user selects a filter
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void EffectFilterPalleteForm_SelectedFilterEvent(object sender, EffectFilterPalleteForm.SelectionFilterEventArgs e)
-        {
-            EffectControl effectControl = new EffectControl();
-            effectControl.SetFilter(e.Filter);
-            effectControl.Dock = DockStyle.Top;
-            effectControl.UserInteracted += EffectControl_UserInteracted;
-
-            _effectControlOrderCollection.Register(effectControl);
-            this.EffectBind(_effectControlOrderCollection);
+            _effectFilterPalleteControl.Bind();
         }
 
         /// <summary>

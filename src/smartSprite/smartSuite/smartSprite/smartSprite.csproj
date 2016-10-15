@@ -89,6 +89,12 @@
     </Compile>
     <Compile Include="Forms\Controls\DraftControlState\ActionEnum.cs" />
     <Compile Include="Forms\Controls\DraftControlState\PieceEventArgs.cs" />
+    <Compile Include="Forms\Controls\EffectFilterPallete\EffectFilterPalleteControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Controls\EffectFilterPallete\EffectFilterPalleteControl.Designer.cs">
+      <DependentUpon>EffectFilterPalleteControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Controls\HookControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -136,6 +142,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Controls\DraftControl.resx">
       <DependentUpon>DraftControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Controls\EffectFilterPallete\EffectFilterPalleteControl.resx">
+      <DependentUpon>EffectFilterPalleteControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Controls\HookControl.resx">
       <DependentUpon>HookControl.cs</DependentUpon>

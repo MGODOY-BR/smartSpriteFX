@@ -152,7 +152,7 @@ namespace smartSprite.SpriteEffectModule.Effects.Filters.UI
             this._filterSettable.TotalScreenHeight = int.Parse(((TextBox)sender).Text);
         }
 
-        private void btnRefresh_Click(object sender, EventArgs e)
+        private void btnPreview_Click(object sender, EventArgs e)
         {
             try
             {
