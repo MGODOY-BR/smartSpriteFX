@@ -24,7 +24,6 @@ C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSuit
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSuite\smartSprite\obj\Debug\smartSprite.Forms.Controls.DraftControl.resources
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSuite\smartSprite\obj\Debug\smartSprite.Forms.Controls.HookControl.resources
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSuite\smartSprite\obj\Debug\smartSprite.Forms.Controls.LineControl.resources
-C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSuite\smartSprite\obj\Debug\smartSprite.Forms.EffectFilterPalleteForm.resources
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSuite\smartSprite\obj\Debug\smartSprite.Forms.PrincipalForm.resources
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSuite\smartSprite\obj\Debug\smartSprite.Properties.Resources.resources
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSuite\smartSprite\obj\Debug\smartSprite.csproj.GenerateResource.Cache

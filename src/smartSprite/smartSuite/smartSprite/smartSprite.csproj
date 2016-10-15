@@ -113,12 +113,6 @@
     <Compile Include="Forms\Controls\LineControlState\LineControlStyle.cs" />
     <Compile Include="Forms\Controls\ToolboxState\DraftSettings.cs" />
     <Compile Include="Forms\Controls\TreeViewState\GroupTag.cs" />
-    <Compile Include="Forms\EffectFilterPalleteForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\EffectFilterPalleteForm.Designer.cs">
-      <DependentUpon>EffectFilterPalleteForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\PrincipalForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -151,9 +145,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Controls\LineControl.resx">
       <DependentUpon>LineControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\EffectFilterPalleteForm.resx">
-      <DependentUpon>EffectFilterPalleteForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\PrincipalForm.resx">
       <DependentUpon>PrincipalForm.cs</DependentUpon>
