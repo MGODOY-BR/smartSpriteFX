@@ -66,9 +66,19 @@ namespace smartSprite.SpriteEffectModule.Effects.Filters.UI
             this.txtScreenHeight.Text = this._filterSettable.TotalScreenHeight.ToString();
             this.txtScreenWidth.Text = this._filterSettable.TotalScreenWidth.ToString();
 
-            this.tckContrast.Minimum = (int)(this._filterSettable.Contrast / 2 * 100);
-            this.tckContrast.Maximum = (int)(this._filterSettable.Contrast * 2 * 100);
-            this.tckContrast.Value = (int)(this._filterSettable.Contrast * 100);
+            var percentageContrast = (int)(this._filterSettable.Contrast * 100);
+            this.tckContrast.Minimum = percentageContrast;
+            if (percentageContrast < 0)
+            {
+                this.tckContrast.Minimum = (int)(this._filterSettable.Contrast * 100) * 2;
+                this.tckContrast.Maximum = Math.Abs((int)(this._filterSettable.Contrast * 100));
+            }
+            else
+            {
+                this.tckContrast.Minimum = (int)(this._filterSettable.Contrast * 100) / 2;
+                this.tckContrast.Maximum = Math.Abs((int)(this._filterSettable.Contrast * 2 * 100));
+            }
+            this.tckContrast.Value = percentageContrast;
         }
 
         /// <summary>

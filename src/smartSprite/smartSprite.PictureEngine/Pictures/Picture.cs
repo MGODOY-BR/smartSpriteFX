@@ -650,6 +650,7 @@ namespace smartSuite.smartSprite.Pictures{
         {
             lock (Picture._pictureCache)
             {
+                Picture._colorInfoBuffer.Clear();
                 Picture._pictureCache.Clear();
             }
         }

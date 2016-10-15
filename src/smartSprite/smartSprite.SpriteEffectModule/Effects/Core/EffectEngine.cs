@@ -40,6 +40,8 @@ namespace smartSuite.smartSprite.Effects.Core{
         {
             while (EffectEngine._iterator.Next())
             {
+                Picture.ClearCache();
+
                 EffectEngine._filterList.Apply(
                     EffectEngine._iterator.GetCurrent(),
                     EffectEngine._iterator.GetFrameIndex());
@@ -81,6 +83,7 @@ namespace smartSuite.smartSprite.Effects.Core{
 
             var previewFrame = EffectEngine._iterator.GetCurrent().Clone();
             var frameIndex = EffectEngine._iterator.GetFrameIndex();
+            Picture.ClearCache();
             foreach (var filterItem in EffectEngine._filterList.GetFilterBufferList())
             {
                 var draftFrame = previewFrame.Clone();
