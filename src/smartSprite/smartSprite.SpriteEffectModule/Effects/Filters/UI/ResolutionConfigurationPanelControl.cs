@@ -50,14 +50,22 @@ namespace smartSprite.SpriteEffectModule.Effects.Filters.UI
             this.Tag = effectFilter;
             this.BackColor = System.Drawing.Color.Silver;
 
+            RefreshForm();
+
+            return this;
+        }
+
+        /// <summary>
+        /// Refreshs the form
+        /// </summary>
+        private void RefreshForm()
+        {
             this.txtMaxColorAmount.Text = this._filterSettable.ColorBufferAmount.ToString();
             this.txtMaxScreenHeight.Text = this._filterSettable.DestinationScreenHeight.ToString();
             this.txtMaxScreenWidth.Text = this._filterSettable.DestinationScreenWidth.ToString();
             this.txtScreenHeight.Text = this._filterSettable.TotalScreenHeight.ToString();
             this.txtScreenWidth.Text = this._filterSettable.TotalScreenWidth.ToString();
             this.tckContrast.Value = (int)this._filterSettable.Contrast * 100;
-
-            return this;
         }
 
         /// <summary>
@@ -157,6 +165,21 @@ namespace smartSprite.SpriteEffectModule.Effects.Filters.UI
             try
             {
                 this.Cursor = Cursors.WaitCursor;
+                EffectFacade.UpdatePreviewBoard();
+            }
+            finally
+            {
+                this.Cursor = Cursors.Default;
+            }
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.Cursor = Cursors.WaitCursor;
+                ((IEffectFilter)this._filterSettable).Reset();
+                this.RefreshForm();
                 EffectFacade.UpdatePreviewBoard();
             }
             finally

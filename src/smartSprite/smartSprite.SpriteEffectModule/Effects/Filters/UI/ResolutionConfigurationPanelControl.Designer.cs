@@ -41,6 +41,7 @@
             this.txtScreenWidth = new System.Windows.Forms.TextBox();
             this.txtScreenHeight = new System.Windows.Forms.TextBox();
             this.btnPreview = new System.Windows.Forms.Button();
+            this.btnReset = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.tckContrast)).BeginInit();
             this.SuspendLayout();
             // 
@@ -149,7 +150,7 @@
             // 
             // btnPreview
             // 
-            this.btnPreview.Location = new System.Drawing.Point(188, 175);
+            this.btnPreview.Location = new System.Drawing.Point(107, 175);
             this.btnPreview.Name = "btnPreview";
             this.btnPreview.Size = new System.Drawing.Size(75, 23);
             this.btnPreview.TabIndex = 29;
@@ -157,10 +158,21 @@
             this.btnPreview.UseVisualStyleBackColor = true;
             this.btnPreview.Click += new System.EventHandler(this.btnPreview_Click);
             // 
+            // btnReset
+            // 
+            this.btnReset.Location = new System.Drawing.Point(188, 175);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(75, 23);
+            this.btnReset.TabIndex = 30;
+            this.btnReset.Text = "RESET";
+            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            // 
             // ResolutionConfigurationPanelControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnReset);
             this.Controls.Add(this.btnPreview);
             this.Controls.Add(this.txtScreenHeight);
             this.Controls.Add(this.txtScreenWidth);
@@ -196,5 +208,6 @@
         private System.Windows.Forms.TextBox txtScreenWidth;
         private System.Windows.Forms.TextBox txtScreenHeight;
         private System.Windows.Forms.Button btnPreview;
+        private System.Windows.Forms.Button btnReset;
     }
 }
