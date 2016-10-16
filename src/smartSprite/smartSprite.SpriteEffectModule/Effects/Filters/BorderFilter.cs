@@ -135,7 +135,7 @@ namespace smartSprite.SpriteEffectModule.Effects.Filters
         public override void Reset()
         {
             this._traceBorderWidth = 2;
-            this._borderColor = Color.Transparent;
+            this._borderColor = Color.Black;
         }
 
         public override IConfigurationPanel ShowConfigurationPanel()

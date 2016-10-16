@@ -77,6 +77,7 @@ namespace smartSprite.SpriteEffectModule.Effects.Filters.UI
         {
             tckWeight.Value = (int)this._filterSettable.TraceBorderWidth;
             colorDialog1.Color = this._filterSettable.BorderColor;
+            panelColorPreview.BackColor = this._filterSettable.BorderColor;
         }
 
         private void tckWeight_MouseUp(object sender, MouseEventArgs e)

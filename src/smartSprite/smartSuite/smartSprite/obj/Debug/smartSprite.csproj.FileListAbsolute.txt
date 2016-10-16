@@ -22,6 +22,7 @@ C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSuit
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSuite\smartSprite\obj\Debug\smartSprite.Forms.Controls.Animations.Frames.FrameSelectionControl.resources
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSuite\smartSprite\obj\Debug\smartSprite.Forms.Controls.Browsers.SmartBrowser.resources
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSuite\smartSprite\obj\Debug\smartSprite.Forms.Controls.DraftControl.resources
+C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSuite\smartSprite\obj\Debug\smartSprite.Forms.Controls.EffectFilterPallete.EffectFilterPalleteControl.resources
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSuite\smartSprite\obj\Debug\smartSprite.Forms.Controls.HookControl.resources
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSuite\smartSprite\obj\Debug\smartSprite.Forms.Controls.LineControl.resources
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSuite\smartSprite\obj\Debug\smartSprite.Forms.PrincipalForm.resources
@@ -29,4 +30,3 @@ C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSuit
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSuite\smartSprite\obj\Debug\smartSprite.csproj.GenerateResource.Cache
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSuite\smartSprite\obj\Debug\smartSprite.exe
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSuite\smartSprite\obj\Debug\smartSprite.pdb
-C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSuite\smartSprite\obj\Debug\smartSprite.Forms.Controls.EffectFilterPallete.EffectFilterPalleteControl.resources
