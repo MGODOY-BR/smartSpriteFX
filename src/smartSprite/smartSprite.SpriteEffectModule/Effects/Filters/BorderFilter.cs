@@ -27,7 +27,7 @@ namespace smartSprite.SpriteEffectModule.Effects.Filters
         /// <summary>
         /// It´s the borderColor
         /// </summary>
-        private Color _borderColor = Color.Transparent;
+        private Color _borderColor = Color.Black;
 
         /// <summary>
         /// Gets or sets the weight of trace
