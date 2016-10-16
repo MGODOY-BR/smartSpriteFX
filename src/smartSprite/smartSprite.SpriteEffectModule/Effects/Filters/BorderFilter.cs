@@ -10,6 +10,7 @@ using smartSprite.SpriteEffectModule.Effects.Tools;
 using System.Drawing;
 using smartSprite.PictureEngine.Pictures;
 using smartSuite.smartSprite.Effects.Infra;
+using smartSprite.SpriteEffectModule.Effects.Filters.UI;
 
 namespace smartSprite.SpriteEffectModule.Effects.Filters
 {
@@ -107,7 +108,7 @@ namespace smartSprite.SpriteEffectModule.Effects.Filters
 
         public override IConfigurationPanel ShowConfigurationPanel()
         {
-            throw new NotImplementedException();
+            return new NoneConfigurationPanelControl();
         }
 
         /// <summary>

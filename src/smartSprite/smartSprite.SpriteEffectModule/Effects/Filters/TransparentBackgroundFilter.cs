@@ -9,6 +9,7 @@ using smartSuite.smartSprite.Pictures.ColorPattern;
 using smartSprite.SpriteEffectModule.Forms;
 using System.Drawing;
 using smartSuite.smartSprite.Effects.Infra;
+using smartSprite.SpriteEffectModule.Effects.Filters.UI;
 
 namespace smartSuite.smartSprite.Effects.Filters{
 	/// <summary>
@@ -75,7 +76,7 @@ namespace smartSuite.smartSprite.Effects.Filters{
 
         public override IConfigurationPanel ShowConfigurationPanel()
         {
-            throw new NotImplementedException();
+            return new NoneConfigurationPanelControl();
         }
     }
 }

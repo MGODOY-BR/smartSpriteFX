@@ -9,3 +9,4 @@ C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSpri
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.SpriteEffectModule\obj\Debug\smartSprite.SpriteEffectModule.dll
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.SpriteEffectModule\obj\Debug\smartSprite.SpriteEffectModule.pdb
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.SpriteEffectModule\obj\Debug\smartSprite.SpriteEffectModule.Effects.Filters.UI.ResolutionConfigurationPanelControl.resources
+C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.SpriteEffectModule\obj\Debug\smartSprite.SpriteEffectModule.Effects.Filters.UI.NoneConfigurationPanelControl.resources
