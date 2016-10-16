@@ -63,6 +63,7 @@
     <Compile Include="Pictures\ColorPattern\ColorFrequency.cs" />
     <Compile Include="Pictures\ColorPattern\ColorInfo.cs" />
     <Compile Include="Pictures\ColorPattern\IAskingForColorDelegate.cs" />
+    <Compile Include="Pictures\ColorPattern\LookLikeColorComparer.cs" />
     <Compile Include="Pictures\Group.cs" />
     <Compile Include="Pictures\Picture.cs" />
     <Compile Include="Pictures\Piece.cs" />

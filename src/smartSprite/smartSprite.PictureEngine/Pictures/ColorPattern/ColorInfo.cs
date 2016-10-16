@@ -78,5 +78,14 @@ namespace smartSprite.Pictures.ColorPattern
         {
             return new ColorInfo(this._innerColor);
         }
+
+        /// <summary>
+        /// Changes the inner color
+        /// </summary>
+        /// <param name="newColor"></param>
+        internal void SetInnerColor(Color newColor)
+        {
+            this._innerColor = newColor;
+        }
     }
 }

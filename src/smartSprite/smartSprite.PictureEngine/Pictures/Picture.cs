@@ -1,4 +1,5 @@
 
+using smartSprite.PictureEngine.Pictures.ColorPattern;
 using smartSprite.Pictures.ColorPattern;
 using smartSprite.Utilities;
 using System;
@@ -115,6 +116,22 @@ namespace smartSuite.smartSprite.Pictures{
             }
 
             this.ColorCount = colorSet.LongCount();
+        }
+
+        /// <summary>
+        /// Replaces the color for a new one.
+        /// </summary>
+        /// <param name="oldColor"></param>
+        /// <param name="newColor"></param>
+        public void ReplaceColor(Color oldColor, Color newColor)
+        {
+            foreach (var item in this._buffer)
+            {
+                if (item.Value.GetInnerColor().ToArgb() == oldColor.ToArgb())
+                {
+                    item.Value.SetInnerColor(newColor);
+                }
+            }
         }
 
         /// <summary>
@@ -548,7 +565,7 @@ namespace smartSuite.smartSprite.Pictures{
 
             this._transparentColor = transparentColor;
 
-            this.Save(this._fullPath, transparentColor);
+            this.Save(this._fullPath, transparentColor, new LookLikeColorComparer());
         }
 
         /// <summary>
@@ -556,7 +573,7 @@ namespace smartSuite.smartSprite.Pictures{
         /// </summary>
         /// <param name="fileName"></param>
         /// <param name="transparentColor"></param>
-        private void Save(string fileName, Color transparentColor)
+        private void Save(string fileName, Color transparentColor, IEqualityComparer<Color> colorComparer)
         {
             #region Entries validation
             
@@ -564,10 +581,12 @@ namespace smartSuite.smartSprite.Pictures{
             {
                 throw new ArgumentNullException("fileName");
             }
+            if (colorComparer == null)
+            {
+                throw new ArgumentNullException("colorComparer");
+            }
 
             #endregion
-
-            ColorEqualityComparer colorComparer = new ColorEqualityComparer();
 
             using (var pieceBitmap = new Bitmap(this._width, this._height, PixelFormat.Format32bppArgb))
             {
@@ -577,15 +596,13 @@ namespace smartSuite.smartSprite.Pictures{
                     {
                         var piecePixel = this.GetPixel(x, y);
 
-                        if (colorComparer.LooksLike(piecePixel, transparentColor))
+                        if (colorComparer.Equals(piecePixel, transparentColor))
                         {
                             piecePixel = transparentColor;
                         }
 
                         pieceBitmap.SetPixel(x, y, piecePixel);
                     }
-
-                    // StaminaUtil.GetRestSometimes();
                 }
 
                 // Overwriting piece bitmap
@@ -697,7 +714,7 @@ namespace smartSuite.smartSprite.Pictures{
 
             #endregion
 
-            this.Save(copyFileName, this._transparentColor);
+            this.Save(copyFileName, this._transparentColor, new ColorEqualityComparer());
         }
         
         /// <summary>
