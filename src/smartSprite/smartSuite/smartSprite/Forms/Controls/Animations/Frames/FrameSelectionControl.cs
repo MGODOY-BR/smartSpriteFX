@@ -38,6 +38,11 @@ namespace smartSprite.Forms.Controls.Animations.Frames
         /// </summary>
         public event EventHandler<FrameSelectionEventArgs> SelectingFrame;
 
+        /// <summary>
+        /// It's the last selected frame
+        /// </summary>
+        private PictureBox _lastSelectedFrame;
+
         public FrameSelectionControl()
         {
             InitializeComponent();
@@ -115,6 +120,14 @@ namespace smartSprite.Forms.Controls.Animations.Frames
             EffectEngine.GetIterator().MoveTo(eventArgs.FrameIndex);
 
             this.SelectingFrame(sender, eventArgs);
+
+            if (this._lastSelectedFrame != null)
+            {
+                this._lastSelectedFrame.BorderStyle = BorderStyle.FixedSingle;
+            }
+
+            this._lastSelectedFrame = pictureBox;
+            pictureBox.BorderStyle = BorderStyle.Fixed3D;
         }
     }
 }
