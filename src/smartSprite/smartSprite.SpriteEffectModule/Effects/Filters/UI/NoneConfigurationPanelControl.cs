@@ -36,7 +36,6 @@ namespace smartSprite.SpriteEffectModule.Effects.Filters.UI
             {
                 this.Cursor = Cursors.Default;
             }
-
         }
     }
 }

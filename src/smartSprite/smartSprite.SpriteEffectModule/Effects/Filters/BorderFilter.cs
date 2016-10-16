@@ -30,6 +30,38 @@ namespace smartSprite.SpriteEffectModule.Effects.Filters
         private Color _borderColor = Color.Transparent;
 
         /// <summary>
+        /// Gets or sets the weight of trace
+        /// </summary>
+        public float TraceBorderWidth
+        {
+            get
+            {
+                return _traceBorderWidth;
+            }
+
+            set
+            {
+                this._traceBorderWidth = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the color of trace
+        /// </summary>
+        public Color BorderColor
+        {
+            get
+            {
+                return _borderColor;
+            }
+
+            set
+            {
+                this._borderColor = value;
+            }
+        }
+
+        /// <summary>
         /// Gets the identification
         /// </summary>
         /// <returns></returns>
@@ -108,7 +140,7 @@ namespace smartSprite.SpriteEffectModule.Effects.Filters
 
         public override IConfigurationPanel ShowConfigurationPanel()
         {
-            return new NoneConfigurationPanelControl();
+            return new BorderFilterConfigurationPanelControl();
         }
 
         /// <summary>

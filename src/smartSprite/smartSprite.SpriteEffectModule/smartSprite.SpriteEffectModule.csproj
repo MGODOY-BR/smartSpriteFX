@@ -57,6 +57,12 @@
     <Compile Include="Effects\FilterEngine\FilterCollection.cs" />
     <Compile Include="Effects\Filters\BorderFilter.cs" />
     <Compile Include="Effects\Filters\IResolutionFilterSetter.cs" />
+    <Compile Include="Effects\Filters\UI\BorderFilterConfigurationPanelControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Effects\Filters\UI\BorderFilterConfigurationPanelControl.Designer.cs">
+      <DependentUpon>BorderFilterConfigurationPanelControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Effects\Filters\UI\NoneConfigurationPanelControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -105,6 +111,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Effects\Filters\UI\BorderFilterConfigurationPanelControl.resx">
+      <DependentUpon>BorderFilterConfigurationPanelControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Effects\Filters\UI\NoneConfigurationPanelControl.resx">
       <DependentUpon>NoneConfigurationPanelControl.cs</DependentUpon>
     </EmbeddedResource>
