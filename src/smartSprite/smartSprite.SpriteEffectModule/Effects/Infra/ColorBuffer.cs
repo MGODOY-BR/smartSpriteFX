@@ -1,5 +1,7 @@
 
 using smartSprite.Pictures.ColorPattern;
+using smartSuite.smartSprite.Effects.Core;
+using smartSuite.smartSprite.Effects.Filters;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -26,6 +28,11 @@ namespace smartSuite.smartSprite.Effects.Infra{
         /// It´s a cache of colors.
         /// </summary>
         private List<Color> _colorCacheList = new List<Color>();
+
+        /// <summary>
+        /// It´s an eventual TransparentBackgroundFilter registered on the EffectEngine.
+        /// </summary>
+        private TransparentBackgroundFilter _registeredTransparentBackgroundFilter;
 
         /// <summary>
         /// It´s a sensibility of colors.
@@ -59,6 +66,22 @@ namespace smartSuite.smartSprite.Effects.Infra{
             {
                 this._comparer = new ColorEqualityComparer(this._sensibility);
             }
+
+            #region Getting the transparent background filter
+
+            if (this._registeredTransparentBackgroundFilter == null)
+            {
+                foreach (var filterItem in EffectEngine.GetSelectedFilterList())
+                {
+                    this._registeredTransparentBackgroundFilter = filterItem as TransparentBackgroundFilter;
+                    if (this._registeredTransparentBackgroundFilter != null)
+                    {
+                        break;
+                    }
+                }
+            }
+
+            #endregion
         }
 
         /// <summary>
@@ -82,6 +105,18 @@ namespace smartSuite.smartSprite.Effects.Infra{
             {
                 if (!this._colorCacheList.Contains(color))
                 {
+                    #region Entries validation
+
+                    if (this._registeredTransparentBackgroundFilter != null)
+                    {
+                        if (this._registeredTransparentBackgroundFilter.TransparentColor.ToArgb() == color.ToArgb())
+                        {
+                            return;
+                        }
+                    }
+
+                    #endregion
+
                     this._colorCacheList.Add(color);
                 }
             }
@@ -105,7 +140,12 @@ namespace smartSuite.smartSprite.Effects.Infra{
             this._sensibility += 0.001f;
             this._comparer = new ColorEqualityComparer(this._sensibility);
 
-            return this.GetSimilarColor(color);
+            Color returnColor = this.GetSimilarColor(color);
+
+            // Skipping transparent color
+            returnColor = this.TrickTransparentColor(returnColor);
+
+            return returnColor;
         }
 
         /// <summary>
@@ -124,5 +164,50 @@ namespace smartSuite.smartSprite.Effects.Infra{
         {
             return this._colorCacheList.Count;
         }
-	}
+
+        /// <summary>
+        /// Gets the color component slighty different to trick the transparent mechanism
+        /// </summary>
+        /// <param name="colorComponent"></param>
+        /// <returns></returns>
+        private int GetSlightlyColorComponent(int colorComponent)
+        {
+            int factor = 5;
+
+            if (colorComponent + factor > 255)
+            {
+                return colorComponent - factor;
+            }
+            else
+            {
+                return colorComponent + factor;
+            }
+        }
+
+
+        /// <summary>
+        /// Tricks the transparent color
+        /// </summary>
+        /// <param name="returnColor"></param>
+        /// <returns></returns>
+        private Color TrickTransparentColor(Color returnColor)
+        {
+            if (this._registeredTransparentBackgroundFilter != null)
+            {
+                if (this._comparer.Equals(this._registeredTransparentBackgroundFilter.TransparentColor, returnColor))
+                {
+                    Color newColor =
+                        Color.FromArgb(
+                            this._registeredTransparentBackgroundFilter.TransparentColor.A,
+                            this._registeredTransparentBackgroundFilter.TransparentColor.R,
+                            this._registeredTransparentBackgroundFilter.TransparentColor.G,
+                            this.GetSlightlyColorComponent(this._registeredTransparentBackgroundFilter.TransparentColor.B));
+
+                    returnColor = newColor;
+                }
+            }
+
+            return returnColor;
+        }
+    }
 }

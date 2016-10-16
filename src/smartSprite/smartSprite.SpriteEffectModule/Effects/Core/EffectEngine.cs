@@ -133,6 +133,15 @@ namespace smartSuite.smartSprite.Effects.Core{
         }
 
         /// <summary>
+        /// Gets the selected filter list
+        /// </summary>
+        /// <returns></returns>
+        public static List<IEffectFilter> GetSelectedFilterList()
+        {
+            return EffectEngine._filterList.GetFilterBufferList();
+        }
+
+        /// <summary>
         /// Clears all the filter buffer
         /// </summary>
         public static void ClearFilter()
