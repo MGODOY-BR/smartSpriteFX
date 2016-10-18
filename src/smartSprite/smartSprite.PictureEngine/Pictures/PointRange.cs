@@ -46,19 +46,22 @@ namespace smartSuite.smartSprite.Pictures{
         /// <param name="y"></param>
         public void SetPoint(int x, int y)
         {
-            if (this._currentRange._startPoint == null)
+            lock (this._currentRange)
             {
-                this._currentRange._startPoint = new Point(x, y);
-            }
-            else
-            {
-                this._currentRange._endPoint = new Point(x, y);
-
-                if (this._currentRange._startPoint.CompareTo(this._currentRange._endPoint) == 1)
+                if (this._currentRange._startPoint == null)
                 {
-                    Point tempPoint = this._currentRange._startPoint;
-                    this._endPoint = this._currentRange._startPoint;
-                    this._endPoint = tempPoint;
+                    this._currentRange._startPoint = new Point(x, y);
+                }
+                else
+                {
+                    this._currentRange._endPoint = new Point(x, y);
+
+                    if (this._currentRange._startPoint.CompareTo(this._currentRange._endPoint) == 1)
+                    {
+                        Point tempPoint = this._currentRange._startPoint;
+                        this._endPoint = this._currentRange._startPoint;
+                        this._endPoint = tempPoint;
+                    }
                 }
             }
         }

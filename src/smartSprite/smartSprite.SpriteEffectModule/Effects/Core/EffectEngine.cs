@@ -146,7 +146,10 @@ namespace smartSuite.smartSprite.Effects.Core{
         /// </summary>
         public static void ClearFilter()
         {
-            EffectEngine._filterList.Clear();
+            lock (EffectEngine._filterList)
+            {
+                EffectEngine._filterList.Clear();
+            }
         }
 
         /// <summary>
@@ -155,7 +158,10 @@ namespace smartSuite.smartSprite.Effects.Core{
         /// <param name="effectFilter">A effect</param>
         public static void RegisterFilter(IEffectFilter effectFilter)
         {
-            EffectEngine._filterList.Register(effectFilter);
+            lock (EffectEngine._filterList)
+            {
+                EffectEngine._filterList.Register(effectFilter);
+            }
         }
 
         /// <summary>
@@ -165,7 +171,10 @@ namespace smartSuite.smartSprite.Effects.Core{
         /// <param name="filterOrderIndex">An order of filter</param>
         public static void RegisterFilter(IEffectFilter effectFilter, int filterOrderIndex)
         {
-            EffectEngine._filterList.Register(effectFilter, filterOrderIndex);
+            lock (EffectEngine._filterList)
+            {
+                EffectEngine._filterList.Register(effectFilter, filterOrderIndex);
+            }
         }
 
         /// <summary>
@@ -174,7 +183,10 @@ namespace smartSuite.smartSprite.Effects.Core{
         /// <param name="effectFilter">A effect</param>
         public static void UnRegisterFilter(IEffectFilter effectFilter)
         {
-            EffectEngine._filterList.UnRegister(effectFilter);
+            lock (EffectEngine._filterList)
+            {
+                EffectEngine._filterList.UnRegister(effectFilter);
+            }
         }
 
         /// <summary>
@@ -183,7 +195,10 @@ namespace smartSuite.smartSprite.Effects.Core{
         /// <param name="filter">An instance of filter</param>
         public static void UpFilterOrder(IEffectFilter filter)
         {
-            EffectEngine._filterList.UpOrder(filter);
+            lock (EffectEngine._filterList)
+            {
+                EffectEngine._filterList.UpOrder(filter);
+            }
         }
 
         /// <summary>
@@ -192,7 +207,10 @@ namespace smartSuite.smartSprite.Effects.Core{
         /// <param name="filter">An instance of filter</param>
         public static void DownFilterOrder(IEffectFilter filter)
         {
-            EffectEngine._filterList.DownOrder(filter);
+            lock (EffectEngine._filterList)
+            {
+                EffectEngine._filterList.DownOrder(filter);
+            }
         }
 
         /// <summary>

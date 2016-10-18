@@ -226,12 +226,15 @@ namespace smartSuite.smartSprite.Pictures{
 
             #endregion
 
-            using (var bitmap = new Bitmap(fullPath))
+            lock (fullPath)
             {
-                this._height = bitmap.Height;
-                this._width = bitmap.Width;
+                using (var bitmap = new Bitmap(fullPath))
+                {
+                    this._height = bitmap.Height;
+                    this._width = bitmap.Width;
 
-                this.LoadBuffer(bitmap);
+                    this.LoadBuffer(bitmap);
+                }
             }
         }
 
@@ -296,16 +299,19 @@ namespace smartSuite.smartSprite.Pictures{
             var colorInfoKey =
                 colorInfo.GetInnerColor().ToArgb();
 
-            // Save color info
-            if (!_colorInfoBuffer.ContainsKey(colorInfoKey))
+            lock (_colorInfoBuffer)
             {
-                _colorInfoBuffer.Add(colorInfoKey, colorInfo);
-            }
+                // Save color info
+                if (!_colorInfoBuffer.ContainsKey(colorInfoKey))
+                {
+                    _colorInfoBuffer.Add(colorInfoKey, colorInfo);
+                }
 
-            // Save private picture
-            this._buffer.Add(
-                this.FormatKey(x, y),
-                _colorInfoBuffer[colorInfoKey]);
+                // Save private picture
+                this._buffer.Add(
+                    this.FormatKey(x, y),
+                    _colorInfoBuffer[colorInfoKey]);
+            }
         }
 
         /// <summary>
