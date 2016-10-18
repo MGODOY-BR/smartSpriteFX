@@ -12,7 +12,7 @@ namespace smartSprite.PictureEngine.Test
         [TestInitialize]
         public void Setup()
         {
-            Picture.ClearCache();
+            // Picture.ClearCache();
         }
 
         [TestMethod]

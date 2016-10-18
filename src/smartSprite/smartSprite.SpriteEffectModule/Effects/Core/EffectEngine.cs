@@ -1,4 +1,5 @@
 
+using smartSprite.SpriteEffectModule.Effects.Core;
 using smartSuite.smartSprite.Animations;
 using smartSuite.smartSprite.Effects.FilterEngine;
 using smartSuite.smartSprite.Effects.Filters;
@@ -9,6 +10,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace smartSuite.smartSprite.Effects.Core{
@@ -38,21 +40,71 @@ namespace smartSuite.smartSprite.Effects.Core{
         /// <returns></returns>
         public static void Apply()
         {
+            EffectEngine.Apply(null);
+        }
+
+        /// <summary>
+        /// Applies the filter collection to all the animation
+        /// </summary>
+        /// <returns></returns>
+        public static void Apply(IApplyFilterCallback callback)
+        {
+            List<WaitHandle> syncList = new List<WaitHandle>();
             while (EffectEngine._iterator.Next())
             {
-                Picture.ClearCache();
+                WaitHandle sync = new AutoResetEvent(false);
+                syncList.Add(sync);
+                var threadStart = new ParameterizedThreadStart(delegate (object state)
+                {
+                    object[] stateArray = (object[])state;
+                    Picture frame = (Picture)stateArray[0];
+                    int index = (int)stateArray[1];
+                    AutoResetEvent waitHandle = (AutoResetEvent)stateArray[2];
 
-                EffectEngine._filterList.Apply(
-                    EffectEngine._iterator.GetCurrent(),
-                    EffectEngine._iterator.GetFrameIndex());
+                    try
+                    {
+                        EffectEngine._filterList.Apply(frame, index);
+                    }
+                    finally
+                    {
+                        waitHandle.Set();
+                    }
+                });
+
+                Thread thread = new Thread(threadStart);
+                thread.Start(
+                    new object[3]
+                    {
+                        EffectEngine._iterator.GetCurrent(),
+                        EffectEngine._iterator.GetFrameIndex(),
+                        sync
+                    });
+            }
+
+            for(int i = 0; i < syncList.Count; i++)
+            {
+                var syncItem = syncList[i];
+
+                syncItem.WaitOne();
+
+                float percentage = (float)syncList.Count / (float)i * (float)100;
+                if (callback != null)
+                {
+                    callback.UpdateProgress(percentage, false);
+                }
+            }
+
+            if (callback != null)
+            {
+                callback.UpdateProgress(100f, true);
             }
         }
 
-		/// <summary>
-		/// Gets the frame iterator
-		/// </summary>
-		/// <returns></returns>
-		public static FrameIterator GetIterator()
+        /// <summary>
+        /// Gets the frame iterator
+        /// </summary>
+        /// <returns></returns>
+        public static FrameIterator GetIterator()
         {
             return EffectEngine._iterator;
 		}
@@ -83,7 +135,7 @@ namespace smartSuite.smartSprite.Effects.Core{
 
             var previewFrame = EffectEngine._iterator.GetCurrent().Clone();
             var frameIndex = EffectEngine._iterator.GetFrameIndex();
-            Picture.ClearCache();
+            previewFrame.ClearCache();
             foreach (var filterItem in EffectEngine._filterList.GetFilterBufferList())
             {
                 var draftFrame = previewFrame.Clone();

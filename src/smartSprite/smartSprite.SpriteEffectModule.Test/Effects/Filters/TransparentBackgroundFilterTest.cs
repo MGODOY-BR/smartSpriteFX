@@ -11,7 +11,7 @@ namespace smartSprite.SpriteEffectModule.Test.Effects.Filters
         [TestInitialize]
         public void Setup()
         {
-            Picture.ClearCache();
+            // Picture.ClearCache();
         }
 
         [TestMethod]

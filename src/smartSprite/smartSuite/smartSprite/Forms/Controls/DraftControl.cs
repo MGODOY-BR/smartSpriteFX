@@ -333,7 +333,7 @@ namespace smartSprite.Forms.Controls
             finally
             {
                 this.ParentForm.Cursor = Cursors.Default;
-                Picture.ClearCache();
+                // Picture.ClearCache();
             }
         }
 
@@ -452,7 +452,7 @@ namespace smartSprite.Forms.Controls
             }
             finally
             {
-                Picture.ClearCache();
+                // Picture.ClearCache();
             }
         }
 

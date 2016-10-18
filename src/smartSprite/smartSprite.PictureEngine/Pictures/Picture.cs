@@ -35,11 +35,6 @@ namespace smartSuite.smartSprite.Pictures{
         private Color _transparentColor = Color.Transparent;
 
         /// <summary>
-        /// It´s a cache of pictures
-        /// </summary>
-        private static Dictionary<String, Picture> _pictureCache = new Dictionary<String, Picture>();
-
-        /// <summary>
         /// It´s a buffer of colors, where key it's a combination of x and y coordinates. 
         /// </summary>
         [NonSerialized]
@@ -48,7 +43,7 @@ namespace smartSuite.smartSprite.Pictures{
         /// <summary>
         /// It´s a cache of colors, used to save memory
         /// </summary>
-        private static Dictionary<int, ColorInfo> _colorInfoBuffer = new Dictionary<int, ColorInfo>();
+        private Dictionary<int, ColorInfo> _colorInfoBuffer = new Dictionary<int, ColorInfo>();
 
         /// <summary>
         /// Gets the amount of color of current picture
@@ -669,12 +664,11 @@ namespace smartSuite.smartSprite.Pictures{
         /// <summary>
         /// Clears the picture cache
         /// </summary>
-        public static void ClearCache()
+        public void ClearCache()
         {
-            lock (Picture._pictureCache)
+            lock (this._colorInfoBuffer)
             {
-                Picture._colorInfoBuffer.Clear();
-                Picture._pictureCache.Clear();
+                this._colorInfoBuffer.Clear();
             }
         }
 
@@ -694,6 +688,7 @@ namespace smartSuite.smartSprite.Pictures{
 
             #endregion
 
+            /*
             lock (Picture._pictureCache)
             {
                 if (!Picture._pictureCache.ContainsKey(fullFileName))
@@ -703,6 +698,8 @@ namespace smartSuite.smartSprite.Pictures{
 
                 return Picture._pictureCache[fullFileName];
             }
+            */
+            return new Picture(fullFileName);
         }
 
         /// <summary>
