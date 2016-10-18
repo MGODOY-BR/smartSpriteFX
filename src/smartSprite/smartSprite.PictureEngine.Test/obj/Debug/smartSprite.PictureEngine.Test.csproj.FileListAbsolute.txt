@@ -1,0 +1,10 @@
+C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.PictureEngine.Test\bin\Debug\Stubs\Character.stub.png
+C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.PictureEngine.Test\bin\Debug\Stubs\Circle.stub.bmp
+C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.PictureEngine.Test\bin\Debug\smartSprite.PictureEngine.Test.dll
+C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.PictureEngine.Test\bin\Debug\smartSprite.PictureEngine.Test.pdb
+C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.PictureEngine.Test\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.PictureEngine.Test\bin\Debug\smartSprite.PictureEngine.dll
+C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.PictureEngine.Test\bin\Debug\smartSprite.PictureEngine.pdb
+C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.PictureEngine.Test\obj\Debug\smartSprite.PictureEngine.Test.csprojResolveAssemblyReference.cache
+C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.PictureEngine.Test\obj\Debug\smartSprite.PictureEngine.Test.dll
+C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.PictureEngine.Test\obj\Debug\smartSprite.PictureEngine.Test.pdb

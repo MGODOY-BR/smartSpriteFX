@@ -39,8 +39,14 @@ namespace smartSuite.smartSprite.Effects.FilterEngine{
 		/// </summary>
 		public static void Load()
         {
-            FilterCollection._filterPallete.Clear();
-            FilterCollection._loadErrorList.Clear();
+            lock (FilterCollection._filterPallete)
+            {
+                FilterCollection._filterPallete.Clear();
+            }
+            lock (FilterCollection._loadErrorList)
+            {
+                FilterCollection._loadErrorList.Clear();
+            }
 
             List<Type> typeList = new List<Type>();
 
@@ -72,11 +78,17 @@ namespace smartSuite.smartSprite.Effects.FilterEngine{
                 {
                     var effectFilter = (IEffectFilter)Activator.CreateInstance(type);
                     effectFilter.Reset();
-                    FilterCollection._filterPallete.Add(effectFilter);
+                    lock (FilterCollection._filterPallete)
+                    {
+                        FilterCollection._filterPallete.Add(effectFilter);
+                    }
                 }
                 catch (Exception ex)
                 {
-                    FilterCollection._loadErrorList.Add(ex.ToString());
+                    lock (FilterCollection._loadErrorList)
+                    {
+                        FilterCollection._loadErrorList.Add(ex.ToString());
+                    }
                 }
             }
         }
@@ -85,9 +97,13 @@ namespace smartSuite.smartSprite.Effects.FilterEngine{
         /// Gets the list pallete
         /// </summary>
         /// <returns></returns>
-        public static List<IEffectFilter> GetFilterPallete() {
-            return _filterPallete;
-		}
+        public static List<IEffectFilter> GetFilterPallete()
+        {
+            lock (FilterCollection._filterPallete)
+            {
+                return _filterPallete;
+            }
+        }
 
 		/// <summary>
 		/// Gets a list of filter list
@@ -113,19 +129,22 @@ namespace smartSuite.smartSprite.Effects.FilterEngine{
 
             #endregion
 
-            if (this._filterBufferList.Count == 0)
+            lock (this._filterBufferList)
             {
-                this._filterBufferList.Add(filter);
-            }
-            else
-            {
-                if (filterOrderIndex > this._filterBufferList.Count)
+                if (this._filterBufferList.Count == 0)
                 {
                     this._filterBufferList.Add(filter);
                 }
                 else
                 {
-                    this._filterBufferList.Insert(filterOrderIndex, filter);
+                    if (filterOrderIndex > this._filterBufferList.Count)
+                    {
+                        this._filterBufferList.Add(filter);
+                    }
+                    else
+                    {
+                        this._filterBufferList.Insert(filterOrderIndex, filter);
+                    }
                 }
             }
         }
@@ -149,27 +168,30 @@ namespace smartSuite.smartSprite.Effects.FilterEngine{
 
             #endregion
 
-            int oldIndex = -1;
-            for (int i = 0; i < this._filterBufferList.Count; i++)
+            lock (this._filterBufferList)
             {
-                if (this._filterBufferList[i] == filter)
+                int oldIndex = -1;
+                for (int i = 0; i < this._filterBufferList.Count; i++)
                 {
-                    oldIndex = i;
-                    break;
+                    if (this._filterBufferList[i] == filter)
+                    {
+                        oldIndex = i;
+                        break;
+                    }
                 }
-            }
 
-            if (oldIndex == -1)
-            {
-                throw new InvalidOperationException("Filter should be registered before change order");
-            }
-            if (oldIndex == 0)
-            {
-                return;
-            }
+                if (oldIndex == -1)
+                {
+                    throw new InvalidOperationException("Filter should be registered before change order");
+                }
+                if (oldIndex == 0)
+                {
+                    return;
+                }
 
-            this._filterBufferList.RemoveAt(oldIndex);
-            this._filterBufferList.Insert(oldIndex - 1, filter);
+                this._filterBufferList.RemoveAt(oldIndex);
+                this._filterBufferList.Insert(oldIndex - 1, filter);
+            }
         }
 
         /// <summary>
@@ -177,7 +199,10 @@ namespace smartSuite.smartSprite.Effects.FilterEngine{
         /// </summary>
         public void Clear()
         {
-            this._filterBufferList.Clear();
+            lock (this._filterBufferList)
+            {
+                this._filterBufferList.Clear();
+            }
         }
 
         /// <summary>
@@ -199,27 +224,30 @@ namespace smartSuite.smartSprite.Effects.FilterEngine{
 
             #endregion
 
-            int oldIndex = -1;
-            for (int i = 0; i < this._filterBufferList.Count; i++)
+            lock (this._filterBufferList)
             {
-                if (this._filterBufferList[i] == filter)
+                int oldIndex = -1;
+                for (int i = 0; i < this._filterBufferList.Count; i++)
                 {
-                    oldIndex = i;
-                    break;
+                    if (this._filterBufferList[i] == filter)
+                    {
+                        oldIndex = i;
+                        break;
+                    }
                 }
-            }
 
-            if (oldIndex == -1)
-            {
-                throw new InvalidOperationException("Filter should be registered before change order");
-            }
-            if (oldIndex + 1 == this._filterBufferList.Count)
-            {
-                return;
-            }
+                if (oldIndex == -1)
+                {
+                    throw new InvalidOperationException("Filter should be registered before change order");
+                }
+                if (oldIndex + 1 == this._filterBufferList.Count)
+                {
+                    return;
+                }
 
-            this._filterBufferList.Insert(oldIndex + 1, filter);
-            this._filterBufferList.RemoveAt(oldIndex);
+                this._filterBufferList.Insert(oldIndex + 1, filter);
+                this._filterBufferList.RemoveAt(oldIndex);
+            }
         }
 
         /// <summary>
@@ -231,10 +259,10 @@ namespace smartSuite.smartSprite.Effects.FilterEngine{
             this.Register(filter, 0);
 		}
 
-		/// <summary>
-		/// Removes the filter
-		/// </summary>
-		/// <param name="filter" />		
+        /// <summary>
+        /// Removes the filter
+        /// </summary>
+        /// <param name="filter" />		
         public void UnRegister(IEffectFilter filter)
         {
             #region Entries validation
@@ -246,8 +274,11 @@ namespace smartSuite.smartSprite.Effects.FilterEngine{
 
             #endregion
 
-            this._filterBufferList.Remove(filter);
-		}
+            lock (this._filterBufferList)
+            {
+                this._filterBufferList.Remove(filter);
+            }
+        }
 
 		/// <summary>
 		/// Applies all the filter buffer list in order
@@ -273,30 +304,33 @@ namespace smartSuite.smartSprite.Effects.FilterEngine{
                 var filter = this._filterBufferList[i];
 
                 filter.Reset();
-                if (filter.ApplyFilter(this._picture, frameIndex))
+                lock (this._picture)
                 {
-                    String baseFolder =
-                        Path.GetDirectoryName(
-                            this._picture.FullPath);
-
-                    String baseFile =
-                        Path.GetFileName(
-                            this._picture.FullPath);
-
-                    String folder =
-                        Path.Combine(baseFolder, "filtered");
-
-                    String file =
-                        Path.Combine(
-                            folder,
-                            Path.GetFileNameWithoutExtension(baseFile) + "." + frameIndex.ToString() + ".filtered" + Path.GetExtension(baseFile));
-
-                    if (!Directory.Exists(folder))
+                    if (filter.ApplyFilter(this._picture, frameIndex))
                     {
-                        Directory.CreateDirectory(folder);
-                    }
+                        String baseFolder =
+                            Path.GetDirectoryName(
+                                this._picture.FullPath);
 
-                    this._picture.SaveCopy(file);
+                        String baseFile =
+                            Path.GetFileName(
+                                this._picture.FullPath);
+
+                        String folder =
+                            Path.Combine(baseFolder, "filtered");
+
+                        String file =
+                            Path.Combine(
+                                folder,
+                                Path.GetFileNameWithoutExtension(baseFile) + "." + frameIndex.ToString() + ".filtered" + Path.GetExtension(baseFile));
+
+                        if (!Directory.Exists(folder))
+                        {
+                            Directory.CreateDirectory(folder);
+                        }
+
+                        this._picture.SaveCopy(file);
+                    }
                 }
             }
         }
@@ -307,7 +341,10 @@ namespace smartSuite.smartSprite.Effects.FilterEngine{
         /// <returns></returns>
         public static List<String> GetLoadErrorList()
         {
-            return FilterCollection._loadErrorList;
+            lock (FilterCollection._loadErrorList)
+            {
+                return FilterCollection._loadErrorList;
+            }
         }
     }
 }
