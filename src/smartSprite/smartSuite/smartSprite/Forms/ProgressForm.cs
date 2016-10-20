@@ -21,7 +21,7 @@ namespace smartSprite.Forms
 
         public void ShowUpdateProgress()
         {
-            this.ShowDialog();
+            this.Show();
         }
 
         public void UpdateProgress(float percentage, bool completed)

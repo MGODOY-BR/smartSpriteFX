@@ -29,11 +29,6 @@ namespace smartSuite.smartSprite.Effects.FilterEngine{
 		/// </summary>
 		private List<IEffectFilter> _filterBufferList = new List<IEffectFilter>();
 
-        /// <summary>
-        /// It´s a original picture
-        /// </summary>
-        private Picture _picture;
-
 		/// <summary>
 		/// Load the filter pallete
 		/// </summary>
@@ -297,40 +292,35 @@ namespace smartSuite.smartSprite.Effects.FilterEngine{
 
             #endregion
 
-            this._picture = picture;
-
             for (int i = 0; i < this._filterBufferList.Count; i++)
             {
                 var filter = this._filterBufferList[i];
 
                 filter.Reset();
-                lock (this._picture)
+                if (filter.ApplyFilter(picture, frameIndex))
                 {
-                    if (filter.ApplyFilter(this._picture, frameIndex))
+                    String baseFolder =
+                        Path.GetDirectoryName(
+                            picture.FullPath);
+
+                    String baseFile =
+                        Path.GetFileName(
+                            picture.FullPath);
+
+                    String folder =
+                        Path.Combine(baseFolder, "filtered");
+
+                    String file =
+                        Path.Combine(
+                            folder,
+                            Path.GetFileNameWithoutExtension(baseFile) + "." + frameIndex.ToString() + ".filtered" + Path.GetExtension(baseFile));
+
+                    if (!Directory.Exists(folder))
                     {
-                        String baseFolder =
-                            Path.GetDirectoryName(
-                                this._picture.FullPath);
-
-                        String baseFile =
-                            Path.GetFileName(
-                                this._picture.FullPath);
-
-                        String folder =
-                            Path.Combine(baseFolder, "filtered");
-
-                        String file =
-                            Path.Combine(
-                                folder,
-                                Path.GetFileNameWithoutExtension(baseFile) + "." + frameIndex.ToString() + ".filtered" + Path.GetExtension(baseFile));
-
-                        if (!Directory.Exists(folder))
-                        {
-                            Directory.CreateDirectory(folder);
-                        }
-
-                        this._picture.SaveCopy(file);
+                        Directory.CreateDirectory(folder);
                     }
+
+                    picture.SaveCopy(file);
                 }
             }
         }

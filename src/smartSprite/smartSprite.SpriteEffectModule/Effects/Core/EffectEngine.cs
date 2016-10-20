@@ -66,10 +66,16 @@ namespace smartSuite.smartSprite.Effects.Core{
         /// <returns></returns>
         public static void Apply(IApplyFilterCallback callback)
         {
-            ThreadPool.SetMaxThreads(4, 40);
+            ThreadPool.SetMaxThreads(50, 100);
             EffectEngine._applyingThreadList.Clear();
             List<WaitHandle> syncList = new List<WaitHandle>();
             EffectEngine._iterator.Reset();
+
+            if (callback != null)
+            {
+                callback.ShowUpdateProgress();
+            }
+
             while (EffectEngine._iterator.Next())
             {
                 WaitHandle sync = new AutoResetEvent(false);
@@ -84,8 +90,6 @@ namespace smartSuite.smartSprite.Effects.Core{
                     });
             }
 
-            callback.ShowUpdateProgress();
-
             #region Wainting to finish
 
             for (int i = 0; i < syncList.Count; i++)
@@ -94,7 +98,7 @@ namespace smartSuite.smartSprite.Effects.Core{
 
                 syncItem.WaitOne();
 
-                float percentage = (float)syncList.Count / (float)i * (float)100;
+                float percentage = (float)i / (float)syncList.Count * (float)100;
                 if (callback != null)
                 {
                     callback.UpdateProgress(percentage, false);
