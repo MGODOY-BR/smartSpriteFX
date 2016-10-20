@@ -122,12 +122,12 @@ namespace smartSuite.smartSprite.Effects.Infra{
             }
         }
 
-		/// <summary>
-		/// Gets a color similar to assigned color
-		/// </summary>
-		/// <param name="color"></param>
-		/// <returns></returns>
-		public Color GetSimilarColor(Color color)
+        /// <summary>
+        /// Gets a color similar to assigned color
+        /// </summary>
+        /// <param name="color"></param>
+        /// <returns></returns>
+        public Color GetSimilarColor(Color color)
         {
             foreach (var colorItem in this._colorCacheList)
             {

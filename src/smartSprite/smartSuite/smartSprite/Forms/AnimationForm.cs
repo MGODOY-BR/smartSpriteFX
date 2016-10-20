@@ -222,6 +222,16 @@ namespace smartSprite.Forms
         }
 
         /// <summary>
+        /// Applies the filters
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnApplyAll_Click(object sender, EventArgs e)
+        {
+            EffectEngine.Apply(new ProgressForm());
+        }
+
+        /// <summary>
         /// Controls the order of effect control
         /// </summary>
         private class EffectControlOrderCollection

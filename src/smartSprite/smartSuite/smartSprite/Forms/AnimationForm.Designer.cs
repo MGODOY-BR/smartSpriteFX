@@ -37,6 +37,7 @@
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.pnlFilterPanel = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnApplyAll = new System.Windows.Forms.Button();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.txtSettingsDescription = new System.Windows.Forms.TextBox();
             this.pnlSettingsMain = new System.Windows.Forms.Panel();
@@ -48,7 +49,6 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panelTool = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnApplyAll = new System.Windows.Forms.Button();
             this.topPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -184,6 +184,17 @@
             this.panel2.Size = new System.Drawing.Size(217, 28);
             this.panel2.TabIndex = 1;
             // 
+            // btnApplyAll
+            // 
+            this.btnApplyAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnApplyAll.Location = new System.Drawing.Point(3, 2);
+            this.btnApplyAll.Name = "btnApplyAll";
+            this.btnApplyAll.Size = new System.Drawing.Size(91, 23);
+            this.btnApplyAll.TabIndex = 0;
+            this.btnApplyAll.Text = "APPLY ALL";
+            this.btnApplyAll.UseVisualStyleBackColor = true;
+            this.btnApplyAll.Click += new System.EventHandler(this.btnApplyAll_Click);
+            // 
             // splitContainer3
             // 
             this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -309,16 +320,6 @@
             this.pictureBox1.Size = new System.Drawing.Size(806, 36);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
-            // 
-            // btnApplyAll
-            // 
-            this.btnApplyAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnApplyAll.Location = new System.Drawing.Point(3, 2);
-            this.btnApplyAll.Name = "btnApplyAll";
-            this.btnApplyAll.Size = new System.Drawing.Size(91, 23);
-            this.btnApplyAll.TabIndex = 0;
-            this.btnApplyAll.Text = "APPLY ALL";
-            this.btnApplyAll.UseVisualStyleBackColor = true;
             // 
             // AnimationForm
             // 

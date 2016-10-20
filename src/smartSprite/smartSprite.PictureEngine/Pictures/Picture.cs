@@ -345,6 +345,8 @@ namespace smartSuite.smartSprite.Pictures{
         {
             Picture clone = new Picture();
 
+            clone._buffer = new Dictionary<string, ColorInfo>();
+
             // Copying the buffer
             foreach (var bufferItem in this._buffer)
             {
@@ -357,6 +359,11 @@ namespace smartSuite.smartSprite.Pictures{
             clone._width = this._width;
             clone.ColorCount = this.ColorCount;
             clone._transparentColor = this._transparentColor;
+            clone._fullPath = this._fullPath;
+            foreach (var colorInfoBufferItem in this._colorInfoBuffer)
+            {
+                clone._colorInfoBuffer.Add(colorInfoBufferItem.Key, colorInfoBufferItem.Value);
+            }
 
             return clone;
         }

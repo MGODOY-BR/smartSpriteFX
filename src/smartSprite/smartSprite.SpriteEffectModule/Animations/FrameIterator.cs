@@ -100,6 +100,15 @@ namespace smartSuite.smartSprite.Animations{
             this._frameIndex = 0;
 		}
 
+        /// <summary>
+        /// Goes back to beginning conditions
+        /// </summary>
+        public void Reset()
+        {
+            this._frameIndex = -1;
+            this._current = null;
+        }
+
 		/// <summary>
 		/// Goes to last frame
 		/// </summary>

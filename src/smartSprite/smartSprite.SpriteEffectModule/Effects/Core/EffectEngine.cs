@@ -1,5 +1,5 @@
 
-using smartSprite.SpriteEffectModule.Effects.Core;
+using smartSprite.SpriteEffectModule.Infra.UI;
 using smartSuite.smartSprite.Animations;
 using smartSuite.smartSprite.Effects.FilterEngine;
 using smartSuite.smartSprite.Effects.Filters;
@@ -35,6 +35,11 @@ namespace smartSuite.smartSprite.Effects.Core{
         private static PictureBox _previewBoard;
 
         /// <summary>
+        /// It´s the list of thread used during Apply method
+        /// </summary>
+        private static List<Thread> _applyingThreadList = new List<Thread>();
+
+        /// <summary>
         /// Applies the filter collection to all the animation
         /// </summary>
         /// <returns></returns>
@@ -44,44 +49,46 @@ namespace smartSuite.smartSprite.Effects.Core{
         }
 
         /// <summary>
+        /// Cancels the apply method
+        /// </summary>
+        internal static void CancelApplying()
+        {
+            foreach (var thread in _applyingThreadList)
+            {
+                thread.Abort();
+            }
+            _applyingThreadList.Clear();
+        }
+
+        /// <summary>
         /// Applies the filter collection to all the animation
         /// </summary>
         /// <returns></returns>
         public static void Apply(IApplyFilterCallback callback)
         {
+            ThreadPool.SetMaxThreads(4, 40);
+            EffectEngine._applyingThreadList.Clear();
             List<WaitHandle> syncList = new List<WaitHandle>();
+            EffectEngine._iterator.Reset();
             while (EffectEngine._iterator.Next())
             {
                 WaitHandle sync = new AutoResetEvent(false);
                 syncList.Add(sync);
-                var threadStart = new ParameterizedThreadStart(delegate (object state)
-                {
-                    object[] stateArray = (object[])state;
-                    Picture frame = (Picture)stateArray[0];
-                    int index = (int)stateArray[1];
-                    AutoResetEvent waitHandle = (AutoResetEvent)stateArray[2];
-
-                    try
-                    {
-                        EffectEngine._filterList.Apply(frame, index);
-                    }
-                    finally
-                    {
-                        waitHandle.Set();
-                    }
-                });
-
-                Thread thread = new Thread(threadStart);
-                thread.Start(
+                ThreadPool.QueueUserWorkItem(
+                    ApplyWaitCallback, 
                     new object[3]
                     {
-                        EffectEngine._iterator.GetCurrent(),
+                        EffectEngine._iterator.GetCurrent().Clone(),
                         EffectEngine._iterator.GetFrameIndex(),
                         sync
                     });
             }
 
-            for(int i = 0; i < syncList.Count; i++)
+            callback.ShowUpdateProgress();
+
+            #region Wainting to finish
+
+            for (int i = 0; i < syncList.Count; i++)
             {
                 var syncItem = syncList[i];
 
@@ -93,6 +100,8 @@ namespace smartSuite.smartSprite.Effects.Core{
                     callback.UpdateProgress(percentage, false);
                 }
             }
+
+            #endregion
 
             if (callback != null)
             {
@@ -283,5 +292,48 @@ namespace smartSuite.smartSprite.Effects.Core{
             EffectEngine._previewBoard = previewBoard;
         }
 
+        /// <summary>
+        /// It´s a WaitCallBack delegate used to parallelized the process.
+        /// </summary>
+        /// <param name="state">A state made by an Object[3], composed by:
+        /// <list type="bullet">
+        /// <item>frame - is a Picture object handled as a frame in an animation</item>
+        /// <item>index - is a integer which is a index of animation</item>
+        /// <item>waitHandle = is a AutoResetEvent used like a synchronizer of multi-thread operation</item>
+        /// </list>
+        /// </param>
+        private static void ApplyWaitCallback(object state)
+        {
+            #region Entries validation
+
+            if (state == null)
+            {
+                throw new ArgumentNullException("state");
+            }
+            object[] stateArray = (object[])state;
+            if (stateArray.Length != 3)
+            {
+                throw new ArgumentOutOfRangeException("stateArray", stateArray.Length, "StateArray must have 3 dimensions");
+            }
+
+            #endregion
+
+            lock (EffectEngine._applyingThreadList)
+            {
+                EffectEngine._applyingThreadList.Add(Thread.CurrentThread);
+            }
+            Picture frame = (Picture)stateArray[0];
+            int index = (int)stateArray[1];
+            AutoResetEvent waitHandle = (AutoResetEvent)stateArray[2];
+
+            try
+            {
+                EffectEngine._filterList.Apply(frame, index);
+            }
+            finally
+            {
+                waitHandle.Set();
+            }
+        }
     }
 }

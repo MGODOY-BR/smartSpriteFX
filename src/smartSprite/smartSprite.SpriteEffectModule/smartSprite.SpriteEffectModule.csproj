@@ -53,7 +53,7 @@
     <Compile Include="Animations\AnimationComparer.cs" />
     <Compile Include="Animations\FrameIterator.cs" />
     <Compile Include="Effects\Core\EffectEngine.cs" />
-    <Compile Include="Effects\Core\IApplyFilterCallback.cs" />
+    <Compile Include="Effects\Infra\UI\IApplyFilterCallback.cs" />
     <Compile Include="Effects\Facade\EffectFacade.cs" />
     <Compile Include="Effects\FilterEngine\FilterCollection.cs" />
     <Compile Include="Effects\Filters\BorderFilter.cs" />

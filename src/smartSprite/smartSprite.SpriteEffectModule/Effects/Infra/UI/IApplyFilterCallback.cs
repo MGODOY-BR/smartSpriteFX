@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace smartSprite.SpriteEffectModule.Effects.Core
+namespace smartSprite.SpriteEffectModule.Infra.UI
 {
     /// <summary>
     /// Defines how a callback which handle the progress of an operation must be.
@@ -12,8 +12,13 @@ namespace smartSprite.SpriteEffectModule.Effects.Core
     public interface IApplyFilterCallback
     {
         /// <summary>
-        /// Updates the progress
+        /// Updates the progress and returns a boolean indicating cancelation
         /// </summary>
         void UpdateProgress(float percentage, bool completed);
+
+        /// <summary>
+        /// Allows shows up the update progress window
+        /// </summary>
+        void ShowUpdateProgress();
     }
 }
