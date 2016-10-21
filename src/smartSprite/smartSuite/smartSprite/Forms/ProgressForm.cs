@@ -21,17 +21,18 @@ namespace smartSprite.Forms
 
         public void ShowUpdateProgress()
         {
-            this.Show();
+            this.ShowDialog();
+        }
+
+        public void ApplyFilter()
+        {
+            this.backgroundWorker1.RunWorkerAsync();
+            this.ShowUpdateProgress();
         }
 
         public void UpdateProgress(float percentage, bool completed)
         {
             backgroundWorker1.ReportProgress((int)percentage);
-
-            if (completed)
-            {
-                this.Close();
-            }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -43,6 +44,16 @@ namespace smartSprite.Forms
         private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             this.progressBar1.Value = e.ProgressPercentage;
+        }
+
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+            EffectEngine.Apply(this);
+        }
+
+        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

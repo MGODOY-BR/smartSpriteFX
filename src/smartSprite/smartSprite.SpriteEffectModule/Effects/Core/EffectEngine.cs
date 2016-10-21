@@ -61,20 +61,35 @@ namespace smartSuite.smartSprite.Effects.Core{
         }
 
         /// <summary>
+        /// Applies the filter collection to all animation, but considering UI controls infrastructure
+        /// </summary>
+        /// <param name="callback"></param>
+        public static void ApplyFromUI(IApplyFilterCallback callback)
+        {
+            #region Entries validation
+
+            if (callback == null)
+            {
+                throw new ArgumentNullException("callback");
+            }
+
+            #endregion
+
+            callback.ApplyFilter();
+        }
+
+        /// <summary>
         /// Applies the filter collection to all the animation
         /// </summary>
         /// <returns></returns>
         public static void Apply(IApplyFilterCallback callback)
         {
-            ThreadPool.SetMaxThreads(50, 100);
+            ThreadPool.SetMinThreads(2, 10);
+            ThreadPool.SetMaxThreads(5, 10);
+
             EffectEngine._applyingThreadList.Clear();
             List<WaitHandle> syncList = new List<WaitHandle>();
             EffectEngine._iterator.Reset();
-
-            if (callback != null)
-            {
-                callback.ShowUpdateProgress();
-            }
 
             while (EffectEngine._iterator.Next())
             {

@@ -20,5 +20,10 @@ namespace smartSprite.SpriteEffectModule.Infra.UI
         /// Allows shows up the update progress window
         /// </summary>
         void ShowUpdateProgress();
+
+        /// <summary>
+        /// Applies the filters, considering the UI infrastructure
+        /// </summary>
+        void ApplyFilter();
     }
 }

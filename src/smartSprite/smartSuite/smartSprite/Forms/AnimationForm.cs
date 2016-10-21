@@ -228,7 +228,7 @@ namespace smartSprite.Forms
         /// <param name="e"></param>
         private void btnApplyAll_Click(object sender, EventArgs e)
         {
-            EffectEngine.Apply(new ProgressForm());
+            EffectEngine.ApplyFromUI(new ProgressForm());
         }
 
         /// <summary>
