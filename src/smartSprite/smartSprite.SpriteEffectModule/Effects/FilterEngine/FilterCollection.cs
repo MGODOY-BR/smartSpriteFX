@@ -280,8 +280,8 @@ namespace smartSuite.smartSprite.Effects.FilterEngine{
 		/// </summary>
 		/// <param name="picture"></param>
         /// <param name="frameIndex">It´s the frame index in an animation</param>
-		/// <returns></returns>
-		public void Apply(Picture picture, int frameIndex)
+		/// <returns>The output path</returns>
+		public string Apply(Picture picture, int frameIndex)
         {
             #region Entries validation
 
@@ -292,6 +292,7 @@ namespace smartSuite.smartSprite.Effects.FilterEngine{
 
             #endregion
 
+            String outputPath = null;
             for (int i = 0; i < this._filterBufferList.Count; i++)
             {
                 var filter = this._filterBufferList[i];
@@ -310,6 +311,11 @@ namespace smartSuite.smartSprite.Effects.FilterEngine{
                     String folder =
                         Path.Combine(baseFolder, "filtered");
 
+                    if (String.IsNullOrEmpty(outputPath))
+                    {
+                        outputPath = folder;
+                    }
+
                     String file =
                         Path.Combine(
                             folder,
@@ -323,6 +329,8 @@ namespace smartSuite.smartSprite.Effects.FilterEngine{
                     picture.SaveCopy(file);
                 }
             }
+
+            return outputPath;
         }
 
         /// <summary>

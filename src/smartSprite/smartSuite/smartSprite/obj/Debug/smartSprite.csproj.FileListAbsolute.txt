@@ -31,3 +31,4 @@ C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSuit
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSuite\smartSprite\obj\Debug\smartSprite.exe
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSuite\smartSprite\obj\Debug\smartSprite.pdb
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSuite\smartSprite\obj\Debug\smartSprite.Forms.ProgressForm.resources
+C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSuite\smartSprite\obj\Debug\smartSprite.Forms.PathAlertForm.resources

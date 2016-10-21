@@ -53,6 +53,9 @@ namespace smartSprite.Forms
 
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
+            string path = EffectEngine.GetOutputPath();
+            PathAlertForm pathAlertForm = new PathAlertForm();
+            pathAlertForm.Open("Concluded!", path);
             this.Close();
         }
     }

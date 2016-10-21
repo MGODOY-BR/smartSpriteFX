@@ -24,6 +24,11 @@ namespace smartSuite.smartSprite.Effects.Core{
         /// </summary>
         private static int _completedTask;
 
+        /// <summary>
+        /// It´s the output path
+        /// </summary>
+        private static string _outputPath;
+
 		/// <summary>
 		/// It´s the reference to an iterator frame
 		/// </summary>
@@ -48,6 +53,15 @@ namespace smartSuite.smartSprite.Effects.Core{
         /// It´s an instance of callback used to echo the responses to user, or even get the requests from it
         /// </summary>
         private static IApplyFilterCallback _callback;
+
+        /// <summary>
+        /// Gets the output path
+        /// </summary>
+        /// <returns></returns>
+        public static string GetOutputPath()
+        {
+            return EffectEngine._outputPath;
+        }
 
         /// <summary>
         /// Applies the filter collection to all the animation
@@ -95,9 +109,10 @@ namespace smartSuite.smartSprite.Effects.Core{
         public static void Apply(IApplyFilterCallback callback)
         {
             EffectEngine._callback = callback;
+            EffectEngine._outputPath = null;
 
-            ThreadPool.SetMinThreads(2, 10);
-            ThreadPool.SetMaxThreads(5, 10);
+            ThreadPool.SetMinThreads(3, 30);
+            ThreadPool.SetMaxThreads(7, 70);
 
             EffectEngine._applyingThreadList.Clear();
             List<WaitHandle> syncList = new List<WaitHandle>();
@@ -354,7 +369,8 @@ namespace smartSuite.smartSprite.Effects.Core{
 
             try
             {
-                EffectEngine._filterList.Apply(frame, index);
+                EffectEngine._outputPath =
+                    EffectEngine._filterList.Apply(frame, index);
 
                 if (EffectEngine._callback != null)
                 {
