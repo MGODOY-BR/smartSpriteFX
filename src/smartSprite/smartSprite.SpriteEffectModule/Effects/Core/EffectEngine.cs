@@ -19,6 +19,11 @@ namespace smartSuite.smartSprite.Effects.Core{
 	/// </summary>
 	internal static class EffectEngine {
 
+        /// <summary>
+        /// It's the number of completed tasks
+        /// </summary>
+        private static int _completedTask;
+
 		/// <summary>
 		/// It´s the reference to an iterator frame
 		/// </summary>
@@ -38,6 +43,11 @@ namespace smartSuite.smartSprite.Effects.Core{
         /// It´s the list of thread used during Apply method
         /// </summary>
         private static List<Thread> _applyingThreadList = new List<Thread>();
+
+        /// <summary>
+        /// It´s an instance of callback used to echo the responses to user, or even get the requests from it
+        /// </summary>
+        private static IApplyFilterCallback _callback;
 
         /// <summary>
         /// Applies the filter collection to all the animation
@@ -84,12 +94,15 @@ namespace smartSuite.smartSprite.Effects.Core{
         /// <returns></returns>
         public static void Apply(IApplyFilterCallback callback)
         {
+            EffectEngine._callback = callback;
+
             ThreadPool.SetMinThreads(2, 10);
             ThreadPool.SetMaxThreads(5, 10);
 
             EffectEngine._applyingThreadList.Clear();
             List<WaitHandle> syncList = new List<WaitHandle>();
             EffectEngine._iterator.Reset();
+            EffectEngine._completedTask = 0;
 
             while (EffectEngine._iterator.Next())
             {
@@ -112,12 +125,6 @@ namespace smartSuite.smartSprite.Effects.Core{
                 var syncItem = syncList[i];
 
                 syncItem.WaitOne();
-
-                float percentage = (float)i / (float)syncList.Count * (float)100;
-                if (callback != null)
-                {
-                    callback.UpdateProgress(percentage, false);
-                }
             }
 
             #endregion
@@ -348,6 +355,16 @@ namespace smartSuite.smartSprite.Effects.Core{
             try
             {
                 EffectEngine._filterList.Apply(frame, index);
+
+                if (EffectEngine._callback != null)
+                {
+                    lock (typeof(EffectEngine))
+                    {
+                        EffectEngine._completedTask++;
+                        float percentage = (float)EffectEngine._completedTask / (float)EffectEngine.GetIterator().CountFrames() * (float)100;
+                        EffectEngine._callback.UpdateProgress(percentage, false);
+                    }
+                }
             }
             finally
             {

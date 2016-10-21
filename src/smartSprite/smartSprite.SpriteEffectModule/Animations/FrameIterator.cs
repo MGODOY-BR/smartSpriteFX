@@ -201,6 +201,24 @@ namespace smartSuite.smartSprite.Animations{
         }
 
         /// <summary>
+        /// Gets the total amount of frames
+        /// </summary>
+        /// <returns></returns>
+        public int CountFrames()
+        {
+            #region Entries validation
+
+            if (this._fileList == null)
+            {
+                throw new ArgumentNullException("The object hasn't initialized yet.");
+            }
+
+            #endregion
+
+            return this._fileList.Count;
+        }
+
+        /// <summary>
         /// Fills the file list
         /// </summary>
         private static void FillFileList(string fullPath, List<string> fileList)
