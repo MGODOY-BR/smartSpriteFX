@@ -37,8 +37,16 @@ namespace smartSprite.Forms
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            EffectEngine.CancelApplying();
+            var result = MessageBox.Show("Are you sure?", "Cancel the filter applying", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.No)
+            {
+                this.DialogResult = DialogResult.None;
+                return;
+            }
+
+            this.DialogResult = DialogResult.Cancel;
             this.Close();
+            EffectEngine.CancelApplying();
         }
 
         private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)

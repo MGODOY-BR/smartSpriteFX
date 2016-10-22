@@ -77,11 +77,15 @@ namespace smartSuite.smartSprite.Effects.Core{
         /// </summary>
         internal static void CancelApplying()
         {
-            foreach (var thread in _applyingThreadList)
+            lock (_applyingThreadList)
             {
-                thread.Abort();
+                for (int i = 0; i < _applyingThreadList.Count; i++)
+                {
+                    var thread = _applyingThreadList[i];
+                    thread.Abort();
+                }
+                _applyingThreadList.Clear();
             }
-            _applyingThreadList.Clear();
         }
 
         /// <summary>
