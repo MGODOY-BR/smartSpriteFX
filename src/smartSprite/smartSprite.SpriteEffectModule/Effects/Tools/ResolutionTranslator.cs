@@ -62,6 +62,11 @@ namespace smartSuite.smartSprite.Effects.Tools{
         }
 
         /// <summary>
+        /// It´s a list of color to avoid.
+        /// </summary>
+        public List<Color> AvoidColorList { get; set; }
+
+        /// <summary>
         /// Creates an instance of the object
         /// </summary>
         /// <param name="originalPicture">It´s the original picture</param>
@@ -118,6 +123,8 @@ namespace smartSuite.smartSprite.Effects.Tools{
             }
 
             #endregion
+
+            this.AvoidColorList = new List<Color>();
 
             this._originalPicture = originalPicture;
 
@@ -195,7 +202,7 @@ namespace smartSuite.smartSprite.Effects.Tools{
             if (!ignoreCache)
             {
                 // Feeding the color buffer
-                this._colorBuffer.Register(color);
+                this._colorBuffer.Register(color, this.AvoidColorList.ToArray());
                 // Getting the color compatible with the destination resolution
                 newColor = this._colorBuffer.GetSimilarColor(color);
             }

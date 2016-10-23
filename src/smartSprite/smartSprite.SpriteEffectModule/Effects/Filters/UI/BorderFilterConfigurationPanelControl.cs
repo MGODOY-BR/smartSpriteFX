@@ -20,9 +20,21 @@ namespace smartSprite.SpriteEffectModule.Effects.Filters.UI
         /// </summary>
         private BorderFilter _filterSettable;
 
+        /// <summary>
+        /// It´s a control to select colors.
+        /// </summary>
+        private ColorSelectionControl _colorSelectionControl = new ColorSelectionControl();
+
         public BorderFilterConfigurationPanelControl()
         {
             InitializeComponent();
+            this._colorSelectionControl.SelectedColorEvent += _colorSelectionControl_SelectedColorEvent;
+            this.panelColor.Controls.Add(this._colorSelectionControl);
+        }
+
+        private void _colorSelectionControl_SelectedColorEvent(object sender, ColorSelectionControl.SelectionColorEventArgs e)
+        {
+            this._filterSettable.BorderColor = e.SelectedColor;
         }
 
         public UserControl GetPanel(IEffectFilter effectFilter)
@@ -40,19 +52,6 @@ namespace smartSprite.SpriteEffectModule.Effects.Filters.UI
             this.RefreshForm();
 
             return this;
-        }
-
-        private void btnPreview_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                this.Cursor = Cursors.WaitCursor;
-                EffectFacade.UpdatePreviewBoard();
-            }
-            finally
-            {
-                this.Cursor = Cursors.Default;
-            }
         }
 
         private void btnReset_Click(object sender, EventArgs e)
@@ -75,22 +74,12 @@ namespace smartSprite.SpriteEffectModule.Effects.Filters.UI
         private void RefreshForm()
         {
             tckWeight.Value = (int)this._filterSettable.TraceBorderWidth;
-            colorDialog1.Color = this._filterSettable.BorderColor;
-            panelColorPreview.BackColor = this._filterSettable.BorderColor;
+            this._colorSelectionControl.SelectedColor = this._filterSettable.BorderColor;
         }
 
         private void tckWeight_MouseUp(object sender, MouseEventArgs e)
         {
             this._filterSettable.TraceBorderWidth = tckWeight.Value;
-        }
-
-        private void btnBrowserColor_Click(object sender, EventArgs e)
-        {
-            if (colorDialog1.ShowDialog() == DialogResult.OK)
-            {
-                this._filterSettable.BorderColor = colorDialog1.Color;
-                this.panelColorPreview.BackColor = colorDialog1.Color;
-            }
         }
     }
 }

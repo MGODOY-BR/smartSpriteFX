@@ -88,8 +88,9 @@ namespace smartSuite.smartSprite.Effects.Infra{
         /// Registers a color in buffer
         /// </summary>
         /// <param name="color"></param>
+        /// <param name="avoidColorList">A list of colors to avoid</param>
         /// <returns></returns>
-        public void Register(Color color)
+        public void Register(Color color, params Color[] avoidColorList)
         {
             bool found = false;
             foreach (var colorItem in this._colorCacheList) 
@@ -99,6 +100,11 @@ namespace smartSuite.smartSprite.Effects.Infra{
                     found = true;
                     break;
                 }
+            }
+
+            if (avoidColorList.Contains(color, this._comparer))
+            {
+                return;
             }
 
             if (!found && (this._colorCacheList.Count < this._maxLength) || this._maxLength == 0)

@@ -11,6 +11,7 @@ using smartSprite.SpriteEffectModule.Effects.Infra.UI.Configuratons;
 using smartSprite.SpriteEffectModule.Effects.Filters.UI;
 using System.Windows.Forms;
 using smartSprite.SpriteEffectModule.Effects.Filters;
+using System.Drawing;
 
 namespace smartSuite.smartSprite.Effects.Filters{
 	/// <summary>
@@ -45,6 +46,11 @@ namespace smartSuite.smartSprite.Effects.Filters{
         /// It´s a contrast among the colors
         /// </summary>
         private float _contrast;
+
+        /// <summary>
+        /// It´s a list of color to avoid
+        /// </summary>
+        private List<Color> _avoidColorList; 
 
         int IResolutionFilterSetter.ColorBufferAmount
         {
@@ -118,6 +124,18 @@ namespace smartSuite.smartSprite.Effects.Filters{
             }
         }
 
+        List<Color> IResolutionFilterSetter.AvoidColorList
+        {
+            get
+            {
+                return this._avoidColorList;
+            }
+            set
+            {
+                this._avoidColorList = value;
+            }
+        }
+
         /// <summary>
         /// Gets the identification
         /// </summary>
@@ -147,7 +165,9 @@ namespace smartSuite.smartSprite.Effects.Filters{
                     this._destinationScreenWidth,
                     this._destinationScreenHeight,
                     this._colorBufferAmount,
-                    _contrast);     
+                    _contrast);
+
+            translator.AvoidColorList = this._avoidColorList;
 
             for (int y = 0; y < frame.Height; y++)
             {
@@ -179,6 +199,8 @@ namespace smartSuite.smartSprite.Effects.Filters{
 
             this._screenWidth = 1366;
             this._screenHeight = 768;
+
+            this._avoidColorList = new List<Color>();
         }
 
         public override IConfigurationPanel ShowConfigurationPanel()

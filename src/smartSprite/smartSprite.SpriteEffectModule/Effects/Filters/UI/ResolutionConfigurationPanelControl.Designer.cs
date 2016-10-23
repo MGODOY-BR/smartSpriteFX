@@ -41,6 +41,7 @@
             this.txtScreenWidth = new System.Windows.Forms.TextBox();
             this.txtScreenHeight = new System.Windows.Forms.TextBox();
             this.btnReset = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.tckContrast)).BeginInit();
             this.SuspendLayout();
             // 
@@ -160,10 +161,20 @@
             this.btnReset.UseVisualStyleBackColor = true;
             this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Location = new System.Drawing.Point(276, 3);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(200, 166);
+            this.groupBox1.TabIndex = 31;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Avoid these colors";
+            // 
             // ResolutionConfigurationPanelControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnReset);
             this.Controls.Add(this.txtScreenHeight);
             this.Controls.Add(this.txtScreenWidth);
@@ -178,7 +189,7 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.tckContrast);
             this.Name = "ResolutionConfigurationPanelControl";
-            this.Size = new System.Drawing.Size(338, 219);
+            this.Size = new System.Drawing.Size(492, 219);
             ((System.ComponentModel.ISupportInitialize)(this.tckContrast)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -199,5 +210,6 @@
         private System.Windows.Forms.TextBox txtScreenWidth;
         private System.Windows.Forms.TextBox txtScreenHeight;
         private System.Windows.Forms.Button btnReset;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }

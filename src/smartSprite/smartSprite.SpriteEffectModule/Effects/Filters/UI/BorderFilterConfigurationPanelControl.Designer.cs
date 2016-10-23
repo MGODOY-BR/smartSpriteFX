@@ -31,10 +31,7 @@
             this.btnReset = new System.Windows.Forms.Button();
             this.tckWeight = new System.Windows.Forms.TrackBar();
             this.label1 = new System.Windows.Forms.Label();
-            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-            this.label2 = new System.Windows.Forms.Label();
-            this.panelColorPreview = new System.Windows.Forms.Panel();
-            this.btnBrowserColor = new System.Windows.Forms.Button();
+            this.panelColor = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.tckWeight)).BeginInit();
             this.SuspendLayout();
             // 
@@ -67,40 +64,20 @@
             this.label1.TabIndex = 34;
             this.label1.Text = "Weight";
             // 
-            // label2
+            // panelColor
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(33, 88);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(31, 13);
-            this.label2.TabIndex = 35;
-            this.label2.Text = "Color";
-            // 
-            // panelColorPreview
-            // 
-            this.panelColorPreview.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelColorPreview.Location = new System.Drawing.Point(36, 104);
-            this.panelColorPreview.Name = "panelColorPreview";
-            this.panelColorPreview.Size = new System.Drawing.Size(25, 23);
-            this.panelColorPreview.TabIndex = 36;
-            // 
-            // btnBrowserColor
-            // 
-            this.btnBrowserColor.Location = new System.Drawing.Point(67, 104);
-            this.btnBrowserColor.Name = "btnBrowserColor";
-            this.btnBrowserColor.Size = new System.Drawing.Size(107, 23);
-            this.btnBrowserColor.TabIndex = 37;
-            this.btnBrowserColor.Text = "Select color ...";
-            this.btnBrowserColor.UseVisualStyleBackColor = true;
-            this.btnBrowserColor.Click += new System.EventHandler(this.btnBrowserColor_Click);
+            this.panelColor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelColor.Location = new System.Drawing.Point(25, 78);
+            this.panelColor.Name = "panelColor";
+            this.panelColor.Size = new System.Drawing.Size(202, 67);
+            this.panelColor.TabIndex = 35;
             // 
             // BorderFilterConfigurationPanelControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.btnBrowserColor);
-            this.Controls.Add(this.panelColorPreview);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.panelColor);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tckWeight);
             this.Controls.Add(this.btnReset);
@@ -117,9 +94,6 @@
         private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.TrackBar tckWeight;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ColorDialog colorDialog1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Panel panelColorPreview;
-        private System.Windows.Forms.Button btnBrowserColor;
+        private System.Windows.Forms.Panel panelColor;
     }
 }

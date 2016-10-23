@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -55,6 +56,15 @@ namespace smartSprite.SpriteEffectModule.Effects.Filters
         /// Gets or gets the total of height of screen
         /// </summary>
         int TotalScreenHeight
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// Gets or sets a list of color to avoid
+        /// </summary>
+        List<Color> AvoidColorList
         {
             get;
             set;
