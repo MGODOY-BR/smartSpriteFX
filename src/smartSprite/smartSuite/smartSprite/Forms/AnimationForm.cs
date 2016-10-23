@@ -71,6 +71,15 @@ namespace smartSprite.Forms
 
             _effectControlOrderCollection.Register(effectControl);
             this.EffectBind(_effectControlOrderCollection);
+
+            // Reseting settings panel
+            if (this.pnlSettingsMain.Controls.Count > 0)
+            {
+                var control = this.pnlSettingsMain.Controls[0];
+                control.Dispose();
+                this.pnlSettingsMain.Controls.Clear();
+                this.pnlSettingsMain.Controls.Add(new NoneCofigurationPanelControl());
+            }
         }
 
         /// <summary>
@@ -356,6 +365,19 @@ namespace smartSprite.Forms
                     this._effectControlCacheList[item] = index;
                     index++;
                 }
+            }
+        }
+
+        private void btnPreview_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.Cursor = Cursors.WaitCursor;
+                EffectEngine.UpdatePreviewBoard();
+            }
+            finally
+            {
+                this.Cursor = Cursors.Default;
             }
         }
     }

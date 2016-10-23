@@ -70,13 +70,13 @@ namespace smartSprite.SpriteEffectModule.Effects.Filters.UI
             this.tckContrast.Minimum = percentageContrast;
             if (percentageContrast < 0)
             {
-                this.tckContrast.Minimum = (int)(this._filterSettable.Contrast * 100) * 2;
-                this.tckContrast.Maximum = Math.Abs((int)(this._filterSettable.Contrast * 100));
+                this.tckContrast.Minimum = (int)(this._filterSettable.Contrast * 100) * 3;
+                this.tckContrast.Maximum = Math.Abs((int)(this._filterSettable.Contrast * 200));
             }
             else
             {
-                this.tckContrast.Minimum = (int)(this._filterSettable.Contrast * 100) / 2;
-                this.tckContrast.Maximum = Math.Abs((int)(this._filterSettable.Contrast * 2 * 100));
+                this.tckContrast.Minimum = (int)(this._filterSettable.Contrast * 100) / 3;
+                this.tckContrast.Maximum = Math.Abs((int)(this._filterSettable.Contrast * 3 * 100));
             }
             this.tckContrast.Value = percentageContrast;
         }
@@ -193,7 +193,6 @@ namespace smartSprite.SpriteEffectModule.Effects.Filters.UI
                 this.Cursor = Cursors.WaitCursor;
                 ((IEffectFilter)this._filterSettable).Reset();
                 this.RefreshForm();
-                EffectFacade.UpdatePreviewBoard();
             }
             finally
             {

@@ -30,7 +30,6 @@ namespace smartSprite.SpriteEffectModule.Effects.Filters.UI
             try
             {
                 this.Cursor = Cursors.WaitCursor;
-                EffectFacade.UpdatePreviewBoard();
             }
             finally
             {

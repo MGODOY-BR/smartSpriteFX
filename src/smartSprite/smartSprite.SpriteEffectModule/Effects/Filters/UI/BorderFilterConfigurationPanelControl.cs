@@ -62,7 +62,6 @@ namespace smartSprite.SpriteEffectModule.Effects.Filters.UI
                 this.Cursor = Cursors.WaitCursor;
                 ((IEffectFilter)this._filterSettable).Reset();
                 this.RefreshForm();
-                EffectFacade.UpdatePreviewBoard();
             }
             finally
             {

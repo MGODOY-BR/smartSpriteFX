@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.btnReset = new System.Windows.Forms.Button();
-            this.btnPreview = new System.Windows.Forms.Button();
             this.tckWeight = new System.Windows.Forms.TrackBar();
             this.label1 = new System.Windows.Forms.Label();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
@@ -41,23 +40,13 @@
             // 
             // btnReset
             // 
-            this.btnReset.Location = new System.Drawing.Point(116, 153);
+            this.btnReset.Location = new System.Drawing.Point(36, 151);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(75, 23);
             this.btnReset.TabIndex = 32;
             this.btnReset.Text = "RESET";
             this.btnReset.UseVisualStyleBackColor = true;
             this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
-            // 
-            // btnPreview
-            // 
-            this.btnPreview.Location = new System.Drawing.Point(36, 153);
-            this.btnPreview.Name = "btnPreview";
-            this.btnPreview.Size = new System.Drawing.Size(75, 23);
-            this.btnPreview.TabIndex = 31;
-            this.btnPreview.Text = "PREVIEW";
-            this.btnPreview.UseVisualStyleBackColor = true;
-            this.btnPreview.Click += new System.EventHandler(this.btnPreview_Click);
             // 
             // tckWeight
             // 
@@ -115,7 +104,6 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tckWeight);
             this.Controls.Add(this.btnReset);
-            this.Controls.Add(this.btnPreview);
             this.Name = "BorderFilterConfigurationPanelControl";
             this.Size = new System.Drawing.Size(240, 205);
             ((System.ComponentModel.ISupportInitialize)(this.tckWeight)).EndInit();
@@ -127,7 +115,6 @@
         #endregion
 
         private System.Windows.Forms.Button btnReset;
-        private System.Windows.Forms.Button btnPreview;
         private System.Windows.Forms.TrackBar tckWeight;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ColorDialog colorDialog1;
