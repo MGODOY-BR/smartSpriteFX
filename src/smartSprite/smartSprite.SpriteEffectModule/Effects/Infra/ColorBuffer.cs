@@ -25,11 +25,6 @@ namespace smartSuite.smartSprite.Effects.Infra{
         private ColorEqualityComparer _comparer;
 
         /// <summary>
-        /// It´s a cache of colors.
-        /// </summary>
-        private List<Color> _colorCacheList = new List<Color>();
-
-        /// <summary>
         /// It´s an eventual TransparentBackgroundFilter registered on the EffectEngine.
         /// </summary>
         private TransparentBackgroundFilter _registeredTransparentBackgroundFilter;
@@ -38,6 +33,11 @@ namespace smartSuite.smartSprite.Effects.Infra{
         /// It´s a sensibility of colors.
         /// </summary>
         private float _sensibility;
+
+        /// <summary>
+        /// It´s a length of range of colors
+        /// </summary>
+        private int _rangeLength;
 
         /// <summary>
         /// It´s a list of avoided colors
@@ -62,6 +62,7 @@ namespace smartSuite.smartSprite.Effects.Infra{
 
             this._maxLength = length;
             this._sensibility = sensibility;
+            this._rangeLength = this.GetRangeLength(this._maxLength);
 
             if (this._maxLength == 0)
             {
@@ -90,68 +91,25 @@ namespace smartSuite.smartSprite.Effects.Infra{
         }
 
         /// <summary>
-        /// Registers a color in buffer
-        /// </summary>
-        /// <param name="color"></param>
-        /// <param name="avoidColorList">A list of colors to avoid</param>
-        /// <returns></returns>
-        public void Register(Color color, params Color[] avoidColorList)
-        {
-            bool found = false;
-            foreach (var colorItem in this._colorCacheList) 
-            {
-                if (this._comparer.LooksLikeBySensibility(color, colorItem))
-                {
-                    found = true;
-                    break;
-                }
-            }
-
-            if (avoidColorList.Contains(color, this._comparer))
-            {
-                return;
-            }
-
-            if (!found && (this._colorCacheList.Count < this._maxLength) || this._maxLength == 0)
-            {
-                if (!this._colorCacheList.Contains(color))
-                {
-                    #region Entries validation
-
-                    if (this._registeredTransparentBackgroundFilter != null)
-                    {
-                        if (this._registeredTransparentBackgroundFilter.TransparentColor.ToArgb() == color.ToArgb())
-                        {
-                            return;
-                        }
-                    }
-
-                    #endregion
-
-                    this._colorCacheList.Add(color);
-                }
-            }
-        }
-
-        /// <summary>
         /// Gets a color similar to assigned color
         /// </summary>
         /// <param name="color"></param>
         /// <returns></returns>
         public Color GetSimilarColor(Color color)
         {
-            foreach (var colorItem in this._colorCacheList)
-            {
-                if (this._comparer.LooksLikeBySensibility(color, colorItem))
-                {
-                    return colorItem;
-                }
-            }
-
+            /*
             this._sensibility += 0.001f;
             this._comparer = new ColorEqualityComparer(this._sensibility);
 
             Color returnColor = this.GetSimilarColor(color);
+            */
+
+            var returnColor =
+                Color.FromArgb(
+                    color.A,
+                    this.FitColorComponent(color.R, this._rangeLength, this._maxLength),
+                    this.FitColorComponent(color.G, this._rangeLength, this._maxLength),
+                    this.FitColorComponent(color.B, this._rangeLength, this._maxLength));
 
             // Skipping transparent color
             returnColor = this.TrickTransparentColor(returnColor);
@@ -164,7 +122,6 @@ namespace smartSuite.smartSprite.Effects.Infra{
         /// </summary>
         public void Clear()
         {
-            this._colorCacheList.Clear();
 		}
 
         /// <summary>
@@ -173,7 +130,7 @@ namespace smartSuite.smartSprite.Effects.Infra{
         /// <returns></returns>
         public int Count()
         {
-            return this._colorCacheList.Count;
+            throw new NotSupportedException();
         }
 
         /// <summary>
@@ -194,8 +151,7 @@ namespace smartSuite.smartSprite.Effects.Infra{
                 return colorComponent + factor;
             }
         }
-
-
+        
         /// <summary>
         /// Tricks the transparent color
         /// </summary>
@@ -219,6 +175,55 @@ namespace smartSuite.smartSprite.Effects.Infra{
             }
 
             return returnColor;
+        }
+
+        /// <summary>
+        /// Gets the range length
+        /// </summary>
+        /// <param name="maxColor"></param>
+        /// <returns></returns>
+        private int GetRangeLength(int maxColor)
+        {
+            #region Entries validation
+
+            if (maxColor < 1)
+            {
+                throw new ArgumentOutOfRangeException("maxColor", maxColor, "The maxColor must be greater then 0");
+            }
+
+            #endregion
+
+            if (maxColor > 255)
+            {
+                return maxColor / 255 / 3;
+            }
+            else
+            {
+                return maxColor;
+            }
+        }
+
+        /// <summary>
+        /// Fit the color component in correspondent range color
+        /// </summary>
+        /// <param name="colorComponent">It´s the original color component</param>
+        /// <param name="rangeLength">It´s the range length</param>
+        /// <param name="maxColor">The maximum amount of color</param>
+        /// <returns></returns>
+        private int FitColorComponent(int colorComponent, int rangeLength, int maxColor)
+        {
+            int fitColor = 0;
+            for (int i = 0; i < colorComponent; i+= rangeLength)
+            {
+                fitColor += rangeLength;
+            }
+
+            if (fitColor > 255)
+            {
+                fitColor = 255;
+            }
+
+            return fitColor;
         }
     }
 }

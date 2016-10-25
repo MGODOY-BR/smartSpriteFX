@@ -203,7 +203,7 @@ namespace smartSuite.smartSprite.Effects.Tools{
             if (!ignoreCache)
             {
                 // Feeding the color buffer
-                this._colorBuffer.Register(color);
+                // this._colorBuffer.Register(color);
                 // Getting the color compatible with the destination resolution
                 newColor = this._colorBuffer.GetSimilarColor(color);
             }
