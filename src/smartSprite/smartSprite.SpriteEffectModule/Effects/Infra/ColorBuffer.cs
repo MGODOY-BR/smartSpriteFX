@@ -39,12 +39,17 @@ namespace smartSuite.smartSprite.Effects.Infra{
         /// </summary>
         private float _sensibility;
 
-		/// <summary>
-		/// Creates an instance of object
-		/// </summary>
-		/// <param name="length">It´s the maximum amount of allowed colors.</param>
+        /// <summary>
+        /// It´s a list of avoided colors
+        /// </summary>
+        public List<Color> AvoidedColorList { get; set; }
+
+        /// <summary>
+        /// Creates an instance of object
+        /// </summary>
+        /// <param name="length">It´s the maximum amount of allowed colors.</param>
         /// <param name="sensibility">It´s a percentage of tolerance to consider colors as equals</param>
-		public ColorBuffer(int length, float sensibility)
+        public ColorBuffer(int length, float sensibility)
         {
             #region Entries validation
 

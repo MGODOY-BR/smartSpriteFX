@@ -104,12 +104,12 @@ namespace smartSprite.Pictures.ColorPattern
         }
 
         /// <summary>
-        /// Gets a indicator informing if whe colors are similar
+        /// Gets a indicator informing if the colors are similar
         /// </summary>
         /// <param name="comparing"></param>
         /// <param name="compareTo"></param>
         /// <returns></returns>
-        public bool LooksLikeByBright(Color comparing, Color compareTo)
+        public bool LooksLikeByHeat(Color comparing, Color compareTo)
         {
             #region Entries validation
 

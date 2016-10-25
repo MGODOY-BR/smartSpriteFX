@@ -7,11 +7,10 @@ C:\Users\Marcelo\Documents\Repositório GIT\smartSprite\src\smartSprite\smartSui
 C:\Users\Marcelo\Documents\Repositório GIT\smartSprite\src\smartSprite\smartSuite\smartSprite\obj\Debug\smartSprite.exe
 C:\Users\Marcelo\Documents\Repositório GIT\smartSprite\src\smartSprite\smartSuite\smartSprite\obj\Debug\smartSprite.pdb
 C:\Users\Marcelo\Documents\Repositório GIT\smartSprite\src\smartSprite\smartSuite\smartSprite\obj\Debug\smartSprite.csprojResolveAssemblyReference.cache
+C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSuite\smartSprite\bin\Debug\smartSprite.exe
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSuite\smartSprite\bin\Debug\Temp\empty.txt
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSuite\smartSprite\bin\Debug\ThirdPartyEffectModulePlugin\READ-ME.txt
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSuite\smartSprite\bin\Debug\smartSprite.exe.config
-C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSuite\smartSprite\bin\Debug\smartSprite.exe
-C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSuite\smartSprite\bin\Debug\smartSprite.pdb
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSuite\smartSprite\bin\Debug\smartSprite.PictureEngine.dll
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSuite\smartSprite\bin\Debug\smartSprite.SpriteEffectModule.dll
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSuite\smartSprite\bin\Debug\smartSprite.PictureEngine.pdb
@@ -25,10 +24,11 @@ C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSuit
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSuite\smartSprite\obj\Debug\smartSprite.Forms.Controls.EffectFilterPallete.EffectFilterPalleteControl.resources
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSuite\smartSprite\obj\Debug\smartSprite.Forms.Controls.HookControl.resources
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSuite\smartSprite\obj\Debug\smartSprite.Forms.Controls.LineControl.resources
+C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSuite\smartSprite\obj\Debug\smartSprite.Forms.PathAlertForm.resources
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSuite\smartSprite\obj\Debug\smartSprite.Forms.PrincipalForm.resources
+C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSuite\smartSprite\obj\Debug\smartSprite.Forms.ProgressForm.resources
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSuite\smartSprite\obj\Debug\smartSprite.Properties.Resources.resources
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSuite\smartSprite\obj\Debug\smartSprite.csproj.GenerateResource.Cache
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSuite\smartSprite\obj\Debug\smartSprite.exe
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSuite\smartSprite\obj\Debug\smartSprite.pdb
-C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSuite\smartSprite\obj\Debug\smartSprite.Forms.ProgressForm.resources
-C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSuite\smartSprite\obj\Debug\smartSprite.Forms.PathAlertForm.resources
+C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSuite\smartSprite\bin\Debug\smartSprite.pdb

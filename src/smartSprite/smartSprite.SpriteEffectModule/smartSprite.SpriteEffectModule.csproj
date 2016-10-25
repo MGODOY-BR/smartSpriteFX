@@ -53,6 +53,12 @@
     <Compile Include="Animations\AnimationComparer.cs" />
     <Compile Include="Animations\FrameIterator.cs" />
     <Compile Include="Effects\Core\EffectEngine.cs" />
+    <Compile Include="Effects\Filters\UI\ColorListControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Effects\Filters\UI\ColorListControl.Designer.cs">
+      <DependentUpon>ColorListControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Effects\Filters\UI\ColorSelectionControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -120,6 +126,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Effects\Filters\UI\BorderFilterConfigurationPanelControl.resx">
       <DependentUpon>BorderFilterConfigurationPanelControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Effects\Filters\UI\ColorListControl.resx">
+      <DependentUpon>ColorListControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Effects\Filters\UI\ColorSelectionControl.resx">
       <DependentUpon>ColorSelectionControl.cs</DependentUpon>
