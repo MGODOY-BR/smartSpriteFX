@@ -162,6 +162,7 @@ namespace smartSuite.smartSprite.Effects.Tools{
             }
 
             this._colorBuffer = new ColorBuffer(newColorAmount, sensibility);
+            this._colorBuffer.AvoidedColorList = this.AvoidColorList;
         }
 
         /// <summary>
@@ -202,7 +203,7 @@ namespace smartSuite.smartSprite.Effects.Tools{
             if (!ignoreCache)
             {
                 // Feeding the color buffer
-                this._colorBuffer.Register(color, this.AvoidColorList.ToArray());
+                this._colorBuffer.Register(color);
                 // Getting the color compatible with the destination resolution
                 newColor = this._colorBuffer.GetSimilarColor(color);
             }

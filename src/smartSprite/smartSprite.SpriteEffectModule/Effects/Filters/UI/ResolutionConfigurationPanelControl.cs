@@ -20,6 +20,11 @@ namespace smartSprite.SpriteEffectModule.Effects.Filters.UI
         /// </summary>
         private IResolutionFilterSetter _filterSettable;
 
+        /// <summary>
+        /// It´s a list for selection of avoid colors
+        /// </summary>
+        private ColorListControl _avoidColorListControl = new ColorListControl();
+
         public ResolutionConfigurationPanelControl()
         {
             InitializeComponent();
@@ -29,6 +34,20 @@ namespace smartSprite.SpriteEffectModule.Effects.Filters.UI
             txtMaxScreenHeight.KeyPress += JustNumberEvent;
             txtScreenWidth.KeyPress += JustNumberEvent;
             txtScreenHeight.KeyPress += JustNumberEvent;
+
+            _avoidColorListControl.Dock = DockStyle.Fill;
+            _avoidColorListControl.ColorListChanged += _avoidColorListControl_ColorListChanged;
+            panelAvoidColors.Controls.Add(_avoidColorListControl);
+        }
+
+        /// <summary>
+        /// Occurs then avoided color list has changed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void _avoidColorListControl_ColorListChanged(object sender, ColorListControl.ColorListChangeEventArgs e)
+        {
+            _filterSettable.AvoidColorList = e.CurrentColorList;
         }
 
         UserControl IConfigurationPanel.GetPanel(IEffectFilter effectFilter)

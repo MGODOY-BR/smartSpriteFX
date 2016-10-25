@@ -42,7 +42,9 @@
             this.txtScreenHeight = new System.Windows.Forms.TextBox();
             this.btnReset = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.panelAvoidColors = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.tckContrast)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -163,12 +165,22 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Location = new System.Drawing.Point(276, 3);
+            this.groupBox1.Controls.Add(this.panelAvoidColors);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.groupBox1.Location = new System.Drawing.Point(0, 219);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(200, 166);
+            this.groupBox1.Size = new System.Drawing.Size(280, 175);
             this.groupBox1.TabIndex = 31;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Avoid these colors";
+            // 
+            // panelAvoidColors
+            // 
+            this.panelAvoidColors.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelAvoidColors.Location = new System.Drawing.Point(3, 16);
+            this.panelAvoidColors.Name = "panelAvoidColors";
+            this.panelAvoidColors.Size = new System.Drawing.Size(274, 156);
+            this.panelAvoidColors.TabIndex = 0;
             // 
             // ResolutionConfigurationPanelControl
             // 
@@ -189,8 +201,9 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.tckContrast);
             this.Name = "ResolutionConfigurationPanelControl";
-            this.Size = new System.Drawing.Size(492, 219);
+            this.Size = new System.Drawing.Size(280, 394);
             ((System.ComponentModel.ISupportInitialize)(this.tckContrast)).EndInit();
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -211,5 +224,6 @@
         private System.Windows.Forms.TextBox txtScreenHeight;
         private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Panel panelAvoidColors;
     }
 }
