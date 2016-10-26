@@ -107,9 +107,9 @@ namespace smartSuite.smartSprite.Effects.Infra{
             var returnColor =
                 Color.FromArgb(
                     color.A,
-                    this.FitColorComponent(color.R, this._rangeLength, this._maxLength),
-                    this.FitColorComponent(color.G, this._rangeLength, this._maxLength),
-                    this.FitColorComponent(color.B, this._rangeLength, this._maxLength));
+                    this.FitColorComponent(color.R, this._rangeLength),
+                    this.FitColorComponent(color.G, this._rangeLength),
+                    this.FitColorComponent(color.B, this._rangeLength));
 
             // Skipping transparent color
             returnColor = this.TrickTransparentColor(returnColor);
@@ -193,14 +193,14 @@ namespace smartSuite.smartSprite.Effects.Infra{
 
             #endregion
 
-            if (maxColor > 255)
+            int returnValue = 256 / maxColor * 4;   // <-- TODO: Necessário descobrir qual é o fato que, aplicado, restringe a quantidade máxima de cores por componente
+
+            if (returnValue == 0)
             {
-                return maxColor / 255 / 3;
+                returnValue = 1;
             }
-            else
-            {
-                return maxColor;
-            }
+
+            return returnValue;
         }
 
         /// <summary>
@@ -208,17 +208,37 @@ namespace smartSuite.smartSprite.Effects.Infra{
         /// </summary>
         /// <param name="colorComponent">It´s the original color component</param>
         /// <param name="rangeLength">It´s the range length</param>
-        /// <param name="maxColor">The maximum amount of color</param>
         /// <returns></returns>
-        private int FitColorComponent(int colorComponent, int rangeLength, int maxColor)
+        private int FitColorComponent(int colorComponent, int rangeLength)
         {
-            int fitColor = 0;
-            for (int i = 0; i < colorComponent; i+= rangeLength)
+            #region Entries validation
+
+            if (rangeLength < 1 || rangeLength > 256)
             {
-                fitColor += rangeLength;
+                throw new ArgumentOutOfRangeException("rangeLength", rangeLength, "Invalid rangeLength");
             }
 
-            if (fitColor > 255)
+            #endregion
+
+            // Put in scale
+            int result;
+            int fitColor;
+            int remainder = Math.DivRem(colorComponent, rangeLength, out result);
+            if (remainder > 0)
+            {
+                int increment = rangeLength - result;
+                fitColor = colorComponent + increment;
+            }
+            else
+            {
+                fitColor = colorComponent;
+            }
+
+            if (fitColor < 0)
+            {
+                fitColor = 0;
+            }
+            else if (fitColor > 255)
             {
                 fitColor = 255;
             }
