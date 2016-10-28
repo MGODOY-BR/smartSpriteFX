@@ -8,11 +8,13 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 
-namespace smartSuite.smartSprite.Effects.Infra{
-	/// <summary>
-	/// A buffer of colors, used to limt the quality of image
-	/// </summary>
-	public class ColorBuffer {
+namespace smartSuite.smartSprite.Effects.Infra
+{
+    /// <summary>
+    /// A buffer of colors, used to limt the quality of image
+    /// </summary>
+    public class ColorBuffer
+    {
 
         /// <summary>
         /// It´s the maximum of allowed colors.
@@ -122,7 +124,7 @@ namespace smartSuite.smartSprite.Effects.Infra{
         /// </summary>
         public void Clear()
         {
-		}
+        }
 
         /// <summary>
         /// Counts the amount of buffer
@@ -151,7 +153,7 @@ namespace smartSuite.smartSprite.Effects.Infra{
                 return colorComponent + factor;
             }
         }
-        
+
         /// <summary>
         /// Tricks the transparent color
         /// </summary>
@@ -193,9 +195,10 @@ namespace smartSuite.smartSprite.Effects.Infra{
 
             #endregion
 
-            int returnValue = 256 / maxColor * 4;   // <-- TODO: Necessário descobrir qual é o fato que, aplicado, restringe a quantidade máxima de cores por componente
+            // This is just a bare estimate. Calculate using combination is too hard because of long numbers formed and it takes too much
+            int returnValue = 256 / 1 / (maxColor / 8);
 
-            if (returnValue == 0)
+            if (returnValue <= 0)
             {
                 returnValue = 1;
             }
@@ -245,5 +248,6 @@ namespace smartSuite.smartSprite.Effects.Infra{
 
             return fitColor;
         }
+
     }
 }
