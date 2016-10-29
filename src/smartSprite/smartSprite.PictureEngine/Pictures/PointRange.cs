@@ -85,7 +85,7 @@ namespace smartSuite.smartSprite.Pictures{
 
             foreach (var pointRange in this._rangeList)
             {
-                if (pointRange.HaveIThisContained(x, y))
+                if (pointRange.HaveThisContained(x, y))
                 {
                     return true;
                 }
@@ -100,8 +100,20 @@ namespace smartSuite.smartSprite.Pictures{
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <returns></returns>
-        private bool HaveIThisContained(int x, int y)
+        private bool HaveThisContained(int x, int y)
         {
+            #region Entries validation
+
+            if (this._startPoint == null)
+            {
+                return false;
+            }
+            if (this._endPoint == null)
+            {
+                return false;
+            }
+
+            #endregion
             return x >= this._startPoint.X && x <= this._endPoint.X &&
                     y >= this._startPoint.Y && y <= this._endPoint.Y;
         }
@@ -152,6 +164,19 @@ namespace smartSuite.smartSprite.Pictures{
             }
 
             return returnList;
+        }
+
+        /// <summary>
+        /// Sets the range
+        /// </summary>
+        /// <param name="initialX"></param>
+        /// <param name="initialY"></param>
+        /// <param name="finalX"></param>
+        /// <param name="finalY"></param>
+        public void SetPoint(int initialX, int initialY, int finalX, int finalY)
+        {
+            this._startPoint = new Point(initialX, initialY);
+            this._endPoint = new Point(finalX, finalY);
         }
     }
 }
