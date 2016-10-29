@@ -146,6 +146,7 @@ namespace smartSuite.smartSprite.Effects.Tools{
 
             this._colorBuffer = new ColorBuffer(newColorAmount, contrast);
             this._colorBuffer.AvoidedColorList = this.AvoidColorList;
+            this._colorBuffer.AvoidedColorList.Add(originalPicture.TransparentColor);
         }
 
         /// <summary>

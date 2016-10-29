@@ -186,6 +186,20 @@ namespace smartSprite.Pictures.ColorPattern
         }
 
         /// <summary>
+        /// Gets a indicator comparing a both colors, but not considering the alpha component
+        /// </summary>
+        /// <param name="color"></param>
+        /// <param name="other"></param>
+        /// <returns></returns>
+        public bool EqualsButNoAlpha(Color color, Color other)
+        {
+            return
+                color.R == other.R &&
+                color.G == other.G &&
+                color.B == other.B;
+        }
+
+        /// <summary>
         /// Gets a indicator informing if whe colors are similar
         /// </summary>
         /// <param name="comparing"></param>

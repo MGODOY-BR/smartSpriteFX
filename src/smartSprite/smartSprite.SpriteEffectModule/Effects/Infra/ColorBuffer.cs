@@ -27,11 +27,6 @@ namespace smartSuite.smartSprite.Effects.Infra
         private ColorEqualityComparer _comparer;
 
         /// <summary>
-        /// It´s an eventual TransparentBackgroundFilter registered on the EffectEngine.
-        /// </summary>
-        private TransparentBackgroundFilter _registeredTransparentBackgroundFilter;
-
-        /// <summary>
         /// It´s a sensibility of colors.
         /// </summary>
         private int _contrast;
@@ -77,15 +72,13 @@ namespace smartSuite.smartSprite.Effects.Infra
 
             #region Getting the transparent background filter
 
-            if (this._registeredTransparentBackgroundFilter == null)
+            foreach (var filterItem in EffectEngine.GetSelectedFilterList())
             {
-                foreach (var filterItem in EffectEngine.GetSelectedFilterList())
+                TransparentBackgroundFilter registeredTransparentBackgroundFilter = filterItem as TransparentBackgroundFilter;
+                if (registeredTransparentBackgroundFilter != null)
                 {
-                    this._registeredTransparentBackgroundFilter = filterItem as TransparentBackgroundFilter;
-                    if (this._registeredTransparentBackgroundFilter != null)
-                    {
-                        break;
-                    }
+                    this.AvoidedColorList.Add(registeredTransparentBackgroundFilter.TransparentColor);
+                    break;
                 }
             }
 
@@ -107,7 +100,7 @@ namespace smartSuite.smartSprite.Effects.Infra
                     this.FitColorComponent(color.B, this._rangeLength));
 
             // Skipping transparent color
-            returnColor = this.TrickTransparentColor(returnColor);
+            returnColor = this.TrickAvoidedColor(returnColor);
 
             return returnColor;
         }
@@ -148,25 +141,45 @@ namespace smartSuite.smartSprite.Effects.Infra
         }
 
         /// <summary>
-        /// Tricks the transparent color
+        /// Gets the color component opposite different to trick the transparent mechanism
+        /// </summary>
+        /// <param name="colorComponent"></param>
+        /// <returns></returns>
+        private int GetOppositeColorComponent(int colorComponent)
+        {
+            int factor = 50;
+
+            if (colorComponent + factor > 255)
+            {
+                return colorComponent - factor;
+            }
+            else
+            {
+                return colorComponent + factor;
+            }
+        }
+
+        /// <summary>
+        /// Tricks the avoided color
         /// </summary>
         /// <param name="returnColor"></param>
         /// <returns></returns>
-        private Color TrickTransparentColor(Color returnColor)
+        private Color TrickAvoidedColor(Color returnColor)
         {
-            if (this._registeredTransparentBackgroundFilter != null)
+            foreach (var avoidedColor in this.AvoidedColorList)
             {
-                if (this._comparer.Equals(this._registeredTransparentBackgroundFilter.TransparentColor, returnColor))
+                if (!this._comparer.EqualsButNoAlpha(returnColor, avoidedColor))
                 {
-                    Color newColor =
-                        Color.FromArgb(
-                            this._registeredTransparentBackgroundFilter.TransparentColor.A,
-                            this._registeredTransparentBackgroundFilter.TransparentColor.R,
-                            this._registeredTransparentBackgroundFilter.TransparentColor.G,
-                            this.GetSlightlyColorComponent(this._registeredTransparentBackgroundFilter.TransparentColor.B));
-
-                    returnColor = newColor;
+                    continue;
                 }
+                Color newColor =
+                    Color.FromArgb(
+                        returnColor.A,
+                        avoidedColor.R,
+                        this.GetOppositeColorComponent(avoidedColor.G),
+                        avoidedColor.B);
+
+                returnColor = newColor;
             }
 
             return returnColor;
@@ -234,9 +247,9 @@ namespace smartSuite.smartSprite.Effects.Infra
             {
                 fitColor = 0;
             }
-            else if (fitColor > 254)
+            else if (fitColor > 255)
             {
-                fitColor = 254; // <-- Putting 255 causes an impredictable transparent color
+                fitColor = 255;
             }
 
             if (fitColor + this._contrast > 0)
