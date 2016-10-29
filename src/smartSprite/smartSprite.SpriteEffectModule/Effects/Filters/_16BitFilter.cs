@@ -45,7 +45,7 @@ namespace smartSuite.smartSprite.Effects.Filters{
         /// <summary>
         /// It´s a contrast among the colors
         /// </summary>
-        private float _contrast;
+        private int _contrast;
 
         /// <summary>
         /// It´s a list of color to avoid
@@ -88,7 +88,7 @@ namespace smartSuite.smartSprite.Effects.Filters{
             }
         }
 
-        float IResolutionFilterSetter.Contrast
+        int IResolutionFilterSetter.Contrast
         {
             get
             {
@@ -195,7 +195,7 @@ namespace smartSuite.smartSprite.Effects.Filters{
             this._colorBufferAmount = 256;
             this._destinationScreenWidth = 256;
             this._destinationScreenHeight = 224;
-            this._contrast = 0.50f;
+            this._contrast = 0;
 
             this._screenWidth = 1366;
             this._screenHeight = 768;

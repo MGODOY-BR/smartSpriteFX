@@ -39,7 +39,7 @@ namespace smartSprite.SpriteEffectModule.Effects.Filters
         /// <summary>
         /// Gets or gets the contrast of colors
         /// </summary>
-        float Contrast
+        int Contrast
         {
             get;
             set;

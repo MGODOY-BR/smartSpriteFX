@@ -77,7 +77,7 @@ namespace smartSuite.smartSprite.Effects.Tools{
         /// <param name="newColorAmount">It´s a number of simultaneous color</param>
         public ResolutionTranslator(Picture originalPicture, int screenWidth, int screenHeight, int newScreenWidth, int newScreenHeight, int newColorAmount)
         {
-            this.Initialize(originalPicture, screenWidth, screenHeight, newScreenWidth, newScreenHeight, newColorAmount, 0f);
+            this.Initialize(originalPicture, screenWidth, screenHeight, newScreenWidth, newScreenHeight, newColorAmount, 0);
         }
 
         /// <summary>
@@ -89,10 +89,10 @@ namespace smartSuite.smartSprite.Effects.Tools{
         /// <param name="newScreenWidth">It´s the length of the screen of  new resolution</param>
         /// <param name="newScreenHeight">It´s the height of screen of new resolution</param>
         /// <param name="newColorAmount">It´s a number of simultaneous color</param>
-        /// <param name="diluteColorFactor">It´s a factor used to dilute color</param>
-        public ResolutionTranslator(Picture originalPicture, int screenWidth, int screenHeight, int newScreenWidth, int newScreenHeight, int newColorAmount, float diluteColorFactor)
+        /// <param name="contrast">It´s how different the colors are</param>
+        public ResolutionTranslator(Picture originalPicture, int screenWidth, int screenHeight, int newScreenWidth, int newScreenHeight, int newColorAmount, int contrast)
         {
-            this.Initialize(originalPicture, screenWidth, screenHeight, newScreenWidth, newScreenHeight, newColorAmount, diluteColorFactor);
+            this.Initialize(originalPicture, screenWidth, screenHeight, newScreenWidth, newScreenHeight, newColorAmount, contrast);
         }
 
         /// <summary>
@@ -105,7 +105,7 @@ namespace smartSuite.smartSprite.Effects.Tools{
         /// <param name="newScreenHeight">It´s the height of screen of new resolution</param>
         /// <param name="newColorAmount">It´s a number of simultaneous color</param>
         /// <param name="contrast">It´s a factor used to contrast color</param>
-        private void Initialize(Picture originalPicture, int screenWidth, int screenHeight, int newScreenWidth, int newScreenHeight, int newColorAmount, float contrast)
+        private void Initialize(Picture originalPicture, int screenWidth, int screenHeight, int newScreenWidth, int newScreenHeight, int newColorAmount, int contrast)
         {
             #region Entries validation
 
@@ -144,24 +144,7 @@ namespace smartSuite.smartSprite.Effects.Tools{
             this._resolutionTax =
                  (int)hipotenuseOriginalPicture / (int)hipotenuseNewPicture;
 
-            float bandWidth = 
-                 (float)hipotenuseNewPicture / (float)hipotenuseOriginalPicture *
-                 2.15f + contrast;
-
-            float sensibility;
-
-            if (this._originalPicture.ColorCount <= newColorAmount)
-            {
-                sensibility = 0;
-            }
-            else
-            {
-                sensibility =
-                    ((float)newColorAmount / (float)this._originalPicture.ColorCount) +
-                    bandWidth;
-            }
-
-            this._colorBuffer = new ColorBuffer(newColorAmount, sensibility);
+            this._colorBuffer = new ColorBuffer(newColorAmount, contrast);
             this._colorBuffer.AvoidedColorList = this.AvoidColorList;
         }
 

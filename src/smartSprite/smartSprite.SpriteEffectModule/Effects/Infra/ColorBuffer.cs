@@ -34,7 +34,7 @@ namespace smartSuite.smartSprite.Effects.Infra
         /// <summary>
         /// It´s a sensibility of colors.
         /// </summary>
-        private float _sensibility;
+        private int _contrast;
 
         /// <summary>
         /// It´s a length of range of colors
@@ -50,8 +50,8 @@ namespace smartSuite.smartSprite.Effects.Infra
         /// Creates an instance of object
         /// </summary>
         /// <param name="length">It´s the maximum amount of allowed colors.</param>
-        /// <param name="sensibility">It´s a percentage of tolerance to consider colors as equals</param>
-        public ColorBuffer(int length, float sensibility)
+        /// <param name="contrast">It´s how different the colors are each others</param>
+        public ColorBuffer(int length, int contrast)
         {
             #region Entries validation
 
@@ -63,17 +63,17 @@ namespace smartSuite.smartSprite.Effects.Infra
             #endregion
 
             this._maxLength = length;
-            this._sensibility = sensibility;
+            this._contrast = contrast;
             this._rangeLength = this.GetRangeLength(this._maxLength);
 
-            if (this._maxLength == 0)
-            {
+            //if (this._maxLength == 0)
+            //{
                 this._comparer = new ColorEqualityComparer(0);
-            }
-            else
-            {
-                this._comparer = new ColorEqualityComparer(this._sensibility);
-            }
+            //}
+            //else
+            //{
+            //    this._comparer = new ColorEqualityComparer(this._contrast);
+            //}
 
             #region Getting the transparent background filter
 
@@ -99,13 +99,6 @@ namespace smartSuite.smartSprite.Effects.Infra
         /// <returns></returns>
         public Color GetSimilarColor(Color color)
         {
-            /*
-            this._sensibility += 0.001f;
-            this._comparer = new ColorEqualityComparer(this._sensibility);
-
-            Color returnColor = this.GetSimilarColor(color);
-            */
-
             var returnColor =
                 Color.FromArgb(
                     color.A,
@@ -196,7 +189,7 @@ namespace smartSuite.smartSprite.Effects.Infra
             #endregion
 
             // This is just a bare estimate. Calculate using combination is too hard because of long numbers formed and it takes too much
-            int returnValue = 256 / 1 / (maxColor / 8);
+            int returnValue = 256 / 1 / (maxColor / 12);
 
             if (returnValue <= 0)
             {
@@ -241,9 +234,14 @@ namespace smartSuite.smartSprite.Effects.Infra
             {
                 fitColor = 0;
             }
-            else if (fitColor > 255)
+            else if (fitColor > 254)
             {
-                fitColor = 255;
+                fitColor = 254; // <-- Putting 255 causes an impredictable transparent color
+            }
+
+            if (fitColor + this._contrast > 0)
+            {
+                fitColor -= Math.Abs((int)this._contrast);
             }
 
             return fitColor;

@@ -85,19 +85,9 @@ namespace smartSprite.SpriteEffectModule.Effects.Filters.UI
             this.txtScreenHeight.Text = this._filterSettable.TotalScreenHeight.ToString();
             this.txtScreenWidth.Text = this._filterSettable.TotalScreenWidth.ToString();
 
-            var percentageContrast = (int)(this._filterSettable.Contrast * 100);
-            this.tckContrast.Minimum = percentageContrast;
-            if (percentageContrast < 0)
-            {
-                this.tckContrast.Minimum = (int)(this._filterSettable.Contrast * 100) * 3;
-                this.tckContrast.Maximum = Math.Abs((int)(this._filterSettable.Contrast * 200));
-            }
-            else
-            {
-                this.tckContrast.Minimum = (int)(this._filterSettable.Contrast * 100) / 3;
-                this.tckContrast.Maximum = Math.Abs((int)(this._filterSettable.Contrast * 3 * 100));
-            }
-            this.tckContrast.Value = percentageContrast;
+            this.tckContrast.Minimum = -50;
+            this.tckContrast.Maximum = 0;
+            this.tckContrast.Value = 0;
         }
 
         /// <summary>
@@ -119,7 +109,7 @@ namespace smartSprite.SpriteEffectModule.Effects.Filters.UI
 
         private void tckContrast_MouseUp(object sender, MouseEventArgs e)
         {
-            this._filterSettable.Contrast = (float)tckContrast.Value / 100f;
+            this._filterSettable.Contrast = tckContrast.Value;
         }
 
         private void txtMaxColorAmount_Leave(object sender, EventArgs e)
