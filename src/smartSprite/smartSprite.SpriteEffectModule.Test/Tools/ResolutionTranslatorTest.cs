@@ -26,7 +26,8 @@ namespace smartSprite.SpriteEffectModule.Test.Tools
                 {
                     test.Translate(x, y, frame.GetPixel(x, y));
 
-                    x = (int)test.LastScannedPoint.X;   // <-- This was made because we known that horizontaly X coordinator has not changed 
+                    // x = (int)test.LastScannedPoint.X;   // <-- This was made because we known that horizontaly X coordinator has not changed 
+                    throw new NotImplementedException();
                 }
             }
 

@@ -32,12 +32,12 @@ namespace smartSuite.smartSprite.Effects.Tools{
         /// <summary>
         /// It´s the last scan that has scanned in Translated Method
         /// </summary>
-        private Pictures.Point _lastScannedPoint;
+        private PointRange _lastScannedPoint;
 
 		/// <summary>
 		/// Is a dictionary made of colors and collection of pixels
 		/// </summary>
-		private Dictionary<Color, PointRange> _translatedPixel = new Dictionary<Color, PointRange>();
+		private List<PointRange> _translatedPixel = new List<PointRange>();
         
         /// <summary>
         /// Gets the resolution tax
@@ -53,7 +53,7 @@ namespace smartSuite.smartSprite.Effects.Tools{
         /// <summary>
         /// Gets the last scanned point in Translate method
         /// </summary>
-        public Pictures.Point LastScannedPoint
+        public PointRange LastScannedPoint
         {
             get
             {
@@ -182,24 +182,24 @@ namespace smartSuite.smartSprite.Effects.Tools{
             int initialY = y;
             int finalX = x + this._resolutionTax;
             int finalY = y + this._resolutionTax;
-            
-            // Getting the points to translate
-            if (!this._translatedPixel.ContainsKey(newColor))
-            {
-                this._translatedPixel.Add(newColor, new PointRange());
-            }
-            var points = this._translatedPixel[newColor];
-            points.Prepare();
 
-            // Translating...
-            for (int yy = y; yy < finalY; yy++)
+            PointRange pointRange = null;
+            if (this._lastScannedPoint == null)
             {
-                for (int xx = x; xx < finalX; xx++)
+                pointRange = new PointRange();
+                pointRange.Color = newColor;
+                this._translatedPixel.Add(pointRange);
+            }
+            else
+            {
+                if (this._lastScannedPoint.Color != newColor)
                 {
-                    points.SetPoint(xx, yy);
-                    this._lastScannedPoint = new Pictures.Point(xx, yy);
+                    pointRange = new PointRange();
+                    pointRange.Color = newColor;
+                    this._translatedPixel.Add(pointRange);
                 }
             }
+            pointRange.UpdatePoint(initialX, initialY, finalX, finalY);
         }
 
         /// <summary>
@@ -223,12 +223,12 @@ namespace smartSuite.smartSprite.Effects.Tools{
             // Changing the internal buffer
             foreach (var translatedPixelItem in this._translatedPixel)
             {
-                foreach (var pointItem in translatedPixelItem.Value.ToPointList())
+                foreach (var pointItem in translatedPixelItem.ToPointList())
                 {
                     clonePicture.ReplacePixel(
                         (int)pointItem.X,
                         (int)pointItem.Y,
-                        translatedPixelItem.Key);
+                        translatedPixelItem.Color);
                 }
             }
 
@@ -239,7 +239,7 @@ namespace smartSuite.smartSprite.Effects.Tools{
         /// Gets a indicator informing if the point is occupied.
         /// </summary>
         /// <returns></returns>
-        private bool PointOcuppied(int x, int y, Color originColor, Dictionary<Color, PointRange> translatedPointList)
+        private bool PointOcuppied(int x, int y, Color originColor, List<PointRange> translatedPointList)
         {
             #region Entries validation
 
@@ -254,7 +254,7 @@ namespace smartSuite.smartSprite.Effects.Tools{
 
             #endregion
 
-            foreach (var values in translatedPointList.Values)
+            foreach (var values in translatedPointList)
             {
                 if (values.IsContained(x, y))
                 {

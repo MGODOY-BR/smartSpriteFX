@@ -193,10 +193,13 @@ namespace smartSuite.smartSprite.Effects.Core{
             foreach (var filterItem in EffectEngine._filterList.GetFilterBufferList())
             {
                 var draftFrame = previewFrame.Clone();
+                DateTime beginMoment = DateTime.Now;
                 if (filterItem.ApplyFilter(draftFrame, frameIndex))
                 {
                     previewFrame = draftFrame;
                 }
+                TimeSpan timeSpent = DateTime.Now.Subtract(beginMoment);
+                Console.WriteLine(filterItem.ToString() + ": " + timeSpent.TotalSeconds);
             }
 
             // Saving the result file

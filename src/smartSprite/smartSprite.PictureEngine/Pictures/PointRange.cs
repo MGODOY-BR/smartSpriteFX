@@ -1,6 +1,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 
@@ -21,23 +22,14 @@ namespace smartSuite.smartSprite.Pictures{
         private Point _endPoint;
 
         /// <summary>
-        /// It´s a list of different point ranges
+        /// It´s the color of range
         /// </summary>
-        private List<PointRange> _rangeList = new List<PointRange>();
+        public Color Color { get; set; }
 
         /// <summary>
         /// It´s the current Point range.
         /// </summary>
         private PointRange _currentRange;
-
-        /// <summary>
-        /// Prepare the range
-        /// </summary>
-        public void Prepare()
-        {
-            this._currentRange = new PointRange();
-            this._rangeList.Add(this._currentRange);
-        }
 
         /// <summary>
         /// Set a point
@@ -83,12 +75,9 @@ namespace smartSuite.smartSprite.Pictures{
 
             #endregion
 
-            foreach (var pointRange in this._rangeList)
+            if (this.HaveThisContained(x, y))
             {
-                if (pointRange.HaveThisContained(x, y))
-                {
-                    return true;
-                }
+                return true;
             }
 
             return false;
@@ -126,10 +115,7 @@ namespace smartSuite.smartSprite.Pictures{
         {
             List<Point> returnList = new List<Point>();
 
-            foreach (var rangeItem in this._rangeList)
-            {
-                returnList.AddRange(rangeItem.ConvertMeToPointList());
-            }
+            returnList.AddRange(this.ConvertMeToPointList());
 
             return returnList;
         }
@@ -177,6 +163,31 @@ namespace smartSuite.smartSprite.Pictures{
         {
             this._startPoint = new Point(initialX, initialY);
             this._endPoint = new Point(finalX, finalY);
+        }
+
+        /// <summary>
+        /// Updates the points
+        /// </summary>
+        /// <param name="initialX"></param>
+        /// <param name="initialY"></param>
+        /// <param name="finalX"></param>
+        /// <param name="finalY"></param>
+        public void UpdatePoint(int initialX, int initialY, int finalX, int finalY)
+        {
+            if (this._startPoint == null)
+            {
+                this._startPoint = new Point((float)initialX, (float)initialY);
+            }
+
+            if (this._endPoint == null)
+            {
+                this._endPoint = new Point((float)finalX, (float)finalY);
+            }
+            else
+            {
+                this._endPoint.X = (float)finalX;
+                this._endPoint.Y = (float)finalY;
+            }
         }
     }
 }
