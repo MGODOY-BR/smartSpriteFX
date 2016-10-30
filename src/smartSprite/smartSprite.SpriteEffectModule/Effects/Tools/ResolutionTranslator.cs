@@ -95,6 +95,10 @@ namespace smartSuite.smartSprite.Effects.Tools{
             this.Initialize(originalPicture, screenWidth, screenHeight, newScreenWidth, newScreenHeight, newColorAmount, contrast);
         }
 
+        public ResolutionTranslator() : base()
+        {
+        }
+
         /// <summary>
         /// Initializes the object
         /// </summary>
@@ -168,7 +172,8 @@ namespace smartSuite.smartSprite.Effects.Tools{
             {
                 throw new ArgumentOutOfRangeException("Invalid y coordinate");
             }
-            if (this.PointOcuppied(x, y, color, this._translatedPixel))
+            // if (this.PointOcuppied(x, y, color, this._translatedPixel))
+            if (this.PointOcuppied(x, y, this._resolutionTax))
             {
                 return;
             }
@@ -198,8 +203,13 @@ namespace smartSuite.smartSprite.Effects.Tools{
                     pointRange.Color = newColor;
                     this._translatedPixel.Add(pointRange);
                 }
+                else
+                {
+                    pointRange = this._lastScannedPoint;
+                }
             }
             pointRange.UpdatePoint(initialX, initialY, finalX, finalY);
+            this._lastScannedPoint = pointRange;
         }
 
         /// <summary>
@@ -239,24 +249,21 @@ namespace smartSuite.smartSprite.Effects.Tools{
         /// Gets a indicator informing if the point is occupied.
         /// </summary>
         /// <returns></returns>
-        private bool PointOcuppied(int x, int y, Color originColor, List<PointRange> translatedPointList)
+        private bool PointOcuppied(int x, int y, int resolutionTax)
         {
-            #region Entries validation
-
-            if (translatedPointList == null)
+            if (this._lastScannedPoint == null)
             {
-                throw new ArgumentNullException("translatedPointList");
-            }
-            if(this._originalPicture == null)
-            {
-                throw new ArgumentNullException("this._originalPicture");
+                return false;
             }
 
-            #endregion
+            // Inferring the line
+            int finalLineRange = (int)this._lastScannedPoint.EndPoint.Y;
+            // inferring the pixel
+            int finalPixel = (int)this._lastScannedPoint.EndPoint.X;
 
-            foreach (var values in translatedPointList)
+            if (y < finalLineRange)
             {
-                if (values.IsContained(x, y))
+                if (x < finalPixel)
                 {
                     return true;
                 }
@@ -264,5 +271,6 @@ namespace smartSuite.smartSprite.Effects.Tools{
 
             return false;
         }
+
     }
 }

@@ -27,6 +27,28 @@ namespace smartSuite.smartSprite.Pictures{
         public Color Color { get; set; }
 
         /// <summary>
+        /// Gets the start point
+        /// </summary>
+        public Point StartPoint
+        {
+            get
+            {
+                return _startPoint;
+            }
+        }
+
+        /// <summary>
+        /// Gets the endpoint
+        /// </summary>
+        public Point EndPoint
+        {
+            get
+            {
+                return _endPoint;
+            }
+        }
+
+        /// <summary>
         /// It´s the current Point range.
         /// </summary>
         private PointRange _currentRange;
