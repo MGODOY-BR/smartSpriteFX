@@ -172,7 +172,6 @@ namespace smartSuite.smartSprite.Effects.Tools{
             {
                 throw new ArgumentOutOfRangeException("Invalid y coordinate");
             }
-            // if (this.PointOcuppied(x, y, color, this._translatedPixel))
             if (this.PointOcuppied(x, y, this._resolutionTax))
             {
                 return;
@@ -181,6 +180,11 @@ namespace smartSuite.smartSprite.Effects.Tools{
             #endregion
 
             Color newColor = this._colorBuffer.GetSimilarColor(color);
+
+            if (this._originalPicture.TransparentColor != null && color == this._originalPicture.TransparentColor)
+            {
+                newColor = color;
+            }
 
             // Set the measurements of destination pixel
             int initialX = x;

@@ -77,6 +77,10 @@ namespace smartSuite.smartSprite.Effects.Infra
                 TransparentBackgroundFilter registeredTransparentBackgroundFilter = filterItem as TransparentBackgroundFilter;
                 if (registeredTransparentBackgroundFilter != null)
                 {
+                    if (this.AvoidedColorList == null)
+                    {
+                        this.AvoidedColorList = new List<Color>();
+                    }
                     this.AvoidedColorList.Add(registeredTransparentBackgroundFilter.TransparentColor);
                     break;
                 }
