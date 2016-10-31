@@ -1,5 +1,7 @@
 
 using smartSprite.Pictures.ColorPattern;
+using smartSuite.smartSprite.Effects.Core;
+using smartSuite.smartSprite.Effects.Filters;
 using smartSuite.smartSprite.Effects.Infra;
 using smartSuite.smartSprite.Pictures;
 using System;
@@ -38,7 +40,12 @@ namespace smartSuite.smartSprite.Effects.Tools{
 		/// Is a dictionary made of colors and collection of pixels
 		/// </summary>
 		private List<PointRange> _translatedPixel = new List<PointRange>();
-        
+
+        /// <summary>
+        /// Indicates if some of the filters are transparentFilter
+        /// </summary>
+        private bool _hasTransparentFilter = false;
+
         /// <summary>
         /// Gets the resolution tax
         /// </summary>
@@ -64,7 +71,26 @@ namespace smartSuite.smartSprite.Effects.Tools{
         /// <summary>
         /// It´s a list of color to avoid.
         /// </summary>
-        public List<Color> AvoidColorList { get; set; }
+        private List<Color> _avoidColorList = new List<Color>();
+
+        /// <summary>
+        /// It´s a list of color to avoid.
+        /// </summary>
+        public List<Color> AvoidColorList
+        {
+            get
+            {
+                return _avoidColorList;
+            }
+            set
+            {
+                _avoidColorList = value;
+                if (this._colorBuffer != null)
+                {
+                    this._colorBuffer.AvoidedColorList = _avoidColorList;
+                }
+            }
+        }
 
         /// <summary>
         /// Creates an instance of the object
@@ -128,7 +154,10 @@ namespace smartSuite.smartSprite.Effects.Tools{
 
             #endregion
 
-            this.AvoidColorList = new List<Color>();
+            if (this.AvoidColorList == null)
+            {
+                this.AvoidColorList = new List<Color>();
+            }
 
             this._originalPicture = originalPicture;
 
@@ -148,10 +177,23 @@ namespace smartSuite.smartSprite.Effects.Tools{
             this._resolutionTax =
                  (int)hipotenuseOriginalPicture / (int)hipotenuseNewPicture;
 
+            // Checking for transparent filter
+            var selectedFilterList = EffectEngine.GetSelectedFilterList();
+            foreach (var filterItem in selectedFilterList)
+            {
+                if (filterItem is TransparentBackgroundFilter)
+                {
+                    this._hasTransparentFilter = true;
+                    break;
+                }
+            }            
+
             this._colorBuffer = new ColorBuffer(newColorAmount, contrast);
             this._colorBuffer.AvoidedColorList = this.AvoidColorList;
             this._colorBuffer.AvoidedColorList.Add(originalPicture.TransparentColor);
         }
+
+        ColorEqualityComparer _comparer = new ColorEqualityComparer();
 
         /// <summary>
         /// Translate a pixel for a new resolution
@@ -184,6 +226,14 @@ namespace smartSuite.smartSprite.Effects.Tools{
             if (this._originalPicture.TransparentColor != null && color == this._originalPicture.TransparentColor)
             {
                 newColor = color;
+            }
+
+            if (!this._hasTransparentFilter)
+            {
+                if (_comparer.EqualsButNoAlpha(newColor, this._originalPicture.TransparentColor))
+                {
+                    return;
+                }
             }
 
             // Set the measurements of destination pixel

@@ -11,7 +11,7 @@ using System.Text;
 namespace smartSuite.smartSprite.Effects.Infra
 {
     /// <summary>
-    /// A buffer of colors, used to limt the quality of image
+    /// Controls a amount of colors, used to limt the quality of image
     /// </summary>
     public class ColorBuffer
     {
@@ -39,7 +39,11 @@ namespace smartSuite.smartSprite.Effects.Infra
         /// <summary>
         /// It´s a list of avoided colors
         /// </summary>
-        public List<Color> AvoidedColorList { get; set; }
+        public List<Color> AvoidedColorList
+        {
+            get;
+            set;
+        }
 
         /// <summary>
         /// Creates an instance of object
@@ -60,15 +64,7 @@ namespace smartSuite.smartSprite.Effects.Infra
             this._maxLength = length;
             this._contrast = contrast;
             this._rangeLength = this.GetRangeLength(this._maxLength);
-
-            //if (this._maxLength == 0)
-            //{
-                this._comparer = new ColorEqualityComparer(0);
-            //}
-            //else
-            //{
-            //    this._comparer = new ColorEqualityComparer(this._contrast);
-            //}
+            this._comparer = new ColorEqualityComparer(0);
 
             #region Getting the transparent background filter
 
@@ -172,7 +168,7 @@ namespace smartSuite.smartSprite.Effects.Infra
         {
             foreach (var avoidedColor in this.AvoidedColorList)
             {
-                if (!this._comparer.EqualsButNoAlpha(returnColor, avoidedColor))
+                if (!this._comparer.LooksLikeBySensibility2(returnColor, avoidedColor))
                 {
                     continue;
                 }
