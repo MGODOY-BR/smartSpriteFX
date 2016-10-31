@@ -27,6 +27,11 @@ namespace smartSuite.smartSprite.Effects.Infra
         private ColorEqualityComparer _comparer;
 
         /// <summary>
+        /// It´s a "tricky" comparer for colors
+        /// </summary>
+        private ColorEqualityComparer _trickyComparer = new ColorEqualityComparer(30f);
+
+        /// <summary>
         /// It´s a sensibility of colors.
         /// </summary>
         private int _contrast;
@@ -168,7 +173,7 @@ namespace smartSuite.smartSprite.Effects.Infra
         {
             foreach (var avoidedColor in this.AvoidedColorList)
             {
-                if (!this._comparer.LooksLikeBySensibility2(returnColor, avoidedColor))
+                if (!this._trickyComparer.LooksLikeBySensibility2(returnColor, avoidedColor))
                 {
                     continue;
                 }

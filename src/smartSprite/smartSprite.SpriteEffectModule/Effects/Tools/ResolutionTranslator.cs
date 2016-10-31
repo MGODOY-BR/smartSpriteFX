@@ -36,10 +36,15 @@ namespace smartSuite.smartSprite.Effects.Tools{
         /// </summary>
         private PointRange _lastScannedPoint;
 
-		/// <summary>
-		/// Is a dictionary made of colors and collection of pixels
-		/// </summary>
-		private List<PointRange> _translatedPixel = new List<PointRange>();
+        /// <summary>
+        /// It´s a comparer of colors
+        /// </summary>
+        private ColorEqualityComparer _comparer = new ColorEqualityComparer();
+
+        /// <summary>
+        /// Is a dictionary made of colors and collection of pixels
+        /// </summary>
+        private List<PointRange> _translatedPixel = new List<PointRange>();
 
         /// <summary>
         /// Indicates if some of the filters are transparentFilter
@@ -192,8 +197,6 @@ namespace smartSuite.smartSprite.Effects.Tools{
             this._colorBuffer.AvoidedColorList = this.AvoidColorList;
             this._colorBuffer.AvoidedColorList.Add(originalPicture.TransparentColor);
         }
-
-        ColorEqualityComparer _comparer = new ColorEqualityComparer();
 
         /// <summary>
         /// Translate a pixel for a new resolution

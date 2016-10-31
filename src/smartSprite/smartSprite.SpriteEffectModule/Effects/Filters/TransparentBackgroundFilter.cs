@@ -51,9 +51,12 @@ namespace smartSuite.smartSprite.Effects.Filters{
 
             for (int y = 0; y < frame.Height; y++)
             {
-                for (int x = 0; x < frame.Width; x++)
+                if (y == 0)
                 {
-                    backgroundPattern.Learn(x, y, frame.GetPixel(x, y));
+                    for (int x = 0; x < frame.Width; x++)
+                    {
+                        backgroundPattern.Learn(x, y, frame.GetPixel(x, y));
+                    }
                 }
             }
 
