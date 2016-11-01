@@ -47,7 +47,7 @@ namespace smartSprite.Pictures.ColorPattern
         /// <param name="comparing"></param>
         /// <param name="compareTo"></param>
         /// <returns></returns>
-        [Obsolete("Rather to use LooksLikeBySensibility method")]
+        [Obsolete("Try use LooksLikeBySensibility3")]
         public bool LooksLike(Color comparing, Color compareTo)
         {
             #region Entries validation
@@ -150,6 +150,7 @@ namespace smartSprite.Pictures.ColorPattern
         /// <param name="comparing"></param>
         /// <param name="compareTo"></param>
         /// <returns></returns>
+        [Obsolete("Try use LooksLikeBySensibility3")]
         public bool LooksLikeBySensibility(Color comparing, Color compareTo)
         {
             #region Entries validation
@@ -205,6 +206,7 @@ namespace smartSprite.Pictures.ColorPattern
         /// <param name="comparing"></param>
         /// <param name="compareTo"></param>
         /// <returns></returns>
+        [Obsolete("Try use LooksLikeBySensibility3")]
         public bool LooksLikeBySensibility2(Color comparing, Color compareTo)
         {
             ColorFactor colorFactor = ColorFactor.GetColorFactorByDifference(comparing, compareTo);
@@ -213,6 +215,28 @@ namespace smartSprite.Pictures.ColorPattern
                 colorFactor.R <= this._sensibility &&
                 colorFactor.G <= this._sensibility &&
                 colorFactor.B <= this._sensibility;
+        }
+
+        /// <summary>
+        /// Gets a indicator informing if whe colors are similar
+        /// </summary>
+        /// <param name="comparing"></param>
+        /// <param name="compareTo"></param>
+        /// <returns></returns>
+        public bool LooksLikeBySensibility3(Color comparing, Color compareTo)
+        {
+            ColorFactor colorFactor = ColorFactor.GetColorFactorByDifference(comparing, compareTo);
+
+            return
+                (
+                colorFactor.R <= this._sensibility &&
+                colorFactor.G <= this._sensibility) ||
+                (
+                colorFactor.G <= this._sensibility &&
+                colorFactor.B <= this._sensibility) ||
+                (
+                colorFactor.R <= this._sensibility &&
+                colorFactor.B <= this._sensibility);
         }
 
         /// <summary>

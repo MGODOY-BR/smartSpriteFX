@@ -4,6 +4,7 @@ using smartSuite.smartSprite.Effects.Core;
 using smartSuite.smartSprite.Effects.Filters;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -29,7 +30,7 @@ namespace smartSuite.smartSprite.Effects.Infra
         /// <summary>
         /// It´s a "tricky" comparer for colors
         /// </summary>
-        private ColorEqualityComparer _trickyComparer = new ColorEqualityComparer(30f);
+        private ColorEqualityComparer _trickyComparer = new ColorEqualityComparer(35f);
 
         /// <summary>
         /// It´s a sensibility of colors.
@@ -173,18 +174,17 @@ namespace smartSuite.smartSprite.Effects.Infra
         {
             foreach (var avoidedColor in this.AvoidedColorList)
             {
-                if (!this._trickyComparer.LooksLikeBySensibility2(returnColor, avoidedColor))
+                if (this._trickyComparer.LooksLikeBySensibility3(avoidedColor, returnColor))
                 {
-                    continue;
-                }
-                Color newColor =
-                    Color.FromArgb(
-                        returnColor.A,
-                        avoidedColor.R,
-                        this.GetOppositeColorComponent(avoidedColor.G),
-                        avoidedColor.B);
+                    Color newColor =
+                        Color.FromArgb(
+                            returnColor.A,
+                            this.GetOppositeColorComponent(returnColor.R),
+                            this.GetOppositeColorComponent(returnColor.G),
+                            this.GetOppositeColorComponent(returnColor.B));
 
-                returnColor = newColor;
+                    returnColor = newColor;
+                }
             }
 
             return returnColor;
