@@ -11,6 +11,9 @@ using smartSuite.smartSprite.Effects.Filters;
 
 namespace smartSprite.Forms.Controls.Animations.Effects
 {
+    /// <summary>
+    /// Represents am effect filter UI
+    /// </summary>
     public partial class EffectControl : UserControl
     {
         /// <summary>

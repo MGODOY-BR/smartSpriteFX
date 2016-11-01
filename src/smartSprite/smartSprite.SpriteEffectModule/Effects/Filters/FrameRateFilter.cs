@@ -56,7 +56,8 @@ namespace smartSuite.smartSprite.Effects.Filters{
         {
             var identification = base.GetIdentification();
             identification.SetName("Frame rate");
-            identification.setDescription("A filter which is applied to entire animation to reduce the frames among it to give the aspect of old-school fighting games.");
+            identification.SetDescription("A filter which is applied to entire animation to reduce the frames among it to give the aspect of old-school fighting games.");
+            identification.SetGroup("Animation");
 
             return identification;
         }

@@ -111,11 +111,14 @@
       <DependentUpon>LineControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Controls\LineControlState\LineControlStyle.cs" />
+    <Compile Include="Forms\Controls\NoneConfigurationPanel\NoneConfigurationPanelControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Controls\NoneConfigurationPanel\NoneConfigurationPanelControl.Designer.cs">
+      <DependentUpon>NoneConfigurationPanelControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Controls\ToolboxState\DraftSettings.cs" />
     <Compile Include="Forms\Controls\TreeViewState\GroupTag.cs" />
-    <Compile Include="Forms\NoneCofigurationPanelControl.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Forms\PathAlertForm.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -15,6 +15,7 @@ using smartSuite.smartSprite.Effects.Filters;
 using smartSuite.smartSprite.Effects.Infra;
 using smartSuite.smartSprite.Effects.Core;
 using smartSprite.Forms.Controls.EffectFilterPallete;
+using smartSprite.Forms.Controls.NoneConfigurationPanel;
 
 namespace smartSprite.Forms
 {
@@ -78,7 +79,7 @@ namespace smartSprite.Forms
                 var control = this.pnlSettingsMain.Controls[0];
                 control.Dispose();
                 this.pnlSettingsMain.Controls.Clear();
-                this.pnlSettingsMain.Controls.Add(new NoneCofigurationPanelControl());
+                this.pnlSettingsMain.Controls.Add(new NoneConfigurationPanelControl());
             }
         }
 
@@ -98,6 +99,7 @@ namespace smartSprite.Forms
             frameSelectionControl.SetPath(e.UserChoice);
             frameSelectionControl.SelectingFrame += FrameSelectionControl_SelectingFrame;
             frameSelectionControl.LoadThumbNails();
+            this.frameBox.Controls.Clear();
             this.frameBox.Controls.Add(frameSelectionControl);
 
             Settings.Default.lastAnimationFolder = e.UserChoice;

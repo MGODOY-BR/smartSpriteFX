@@ -144,7 +144,8 @@ namespace smartSuite.smartSprite.Effects.Filters{
         {
             var identification = base.GetIdentification();
             identification.SetName("16 bit");
-            identification.setDescription("A filter which turns the image in a 16 bit style, similar to Sega Genesis or Super NES");
+            identification.SetDescription("A filter which turns the image in a 16 bit style, similar to Sega Genesis or Super NES");
+            identification.SetGroup("Old School Video-Game");
 
             return identification;
         }

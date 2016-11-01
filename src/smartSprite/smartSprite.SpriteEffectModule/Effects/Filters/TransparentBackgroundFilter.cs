@@ -34,7 +34,8 @@ namespace smartSuite.smartSprite.Effects.Filters{
         {
             var identification = base.GetIdentification();
             identification.SetName("Transparent Background");
-            identification.setDescription("A filter which detects the background and turn it to transparent");
+            identification.SetDescription("A filter which detects the background and turn it to transparent");
+            identification.SetGroup("Background");
 
             return identification;
         }

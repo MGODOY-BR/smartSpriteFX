@@ -69,7 +69,8 @@ namespace smartSprite.SpriteEffectModule.Effects.Filters
         {
             var identification = base.GetIdentification();
             identification.SetName("Border Line");
-            identification.setDescription("A filter which adds a border line around the picture (requires a Transparent Background filter before)");
+            identification.SetDescription("A filter which adds a border line around the picture (requires a Transparent Background filter before)");
+            identification.SetGroup("Picture");
 
             return identification;
         }

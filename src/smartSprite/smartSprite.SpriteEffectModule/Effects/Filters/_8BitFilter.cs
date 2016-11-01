@@ -58,7 +58,8 @@ namespace smartSuite.smartSprite.Effects.Filters{
         {
             var identification = base.GetIdentification();
             identification.SetName("8 bit");
-            identification.setDescription("A filter which turns the image in a 8 bit style, similar to Sega Master System or NES");
+            identification.SetDescription("A filter which turns the image in a 8 bit style, similar to Sega Master System or NES");
+            identification.SetGroup("Old School Video-Game");
 
             return identification;
         }

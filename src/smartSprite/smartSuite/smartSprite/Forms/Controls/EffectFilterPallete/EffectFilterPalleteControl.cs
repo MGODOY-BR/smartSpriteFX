@@ -12,11 +12,16 @@ using smartSuite.smartSprite.Effects.FilterEngine;
 
 namespace smartSprite.Forms.Controls.EffectFilterPallete
 {
+    /// <summary>
+    /// Represents an UI interface where user selects the filteres
+    /// </summary>
     public partial class EffectFilterPalleteControl : UserControl
     {
         public EffectFilterPalleteControl()
         {
             InitializeComponent();
+
+            this.treeView1.DoubleClick += TreeView1_DoubleClick;
         }
 
         /// <summary>
@@ -41,10 +46,14 @@ namespace smartSprite.Forms.Controls.EffectFilterPallete
             {
                 return;
             }
+            if (this.treeView1.SelectedNode.Tag == null)
+            {
+                return;
+            }
 
             #endregion
 
-            this.SelectedFilterEvent(
+                this.SelectedFilterEvent(
                 this.treeView1,
                 new SelectionFilterEventArgs
                 {
@@ -79,6 +88,8 @@ namespace smartSprite.Forms.Controls.EffectFilterPallete
             var effectByFunctionList = from palleteItem in pallete
                                        group palleteItem by palleteItem.GetIdentification().GetGroup();
 
+            this.treeView1.Nodes.Clear();
+
             // Creating TreeView items
             foreach (var effectByFunctionGroup in effectByFunctionList)
             {
@@ -91,8 +102,6 @@ namespace smartSprite.Forms.Controls.EffectFilterPallete
                 }
                 this.treeView1.Nodes.Add(treeNode);
             }
-
-            this.treeView1.DoubleClick += TreeView1_DoubleClick;
         }
     }
 }

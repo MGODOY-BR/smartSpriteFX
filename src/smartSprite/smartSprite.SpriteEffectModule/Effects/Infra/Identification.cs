@@ -67,7 +67,7 @@ namespace smartSuite.smartSprite.Effects.Infra{
         /// Sets the description
         /// </summary>
         /// <param name="description"></param>
-        public void setDescription(string description)
+        public void SetDescription(string description)
         {
             #region Entries validation
             
@@ -134,5 +134,14 @@ namespace smartSuite.smartSprite.Effects.Infra{
             this._description = description;
             this._group = group;
 		}
-	}
+
+        /// <summary>
+        /// Sets the group
+        /// </summary>
+        /// <param name="group"></param>
+        public void SetGroup(string group)
+        {
+            this._group = group;
+        }
+    }
 }
