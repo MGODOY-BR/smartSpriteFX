@@ -94,7 +94,7 @@ namespace smartSuite.smartSprite.Effects.Filters{
 
                     if (pixel == null)
                     {
-                        throw new ArgumentNullException("pixel");
+                        continue;
                     }
 
                     #endregion

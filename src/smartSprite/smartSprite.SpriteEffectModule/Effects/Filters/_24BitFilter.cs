@@ -94,7 +94,7 @@ namespace smartSuite.smartSprite.Effects.Filters{
 
                     if (pixel == null)
                     {
-                        throw new ArgumentNullException("pixel");
+                        continue;
                     }
 
                     #endregion
@@ -117,11 +117,10 @@ namespace smartSuite.smartSprite.Effects.Filters{
 
         public override void Reset()
         {
-            // This specification are initially based on Neo Geo Console
+            // This specification are initially based on a modification in Neo Geo Console
             this._colorBufferAmount = 4096;
-            this._destinationScreenWidth = 320;
-            this._destinationScreenHeight = 224;
-
+            this._destinationScreenWidth = 320 + 50;
+            this._destinationScreenHeight = 224 + 50;
             this._contrast = 0;
 
             this._screenWidth = 1366;

@@ -180,7 +180,7 @@ namespace smartSuite.smartSprite.Effects.Filters{
 
                     if (pixel == null)
                     {
-                        throw new ArgumentNullException("pixel");
+                        continue;
                     }
 
                     #endregion
@@ -203,10 +203,10 @@ namespace smartSuite.smartSprite.Effects.Filters{
 
         public override void Reset()
         {
-            // This specification are initially based on SNES Console
-            this._colorBufferAmount = 256;
-            this._destinationScreenWidth = 256;
-            this._destinationScreenHeight = 224;
+            // This specification are initially based on modification and mix between Sega Genesis and SNES Console
+            this._colorBufferAmount = 64;
+            this._destinationScreenWidth = 256 + 50;
+            this._destinationScreenHeight = 224 + 50;
             this._contrast = 0;
 
             this._screenWidth = 1366;
