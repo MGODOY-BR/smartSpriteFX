@@ -125,17 +125,23 @@
     <Compile Include="Forms\PathAlertForm.Designer.cs">
       <DependentUpon>PathAlertForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\PrincipalForm.cs">
+    <Compile Include="Forms\LandscapeForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\PrincipalForm.Designer.cs">
-      <DependentUpon>PrincipalForm.cs</DependentUpon>
+    <Compile Include="Forms\LandscapeForm.Designer.cs">
+      <DependentUpon>LandscapeForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\ProgressForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\ProgressForm.Designer.cs">
       <DependentUpon>ProgressForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SelectModeScreenForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SelectModeScreenForm.Designer.cs">
+      <DependentUpon>SelectModeScreenForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Utilities\TreeViewUtil.cs" />
     <Compile Include="Program.cs" />
@@ -167,11 +173,14 @@
     <EmbeddedResource Include="Forms\PathAlertForm.resx">
       <DependentUpon>PathAlertForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\PrincipalForm.resx">
-      <DependentUpon>PrincipalForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\LandscapeForm.resx">
+      <DependentUpon>LandscapeForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ProgressForm.resx">
       <DependentUpon>ProgressForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SelectModeScreenForm.resx">
+      <DependentUpon>SelectModeScreenForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
