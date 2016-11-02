@@ -315,7 +315,6 @@ namespace smartSuite.smartSprite.Effects.FilterEngine{
             {
                 var filter = this._filterBufferList[i];
 
-                filter.Reset();
                 if (filter.ApplyFilter(picture, frameIndex))
                 {
                     String baseFolder =

@@ -34,5 +34,10 @@ namespace smartSprite.Forms
         {
             System.Diagnostics.Process.Start(e.Link.LinkData.ToString());
         }
+
+        private void PathAlertForm_Load(object sender, EventArgs e)
+        {
+            this.Focus();
+        }
     }
 }
