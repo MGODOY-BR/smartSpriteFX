@@ -174,7 +174,18 @@ namespace smartSuite.smartSprite.Effects.Filters{
             {
                 for (int x = 0; x < frame.Width; x++)
                 {
-                    translator.Translate(x, y, frame.GetPixel(x, y));
+                    var pixel = frame.GetPixel(x, y);
+
+                    #region Entries validation
+
+                    if (pixel == null)
+                    {
+                        throw new ArgumentNullException("pixel");
+                    }
+
+                    #endregion
+
+                    translator.Translate(x, y, pixel.Value);
                 }
             }
 

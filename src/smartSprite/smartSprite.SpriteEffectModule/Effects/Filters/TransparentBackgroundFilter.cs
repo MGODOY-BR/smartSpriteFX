@@ -56,7 +56,18 @@ namespace smartSuite.smartSprite.Effects.Filters{
                 {
                     for (int x = 0; x < frame.Width; x++)
                     {
-                        backgroundPattern.Learn(x, y, frame.GetPixel(x, y));
+                        var pixel = frame.GetPixel(x, y);
+
+                        #region Entries validation
+
+                        if (pixel == null)
+                        {
+                            throw new ArgumentNullException("pixel");
+                        }
+
+                        #endregion
+
+                        backgroundPattern.Learn(x, y, pixel.Value);
                     }
                 }
             }

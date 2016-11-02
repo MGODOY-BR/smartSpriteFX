@@ -234,18 +234,28 @@ namespace smartSuite.smartSprite.Pictures
                             var piecePixel =
                                 this._referencePicture.GetPixel(x, y);
 
+
+                            #region Entries validation
+
+                            if (piecePixel == null)
+                            {
+                                throw new ArgumentNullException("piecePixel");
+                            }
+
+                            #endregion
+
                             if ((y > minY && y < maxY) && (x > minX && x < maxX))
                             {
                                 // Creating fragment image
                                 pieceBitmap.SetPixel(
                                     Math.Abs(minX - x),
                                     Math.Abs(minY - y),
-                                    piecePixel);
+                                    piecePixel.Value);
                             }
                             else
                             {
                                 // Learning pattern
-                                backgroundPattern.Learn(x, y, piecePixel);
+                                backgroundPattern.Learn(x, y, piecePixel.Value);
                             }
                         }
                         catch (IndexOutOfRangeException)

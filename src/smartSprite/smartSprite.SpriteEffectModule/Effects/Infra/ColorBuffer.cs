@@ -132,7 +132,7 @@ namespace smartSuite.smartSprite.Effects.Infra
         /// </summary>
         /// <param name="colorComponent"></param>
         /// <returns></returns>
-        private int GetSlightlyColorComponent(int colorComponent)
+        public int GetSlightlyColorComponent(int colorComponent)
         {
             int factor = 5;
 

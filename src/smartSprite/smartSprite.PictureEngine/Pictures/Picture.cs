@@ -100,12 +100,14 @@ namespace smartSuite.smartSprite.Pictures{
                 for (int x = 0; x < other.Width; x++)
                 {
                     var color = other.GetPixel(x, y);
-                    this.ReplacePixel(x, y, color);
-
-                    var argb = color.ToArgb();
-                    if (!colorSet.Contains(argb))
+                    if (color != null)
                     {
-                        colorSet.Add(argb);
+                        this.ReplacePixel(x, y, color.Value);
+                        var argb = color.Value.ToArgb();
+                        if (!colorSet.Contains(argb))
+                        {
+                            colorSet.Add(argb);
+                        }
                     }
                 }
             }
@@ -374,7 +376,7 @@ namespace smartSuite.smartSprite.Pictures{
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <returns></returns>
-        public Color GetPixel(int x, int y)
+        public Color? GetPixel(int x, int y)
         {
             var key = this.FormatKey(x, y);
 
@@ -384,7 +386,7 @@ namespace smartSuite.smartSprite.Pictures{
             }
             if (!this._buffer.ContainsKey(key))
             {
-                throw new IndexOutOfRangeException("Coordinates out of range of picture.");
+                return null;
             }
 
             Color pixel = this._buffer[key].GetInnerColor();
@@ -596,6 +598,7 @@ namespace smartSuite.smartSprite.Pictures{
 
             #endregion
 
+            Color firstPixel = this.GetPixel(0, 0).Value;
             using (var pieceBitmap = new Bitmap(this._width, this._height, PixelFormat.Format32bppArgb))
             {
                 for (int y = 0; y < this._height; y++)
@@ -604,12 +607,21 @@ namespace smartSuite.smartSprite.Pictures{
                     {
                         var piecePixel = this.GetPixel(x, y);
 
-                        if (colorComparer.Equals(piecePixel, transparentColor))
+                        #region Entries validation
+
+                        if (piecePixel == null)
+                        {
+                            piecePixel = firstPixel;
+                        }
+
+                        #endregion
+
+                        if (colorComparer.Equals(piecePixel.Value, transparentColor))
                         {
                             piecePixel = transparentColor;
                         }
 
-                        pieceBitmap.SetPixel(x, y, piecePixel);
+                        pieceBitmap.SetPixel(x, y, piecePixel.Value);
                     }
                 }
 
@@ -733,7 +745,7 @@ namespace smartSuite.smartSprite.Pictures{
         internal void ReleaseBuffer()
         {
             this._buffer.Clear();
-            this._transparentColor = Color.Transparent;
+            this._colorInfoBuffer.Clear();
         }
     }
 }

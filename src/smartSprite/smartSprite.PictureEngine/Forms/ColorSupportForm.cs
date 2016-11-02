@@ -86,8 +86,18 @@ namespace smartSprite.Forms
                     e.X / (int)zoomFactor.Value, 
                     e.Y / (int)zoomFactor.Value);
 
-            colorBox.BackColor = pixelInfo;
-            this._selectedColor = pixelInfo;
+
+            #region Entries validation
+
+            if (pixelInfo == null)
+            {
+                throw new ArgumentNullException("pixelInfo");
+            }
+
+            #endregion
+
+            colorBox.BackColor = pixelInfo.Value;
+            this._selectedColor = pixelInfo.Value;
         }
 
         private void ZoomFactor_ValueChanged(object sender, EventArgs e)

@@ -235,7 +235,12 @@ namespace smartSuite.smartSprite.Effects.Tools{
             {
                 if (_comparer.EqualsButNoAlpha(newColor, this._originalPicture.TransparentColor))
                 {
-                    return;
+                    newColor =
+                        Color.FromArgb(
+                            newColor.A,
+                            newColor.R,
+                            this._colorBuffer.GetSlightlyColorComponent(newColor.G),
+                            newColor.B);
                 }
             }
 
@@ -286,6 +291,7 @@ namespace smartSuite.smartSprite.Effects.Tools{
         {
             // Copying picture
             Picture clonePicture = this._originalPicture.Clone();
+            clonePicture.ReleaseBuffer();
 
             // Changing the internal buffer
             foreach (var translatedPixelItem in this._translatedPixel)
