@@ -182,19 +182,6 @@ namespace smartSprite.SpriteEffectModule.Effects.Filters.UI
             this._filterSettable.TotalScreenHeight = int.Parse(((TextBox)sender).Text);
         }
 
-        private void btnPreview_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                this.Cursor = Cursors.WaitCursor;
-                EffectFacade.UpdatePreviewBoard();
-            }
-            finally
-            {
-                this.Cursor = Cursors.Default;
-            }
-        }
-
         private void btnReset_Click(object sender, EventArgs e)
         {
             try

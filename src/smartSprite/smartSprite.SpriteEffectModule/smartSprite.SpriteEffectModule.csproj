@@ -65,6 +65,7 @@
     <Compile Include="Effects\Filters\UI\ColorSelectionControl.Designer.cs">
       <DependentUpon>ColorSelectionControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Effects\Filters\UI\MessageBoxUtil.cs" />
     <Compile Include="Effects\Infra\UI\IApplyFilterCallback.cs" />
     <Compile Include="Effects\Facade\EffectFacade.cs" />
     <Compile Include="Effects\FilterEngine\FilterCollection.cs" />

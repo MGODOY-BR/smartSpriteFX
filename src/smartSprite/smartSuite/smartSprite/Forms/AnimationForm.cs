@@ -16,6 +16,7 @@ using smartSuite.smartSprite.Effects.Infra;
 using smartSuite.smartSprite.Effects.Core;
 using smartSprite.Forms.Controls.EffectFilterPallete;
 using smartSprite.Forms.Controls.NoneConfigurationPanel;
+using smartSprite.SpriteEffectModule.Effects.Filters.UI;
 
 namespace smartSprite.Forms
 {
@@ -79,7 +80,7 @@ namespace smartSprite.Forms
                 var control = this.pnlSettingsMain.Controls[0];
                 control.Dispose();
                 this.pnlSettingsMain.Controls.Clear();
-                this.pnlSettingsMain.Controls.Add(new NoneConfigurationPanelControl());
+                this.pnlSettingsMain.Controls.Add(new Controls.NoneConfigurationPanel.NoneConfigurationPanelControl());
             }
         }
 
@@ -239,6 +240,20 @@ namespace smartSprite.Forms
         /// <param name="e"></param>
         private void btnApplyAll_Click(object sender, EventArgs e)
         {
+            #region Entries validation
+
+            if (EffectEngine.GetSelectedFilterList() == null)
+            {
+                throw new ArgumentNullException("EffectEngine.GetSelectedFilterList()");
+            }
+            if (EffectEngine.GetSelectedFilterList().Count == 0)
+            {
+                MessageBoxUtil.Show("There's no filter to preview. Please open the animation folder first and after select one or more filters.", MessageBoxIcon.Error);
+                return;
+            }
+
+            #endregion
+
             EffectEngine.ApplyFromUI(new ProgressForm());
         }
 
@@ -372,6 +387,25 @@ namespace smartSprite.Forms
 
         private void btnPreview_Click(object sender, EventArgs e)
         {
+            #region Entries validation
+
+            if (this.previewBoard.Image == null)
+            {
+                MessageBoxUtil.Show("There's no frame to preview. Please select any image from animation folder first.", MessageBoxIcon.Error);
+                return;
+            }
+            if (EffectEngine.GetSelectedFilterList() == null)
+            {
+                throw new ArgumentNullException("EffectEngine.GetSelectedFilterList()");
+            }
+            if (EffectEngine.GetSelectedFilterList().Count == 0)
+            {
+                MessageBoxUtil.Show("There's no filter to preview. Please open the animation folder first and after select one or more filters.", MessageBoxIcon.Error);
+                return;
+            }
+
+            #endregion
+
             try
             {
                 this.Cursor = Cursors.WaitCursor;

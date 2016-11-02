@@ -112,6 +112,19 @@ namespace smartSuite.smartSprite.Effects.Core{
         /// <returns></returns>
         public static void Apply(IApplyFilterCallback callback)
         {
+            #region Entries validation
+
+            if (EffectEngine._iterator == null)
+            {
+                throw new ArgumentNullException("EffectEngine._iterator");
+            }
+            if (EffectEngine._applyingThreadList == null)
+            {
+                throw new ArgumentNullException("EffectEngine._applyingThreadList");
+            }
+
+            #endregion
+
             EffectEngine._callback = callback;
             EffectEngine._outputPath = null;
 
@@ -173,11 +186,19 @@ namespace smartSuite.smartSprite.Effects.Core{
 
             if (EffectEngine._previewBoard == null)
             {
-                throw new ArgumentNullException("previewBoard hasn't setted yet. Call SetPreviewBoard() before.");
+                throw new ArgumentNullException("EffectEngine._previewBoard", "previewBoard hasn't setted yet. Call SetPreviewBoard() before.");
             }
             if (EffectEngine._iterator == null)
             {
                 throw new ArgumentNullException("EffectEngine._iterator");
+            }
+            if (EffectEngine._filterList == null)
+            {
+                throw new ArgumentNullException("EffectEngine._filterList");
+            }
+            if (EffectEngine._filterList.Count() == 0)
+            {
+                throw new ArgumentException("EffectEngine._filterList", "None filter has been selected!");
             }
 
             #endregion
@@ -193,13 +214,10 @@ namespace smartSuite.smartSprite.Effects.Core{
             foreach (var filterItem in EffectEngine._filterList.GetFilterBufferList())
             {
                 var draftFrame = previewFrame.Clone();
-                //DateTime beginMoment = DateTime.Now;
                 if (filterItem.ApplyFilter(draftFrame, frameIndex))
                 {
                     previewFrame = draftFrame;
                 }
-                //TimeSpan timeSpent = DateTime.Now.Subtract(beginMoment);
-                //Console.WriteLine(filterItem.ToString() + ": " + timeSpent.TotalSeconds);
             }
 
             // Saving the result file

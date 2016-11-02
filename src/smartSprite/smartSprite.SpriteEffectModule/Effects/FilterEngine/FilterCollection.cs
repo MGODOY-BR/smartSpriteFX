@@ -190,6 +190,24 @@ namespace smartSuite.smartSprite.Effects.FilterEngine{
         }
 
         /// <summary>
+        /// Gets the amount of selected filter
+        /// </summary>
+        /// <returns></returns>
+        public int Count()
+        {
+            #region Entries validation
+
+            if (this._filterBufferList == null)
+            {
+                throw new ArgumentNullException("this._filterBufferList");
+            }
+
+            #endregion
+
+            return this._filterBufferList.Count;
+        }
+
+        /// <summary>
         /// Clears the filter buffer list
         /// </summary>
         public void Clear()

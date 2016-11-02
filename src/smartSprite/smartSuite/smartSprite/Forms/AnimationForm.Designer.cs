@@ -36,7 +36,8 @@
             this.previewBoard = new System.Windows.Forms.PictureBox();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.pnlFilterPanel = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.pnlApply = new System.Windows.Forms.Panel();
+            this.btnPreview = new System.Windows.Forms.Button();
             this.btnApplyAll = new System.Windows.Forms.Button();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.txtSettingsDescription = new System.Windows.Forms.TextBox();
@@ -49,7 +50,6 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panelTool = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnPreview = new System.Windows.Forms.Button();
             this.topPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -61,7 +61,7 @@
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.pnlApply.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
             this.splitContainer3.Panel1.SuspendLayout();
             this.splitContainer3.Panel2.SuspendLayout();
@@ -152,7 +152,7 @@
             // splitContainer2.Panel1
             // 
             this.splitContainer2.Panel1.Controls.Add(this.pnlFilterPanel);
-            this.splitContainer2.Panel1.Controls.Add(this.panel2);
+            this.splitContainer2.Panel1.Controls.Add(this.pnlApply);
             // 
             // splitContainer2.Panel2
             // 
@@ -175,16 +175,26 @@
             this.pnlFilterPanel.Size = new System.Drawing.Size(217, 73);
             this.pnlFilterPanel.TabIndex = 0;
             // 
-            // panel2
+            // pnlApply
             // 
-            this.panel2.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.panel2.Controls.Add(this.btnPreview);
-            this.panel2.Controls.Add(this.btnApplyAll);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(217, 28);
-            this.panel2.TabIndex = 1;
+            this.pnlApply.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.pnlApply.Controls.Add(this.btnPreview);
+            this.pnlApply.Controls.Add(this.btnApplyAll);
+            this.pnlApply.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlApply.Location = new System.Drawing.Point(0, 0);
+            this.pnlApply.Name = "pnlApply";
+            this.pnlApply.Size = new System.Drawing.Size(217, 28);
+            this.pnlApply.TabIndex = 1;
+            // 
+            // btnPreview
+            // 
+            this.btnPreview.Location = new System.Drawing.Point(100, 2);
+            this.btnPreview.Name = "btnPreview";
+            this.btnPreview.Size = new System.Drawing.Size(75, 23);
+            this.btnPreview.TabIndex = 1;
+            this.btnPreview.Text = "PREVIEW";
+            this.btnPreview.UseVisualStyleBackColor = true;
+            this.btnPreview.Click += new System.EventHandler(this.btnPreview_Click);
             // 
             // btnApplyAll
             // 
@@ -323,16 +333,6 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // btnPreview
-            // 
-            this.btnPreview.Location = new System.Drawing.Point(100, 2);
-            this.btnPreview.Name = "btnPreview";
-            this.btnPreview.Size = new System.Drawing.Size(75, 23);
-            this.btnPreview.TabIndex = 1;
-            this.btnPreview.Text = "PREVIEW";
-            this.btnPreview.UseVisualStyleBackColor = true;
-            this.btnPreview.Click += new System.EventHandler(this.btnPreview_Click);
-            // 
             // AnimationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -359,7 +359,7 @@
             this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
+            this.pnlApply.ResumeLayout(false);
             this.splitContainer3.Panel1.ResumeLayout(false);
             this.splitContainer3.Panel1.PerformLayout();
             this.splitContainer3.Panel2.ResumeLayout(false);
@@ -388,7 +388,7 @@
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.Panel pnlFilterPanel;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel pnlApply;
         private System.Windows.Forms.Panel pnlSettingTop;
         private System.Windows.Forms.Panel pnlSettingsMain;
         private System.Windows.Forms.Label label1;
