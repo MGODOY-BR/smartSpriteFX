@@ -33,3 +33,4 @@ C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSuit
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSuite\smartSprite\bin\Debug\smartSprite.pdb
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSuite\smartSprite\obj\Debug\smartSprite.Forms.LandscapeForm.resources
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSuite\smartSprite\obj\Debug\smartSprite.Forms.SelectModeScreenForm.resources
+C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSuite\smartSprite\obj\Debug\smartSprite.Forms.Controls.SwitchMode.SwitchModeControl.resources

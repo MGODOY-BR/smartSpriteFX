@@ -35,7 +35,6 @@
             this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.lblVersion = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.browserPanel = new System.Windows.Forms.FlowLayoutPanel();
@@ -114,7 +113,7 @@
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 37F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1019, 389);
             this.tableLayoutPanel1.TabIndex = 1;
@@ -122,27 +121,17 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.lblVersion);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1013, 44);
+            this.panel1.Size = new System.Drawing.Size(1013, 31);
             this.panel1.TabIndex = 0;
-            // 
-            // lblVersion
-            // 
-            this.lblVersion.AutoSize = true;
-            this.lblVersion.Location = new System.Drawing.Point(7, 0);
-            this.lblVersion.Name = "lblVersion";
-            this.lblVersion.Size = new System.Drawing.Size(51, 13);
-            this.lblVersion.TabIndex = 2;
-            this.lblVersion.Text = "Indefined";
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::smartSprite.Properties.Resources.logo;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 16);
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(494, 28);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -157,11 +146,11 @@
             this.tableLayoutPanel2.Controls.Add(this.browserPanel, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.splitContainer1, 1, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 53);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 40);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1013, 333);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1013, 346);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
             // browserPanel
@@ -170,7 +159,7 @@
             this.browserPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.browserPanel.Location = new System.Drawing.Point(3, 3);
             this.browserPanel.Name = "browserPanel";
-            this.browserPanel.Size = new System.Drawing.Size(158, 327);
+            this.browserPanel.Size = new System.Drawing.Size(158, 340);
             this.browserPanel.TabIndex = 0;
             // 
             // splitContainer1
@@ -188,7 +177,7 @@
             // 
             this.splitContainer1.Panel2.BackColor = System.Drawing.SystemColors.WindowFrame;
             this.splitContainer1.Panel2.Controls.Add(this.tableLayoutPieceBlock);
-            this.splitContainer1.Size = new System.Drawing.Size(843, 327);
+            this.splitContainer1.Size = new System.Drawing.Size(843, 340);
             this.splitContainer1.SplitterDistance = 635;
             this.splitContainer1.SplitterWidth = 8;
             this.splitContainer1.TabIndex = 1;
@@ -199,11 +188,11 @@
             // toolStripContainer1.ContentPanel
             // 
             this.toolStripContainer1.ContentPanel.Controls.Add(this.pnlImage);
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(635, 327);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(635, 340);
             this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolStripContainer1.Location = new System.Drawing.Point(0, 0);
             this.toolStripContainer1.Name = "toolStripContainer1";
-            this.toolStripContainer1.Size = new System.Drawing.Size(635, 327);
+            this.toolStripContainer1.Size = new System.Drawing.Size(635, 340);
             this.toolStripContainer1.TabIndex = 2;
             this.toolStripContainer1.Text = "toolStripContainer1";
             // 
@@ -220,13 +209,13 @@
             this.pnlImage.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlImage.Location = new System.Drawing.Point(0, 0);
             this.pnlImage.Name = "pnlImage";
-            this.pnlImage.Size = new System.Drawing.Size(635, 327);
+            this.pnlImage.Size = new System.Drawing.Size(635, 340);
             this.pnlImage.TabIndex = 0;
             // 
             // hScrollBar1
             // 
             this.hScrollBar1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.hScrollBar1.Location = new System.Drawing.Point(0, 306);
+            this.hScrollBar1.Location = new System.Drawing.Point(0, 319);
             this.hScrollBar1.Name = "hScrollBar1";
             this.hScrollBar1.Size = new System.Drawing.Size(614, 17);
             this.hScrollBar1.TabIndex = 1;
@@ -236,7 +225,7 @@
             this.vScrollBar1.Dock = System.Windows.Forms.DockStyle.Right;
             this.vScrollBar1.Location = new System.Drawing.Point(614, 0);
             this.vScrollBar1.Name = "vScrollBar1";
-            this.vScrollBar1.Size = new System.Drawing.Size(17, 323);
+            this.vScrollBar1.Size = new System.Drawing.Size(17, 336);
             this.vScrollBar1.TabIndex = 0;
             // 
             // toolStrip1
@@ -276,7 +265,7 @@
             this.tableLayoutPieceBlock.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.260726F));
             this.tableLayoutPieceBlock.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 92.73927F));
             this.tableLayoutPieceBlock.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 68F));
-            this.tableLayoutPieceBlock.Size = new System.Drawing.Size(200, 327);
+            this.tableLayoutPieceBlock.Size = new System.Drawing.Size(200, 340);
             this.tableLayoutPieceBlock.TabIndex = 1;
             this.tableLayoutPieceBlock.Visible = false;
             // 
@@ -292,9 +281,9 @@
             // treeView1
             // 
             this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeView1.Location = new System.Drawing.Point(3, 21);
+            this.treeView1.Location = new System.Drawing.Point(3, 22);
             this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(194, 234);
+            this.treeView1.Size = new System.Drawing.Size(194, 246);
             this.treeView1.TabIndex = 1;
             this.toolTip1.SetToolTip(this.treeView1, "Piece hierarchy (big things are to comes up from here in near future...)");
             // 
@@ -306,7 +295,7 @@
             this.tableLayoutPanel4.Controls.Add(this.btnSaveState, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.btnExportToUnity, 1, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 261);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 274);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -417,7 +406,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label lblVersion;
         private System.Windows.Forms.OpenFileDialog openDraftFileDialog1;
         private System.Windows.Forms.OpenFileDialog openSmartSpriteFileDialog1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;

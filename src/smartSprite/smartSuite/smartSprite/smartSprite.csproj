@@ -117,6 +117,12 @@
     <Compile Include="Forms\Controls\NoneConfigurationPanel\NoneConfigurationPanelControl.Designer.cs">
       <DependentUpon>NoneConfigurationPanelControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Controls\SwitchMode\SwitchModeControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Controls\SwitchMode\SwitchModeControl.Designer.cs">
+      <DependentUpon>SwitchModeControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Controls\ToolboxState\DraftSettings.cs" />
     <Compile Include="Forms\Controls\TreeViewState\GroupTag.cs" />
     <Compile Include="Forms\PathAlertForm.cs">
@@ -169,6 +175,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Controls\LineControl.resx">
       <DependentUpon>LineControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Controls\SwitchMode\SwitchModeControl.resx">
+      <DependentUpon>SwitchModeControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\PathAlertForm.resx">
       <DependentUpon>PathAlertForm.cs</DependentUpon>

@@ -17,6 +17,7 @@ using smartSuite.smartSprite.Effects.Core;
 using smartSprite.Forms.Controls.EffectFilterPallete;
 using smartSprite.Forms.Controls.NoneConfigurationPanel;
 using smartSprite.SpriteEffectModule.Effects.Filters.UI;
+using smartSprite.Forms.Controls.SwitchMode;
 
 namespace smartSprite.Forms
 {
@@ -57,6 +58,9 @@ namespace smartSprite.Forms
 
         private void AnimationForm_Load(object sender, EventArgs e)
         {
+            var switchModeControl = new SwitchModeControl();
+            switchModeControl.Dock = DockStyle.Right;
+            this.pictureBox1.Controls.Add(switchModeControl);
         }
 
         /// <summary>

@@ -1,4 +1,5 @@
-﻿using smartSprite.SpriteEffectModule.Effects.Filters.UI;
+﻿using smartSprite.Forms.Controls.SwitchMode;
+using smartSprite.SpriteEffectModule.Effects.Filters.UI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -73,5 +74,10 @@ namespace smartSprite.Forms
             return false;
         }
 
+        private void SelectModeScreenForm_Load(object sender, EventArgs e)
+        {
+            var switchModeControl = new SwitchModeControl();
+            this.panel4.Controls.Add(switchModeControl);
+        }
     }
 }

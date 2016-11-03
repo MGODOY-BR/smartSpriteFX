@@ -1,5 +1,6 @@
 ﻿using smartSprite.Forms.Controls;
 using smartSprite.Forms.Controls.Browsers;
+using smartSprite.Forms.Controls.SwitchMode;
 using smartSprite.Forms.Controls.TreeViewState;
 using smartSprite.Forms.Utilities;
 using smartSprite.Properties;
@@ -19,6 +20,9 @@ using System.Windows.Forms;
 
 namespace smartSprite.Forms
 {
+    /// <summary>
+    /// Represents a form to handle the effect mode, animation-oriented
+    /// </summary>
     public partial class LandscapeForm : Form
     {
         /// <summary>
@@ -80,13 +84,6 @@ namespace smartSprite.Forms
             {
                 return !item.Contains(".smartMap.");
             }).ToArray();
-        }
-
-        /// <summary>
-        /// Shows the runnnig result
-        /// </summary>
-        private void ShowRunningResult(bool visibility)
-        {
         }
 
         /// <summary>
@@ -158,13 +155,6 @@ namespace smartSprite.Forms
         {
             LoadDefaultSetting(Settings.Default.lastDraftFolder, this._draftBrowser);
             LoadDefaultSetting(Settings.Default.lastProjectFolder, this._projectBrowser);
-            // LoadDefaultSetting(Settings.Default.lastExportFolder, null, this.exportToUnityDialog1);
-
-            // this.lblVersion.Text = this.GetType().Assembly.GetName().Version.ToString() + "(Alpha)";
-            var myFileVersionInfo =
-                FileVersionInfo.GetVersionInfo(
-                    this.GetType().Assembly.Location);
-            this.lblVersion.Text = myFileVersionInfo.FileVersion + "(Alpha)";
         }
 
         /// <summary>
@@ -515,6 +505,10 @@ namespace smartSprite.Forms
             // this.txtLoadSprite.Leave += txtLoadSprite_Leave;
 
             this.MouseWheel += PrincipalForm_MouseWheel;
+
+            var switchModeControl = new SwitchModeControl();
+            switchModeControl.Dock = DockStyle.Right;
+            this.panel1.Controls.Add(switchModeControl);
         }
 
         private void TreeView1_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
