@@ -38,6 +38,7 @@
             this.lblVersion = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.browserPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.pnlImage = new System.Windows.Forms.Panel();
@@ -58,7 +59,6 @@
             this.savePiecesBackgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.progressTime = new System.Windows.Forms.Timer(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.browserPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.statusStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -163,6 +163,15 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(1013, 333);
             this.tableLayoutPanel2.TabIndex = 1;
+            // 
+            // browserPanel
+            // 
+            this.browserPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.browserPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.browserPanel.Location = new System.Drawing.Point(3, 3);
+            this.browserPanel.Name = "browserPanel";
+            this.browserPanel.Size = new System.Drawing.Size(158, 327);
+            this.browserPanel.TabIndex = 0;
             // 
             // splitContainer1
             // 
@@ -364,23 +373,15 @@
             this.progressTime.Interval = 5;
             this.progressTime.Tick += new System.EventHandler(this.progressTime_Tick);
             // 
-            // browserPanel
-            // 
-            this.browserPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.browserPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.browserPanel.Location = new System.Drawing.Point(3, 3);
-            this.browserPanel.Name = "browserPanel";
-            this.browserPanel.Size = new System.Drawing.Size(158, 327);
-            this.browserPanel.TabIndex = 0;
-            // 
-            // PrincipalForm
+            // LandscapeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1019, 411);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.statusStrip1);
-            this.Name = "PrincipalForm";
+            this.Name = "LandscapeForm";
+            this.Text = "SmartSpriteFX - Landscape \"Piece-oriented\" Mode";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();

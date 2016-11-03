@@ -113,6 +113,16 @@ namespace smartSprite.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap FxDemo {
+            get {
+                object obj = ResourceManager.GetObject("FxDemo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Hook {
             get {
                 object obj = ResourceManager.GetObject("Hook", resourceCulture);
@@ -126,6 +136,16 @@ namespace smartSprite.Properties {
         internal static System.Drawing.Bitmap logo {
             get {
                 object obj = ResourceManager.GetObject("logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap promo_landscape_mode {
+            get {
+                object obj = ResourceManager.GetObject("promo-landscape-mode", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

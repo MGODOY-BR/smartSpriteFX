@@ -19,7 +19,8 @@ namespace smartSprite
             Application.SetCompatibleTextRenderingDefault(false);
             Application.ThreadException += Application_ThreadException;
             // Application.Run(new PrincipalForm());
-            Application.Run(new AnimationForm());
+            // Application.Run(new AnimationForm());
+            Application.Run(new SelectModeScreenForm());
         }
 
         private static void Application_ThreadException(object sender, System.Threading.ThreadExceptionEventArgs e)
