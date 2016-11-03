@@ -35,6 +35,7 @@ namespace smartSprite.Forms
             }
 
             _currentMode = new LandscapeForm();
+            _currentMode.FormClosed += _currentMode_FormClosed;
             _currentMode.Show();
         }
 
@@ -46,6 +47,7 @@ namespace smartSprite.Forms
             }
 
             _currentMode = new AnimationForm();
+            _currentMode.FormClosed += _currentMode_FormClosed;
             _currentMode.Show();
         }
 
@@ -67,6 +69,11 @@ namespace smartSprite.Forms
                     _currentMode.Close();
                     return true;
                 }
+                else
+                {
+                    _currentMode.Focus();
+                    return false;
+                }
             }
             this.Close();
             _currentMode.Focus();
@@ -79,5 +86,11 @@ namespace smartSprite.Forms
             var switchModeControl = new SwitchModeControl();
             this.panel4.Controls.Add(switchModeControl);
         }
+
+        private void _currentMode_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            SelectModeScreenForm._currentMode = null;
+        }
+
     }
 }

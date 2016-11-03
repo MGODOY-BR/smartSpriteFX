@@ -484,7 +484,6 @@ namespace smartSprite.Forms
             this.draftControl1.BorderStyle = BorderStyle.FixedSingle;
             this.pnlImage.Controls.Add(this.draftControl1);
 
-            this.FormClosed += PrincipalForm_FormClosed;
             this.draftControl1.GettingSettings += DraftControl1_GettingSettings;
             this.treeView1.LabelEdit = true;
             this.treeView1.PreviewKeyDown += TreeView1_PreviewKeyDown;
@@ -641,16 +640,6 @@ namespace smartSprite.Forms
         private void DraftControl1_GettingSettings(object sender, Controls.ToolboxState.DraftSettings e)
         {
             e.HookOn = this.toolHookButton.Checked;  
-        }
-
-        /// <summary>
-        /// Occurs when the form has closed.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void PrincipalForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Application.Exit();
         }
 
         /// <summary>
