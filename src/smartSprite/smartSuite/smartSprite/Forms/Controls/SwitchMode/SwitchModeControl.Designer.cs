@@ -53,6 +53,7 @@
             this.btnSwitchModel.TabIndex = 1;
             this.btnSwitchModel.Text = "Switch Mode";
             this.btnSwitchModel.UseVisualStyleBackColor = true;
+            this.btnSwitchModel.Click += new System.EventHandler(this.btnSwitchModel_Click);
             // 
             // btnAbout
             // 

@@ -92,5 +92,16 @@ namespace smartSprite.Forms
             SelectModeScreenForm._currentMode = null;
         }
 
+        private void SelectModeScreenForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (MessageBoxUtil.Show("Would you like to exit?", MessageBoxButtons.YesNo) != DialogResult.Yes)
+            {
+                e.Cancel = true;
+                if (SelectModeScreenForm._currentMode != null)
+                {
+                    SelectModeScreenForm._currentMode.Focus();
+                }
+            }
+        }
     }
 }

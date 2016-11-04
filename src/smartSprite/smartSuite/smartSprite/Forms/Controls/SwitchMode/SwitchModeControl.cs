@@ -25,5 +25,26 @@ namespace smartSprite.Forms.Controls.SwitchMode
                     this.GetType().Assembly.Location);
                         this.lblVersion.Text = myFileVersionInfo.FileVersion + "(Alpha)";
         }
+
+        private void btnSwitchModel_Click(object sender, EventArgs e)
+        {
+            Form selectModeScreenForm = null;
+            foreach (Form formItem in Application.OpenForms)
+            {
+                if (formItem is SelectModeScreenForm)
+                {
+                    selectModeScreenForm = formItem;
+                    break;
+                }
+            }
+
+            if (selectModeScreenForm == null)
+            {
+                selectModeScreenForm = new SelectModeScreenForm();
+                selectModeScreenForm.Show();
+            }
+
+            selectModeScreenForm.Focus();
+        }
     }
 }

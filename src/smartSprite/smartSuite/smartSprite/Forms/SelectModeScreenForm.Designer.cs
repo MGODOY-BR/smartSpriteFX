@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -39,7 +40,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnEffectMode = new System.Windows.Forms.Button();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.panel4 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -58,6 +58,15 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(909, 49);
             this.panel1.TabIndex = 0;
+            // 
+            // panel4
+            // 
+            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel4.BackColor = System.Drawing.Color.Transparent;
+            this.panel4.Location = new System.Drawing.Point(613, 3);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(296, 26);
+            this.panel4.TabIndex = 1;
             // 
             // pictureBox1
             // 
@@ -184,15 +193,6 @@
             this.pictureBox3.TabIndex = 0;
             this.pictureBox3.TabStop = false;
             // 
-            // panel4
-            // 
-            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel4.BackColor = System.Drawing.Color.Transparent;
-            this.panel4.Location = new System.Drawing.Point(613, 3);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(296, 26);
-            this.panel4.TabIndex = 1;
-            // 
             // SelectModeScreenForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -206,6 +206,7 @@
             this.Name = "SelectModeScreenForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Please, select some edition mode";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SelectModeScreenForm_FormClosing);
             this.Load += new System.EventHandler(this.SelectModeScreenForm_Load);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
