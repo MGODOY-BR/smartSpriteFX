@@ -1,17 +1,17 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Rhino.Mocks;
-using smartSuite.smartSprite.Pictures;
-using smartSuite.smartSprite.Effects.FilterEngine;
-using smartSuite.smartSprite.Effects.Filters;
+using smartSuite.smartSpriteFX.Pictures;
+using smartSuite.smartSpriteFX.Effects.FilterEngine;
+using smartSuite.smartSpriteFX.Effects.Filters;
 using System.IO;
 using System.Reflection;
 using Microsoft.CSharp;
 using System.CodeDom.Compiler;
-using smartSuite.smartSprite.Effects.Infra;
-using smartSuite.smartSprite.Effects.Infra.UI.Configuratons;
+using smartSuite.smartSpriteFX.Effects.Infra;
+using smartSuite.smartSpriteFX.Effects.Infra.UI.Configuratons;
 
-namespace smartSprite.SpriteEffectModule.Test
+namespace smartSpriteFX.SpriteEffectModule.Test
 {
     [TestClass]
     public class FilterCollectionTest
@@ -292,10 +292,10 @@ namespace smartSprite.SpriteEffectModule.Test
 
             CompilerResults results = compiler.CompileAssemblyFromSource(parameters, @"
 
-                using smartSuite.smartSprite.Effects.Filters;
-                using smartSuite.smartSprite.Pictures;
-                using smartSuite.smartSprite.Effects.Infra;
-                using smartSuite.smartSprite.Effects.Infra.UI.Configuratons;
+                using smartSuite.smartSpriteFX.Effects.Filters;
+                using smartSuite.smartSpriteFX.Pictures;
+                using smartSuite.smartSpriteFX.Effects.Infra;
+                using smartSuite.smartSpriteFX.Effects.Infra.UI.Configuratons;
                 using System;
                 using System.Collections.Generic;
                 using System.Text;
@@ -361,10 +361,10 @@ namespace smartSprite.SpriteEffectModule.Test
 
             CompilerResults results = compiler.CompileAssemblyFromSource(parameters, @"
 
-                using smartSuite.smartSprite.Effects.Filters;
-                using smartSuite.smartSprite.Pictures;
-                using smartSuite.smartSprite.Effects.Infra;
-                using smartSuite.smartSprite.Effects.Infra.UI.Configuratons;
+                using smartSuite.smartSpriteFX.Effects.Filters;
+                using smartSuite.smartSpriteFX.Pictures;
+                using smartSuite.smartSpriteFX.Effects.Infra;
+                using smartSuite.smartSpriteFX.Effects.Infra.UI.Configuratons;
                 using System;
                 using System.Collections.Generic;
                 using System.Text;

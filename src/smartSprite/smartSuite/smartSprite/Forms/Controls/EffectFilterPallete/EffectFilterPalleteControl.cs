@@ -7,10 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using smartSuite.smartSprite.Effects.Filters;
-using smartSuite.smartSprite.Effects.FilterEngine;
+using smartSuite.smartSpriteFX.Effects.Filters;
+using smartSuite.smartSpriteFX.Effects.FilterEngine;
 
-namespace smartSprite.Forms.Controls.EffectFilterPallete
+namespace smartSpriteFX.Forms.Controls.EffectFilterPallete
 {
     /// <summary>
     /// Represents an UI interface where user selects the filteres

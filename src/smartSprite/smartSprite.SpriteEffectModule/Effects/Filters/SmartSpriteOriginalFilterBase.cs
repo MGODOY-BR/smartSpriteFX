@@ -1,13 +1,13 @@
 
-using smartSuite.smartSprite.Effects.Infra;
-using smartSuite.smartSprite.Effects.Infra.UI.Configuratons;
-using smartSuite.smartSprite.Pictures;
+using smartSuite.smartSpriteFX.Effects.Infra;
+using smartSuite.smartSpriteFX.Effects.Infra.UI.Configuratons;
+using smartSuite.smartSpriteFX.Pictures;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace smartSuite.smartSprite.Effects.Filters{
+namespace smartSuite.smartSpriteFX.Effects.Filters{
 	/// <summary>
 	/// Defines an official filter of SmartSprite library
 	/// </summary>

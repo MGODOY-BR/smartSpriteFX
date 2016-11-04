@@ -5,7 +5,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 
-namespace smartSuite.smartSprite.Pictures.PixelPatterns{
+namespace smartSuite.smartSpriteFX.Pictures.PixelPatterns{
 	/// <summary>
 	/// Defines how a pixel covering pattern must be
 	/// </summary>

@@ -1,11 +1,11 @@
 
-using smartSuite.smartSprite.Effects.Filters;
+using smartSuite.smartSpriteFX.Effects.Filters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace smartSuite.smartSprite.Effects.Infra.UI.Configuratons{
+namespace smartSuite.smartSpriteFX.Effects.Infra.UI.Configuratons{
 	/// <summary>
 	/// 
 	/// </summary>

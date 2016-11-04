@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace smartSprite.Forms.Controls
+namespace smartSpriteFX.Forms.Controls
 {
     /// <summary>
     /// Defines a control which can be marked as bold

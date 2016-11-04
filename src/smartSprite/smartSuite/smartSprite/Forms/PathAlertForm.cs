@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace smartSprite.Forms
+namespace smartSpriteFX.Forms
 {
     public partial class PathAlertForm : Form
     {

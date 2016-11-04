@@ -1,6 +1,6 @@
 
-using smartSuite.smartSprite.Effects.Filters;
-using smartSuite.smartSprite.Pictures;
+using smartSuite.smartSpriteFX.Effects.Filters;
+using smartSuite.smartSpriteFX.Pictures;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 
-namespace smartSuite.smartSprite.Effects.FilterEngine{
+namespace smartSuite.smartSpriteFX.Effects.FilterEngine{
 	/// <summary>
 	/// It´s a collection of filters
 	/// </summary>

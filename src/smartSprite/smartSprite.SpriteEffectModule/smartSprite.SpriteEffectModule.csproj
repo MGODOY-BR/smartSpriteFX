@@ -7,8 +7,8 @@
     <ProjectGuid>{09DEE0F5-2B1A-44E9-BE7C-9DC0EB93BEE8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>smartSprite.SpriteEffectModule</RootNamespace>
-    <AssemblyName>smartSprite.SpriteEffectModule</AssemblyName>
+    <RootNamespace>smartSpriteFX.SpriteEffectModule</RootNamespace>
+    <AssemblyName>smartSpriteFX.SpriteEffectModule</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

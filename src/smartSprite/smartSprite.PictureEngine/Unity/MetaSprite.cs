@@ -1,11 +1,11 @@
 
-using smartSuite.smartSprite.Pictures;
+using smartSuite.smartSpriteFX.Pictures;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace smartSuite.smartSprite.Unity{
+namespace smartSuite.smartSpriteFX.Unity{
 	/// <summary>
 	/// Represents a meta class of sprites
 	/// </summary>

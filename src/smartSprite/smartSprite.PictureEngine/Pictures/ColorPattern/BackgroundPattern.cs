@@ -1,6 +1,6 @@
 ﻿
-using smartSprite.Pictures.ColorPattern;
-using smartSuite.smartSprite.Pictures.PixelPatterns;
+using smartSpriteFX.Pictures.ColorPattern;
+using smartSuite.smartSpriteFX.Pictures.PixelPatterns;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 
-namespace smartSuite.smartSprite.Pictures.ColorPattern
+namespace smartSuite.smartSpriteFX.Pictures.ColorPattern
 {
     /// <summary>
     /// It´s an object which studies the pixels to detect background pattern

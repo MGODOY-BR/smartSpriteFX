@@ -1,11 +1,11 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Rhino.Mocks;
-using smartSuite.smartSprite.Animations;
-using smartSuite.smartSprite.Pictures;
+using smartSuite.smartSpriteFX.Animations;
+using smartSuite.smartSpriteFX.Pictures;
 using System.Collections.Generic;
 
-namespace smartSprite.SpriteEffectModule.Test.Animations
+namespace smartSpriteFX.SpriteEffectModule.Test.Animations
 {
     [TestClass]
     public class FrameIteratorTest

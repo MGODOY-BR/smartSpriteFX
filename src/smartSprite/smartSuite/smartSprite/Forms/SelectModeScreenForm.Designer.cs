@@ -1,4 +1,4 @@
-﻿namespace smartSprite.Forms
+﻿namespace smartSpriteFX.Forms
 {
     partial class SelectModeScreenForm
     {
@@ -70,7 +70,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.BackgroundImage = global::smartSprite.Properties.Resources.logo;
+            this.pictureBox1.BackgroundImage = global::smartSpriteFX.Properties.Resources.logo;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
@@ -135,7 +135,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox2.Image = global::smartSprite.Properties.Resources.promo_landscape_mode;
+            this.pictureBox2.Image = global::smartSpriteFX.Properties.Resources.promo_landscape_mode;
             this.pictureBox2.Location = new System.Drawing.Point(0, 0);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(448, 319);
@@ -185,7 +185,7 @@
             // 
             this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox3.Image = global::smartSprite.Properties.Resources.FxDemo;
+            this.pictureBox3.Image = global::smartSpriteFX.Properties.Resources.FxDemo;
             this.pictureBox3.Location = new System.Drawing.Point(0, 0);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(449, 319);

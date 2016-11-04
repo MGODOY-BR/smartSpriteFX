@@ -1,4 +1,4 @@
-﻿namespace smartSprite.Forms.Controls.NoneConfigurationPanel
+﻿namespace smartSpriteFX.Forms.Controls.NoneConfigurationPanel
 {
     partial class NoneConfigurationPanelControl
     {

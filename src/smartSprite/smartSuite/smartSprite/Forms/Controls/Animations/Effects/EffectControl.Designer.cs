@@ -1,4 +1,4 @@
-﻿namespace smartSprite.Forms.Controls.Animations.Effects
+﻿namespace smartSpriteFX.Forms.Controls.Animations.Effects
 {
     partial class EffectControl
     {
@@ -86,7 +86,7 @@
             // btnDown
             // 
             this.btnDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDown.Image = global::smartSprite.Properties.Resources.down;
+            this.btnDown.Image = global::smartSpriteFX.Properties.Resources.down;
             this.btnDown.Location = new System.Drawing.Point(78, 76);
             this.btnDown.Name = "btnDown";
             this.btnDown.Size = new System.Drawing.Size(27, 13);
@@ -97,7 +97,7 @@
             // btnUp
             // 
             this.btnUp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnUp.Image = global::smartSprite.Properties.Resources.up;
+            this.btnUp.Image = global::smartSpriteFX.Properties.Resources.up;
             this.btnUp.Location = new System.Drawing.Point(78, 6);
             this.btnUp.Name = "btnUp";
             this.btnUp.Size = new System.Drawing.Size(27, 14);
@@ -110,7 +110,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.BackgroundImage = global::smartSprite.Properties.Resources.EffectControl;
+            this.BackgroundImage = global::smartSpriteFX.Properties.Resources.EffectControl;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Controls.Add(this.btnSettings);
             this.Controls.Add(this.btnDown);

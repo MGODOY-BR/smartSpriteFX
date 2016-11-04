@@ -7,23 +7,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using smartSprite.Utilities;
-using smartSprite.Forms.Controls.HookState;
+using smartSpriteFX.Utilities;
+using smartSpriteFX.Forms.Controls.HookState;
 using System.Threading;
 
-namespace smartSprite.Forms.Controls
+namespace smartSpriteFX.Forms.Controls
 {
     public partial class HookControl : UserControl, IRemarkable, IDestroyable
     {
         /// <summary>
         /// It´s a respective point in the model
         /// </summary>
-        private smartSuite.smartSprite.Pictures.Point _point;
+        private smartSuite.smartSpriteFX.Pictures.Point _point;
 
         /// <summary>
         /// It´s a respective point in the model
         /// </summary>
-        public smartSuite.smartSprite.Pictures.Point Point
+        public smartSuite.smartSpriteFX.Pictures.Point Point
         {
             get
             {
@@ -309,7 +309,7 @@ namespace smartSprite.Forms.Controls
         public void CreatePoint()
         {
             this._point = 
-                new smartSuite.smartSprite.Pictures.Point(
+                new smartSuite.smartSpriteFX.Pictures.Point(
                     this.Left + (this.Width / 2), 
                     this.Top + (this.Height / 2));
         }

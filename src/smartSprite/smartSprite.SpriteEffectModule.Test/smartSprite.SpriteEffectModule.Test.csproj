@@ -6,8 +6,8 @@
     <ProjectGuid>{C8DB0E15-31F8-40DE-9645-79FE2114D06B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>smartSprite.SpriteEffectModule.Test</RootNamespace>
-    <AssemblyName>smartSprite.SpriteEffectModule.Test</AssemblyName>
+    <RootNamespace>smartSpriteFX.SpriteEffectModule.Test</RootNamespace>
+    <AssemblyName>smartSpriteFX.SpriteEffectModule.Test</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>

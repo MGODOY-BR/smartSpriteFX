@@ -1,4 +1,4 @@
-﻿namespace smartSprite.Forms.Controls.SwitchMode
+﻿namespace smartSpriteFX.Forms.Controls.SwitchMode
 {
     partial class SwitchModeControl
     {
@@ -64,6 +64,7 @@
             this.btnAbout.TabIndex = 2;
             this.btnAbout.Text = "About...";
             this.btnAbout.UseVisualStyleBackColor = true;
+            this.btnAbout.Click += new System.EventHandler(this.btnAbout_Click);
             // 
             // SwitchModeControl
             // 

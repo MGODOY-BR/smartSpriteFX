@@ -1,4 +1,4 @@
-﻿using smartSuite.smartSprite.Pictures;
+﻿using smartSuite.smartSpriteFX.Pictures;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -6,14 +6,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace smartSprite.PictureEngine.Pictures
+namespace smartSpriteFX.PictureEngine.Pictures
 {
     /// <summary>
     /// Represents a composition of point and aditional information
     /// </summary>
-    public class PointInfo : smartSuite.smartSprite.Pictures.Point
+    public class PointInfo : smartSuite.smartSpriteFX.Pictures.Point
     {
-        public PointInfo(smartSuite.smartSprite.Pictures.Point point, Color newColor) : base(point.X, point.Y)
+        public PointInfo(smartSuite.smartSpriteFX.Pictures.Point point, Color newColor) : base(point.X, point.Y)
         {
             this.Color = newColor;
         }

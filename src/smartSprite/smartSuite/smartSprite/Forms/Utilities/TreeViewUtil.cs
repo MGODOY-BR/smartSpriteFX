@@ -1,4 +1,4 @@
-﻿using smartSuite.smartSprite.Pictures;
+﻿using smartSuite.smartSpriteFX.Pictures;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace smartSprite.Forms.Utilities
+namespace smartSpriteFX.Forms.Utilities
 {
     /// <summary>
     /// Offers utilities to work with treeviews and pieces

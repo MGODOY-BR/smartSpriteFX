@@ -1,4 +1,4 @@
-﻿namespace smartSprite.Forms.Controls
+﻿namespace smartSpriteFX.Forms.Controls
 {
     partial class HookControl
     {
@@ -36,7 +36,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.BackgroundImage = global::smartSprite.Properties.Resources.Hook;
+            this.BackgroundImage = global::smartSpriteFX.Properties.Resources.Hook;
             this.Cursor = System.Windows.Forms.Cursors.SizeAll;
             this.Name = "HookControl";
             this.Size = new System.Drawing.Size(11, 11);

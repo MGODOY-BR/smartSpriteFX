@@ -1,4 +1,4 @@
-﻿namespace smartSprite.SpriteEffectModule.Effects.Filters.UI
+﻿namespace smartSpriteFX.SpriteEffectModule.Effects.Filters.UI
 {
     partial class ResolutionConfigurationPanelControl
     {

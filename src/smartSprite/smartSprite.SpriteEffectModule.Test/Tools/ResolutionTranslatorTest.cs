@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using smartSuite.smartSprite.Effects.Tools;
-using smartSuite.smartSprite.Pictures;
+using smartSuite.smartSpriteFX.Effects.Tools;
+using smartSuite.smartSpriteFX.Pictures;
 
-namespace smartSprite.SpriteEffectModule.Test.Tools
+namespace smartSpriteFX.SpriteEffectModule.Test.Tools
 {
     [TestClass]
     public class ResolutionTranslatorTest

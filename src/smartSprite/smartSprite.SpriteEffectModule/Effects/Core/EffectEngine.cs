@@ -1,9 +1,9 @@
 
-using smartSprite.SpriteEffectModule.Infra.UI;
-using smartSuite.smartSprite.Animations;
-using smartSuite.smartSprite.Effects.FilterEngine;
-using smartSuite.smartSprite.Effects.Filters;
-using smartSuite.smartSprite.Pictures;
+using smartSpriteFX.SpriteEffectModule.Infra.UI;
+using smartSuite.smartSpriteFX.Animations;
+using smartSuite.smartSpriteFX.Effects.FilterEngine;
+using smartSuite.smartSpriteFX.Effects.Filters;
+using smartSuite.smartSpriteFX.Pictures;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -13,7 +13,7 @@ using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 
-namespace smartSuite.smartSprite.Effects.Core{
+namespace smartSuite.smartSpriteFX.Effects.Core{
 	/// <summary>
 	/// It´s the main engine
 	/// </summary>

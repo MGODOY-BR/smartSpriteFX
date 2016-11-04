@@ -5,7 +5,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 
-namespace smartSuite.smartSprite.Pictures.PixelPatterns{
+namespace smartSuite.smartSpriteFX.Pictures.PixelPatterns{
 	/// <summary>
 	/// It´s a covering algorithm for constant covering based in the last line color
 	/// </summary>

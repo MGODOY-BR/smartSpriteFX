@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace smartSprite.Utilities
+namespace smartSpriteFX.Utilities
 {
     /// <summary>
     /// Offers math utilities

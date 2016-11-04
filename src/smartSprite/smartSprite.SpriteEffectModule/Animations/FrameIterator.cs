@@ -1,6 +1,6 @@
 
-using smartSprite.SpriteEffectModule.Animations;
-using smartSuite.smartSprite.Pictures;
+using smartSpriteFX.SpriteEffectModule.Animations;
+using smartSuite.smartSpriteFX.Pictures;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace smartSuite.smartSprite.Animations{
+namespace smartSuite.smartSpriteFX.Animations{
 	/// <summary>
 	/// Represents a iterator to travel through the pictures.
 	/// </summary>

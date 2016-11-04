@@ -1,11 +1,11 @@
-﻿using smartSuite.smartSprite.Pictures.ColorPattern;
+﻿using smartSuite.smartSpriteFX.Pictures.ColorPattern;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace smartSprite.Forms.Utilities
+namespace smartSpriteFX.Forms.Utilities
 {
     /// <summary>
     /// Offers an factory for delegation of asking color delegate

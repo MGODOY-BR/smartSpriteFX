@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
 
-namespace smartSprite.Forms.Controls.SwitchMode
+namespace smartSpriteFX.Forms.Controls.SwitchMode
 {
     public partial class SwitchModeControl : UserControl
     {
@@ -45,6 +45,12 @@ namespace smartSprite.Forms.Controls.SwitchMode
             }
 
             selectModeScreenForm.Focus();
+        }
+
+        private void btnAbout_Click(object sender, EventArgs e)
+        {
+            AboutBoxForm form = new AboutBoxForm();
+            form.ShowDialog();
         }
     }
 }

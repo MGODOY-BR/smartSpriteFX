@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace smartSuite.smartSprite.Unity{
+namespace smartSuite.smartSpriteFX.Unity{
 	/// <summary>
 	/// Represents a generic element which can be an object or empty one
 	/// </summary>

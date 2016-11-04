@@ -1,14 +1,14 @@
 
-using smartSuite.smartSprite.Animations;
-using smartSuite.smartSprite.Effects.Core;
-using smartSuite.smartSprite.Effects.Filters;
+using smartSuite.smartSpriteFX.Animations;
+using smartSuite.smartSpriteFX.Effects.Core;
+using smartSuite.smartSpriteFX.Effects.Filters;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 
-namespace smartSuite.smartSprite.Effects.Facade{
+namespace smartSuite.smartSpriteFX.Effects.Facade{
 	/// <summary>
 	/// Offers the ways to interact with engine
 	/// </summary>

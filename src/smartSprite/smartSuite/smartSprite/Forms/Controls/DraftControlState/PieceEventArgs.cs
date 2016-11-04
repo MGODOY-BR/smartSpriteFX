@@ -1,11 +1,11 @@
-﻿using smartSuite.smartSprite.Pictures;
+﻿using smartSuite.smartSpriteFX.Pictures;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace smartSprite.Forms.Controls.DraftControlState
+namespace smartSpriteFX.Forms.Controls.DraftControlState
 {
     /// <summary>
     /// Represents a state of an event involving pieces

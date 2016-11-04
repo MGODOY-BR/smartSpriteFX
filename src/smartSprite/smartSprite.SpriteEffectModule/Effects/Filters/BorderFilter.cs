@@ -1,18 +1,18 @@
-﻿using smartSuite.smartSprite.Effects.Filters;
+﻿using smartSuite.smartSpriteFX.Effects.Filters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using smartSuite.smartSprite.Effects.Infra.UI.Configuratons;
-using smartSuite.smartSprite.Pictures;
-using smartSprite.SpriteEffectModule.Effects.Tools;
+using smartSuite.smartSpriteFX.Effects.Infra.UI.Configuratons;
+using smartSuite.smartSpriteFX.Pictures;
+using smartSpriteFX.SpriteEffectModule.Effects.Tools;
 using System.Drawing;
-using smartSprite.PictureEngine.Pictures;
-using smartSuite.smartSprite.Effects.Infra;
-using smartSprite.SpriteEffectModule.Effects.Filters.UI;
+using smartSpriteFX.PictureEngine.Pictures;
+using smartSuite.smartSpriteFX.Effects.Infra;
+using smartSpriteFX.SpriteEffectModule.Effects.Filters.UI;
 
-namespace smartSprite.SpriteEffectModule.Effects.Filters
+namespace smartSpriteFX.SpriteEffectModule.Effects.Filters
 {
     /// <summary>
     /// It´s a filter that emphasizes the border of picture
@@ -148,7 +148,7 @@ namespace smartSprite.SpriteEffectModule.Effects.Filters
         /// Gets a list of point corresponding to a large trace
         /// </summary>
         /// <returns></returns>
-        private Dictionary<string, smartSuite.smartSprite.Pictures.Point> MakeTraceBorder(smartSuite.smartSprite.Pictures.Point refPoint)
+        private Dictionary<string, smartSuite.smartSpriteFX.Pictures.Point> MakeTraceBorder(smartSuite.smartSpriteFX.Pictures.Point refPoint)
         {
             #region Entries validation
 
@@ -160,13 +160,13 @@ namespace smartSprite.SpriteEffectModule.Effects.Filters
             #endregion
 
             // Calculating the ray of circle
-            Dictionary<string, smartSuite.smartSprite.Pictures.Point> returnList = 
-                new Dictionary<string, smartSuite.smartSprite.Pictures.Point>();
+            Dictionary<string, smartSuite.smartSpriteFX.Pictures.Point> returnList = 
+                new Dictionary<string, smartSuite.smartSpriteFX.Pictures.Point>();
 
             for (float x = refPoint.X; x < refPoint.X + this._traceBorderWidth; x++)
             {
                 var point =
-                    new smartSuite.smartSprite.Pictures.Point(
+                    new smartSuite.smartSpriteFX.Pictures.Point(
                         x,
                         refPoint.Y);
 

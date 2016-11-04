@@ -1,7 +1,7 @@
-﻿using smartSprite.Forms.Controls.Animations.Effects;
-using smartSprite.Forms.Controls.Animations.Frames;
-using smartSprite.Forms.Controls.Browsers;
-using smartSprite.Properties;
+﻿using smartSpriteFX.Forms.Controls.Animations.Effects;
+using smartSpriteFX.Forms.Controls.Animations.Frames;
+using smartSpriteFX.Forms.Controls.Browsers;
+using smartSpriteFX.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,15 +11,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using smartSuite.smartSprite.Effects.Filters;
-using smartSuite.smartSprite.Effects.Infra;
-using smartSuite.smartSprite.Effects.Core;
-using smartSprite.Forms.Controls.EffectFilterPallete;
-using smartSprite.Forms.Controls.NoneConfigurationPanel;
-using smartSprite.SpriteEffectModule.Effects.Filters.UI;
-using smartSprite.Forms.Controls.SwitchMode;
+using smartSuite.smartSpriteFX.Effects.Filters;
+using smartSuite.smartSpriteFX.Effects.Infra;
+using smartSuite.smartSpriteFX.Effects.Core;
+using smartSpriteFX.Forms.Controls.EffectFilterPallete;
+using smartSpriteFX.Forms.Controls.NoneConfigurationPanel;
+using smartSpriteFX.SpriteEffectModule.Effects.Filters.UI;
+using smartSpriteFX.Forms.Controls.SwitchMode;
 
-namespace smartSprite.Forms
+namespace smartSpriteFX.Forms
 {
     public partial class AnimationForm : Form
     {
@@ -95,22 +95,31 @@ namespace smartSprite.Forms
         /// <param name="e"></param>
         private void SmartBrowser_ChosenByUserEvent(object sender, SmartBrowserEventArgs e)
         {
-            EffectEngine.Initializate(e.UserChoice);
-            EffectEngine.SetPreviewBoard(previewBoard);
+            try
+            {
+                this.Cursor = Cursors.WaitCursor;
 
-            // FrameSelectionControl
-            FrameSelectionControl frameSelectionControl = new FrameSelectionControl();
-            frameSelectionControl.Dock = DockStyle.Fill;
-            frameSelectionControl.SetPath(e.UserChoice);
-            frameSelectionControl.SelectingFrame += FrameSelectionControl_SelectingFrame;
-            frameSelectionControl.LoadThumbNails();
-            this.frameBox.Controls.Clear();
-            this.frameBox.Controls.Add(frameSelectionControl);
+                EffectEngine.Initializate(e.UserChoice);
+                EffectEngine.SetPreviewBoard(previewBoard);
 
-            Settings.Default.lastAnimationFolder = e.UserChoice;
-            Settings.Default.Save();
+                // FrameSelectionControl
+                FrameSelectionControl frameSelectionControl = new FrameSelectionControl();
+                frameSelectionControl.Dock = DockStyle.Fill;
+                frameSelectionControl.SetPath(e.UserChoice);
+                frameSelectionControl.SelectingFrame += FrameSelectionControl_SelectingFrame;
+                frameSelectionControl.LoadThumbNails();
+                this.frameBox.Controls.Clear();
+                this.frameBox.Controls.Add(frameSelectionControl);
 
-            _effectFilterPalleteControl.Bind();
+                Settings.Default.lastAnimationFolder = e.UserChoice;
+                Settings.Default.Save();
+
+                _effectFilterPalleteControl.Bind();
+            }
+            finally
+            {
+                this.Cursor = Cursors.Default;
+            }
         }
 
         /// <summary>

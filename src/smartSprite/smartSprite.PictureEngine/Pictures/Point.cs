@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace smartSuite.smartSprite.Pictures{
+namespace smartSuite.smartSpriteFX.Pictures{
     /// <summary>
     /// Represents a cartesyan coordinate
     /// </summary>

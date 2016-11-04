@@ -7,8 +7,8 @@
     <ProjectGuid>{D374DAC6-55C3-465A-B27F-EF762E7F0CC5}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>smartSprite.PictureEngine</RootNamespace>
-    <AssemblyName>smartSprite.PictureEngine</AssemblyName>
+    <RootNamespace>smartSpriteFX.PictureEngine</RootNamespace>
+    <AssemblyName>smartSpriteFX.PictureEngine</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -76,6 +76,11 @@
     <Compile Include="Pictures\PointInfo.cs" />
     <Compile Include="Pictures\PointRange.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Templates\UnityMetaFile.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UnityMetaFile.resx</DependentUpon>
+    </Compile>
     <Compile Include="Unity\IGameObject.cs" />
     <Compile Include="Unity\MetaSprite.cs" />
     <Compile Include="Utilities\MathUtil.cs" />
@@ -88,6 +93,7 @@
     <EmbeddedResource Include="Templates\UnityMetaFile.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
+      <LastGenOutput>UnityMetaFile.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

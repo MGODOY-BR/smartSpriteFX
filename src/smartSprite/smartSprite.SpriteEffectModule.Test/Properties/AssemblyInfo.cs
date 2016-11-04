@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("smartSprite.SpriteEffectModule.Test")]
+[assembly: AssemblyTitle("smartSpriteFX.SpriteEffectModule.Test")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("smartSprite.SpriteEffectModule.Test")]
+[assembly: AssemblyProduct("smartSpriteFX.SpriteEffectModule.Test")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

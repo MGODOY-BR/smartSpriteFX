@@ -1,11 +1,11 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using smartSuite.smartSprite.Effects.Core;
+using smartSuite.smartSpriteFX.Effects.Core;
 using System.Windows.Forms;
-using smartSuite.smartSprite.Effects.FilterEngine;
+using smartSuite.smartSpriteFX.Effects.FilterEngine;
 using System.IO;
 
-namespace smartSprite.SpriteEffectModule.Test.Effects.Core
+namespace smartSpriteFX.SpriteEffectModule.Test.Effects.Core
 {
     [TestClass]
     public class EffectEngineTest

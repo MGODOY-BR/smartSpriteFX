@@ -1,19 +1,19 @@
 
-using smartSuite.smartSprite.Effects.Infra;
-using smartSuite.smartSprite.Effects.Tools;
+using smartSuite.smartSpriteFX.Effects.Infra;
+using smartSuite.smartSpriteFX.Effects.Tools;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using smartSuite.smartSprite.Effects.Infra.UI.Configuratons;
-using smartSuite.smartSprite.Pictures;
-using smartSprite.SpriteEffectModule.Effects.Infra.UI.Configuratons;
-using smartSprite.SpriteEffectModule.Effects.Filters.UI;
+using smartSuite.smartSpriteFX.Effects.Infra.UI.Configuratons;
+using smartSuite.smartSpriteFX.Pictures;
+using smartSpriteFX.SpriteEffectModule.Effects.Infra.UI.Configuratons;
+using smartSpriteFX.SpriteEffectModule.Effects.Filters.UI;
 using System.Windows.Forms;
-using smartSprite.SpriteEffectModule.Effects.Filters;
+using smartSpriteFX.SpriteEffectModule.Effects.Filters;
 using System.Drawing;
 
-namespace smartSuite.smartSprite.Effects.Filters{
+namespace smartSuite.smartSpriteFX.Effects.Filters{
 	/// <summary>
 	/// Represents a filter to convert the frame to 16 bit appearence.
 	/// </summary>

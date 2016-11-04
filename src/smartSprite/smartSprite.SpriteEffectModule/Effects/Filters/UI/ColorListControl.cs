@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace smartSprite.SpriteEffectModule.Effects.Filters.UI
+namespace smartSpriteFX.SpriteEffectModule.Effects.Filters.UI
 {
     /// <summary>
     /// Represents a control to add a list of a color

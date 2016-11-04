@@ -1,7 +1,7 @@
 
-using smartSprite.Pictures.ColorPattern;
-using smartSuite.smartSprite.Effects.Core;
-using smartSuite.smartSprite.Effects.Filters;
+using smartSpriteFX.Pictures.ColorPattern;
+using smartSuite.smartSpriteFX.Effects.Core;
+using smartSuite.smartSpriteFX.Effects.Filters;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -9,7 +9,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 
-namespace smartSuite.smartSprite.Effects.Infra
+namespace smartSuite.smartSpriteFX.Effects.Infra
 {
     /// <summary>
     /// Controls a amount of colors, used to limt the quality of image

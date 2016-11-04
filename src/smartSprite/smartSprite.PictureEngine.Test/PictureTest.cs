@@ -1,10 +1,10 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using smartSuite.smartSprite.Pictures;
+using smartSuite.smartSpriteFX.Pictures;
 using System.Linq;
 using System.Drawing;
 
-namespace smartSprite.PictureEngine.Test
+namespace smartSpriteFX.PictureEngine.Test
 {
     [TestClass]
     public class PictureTest

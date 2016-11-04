@@ -7,9 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using smartSprite.Forms.Controls.LineControlState;
+using smartSpriteFX.Forms.Controls.LineControlState;
 
-namespace smartSprite.Forms.Controls
+namespace smartSpriteFX.Forms.Controls
 {
     public partial class LineControl : UserControl, IRemarkable
     {

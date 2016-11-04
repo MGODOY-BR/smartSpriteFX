@@ -1,11 +1,11 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using smartSuite.smartSprite.Effects.Filters;
-using smartSuite.smartSprite.Pictures;
+using smartSuite.smartSpriteFX.Effects.Filters;
+using smartSuite.smartSpriteFX.Pictures;
 using Rhino.Mocks;
 using System.Collections.Generic;
 
-namespace smartSprite.SpriteEffectModule.Test.Effects.Filters
+namespace smartSpriteFX.SpriteEffectModule.Test.Effects.Filters
 {
     [TestClass]
     public class FrameRateFilterTest

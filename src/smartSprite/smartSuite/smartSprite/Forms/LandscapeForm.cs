@@ -1,10 +1,10 @@
-﻿using smartSprite.Forms.Controls;
-using smartSprite.Forms.Controls.Browsers;
-using smartSprite.Forms.Controls.SwitchMode;
-using smartSprite.Forms.Controls.TreeViewState;
-using smartSprite.Forms.Utilities;
-using smartSprite.Properties;
-using smartSuite.smartSprite.Pictures;
+﻿using smartSpriteFX.Forms.Controls;
+using smartSpriteFX.Forms.Controls.Browsers;
+using smartSpriteFX.Forms.Controls.SwitchMode;
+using smartSpriteFX.Forms.Controls.TreeViewState;
+using smartSpriteFX.Forms.Utilities;
+using smartSpriteFX.Properties;
+using smartSuite.smartSpriteFX.Pictures;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -18,7 +18,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace smartSprite.Forms
+namespace smartSpriteFX.Forms
 {
     /// <summary>
     /// Represents a form to handle the effect mode, animation-oriented
@@ -308,7 +308,7 @@ namespace smartSprite.Forms
         private void RefreshHookCreationMode()
         {
             this.draftControl1.LastSettings =
-                new smartSprite.Forms.Controls.ToolboxState.DraftSettings
+                new smartSpriteFX.Forms.Controls.ToolboxState.DraftSettings
                 {
                     HookOn = toolHookButton.Checked
                 };

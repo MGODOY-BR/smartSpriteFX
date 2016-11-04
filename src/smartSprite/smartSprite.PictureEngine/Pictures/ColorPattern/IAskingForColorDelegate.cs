@@ -5,7 +5,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 
-namespace smartSuite.smartSprite.Pictures.ColorPattern{
+namespace smartSuite.smartSpriteFX.Pictures.ColorPattern{
 	/// <summary>
 	/// Defines how an algorithm to ask support from user to define the background color definition  must be.
 	/// </summary>

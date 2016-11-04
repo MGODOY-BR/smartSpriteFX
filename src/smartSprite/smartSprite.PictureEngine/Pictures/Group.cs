@@ -1,9 +1,9 @@
-using smartSuite.smartSprite.Unity;
+using smartSuite.smartSpriteFX.Unity;
 using System;
 using System.Collections.Generic;
 using System.IO;
 
-namespace smartSuite.smartSprite.Pictures
+namespace smartSuite.smartSpriteFX.Pictures
 {
     /// <summary>
     /// Represents a group of piece to join the related pieces of image

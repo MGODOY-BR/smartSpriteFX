@@ -1,11 +1,11 @@
-﻿using smartSuite.smartSprite.Pictures;
+﻿using smartSuite.smartSpriteFX.Pictures;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace smartSprite.Forms.Controls.TreeViewState
+namespace smartSpriteFX.Forms.Controls.TreeViewState
 {
     /// <summary>
     /// Represents a tag informing the goal of just group itens

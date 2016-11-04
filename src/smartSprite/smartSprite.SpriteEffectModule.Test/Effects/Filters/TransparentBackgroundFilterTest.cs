@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using smartSuite.smartSprite.Pictures;
-using smartSuite.smartSprite.Effects.Filters;
+using smartSuite.smartSpriteFX.Pictures;
+using smartSuite.smartSpriteFX.Effects.Filters;
 
-namespace smartSprite.SpriteEffectModule.Test.Effects.Filters
+namespace smartSpriteFX.SpriteEffectModule.Test.Effects.Filters
 {
     [TestClass]
     public class TransparentBackgroundFilterTest

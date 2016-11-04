@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using smartSuite.smartSprite.Pictures.PixelPatterns;
+using smartSuite.smartSpriteFX.Pictures.PixelPatterns;
 using System.Drawing;
 
-namespace smartSprite.Test.smartSuite.smartSprite.Pictures.PixelPatterns
+namespace smartSpriteFX.Test.smartSuite.smartSpriteFX.Pictures.PixelPatterns
 {
     [TestClass]
     public class PixelPatternTest

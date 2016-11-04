@@ -1,11 +1,11 @@
-﻿using smartSuite.smartSprite.Pictures.ColorPattern;
+﻿using smartSuite.smartSpriteFX.Pictures.ColorPattern;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
-using smartSuite.smartSprite.Pictures;
+using smartSuite.smartSpriteFX.Pictures;
 
-namespace smartSprite.Forms
+namespace smartSpriteFX.Forms
 {
     /// <summary>
     /// Represents a form to ask for the user supports for a definition

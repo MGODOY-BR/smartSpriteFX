@@ -7,11 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using smartSuite.smartSprite.Effects.Infra.UI.Configuratons;
-using smartSuite.smartSprite.Effects.Filters;
-using smartSuite.smartSprite.Effects.Facade;
+using smartSuite.smartSpriteFX.Effects.Infra.UI.Configuratons;
+using smartSuite.smartSpriteFX.Effects.Filters;
+using smartSuite.smartSpriteFX.Effects.Facade;
 
-namespace smartSprite.SpriteEffectModule.Effects.Filters.UI
+namespace smartSpriteFX.SpriteEffectModule.Effects.Filters.UI
 {
     public partial class NoneConfigurationPanelControl : UserControl, IConfigurationPanel
     {

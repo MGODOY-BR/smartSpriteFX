@@ -5,13 +5,13 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("smartSprite")]
-[assembly: AssemblyDescription("Utility to cut and convert images to Unity3D sprites")]
+[assembly: AssemblyTitle("smartSpriteFX")]
+[assembly: AssemblyDescription("Utility to make easier handle 2D sprites for game design")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Atelier do Software")]
-[assembly: AssemblyProduct("smartSuite")]
+[assembly: AssemblyProduct("smartSpriteFX")]
 [assembly: AssemblyCopyright("Copyright © Atelier do Software 2016")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyTrademark("Programmed by Marcelo Godoy")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 

@@ -1,7 +1,7 @@
 
-using smartSprite.PictureEngine.Pictures.ColorPattern;
-using smartSprite.Pictures.ColorPattern;
-using smartSprite.Utilities;
+using smartSpriteFX.PictureEngine.Pictures.ColorPattern;
+using smartSpriteFX.Pictures.ColorPattern;
+using smartSpriteFX.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -12,7 +12,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading;
 
-namespace smartSuite.smartSprite.Pictures{
+namespace smartSuite.smartSpriteFX.Pictures{
 	/// <summary>
 	/// Represents an image
 	/// </summary>

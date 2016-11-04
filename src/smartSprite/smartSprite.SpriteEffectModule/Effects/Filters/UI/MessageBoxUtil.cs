@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace smartSprite.SpriteEffectModule.Effects.Filters.UI
+namespace smartSpriteFX.SpriteEffectModule.Effects.Filters.UI
 {
     /// <summary>
     /// Offers ways to use pattern message boxes.

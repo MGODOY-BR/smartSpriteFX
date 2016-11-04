@@ -3,15 +3,15 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using smartSuite.smartSprite.Effects.Infra.UI.Configuratons;
-using smartSuite.smartSprite.Pictures;
-using smartSuite.smartSprite.Pictures.ColorPattern;
-using smartSprite.SpriteEffectModule.Forms;
+using smartSuite.smartSpriteFX.Effects.Infra.UI.Configuratons;
+using smartSuite.smartSpriteFX.Pictures;
+using smartSuite.smartSpriteFX.Pictures.ColorPattern;
+using smartSpriteFX.SpriteEffectModule.Forms;
 using System.Drawing;
-using smartSuite.smartSprite.Effects.Infra;
-using smartSprite.SpriteEffectModule.Effects.Filters.UI;
+using smartSuite.smartSpriteFX.Effects.Infra;
+using smartSpriteFX.SpriteEffectModule.Effects.Filters.UI;
 
-namespace smartSuite.smartSprite.Effects.Filters{
+namespace smartSuite.smartSpriteFX.Effects.Filters{
 	/// <summary>
 	/// Represents a filter to infers transparent background
 	/// </summary>
@@ -62,7 +62,7 @@ namespace smartSuite.smartSprite.Effects.Filters{
 
                         if (pixel == null)
                         {
-                            throw new ArgumentNullException("pixel");
+                            continue;
                         }
 
                         #endregion

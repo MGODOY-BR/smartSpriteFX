@@ -1,16 +1,16 @@
 
-using smartSprite.Pictures.ColorPattern;
-using smartSuite.smartSprite.Effects.Core;
-using smartSuite.smartSprite.Effects.Filters;
-using smartSuite.smartSprite.Effects.Infra;
-using smartSuite.smartSprite.Pictures;
+using smartSpriteFX.Pictures.ColorPattern;
+using smartSuite.smartSpriteFX.Effects.Core;
+using smartSuite.smartSpriteFX.Effects.Filters;
+using smartSuite.smartSpriteFX.Effects.Infra;
+using smartSuite.smartSpriteFX.Pictures;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 
-namespace smartSuite.smartSprite.Effects.Tools{
+namespace smartSuite.smartSpriteFX.Effects.Tools{
 	/// <summary>
 	/// Represents a translator to lower image resolution
 	/// </summary>

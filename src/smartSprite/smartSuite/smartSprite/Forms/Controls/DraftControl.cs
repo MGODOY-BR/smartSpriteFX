@@ -7,12 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using smartSprite.Forms.Controls.ToolboxState;
-using smartSuite.smartSprite.Pictures;
-using smartSprite.Forms.Controls.DraftControlState;
-using smartSprite.Properties;
+using smartSpriteFX.Forms.Controls.ToolboxState;
+using smartSuite.smartSpriteFX.Pictures;
+using smartSpriteFX.Forms.Controls.DraftControlState;
+using smartSpriteFX.Properties;
 
-namespace smartSprite.Forms.Controls
+namespace smartSpriteFX.Forms.Controls
 {
     /// <summary>
     /// Represents a board to work with draft to define pieces
@@ -275,8 +275,8 @@ namespace smartSprite.Forms.Controls
                 var hook1 = newHook.GetOlderHuckFromPair();
                 var hook2 = newHook.GetNewerHuckFromPair();
 
-                smartSuite.smartSprite.Pictures.Point point1;
-                smartSuite.smartSprite.Pictures.Point point2;
+                smartSuite.smartSpriteFX.Pictures.Point point1;
+                smartSuite.smartSpriteFX.Pictures.Point point2;
 
                 if (hook1.Point.CompareTo(hook2.Point) == -1)
                 {

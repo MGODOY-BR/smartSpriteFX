@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace smartSprite.SpriteEffectModule.Effects.Filters
+namespace smartSpriteFX.SpriteEffectModule.Effects.Filters
 {
     /// <summary>
     /// Defines a filter specified to handle resolution

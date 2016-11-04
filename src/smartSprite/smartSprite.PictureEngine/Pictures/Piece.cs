@@ -1,9 +1,9 @@
 
-using smartSprite.Forms.Utilities;
-using smartSprite.Utilities;
-using smartSuite.smartSprite.Pictures.ColorPattern;
-using smartSuite.smartSprite.Pictures.PixelPatterns;
-using smartSuite.smartSprite.Unity;
+using smartSpriteFX.Forms.Utilities;
+using smartSpriteFX.Utilities;
+using smartSuite.smartSpriteFX.Pictures.ColorPattern;
+using smartSuite.smartSpriteFX.Pictures.PixelPatterns;
+using smartSuite.smartSpriteFX.Unity;
 using System;
 using System.Collections.Specialized;
 using System.Drawing;
@@ -11,7 +11,7 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Text;
 
-namespace smartSuite.smartSprite.Pictures
+namespace smartSuite.smartSpriteFX.Pictures
 {
     /// <summary>
     /// Represents a piece of picture, created by user

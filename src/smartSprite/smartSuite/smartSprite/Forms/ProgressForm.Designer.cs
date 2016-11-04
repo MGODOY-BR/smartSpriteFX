@@ -1,4 +1,4 @@
-﻿namespace smartSprite.Forms
+﻿namespace smartSpriteFX.Forms
 {
     partial class ProgressForm
     {

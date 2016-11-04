@@ -5,7 +5,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 
-namespace smartSuite.smartSprite.Pictures.PixelPatterns{
+namespace smartSuite.smartSpriteFX.Pictures.PixelPatterns{
 	/// <summary>
 	/// Represents informations about to a pixel
 	/// </summary>

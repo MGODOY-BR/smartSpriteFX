@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace smartSuite.smartSprite.Pictures.PixelPatterns{
+namespace smartSuite.smartSpriteFX.Pictures.PixelPatterns{
 	/// <summary>
 	/// Represents a pattern analyser to study the pixel patterns of a image.
 	/// </summary>

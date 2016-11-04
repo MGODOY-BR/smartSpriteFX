@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace smartSuite.smartSprite.Effects.Infra{
+namespace smartSuite.smartSpriteFX.Effects.Infra{
 	/// <summary>
 	/// Represents the identification notes from component
 	/// </summary>

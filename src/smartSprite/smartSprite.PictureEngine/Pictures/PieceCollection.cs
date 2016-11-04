@@ -6,7 +6,7 @@ using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 
-namespace smartSuite.smartSprite.Pictures{
+namespace smartSuite.smartSpriteFX.Pictures{
 	/// <summary>
 	/// Represents a collection of pieces of a picture
 	/// </summary>

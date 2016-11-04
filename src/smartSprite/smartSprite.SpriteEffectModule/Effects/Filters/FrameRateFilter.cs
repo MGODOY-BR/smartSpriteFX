@@ -3,11 +3,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using smartSuite.smartSprite.Effects.Infra.UI.Configuratons;
-using smartSuite.smartSprite.Pictures;
-using smartSuite.smartSprite.Effects.Infra;
+using smartSuite.smartSpriteFX.Effects.Infra.UI.Configuratons;
+using smartSuite.smartSpriteFX.Pictures;
+using smartSuite.smartSpriteFX.Effects.Infra;
 
-namespace smartSuite.smartSprite.Effects.Filters{
+namespace smartSuite.smartSpriteFX.Effects.Filters{
     /// <summary>
     /// It´s a filter that simulates changing of frame rate of an animation
     /// </summary>
