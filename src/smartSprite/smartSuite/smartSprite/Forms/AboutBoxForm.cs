@@ -16,7 +16,7 @@ namespace smartSpriteFX.Forms
             InitializeComponent();
             this.Text = String.Format("About {0}", AssemblyTitle);
             this.labelProductName.Text = AssemblyProduct;
-            this.labelVersion.Text = String.Format("Version {0}", AssemblyVersion);
+            this.labelVersion.Text = String.Format("Version {0}", AssemblyFileVersion);
             this.labelCopyright.Text = AssemblyCopyright;
             this.labelCompanyName.Text = AssemblyCompany;
             this.textBoxDescription.Text = AssemblyDescription;
@@ -46,6 +46,15 @@ namespace smartSpriteFX.Forms
             get
             {
                 return Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            }
+        }
+
+        public string AssemblyFileVersion
+        {
+            get
+            {
+                var attributes = this.GetType().Assembly.GetCustomAttributes<AssemblyFileVersionAttribute>();
+                return attributes.First().Version;
             }
         }
 

@@ -213,12 +213,21 @@ namespace smartSpriteFX.Forms
         /// </summary>
         private void DoOpenDraft(String fileName)
         {
-            // Loading the picture
-            this.draftControl1.LoadDraftPicture(fileName);
-            this.SetupScroll();
-            this._dataTreeNodeList.Clear();
-            this._projectBrowser.ClearText();
-            this.RebuidTreeView();
+            try
+            {
+                this.Cursor = Cursors.WaitCursor;
+
+                // Loading the picture
+                this.draftControl1.LoadDraftPicture(fileName);
+                this.SetupScroll();
+                this._dataTreeNodeList.Clear();
+                this._projectBrowser.ClearText();
+                this.RebuidTreeView();
+            }
+            finally
+            {
+                this.Cursor = Cursors.Default;
+            }
         }
 
         /// <summary>
@@ -226,18 +235,27 @@ namespace smartSpriteFX.Forms
         /// </summary>
         private void DoOpenProject(String fileName)
         {
-            this._dataTreeNodeList.Clear();
-            // Loading the picture
-            this.draftControl1.LoadProject(fileName);
-            // Filling TreeNodeList
-            foreach (var pieceItem in this.draftControl1.Pieces.PieceList)
+            try
             {
-                this.FillTreeNodeList(pieceItem);
-            }
+                this.Cursor = Cursors.WaitCursor;
 
-            this.RebuidTreeView();
-            this.SetupScroll();
-            this._draftBrowser.ClearText();
+                this._dataTreeNodeList.Clear();
+                // Loading the picture
+                this.draftControl1.LoadProject(fileName);
+                // Filling TreeNodeList
+                foreach (var pieceItem in this.draftControl1.Pieces.PieceList)
+                {
+                    this.FillTreeNodeList(pieceItem);
+                }
+
+                this.RebuidTreeView();
+                this.SetupScroll();
+                this._draftBrowser.ClearText();
+            }
+            finally
+            {
+                this.Cursor = Cursors.Default;
+            }
         }
 
         /// <summary>
@@ -738,15 +756,11 @@ namespace smartSpriteFX.Forms
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnExportToUnity_Click(object sender, EventArgs e)
+        private void btnCutInPieces_Click(object sender, EventArgs e)
         {
-            //if (!String.IsNullOrEmpty(this.txtLoadSprite.Text))
-            //{
-            //    this.exportToUnityDialog1.SelectedPath = Path.GetDirectoryName(this.txtLoadSprite.Text);
-            //}
-            var result = this.exportToUnityDialog1.ShowDialog();
+            var result = this.cutInPiecesDialog.ShowDialog();
 
-            var selectedPath = this.exportToUnityDialog1.SelectedPath;
+            var selectedPath = this.cutInPiecesDialog.SelectedPath;
             if (result == DialogResult.OK)
             {
                 this.Cursor = Cursors.WaitCursor;

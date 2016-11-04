@@ -50,11 +50,11 @@
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.btnSaveState = new System.Windows.Forms.Button();
-            this.btnExportToUnity = new System.Windows.Forms.Button();
+            this.btnCutInPieces = new System.Windows.Forms.Button();
             this.openDraftFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.openSmartSpriteFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.exportToUnityDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.cutInPiecesDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.savePiecesBackgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.progressTime = new System.Windows.Forms.Timer(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
@@ -293,7 +293,7 @@
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.Controls.Add(this.btnSaveState, 0, 0);
-            this.tableLayoutPanel4.Controls.Add(this.btnExportToUnity, 1, 0);
+            this.tableLayoutPanel4.Controls.Add(this.btnCutInPieces, 1, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 274);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
@@ -315,19 +315,19 @@
             this.btnSaveState.UseVisualStyleBackColor = true;
             this.btnSaveState.Click += new System.EventHandler(this.btnSaveState_Click);
             // 
-            // btnExportToUnity
+            // btnCutInPieces
             // 
-            this.btnExportToUnity.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnExportToUnity.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.btnExportToUnity.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExportToUnity.Location = new System.Drawing.Point(100, 3);
-            this.btnExportToUnity.Name = "btnExportToUnity";
-            this.btnExportToUnity.Size = new System.Drawing.Size(91, 57);
-            this.btnExportToUnity.TabIndex = 1;
-            this.btnExportToUnity.Text = "Save/Cut in Pieces";
-            this.toolTip1.SetToolTip(this.btnExportToUnity, "Click to procced to cut the pieces and use them in Unity");
-            this.btnExportToUnity.UseVisualStyleBackColor = false;
-            this.btnExportToUnity.Click += new System.EventHandler(this.btnExportToUnity_Click);
+            this.btnCutInPieces.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnCutInPieces.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.btnCutInPieces.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCutInPieces.Location = new System.Drawing.Point(100, 3);
+            this.btnCutInPieces.Name = "btnCutInPieces";
+            this.btnCutInPieces.Size = new System.Drawing.Size(91, 57);
+            this.btnCutInPieces.TabIndex = 1;
+            this.btnCutInPieces.Text = "Save/Cut in Pieces";
+            this.toolTip1.SetToolTip(this.btnCutInPieces, "Click to procced to cut the pieces and use them in Unity");
+            this.btnCutInPieces.UseVisualStyleBackColor = false;
+            this.btnCutInPieces.Click += new System.EventHandler(this.btnCutInPieces_Click);
             // 
             // openDraftFileDialog1
             // 
@@ -347,10 +347,9 @@
             this.saveFileDialog1.Filter = "SmartSprite Project|*.smartSprite";
             this.saveFileDialog1.Title = "Save project as";
             // 
-            // exportToUnityDialog1
+            // cutInPiecesDialog
             // 
-            this.exportToUnityDialog1.Description = "Select an piece folder";
-            this.exportToUnityDialog1.RootFolder = System.Environment.SpecialFolder.MyDocuments;
+            this.cutInPiecesDialog.Description = "Select an piece folder";
             // 
             // savePiecesBackgroundWorker
             // 
@@ -420,9 +419,9 @@
         private System.Windows.Forms.TreeView treeView1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.Button btnSaveState;
-        private System.Windows.Forms.Button btnExportToUnity;
+        private System.Windows.Forms.Button btnCutInPieces;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
-        private System.Windows.Forms.FolderBrowserDialog exportToUnityDialog1;
+        private System.Windows.Forms.FolderBrowserDialog cutInPiecesDialog;
         private System.ComponentModel.BackgroundWorker savePiecesBackgroundWorker;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
         private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
