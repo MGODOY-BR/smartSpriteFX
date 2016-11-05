@@ -3,11 +3,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C8DB0E15-31F8-40DE-9645-79FE2114D06B}</ProjectGuid>
+    <ProjectGuid>{39ABA4E2-F667-4443-A404-ABA4A1B79248}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>smartSpriteFX.SpriteEffectModule.Test</RootNamespace>
-    <AssemblyName>smartSpriteFX.SpriteEffectModule.Test</AssemblyName>
+    <RootNamespace>smartSpriteFX.PictureEngine.Test</RootNamespace>
+    <AssemblyName>smartSpriteFX.PictureEngine.Test</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -34,22 +34,16 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <PlatformTarget>x64</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>effectModuleKey.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>pictureEngineKey.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Rhino.Mocks, Version=3.6.0.0, Culture=neutral, PublicKeyToken=0b3305902db7183f, processorArchitecture=MSIL">
-      <HintPath>..\packages\RhinoMocks.3.6.1\lib\net\Rhino.Mocks.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -59,79 +53,31 @@
     </When>
     <Otherwise>
       <ItemGroup>
-        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework">
-          <Private>False</Private>
-        </Reference>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" />
       </ItemGroup>
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Animations\FrameIteratorTest.cs" />
-    <Compile Include="Effects\Core\EffectEngineTest.cs" />
-    <Compile Include="Effects\FilterEngine\FilterCollectionTest.cs" />
-    <Compile Include="Effects\Filters\FrameRateFilterTest.cs" />
-    <Compile Include="Effects\Filters\BorderFilterTest.cs" />
-    <Compile Include="Effects\Filters\TransparentBackgroundFilterTest.cs" />
-    <Compile Include="Effects\Filters\_8BitFilterTest.cs" />
-    <Compile Include="Effects\Filters\_24BitFilterTest.cs" />
-    <Compile Include="Effects\Filters\_16BitFilterTest.cs" />
-    <Compile Include="Infra\ColorBufferTest.cs" />
+    <Compile Include="PictureTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tools\ResolutionTranslatorTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\smartSprite.PictureEngine\smartSprite.PictureEngine.csproj">
+    <None Include="pictureEngineKey.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\smartSprite.PictureEngine\smartSpriteFX.PictureEngine.csproj">
       <Project>{d374dac6-55c3-465a-b27f-ef762e7f0cc5}</Project>
-      <Name>smartSprite.PictureEngine</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\smartSprite.SpriteEffectModule\smartSprite.SpriteEffectModule.csproj">
-      <Project>{09dee0f5-2b1a-44e9-be7c-9dc0eb93bee8}</Project>
-      <Name>smartSprite.SpriteEffectModule</Name>
+      <Name>smartSpriteFX.PictureEngine</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="effectModuleKey.snk" />
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="StubAnimation\Enumerated\2_Circle.stub.bmp">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="StubAnimation\Enumerated\3_Circle.stub.bmp">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="StubAnimation\Enumerated\4_Circle.stub.bmp">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="StubAnimation\Enumerated\5_Circle.stub.bmp">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="StubAnimation\Enumerated\6_Circle.stub.bmp">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="StubAnimation\Enumerated\7_Circle.stub.bmp">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="StubAnimation\Enumerated\8_Circle.stub.bmp">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="StubAnimation\Enumerated\9_Circle.stub.bmp">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="StubAnimation\Enumerated\10_Circle.stub.bmp">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="StubAnimation\Enumerated\1_Circle.stub.bmp">
+    <Content Include="Stubs\Character.stub.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Stubs\Circle.stub.bmp">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Stubs\Character.stub.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
-  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

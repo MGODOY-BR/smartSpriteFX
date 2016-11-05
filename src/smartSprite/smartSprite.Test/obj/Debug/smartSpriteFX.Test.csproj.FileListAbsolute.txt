@@ -1,0 +1,13 @@
+C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.Test\bin\Debug\Temp\empty.txt
+C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.Test\bin\Debug\ThirdPartyEffectModulePlugin\READ-ME.txt
+C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.Test\bin\Debug\smartSpriteFX.Test.dll
+C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.Test\bin\Debug\smartSpriteFX.Test.pdb
+C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.Test\bin\Debug\smartSpriteFX.exe
+C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.Test\bin\Debug\smartSpriteFX.PictureEngine.dll
+C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.Test\bin\Debug\smartSpriteFX.SpriteEffectModule.dll
+C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.Test\bin\Debug\smartSpriteFX.PictureEngine.pdb
+C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.Test\bin\Debug\smartSpriteFX.pdb
+C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.Test\bin\Debug\smartSpriteFX.SpriteEffectModule.pdb
+C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.Test\obj\Debug\smartSpriteFX.Test.csprojResolveAssemblyReference.cache
+C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.Test\obj\Debug\smartSpriteFX.Test.dll
+C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSprite.Test\obj\Debug\smartSpriteFX.Test.pdb

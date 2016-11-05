@@ -119,9 +119,9 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\smartSprite.PictureEngine\smartSprite.PictureEngine.csproj">
+    <ProjectReference Include="..\smartSprite.PictureEngine\smartSpriteFX.PictureEngine.csproj">
       <Project>{D374DAC6-55C3-465A-B27F-EF762E7F0CC5}</Project>
-      <Name>smartSprite.PictureEngine</Name>
+      <Name>smartSpriteFX.PictureEngine</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

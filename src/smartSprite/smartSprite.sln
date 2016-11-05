@@ -3,28 +3,28 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "smartSprite", "smartSprite\smartSprite.csproj", "{4B45999C-8BB2-4134-BA02-653293BF42C3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "smartSpriteFX", "smartSprite\smartSpriteFX.csproj", "{4B45999C-8BB2-4134-BA02-653293BF42C3}"
 	ProjectSection(ProjectDependencies) = postProject
 		{D374DAC6-55C3-465A-B27F-EF762E7F0CC5} = {D374DAC6-55C3-465A-B27F-EF762E7F0CC5}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "smartSprite.Test", "smartSprite.Test\smartSprite.Test.csproj", "{6B79E3E2-DBBF-4166-9858-C369B07709AB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "smartSpriteFX.Test", "smartSprite.Test\smartSpriteFX.Test.csproj", "{6B79E3E2-DBBF-4166-9858-C369B07709AB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "smartSprite.PictureEngine", "smartSprite.PictureEngine\smartSprite.PictureEngine.csproj", "{D374DAC6-55C3-465A-B27F-EF762E7F0CC5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "smartSpriteFX.PictureEngine", "smartSprite.PictureEngine\smartSpriteFX.PictureEngine.csproj", "{D374DAC6-55C3-465A-B27F-EF762E7F0CC5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{94E04DED-4FC5-4E3F-B52E-B0E54E7AD7EB}"
 	ProjectSection(SolutionItems) = preProject
 		ReleaseNotes.txt = ReleaseNotes.txt
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "smartSprite.SpriteEffectModule", "smartSprite.SpriteEffectModule\smartSprite.SpriteEffectModule.csproj", "{09DEE0F5-2B1A-44E9-BE7C-9DC0EB93BEE8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "smartSpriteFX.SpriteEffectModule", "smartSprite.SpriteEffectModule\smartSpriteFX.SpriteEffectModule.csproj", "{09DEE0F5-2B1A-44E9-BE7C-9DC0EB93BEE8}"
 	ProjectSection(ProjectDependencies) = postProject
 		{D374DAC6-55C3-465A-B27F-EF762E7F0CC5} = {D374DAC6-55C3-465A-B27F-EF762E7F0CC5}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "smartSprite.SpriteEffectModule.Test", "smartSprite.SpriteEffectModule.Test\smartSprite.SpriteEffectModule.Test.csproj", "{C8DB0E15-31F8-40DE-9645-79FE2114D06B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "smartSpriteFX.SpriteEffectModule.Test", "smartSprite.SpriteEffectModule.Test\smartSpriteFX.SpriteEffectModule.Test.csproj", "{C8DB0E15-31F8-40DE-9645-79FE2114D06B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "smartSprite.PictureEngine.Test", "smartSprite.PictureEngine.Test\smartSprite.PictureEngine.Test.csproj", "{39ABA4E2-F667-4443-A404-ABA4A1B79248}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "smartSpriteFX.PictureEngine.Test", "smartSprite.PictureEngine.Test\smartSpriteFX.PictureEngine.Test.csproj", "{39ABA4E2-F667-4443-A404-ABA4A1B79248}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

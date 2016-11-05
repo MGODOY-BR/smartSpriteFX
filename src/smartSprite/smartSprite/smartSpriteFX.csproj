@@ -237,13 +237,13 @@
     <None Include="Resources\Hook.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\smartSprite.PictureEngine\smartSprite.PictureEngine.csproj">
+    <ProjectReference Include="..\smartSprite.PictureEngine\smartSpriteFX.PictureEngine.csproj">
       <Project>{D374DAC6-55C3-465A-B27F-EF762E7F0CC5}</Project>
-      <Name>smartSprite.PictureEngine</Name>
+      <Name>smartSpriteFX.PictureEngine</Name>
     </ProjectReference>
-    <ProjectReference Include="..\smartSprite.SpriteEffectModule\smartSprite.SpriteEffectModule.csproj">
+    <ProjectReference Include="..\smartSprite.SpriteEffectModule\smartSpriteFX.SpriteEffectModule.csproj">
       <Project>{09dee0f5-2b1a-44e9-be7c-9dc0eb93bee8}</Project>
-      <Name>smartSprite.SpriteEffectModule</Name>
+      <Name>smartSpriteFX.SpriteEffectModule</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
