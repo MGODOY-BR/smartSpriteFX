@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "smartSprite", "smartSuite\smartSprite\smartSprite.csproj", "{4B45999C-8BB2-4134-BA02-653293BF42C3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "smartSprite", "smartSprite\smartSprite.csproj", "{4B45999C-8BB2-4134-BA02-653293BF42C3}"
 	ProjectSection(ProjectDependencies) = postProject
 		{D374DAC6-55C3-465A-B27F-EF762E7F0CC5} = {D374DAC6-55C3-465A-B27F-EF762E7F0CC5}
 	EndProjectSection
