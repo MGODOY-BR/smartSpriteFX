@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{09DEE0F5-2B1A-44E9-BE7C-9DC0EB93BEE8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>smartSpriteFX.SpriteEffectModule</RootNamespace>
+    <AssemblyName>smartSpriteFX.SpriteEffectModule</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>effectModuleKey.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Animations\AnimationComparer.cs" />
+    <Compile Include="Animations\FrameIterator.cs" />
+    <Compile Include="Effects\Core\EffectEngine.cs" />
+    <Compile Include="Effects\Filters\UI\ColorListControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Effects\Filters\UI\ColorListControl.Designer.cs">
+      <DependentUpon>ColorListControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Effects\Filters\UI\ColorSelectionControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Effects\Filters\UI\ColorSelectionControl.Designer.cs">
+      <DependentUpon>ColorSelectionControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Effects\Filters\UI\MessageBoxUtil.cs" />
+    <Compile Include="Effects\Infra\UI\IApplyFilterCallback.cs" />
+    <Compile Include="Effects\Facade\EffectFacade.cs" />
+    <Compile Include="Effects\FilterEngine\FilterCollection.cs" />
+    <Compile Include="Effects\Filters\BorderFilter.cs" />
+    <Compile Include="Effects\Filters\IResolutionFilterSetter.cs" />
+    <Compile Include="Effects\Filters\UI\BorderFilterConfigurationPanelControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Effects\Filters\UI\BorderFilterConfigurationPanelControl.Designer.cs">
+      <DependentUpon>BorderFilterConfigurationPanelControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Effects\Filters\UI\NoneConfigurationPanelControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Effects\Filters\UI\NoneConfigurationPanelControl.Designer.cs">
+      <DependentUpon>NoneConfigurationPanelControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Effects\Filters\UI\ResolutionConfigurationPanelControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Effects\Filters\UI\ResolutionConfigurationPanelControl.Designer.cs">
+      <DependentUpon>ResolutionConfigurationPanelControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Effects\Filters\_8BitFilter.cs" />
+    <Compile Include="Effects\Filters\_24BitFilter.cs" />
+    <Compile Include="Effects\Filters\_16BitFilter.cs" />
+    <Compile Include="Effects\Filters\IEffectFilter.cs" />
+    <Compile Include="Effects\Filters\SmartSpriteOriginalFilterBase.cs" />
+    <Compile Include="Effects\Filters\FrameRateFilter.cs" />
+    <Compile Include="Effects\Filters\TransparentBackgroundFilter.cs" />
+    <Compile Include="Effects\Infra\ColorBuffer.cs" />
+    <Compile Include="Effects\Infra\Identification.cs" />
+    <Compile Include="Effects\Infra\UI\Configuratons\IConfigurationPanel.cs" />
+    <Compile Include="Effects\Infra\UI\Configuratons\GenericConfigurationPanel.cs" />
+    <Compile Include="Effects\Tools\ColorUtil.cs" />
+    <Compile Include="Effects\Tools\ResolutionTranslator.cs" />
+    <Compile Include="Forms\ColorSupportFormForAnimation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="effectModuleKey.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Temp\empty.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ThirdPartyEffectModulePlugin\READ-ME.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\smartSpriteFX.PictureEngine\smartSpriteFX.PictureEngine.csproj">
+      <Project>{D374DAC6-55C3-465A-B27F-EF762E7F0CC5}</Project>
+      <Name>smartSpriteFX.PictureEngine</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Effects\Filters\UI\BorderFilterConfigurationPanelControl.resx">
+      <DependentUpon>BorderFilterConfigurationPanelControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Effects\Filters\UI\ColorListControl.resx">
+      <DependentUpon>ColorListControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Effects\Filters\UI\ColorSelectionControl.resx">
+      <DependentUpon>ColorSelectionControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Effects\Filters\UI\NoneConfigurationPanelControl.resx">
+      <DependentUpon>NoneConfigurationPanelControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Effects\Filters\UI\ResolutionConfigurationPanelControl.resx">
+      <DependentUpon>ResolutionConfigurationPanelControl.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
