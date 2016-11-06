@@ -244,6 +244,7 @@ namespace smartSuite.smartSpriteFX.Forms
         private void FrameSelectionControl_SelectingFrame(object sender, FrameSelectionEventArgs e)
         {
             previewBoard.Image = Image.FromFile(e.FilePath);
+            this.FitImage(this.chkBoxFitImage.Checked);
         }
 
         /// <summary>
@@ -427,6 +428,28 @@ namespace smartSuite.smartSpriteFX.Forms
             finally
             {
                 this.Cursor = Cursors.Default;
+            }
+        }
+
+        private void chkBoxFitImage_CheckedChanged(object sender, EventArgs e)
+        {
+            this.FitImage(this.chkBoxFitImage.Checked);
+        }
+
+        /// <summary>
+        /// Fit image in container
+        /// </summary>
+        private void FitImage(bool fit)
+        {
+            if (fit)
+            {
+                this.previewBoard.Dock = DockStyle.Fill;
+                this.previewBoard.SizeMode = PictureBoxSizeMode.Zoom;
+            }
+            else
+            {
+                this.previewBoard.Dock = DockStyle.None;
+                this.previewBoard.SizeMode = PictureBoxSizeMode.AutoSize;
             }
         }
     }
