@@ -84,7 +84,7 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI
         /// <returns></returns>
         private static string GetApplicationName()
         {
-            return typeof(MessageBoxUtil).Assembly.GetName().Name;
+            return "smartSpriteFX";
         }
 
     }

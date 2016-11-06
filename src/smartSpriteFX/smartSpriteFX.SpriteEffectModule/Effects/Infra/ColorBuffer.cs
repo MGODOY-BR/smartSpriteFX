@@ -112,22 +112,6 @@ namespace smartSuite.smartSpriteFX.Effects.Infra
         }
 
         /// <summary>
-        /// Clears the color buffer
-        /// </summary>
-        public void Clear()
-        {
-        }
-
-        /// <summary>
-        /// Counts the amount of buffer
-        /// </summary>
-        /// <returns></returns>
-        public int Count()
-        {
-            throw new NotSupportedException();
-        }
-
-        /// <summary>
         /// Gets the color component slighty different to trick the transparent mechanism
         /// </summary>
         /// <param name="colorComponent"></param>
@@ -172,6 +156,15 @@ namespace smartSuite.smartSpriteFX.Effects.Infra
         /// <returns></returns>
         private Color TrickAvoidedColor(Color returnColor)
         {
+            #region Entries validation
+
+            if (this.AvoidedColorList == null)
+            {
+                return returnColor;
+            }
+
+            #endregion
+
             foreach (var avoidedColor in this.AvoidedColorList)
             {
                 if (this._trickyComparer.LooksLikeBySensibility3(avoidedColor, returnColor))
@@ -207,7 +200,14 @@ namespace smartSuite.smartSpriteFX.Effects.Infra
             #endregion
 
             // This is just a bare estimate. Calculate using combination is too hard because of long numbers formed and it takes too much
-            int returnValue = 256 / 1 / (maxColor / 12);
+            var colorFactor = (maxColor / 12);
+
+            if (colorFactor == 0)
+            {
+                colorFactor = 1;
+            }
+
+            int returnValue = 256 / 1 / colorFactor;
 
             if (returnValue <= 0)
             {

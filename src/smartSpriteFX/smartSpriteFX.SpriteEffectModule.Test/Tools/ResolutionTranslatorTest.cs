@@ -36,9 +36,6 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Test.Tools
                     #endregion
 
                     test.Translate(x, y, pixel.Value);
-
-                    // x = (int)test.LastScannedPoint.X;   // <-- This was made because we known that horizontaly X coordinator has not changed 
-                    throw new NotImplementedException();
                 }
             }
 
@@ -46,13 +43,13 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Test.Tools
 
             #region Getting the evidences
 
-            var evidenceColorBufferList = test.GetColorBuffer();
+            var evidence = test.CreatedTranslatedPicture();
 
             #endregion
 
             #region Validating the evidences
 
-            Assert.AreEqual(512, evidenceColorBufferList.Count());
+            Assert.AreEqual(512, evidence.ColorCount);
             // Assert... <-- This assert is too complex to be done here. The real test should be done in CreatedTranslatedPicture()
 
             #endregion
