@@ -1,5 +1,5 @@
 
-using smartSpriteFX.SpriteEffectModule.Animations;
+using smartSuite.smartSpriteFX.SpriteEffectModule.Animations;
 using smartSuite.smartSpriteFX.Pictures;
 using System;
 using System.Collections.Generic;

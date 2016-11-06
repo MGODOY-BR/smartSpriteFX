@@ -8,10 +8,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
-using smartSpriteFX.SpriteEffectModule.Animations;
+using smartSuite.smartSpriteFX.SpriteEffectModule.Animations;
 using smartSuite.smartSpriteFX.Effects.Core;
 
-namespace smartSpriteFX.Forms.Controls.Animations.Frames
+namespace smartSuite.smartSpriteFX.Forms.Controls.Animations.Frames
 {
     /// <summary>
     /// It´s a control to selecion of frame

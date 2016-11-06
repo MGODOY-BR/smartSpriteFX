@@ -4,7 +4,7 @@ using smartSuite.smartSpriteFX.Effects.Filters;
 using smartSuite.smartSpriteFX.Pictures;
 using System.IO;
 
-namespace smartSpriteFX.SpriteEffectModule.Test.Effects.Filters
+namespace smartSuite.smartSpriteFX.SpriteEffectModule.Test.Effects.Filters
 {
     [TestClass]
     public class _16BitFilterTest

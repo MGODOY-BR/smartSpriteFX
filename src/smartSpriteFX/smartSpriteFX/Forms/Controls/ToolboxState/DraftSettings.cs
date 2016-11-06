@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace smartSpriteFX.Forms.Controls.ToolboxState
+namespace smartSuite.smartSpriteFX.Forms.Controls.ToolboxState
 {
     /// <summary>
     /// Sets how the draft must work

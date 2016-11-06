@@ -1,4 +1,4 @@
-﻿using smartSpriteFX.Forms;
+﻿using smartSuite.smartSpriteFX.Forms;
 using smartSuite.smartSpriteFX.Pictures;
 using System;
 using System.Collections.Generic;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace smartSpriteFX.SpriteEffectModule.Forms
+namespace smartSuite.smartSpriteFX.SpriteEffectModule.Forms
 {
     /// <summary>
     /// It´s a version of <see cref="ColorSupportForm"/> used to support animations 

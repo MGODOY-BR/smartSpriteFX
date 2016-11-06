@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace smartSpriteFX.SpriteEffectModule.Effects.Tools
+namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Tools
 {
     /// <summary>
     /// Offers utilities for color operations

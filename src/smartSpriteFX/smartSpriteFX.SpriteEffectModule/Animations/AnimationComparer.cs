@@ -5,7 +5,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace smartSpriteFX.SpriteEffectModule.Animations
+namespace smartSuite.smartSpriteFX.SpriteEffectModule.Animations
 {
     /// <summary>
     /// It´s a comparison used to sort animation

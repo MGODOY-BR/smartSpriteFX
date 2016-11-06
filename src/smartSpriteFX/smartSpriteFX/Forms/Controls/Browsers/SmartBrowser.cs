@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace smartSpriteFX.Forms.Controls.Browsers
+namespace smartSuite.smartSpriteFX.Forms.Controls.Browsers
 {
     /// <summary>
     /// Represents a default browser

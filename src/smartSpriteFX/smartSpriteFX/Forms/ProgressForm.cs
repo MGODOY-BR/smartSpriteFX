@@ -1,4 +1,4 @@
-﻿using smartSpriteFX.SpriteEffectModule.Infra.UI;
+﻿using smartSuite.smartSpriteFX.SpriteEffectModule.Infra.UI;
 using smartSuite.smartSpriteFX.Effects.Core;
 using System;
 using System.Collections.Generic;
@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace smartSpriteFX.Forms
+namespace smartSuite.smartSpriteFX.Forms
 {
     public partial class ProgressForm : Form, IApplyFilterCallback
     {

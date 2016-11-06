@@ -2,9 +2,9 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using smartSuite.smartSpriteFX.Pictures;
 using smartSuite.smartSpriteFX.Effects.Filters;
-using smartSpriteFX.SpriteEffectModule.Effects.Filters;
+using smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters;
 
-namespace smartSpriteFX.SpriteEffectModule.Test.Effects.Filters
+namespace smartSuite.smartSpriteFX.SpriteEffectModule.Test.Effects.Filters
 {
     [TestClass]
     public class BorderFilterTest

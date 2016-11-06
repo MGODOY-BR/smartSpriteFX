@@ -1,5 +1,5 @@
-﻿using smartSpriteFX.Forms.Controls.SwitchMode;
-using smartSpriteFX.SpriteEffectModule.Effects.Filters.UI;
+﻿using smartSuite.smartSpriteFX.Forms.Controls.SwitchMode;
+using smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace smartSpriteFX.Forms
+namespace smartSuite.smartSpriteFX.Forms
 {
     /// <summary>
     /// It´s a screen form used to alternate among the available edit modes

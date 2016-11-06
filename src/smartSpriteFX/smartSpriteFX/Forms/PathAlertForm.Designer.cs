@@ -1,4 +1,4 @@
-﻿namespace smartSpriteFX.Forms
+﻿namespace smartSuite.smartSpriteFX.Forms
 {
     partial class PathAlertForm
     {

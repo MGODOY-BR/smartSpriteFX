@@ -11,7 +11,7 @@ using System.CodeDom.Compiler;
 using smartSuite.smartSpriteFX.Effects.Infra;
 using smartSuite.smartSpriteFX.Effects.Infra.UI.Configuratons;
 
-namespace smartSpriteFX.SpriteEffectModule.Test
+namespace smartSuite.smartSpriteFX.SpriteEffectModule.Test
 {
     [TestClass]
     public class FilterCollectionTest

@@ -5,7 +5,7 @@ using System.Windows.Forms;
 using smartSuite.smartSpriteFX.Effects.FilterEngine;
 using System.IO;
 
-namespace smartSpriteFX.SpriteEffectModule.Test.Effects.Core
+namespace smartSuite.smartSpriteFX.SpriteEffectModule.Test.Effects.Core
 {
     [TestClass]
     public class EffectEngineTest

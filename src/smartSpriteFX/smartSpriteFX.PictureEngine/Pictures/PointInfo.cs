@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace smartSpriteFX.PictureEngine.Pictures
+namespace smartSuite.smartSpriteFX.PictureEngine.Pictures
 {
     /// <summary>
     /// Represents a composition of point and aditional information

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace smartSpriteFX.Forms.Controls.Animations.Frames
+namespace smartSuite.smartSpriteFX.Forms.Controls.Animations.Frames
 {
     /// <summary>
     /// It´s argument from FrameSelection event handler

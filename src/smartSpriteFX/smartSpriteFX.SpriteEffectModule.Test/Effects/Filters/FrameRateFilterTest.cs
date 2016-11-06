@@ -5,7 +5,7 @@ using smartSuite.smartSpriteFX.Pictures;
 using Rhino.Mocks;
 using System.Collections.Generic;
 
-namespace smartSpriteFX.SpriteEffectModule.Test.Effects.Filters
+namespace smartSuite.smartSpriteFX.SpriteEffectModule.Test.Effects.Filters
 {
     [TestClass]
     public class FrameRateFilterTest

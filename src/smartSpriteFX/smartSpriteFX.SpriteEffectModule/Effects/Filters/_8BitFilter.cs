@@ -7,8 +7,8 @@ using System.Linq;
 using System.Text;
 using smartSuite.smartSpriteFX.Effects.Infra.UI.Configuratons;
 using smartSuite.smartSpriteFX.Pictures;
-using smartSpriteFX.SpriteEffectModule.Effects.Filters;
-using smartSpriteFX.SpriteEffectModule.Effects.Filters.UI;
+using smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters;
+using smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI;
 using System.Drawing;
 
 namespace smartSuite.smartSpriteFX.Effects.Filters{

@@ -1,7 +1,7 @@
-﻿using smartSpriteFX.Forms.Controls.Animations.Effects;
-using smartSpriteFX.Forms.Controls.Animations.Frames;
-using smartSpriteFX.Forms.Controls.Browsers;
-using smartSpriteFX.Properties;
+﻿using smartSuite.smartSpriteFX.Forms.Controls.Animations.Effects;
+using smartSuite.smartSpriteFX.Forms.Controls.Animations.Frames;
+using smartSuite.smartSpriteFX.Forms.Controls.Browsers;
+using smartSuite.smartSpriteFX.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,12 +14,12 @@ using System.Windows.Forms;
 using smartSuite.smartSpriteFX.Effects.Filters;
 using smartSuite.smartSpriteFX.Effects.Infra;
 using smartSuite.smartSpriteFX.Effects.Core;
-using smartSpriteFX.Forms.Controls.EffectFilterPallete;
-using smartSpriteFX.Forms.Controls.NoneConfigurationPanel;
-using smartSpriteFX.SpriteEffectModule.Effects.Filters.UI;
-using smartSpriteFX.Forms.Controls.SwitchMode;
+using smartSuite.smartSpriteFX.Forms.Controls.EffectFilterPallete;
+using smartSuite.smartSpriteFX.Forms.Controls.NoneConfigurationPanel;
+using smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI;
+using smartSuite.smartSpriteFX.Forms.Controls.SwitchMode;
 
-namespace smartSpriteFX.Forms
+namespace smartSuite.smartSpriteFX.Forms
 {
     public partial class AnimationForm : Form
     {

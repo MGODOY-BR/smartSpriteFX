@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace smartSpriteFX.Utilities
+namespace smartSuite.smartSpriteFX.Utilities
 {
     /// <summary>
     /// Offers a control to manipulate the "strength" of system, mainly about loopings

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace smartSpriteFX.Forms.Controls.LineControlState
+namespace smartSuite.smartSpriteFX.Forms.Controls.LineControlState
 {
     /// <summary>
     /// Relates the line control styles

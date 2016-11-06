@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace smartSpriteFX.Pictures.ColorPattern
+namespace smartSuite.smartSpriteFX.Pictures.ColorPattern
 {
     /// <summary>
     /// Represents a color equality comparer for colors

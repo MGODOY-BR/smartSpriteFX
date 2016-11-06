@@ -11,7 +11,7 @@ using smartSuite.smartSpriteFX.Effects.Facade;
 using smartSuite.smartSpriteFX.Effects.Filters;
 using smartSuite.smartSpriteFX.Effects.Infra.UI.Configuratons;
 
-namespace smartSpriteFX.SpriteEffectModule.Effects.Filters.UI
+namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI
 {
     public partial class BorderFilterConfigurationPanelControl : UserControl, IConfigurationPanel
     {

@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using smartSuite.smartSpriteFX.Effects.Infra;
-using smartSpriteFX.Pictures.ColorPattern;
+using smartSuite.smartSpriteFX.Pictures.ColorPattern;
 
-namespace smartSpriteFX.SpriteEffectModule.Test.Infra
+namespace smartSuite.smartSpriteFX.SpriteEffectModule.Test.Infra
 {
     [TestClass]
     public class ColorBufferTest

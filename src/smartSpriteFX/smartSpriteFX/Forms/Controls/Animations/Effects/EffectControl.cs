@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using smartSuite.smartSpriteFX.Effects.Filters;
 
-namespace smartSpriteFX.Forms.Controls.Animations.Effects
+namespace smartSuite.smartSpriteFX.Forms.Controls.Animations.Effects
 {
     /// <summary>
     /// Represents am effect filter UI

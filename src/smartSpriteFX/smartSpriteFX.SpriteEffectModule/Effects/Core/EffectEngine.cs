@@ -1,5 +1,5 @@
 
-using smartSpriteFX.SpriteEffectModule.Infra.UI;
+using smartSuite.smartSpriteFX.SpriteEffectModule.Infra.UI;
 using smartSuite.smartSpriteFX.Animations;
 using smartSuite.smartSpriteFX.Effects.FilterEngine;
 using smartSuite.smartSpriteFX.Effects.Filters;

@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace smartSpriteFX.Forms.Controls.NoneConfigurationPanel
+namespace smartSuite.smartSpriteFX.Forms.Controls.NoneConfigurationPanel
 {
     public partial class NoneConfigurationPanelControl : UserControl
     {

@@ -1,4 +1,4 @@
-﻿namespace smartSpriteFX.Forms
+﻿namespace smartSuite.smartSpriteFX.Forms
 {
     partial class AboutBoxForm
     {
@@ -69,7 +69,7 @@
             // 
             // logoPictureBox
             // 
-            this.logoPictureBox.BackgroundImage = global::smartSpriteFX.Properties.Resources.logo;
+            this.logoPictureBox.BackgroundImage = global::smartSuite.smartSpriteFX.Properties.Resources.logo;
             this.logoPictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.logoPictureBox.Location = new System.Drawing.Point(3, 3);
             this.logoPictureBox.Name = "logoPictureBox";

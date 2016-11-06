@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace smartSpriteFX.Forms.Utilities
+namespace smartSuite.smartSpriteFX.Forms.Utilities
 {
     /// <summary>
     /// Offers an factory for delegation of asking color delegate

@@ -1,6 +1,6 @@
 
-using smartSpriteFX.Forms.Utilities;
-using smartSpriteFX.Utilities;
+using smartSuite.smartSpriteFX.Forms.Utilities;
+using smartSuite.smartSpriteFX.Utilities;
 using smartSuite.smartSpriteFX.Pictures.ColorPattern;
 using smartSuite.smartSpriteFX.Pictures.PixelPatterns;
 using smartSuite.smartSpriteFX.Unity;

@@ -1,4 +1,4 @@
-﻿namespace smartSpriteFX.Forms.Controls.SwitchMode
+﻿namespace smartSuite.smartSpriteFX.Forms.Controls.SwitchMode
 {
     partial class SwitchModeControl
     {

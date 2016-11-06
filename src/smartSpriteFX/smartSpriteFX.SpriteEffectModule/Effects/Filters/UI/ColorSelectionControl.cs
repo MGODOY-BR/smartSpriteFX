@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace smartSpriteFX.SpriteEffectModule.Effects.Filters.UI
+namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI
 {
     /// <summary>
     /// Represents a control to offer color selection capabilities

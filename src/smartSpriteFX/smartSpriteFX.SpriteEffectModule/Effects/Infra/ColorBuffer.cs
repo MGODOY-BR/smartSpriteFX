@@ -1,5 +1,5 @@
 
-using smartSpriteFX.Pictures.ColorPattern;
+using smartSuite.smartSpriteFX.Pictures.ColorPattern;
 using smartSuite.smartSpriteFX.Effects.Core;
 using smartSuite.smartSpriteFX.Effects.Filters;
 using System;

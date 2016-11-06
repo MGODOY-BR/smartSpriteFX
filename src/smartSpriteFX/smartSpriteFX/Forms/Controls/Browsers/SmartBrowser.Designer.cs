@@ -1,4 +1,4 @@
-﻿namespace smartSpriteFX.Forms.Controls.Browsers
+﻿namespace smartSuite.smartSpriteFX.Forms.Controls.Browsers
 {
     partial class SmartBrowser
     {
@@ -53,7 +53,7 @@
             // btnApply
             // 
             this.btnApply.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnApply.Image = global::smartSpriteFX.Properties.Resources.arrow;
+            this.btnApply.Image = global::smartSuite.smartSpriteFX.Properties.Resources.arrow;
             this.btnApply.Location = new System.Drawing.Point(215, 19);
             this.btnApply.Name = "btnApply";
             this.btnApply.Size = new System.Drawing.Size(38, 23);

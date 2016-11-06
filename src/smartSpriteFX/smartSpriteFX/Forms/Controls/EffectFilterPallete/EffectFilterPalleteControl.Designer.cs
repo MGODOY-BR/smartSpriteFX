@@ -1,4 +1,4 @@
-﻿namespace smartSpriteFX.Forms.Controls.EffectFilterPallete
+﻿namespace smartSuite.smartSpriteFX.Forms.Controls.EffectFilterPallete
 {
     partial class EffectFilterPalleteControl
     {

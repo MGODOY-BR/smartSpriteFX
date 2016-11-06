@@ -4,7 +4,7 @@ using smartSuite.smartSpriteFX.Pictures;
 using System.Linq;
 using System.Drawing;
 
-namespace smartSpriteFX.PictureEngine.Test
+namespace smartSuite.smartSpriteFX.PictureEngine.Test
 {
     [TestClass]
     public class PictureTest

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace smartSpriteFX.Forms.Controls.DraftControlState
+namespace smartSuite.smartSpriteFX.Forms.Controls.DraftControlState
 {
     /// <summary>
     /// Represents a state of an event involving pieces

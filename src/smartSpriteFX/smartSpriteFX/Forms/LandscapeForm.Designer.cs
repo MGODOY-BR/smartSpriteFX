@@ -1,4 +1,4 @@
-﻿namespace smartSpriteFX.Forms
+﻿namespace smartSuite.smartSpriteFX.Forms
 {
     partial class LandscapeForm
     {
@@ -130,7 +130,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::smartSpriteFX.Properties.Resources.logo;
+            this.pictureBox1.Image = global::smartSuite.smartSpriteFX.Properties.Resources.logo;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(494, 28);
@@ -243,7 +243,7 @@
             // 
             this.toolHookButton.CheckOnClick = true;
             this.toolHookButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolHookButton.Image = global::smartSpriteFX.Properties.Resources.Hook;
+            this.toolHookButton.Image = global::smartSuite.smartSpriteFX.Properties.Resources.Hook;
             this.toolHookButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolHookButton.Name = "toolHookButton";
             this.toolHookButton.Size = new System.Drawing.Size(23, 22);

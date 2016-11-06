@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace smartSpriteFX.SpriteEffectModule.Infra.UI
+namespace smartSuite.smartSpriteFX.SpriteEffectModule.Infra.UI
 {
     /// <summary>
     /// Defines how a callback which handle the progress of an operation must be.

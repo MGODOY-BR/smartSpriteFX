@@ -1,4 +1,4 @@
-﻿namespace smartSpriteFX.SpriteEffectModule.Effects.Filters.UI
+﻿namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI
 {
     partial class ColorListControl
     {

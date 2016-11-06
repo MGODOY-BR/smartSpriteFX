@@ -1,7 +1,7 @@
 
-using smartSpriteFX.PictureEngine.Pictures.ColorPattern;
-using smartSpriteFX.Pictures.ColorPattern;
-using smartSpriteFX.Utilities;
+using smartSuite.smartSpriteFX.PictureEngine.Pictures.ColorPattern;
+using smartSuite.smartSpriteFX.Pictures.ColorPattern;
+using smartSuite.smartSpriteFX.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Drawing;

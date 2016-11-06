@@ -7,12 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using smartSpriteFX.Forms.Controls.ToolboxState;
+using smartSuite.smartSpriteFX.Forms.Controls.ToolboxState;
 using smartSuite.smartSpriteFX.Pictures;
-using smartSpriteFX.Forms.Controls.DraftControlState;
-using smartSpriteFX.Properties;
+using smartSuite.smartSpriteFX.Forms.Controls.DraftControlState;
+using smartSuite.smartSpriteFX.Properties;
 
-namespace smartSpriteFX.Forms.Controls
+namespace smartSuite.smartSpriteFX.Forms.Controls
 {
     /// <summary>
     /// Represents a board to work with draft to define pieces

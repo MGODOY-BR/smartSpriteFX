@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace smartSpriteFX.Properties {
+namespace smartSuite.smartSpriteFX.Properties {
     using System;
     
     

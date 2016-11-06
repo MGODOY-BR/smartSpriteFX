@@ -1,5 +1,5 @@
 ﻿
-using smartSpriteFX.Pictures.ColorPattern;
+using smartSuite.smartSpriteFX.Pictures.ColorPattern;
 using smartSuite.smartSpriteFX.Pictures.PixelPatterns;
 using System;
 using System.Collections.Generic;

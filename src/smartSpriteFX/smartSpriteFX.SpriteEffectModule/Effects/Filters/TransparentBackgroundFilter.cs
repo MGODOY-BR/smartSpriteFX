@@ -6,10 +6,10 @@ using System.Text;
 using smartSuite.smartSpriteFX.Effects.Infra.UI.Configuratons;
 using smartSuite.smartSpriteFX.Pictures;
 using smartSuite.smartSpriteFX.Pictures.ColorPattern;
-using smartSpriteFX.SpriteEffectModule.Forms;
+using smartSuite.smartSpriteFX.SpriteEffectModule.Forms;
 using System.Drawing;
 using smartSuite.smartSpriteFX.Effects.Infra;
-using smartSpriteFX.SpriteEffectModule.Effects.Filters.UI;
+using smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI;
 
 namespace smartSuite.smartSpriteFX.Effects.Filters{
 	/// <summary>

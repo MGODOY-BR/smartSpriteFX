@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace smartSpriteFX.Forms.Controls.Browsers
+namespace smartSuite.smartSpriteFX.Forms.Controls.Browsers
 {
     /// <summary>
     /// It´s the argument for smart browser

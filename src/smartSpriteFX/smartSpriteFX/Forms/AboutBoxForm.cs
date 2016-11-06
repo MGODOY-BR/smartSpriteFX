@@ -7,7 +7,7 @@ using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace smartSpriteFX.Forms
+namespace smartSuite.smartSpriteFX.Forms
 {
     partial class AboutBoxForm : Form
     {

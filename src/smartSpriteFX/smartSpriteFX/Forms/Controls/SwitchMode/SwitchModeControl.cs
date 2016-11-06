@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
 
-namespace smartSpriteFX.Forms.Controls.SwitchMode
+namespace smartSuite.smartSpriteFX.Forms.Controls.SwitchMode
 {
     public partial class SwitchModeControl : UserControl
     {

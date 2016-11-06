@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace smartSpriteFX.Forms.Utilities
+namespace smartSuite.smartSpriteFX.Forms.Utilities
 {
     /// <summary>
     /// Offers utilities to work with treeviews and pieces

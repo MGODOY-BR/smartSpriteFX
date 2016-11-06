@@ -1,9 +1,9 @@
-﻿using smartSpriteFX.Forms.Controls;
-using smartSpriteFX.Forms.Controls.Browsers;
-using smartSpriteFX.Forms.Controls.SwitchMode;
-using smartSpriteFX.Forms.Controls.TreeViewState;
-using smartSpriteFX.Forms.Utilities;
-using smartSpriteFX.Properties;
+﻿using smartSuite.smartSpriteFX.Forms.Controls;
+using smartSuite.smartSpriteFX.Forms.Controls.Browsers;
+using smartSuite.smartSpriteFX.Forms.Controls.SwitchMode;
+using smartSuite.smartSpriteFX.Forms.Controls.TreeViewState;
+using smartSuite.smartSpriteFX.Forms.Utilities;
+using smartSuite.smartSpriteFX.Properties;
 using smartSuite.smartSpriteFX.Pictures;
 using System;
 using System.Collections;
@@ -18,7 +18,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace smartSpriteFX.Forms
+namespace smartSuite.smartSpriteFX.Forms
 {
     /// <summary>
     /// Represents a form to handle the effect mode, animation-oriented

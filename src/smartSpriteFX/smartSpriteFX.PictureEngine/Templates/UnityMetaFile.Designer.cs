@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace smartSpriteFX.PictureEngine.Templates {
+namespace smartSuite.smartSpriteFX.PictureEngine.Templates {
     using System;
     
     

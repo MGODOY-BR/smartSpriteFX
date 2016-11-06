@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Drawing;
 
-namespace smartSpriteFX.Pictures.ColorPattern
+namespace smartSuite.smartSpriteFX.Pictures.ColorPattern
 {
     /// <summary>
     /// Represents a difference between two colors expressed by their components

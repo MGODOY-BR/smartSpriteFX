@@ -5,7 +5,7 @@ using smartSuite.smartSpriteFX.Animations;
 using smartSuite.smartSpriteFX.Pictures;
 using System.Collections.Generic;
 
-namespace smartSpriteFX.SpriteEffectModule.Test.Animations
+namespace smartSuite.smartSpriteFX.SpriteEffectModule.Test.Animations
 {
     [TestClass]
     public class FrameIteratorTest

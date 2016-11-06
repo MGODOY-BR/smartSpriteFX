@@ -5,7 +5,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using smartSuite.smartSpriteFX.Pictures;
 
-namespace smartSpriteFX.Forms
+namespace smartSuite.smartSpriteFX.Forms
 {
     /// <summary>
     /// Represents a form to ask for the user supports for a definition

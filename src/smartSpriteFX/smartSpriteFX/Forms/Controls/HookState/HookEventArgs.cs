@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace smartSpriteFX.Forms.Controls.HookState
+namespace smartSuite.smartSpriteFX.Forms.Controls.HookState
 {
     /// <summary>
     /// Offers a state for events

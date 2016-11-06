@@ -7,11 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using smartSpriteFX.Utilities;
-using smartSpriteFX.Forms.Controls.HookState;
+using smartSuite.smartSpriteFX.Utilities;
+using smartSuite.smartSpriteFX.Forms.Controls.HookState;
 using System.Threading;
 
-namespace smartSpriteFX.Forms.Controls
+namespace smartSuite.smartSpriteFX.Forms.Controls
 {
     public partial class HookControl : UserControl, IRemarkable, IDestroyable
     {

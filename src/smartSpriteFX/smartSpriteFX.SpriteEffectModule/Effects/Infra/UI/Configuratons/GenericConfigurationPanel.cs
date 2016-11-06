@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using smartSuite.smartSpriteFX.Effects.Filters;
 using System.Windows.Forms;
 
-namespace smartSpriteFX.SpriteEffectModule.Effects.Infra.UI.Configuratons
+namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Infra.UI.Configuratons
 {
     /// <summary>
     /// Offers an default configuration Panel with no implementation remarkable

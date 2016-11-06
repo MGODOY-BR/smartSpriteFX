@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace smartSpriteFX.Forms.Controls.DraftControlState
+namespace smartSuite.smartSpriteFX.Forms.Controls.DraftControlState
 {
     /// <summary>
     /// Relates a set of actions

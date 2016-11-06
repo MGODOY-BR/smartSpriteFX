@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace smartSpriteFX.Forms.Controls.TreeViewState
+namespace smartSuite.smartSpriteFX.Forms.Controls.TreeViewState
 {
     /// <summary>
     /// Represents a tag informing the goal of just group itens

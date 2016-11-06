@@ -6,13 +6,13 @@ using System.Text;
 using System.Threading.Tasks;
 using smartSuite.smartSpriteFX.Effects.Infra.UI.Configuratons;
 using smartSuite.smartSpriteFX.Pictures;
-using smartSpriteFX.SpriteEffectModule.Effects.Tools;
+using smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Tools;
 using System.Drawing;
-using smartSpriteFX.PictureEngine.Pictures;
+using smartSuite.smartSpriteFX.PictureEngine.Pictures;
 using smartSuite.smartSpriteFX.Effects.Infra;
-using smartSpriteFX.SpriteEffectModule.Effects.Filters.UI;
+using smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI;
 
-namespace smartSpriteFX.SpriteEffectModule.Effects.Filters
+namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
 {
     /// <summary>
     /// It´s a filter that emphasizes the border of picture

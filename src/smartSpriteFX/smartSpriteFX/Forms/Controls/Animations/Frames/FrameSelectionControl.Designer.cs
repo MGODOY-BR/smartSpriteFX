@@ -1,4 +1,4 @@
-﻿namespace smartSpriteFX.Forms.Controls.Animations.Frames
+﻿namespace smartSuite.smartSpriteFX.Forms.Controls.Animations.Frames
 {
     partial class FrameSelectionControl
     {
