@@ -7,7 +7,7 @@
     <ProjectGuid>{D374DAC6-55C3-465A-B27F-EF762E7F0CC5}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>smartSpriteFX.PictureEngine</RootNamespace>
+    <RootNamespace>smartSuite.smartSpriteFX.PictureEngine</RootNamespace>
     <AssemblyName>smartSpriteFX.PictureEngine</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -35,7 +35,7 @@
     <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>pictureEngineKey.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>smartSpriteFX.key.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -97,8 +97,8 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="pictureEngineKey.snk" />
     <None Include="Resources\EmptyGameObject.txt" />
+    <None Include="smartSpriteFX.key.pfx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\2DGameObject.txt" />

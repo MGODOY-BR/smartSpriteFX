@@ -6,7 +6,7 @@
     <ProjectGuid>{6B79E3E2-DBBF-4166-9858-C369B07709AB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>smartSpriteFX.Test</RootNamespace>
+    <RootNamespace>smartSuite.smartSpriteFX.Test</RootNamespace>
     <AssemblyName>smartSpriteFX.Test</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -35,6 +35,12 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>smartSpriteFX.key.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -67,6 +73,9 @@
       <Project>{4b45999c-8bb2-4134-ba02-653293bf42c3}</Project>
       <Name>smartSpriteFX</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="smartSpriteFX.key.pfx" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

@@ -39,7 +39,7 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Templates {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("smartSpriteFX.PictureEngine.Templates.UnityMetaFile", typeof(UnityMetaFile).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("smartSuite.smartSpriteFX.PictureEngine.Templates.UnityMetaFile", typeof(UnityMetaFile).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -101,8 +101,7 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Templates {
         ///    normalMapFilter: 0
         ///  isReadable: 0
         ///  grayScaleToAlpha: 0
-        ///  generateCubemap: 0
-        ///  cube [rest of string was truncated]&quot;;.
+        ///  ge [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string GameObject2D {
             get {

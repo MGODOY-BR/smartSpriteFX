@@ -6,7 +6,7 @@
     <ProjectGuid>{39ABA4E2-F667-4443-A404-ABA4A1B79248}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>smartSpriteFX.PictureEngine.Test</RootNamespace>
+    <RootNamespace>smartSuite.smartSpriteFX.PictureEngine.Test</RootNamespace>
     <AssemblyName>smartSpriteFX.PictureEngine.Test</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -39,7 +39,7 @@
     <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>pictureEngineKey.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>smartSpriteFX.key.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -62,7 +62,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="pictureEngineKey.snk" />
+    <None Include="smartSpriteFX.key.pfx" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\smartSpriteFX.PictureEngine\smartSpriteFX.PictureEngine.csproj">
