@@ -72,10 +72,6 @@
     <Compile Include="Effects\Filters\FrameRateFilterTest.cs" />
     <Compile Include="Effects\Filters\BorderFilterTest.cs" />
     <Compile Include="Effects\Filters\TransparentBackgroundFilterTest.cs" />
-    <Compile Include="Effects\Filters\_8BitFilterTest.cs" />
-    <Compile Include="Effects\Filters\_24BitFilterTest.cs" />
-    <Compile Include="Effects\Filters\_16BitFilterTest.cs" />
-    <Compile Include="Infra\ColorBufferTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tools\ResolutionTranslatorTest.cs" />
   </ItemGroup>
@@ -131,7 +127,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Infra\" />
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

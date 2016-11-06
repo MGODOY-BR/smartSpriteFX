@@ -200,18 +200,20 @@ namespace smartSuite.smartSpriteFX.Effects.Infra
             #endregion
 
             // This is just a bare estimate. Calculate using combination is too hard because of long numbers formed and it takes too much
-            var colorFactor = (maxColor / 12);
+            int returnValue = 0;
 
-            if (colorFactor == 0)
-            {
-                colorFactor = 1;
-            }
+            float partColor = maxColor / 3;
+            float componentColor = 256 / partColor;
 
-            int returnValue = 256 / 1 / colorFactor;
+            returnValue = (int)componentColor * 5;
 
-            if (returnValue <= 0)
+            if (returnValue == 0)
             {
                 returnValue = 1;
+            }
+            if (returnValue > 250)
+            {
+                returnValue = 128;
             }
 
             return returnValue;

@@ -25,7 +25,7 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI
         /// </summary>
         public static DialogResult Show(Exception exception)
         {
-            return MessageBoxUtil.Show("Internal error", exception.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return MessageBoxUtil.Show("Internal error", exception.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         /// <summary>
