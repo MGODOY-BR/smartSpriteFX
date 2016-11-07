@@ -53,6 +53,7 @@
     <Compile Include="Animations\AnimationComparer.cs" />
     <Compile Include="Animations\FrameIterator.cs" />
     <Compile Include="Effects\Core\EffectEngine.cs" />
+    <Compile Include="Effects\Filters\ResizeToFitFilter.cs" />
     <Compile Include="Effects\Filters\UI\ColorListControl.cs">
       <SubType>UserControl</SubType>
     </Compile>

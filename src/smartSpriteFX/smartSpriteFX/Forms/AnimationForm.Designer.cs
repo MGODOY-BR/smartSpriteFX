@@ -35,6 +35,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.previewBoard = new System.Windows.Forms.PictureBox();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.chkBoxFitImage = new System.Windows.Forms.CheckBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnPreview = new System.Windows.Forms.Button();
@@ -51,7 +52,6 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panelTool = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.chkBoxFitImage = new System.Windows.Forms.CheckBox();
             this.topPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -166,6 +166,18 @@
             this.splitContainer2.Size = new System.Drawing.Size(374, 359);
             this.splitContainer2.SplitterDistance = 159;
             this.splitContainer2.TabIndex = 0;
+            // 
+            // chkBoxFitImage
+            // 
+            this.chkBoxFitImage.AutoSize = true;
+            this.chkBoxFitImage.ForeColor = System.Drawing.Color.White;
+            this.chkBoxFitImage.Location = new System.Drawing.Point(3, 61);
+            this.chkBoxFitImage.Name = "chkBoxFitImage";
+            this.chkBoxFitImage.Size = new System.Drawing.Size(68, 17);
+            this.chkBoxFitImage.TabIndex = 3;
+            this.chkBoxFitImage.Text = "Fit image";
+            this.chkBoxFitImage.UseVisualStyleBackColor = true;
+            this.chkBoxFitImage.CheckedChanged += new System.EventHandler(this.chkBoxFitImage_CheckedChanged);
             // 
             // panel2
             // 
@@ -345,18 +357,6 @@
             this.pictureBox1.Size = new System.Drawing.Size(1162, 29);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
-            // 
-            // chkBoxFitImage
-            // 
-            this.chkBoxFitImage.AutoSize = true;
-            this.chkBoxFitImage.ForeColor = System.Drawing.Color.White;
-            this.chkBoxFitImage.Location = new System.Drawing.Point(3, 61);
-            this.chkBoxFitImage.Name = "chkBoxFitImage";
-            this.chkBoxFitImage.Size = new System.Drawing.Size(68, 17);
-            this.chkBoxFitImage.TabIndex = 3;
-            this.chkBoxFitImage.Text = "Fit image";
-            this.chkBoxFitImage.UseVisualStyleBackColor = true;
-            this.chkBoxFitImage.CheckedChanged += new System.EventHandler(this.chkBoxFitImage_CheckedChanged);
             // 
             // AnimationForm
             // 

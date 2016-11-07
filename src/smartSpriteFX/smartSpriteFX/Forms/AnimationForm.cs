@@ -54,6 +54,8 @@ namespace smartSuite.smartSpriteFX.Forms
             _effectFilterPalleteControl.Dock = DockStyle.Fill;
             this.panelTool.Controls.Add(_effectFilterPalleteControl);
             _effectFilterPalleteControl.SelectedFilterEvent += EffectFilterPalleteControl_SelectedFilterEvent;
+
+            this.previewBoard.LoadCompleted += PreviewBoard_LoadCompleted;
         }
 
         private void AnimationForm_Load(object sender, EventArgs e)
@@ -244,7 +246,6 @@ namespace smartSuite.smartSpriteFX.Forms
         private void FrameSelectionControl_SelectingFrame(object sender, FrameSelectionEventArgs e)
         {
             previewBoard.Image = Image.FromFile(e.FilePath);
-            this.FitImage(this.chkBoxFitImage.Checked);
         }
 
         /// <summary>
@@ -444,7 +445,7 @@ namespace smartSuite.smartSpriteFX.Forms
             if (fit)
             {
                 this.previewBoard.Dock = DockStyle.Fill;
-                this.previewBoard.SizeMode = PictureBoxSizeMode.Zoom;
+                this.previewBoard.SizeMode = PictureBoxSizeMode.StretchImage;
             }
             else
             {
@@ -452,5 +453,16 @@ namespace smartSuite.smartSpriteFX.Forms
                 this.previewBoard.SizeMode = PictureBoxSizeMode.AutoSize;
             }
         }
+
+        /// <summary>
+        /// Occurs when preview board is reloaded
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void PreviewBoard_LoadCompleted(object sender, AsyncCompletedEventArgs e)
+        {
+            this.FitImage(this.chkBoxFitImage.Checked);
+        }
+
     }
 }

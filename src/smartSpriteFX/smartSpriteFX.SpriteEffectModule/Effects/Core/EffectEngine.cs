@@ -89,6 +89,24 @@ namespace smartSuite.smartSpriteFX.Effects.Core{
         }
 
         /// <summary>
+        /// Reloads the preview board
+        /// </summary>
+        /// <param name="fullFileName"></param>
+        public static void ReloadPreviewBoard(string fullFileName)
+        {
+            #region Entries validation
+            
+            if (String.IsNullOrEmpty(fullFileName))
+            {
+                throw new ArgumentNullException("fullFileName");
+            }
+
+            #endregion
+
+            EffectEngine._previewBoard.Load(fullFileName);
+        }
+
+        /// <summary>
         /// Applies the filter collection to all animation, but considering UI controls infrastructure
         /// </summary>
         /// <param name="callback"></param>

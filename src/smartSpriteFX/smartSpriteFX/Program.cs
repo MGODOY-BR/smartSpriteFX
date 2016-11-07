@@ -28,11 +28,16 @@ namespace smartSuite.smartSpriteFX
 
             if (exception is OverflowException)
             {
-                exception = new ApplicationException(
-                    "Image too big for the available memory. Please, use some image editor to make it lighter and try again", e.Exception);
+                MessageBoxUtil.Show(
+                    "Too big image!!!!",
+                    "Image too big for the available memory. Please, use some image editor to make it lighter and try again",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
             }
-
-            MessageBoxUtil.Show(exception); 
+            else
+            {
+                MessageBoxUtil.Show(exception);
+            }
         }
     }
 }

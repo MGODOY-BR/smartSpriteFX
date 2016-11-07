@@ -253,7 +253,7 @@ namespace smartSuite.smartSpriteFX.Pictures{
             {
                 #region Entries validation
 
-                if (this._buffer != null)
+                if (this._buffer != null && this._buffer.Count > 0)
                 {
                     return;
                 }
@@ -282,6 +282,8 @@ namespace smartSuite.smartSpriteFX.Pictures{
                 }
 
                 this.ColorCount = colorSet.LongCount();
+                this._height = image.Height;
+                this._width = image.Width;
             }
         }
 
@@ -378,6 +380,15 @@ namespace smartSuite.smartSpriteFX.Pictures{
         /// <returns></returns>
         public Color? GetPixel(int x, int y)
         {
+            #region Entries validation
+
+            if (this._buffer.Count == 0)
+            {
+                throw new ArgumentException("Empty picture.");
+            }
+
+            #endregion
+
             var key = this.FormatKey(x, y);
 
             if (this._buffer == null)
