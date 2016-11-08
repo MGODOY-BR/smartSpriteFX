@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Reflection;
@@ -16,7 +17,7 @@ namespace smartSuite.smartSpriteFX.Forms
             InitializeComponent();
             this.Text = String.Format("About {0}", AssemblyTitle);
             this.labelProductName.Text = AssemblyProduct;
-            this.labelVersion.Text = String.Format("Version {0}", AssemblyFileVersion);
+            this.labelVersion.Text = String.Format("Version {0}", Version);
             this.labelCopyright.Text = AssemblyCopyright;
             this.labelCompanyName.Text = AssemblyCompany;
             this.textBoxDescription.Text = AssemblyDescription;
@@ -49,12 +50,15 @@ namespace smartSuite.smartSpriteFX.Forms
             }
         }
 
-        public string AssemblyFileVersion
+        public static string Version
         {
             get
             {
-                var attributes = this.GetType().Assembly.GetCustomAttributes<AssemblyFileVersionAttribute>();
-                return attributes.First().Version;
+                var myFileVersionInfo =
+                    FileVersionInfo.GetVersionInfo(
+                        typeof(AboutBoxForm).Assembly.Location);
+
+                return myFileVersionInfo.FileVersion + "(Alpha)";
             }
         }
 

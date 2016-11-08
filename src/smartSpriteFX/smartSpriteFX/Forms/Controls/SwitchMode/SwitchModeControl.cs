@@ -20,10 +20,7 @@ namespace smartSuite.smartSpriteFX.Forms.Controls.SwitchMode
 
         private void SwitchModeControl_Load(object sender, EventArgs e)
         {
-            var myFileVersionInfo =
-                FileVersionInfo.GetVersionInfo(
-                    this.GetType().Assembly.Location);
-                        this.lblVersion.Text = myFileVersionInfo.FileVersion + "(Alpha)";
+            this.lblVersion.Text = AboutBoxForm.Version;
         }
 
         private void btnSwitchModel_Click(object sender, EventArgs e)
