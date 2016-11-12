@@ -1,0 +1,499 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="c:\program files (x86)\microsoft visual studio 14.0\team tools\static analysis tools\fxcop\Xml\CodeAnalysisReport.xsl"?>
+<FxCopReport Version="14.0">
+ <Targets>
+  <Target Name="C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule\bin\Release\smartSpriteFX.SpriteEffectModule.dll">
+   <Modules>
+    <Module Name="smartspritefx.spriteeffectmodule.dll">
+     <Namespaces>
+      <Namespace Name="smartSuite.smartSpriteFX.Effects.Core">
+       <Types>
+        <Type Name="EffectEngine" Kind="Class" Accessibility="Assembly" ExternallyVisible="False">
+         <Members>
+          <Member Name="#ApplyWaitCallback(System.Object)" Kind="Method" Static="True" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="DoNotLockOnObjectsWithWeakIdentity" Category="Microsoft.Reliability" CheckId="CA2002" Status="Active" Created="2016-11-12 17:18:05Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="CriticalError" Path="C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule\Effects\Core" File="EffectEngine.cs" Line="425">'EffectEngine.ApplyWaitCallback(object)' locks on a reference of type 'Type'. Replace this with a lock against an object with strong-identity.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+      <Namespace Name="smartSuite.smartSpriteFX.Effects.Filters">
+       <Types>
+        <Type Name="_16BitFilter" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.IResolutionFilterSetter.AvoidColorList" Kind="Property" Static="False" Accessibility="Private" ExternallyVisible="True">
+           <Accessors>
+            <Accessor Name="#smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.IResolutionFilterSetter.get_AvoidColorList()" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="True">
+             <Messages>
+              <Message TypeName="InterfaceMethodsShouldBeCallableByChildTypes" Category="Microsoft.Design" CheckId="CA1033" Status="Active" Created="2016-11-12 17:18:05Z" FixCategory="NonBreaking">
+               <Issue Certainty="95" Level="Error" Path="C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule\Effects\Filters" File="_16BitFilter.cs" Line="131">Make '_16BitFilter' sealed (a breaking change if this class has previously shipped), implement the method non-explicitly, or implement a new method that exposes the functionality of 'IResolutionFilterSetter.AvoidColorList.get()' and is visible to derived classes.</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+            <Accessor Name="#smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.IResolutionFilterSetter.set_AvoidColorList(System.Collections.Generic.List`1&lt;System.Drawing.Color&gt;)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="True">
+             <Messages>
+              <Message TypeName="InterfaceMethodsShouldBeCallableByChildTypes" Category="Microsoft.Design" CheckId="CA1033" Status="Active" Created="2016-11-12 17:18:05Z" FixCategory="NonBreaking">
+               <Issue Certainty="95" Level="Error" Path="C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule\Effects\Filters" File="_16BitFilter.cs" Line="135">Make '_16BitFilter' sealed (a breaking change if this class has previously shipped), implement the method non-explicitly, or implement a new method that exposes the functionality of 'IResolutionFilterSetter.AvoidColorList.set(List&lt;Color&gt;)' and is visible to derived classes.</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+           </Accessors>
+          </Member>
+          <Member Name="#smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.IResolutionFilterSetter.ColorBufferAmount" Kind="Property" Static="False" Accessibility="Private" ExternallyVisible="True">
+           <Accessors>
+            <Accessor Name="#smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.IResolutionFilterSetter.get_ColorBufferAmount()" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="True">
+             <Messages>
+              <Message TypeName="InterfaceMethodsShouldBeCallableByChildTypes" Category="Microsoft.Design" CheckId="CA1033" Status="Active" Created="2016-11-12 17:18:05Z" FixCategory="NonBreaking">
+               <Issue Certainty="95" Level="Error" Path="C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule\Effects\Filters" File="_16BitFilter.cs" Line="59">Make '_16BitFilter' sealed (a breaking change if this class has previously shipped), implement the method non-explicitly, or implement a new method that exposes the functionality of 'IResolutionFilterSetter.ColorBufferAmount.get()' and is visible to derived classes.</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+            <Accessor Name="#smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.IResolutionFilterSetter.set_ColorBufferAmount(System.Int32)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="True">
+             <Messages>
+              <Message TypeName="InterfaceMethodsShouldBeCallableByChildTypes" Category="Microsoft.Design" CheckId="CA1033" Status="Active" Created="2016-11-12 17:18:05Z" FixCategory="NonBreaking">
+               <Issue Certainty="95" Level="Error" Path="C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule\Effects\Filters" File="_16BitFilter.cs" Line="63">Make '_16BitFilter' sealed (a breaking change if this class has previously shipped), implement the method non-explicitly, or implement a new method that exposes the functionality of 'IResolutionFilterSetter.ColorBufferAmount.set(int)' and is visible to derived classes.</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+           </Accessors>
+          </Member>
+          <Member Name="#smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.IResolutionFilterSetter.Contrast" Kind="Property" Static="False" Accessibility="Private" ExternallyVisible="True">
+           <Accessors>
+            <Accessor Name="#smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.IResolutionFilterSetter.get_Contrast()" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="True">
+             <Messages>
+              <Message TypeName="InterfaceMethodsShouldBeCallableByChildTypes" Category="Microsoft.Design" CheckId="CA1033" Status="Active" Created="2016-11-12 17:18:05Z" FixCategory="NonBreaking">
+               <Issue Certainty="95" Level="Error" Path="C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule\Effects\Filters" File="_16BitFilter.cs" Line="95">Make '_16BitFilter' sealed (a breaking change if this class has previously shipped), implement the method non-explicitly, or implement a new method that exposes the functionality of 'IResolutionFilterSetter.Contrast.get()' and is visible to derived classes.</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+            <Accessor Name="#smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.IResolutionFilterSetter.set_Contrast(System.Int32)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="True">
+             <Messages>
+              <Message TypeName="InterfaceMethodsShouldBeCallableByChildTypes" Category="Microsoft.Design" CheckId="CA1033" Status="Active" Created="2016-11-12 17:18:05Z" FixCategory="NonBreaking">
+               <Issue Certainty="95" Level="Error" Path="C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule\Effects\Filters" File="_16BitFilter.cs" Line="99">Make '_16BitFilter' sealed (a breaking change if this class has previously shipped), implement the method non-explicitly, or implement a new method that exposes the functionality of 'IResolutionFilterSetter.Contrast.set(int)' and is visible to derived classes.</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+           </Accessors>
+          </Member>
+          <Member Name="#smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.IResolutionFilterSetter.DestinationScreenHeight" Kind="Property" Static="False" Accessibility="Private" ExternallyVisible="True">
+           <Accessors>
+            <Accessor Name="#smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.IResolutionFilterSetter.get_DestinationScreenHeight()" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="True">
+             <Messages>
+              <Message TypeName="InterfaceMethodsShouldBeCallableByChildTypes" Category="Microsoft.Design" CheckId="CA1033" Status="Active" Created="2016-11-12 17:18:05Z" FixCategory="NonBreaking">
+               <Issue Certainty="95" Level="Error" Path="C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule\Effects\Filters" File="_16BitFilter.cs" Line="83">Make '_16BitFilter' sealed (a breaking change if this class has previously shipped), implement the method non-explicitly, or implement a new method that exposes the functionality of 'IResolutionFilterSetter.DestinationScreenHeight.get()' and is visible to derived classes.</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+            <Accessor Name="#smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.IResolutionFilterSetter.set_DestinationScreenHeight(System.Int32)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="True">
+             <Messages>
+              <Message TypeName="InterfaceMethodsShouldBeCallableByChildTypes" Category="Microsoft.Design" CheckId="CA1033" Status="Active" Created="2016-11-12 17:18:05Z" FixCategory="NonBreaking">
+               <Issue Certainty="95" Level="Error" Path="C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule\Effects\Filters" File="_16BitFilter.cs" Line="87">Make '_16BitFilter' sealed (a breaking change if this class has previously shipped), implement the method non-explicitly, or implement a new method that exposes the functionality of 'IResolutionFilterSetter.DestinationScreenHeight.set(int)' and is visible to derived classes.</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+           </Accessors>
+          </Member>
+          <Member Name="#smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.IResolutionFilterSetter.DestinationScreenWidth" Kind="Property" Static="False" Accessibility="Private" ExternallyVisible="True">
+           <Accessors>
+            <Accessor Name="#smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.IResolutionFilterSetter.get_DestinationScreenWidth()" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="True">
+             <Messages>
+              <Message TypeName="InterfaceMethodsShouldBeCallableByChildTypes" Category="Microsoft.Design" CheckId="CA1033" Status="Active" Created="2016-11-12 17:18:05Z" FixCategory="NonBreaking">
+               <Issue Certainty="95" Level="Error" Path="C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule\Effects\Filters" File="_16BitFilter.cs" Line="71">Make '_16BitFilter' sealed (a breaking change if this class has previously shipped), implement the method non-explicitly, or implement a new method that exposes the functionality of 'IResolutionFilterSetter.DestinationScreenWidth.get()' and is visible to derived classes.</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+            <Accessor Name="#smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.IResolutionFilterSetter.set_DestinationScreenWidth(System.Int32)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="True">
+             <Messages>
+              <Message TypeName="InterfaceMethodsShouldBeCallableByChildTypes" Category="Microsoft.Design" CheckId="CA1033" Status="Active" Created="2016-11-12 17:18:05Z" FixCategory="NonBreaking">
+               <Issue Certainty="95" Level="Error" Path="C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule\Effects\Filters" File="_16BitFilter.cs" Line="75">Make '_16BitFilter' sealed (a breaking change if this class has previously shipped), implement the method non-explicitly, or implement a new method that exposes the functionality of 'IResolutionFilterSetter.DestinationScreenWidth.set(int)' and is visible to derived classes.</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+           </Accessors>
+          </Member>
+          <Member Name="#smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.IResolutionFilterSetter.TotalScreenHeight" Kind="Property" Static="False" Accessibility="Private" ExternallyVisible="True">
+           <Accessors>
+            <Accessor Name="#smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.IResolutionFilterSetter.get_TotalScreenHeight()" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="True">
+             <Messages>
+              <Message TypeName="InterfaceMethodsShouldBeCallableByChildTypes" Category="Microsoft.Design" CheckId="CA1033" Status="Active" Created="2016-11-12 17:18:05Z" FixCategory="NonBreaking">
+               <Issue Certainty="95" Level="Error" Path="C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule\Effects\Filters" File="_16BitFilter.cs" Line="119">Make '_16BitFilter' sealed (a breaking change if this class has previously shipped), implement the method non-explicitly, or implement a new method that exposes the functionality of 'IResolutionFilterSetter.TotalScreenHeight.get()' and is visible to derived classes.</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+            <Accessor Name="#smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.IResolutionFilterSetter.set_TotalScreenHeight(System.Int32)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="True">
+             <Messages>
+              <Message TypeName="InterfaceMethodsShouldBeCallableByChildTypes" Category="Microsoft.Design" CheckId="CA1033" Status="Active" Created="2016-11-12 17:18:05Z" FixCategory="NonBreaking">
+               <Issue Certainty="95" Level="Error" Path="C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule\Effects\Filters" File="_16BitFilter.cs" Line="123">Make '_16BitFilter' sealed (a breaking change if this class has previously shipped), implement the method non-explicitly, or implement a new method that exposes the functionality of 'IResolutionFilterSetter.TotalScreenHeight.set(int)' and is visible to derived classes.</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+           </Accessors>
+          </Member>
+          <Member Name="#smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.IResolutionFilterSetter.TotalScreenWidth" Kind="Property" Static="False" Accessibility="Private" ExternallyVisible="True">
+           <Accessors>
+            <Accessor Name="#smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.IResolutionFilterSetter.get_TotalScreenWidth()" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="True">
+             <Messages>
+              <Message TypeName="InterfaceMethodsShouldBeCallableByChildTypes" Category="Microsoft.Design" CheckId="CA1033" Status="Active" Created="2016-11-12 17:18:05Z" FixCategory="NonBreaking">
+               <Issue Certainty="95" Level="Error" Path="C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule\Effects\Filters" File="_16BitFilter.cs" Line="107">Make '_16BitFilter' sealed (a breaking change if this class has previously shipped), implement the method non-explicitly, or implement a new method that exposes the functionality of 'IResolutionFilterSetter.TotalScreenWidth.get()' and is visible to derived classes.</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+            <Accessor Name="#smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.IResolutionFilterSetter.set_TotalScreenWidth(System.Int32)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="True">
+             <Messages>
+              <Message TypeName="InterfaceMethodsShouldBeCallableByChildTypes" Category="Microsoft.Design" CheckId="CA1033" Status="Active" Created="2016-11-12 17:18:05Z" FixCategory="NonBreaking">
+               <Issue Certainty="95" Level="Error" Path="C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule\Effects\Filters" File="_16BitFilter.cs" Line="111">Make '_16BitFilter' sealed (a breaking change if this class has previously shipped), implement the method non-explicitly, or implement a new method that exposes the functionality of 'IResolutionFilterSetter.TotalScreenWidth.set(int)' and is visible to derived classes.</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+           </Accessors>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="_24BitFilter" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.IResolutionFilterSetter.AvoidColorList" Kind="Property" Static="False" Accessibility="Private" ExternallyVisible="True">
+           <Accessors>
+            <Accessor Name="#smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.IResolutionFilterSetter.get_AvoidColorList()" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="True">
+             <Messages>
+              <Message TypeName="InterfaceMethodsShouldBeCallableByChildTypes" Category="Microsoft.Design" CheckId="CA1033" Status="Active" Created="2016-11-12 17:18:05Z" FixCategory="NonBreaking">
+               <Issue Certainty="95" Level="Error" Path="C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule\Effects\Filters" File="_24BitFilter.cs" Line="214">Make '_24BitFilter' sealed (a breaking change if this class has previously shipped), implement the method non-explicitly, or implement a new method that exposes the functionality of 'IResolutionFilterSetter.AvoidColorList.get()' and is visible to derived classes.</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+            <Accessor Name="#smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.IResolutionFilterSetter.set_AvoidColorList(System.Collections.Generic.List`1&lt;System.Drawing.Color&gt;)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="True">
+             <Messages>
+              <Message TypeName="InterfaceMethodsShouldBeCallableByChildTypes" Category="Microsoft.Design" CheckId="CA1033" Status="Active" Created="2016-11-12 17:18:05Z" FixCategory="NonBreaking">
+               <Issue Certainty="95" Level="Error" Path="C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule\Effects\Filters" File="_24BitFilter.cs" Line="218">Make '_24BitFilter' sealed (a breaking change if this class has previously shipped), implement the method non-explicitly, or implement a new method that exposes the functionality of 'IResolutionFilterSetter.AvoidColorList.set(List&lt;Color&gt;)' and is visible to derived classes.</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+           </Accessors>
+          </Member>
+          <Member Name="#smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.IResolutionFilterSetter.ColorBufferAmount" Kind="Property" Static="False" Accessibility="Private" ExternallyVisible="True">
+           <Accessors>
+            <Accessor Name="#smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.IResolutionFilterSetter.get_ColorBufferAmount()" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="True">
+             <Messages>
+              <Message TypeName="InterfaceMethodsShouldBeCallableByChildTypes" Category="Microsoft.Design" CheckId="CA1033" Status="Active" Created="2016-11-12 17:18:05Z" FixCategory="NonBreaking">
+               <Issue Certainty="95" Level="Error" Path="C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule\Effects\Filters" File="_24BitFilter.cs" Line="142">Make '_24BitFilter' sealed (a breaking change if this class has previously shipped), implement the method non-explicitly, or implement a new method that exposes the functionality of 'IResolutionFilterSetter.ColorBufferAmount.get()' and is visible to derived classes.</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+            <Accessor Name="#smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.IResolutionFilterSetter.set_ColorBufferAmount(System.Int32)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="True">
+             <Messages>
+              <Message TypeName="InterfaceMethodsShouldBeCallableByChildTypes" Category="Microsoft.Design" CheckId="CA1033" Status="Active" Created="2016-11-12 17:18:05Z" FixCategory="NonBreaking">
+               <Issue Certainty="95" Level="Error" Path="C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule\Effects\Filters" File="_24BitFilter.cs" Line="146">Make '_24BitFilter' sealed (a breaking change if this class has previously shipped), implement the method non-explicitly, or implement a new method that exposes the functionality of 'IResolutionFilterSetter.ColorBufferAmount.set(int)' and is visible to derived classes.</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+           </Accessors>
+          </Member>
+          <Member Name="#smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.IResolutionFilterSetter.Contrast" Kind="Property" Static="False" Accessibility="Private" ExternallyVisible="True">
+           <Accessors>
+            <Accessor Name="#smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.IResolutionFilterSetter.get_Contrast()" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="True">
+             <Messages>
+              <Message TypeName="InterfaceMethodsShouldBeCallableByChildTypes" Category="Microsoft.Design" CheckId="CA1033" Status="Active" Created="2016-11-12 17:18:05Z" FixCategory="NonBreaking">
+               <Issue Certainty="95" Level="Error" Path="C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule\Effects\Filters" File="_24BitFilter.cs" Line="178">Make '_24BitFilter' sealed (a breaking change if this class has previously shipped), implement the method non-explicitly, or implement a new method that exposes the functionality of 'IResolutionFilterSetter.Contrast.get()' and is visible to derived classes.</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+            <Accessor Name="#smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.IResolutionFilterSetter.set_Contrast(System.Int32)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="True">
+             <Messages>
+              <Message TypeName="InterfaceMethodsShouldBeCallableByChildTypes" Category="Microsoft.Design" CheckId="CA1033" Status="Active" Created="2016-11-12 17:18:05Z" FixCategory="NonBreaking">
+               <Issue Certainty="95" Level="Error" Path="C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule\Effects\Filters" File="_24BitFilter.cs" Line="182">Make '_24BitFilter' sealed (a breaking change if this class has previously shipped), implement the method non-explicitly, or implement a new method that exposes the functionality of 'IResolutionFilterSetter.Contrast.set(int)' and is visible to derived classes.</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+           </Accessors>
+          </Member>
+          <Member Name="#smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.IResolutionFilterSetter.DestinationScreenHeight" Kind="Property" Static="False" Accessibility="Private" ExternallyVisible="True">
+           <Accessors>
+            <Accessor Name="#smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.IResolutionFilterSetter.get_DestinationScreenHeight()" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="True">
+             <Messages>
+              <Message TypeName="InterfaceMethodsShouldBeCallableByChildTypes" Category="Microsoft.Design" CheckId="CA1033" Status="Active" Created="2016-11-12 17:18:05Z" FixCategory="NonBreaking">
+               <Issue Certainty="95" Level="Error" Path="C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule\Effects\Filters" File="_24BitFilter.cs" Line="166">Make '_24BitFilter' sealed (a breaking change if this class has previously shipped), implement the method non-explicitly, or implement a new method that exposes the functionality of 'IResolutionFilterSetter.DestinationScreenHeight.get()' and is visible to derived classes.</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+            <Accessor Name="#smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.IResolutionFilterSetter.set_DestinationScreenHeight(System.Int32)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="True">
+             <Messages>
+              <Message TypeName="InterfaceMethodsShouldBeCallableByChildTypes" Category="Microsoft.Design" CheckId="CA1033" Status="Active" Created="2016-11-12 17:18:05Z" FixCategory="NonBreaking">
+               <Issue Certainty="95" Level="Error" Path="C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule\Effects\Filters" File="_24BitFilter.cs" Line="170">Make '_24BitFilter' sealed (a breaking change if this class has previously shipped), implement the method non-explicitly, or implement a new method that exposes the functionality of 'IResolutionFilterSetter.DestinationScreenHeight.set(int)' and is visible to derived classes.</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+           </Accessors>
+          </Member>
+          <Member Name="#smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.IResolutionFilterSetter.DestinationScreenWidth" Kind="Property" Static="False" Accessibility="Private" ExternallyVisible="True">
+           <Accessors>
+            <Accessor Name="#smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.IResolutionFilterSetter.get_DestinationScreenWidth()" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="True">
+             <Messages>
+              <Message TypeName="InterfaceMethodsShouldBeCallableByChildTypes" Category="Microsoft.Design" CheckId="CA1033" Status="Active" Created="2016-11-12 17:18:05Z" FixCategory="NonBreaking">
+               <Issue Certainty="95" Level="Error" Path="C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule\Effects\Filters" File="_24BitFilter.cs" Line="154">Make '_24BitFilter' sealed (a breaking change if this class has previously shipped), implement the method non-explicitly, or implement a new method that exposes the functionality of 'IResolutionFilterSetter.DestinationScreenWidth.get()' and is visible to derived classes.</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+            <Accessor Name="#smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.IResolutionFilterSetter.set_DestinationScreenWidth(System.Int32)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="True">
+             <Messages>
+              <Message TypeName="InterfaceMethodsShouldBeCallableByChildTypes" Category="Microsoft.Design" CheckId="CA1033" Status="Active" Created="2016-11-12 17:18:05Z" FixCategory="NonBreaking">
+               <Issue Certainty="95" Level="Error" Path="C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule\Effects\Filters" File="_24BitFilter.cs" Line="158">Make '_24BitFilter' sealed (a breaking change if this class has previously shipped), implement the method non-explicitly, or implement a new method that exposes the functionality of 'IResolutionFilterSetter.DestinationScreenWidth.set(int)' and is visible to derived classes.</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+           </Accessors>
+          </Member>
+          <Member Name="#smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.IResolutionFilterSetter.TotalScreenHeight" Kind="Property" Static="False" Accessibility="Private" ExternallyVisible="True">
+           <Accessors>
+            <Accessor Name="#smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.IResolutionFilterSetter.get_TotalScreenHeight()" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="True">
+             <Messages>
+              <Message TypeName="InterfaceMethodsShouldBeCallableByChildTypes" Category="Microsoft.Design" CheckId="CA1033" Status="Active" Created="2016-11-12 17:18:05Z" FixCategory="NonBreaking">
+               <Issue Certainty="95" Level="Error" Path="C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule\Effects\Filters" File="_24BitFilter.cs" Line="202">Make '_24BitFilter' sealed (a breaking change if this class has previously shipped), implement the method non-explicitly, or implement a new method that exposes the functionality of 'IResolutionFilterSetter.TotalScreenHeight.get()' and is visible to derived classes.</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+            <Accessor Name="#smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.IResolutionFilterSetter.set_TotalScreenHeight(System.Int32)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="True">
+             <Messages>
+              <Message TypeName="InterfaceMethodsShouldBeCallableByChildTypes" Category="Microsoft.Design" CheckId="CA1033" Status="Active" Created="2016-11-12 17:18:05Z" FixCategory="NonBreaking">
+               <Issue Certainty="95" Level="Error" Path="C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule\Effects\Filters" File="_24BitFilter.cs" Line="206">Make '_24BitFilter' sealed (a breaking change if this class has previously shipped), implement the method non-explicitly, or implement a new method that exposes the functionality of 'IResolutionFilterSetter.TotalScreenHeight.set(int)' and is visible to derived classes.</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+           </Accessors>
+          </Member>
+          <Member Name="#smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.IResolutionFilterSetter.TotalScreenWidth" Kind="Property" Static="False" Accessibility="Private" ExternallyVisible="True">
+           <Accessors>
+            <Accessor Name="#smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.IResolutionFilterSetter.get_TotalScreenWidth()" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="True">
+             <Messages>
+              <Message TypeName="InterfaceMethodsShouldBeCallableByChildTypes" Category="Microsoft.Design" CheckId="CA1033" Status="Active" Created="2016-11-12 17:18:05Z" FixCategory="NonBreaking">
+               <Issue Certainty="95" Level="Error" Path="C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule\Effects\Filters" File="_24BitFilter.cs" Line="190">Make '_24BitFilter' sealed (a breaking change if this class has previously shipped), implement the method non-explicitly, or implement a new method that exposes the functionality of 'IResolutionFilterSetter.TotalScreenWidth.get()' and is visible to derived classes.</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+            <Accessor Name="#smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.IResolutionFilterSetter.set_TotalScreenWidth(System.Int32)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="True">
+             <Messages>
+              <Message TypeName="InterfaceMethodsShouldBeCallableByChildTypes" Category="Microsoft.Design" CheckId="CA1033" Status="Active" Created="2016-11-12 17:18:05Z" FixCategory="NonBreaking">
+               <Issue Certainty="95" Level="Error" Path="C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule\Effects\Filters" File="_24BitFilter.cs" Line="194">Make '_24BitFilter' sealed (a breaking change if this class has previously shipped), implement the method non-explicitly, or implement a new method that exposes the functionality of 'IResolutionFilterSetter.TotalScreenWidth.set(int)' and is visible to derived classes.</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+           </Accessors>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="_8BitFilter" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.IResolutionFilterSetter.AvoidColorList" Kind="Property" Static="False" Accessibility="Private" ExternallyVisible="True">
+           <Accessors>
+            <Accessor Name="#smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.IResolutionFilterSetter.get_AvoidColorList()" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="True">
+             <Messages>
+              <Message TypeName="InterfaceMethodsShouldBeCallableByChildTypes" Category="Microsoft.Design" CheckId="CA1033" Status="Active" Created="2016-11-12 17:18:05Z" FixCategory="NonBreaking">
+               <Issue Certainty="95" Level="Error" Path="C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule\Effects\Filters" File="_8BitFilter.cs" Line="214">Make '_8BitFilter' sealed (a breaking change if this class has previously shipped), implement the method non-explicitly, or implement a new method that exposes the functionality of 'IResolutionFilterSetter.AvoidColorList.get()' and is visible to derived classes.</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+            <Accessor Name="#smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.IResolutionFilterSetter.set_AvoidColorList(System.Collections.Generic.List`1&lt;System.Drawing.Color&gt;)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="True">
+             <Messages>
+              <Message TypeName="InterfaceMethodsShouldBeCallableByChildTypes" Category="Microsoft.Design" CheckId="CA1033" Status="Active" Created="2016-11-12 17:18:05Z" FixCategory="NonBreaking">
+               <Issue Certainty="95" Level="Error" Path="C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule\Effects\Filters" File="_8BitFilter.cs" Line="218">Make '_8BitFilter' sealed (a breaking change if this class has previously shipped), implement the method non-explicitly, or implement a new method that exposes the functionality of 'IResolutionFilterSetter.AvoidColorList.set(List&lt;Color&gt;)' and is visible to derived classes.</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+           </Accessors>
+          </Member>
+          <Member Name="#smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.IResolutionFilterSetter.ColorBufferAmount" Kind="Property" Static="False" Accessibility="Private" ExternallyVisible="True">
+           <Accessors>
+            <Accessor Name="#smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.IResolutionFilterSetter.get_ColorBufferAmount()" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="True">
+             <Messages>
+              <Message TypeName="InterfaceMethodsShouldBeCallableByChildTypes" Category="Microsoft.Design" CheckId="CA1033" Status="Active" Created="2016-11-12 17:18:05Z" FixCategory="NonBreaking">
+               <Issue Certainty="95" Level="Error" Path="C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule\Effects\Filters" File="_8BitFilter.cs" Line="142">Make '_8BitFilter' sealed (a breaking change if this class has previously shipped), implement the method non-explicitly, or implement a new method that exposes the functionality of 'IResolutionFilterSetter.ColorBufferAmount.get()' and is visible to derived classes.</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+            <Accessor Name="#smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.IResolutionFilterSetter.set_ColorBufferAmount(System.Int32)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="True">
+             <Messages>
+              <Message TypeName="InterfaceMethodsShouldBeCallableByChildTypes" Category="Microsoft.Design" CheckId="CA1033" Status="Active" Created="2016-11-12 17:18:05Z" FixCategory="NonBreaking">
+               <Issue Certainty="95" Level="Error" Path="C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule\Effects\Filters" File="_8BitFilter.cs" Line="146">Make '_8BitFilter' sealed (a breaking change if this class has previously shipped), implement the method non-explicitly, or implement a new method that exposes the functionality of 'IResolutionFilterSetter.ColorBufferAmount.set(int)' and is visible to derived classes.</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+           </Accessors>
+          </Member>
+          <Member Name="#smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.IResolutionFilterSetter.Contrast" Kind="Property" Static="False" Accessibility="Private" ExternallyVisible="True">
+           <Accessors>
+            <Accessor Name="#smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.IResolutionFilterSetter.get_Contrast()" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="True">
+             <Messages>
+              <Message TypeName="InterfaceMethodsShouldBeCallableByChildTypes" Category="Microsoft.Design" CheckId="CA1033" Status="Active" Created="2016-11-12 17:18:05Z" FixCategory="NonBreaking">
+               <Issue Certainty="95" Level="Error" Path="C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule\Effects\Filters" File="_8BitFilter.cs" Line="178">Make '_8BitFilter' sealed (a breaking change if this class has previously shipped), implement the method non-explicitly, or implement a new method that exposes the functionality of 'IResolutionFilterSetter.Contrast.get()' and is visible to derived classes.</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+            <Accessor Name="#smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.IResolutionFilterSetter.set_Contrast(System.Int32)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="True">
+             <Messages>
+              <Message TypeName="InterfaceMethodsShouldBeCallableByChildTypes" Category="Microsoft.Design" CheckId="CA1033" Status="Active" Created="2016-11-12 17:18:05Z" FixCategory="NonBreaking">
+               <Issue Certainty="95" Level="Error" Path="C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule\Effects\Filters" File="_8BitFilter.cs" Line="182">Make '_8BitFilter' sealed (a breaking change if this class has previously shipped), implement the method non-explicitly, or implement a new method that exposes the functionality of 'IResolutionFilterSetter.Contrast.set(int)' and is visible to derived classes.</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+           </Accessors>
+          </Member>
+          <Member Name="#smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.IResolutionFilterSetter.DestinationScreenHeight" Kind="Property" Static="False" Accessibility="Private" ExternallyVisible="True">
+           <Accessors>
+            <Accessor Name="#smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.IResolutionFilterSetter.get_DestinationScreenHeight()" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="True">
+             <Messages>
+              <Message TypeName="InterfaceMethodsShouldBeCallableByChildTypes" Category="Microsoft.Design" CheckId="CA1033" Status="Active" Created="2016-11-12 17:18:05Z" FixCategory="NonBreaking">
+               <Issue Certainty="95" Level="Error" Path="C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule\Effects\Filters" File="_8BitFilter.cs" Line="166">Make '_8BitFilter' sealed (a breaking change if this class has previously shipped), implement the method non-explicitly, or implement a new method that exposes the functionality of 'IResolutionFilterSetter.DestinationScreenHeight.get()' and is visible to derived classes.</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+            <Accessor Name="#smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.IResolutionFilterSetter.set_DestinationScreenHeight(System.Int32)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="True">
+             <Messages>
+              <Message TypeName="InterfaceMethodsShouldBeCallableByChildTypes" Category="Microsoft.Design" CheckId="CA1033" Status="Active" Created="2016-11-12 17:18:05Z" FixCategory="NonBreaking">
+               <Issue Certainty="95" Level="Error" Path="C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule\Effects\Filters" File="_8BitFilter.cs" Line="170">Make '_8BitFilter' sealed (a breaking change if this class has previously shipped), implement the method non-explicitly, or implement a new method that exposes the functionality of 'IResolutionFilterSetter.DestinationScreenHeight.set(int)' and is visible to derived classes.</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+           </Accessors>
+          </Member>
+          <Member Name="#smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.IResolutionFilterSetter.DestinationScreenWidth" Kind="Property" Static="False" Accessibility="Private" ExternallyVisible="True">
+           <Accessors>
+            <Accessor Name="#smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.IResolutionFilterSetter.get_DestinationScreenWidth()" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="True">
+             <Messages>
+              <Message TypeName="InterfaceMethodsShouldBeCallableByChildTypes" Category="Microsoft.Design" CheckId="CA1033" Status="Active" Created="2016-11-12 17:18:05Z" FixCategory="NonBreaking">
+               <Issue Certainty="95" Level="Error" Path="C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule\Effects\Filters" File="_8BitFilter.cs" Line="154">Make '_8BitFilter' sealed (a breaking change if this class has previously shipped), implement the method non-explicitly, or implement a new method that exposes the functionality of 'IResolutionFilterSetter.DestinationScreenWidth.get()' and is visible to derived classes.</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+            <Accessor Name="#smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.IResolutionFilterSetter.set_DestinationScreenWidth(System.Int32)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="True">
+             <Messages>
+              <Message TypeName="InterfaceMethodsShouldBeCallableByChildTypes" Category="Microsoft.Design" CheckId="CA1033" Status="Active" Created="2016-11-12 17:18:05Z" FixCategory="NonBreaking">
+               <Issue Certainty="95" Level="Error" Path="C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule\Effects\Filters" File="_8BitFilter.cs" Line="158">Make '_8BitFilter' sealed (a breaking change if this class has previously shipped), implement the method non-explicitly, or implement a new method that exposes the functionality of 'IResolutionFilterSetter.DestinationScreenWidth.set(int)' and is visible to derived classes.</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+           </Accessors>
+          </Member>
+          <Member Name="#smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.IResolutionFilterSetter.TotalScreenHeight" Kind="Property" Static="False" Accessibility="Private" ExternallyVisible="True">
+           <Accessors>
+            <Accessor Name="#smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.IResolutionFilterSetter.get_TotalScreenHeight()" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="True">
+             <Messages>
+              <Message TypeName="InterfaceMethodsShouldBeCallableByChildTypes" Category="Microsoft.Design" CheckId="CA1033" Status="Active" Created="2016-11-12 17:18:05Z" FixCategory="NonBreaking">
+               <Issue Certainty="95" Level="Error" Path="C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule\Effects\Filters" File="_8BitFilter.cs" Line="202">Make '_8BitFilter' sealed (a breaking change if this class has previously shipped), implement the method non-explicitly, or implement a new method that exposes the functionality of 'IResolutionFilterSetter.TotalScreenHeight.get()' and is visible to derived classes.</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+            <Accessor Name="#smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.IResolutionFilterSetter.set_TotalScreenHeight(System.Int32)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="True">
+             <Messages>
+              <Message TypeName="InterfaceMethodsShouldBeCallableByChildTypes" Category="Microsoft.Design" CheckId="CA1033" Status="Active" Created="2016-11-12 17:18:05Z" FixCategory="NonBreaking">
+               <Issue Certainty="95" Level="Error" Path="C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule\Effects\Filters" File="_8BitFilter.cs" Line="206">Make '_8BitFilter' sealed (a breaking change if this class has previously shipped), implement the method non-explicitly, or implement a new method that exposes the functionality of 'IResolutionFilterSetter.TotalScreenHeight.set(int)' and is visible to derived classes.</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+           </Accessors>
+          </Member>
+          <Member Name="#smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.IResolutionFilterSetter.TotalScreenWidth" Kind="Property" Static="False" Accessibility="Private" ExternallyVisible="True">
+           <Accessors>
+            <Accessor Name="#smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.IResolutionFilterSetter.get_TotalScreenWidth()" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="True">
+             <Messages>
+              <Message TypeName="InterfaceMethodsShouldBeCallableByChildTypes" Category="Microsoft.Design" CheckId="CA1033" Status="Active" Created="2016-11-12 17:18:05Z" FixCategory="NonBreaking">
+               <Issue Certainty="95" Level="Error" Path="C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule\Effects\Filters" File="_8BitFilter.cs" Line="190">Make '_8BitFilter' sealed (a breaking change if this class has previously shipped), implement the method non-explicitly, or implement a new method that exposes the functionality of 'IResolutionFilterSetter.TotalScreenWidth.get()' and is visible to derived classes.</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+            <Accessor Name="#smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.IResolutionFilterSetter.set_TotalScreenWidth(System.Int32)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="True">
+             <Messages>
+              <Message TypeName="InterfaceMethodsShouldBeCallableByChildTypes" Category="Microsoft.Design" CheckId="CA1033" Status="Active" Created="2016-11-12 17:18:05Z" FixCategory="NonBreaking">
+               <Issue Certainty="95" Level="Error" Path="C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule\Effects\Filters" File="_8BitFilter.cs" Line="194">Make '_8BitFilter' sealed (a breaking change if this class has previously shipped), implement the method non-explicitly, or implement a new method that exposes the functionality of 'IResolutionFilterSetter.TotalScreenWidth.set(int)' and is visible to derived classes.</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+           </Accessors>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+      <Namespace Name="smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters">
+       <Types>
+        <Type Name="ResizeToFitFilter" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#ApplyFilter(smartSuite.smartSpriteFX.Pictures.Picture,System.Int32)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotLockOnObjectsWithWeakIdentity" Category="Microsoft.Reliability" CheckId="CA2002" Status="Active" Created="2016-11-12 17:18:05Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="CriticalError" Path="C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule\Effects\Filters" File="ResizeToFitFilter.cs" Line="59">'ResizeToFitFilter.ApplyFilter(Picture, int)' locks on a reference of type 'Type'. Replace this with a lock against an object with strong-identity.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+      <Namespace Name="smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI">
+       <Types>
+        <Type Name="ResolutionConfigurationPanelControl" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#smartSuite.smartSpriteFX.Effects.Infra.UI.Configuratons.IConfigurationPanel.GetPanel(smartSuite.smartSpriteFX.Effects.Filters.IEffectFilter)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="InterfaceMethodsShouldBeCallableByChildTypes" Category="Microsoft.Design" CheckId="CA1033" Status="Active" Created="2016-11-12 17:18:05Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule\Effects\Filters\UI" File="ResolutionConfigurationPanelControl.cs" Line="57">Make 'ResolutionConfigurationPanelControl' sealed (a breaking change if this class has previously shipped), implement the method non-explicitly, or implement a new method that exposes the functionality of 'IConfigurationPanel.GetPanel(IEffectFilter)' and is visible to derived classes.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+     </Namespaces>
+    </Module>
+   </Modules>
+  </Target>
+ </Targets>
+ <Rules>
+  <Rule TypeName="DoNotLockOnObjectsWithWeakIdentity" Category="Microsoft.Reliability" CheckId="CA2002">
+   <Name>Do not lock on objects with weak identity</Name>
+   <Description>Don't take locks on objects that may bleed across AppDomains or that don't have a strong identity.</Description>
+   <Resolution Name="Default">{0} locks on a reference of type {1}. Replace this with a lock against an object with strong-identity.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182290.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="75">CriticalError</MessageLevel>
+   <File Name="reliabilityrules.dll" Version="14.0.0.0" />
+  </Rule>
+  <Rule TypeName="InterfaceMethodsShouldBeCallableByChildTypes" Category="Microsoft.Design" CheckId="CA1033">
+   <Name>Interface methods should be callable by child types</Name>
+   <Description>Explicit method implementations are defined with private accessibility. Classes that derive from classes with explicit method implementations and choose to re-declare them on the class will not be able to call into the base class implementation unless the base class has provided an alternate method with appropriate accessibility. When overriding a base class method that has been hidden by explicit interface implementation, in order to call into the base class implementation, a derived class must cast the base pointer to the relevant interface. When calling through this reference, however, the derived class implementation will actually be invoked, resulting in recursion and an eventual stack overflow.</Description>
+   <Resolution Name="Default">Make {0} sealed (a breaking change if this class has previously shipped), implement the method non-explicitly, or implement a new method that exposes the functionality of {1} and is visible to derived classes.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182153.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">Error</MessageLevel>
+   <File Name="designrules.dll" Version="14.0.0.0" />
+  </Rule>
+ </Rules>
+ <Localized>
+  <String Key="Category">Category</String>
+  <String Key="Certainty">Certainty</String>
+  <String Key="CollapseAll">Collapse All</String>
+  <String Key="CheckId">Check Id</String>
+  <String Key="Error">Error</String>
+  <String Key="Errors">error(s)</String>
+  <String Key="ExpandAll">Expand All</String>
+  <String Key="Help">Help</String>
+  <String Key="Line">Line</String>
+  <String Key="Messages">message(s)</String>
+  <String Key="LocationNotStoredInPdb">[Location not stored in Pdb]</String>
+  <String Key="Project">Project</String>
+  <String Key="Resolution">Resolution</String>
+  <String Key="Rule">Rule</String>
+  <String Key="RuleFile">Rule File</String>
+  <String Key="RuleDescription">Rule Description</String>
+  <String Key="Source">Source</String>
+  <String Key="Status">Status</String>
+  <String Key="Target">Target</String>
+  <String Key="Warning">Warning</String>
+  <String Key="Warnings">warning(s)</String>
+  <String Key="ReportTitle">Code Analysis Report</String>
+ </Localized>
+</FxCopReport>
