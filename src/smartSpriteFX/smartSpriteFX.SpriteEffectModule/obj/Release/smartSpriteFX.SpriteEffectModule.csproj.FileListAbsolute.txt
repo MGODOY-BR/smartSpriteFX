@@ -13,5 +13,3 @@ C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smart
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule\obj\Release\smartSpriteFX.SpriteEffectModule.csproj.GenerateResource.Cache
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule\obj\Release\smartSpriteFX.SpriteEffectModule.dll
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule\obj\Release\smartSpriteFX.SpriteEffectModule.pdb
-C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule\bin\Release\smartSpriteFX.SpriteEffectModule.dll.CodeAnalysisLog.xml
-C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule\bin\Release\smartSpriteFX.SpriteEffectModule.dll.lastcodeanalysissucceeded
