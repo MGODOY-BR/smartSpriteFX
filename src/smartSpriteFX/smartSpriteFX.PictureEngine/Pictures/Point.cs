@@ -65,6 +65,15 @@ namespace smartSuite.smartSpriteFX.Pictures{
             }
         }
 
+        /// <summary>
+        /// Returns a clone of point
+        /// </summary>
+        /// <returns></returns>
+        public Point Clone()
+        {
+            return new Point(this.X, this.Y);
+        }
+
         public override string ToString()
         {
             return String.Format("X = {0}, Y = {1}", this.X, this.Y);

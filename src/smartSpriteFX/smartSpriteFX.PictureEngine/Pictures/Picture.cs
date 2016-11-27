@@ -176,6 +176,10 @@ namespace smartSuite.smartSpriteFX.Pictures{
             {
                 return _width;
             }
+            set
+            {
+                this._width = value;
+            }
         }
 
         /// <summary>
@@ -186,6 +190,10 @@ namespace smartSuite.smartSpriteFX.Pictures{
             get
             {
                 return _height;
+            }
+            set
+            {
+                this._height = value;
             }
         }
 
