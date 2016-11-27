@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using smartSuite.smartSpriteFX.Forms.Controls.ToolboxState;
 using smartSuite.smartSpriteFX.Pictures;
 using smartSuite.smartSpriteFX.Forms.Controls.DraftControlState;
-using smartSuite.smartSpriteFX.Properties;
+using smartSuite.smartSpriteFX.Common.UI.Properties;
 
 namespace smartSuite.smartSpriteFX.Forms.Controls
 {

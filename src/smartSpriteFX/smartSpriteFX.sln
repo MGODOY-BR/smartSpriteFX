@@ -26,6 +26,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "smartSpriteFX.SpriteEffectM
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "smartSpriteFX.PictureEngine.Test", "smartSpriteFX.PictureEngine.Test\smartSpriteFX.PictureEngine.Test.csproj", "{39ABA4E2-F667-4443-A404-ABA4A1B79248}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "smartSpriteFX.Common.UI", "smartSpriteFX.Common.UI\smartSpriteFX.Common.UI.csproj", "{03F65981-2E12-42FC-93EB-3E8088107515}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -56,6 +58,10 @@ Global
 		{39ABA4E2-F667-4443-A404-ABA4A1B79248}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{39ABA4E2-F667-4443-A404-ABA4A1B79248}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{39ABA4E2-F667-4443-A404-ABA4A1B79248}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03F65981-2E12-42FC-93EB-3E8088107515}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03F65981-2E12-42FC-93EB-3E8088107515}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03F65981-2E12-42FC-93EB-3E8088107515}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03F65981-2E12-42FC-93EB-3E8088107515}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
