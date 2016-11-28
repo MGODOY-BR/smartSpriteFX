@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using smartSuite.smartSpriteFX.Effects.Infra.UI.Configuratons;
 using smartSuite.smartSpriteFX.Pictures;
 using smartSuite.smartSpriteFX.Effects.Infra;
+using smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI;
 
 namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
 {
@@ -24,6 +25,28 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
         /// It´s the point B
         /// </summary>
         private Point _pointB;
+
+        /// <summary>
+        /// Gets the top left most point
+        /// </summary>
+        public Point PointA
+        {
+            get
+            {
+                return _pointA;
+            }
+        }
+
+        /// <summary>
+        /// Gets the lower right most point
+        /// </summary>
+        public Point PointB
+        {
+            get
+            {
+                return _pointB;
+            }
+        }
 
         public override bool ApplyFilter(Picture frame, int index)
         {
@@ -93,7 +116,7 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
 
         public override IConfigurationPanel ShowConfigurationPanel()
         {
-            throw new NotImplementedException();
+            return new CutConfigurationPanelControl();
         }
 
         /// <summary>
@@ -109,5 +132,15 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
 
             return identification;
         }
+
+        /// <summary>
+        /// Sets the points regardless of the state of filter
+        /// </summary>
+        public void SetPoint(Point pointA, Point pointB)
+        {
+            this._pointA = pointA;
+            this._pointB = pointB;
+        }
+
     }
 }

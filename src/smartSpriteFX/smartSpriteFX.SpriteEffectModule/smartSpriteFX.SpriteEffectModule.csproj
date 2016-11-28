@@ -67,6 +67,12 @@
     <Compile Include="Effects\Filters\UI\ColorSelectionControl.Designer.cs">
       <DependentUpon>ColorSelectionControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Effects\Filters\UI\CutConfigurationPanelControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Effects\Filters\UI\CutConfigurationPanelControl.Designer.cs">
+      <DependentUpon>CutConfigurationPanelControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Effects\Filters\UI\MessageBoxUtil.cs" />
     <Compile Include="Effects\Infra\UI\IApplyFilterCallback.cs" />
     <Compile Include="Effects\Facade\EffectFacade.cs" />
@@ -121,6 +127,10 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\smartSpriteFX.Common.UI\smartSpriteFX.Common.UI.csproj">
+      <Project>{03f65981-2e12-42fc-93eb-3e8088107515}</Project>
+      <Name>smartSpriteFX.Common.UI</Name>
+    </ProjectReference>
     <ProjectReference Include="..\smartSpriteFX.PictureEngine\smartSpriteFX.PictureEngine.csproj">
       <Project>{D374DAC6-55C3-465A-B27F-EF762E7F0CC5}</Project>
       <Name>smartSpriteFX.PictureEngine</Name>
@@ -135,6 +145,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Effects\Filters\UI\ColorSelectionControl.resx">
       <DependentUpon>ColorSelectionControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Effects\Filters\UI\CutConfigurationPanelControl.resx">
+      <DependentUpon>CutConfigurationPanelControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Effects\Filters\UI\NoneConfigurationPanelControl.resx">
       <DependentUpon>NoneConfigurationPanelControl.cs</DependentUpon>

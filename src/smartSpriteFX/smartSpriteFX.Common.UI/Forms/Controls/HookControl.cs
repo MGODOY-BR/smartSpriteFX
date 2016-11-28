@@ -360,14 +360,22 @@ namespace smartSuite.smartSpriteFX.Forms.Controls
 
                 if (this.Pair != null)
                 {
-                    HookControl older = this.GetOlderHuckFromPair();
-                    HookControl newer = this.GetNewerHuckFromPair();
-
-                    this.ResizeLines(
-                        older,
-                        newer);
+                    RefreshLines();
                 }
             }
+        }
+
+        /// <summary>
+        /// Refreshes lines
+        /// </summary>
+        public void RefreshLines()
+        {
+            HookControl older = this.GetOlderHuckFromPair();
+            HookControl newer = this.GetNewerHuckFromPair();
+
+            this.ResizeLines(
+                older,
+                newer);
         }
 
         private void HuckControl_GotFocus(object sender, EventArgs e)

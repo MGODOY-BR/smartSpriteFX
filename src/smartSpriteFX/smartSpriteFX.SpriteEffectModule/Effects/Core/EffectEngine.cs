@@ -377,6 +377,15 @@ namespace smartSuite.smartSpriteFX.Effects.Core{
         }
 
         /// <summary>
+        /// Gets the preview board
+        /// </summary>
+        /// <returns></returns>
+        internal static PictureBox GetPreviewBoard()
+        {
+            return EffectEngine._previewBoard;
+        }
+
+        /// <summary>
         /// It´s a WaitCallBack delegate used to parallelized the process.
         /// </summary>
         /// <param name="state">A state made by an Object[3], composed by:

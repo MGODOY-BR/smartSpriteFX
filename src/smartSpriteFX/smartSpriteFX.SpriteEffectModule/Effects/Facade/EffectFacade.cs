@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using static System.Windows.Forms.Control;
 
 namespace smartSuite.smartSpriteFX.Effects.Facade{
 	/// <summary>
@@ -29,6 +30,15 @@ namespace smartSuite.smartSpriteFX.Effects.Facade{
 		public static Image UpdatePreviewBoard()
         {
             return EffectEngine.UpdatePreviewBoard();
+        }
+
+        /// <summary>
+        /// Gets the controls collection for preview board
+        /// </summary>
+        /// <returns></returns>
+        public static ControlCollection GetControlCollectionFromPreviewBoard()
+        {
+            return EffectEngine.GetPreviewBoard().Controls;
         }
 
         /// <summary>
