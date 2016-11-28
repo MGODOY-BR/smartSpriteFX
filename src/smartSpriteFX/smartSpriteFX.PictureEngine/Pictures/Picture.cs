@@ -617,14 +617,30 @@ namespace smartSuite.smartSpriteFX.Pictures{
 
             #endregion
 
-            Color firstPixel = this.GetPixel(0, 0).Value;
+            var zeroPixel = this.GetPixel(0, 0);
+            Color firstPixel = Color.Transparent;
+            if (zeroPixel.HasValue)
+            {
+                firstPixel = zeroPixel.Value;
+            }
             using (var pieceBitmap = new Bitmap(this._width, this._height, PixelFormat.Format32bppArgb))
             {
                 for (int y = 0; y < this._height; y++)
                 {
                     for (int x = 0; x < this._width; x++)
                     {
-                        var piecePixel = this.GetPixel(x, y);
+                        var currentPixel = this.GetPixel(x, y);
+
+                        if (!currentPixel.HasValue)
+                        {
+                            continue;
+                        }
+                        if (zeroPixel == null)
+                        {
+                            firstPixel = currentPixel.Value;
+                        }
+
+                        var piecePixel = currentPixel;
 
                         #region Entries validation
 

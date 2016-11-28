@@ -99,7 +99,7 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
                     var pixel = originalFrame.GetPixel(x, y);
                     if (pixel.HasValue)
                     {
-                        frame.ReplacePixel(x, y, pixel.Value);
+                        frame.ReplacePixel(frame.Width - x, frame.Height - y, pixel.Value);
                     }
                 }
             }

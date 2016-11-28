@@ -153,6 +153,8 @@ namespace smartSuite.smartSpriteFX.Forms
             {
                 case EffectControl.EffectControlCommandEnum.EXCLUDE:
                     this._effectControlOrderCollection.Remove(e.Control);
+                    // Resetting the preview board.
+                    EffectEngine.GetPreviewBoard().Controls.Clear();
                     break;
 
                 case EffectControl.EffectControlCommandEnum.UP:
