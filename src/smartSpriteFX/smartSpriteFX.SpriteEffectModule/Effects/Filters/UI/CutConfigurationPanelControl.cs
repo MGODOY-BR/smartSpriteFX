@@ -93,9 +93,18 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI
 
             if (this._filterSettable.PointA == null)
             {
+                var previewBoard = EffectEngine.GetPreviewBoard();
+                float margin = previewBoard.Width / 10;
+                if (margin > previewBoard.Height)
+                {
+                    margin = previewBoard.Height / 10;
+                }
+                float maxWidth = previewBoard.Width - margin;
+                float maxHeight = previewBoard.Height - margin;
+
                 this._filterSettable.SetPoint(
-                    new Pictures.Point(0F, 0F),
-                    new Pictures.Point(EffectEngine.GetPreviewBoard().Width - 10, EffectEngine.GetPreviewBoard().Height - 10));
+                    new Pictures.Point(margin, margin),
+                    new Pictures.Point(maxWidth, maxHeight));
             }
 
             _hookControlA.Point = this._filterSettable.PointA;
