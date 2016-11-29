@@ -242,6 +242,9 @@ namespace smartSuite.smartSpriteFX.Effects.Core{
             var tempFile = Path.Combine("Temp", Guid.NewGuid().ToString());
             previewFrame.SaveCopy(tempFile);
 
+            // Clearing the preview board
+            EffectEngine._previewBoard.Controls.Clear();
+
             // Updating the preview board
             EffectEngine._previewBoard.Load(tempFile);
 
