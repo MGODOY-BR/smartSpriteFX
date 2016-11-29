@@ -71,14 +71,20 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
             var originalFrame = frame.Clone();
             frame.ReleaseBuffer();
 
-            frame.Width = (int)(this._pointB.X - this._pointA.X);
-            frame.Height = (int)(this._pointB.Y - this._pointA.Y);
+            frame.Width = (int)Math.Abs(this._pointB.X - this._pointA.X);
+            frame.Height = (int)Math.Abs(this._pointB.Y - this._pointA.Y);
 
             int minX = (int)this._pointA.X;
             int minY = (int)this._pointA.Y;
 
+            if (minX < 0) minX = 0;
+            if (minY < 0) minY = 0;
+
             int maxX = (int)this._pointB.X;
             int maxY = (int)this._pointB.Y;
+
+            if (maxX > originalFrame.Width) maxX = originalFrame.Width;
+            if (maxY > originalFrame.Height) maxY = originalFrame.Height;
 
             for (int y = minY; y < maxY; y++)
             {
@@ -88,8 +94,8 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
                     if (pixel.HasValue)
                     {
                         frame.ReplacePixel(
-                            x - minX, 
-                            y - minY, 
+                            Math.Abs(x - minX),
+                            Math.Abs(y - minY), 
                             pixel.Value);
                     }
                 }

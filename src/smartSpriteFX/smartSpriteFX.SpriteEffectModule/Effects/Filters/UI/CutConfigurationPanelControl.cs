@@ -99,8 +99,8 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI
                 {
                     margin = previewBoard.Height / 10;
                 }
-                float maxWidth = previewBoard.Width - margin;
-                float maxHeight = previewBoard.Height - margin;
+                float maxWidth = Math.Abs(previewBoard.Width - margin);
+                float maxHeight = Math.Abs(previewBoard.Height - margin);
 
                 this._filterSettable.SetPoint(
                     new Pictures.Point(margin, margin),
