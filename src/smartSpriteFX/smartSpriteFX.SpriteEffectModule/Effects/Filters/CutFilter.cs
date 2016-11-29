@@ -74,32 +74,23 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
             frame.Width = (int)(this._pointB.X - this._pointA.X);
             frame.Height = (int)(this._pointB.Y - this._pointA.Y);
 
-            for (int y = 0; y < originalFrame.Height; y++)
+            int minX = (int)this._pointA.X;
+            int minY = (int)this._pointA.Y;
+
+            int maxX = (int)this._pointB.X;
+            int maxY = (int)this._pointB.Y;
+
+            for (int y = minY; y < maxY; y++)
             {
-                #region Entries validation
-
-                if (y < this._pointA.Y || y > this._pointB.Y)
+                for (int x = minX; x < maxX; x++)
                 {
-                    continue;
-                }
-
-                #endregion
-
-                for (int x = 0; x < originalFrame.Width; x++)
-                {
-                    #region Entries validation
-
-                    if (x < this._pointA.X || x > this._pointB.X)
-                    {
-                        continue;
-                    }
-
-                    #endregion
-
                     var pixel = originalFrame.GetPixel(x, y);
                     if (pixel.HasValue)
                     {
-                        frame.ReplacePixel(frame.Width - x, frame.Height - y, pixel.Value);
+                        frame.ReplacePixel(
+                            x - minX, 
+                            y - minY, 
+                            pixel.Value);
                     }
                 }
             }
