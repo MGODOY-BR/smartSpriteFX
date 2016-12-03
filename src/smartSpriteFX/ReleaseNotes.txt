@@ -1,1 +1,6 @@
-- Treatment of animations
+vAlpha 2.0.0.1
+
+New Feactures
+- New filters
+	- CutFilter
+	- CropFilter

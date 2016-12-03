@@ -242,6 +242,9 @@ namespace smartSuite.smartSpriteFX.Effects.Core{
             var tempFile = Path.Combine("Temp", Guid.NewGuid().ToString());
             previewFrame.SaveCopy(tempFile);
 
+            // Clearing the preview board
+            EffectEngine._previewBoard.Controls.Clear();
+
             // Updating the preview board
             EffectEngine._previewBoard.Load(tempFile);
 
@@ -374,6 +377,15 @@ namespace smartSuite.smartSpriteFX.Effects.Core{
             #endregion
 
             EffectEngine._previewBoard = previewBoard;
+        }
+
+        /// <summary>
+        /// Gets the preview board
+        /// </summary>
+        /// <returns></returns>
+        internal static PictureBox GetPreviewBoard()
+        {
+            return EffectEngine._previewBoard;
         }
 
         /// <summary>

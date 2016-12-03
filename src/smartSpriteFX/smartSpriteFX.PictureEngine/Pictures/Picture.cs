@@ -12,12 +12,14 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading;
 
-namespace smartSuite.smartSpriteFX.Pictures{
-	/// <summary>
-	/// Represents an image
-	/// </summary>
+namespace smartSuite.smartSpriteFX.Pictures
+{
+    /// <summary>
+    /// Represents an image
+    /// </summary>
     [Serializable]
-	public class Picture {
+    public class Picture
+    {
 
         /// <summary>
         /// Represents the width of picture
@@ -147,10 +149,10 @@ namespace smartSuite.smartSpriteFX.Pictures{
         /// </summary>
         private String _fullPath;
 
-		/// <summary>
-		/// It's the last clicked point
-		/// </summary>
-		public Point LastPoint
+        /// <summary>
+        /// It's the last clicked point
+        /// </summary>
+        public Point LastPoint
         {
             get;
             set;
@@ -176,6 +178,10 @@ namespace smartSuite.smartSpriteFX.Pictures{
             {
                 return _width;
             }
+            set
+            {
+                this._width = value;
+            }
         }
 
         /// <summary>
@@ -186,6 +192,10 @@ namespace smartSuite.smartSpriteFX.Pictures{
             get
             {
                 return _height;
+            }
+            set
+            {
+                this._height = value;
             }
         }
 
@@ -329,7 +339,7 @@ namespace smartSuite.smartSpriteFX.Pictures{
         private Point ToPoint(String key)
         {
             #region Entries validation
-            
+
             if (String.IsNullOrEmpty(key))
             {
                 throw new ArgumentNullException("key");
@@ -597,7 +607,7 @@ namespace smartSuite.smartSpriteFX.Pictures{
         private void Save(string fileName, Color transparentColor, IEqualityComparer<Color> colorComparer)
         {
             #region Entries validation
-            
+
             if (String.IsNullOrEmpty(fileName))
             {
                 throw new ArgumentNullException("fileName");
@@ -739,7 +749,7 @@ namespace smartSuite.smartSpriteFX.Pictures{
         internal void SaveCopy(String copyFileName)
         {
             #region Entries validation
-            
+
             if (String.IsNullOrEmpty(copyFileName))
             {
                 throw new ArgumentNullException("copyFileName");
@@ -749,7 +759,7 @@ namespace smartSuite.smartSpriteFX.Pictures{
 
             this.Save(copyFileName, this._transparentColor, new ColorEqualityComparer());
         }
-        
+
         /// <summary>
         /// Releases buffer
         /// </summary>

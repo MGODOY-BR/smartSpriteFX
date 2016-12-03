@@ -73,13 +73,13 @@
     <Compile Include="Forms\Controls\Animations\Effects\EffectControl.Designer.cs">
       <DependentUpon>EffectControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Controls\Animations\Frames\FrameSelectionEventArgs.cs" />
     <Compile Include="Forms\Controls\Animations\Frames\FrameSelectionControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Forms\Controls\Animations\Frames\FrameSelectionControl.Designer.cs">
       <DependentUpon>FrameSelectionControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Controls\Animations\Frames\FrameSelectionEventArgs.cs" />
     <Compile Include="Forms\Controls\Browsers\SmartBrowser.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -87,41 +87,11 @@
       <DependentUpon>SmartBrowser.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Controls\Browsers\SmartBrowserEventArgs.cs" />
-    <Compile Include="Forms\Controls\DraftControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Forms\Controls\DraftControl.Designer.cs">
-      <DependentUpon>DraftControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Controls\DraftControlState\ActionEnum.cs" />
-    <Compile Include="Forms\Controls\DraftControlState\PieceEventArgs.cs" />
     <Compile Include="Forms\Controls\EffectFilterPallete\EffectFilterPalleteControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Forms\Controls\EffectFilterPallete\EffectFilterPalleteControl.Designer.cs">
       <DependentUpon>EffectFilterPalleteControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Controls\HookControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Forms\Controls\HookControl.Designer.cs">
-      <DependentUpon>HookControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Controls\HookState\HookEventArgs.cs" />
-    <Compile Include="Forms\Controls\IDestroyable.cs" />
-    <Compile Include="Forms\Controls\IRemarkable.cs" />
-    <Compile Include="Forms\Controls\LineControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Forms\Controls\LineControl.Designer.cs">
-      <DependentUpon>LineControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Controls\LineControlState\LineControlStyle.cs" />
-    <Compile Include="Forms\Controls\NoneConfigurationPanel\NoneConfigurationPanelControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Forms\Controls\NoneConfigurationPanel\NoneConfigurationPanelControl.Designer.cs">
-      <DependentUpon>NoneConfigurationPanelControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Controls\SwitchMode\SwitchModeControl.cs">
       <SubType>UserControl</SubType>
@@ -129,8 +99,6 @@
     <Compile Include="Forms\Controls\SwitchMode\SwitchModeControl.Designer.cs">
       <DependentUpon>SwitchModeControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Controls\ToolboxState\DraftSettings.cs" />
-    <Compile Include="Forms\Controls\TreeViewState\GroupTag.cs" />
     <Compile Include="Forms\PathAlertForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -173,17 +141,8 @@
     <EmbeddedResource Include="Forms\Controls\Browsers\SmartBrowser.resx">
       <DependentUpon>SmartBrowser.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Controls\DraftControl.resx">
-      <DependentUpon>DraftControl.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Controls\EffectFilterPallete\EffectFilterPalleteControl.resx">
       <DependentUpon>EffectFilterPalleteControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Controls\HookControl.resx">
-      <DependentUpon>HookControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Controls\LineControl.resx">
-      <DependentUpon>LineControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Controls\SwitchMode\SwitchModeControl.resx">
       <DependentUpon>SwitchModeControl.cs</DependentUpon>
@@ -237,6 +196,10 @@
     <None Include="Resources\Hook.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\smartSpriteFX.Common.UI\smartSpriteFX.Common.UI.csproj">
+      <Project>{03f65981-2e12-42fc-93eb-3e8088107515}</Project>
+      <Name>smartSpriteFX.Common.UI</Name>
+    </ProjectReference>
     <ProjectReference Include="..\smartSpriteFX.PictureEngine\smartSpriteFX.PictureEngine.csproj">
       <Project>{D374DAC6-55C3-465A-B27F-EF762E7F0CC5}</Project>
       <Name>smartSpriteFX.PictureEngine</Name>

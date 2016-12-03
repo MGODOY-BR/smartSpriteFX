@@ -80,24 +80,21 @@ namespace smartSuite.smartSprite.Effects.Core{
 		/// <summary>
 		/// Ups the filter in list order
 		/// </summary>
-		/// <param name="effectFilter">		
-		public static void UpFilterOrder(IEffectFilter effectFilter ) {</param>
+		/// <param name="effectFilter">		public static void UpFilterOrder(IEffectFilter effectFilter ) {</param>
 			// TODO implement here
 		}
 
 		/// <summary>
 		/// Downs the filter in list order
 		/// </summary>
-		/// <param name="effectFilter">		
-		public static void DownFilterOrder(IEffectFilter effectFilter) {</param>
+		/// <param name="effectFilter">		public static void DownFilterOrder(IEffectFilter effectFilter) {</param>
 			// TODO implement here
 		}
 
 		/// <summary>
 		/// Sets the preview board
 		/// </summary>
-		/// <param name="board">		
-		static void SetPreviewBoard(PictureBox board) {</param>
+		/// <param name="previewBoard">		static void SetPreviewBoard(PictureBox previewBoard) {</param>
 			// TODO implement here
 		}
 

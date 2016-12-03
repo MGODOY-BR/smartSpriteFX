@@ -5,9 +5,14 @@ C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smart
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.Test\bin\Release\smartSpriteFX.exe
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.Test\bin\Release\smartSpriteFX.PictureEngine.dll
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.Test\bin\Release\smartSpriteFX.SpriteEffectModule.dll
+C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.Test\bin\Release\smartSpriteFX.Common.UI.dll
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.Test\bin\Release\smartSpriteFX.PictureEngine.pdb
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.Test\bin\Release\smartSpriteFX.pdb
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.Test\bin\Release\smartSpriteFX.SpriteEffectModule.pdb
+C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.Test\bin\Release\smartSpriteFX.Common.UI.pdb
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.Test\obj\Release\smartSpriteFX.Test.csprojResolveAssemblyReference.cache
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.Test\obj\Release\smartSpriteFX.Test.dll
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.Test\obj\Release\smartSpriteFX.Test.pdb
+C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.Test\bin\Release\smartSpriteFX.PictureEngine.xml
+C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.Test\bin\Release\smartSpriteFX.SpriteEffectModule.xml
+C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.Test\bin\Release\smartSpriteFX.Common.UI.xml

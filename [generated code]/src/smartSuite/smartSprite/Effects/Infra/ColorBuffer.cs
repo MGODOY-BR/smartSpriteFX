@@ -33,16 +33,6 @@ namespace smartSuite.smartSprite.Effects.Infra{
 		}
 
 		/// <summary>
-		/// Registers a color in buffer
-		/// </summary>
-		/// <param name="color"></param>
-		/// <returns></returns>
-		public void Register(Color color) {
-			// TODO implement here
-			return null;
-		}
-
-		/// <summary>
 		/// Gets a color similar to assigned color
 		/// </summary>
 		/// <param name="color"></param>
