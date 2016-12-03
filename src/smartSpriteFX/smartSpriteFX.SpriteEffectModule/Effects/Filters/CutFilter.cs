@@ -123,8 +123,8 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
         public override Identification GetIdentification()
         {
             var identification = base.GetIdentification();
-            identification.SetName("Cut");
-            identification.SetDescription("A filter which cuts frames to remove unnecessary blank spaces from frames");
+            identification.SetName("Free Cut");
+            identification.SetDescription("A filter used to cut pieces from frames");
             identification.SetGroup("Picture");
 
             return identification;

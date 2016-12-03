@@ -1,4 +1,6 @@
 vAlpha 2.0.0.1
 
 New Feactures
-- New filter- CutFilter
+- New filters
+	- CutFilter
+	- CropFilter

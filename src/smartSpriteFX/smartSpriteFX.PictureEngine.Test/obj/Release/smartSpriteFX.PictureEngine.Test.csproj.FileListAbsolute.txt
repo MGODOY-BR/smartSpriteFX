@@ -8,3 +8,4 @@ C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smart
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.PictureEngine.Test\obj\Release\smartSpriteFX.PictureEngine.Test.csprojResolveAssemblyReference.cache
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.PictureEngine.Test\obj\Release\smartSpriteFX.PictureEngine.Test.dll
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.PictureEngine.Test\obj\Release\smartSpriteFX.PictureEngine.Test.pdb
+C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.PictureEngine.Test\bin\Release\smartSpriteFX.PictureEngine.xml

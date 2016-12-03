@@ -30,6 +30,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <PlatformTarget>x64</PlatformTarget>
+    <DocumentationFile>bin\Release\smartSpriteFX.SpriteEffectModule.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>true</SignAssembly>
@@ -53,6 +54,7 @@
     <Compile Include="Animations\AnimationComparer.cs" />
     <Compile Include="Animations\FrameIterator.cs" />
     <Compile Include="Effects\Core\EffectEngine.cs" />
+    <Compile Include="Effects\Filters\CropFilter.cs" />
     <Compile Include="Effects\Filters\CutFilter.cs" />
     <Compile Include="Effects\Filters\ResizeToFitFilter.cs" />
     <Compile Include="Effects\Filters\UI\ColorListControl.cs">
