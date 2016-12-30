@@ -66,6 +66,17 @@
             Sets the points regardless of the state of filter
             </summary>
         </member>
+        <member name="T:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.DrawnByHandFilter">
+            <summary>
+            Represents a filter used to convert real images to drawn by hand like.
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.DrawnByHandFilter.GetIdentification">
+            <summary>
+            Gets the identification
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.ResizeToFitFilter">
             <summary>
             It´s a filter used to reduce the too big image to fit in another filters

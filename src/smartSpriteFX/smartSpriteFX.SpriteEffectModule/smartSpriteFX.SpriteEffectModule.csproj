@@ -56,6 +56,7 @@
     <Compile Include="Effects\Core\EffectEngine.cs" />
     <Compile Include="Effects\Filters\CropFilter.cs" />
     <Compile Include="Effects\Filters\CutFilter.cs" />
+    <Compile Include="Effects\Filters\DrawnByHandFilter.cs" />
     <Compile Include="Effects\Filters\ResizeToFitFilter.cs" />
     <Compile Include="Effects\Filters\UI\ColorListControl.cs">
       <SubType>UserControl</SubType>

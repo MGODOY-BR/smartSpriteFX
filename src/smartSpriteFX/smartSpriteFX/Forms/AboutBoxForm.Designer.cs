@@ -156,10 +156,10 @@
             this.linkLabel1.AutoSize = true;
             this.linkLabel1.Location = new System.Drawing.Point(163, 238);
             this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(239, 13);
+            this.linkLabel1.Size = new System.Drawing.Size(255, 13);
             this.linkLabel1.TabIndex = 25;
             this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "https://m.facebook.com/smartsuiteforindiegame/";
+            this.linkLabel1.Text = "https://www.facebook.com/smartsuiteforindiegame/";
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // AboutBoxForm

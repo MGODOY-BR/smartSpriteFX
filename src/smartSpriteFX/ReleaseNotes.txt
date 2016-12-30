@@ -1,6 +1,5 @@
-vAlpha 2.0.0.1
+vAlpha 2.0.0.2
 
 New Feactures
 - New filters
-	- CutFilter
-	- CropFilter
+	- DrawnByHand
