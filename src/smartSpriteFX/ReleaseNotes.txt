@@ -6,4 +6,7 @@ New Feactures
 
 Improvements
 - "Resize to Fit" Filter has been moved to new group "Work around"
-- Bugfixes
+
+Bugfixes
+- Free Cut issues involving images bigger with scrolling has been correct
+- Severam minor issues

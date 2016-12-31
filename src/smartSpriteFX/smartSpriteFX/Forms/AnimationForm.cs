@@ -97,7 +97,6 @@ namespace smartSuite.smartSpriteFX.Forms
         /// <param name="e"></param>
         private void SmartBrowser_ChosenByUserEvent(object sender, SmartBrowserEventArgs e)
         {
-            FrameSelectionControl frameSelectionControl = null;
             try
             {
                 this.Cursor = Cursors.WaitCursor;
@@ -106,7 +105,7 @@ namespace smartSuite.smartSpriteFX.Forms
                 EffectEngine.SetPreviewBoard(previewBoard);
 
                 // FrameSelectionControl
-                frameSelectionControl = new FrameSelectionControl();
+                FrameSelectionControl frameSelectionControl = new FrameSelectionControl();
                 frameSelectionControl.Dock = DockStyle.Fill;
                 frameSelectionControl.SetPath(e.UserChoice);
                 frameSelectionControl.SelectingFrame += FrameSelectionControl_SelectingFrame;
@@ -118,15 +117,6 @@ namespace smartSuite.smartSpriteFX.Forms
                 Settings.Default.Save();
 
                 _effectFilterPalleteControl.Bind();
-            }
-            catch
-            {
-                if (frameSelectionControl != null)
-                {
-                    frameSelectionControl.ClearFrames();
-                }
-
-                throw;
             }
             finally
             {

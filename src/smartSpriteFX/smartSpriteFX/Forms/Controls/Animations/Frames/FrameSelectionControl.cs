@@ -78,7 +78,7 @@ namespace smartSuite.smartSpriteFX.Forms.Controls.Animations.Frames
 
             this._fileList.Sort(_animationComparer);
 
-            for(int i = 0; i < this._fileList.Count; i++)
+            for (int i = 0; i < this._fileList.Count; i++)
             {
                 var fileItem = this._fileList[i];
                 var image = Image.FromFile(fileItem);
@@ -136,6 +136,7 @@ namespace smartSuite.smartSpriteFX.Forms.Controls.Animations.Frames
         /// </summary>
         public void ClearFrames()
         {
+            this._fileList.Clear();
             flowLayoutPanel1.Controls.Clear();
         }
     }
