@@ -15,9 +15,9 @@ using System.Drawing;
 namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
 {
     /// <summary>
-    /// Represents a filter used to convert real images to drawn by hand like.
+    /// Represents a filter used to make images seems like made by wires, like Tron movie
     /// </summary>
-    public class DrawnByHandFilter : SmartSpriteOriginalFilterBase
+    public class WireFilter : SmartSpriteOriginalFilterBase
     {
         /// <summary>
         /// It´s the color buffer used to simply the colors
@@ -34,6 +34,7 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
             var transparentBackgroundFilter =
                 EffectEngine.GetTransparentBackgroundFilter();
 
+            Color? lastColor = null;
             for (int y = 0; y < frame.Height; y++)
             {
                 for (int x = 0; x < frame.Width; x++)
@@ -49,15 +50,23 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
                         {
                             if (_colorComparer.EqualsButNoAlpha(newColor, transparentBackgroundFilter.TransparentColor))
                             {
-                                newColor = _colorBuffer.GetSlightlyDifferentColor(newColor);
+                                newColor = ColorBuffer.GetSlightlyDifferentColor(newColor);
                             }
                         }
                         else if (_colorComparer.EqualsButNoAlpha(newColor, frame.TransparentColor))
                         {
-                            newColor = _colorBuffer.GetSlightlyDifferentColor(newColor);
+                            newColor = ColorBuffer.GetSlightlyDifferentColor(newColor);
                         }
 
-                        frame.ReplacePixel(x, y, newColor);
+                        if (lastColor.HasValue && _colorComparer.LooksLikeBySensibility2(newColor, lastColor.Value))
+                        {
+                            frame.ReplacePixel(x, y, Color.Black);
+                        }
+                        else
+                        {
+                            frame.ReplacePixel(x, y, newColor);
+                        }
+                        lastColor = newColor;
                     }
                 }
             }
@@ -81,8 +90,8 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
         public override Identification GetIdentification()
         {
             var identification = base.GetIdentification();
-            identification.SetName("Drawn by Hand");
-            identification.SetDescription("A filter which transforms photos taken from reality in drawn by hand one.");
+            identification.SetName("Made by Wire (Like \"Tron movie\")");
+            identification.SetDescription("Turns the image similar to Tron movie, made by wire.");
             identification.SetGroup("Art");
 
             return identification;

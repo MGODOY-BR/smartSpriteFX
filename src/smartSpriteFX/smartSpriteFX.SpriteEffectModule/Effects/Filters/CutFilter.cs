@@ -8,6 +8,8 @@ using smartSuite.smartSpriteFX.Effects.Infra.UI.Configuratons;
 using smartSuite.smartSpriteFX.Pictures;
 using smartSuite.smartSpriteFX.Effects.Infra;
 using smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI;
+using smartSuite.smartSpriteFX.Effects.Facade;
+using smartSuite.smartSpriteFX.Pictures.ColorPattern;
 
 namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
 {
@@ -16,6 +18,11 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
     /// </summary>
     public class CutFilter : SmartSpriteOriginalFilterBase
     {
+        /// <summary>
+        /// A comparer used to compare colors.
+        /// </summary>
+        private ColorEqualityComparer _colorComparer = new ColorEqualityComparer();
+
         /// <summary>
         /// It´s a point A
         /// </summary>
@@ -68,6 +75,8 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
 
             #endregion
 
+            var transparentBackground = EffectFacade.GetTransparentBackgroundFilter();
+
             var originalFrame = frame.Clone();
             frame.ReleaseBuffer();
 
@@ -93,6 +102,17 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
                     var pixel = originalFrame.GetPixel(x, y);
                     if (pixel.HasValue)
                     {
+                        if (transparentBackground != null)
+                        {
+                            if (_colorComparer.EqualsButNoAlpha(pixel.Value, transparentBackground.TransparentColor))
+                            {
+                                pixel = ColorBuffer.GetSlightlyDifferentColor(pixel.Value);
+                            }
+                        }
+                        else if (_colorComparer.EqualsButNoAlpha(pixel.Value, frame.TransparentColor))
+                        {
+                            pixel = ColorBuffer.GetSlightlyDifferentColor(pixel.Value);
+                        }
                         frame.ReplacePixel(
                             Math.Abs(x - minX),
                             Math.Abs(y - minY), 

@@ -47,13 +47,13 @@ namespace smartSuite.smartSpriteFX.Effects.Infra
         /// </summary>
         /// <param name="color"></param>
         /// <returns></returns>
-        public Color GetSlightlyDifferentColor(Color color)
+        public static Color GetSlightlyDifferentColor(Color color)
         {
             return
                 Color.FromArgb(
                     color.A,
                     color.R,
-                    this.GetSlightlyDifferentColorComponent(color.G),
+                    ColorBuffer.GetSlightlyDifferentColorComponent(color.G),
                     color.B);
         }
 
@@ -131,7 +131,7 @@ namespace smartSuite.smartSpriteFX.Effects.Infra
         /// </summary>
         /// <param name="colorComponent"></param>
         /// <returns></returns>
-        public int GetSlightlyDifferentColorComponent(int colorComponent)
+        public static int GetSlightlyDifferentColorComponent(int colorComponent)
         {
             int factor = 5;
 

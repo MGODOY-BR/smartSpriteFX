@@ -35,6 +35,11 @@
             Represents a filter which is used to cut frames
             </summary>
         </member>
+        <member name="F:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.CutFilter._colorComparer">
+            <summary>
+            A comparer used to compare colors.
+            </summary>
+        </member>
         <member name="F:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.CutFilter._pointA">
             <summary>
             It´s a point A
@@ -66,22 +71,22 @@
             Sets the points regardless of the state of filter
             </summary>
         </member>
-        <member name="T:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.DrawnByHandFilter">
+        <member name="T:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.WireFilter">
             <summary>
-            Represents a filter used to convert real images to drawn by hand like.
+            Represents a filter used to make images seems like made by wires, like Tron movie
             </summary>
         </member>
-        <member name="F:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.DrawnByHandFilter._colorBuffer">
+        <member name="F:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.WireFilter._colorBuffer">
             <summary>
             It´s the color buffer used to simply the colors
             </summary>
         </member>
-        <member name="F:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.DrawnByHandFilter._colorComparer">
+        <member name="F:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.WireFilter._colorComparer">
             <summary>
             A comparer used to compare colors.
             </summary>
         </member>
-        <member name="M:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.DrawnByHandFilter.GetIdentification">
+        <member name="M:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.WireFilter.GetIdentification">
             <summary>
             Gets the identification
             </summary>

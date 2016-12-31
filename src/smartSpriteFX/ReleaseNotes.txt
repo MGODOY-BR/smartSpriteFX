@@ -2,11 +2,11 @@ vAlpha 2.0.0.2
 
 New Feactures
 - New filters
-	- DrawnByHand
+	- Made by Wire
 
 Improvements
 - "Resize to Fit" Filter has been moved to new group "Work around"
 
 Bugfixes
-- Free Cut issues involving images bigger with scrolling has been correct
-- Severam minor issues
+- Free Cut issues involving not desired transparent color has been corrected.
+- Several minor issues

@@ -234,7 +234,7 @@ namespace smartSuite.smartSpriteFX.Effects.Tools{
                 if (_comparer.EqualsButNoAlpha(newColor, this._originalPicture.TransparentColor))
                 {
                     newColor =
-                            this._colorBuffer.GetSlightlyDifferentColor(newColor);
+                            ColorBuffer.GetSlightlyDifferentColor(newColor);
                 }
             }
 
