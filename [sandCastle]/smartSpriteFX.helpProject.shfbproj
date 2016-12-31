@@ -15,7 +15,7 @@
     <!-- SHFB properties -->
     <FrameworkVersion>.NET Framework 4.5</FrameworkVersion>
     <OutputPath>.\Help\</OutputPath>
-    <HtmlHelpName>Documentation for smartSpriteFX Library</HtmlHelpName>
+    <HtmlHelpName>smartSpriteFX Library Technical Reference</HtmlHelpName>
     <Language>en-US</Language>
     <SaveComponentCacheCapacity>100</SaveComponentCacheCapacity>
     <BuildAssemblerVerbosity>OnlyWarningsAndErrors</BuildAssemblerVerbosity>
@@ -33,14 +33,15 @@
     <PresentationStyle>VS2013</PresentationStyle>
     <Preliminary>False</Preliminary>
     <NamingMethod>Guid</NamingMethod>
-    <HelpTitle>smartSpriteFX Library</HelpTitle>
+    <HelpTitle>smartSpriteFX Library Technical Reference</HelpTitle>
     <CopyrightText>%28C%29 2016, 2017 - Atelier do Sofware. Programmed by MGodoy</CopyrightText>
     <CopyrightHref>https://www.facebook.com/smartsuiteforindiegame/</CopyrightHref>
     <ContentPlacement>AboveNamespaces</ContentPlacement>
     <DocumentationSources>
       <DocumentationSource sourceFile="..\src\smartSpriteFX\smartSpriteFX.Common.UI\smartSpriteFX.Common.UI.csproj" />
-<DocumentationSource sourceFile="..\src\smartSpriteFX\smartSpriteFX.PictureEngine\smartSpriteFX.PictureEngine.csproj" />
-<DocumentationSource sourceFile="..\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule\smartSpriteFX.SpriteEffectModule.csproj" /></DocumentationSources>
+      <DocumentationSource sourceFile="..\src\smartSpriteFX\smartSpriteFX.PictureEngine\smartSpriteFX.PictureEngine.csproj" />
+      <DocumentationSource sourceFile="..\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule\smartSpriteFX.SpriteEffectModule.csproj" />
+    </DocumentationSources>
     <MissingTags>AutoDocumentCtors, AutoDocumentDispose</MissingTags>
   </PropertyGroup>
   <!-- There are no properties for these groups.  AnyCPU needs to appear in order for Visual Studio to perform
