@@ -10,6 +10,7 @@ using smartSuite.smartSpriteFX.Effects.Infra;
 using smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI;
 using smartSuite.smartSpriteFX.Effects.Core;
 using smartSuite.smartSpriteFX.Pictures.ColorPattern;
+using System.Drawing;
 
 namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
 {
@@ -46,10 +47,14 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
 
                         if (transparentBackgroundFilter != null)
                         {
-                            if (!_colorComparer.EqualsButNoAlpha(newColor, transparentBackgroundFilter.TransparentColor))
+                            if (_colorComparer.EqualsButNoAlpha(newColor, transparentBackgroundFilter.TransparentColor))
                             {
                                 newColor = _colorBuffer.GetSlightlyDifferentColor(newColor);
                             }
+                        }
+                        else if (_colorComparer.EqualsButNoAlpha(newColor, frame.TransparentColor))
+                        {
+                            newColor = _colorBuffer.GetSlightlyDifferentColor(newColor);
                         }
 
                         frame.ReplacePixel(x, y, newColor);

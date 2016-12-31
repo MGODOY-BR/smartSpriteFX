@@ -130,5 +130,13 @@ namespace smartSuite.smartSpriteFX.Forms.Controls.Animations.Frames
             this._lastSelectedFrame = pictureBox;
             pictureBox.BorderStyle = BorderStyle.Fixed3D;
         }
+
+        /// <summary>
+        /// Clears the frames
+        /// </summary>
+        public void ClearFrames()
+        {
+            flowLayoutPanel1.Controls.Clear();
+        }
     }
 }
