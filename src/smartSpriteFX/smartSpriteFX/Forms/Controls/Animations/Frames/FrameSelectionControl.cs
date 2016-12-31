@@ -71,6 +71,7 @@ namespace smartSuite.smartSpriteFX.Forms.Controls.Animations.Frames
         /// </summary>
         public void LoadThumbNails()
         {
+            flowLayoutPanel1.Controls.Clear();
             this._fileList.Clear();
             this._fileList.AddRange(
                 Directory.GetFiles(this._path));

@@ -183,15 +183,13 @@ namespace smartSuite.smartSpriteFX.Effects.Tools{
                  (int)hipotenuseOriginalPicture / (int)hipotenuseNewPicture;
 
             // Checking for transparent filter
-            var selectedFilterList = EffectEngine.GetSelectedFilterList();
-            foreach (var filterItem in selectedFilterList)
+            var transparentBackgroundFilter = 
+                EffectEngine.GetTransparentBackgroundFilter();
+
+            if (transparentBackgroundFilter != null)
             {
-                if (filterItem is TransparentBackgroundFilter)
-                {
-                    this._hasTransparentFilter = true;
-                    break;
-                }
-            }            
+                this._hasTransparentFilter = true;
+            }
 
             this._colorBuffer = new ColorBuffer(newColorAmount, contrast);
             this._colorBuffer.AvoidedColorList = this.AvoidColorList;
@@ -236,11 +234,7 @@ namespace smartSuite.smartSpriteFX.Effects.Tools{
                 if (_comparer.EqualsButNoAlpha(newColor, this._originalPicture.TransparentColor))
                 {
                     newColor =
-                        Color.FromArgb(
-                            newColor.A,
-                            newColor.R,
-                            this._colorBuffer.GetSlightlyColorComponent(newColor.G),
-                            newColor.B);
+                            this._colorBuffer.GetSlightlyDifferentColor(newColor);
                 }
             }
 

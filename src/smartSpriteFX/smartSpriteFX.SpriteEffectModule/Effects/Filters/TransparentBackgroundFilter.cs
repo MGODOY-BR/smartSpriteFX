@@ -18,7 +18,7 @@ namespace smartSuite.smartSpriteFX.Effects.Filters{
 	public class TransparentBackgroundFilter : SmartSpriteOriginalFilterBase , IEffectFilter
     {
         /// <summary>
-        /// Gets the transparentColor got after <see cref="DoTransparentBorder"/> method.
+        /// Gets the transparentColor got after <see cref="BackgroundPattern.DoTransparentBorder"/> method.
         /// </summary>
         public Color TransparentColor
         {

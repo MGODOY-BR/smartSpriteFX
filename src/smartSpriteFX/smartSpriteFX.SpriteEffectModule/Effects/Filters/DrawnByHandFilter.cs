@@ -8,6 +8,8 @@ using smartSuite.smartSpriteFX.Effects.Infra.UI.Configuratons;
 using smartSuite.smartSpriteFX.Pictures;
 using smartSuite.smartSpriteFX.Effects.Infra;
 using smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI;
+using smartSuite.smartSpriteFX.Effects.Core;
+using smartSuite.smartSpriteFX.Pictures.ColorPattern;
 
 namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
 {
@@ -16,9 +18,21 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
     /// </summary>
     public class DrawnByHandFilter : SmartSpriteOriginalFilterBase
     {
+        /// <summary>
+        /// It´s the color buffer used to simply the colors
+        /// </summary>
+        private ColorBuffer _colorBuffer = new ColorBuffer(10, 0);
+
+        /// <summary>
+        /// A comparer used to compare colors.
+        /// </summary>
+        private ColorEqualityComparer _colorComparer = new ColorEqualityComparer();
+
         public override bool ApplyFilter(Picture frame, int index)
         {
-            ColorBuffer colorBuffer = new ColorBuffer(100, 50);
+            var transparentBackgroundFilter =
+                EffectEngine.GetTransparentBackgroundFilter();
+
             for (int y = 0; y < frame.Height; y++)
             {
                 for (int x = 0; x < frame.Width; x++)
@@ -27,12 +41,16 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
 
                     if (pixel.HasValue)
                     {
-                        if (frame.TransparentColor != null)
-                        {
-                        }
-
                         var newColor =
-                            colorBuffer.GetSimilarColor(pixel.Value);
+                            _colorBuffer.GetSimilarColor(pixel.Value);
+
+                        if (transparentBackgroundFilter != null)
+                        {
+                            if (!_colorComparer.EqualsButNoAlpha(newColor, transparentBackgroundFilter.TransparentColor))
+                            {
+                                newColor = _colorBuffer.GetSlightlyDifferentColor(newColor);
+                            }
+                        }
 
                         frame.ReplacePixel(x, y, newColor);
                     }

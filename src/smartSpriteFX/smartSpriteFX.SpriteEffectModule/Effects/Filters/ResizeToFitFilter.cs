@@ -38,7 +38,7 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
             var identification = base.GetIdentification();
             identification.SetName("Resize to fit");
             identification.SetDescription("A filter which resize image to lower dimensions, improving another filters, such the Old School Video Game filters.");
-            identification.SetGroup("Old School Video-Game");
+            identification.SetGroup("Work around");
 
             return identification;
         }

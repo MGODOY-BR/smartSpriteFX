@@ -290,6 +290,26 @@ namespace smartSuite.smartSpriteFX.Effects.Core{
         }
 
         /// <summary>
+        /// Gets the <see cref="TransparentBackgroundFilter"/> in selected filter list.
+        /// </summary>
+        /// <returns>
+        /// The filter in selected filter list, or null if none has been found.
+        /// </returns>
+        public static TransparentBackgroundFilter GetTransparentBackgroundFilter()
+        {
+            var selectedFilterList = EffectEngine.GetSelectedFilterList();
+            foreach (var filterItem in selectedFilterList)
+            {
+                if (filterItem is TransparentBackgroundFilter)
+                {
+                    return filterItem as TransparentBackgroundFilter;
+                }
+            }
+
+            return null;
+        }
+
+        /// <summary>
         /// Clears all the filter buffer
         /// </summary>
         public static void ClearFilter()

@@ -3,3 +3,7 @@ vAlpha 2.0.0.2
 New Feactures
 - New filters
 	- DrawnByHand
+
+Improvements
+- "Resize to Fit" Filter has been moved to new group "Work around"
+- Bugfixes

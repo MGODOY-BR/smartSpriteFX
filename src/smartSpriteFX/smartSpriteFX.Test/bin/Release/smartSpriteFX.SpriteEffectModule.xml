@@ -71,6 +71,16 @@
             Represents a filter used to convert real images to drawn by hand like.
             </summary>
         </member>
+        <member name="F:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.DrawnByHandFilter._colorBuffer">
+            <summary>
+            It´s the color buffer used to simply the colors
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.DrawnByHandFilter._colorComparer">
+            <summary>
+            A comparer used to compare colors.
+            </summary>
+        </member>
         <member name="M:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.DrawnByHandFilter.GetIdentification">
             <summary>
             Gets the identification
@@ -750,6 +760,14 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:smartSuite.smartSpriteFX.Effects.Core.EffectEngine.GetTransparentBackgroundFilter">
+            <summary>
+            Gets the <see cref="T:smartSuite.smartSpriteFX.Effects.Filters.TransparentBackgroundFilter"/> in selected filter list.
+            </summary>
+            <returns>
+            The filter in selected filter list, or null if none has been found.
+            </returns>
+        </member>
         <member name="M:smartSuite.smartSpriteFX.Effects.Core.EffectEngine.ClearFilter">
             <summary>
             Clears all the filter buffer
@@ -826,6 +844,14 @@
             Updates the main view board and returns the image.
             </summary>
             <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Effects.Facade.EffectFacade.GetTransparentBackgroundFilter">
+            <summary>
+            Gets the <see cref="T:smartSuite.smartSpriteFX.Effects.Filters.TransparentBackgroundFilter"/> in selected filter list.
+            </summary>
+            <returns>
+            The filter in selected filter list, or null if none has been found.
+            </returns>
         </member>
         <member name="M:smartSuite.smartSpriteFX.Effects.Facade.EffectFacade.GetControlCollectionFromPreviewBoard">
             <summary>
@@ -1224,7 +1250,7 @@
         </member>
         <member name="P:smartSuite.smartSpriteFX.Effects.Filters.TransparentBackgroundFilter.TransparentColor">
             <summary>
-            Gets the transparentColor got after <see cref="!:DoTransparentBorder"/> method.
+            Gets the transparentColor got after <see cref="M:smartSuite.smartSpriteFX.Pictures.ColorPattern.BackgroundPattern.DoTransparentBorder(smartSuite.smartSpriteFX.Pictures.Piece,smartSuite.smartSpriteFX.Pictures.ColorPattern.IAskingForColorDelegate)"/> method.
             </summary>
         </member>
         <member name="M:smartSuite.smartSpriteFX.Effects.Filters.TransparentBackgroundFilter.GetIdentification">
@@ -1271,6 +1297,13 @@
             It´s a length of range of colors
             </summary>
         </member>
+        <member name="M:smartSuite.smartSpriteFX.Effects.Infra.ColorBuffer.GetSlightlyDifferentColor(System.Drawing.Color)">
+            <summary>
+            Gets the color slighty different to trick the transparent mechanism 
+            </summary>
+            <param name="color"></param>
+            <returns></returns>
+        </member>
         <member name="P:smartSuite.smartSpriteFX.Effects.Infra.ColorBuffer.AvoidedColorList">
             <summary>
             It´s a list of avoided colors
@@ -1290,7 +1323,7 @@
             <param name="color"></param>
             <returns></returns>
         </member>
-        <member name="M:smartSuite.smartSpriteFX.Effects.Infra.ColorBuffer.GetSlightlyColorComponent(System.Int32)">
+        <member name="M:smartSuite.smartSpriteFX.Effects.Infra.ColorBuffer.GetSlightlyDifferentColorComponent(System.Int32)">
             <summary>
             Gets the color component slighty different to trick the transparent mechanism
             </summary>

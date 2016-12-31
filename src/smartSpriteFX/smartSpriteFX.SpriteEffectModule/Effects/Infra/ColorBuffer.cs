@@ -43,6 +43,21 @@ namespace smartSuite.smartSpriteFX.Effects.Infra
         private int _rangeLength;
 
         /// <summary>
+        /// Gets the color slighty different to trick the transparent mechanism 
+        /// </summary>
+        /// <param name="color"></param>
+        /// <returns></returns>
+        public Color GetSlightlyDifferentColor(Color color)
+        {
+            return
+                Color.FromArgb(
+                    color.A,
+                    color.R,
+                    this.GetSlightlyDifferentColorComponent(color.G),
+                    color.B);
+        }
+
+        /// <summary>
         /// It´s a list of avoided colors
         /// </summary>
         public List<Color> AvoidedColorList
@@ -60,9 +75,9 @@ namespace smartSuite.smartSpriteFX.Effects.Infra
         {
             #region Entries validation
 
-            if (length < 4 && length != 0)
+            if (length < 1 && length != 0)
             {
-                throw new ArgumentOutOfRangeException("Invalid color length. Inform minimun 4, or 0 to unlimited colors.");
+                throw new ArgumentOutOfRangeException("Invalid color length.");
             }
 
             #endregion
@@ -116,7 +131,7 @@ namespace smartSuite.smartSpriteFX.Effects.Infra
         /// </summary>
         /// <param name="colorComponent"></param>
         /// <returns></returns>
-        public int GetSlightlyColorComponent(int colorComponent)
+        public int GetSlightlyDifferentColorComponent(int colorComponent)
         {
             int factor = 5;
 
@@ -202,7 +217,17 @@ namespace smartSuite.smartSpriteFX.Effects.Infra
             // This is just a bare estimate. Calculate using combination is too hard because of long numbers formed and it takes too much
             int returnValue = 0;
 
-            float partColor = maxColor / 3;
+            float partColor = 0;
+
+            if (maxColor > 3)
+            {
+                partColor = maxColor / 3;
+            }
+            else
+            {
+                return maxColor;
+            }
+
             float componentColor = 256 / partColor;
 
             returnValue = (int)componentColor * 5;
@@ -262,6 +287,10 @@ namespace smartSuite.smartSpriteFX.Effects.Infra
             if (fitColor + this._contrast > 0)
             {
                 fitColor -= Math.Abs((int)this._contrast);
+                if (fitColor < 0)
+                {
+                    fitColor = 0;
+                }
             }
 
             return fitColor;
