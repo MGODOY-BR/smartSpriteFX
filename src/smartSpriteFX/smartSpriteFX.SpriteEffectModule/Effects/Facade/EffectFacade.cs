@@ -33,6 +33,17 @@ namespace smartSuite.smartSpriteFX.Effects.Facade{
         }
 
         /// <summary>
+        /// Gets the <see cref="TransparentBackgroundFilter"/> in selected filter list.
+        /// </summary>
+        /// <returns>
+        /// The filter in selected filter list, or null if none has been found.
+        /// </returns>
+        public static TransparentBackgroundFilter GetTransparentBackgroundFilter()
+        {
+            return EffectEngine.GetTransparentBackgroundFilter();
+        }
+
+        /// <summary>
         /// Gets the controls collection for preview board
         /// </summary>
         /// <returns></returns>

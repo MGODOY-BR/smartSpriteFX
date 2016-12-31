@@ -105,14 +105,24 @@ namespace smartSuite.smartSpriteFX.Forms.Controls.Browsers
 
             #endregion
 
+            String previousValue = this.txtFileName.Text;
             this.txtFileName.Text = fileName;
             this.UserChoice = fileName;
-            this.ChosenByUserEvent(
-                this,
-                new SmartBrowserEventArgs
-                {
-                    UserChoice = this.UserChoice
-                });
+            try
+            {
+                this.ChosenByUserEvent(
+                    this,
+                    new SmartBrowserEventArgs
+                    {
+                        UserChoice = this.UserChoice
+                    });
+            }
+            catch
+            {
+                // Undo the text
+                this.txtFileName.Text = previousValue;
+                throw;
+            }
         }
 
         private void btnOpen_Click(object sender, EventArgs e)

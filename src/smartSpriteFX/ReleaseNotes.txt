@@ -1,6 +1,12 @@
-vAlpha 2.0.0.1
+vAlpha 2.0.0.2
 
 New Feactures
 - New filters
-	- CutFilter
-	- CropFilter
+	- Made by Wire
+
+Improvements
+- "Resize to Fit" Filter has been moved to new group "Work around"
+
+Bugfixes
+- Free Cut issues involving not desired transparent color has been corrected.
+- Several minor issues
