@@ -104,8 +104,11 @@ namespace smartSuite.smartSpriteFX.Forms
                 EffectEngine.Initializate(e.UserChoice);
                 EffectEngine.SetPreviewBoard(previewBoard);
 
+                this.toolStripStatusLabel1.Text = "";
+
                 // FrameSelectionControl
                 FrameSelectionControl frameSelectionControl = new FrameSelectionControl();
+                frameSelectionControl.LoadingFrameError += FrameSelectionControl_LoadingFrameError;
                 frameSelectionControl.Dock = DockStyle.Fill;
                 frameSelectionControl.SetPath(e.UserChoice);
                 frameSelectionControl.SelectingFrame += FrameSelectionControl_SelectingFrame;
@@ -122,6 +125,16 @@ namespace smartSuite.smartSpriteFX.Forms
             {
                 this.Cursor = Cursors.Default;
             }
+        }
+
+        /// <summary>
+        /// Occurs during an error in load a frame
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void FrameSelectionControl_LoadingFrameError(object sender, FrameSelectionErrorEventArgs e)
+        {
+            this.toolStripStatusLabel1.Text = e.Message;
         }
 
         /// <summary>

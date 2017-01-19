@@ -1,12 +1,9 @@
-vAlpha 2.0.0.2
+vAlpha 2.0.0.3
 
 New Feactures
-- New filters
-	- Made by Wire
 
 Improvements
-- "Resize to Fit" Filter has been moved to new group "Work around"
+- Controls of navigation of animation
 
 Bugfixes
-- Free Cut issues involving not desired transparent color has been corrected.
-- Several minor issues
+- Skiping corrupted frames from load instead of the entire folder, during the openning of an animation

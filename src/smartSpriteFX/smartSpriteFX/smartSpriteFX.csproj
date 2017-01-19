@@ -79,6 +79,7 @@
     <Compile Include="Forms\Controls\Animations\Frames\FrameSelectionControl.Designer.cs">
       <DependentUpon>FrameSelectionControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Controls\Animations\Frames\FrameSelectionErrorEventArgs.cs" />
     <Compile Include="Forms\Controls\Animations\Frames\FrameSelectionEventArgs.cs" />
     <Compile Include="Forms\Controls\Browsers\SmartBrowser.cs">
       <SubType>UserControl</SubType>
