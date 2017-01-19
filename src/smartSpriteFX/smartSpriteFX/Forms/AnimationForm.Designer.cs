@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.topPanel = new System.Windows.Forms.Panel();
             this.frameBox = new System.Windows.Forms.GroupBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
@@ -52,6 +53,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panelTool = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.statusStrip1.SuspendLayout();
             this.topPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -78,11 +80,18 @@
             // 
             // statusStrip1
             // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1});
             this.statusStrip1.Location = new System.Drawing.Point(0, 496);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(1162, 22);
             this.statusStrip1.TabIndex = 1;
             this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(0, 17);
             // 
             // topPanel
             // 
@@ -90,7 +99,7 @@
             this.topPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.topPanel.Location = new System.Drawing.Point(0, 29);
             this.topPanel.Name = "topPanel";
-            this.topPanel.Size = new System.Drawing.Size(1162, 108);
+            this.topPanel.Size = new System.Drawing.Size(1162, 130);
             this.topPanel.TabIndex = 3;
             // 
             // frameBox
@@ -99,7 +108,7 @@
             this.frameBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.frameBox.Location = new System.Drawing.Point(0, 0);
             this.frameBox.Name = "frameBox";
-            this.frameBox.Size = new System.Drawing.Size(1162, 108);
+            this.frameBox.Size = new System.Drawing.Size(1162, 130);
             this.frameBox.TabIndex = 0;
             this.frameBox.TabStop = false;
             this.frameBox.Text = "Frames";
@@ -107,7 +116,7 @@
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(179, 137);
+            this.splitContainer1.Location = new System.Drawing.Point(179, 159);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -117,7 +126,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(983, 359);
+            this.splitContainer1.Size = new System.Drawing.Size(983, 337);
             this.splitContainer1.SplitterDistance = 605;
             this.splitContainer1.TabIndex = 5;
             // 
@@ -132,7 +141,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(605, 359);
+            this.panel1.Size = new System.Drawing.Size(605, 337);
             this.panel1.TabIndex = 0;
             // 
             // previewBoard
@@ -163,8 +172,8 @@
             this.splitContainer2.Panel2.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.splitContainer2.Panel2.Controls.Add(this.splitContainer3);
             this.splitContainer2.Panel2.Controls.Add(this.pnlSettingTop);
-            this.splitContainer2.Size = new System.Drawing.Size(374, 359);
-            this.splitContainer2.SplitterDistance = 159;
+            this.splitContainer2.Size = new System.Drawing.Size(374, 337);
+            this.splitContainer2.SplitterDistance = 148;
             this.splitContainer2.TabIndex = 0;
             // 
             // chkBoxFitImage
@@ -187,7 +196,7 @@
             this.panel2.Controls.Add(this.pnlFilterPanel);
             this.panel2.Location = new System.Drawing.Point(88, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(264, 157);
+            this.panel2.Size = new System.Drawing.Size(264, 146);
             this.panel2.TabIndex = 2;
             // 
             // groupBox2
@@ -229,7 +238,7 @@
             this.pnlFilterPanel.Dock = System.Windows.Forms.DockStyle.Right;
             this.pnlFilterPanel.Location = new System.Drawing.Point(113, 0);
             this.pnlFilterPanel.Name = "pnlFilterPanel";
-            this.pnlFilterPanel.Size = new System.Drawing.Size(151, 157);
+            this.pnlFilterPanel.Size = new System.Drawing.Size(151, 146);
             this.pnlFilterPanel.TabIndex = 0;
             // 
             // splitContainer3
@@ -246,8 +255,8 @@
             // splitContainer3.Panel2
             // 
             this.splitContainer3.Panel2.Controls.Add(this.pnlSettingsMain);
-            this.splitContainer3.Size = new System.Drawing.Size(374, 163);
-            this.splitContainer3.SplitterDistance = 60;
+            this.splitContainer3.Size = new System.Drawing.Size(374, 152);
+            this.splitContainer3.SplitterDistance = 55;
             this.splitContainer3.TabIndex = 2;
             // 
             // txtSettingsDescription
@@ -261,7 +270,7 @@
             this.txtSettingsDescription.Name = "txtSettingsDescription";
             this.txtSettingsDescription.ReadOnly = true;
             this.txtSettingsDescription.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtSettingsDescription.Size = new System.Drawing.Size(374, 60);
+            this.txtSettingsDescription.Size = new System.Drawing.Size(374, 55);
             this.txtSettingsDescription.TabIndex = 0;
             // 
             // pnlSettingsMain
@@ -273,7 +282,7 @@
             this.pnlSettingsMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlSettingsMain.Location = new System.Drawing.Point(0, 0);
             this.pnlSettingsMain.Name = "pnlSettingsMain";
-            this.pnlSettingsMain.Size = new System.Drawing.Size(374, 99);
+            this.pnlSettingsMain.Size = new System.Drawing.Size(374, 93);
             this.pnlSettingsMain.TabIndex = 1;
             // 
             // pnlSettingTop
@@ -300,9 +309,9 @@
             this.panelContainer.BackColor = System.Drawing.SystemColors.ControlDark;
             this.panelContainer.Controls.Add(this.panelToolContainer);
             this.panelContainer.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelContainer.Location = new System.Drawing.Point(0, 137);
+            this.panelContainer.Location = new System.Drawing.Point(0, 159);
             this.panelContainer.Name = "panelContainer";
-            this.panelContainer.Size = new System.Drawing.Size(179, 359);
+            this.panelContainer.Size = new System.Drawing.Size(179, 337);
             this.panelContainer.TabIndex = 4;
             // 
             // panelToolContainer
@@ -317,7 +326,7 @@
             this.panelToolContainer.RowCount = 2;
             this.panelToolContainer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 42.44373F));
             this.panelToolContainer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 57.55627F));
-            this.panelToolContainer.Size = new System.Drawing.Size(179, 359);
+            this.panelToolContainer.Size = new System.Drawing.Size(179, 337);
             this.panelToolContainer.TabIndex = 0;
             // 
             // panelBrowser
@@ -325,16 +334,16 @@
             this.panelBrowser.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelBrowser.Location = new System.Drawing.Point(3, 3);
             this.panelBrowser.Name = "panelBrowser";
-            this.panelBrowser.Size = new System.Drawing.Size(173, 146);
+            this.panelBrowser.Size = new System.Drawing.Size(173, 137);
             this.panelBrowser.TabIndex = 0;
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.panelTool);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(3, 155);
+            this.groupBox1.Location = new System.Drawing.Point(3, 146);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(173, 201);
+            this.groupBox1.Size = new System.Drawing.Size(173, 188);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Toolbox";
@@ -344,7 +353,7 @@
             this.panelTool.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelTool.Location = new System.Drawing.Point(3, 16);
             this.panelTool.Name = "panelTool";
-            this.panelTool.Size = new System.Drawing.Size(167, 182);
+            this.panelTool.Size = new System.Drawing.Size(167, 169);
             this.panelTool.TabIndex = 1;
             // 
             // pictureBox1
@@ -372,6 +381,8 @@
             this.Text = "SmartSpriteFX - Effect \"Animation-oriented\" Mode";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.AnimationForm_Load);
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.topPanel.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
@@ -430,5 +441,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.CheckBox chkBoxFitImage;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
     }
 }

@@ -39,6 +39,11 @@ namespace smartSuite.smartSpriteFX.Forms.Controls.Animations.Frames
         public event EventHandler<FrameSelectionEventArgs> SelectingFrame;
 
         /// <summary>
+        /// It happens when an frame has issues to me loaded
+        /// </summary>
+        public event EventHandler<FrameSelectionErrorEventArgs> LoadingFrameError;
+
+        /// <summary>
         /// It's the last selected frame
         /// </summary>
         private PictureBox _lastSelectedFrame;
@@ -78,25 +83,57 @@ namespace smartSuite.smartSpriteFX.Forms.Controls.Animations.Frames
 
             this._fileList.Sort(_animationComparer);
 
+            this.numCurrentFrame.Minimum = 1;
+            this.numCurrentFrame.Maximum = this._fileList.Count;
+            this.lblTotal.Text = String.Format("(Total: {0})", this._fileList.Count);
+
             for (int i = 0; i < this._fileList.Count; i++)
             {
                 var fileItem = this._fileList[i];
-                var image = Image.FromFile(fileItem);
 
-                PictureBox pictureBox = new PictureBox();
-                pictureBox.Image = image;
-                pictureBox.Height = this.Height - 10;
-                pictureBox.Width = this.Height;
-                pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
-                pictureBox.BorderStyle = BorderStyle.FixedSingle;
-                pictureBox.Tag = new FrameSelectionEventArgs
+                Stream imageStreamSource = new FileStream(fileItem, FileMode.Open, FileAccess.Read, FileShare.Read);
+                try
                 {
-                    FilePath = fileItem,
-                    FrameIndex = i
-                };
-                pictureBox.Click += PictureBox_Click;
-
-                flowLayoutPanel1.Controls.Add(pictureBox);
+                    using (var image = Image.FromStream(imageStreamSource, true))
+                    {
+                        PictureBox pictureBox = new PictureBox();
+                        pictureBox.Height = 50;
+                        pictureBox.Width = 50;
+                        pictureBox.Image =
+                            image.GetThumbnailImage(
+                                pictureBox.Width,
+                                pictureBox.Height,
+                                new Image.GetThumbnailImageAbort(delegate ()
+                                {
+                                    return false;
+                                }),
+                                IntPtr.Zero);
+                        pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+                        pictureBox.BorderStyle = BorderStyle.FixedSingle;
+                        pictureBox.Tag = new FrameSelectionEventArgs
+                        {
+                            FilePath = fileItem,
+                            FrameIndex = i
+                        };
+                        pictureBox.Click += PictureBox_Click;
+                        flowLayoutPanel1.Controls.Add(pictureBox);
+                    }
+                }
+                catch(Exception ex)
+                {
+                    if (LoadingFrameError != null)
+                    {
+                        this.LoadingFrameError(
+                            this,
+                            new FrameSelectionErrorEventArgs
+                            {
+                                Exception = ex,
+                                FilePath = fileItem,
+                                FrameIndex = i,
+                                Message = String.Format("Skip frame {0} - It wasn't possible to load {1}", i + 1, fileItem)
+                            });
+                    }
+                }
             }
         }
 
@@ -116,11 +153,20 @@ namespace smartSuite.smartSpriteFX.Forms.Controls.Animations.Frames
 
             #endregion
 
-            PictureBox pictureBox = (PictureBox)sender;
+            OnSelectingFrame((PictureBox)sender);
+        }
+
+        /// <summary>
+        /// Occurs when a frame was selecting.
+        /// </summary>
+        /// <param name="sender"></param>
+        private void OnSelectingFrame(PictureBox pictureBox)
+        {
             FrameSelectionEventArgs eventArgs = (FrameSelectionEventArgs)pictureBox.Tag;
             EffectEngine.GetIterator().MoveTo(eventArgs.FrameIndex);
 
-            this.SelectingFrame(sender, eventArgs);
+            this.SelectingFrame(pictureBox, eventArgs);
+            this.numCurrentFrame.Value = eventArgs.FrameIndex + 1;
 
             if (this._lastSelectedFrame != null)
             {
@@ -138,6 +184,33 @@ namespace smartSuite.smartSpriteFX.Forms.Controls.Animations.Frames
         {
             this._fileList.Clear();
             flowLayoutPanel1.Controls.Clear();
+        }
+
+        private void numCurrentFrame_Validated(object sender, EventArgs e)
+        {
+            var frameIndex = (int)numCurrentFrame.Value - 1;
+            var frame = flowLayoutPanel1.Controls[frameIndex] as PictureBox;
+
+            this.OnSelectingFrame(frame);
+        }
+
+        private void numCurrentFrame_Click(object sender, EventArgs e)
+        {
+            var frameIndex = (int)numCurrentFrame.Value - 1;
+            var frame = flowLayoutPanel1.Controls[frameIndex] as PictureBox;
+
+            this.OnSelectingFrame(frame);
+        }
+
+        private void numCurrentFrame_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                var frameIndex = (int)numCurrentFrame.Value - 1;
+                var frame = flowLayoutPanel1.Controls[frameIndex] as PictureBox;
+
+                this.OnSelectingFrame(frame);
+            }
         }
     }
 }
