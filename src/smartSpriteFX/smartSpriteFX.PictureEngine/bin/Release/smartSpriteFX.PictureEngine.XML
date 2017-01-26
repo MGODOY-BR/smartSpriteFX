@@ -944,6 +944,32 @@
             It´s a inner comparer
             </summary>
         </member>
+        <member name="T:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.DataBase">
+            <summary>
+            Represents a manager for databases
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.DataBase._currentConnection">
+            <summary>
+            It´s the current connection
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.DataBase.#ctor">
+            <summary>
+            This constructor has been created for goals of design and can not be used for external calls
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.DataBase.Open">
+            <summary>
+            Gets a opened database
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.DataBase.Close">
+            <summary>
+            Closes the database
+            </summary>
+        </member>
         <member name="T:smartSuite.smartSpriteFX.PictureEngine.Pictures.PointInfo">
             <summary>
             Represents a composition of point and aditional information
