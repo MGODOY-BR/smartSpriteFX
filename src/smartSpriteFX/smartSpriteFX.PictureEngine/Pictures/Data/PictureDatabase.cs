@@ -111,6 +111,32 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
         }
 
         /// <summary>
+        /// Updates a record
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="colorInfo"></param>
+        /// <returns>Gets the amount of records updated</returns>
+        public int UPDATE(int x, int y, ColorInfo colorInfo)
+        {
+            String commandString =
+                "UPDATE TB_PICTURE SET A = @A, R = @R, G = @G, B = @B WHERE X = @X AND Y = @Y;";
+            using (SQLiteCommand command = new SQLiteCommand(commandString, this._currentConnection))
+            {
+                var color = colorInfo.GetInnerColor();
+
+                command.Parameters.AddWithValue("@X", x);
+                command.Parameters.AddWithValue("@Y", y);
+                command.Parameters.AddWithValue("@A", color.A);
+                command.Parameters.AddWithValue("@R", color.R);
+                command.Parameters.AddWithValue("@G", color.G);
+                command.Parameters.AddWithValue("@B", color.B);
+
+                return command.ExecuteNonQuery();
+            }
+        }
+
+        /// <summary>
         /// Gets the color information of coordination
         /// </summary>
         /// <param name="x"></param>

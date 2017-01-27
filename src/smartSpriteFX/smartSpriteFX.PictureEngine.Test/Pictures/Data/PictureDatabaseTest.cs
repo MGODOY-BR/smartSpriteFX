@@ -169,5 +169,42 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Test.Pictures.Data
 
             #endregion
         }
+
+        [TestMethod]
+        public void TestUPDATE()
+        {
+            #region Scenario setup
+
+            PictureDatabase test = PictureDatabase.Open();
+            test.CreateDatabase();
+            test.INSERT(1, 1, new smartSpriteFX.Pictures.ColorPattern.ColorInfo(System.Drawing.Color.FromArgb(0, 1, 2, 3)));
+            test.INSERT(2, 2, new smartSpriteFX.Pictures.ColorPattern.ColorInfo(System.Drawing.Color.FromArgb(10, 11, 12, 13)));
+
+            #endregion
+
+            #region Running the tested operation
+
+            var evidenceAmount =
+                test.UPDATE(2, 2,  new smartSpriteFX.Pictures.ColorPattern.ColorInfo(System.Drawing.Color.FromArgb(100, 120, 130, 140)));
+
+            #endregion
+
+            #region Getting the evidences
+
+            var evidence = test.SELECT(2, 2);
+
+            #endregion
+
+            #region Validating the evidences
+
+            Assert.IsNotNull(evidence);
+            Assert.AreEqual(100, evidence.GetInnerColor().A);
+            Assert.AreEqual(120, evidence.GetInnerColor().R);
+            Assert.AreEqual(130, evidence.GetInnerColor().G);
+            Assert.AreEqual(140, evidence.GetInnerColor().B);
+            Assert.AreEqual(1, evidenceAmount);
+
+            #endregion
+        }
     }
 }
