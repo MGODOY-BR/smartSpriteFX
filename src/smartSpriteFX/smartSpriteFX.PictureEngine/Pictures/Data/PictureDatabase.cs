@@ -16,6 +16,11 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
     internal class PictureDatabase
     {
         /// <summary>
+        /// It´s the sessionID of datas.
+        /// </summary>
+        private String _sessionID;
+
+        /// <summary>
         /// It´s the current connection
         /// </summary>
         private SQLiteConnection _currentConnection;
@@ -36,6 +41,7 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
             PictureDatabase returnValue = new PictureDatabase(); 
             returnValue._currentConnection = new SQLiteConnection("Data Source=:memory:;");
             returnValue._currentConnection.Open();
+            returnValue._sessionID = Guid.NewGuid().ToString();
 
             return returnValue;
         }
@@ -72,13 +78,14 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
             {
                 command.CommandText =
                     @"CREATE TABLE TB_PICTURE(
+                        SESSIONID TEXT NOT NULL,
                         X INTEGER  NOT NULL,
                         Y INTEGER  NOT NULL,
                         A INTEGER  NOT NULL,
                         R INTEGER  NOT NULL,
                         G INTEGER  NOT NULL,
                         B INTEGER  NOT NULL,
-                        PRIMARY KEY (X, Y)
+                        PRIMARY KEY (SESSIONID, X, Y)
                     );";
 
                 command.ExecuteNonQuery();
@@ -90,15 +97,14 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
         /// </summary>
         /// <param name="x"></param>
         /// <param name="y"></param>
-        /// <param name="colorInfo"></param>
-        public void INSERT(int x, int y, ColorInfo colorInfo)
+        /// <param name="color"></param>
+        public void INSERT(int x, int y, Color color)
         {
             String commandString =
-                "INSERT INTO TB_PICTURE (X, Y, A, R, G, B) VALUES (@X, @Y, @A, @R, @G, @B);";
+                "INSERT INTO TB_PICTURE (SESSIONID, X, Y, A, R, G, B) VALUES (@SESSIONID, @X, @Y, @A, @R, @G, @B);";
             using (SQLiteCommand command = new SQLiteCommand(commandString, this._currentConnection))
             {
-                var color = colorInfo.GetInnerColor();
-
+                command.Parameters.AddWithValue("@SESSIONID", this._sessionID);
                 command.Parameters.AddWithValue("@X", x);
                 command.Parameters.AddWithValue("@Y", y);
                 command.Parameters.AddWithValue("@A", color.A);
@@ -115,22 +121,46 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
         /// </summary>
         /// <param name="x"></param>
         /// <param name="y"></param>
-        /// <param name="colorInfo"></param>
+        /// <param name="color"></param>
         /// <returns>Gets the amount of records updated</returns>
-        public int UPDATE(int x, int y, ColorInfo colorInfo)
+        public int UPDATE(int x, int y, Color color)
         {
             String commandString =
-                "UPDATE TB_PICTURE SET A = @A, R = @R, G = @G, B = @B WHERE X = @X AND Y = @Y;";
+                "UPDATE TB_PICTURE SET A = @A, R = @R, G = @G, B = @B WHERE SESSIONID=@SESSIONID AND X = @X AND Y = @Y;";
             using (SQLiteCommand command = new SQLiteCommand(commandString, this._currentConnection))
             {
-                var color = colorInfo.GetInnerColor();
-
+                command.Parameters.AddWithValue("@SESSIONID", this._sessionID);
                 command.Parameters.AddWithValue("@X", x);
                 command.Parameters.AddWithValue("@Y", y);
+                command.Parameters.AddWithValue("@A", (object)color.A);
+                command.Parameters.AddWithValue("@R", (object)color.R);
+                command.Parameters.AddWithValue("@G", (object)color.G);
+                command.Parameters.AddWithValue("@B", (object)color.B);
+
+                return command.ExecuteNonQuery();
+            }
+        }
+
+        /// <summary>
+        /// Updates colors in all records
+        /// </summary>
+        /// <returns>Gets the amount of records updated</returns>
+        public int UPDATE(Color color, Color replaceColor)
+        {
+            String commandString =
+                "UPDATE TB_PICTURE SET A = @A, R = @R, G = @G, B = @B WHERE SESSIONID = @SESSIONID, A = @A_NEW, R = @R_NEW, G = @G_NEW, B = @B_NEW;";
+            using (SQLiteCommand command = new SQLiteCommand(commandString, this._currentConnection))
+            {
+                command.Parameters.AddWithValue("@SESSIONID", this._sessionID);
                 command.Parameters.AddWithValue("@A", color.A);
                 command.Parameters.AddWithValue("@R", color.R);
                 command.Parameters.AddWithValue("@G", color.G);
                 command.Parameters.AddWithValue("@B", color.B);
+
+                command.Parameters.AddWithValue("@A_NEW", replaceColor.A);
+                command.Parameters.AddWithValue("@R_NEW", replaceColor.R);
+                command.Parameters.AddWithValue("@G_NEW", replaceColor.G);
+                command.Parameters.AddWithValue("@B_NEW", replaceColor.B);
 
                 return command.ExecuteNonQuery();
             }
@@ -145,10 +175,11 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
         public ColorInfo SELECT(int x, int y)
         {
             String commandString =
-                "SELECT A, R, G, B FROM TB_PICTURE WHERE x=@X AND y=@Y;";
+                "SELECT A, R, G, B FROM TB_PICTURE WHERE SESSIONID=@SESSIONID AND x=@X AND y=@Y;";
 
             using (SQLiteCommand command = new SQLiteCommand(commandString, this._currentConnection))
             {
+                command.Parameters.AddWithValue("@SESSIONID", this._sessionID);
                 command.Parameters.AddWithValue("@X", x);
                 command.Parameters.AddWithValue("@Y", y);
 
@@ -170,6 +201,54 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
         }
 
         /// <summary>
+        /// Gets the pointInfo of the point
+        /// </summary>
+        /// <param name="point"></param>
+        /// <returns></returns>
+        public PointInfo SELECT(smartSpriteFX.Pictures.Point point)
+        {
+            var colorInfo = this.SELECT((int)point.X, (int)point.Y);
+
+            if (colorInfo == null)
+            {
+                return null;
+            }
+
+            return new PointInfo(point, colorInfo.GetInnerColor());
+        }
+
+        /// <summary>
+        /// Gets the points for the color
+        /// </summary>
+        /// <returns></returns>
+        public List<smartSuite.smartSpriteFX.Pictures.Point> SELECT(Color color)
+        {
+            String commandString =
+                "SELECT X, Y FROM TB_PICTURE WHERE SESSIONID=@SESSIONID AND A=@A AND R=@R AND G=@G AND B=@B;";
+
+            using (SQLiteCommand command = new SQLiteCommand(commandString, this._currentConnection))
+            {
+                command.Parameters.AddWithValue("@SESSIONID", this._sessionID);
+                command.Parameters.AddWithValue("@A", color.A);
+                command.Parameters.AddWithValue("@R", color.R);
+                command.Parameters.AddWithValue("@G", color.G);
+                command.Parameters.AddWithValue("@B", color.B);
+
+                var reader = command.ExecuteReader(System.Data.CommandBehavior.Default);
+                List<smartSuite.smartSpriteFX.Pictures.Point> returnValue = new List<smartSuite.smartSpriteFX.Pictures.Point>();
+                while (reader.Read())
+                {
+                    returnValue.Add(
+                        new smartSuite.smartSpriteFX.Pictures.Point(
+                            reader.GetInt32(0),
+                            reader.GetInt32(1)));
+                }
+
+                return returnValue;
+            }
+        }
+
+        /// <summary>
         /// Gets all the colors
         /// </summary>
         /// <param name="x"></param>
@@ -178,12 +257,13 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
         public List<PointInfo> SELECTALL()
         {
             String commandString =
-                "SELECT X, Y, A, R, G, B FROM TB_PICTURE;";
+                "SELECT X, Y, A, R, G, B FROM TB_PICTURE WHERE SESSIONID=@SESSIONID;";
 
             using (SQLiteCommand command = new SQLiteCommand(commandString, this._currentConnection))
             {
                 List<PointInfo> returnValue = new List<PointInfo>();
 
+                command.Parameters.AddWithValue("@SESSIONID", this._sessionID);
                 var reader = command.ExecuteReader(System.Data.CommandBehavior.Default);
                 while (reader.Read())
                 {
@@ -205,15 +285,71 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
         }
 
         /// <summary>
+        /// Counts the amount of colors
+        /// </summary>
+        /// <returns></returns>
+        public long COUNT()
+        {
+            String commandString =
+                "SELECT COUNT(*) FROM TB_PICTURE WHERE SESSIONID = @SESSIONID;";
+
+            using (SQLiteCommand command = new SQLiteCommand(commandString, this._currentConnection))
+            {
+                command.Parameters.AddWithValue("@SESSIONID", this._sessionID);
+                return (long)command.ExecuteScalar(CommandBehavior.SingleResult);
+            }
+        }
+
+        /// <summary>
         /// Deletes all the content of table
         /// </summary>
         public void CLEAR()
         {
-            String commandString = "DELETE FROM TB_PICTURE;";
+            String commandString = "DELETE FROM TB_PICTURE WHERE SESSIONID = @SESSIONID;";
             using (SQLiteCommand command = new SQLiteCommand(commandString, this._currentConnection))
             {
+                command.Parameters.AddWithValue("@SESSIONID", this._sessionID);
                 command.ExecuteNonQuery();
             }
+        }
+
+        /// <summary>
+        /// Clones the database
+        /// </summary>
+        /// <returns></returns>
+        public PictureDatabase Clone()
+        {
+            #region Entries validation
+
+            if (this._currentConnection == null)
+            {
+                throw new ArgumentNullException("this._currentConnection");
+            }
+
+            #endregion
+
+            PictureDatabase returnValue = new PictureDatabase();
+            returnValue._currentConnection = this._currentConnection;
+            returnValue._sessionID = Guid.NewGuid().ToString();
+
+            // Replicating the datas
+            String commandString = @"
+            INSERT INTO TB_PICTURE 
+            (            
+                SESSIONID, X, Y, A, R, G, B
+            )
+            SELECT
+                @SESSIONID_NEW, X, Y, A, R, G, B
+            FROM TB_PICTURE
+            WHERE SESSIONID = @SESSIONID;";
+            using (SQLiteCommand command = new SQLiteCommand(commandString, this._currentConnection))
+            {
+                command.Parameters.AddWithValue("@SESSIONID", this._sessionID);
+                command.Parameters.AddWithValue("@SESSIONID_NEW", returnValue._sessionID);
+                command.ExecuteNonQuery();
+            }
+
+            return returnValue;
         }
     }
 }
