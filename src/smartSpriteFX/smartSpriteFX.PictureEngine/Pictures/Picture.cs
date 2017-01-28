@@ -421,7 +421,7 @@ namespace smartSuite.smartSpriteFX.Pictures
         }
 
         /// <summary>
-        /// Gets the point of image considered borderers
+        /// Gets the point of image considered border
         /// </summary>
         /// <returns></returns>
         public List<Point> ListBorder()
@@ -475,20 +475,7 @@ namespace smartSuite.smartSpriteFX.Pictures
 
                 foreach (var pointArrayItem in pointArray)
                 {
-                    var pointInfo = this._buffer.SELECT(pointArrayItem);
-                    
-                    #region Entries validation
-
-                    if (pointInfo == null)
-                    {
-                        continue;
-                    }
-
-                    #endregion
-
-                    var colorItem = pointInfo.Color;
-
-                    if (colorItem.ToArgb().Equals(this._transparentColor.ToArgb()))
+                    if (this._buffer.COUNT(pointArrayItem, this._transparentColor) > 0)
                     {
                         returnList.Add(pointItem);
                     }

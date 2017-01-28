@@ -301,6 +301,29 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
         }
 
         /// <summary>
+        /// Counts the amount of colors for the critera
+        /// </summary>
+        /// <returns></returns>
+        public long COUNT(smartSpriteFX.Pictures.Point point, Color color)
+        {
+            String commandString =
+                "SELECT COUNT(*) FROM TB_PICTURE WHERE SESSIONID = @SESSIONID AND X=@X AND Y=@Y AND A=@A AND R=@R AND G=@G AND B=@B;";
+
+            using (SQLiteCommand command = new SQLiteCommand(commandString, this._currentConnection))
+            {
+                command.Parameters.AddWithValue("@SESSIONID", this._sessionID);
+                command.Parameters.AddWithValue("@X", point.X);
+                command.Parameters.AddWithValue("@Y", point.Y);
+                command.Parameters.AddWithValue("@A", color.A);
+                command.Parameters.AddWithValue("@R", color.R);
+                command.Parameters.AddWithValue("@G", color.G);
+                command.Parameters.AddWithValue("@B", color.B);
+
+                return (long)command.ExecuteScalar(CommandBehavior.SingleResult);
+            }
+        }
+
+        /// <summary>
         /// Deletes all the content of table
         /// </summary>
         public void CLEAR()
