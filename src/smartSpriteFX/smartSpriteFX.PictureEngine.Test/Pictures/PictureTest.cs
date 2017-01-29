@@ -50,7 +50,7 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Test
 
             #region Validating the evidences
 
-            Assert.IsTrue(evidenceList.Count() > 1);
+            Assert.AreEqual(5, evidenceList.Count());
 
             #endregion
         }

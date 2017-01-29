@@ -623,7 +623,7 @@ namespace smartSuite.smartSpriteFX.Pictures
 
                     foreach (var pointArrayItem in pointArray)
                     {
-                        if (this._buffer.COUNT(pointArrayItem, this._transparentColor) > 0)
+                        if (this._buffer.EXISTS(pointArrayItem, this._transparentColor))
                         {
                             returnList.Add(pointItem);
                         }
