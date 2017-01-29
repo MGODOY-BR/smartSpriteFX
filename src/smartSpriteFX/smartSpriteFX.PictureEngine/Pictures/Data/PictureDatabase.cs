@@ -27,6 +27,11 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
         private SQLiteConnection _currentConnection;
 
         /// <summary>
+        /// It´s the current transaction
+        /// </summary>
+        private SQLiteTransaction _currentTransaction;
+
+        /// <summary>
         /// This constructor has been created for goals of design and can not be used for external calls
         /// </summary>
         private PictureDatabase()
@@ -457,6 +462,71 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
             }
 
             return returnValue;
+        }
+
+        /// <summary>
+        /// Begins the transaction
+        /// </summary>
+        public void beginTransaction()
+        {
+            #region Entries validation
+
+            if (this._currentConnection == null)
+            {
+                throw new ArgumentNullException("this._currentConnection");
+            }
+            if (this._currentTransaction != null)
+            {
+                throw new ApplicationException("A transaction has already started.");
+            }
+
+            #endregion
+
+            this._currentTransaction = this._currentConnection.BeginTransaction();
+        }
+
+        /// <summary>
+        /// Rolls back the transaction
+        /// </summary>
+        public void rollbackTransaction()
+        {
+            #region Entries validation
+
+            if (this._currentConnection == null)
+            {
+                throw new ArgumentNullException("this._currentConnection");
+            }
+            if (this._currentTransaction == null)
+            {
+                throw new ApplicationException("None transaction has been started.");
+            }
+
+            #endregion
+
+            this._currentTransaction.Rollback();
+            this._currentTransaction = null;
+        }
+
+        /// <summary>
+        /// Commits the transaction
+        /// </summary>
+        public void commitTransaction()
+        {
+            #region Entries validation
+
+            if (this._currentConnection == null)
+            {
+                throw new ArgumentNullException("this._currentConnection");
+            }
+            if (this._currentTransaction == null)
+            {
+                throw new ApplicationException("None transaction has been started.");
+            }
+
+            #endregion
+
+            this._currentTransaction.Commit();
+            this._currentTransaction = null;
         }
     }
 }

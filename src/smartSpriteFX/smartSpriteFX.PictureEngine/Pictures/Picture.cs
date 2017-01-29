@@ -256,11 +256,6 @@ namespace smartSuite.smartSpriteFX.Pictures
             {
                 throw new ArgumentNullException("image");
             }
-
-            #endregion
-
-            #region Entries validation
-
             if (this._buffer != null && this._buffer.COUNT() > 0)
             {
                 return;
@@ -274,22 +269,34 @@ namespace smartSuite.smartSpriteFX.Pictures
 
             HashSet<int> colorSet = new HashSet<int>();
 
-            for (int y = 0; y < image.Height; y++)
+            try
             {
-                for (int x = 0; x < image.Width; x++)
+                this._buffer.beginTransaction();
+
+                for (int y = 0; y < image.Height; y++)
                 {
-                    var colorInfo =
-                        new ColorInfo(
-                            image.GetPixel(x, y));
-
-                    var argb = colorInfo.GetInnerColor().ToArgb();
-                    if (!colorSet.Contains(argb))
+                    for (int x = 0; x < image.Width; x++)
                     {
-                        colorSet.Add(argb);
-                    }
+                        var colorInfo =
+                            new ColorInfo(
+                                image.GetPixel(x, y));
 
-                    this.LoadColorInfoCache(y, x, colorInfo);
+                        var argb = colorInfo.GetInnerColor().ToArgb();
+                        if (!colorSet.Contains(argb))
+                        {
+                            colorSet.Add(argb);
+                        }
+
+                        this.LoadColorInfoCache(y, x, colorInfo);
+                    }
                 }
+
+                this._buffer.commitTransaction();
+            }
+            catch
+            {
+                this._buffer.rollbackTransaction();
+                throw;
             }
 
             this.ColorCount = colorSet.LongCount();
