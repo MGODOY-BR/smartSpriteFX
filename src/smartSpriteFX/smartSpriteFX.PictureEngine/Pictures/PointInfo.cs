@@ -29,7 +29,7 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures
         public Color Color
         {
             get;
-            private set;
+            set;
         }
     }
 }

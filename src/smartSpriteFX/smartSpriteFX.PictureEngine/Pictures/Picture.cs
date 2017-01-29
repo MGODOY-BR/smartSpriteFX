@@ -141,7 +141,7 @@ namespace smartSuite.smartSpriteFX.Pictures
         internal Picture()
         {
             this._buffer = PictureDatabase.Open();
-            this._buffer.CLEAR();
+            this._buffer.CreateDatabase();
         }
 
         /// <summary>
@@ -432,13 +432,13 @@ namespace smartSuite.smartSpriteFX.Pictures
         /// Gets the point of image considered border
         /// </summary>
         /// <returns></returns>
-        public List<Point> ListBorder()
+        public List<PointInfo> ListBorder()
         {
             #region Entries validation
 
             if (this._buffer == null)
             {
-                return new List<Point>();
+                return new List<PointInfo>();
             }
 
             #endregion
@@ -456,7 +456,7 @@ namespace smartSuite.smartSpriteFX.Pictures
 
             #endregion
 
-            List<Point> returnList = new List<Point>();
+            List<PointInfo> returnList = new List<PointInfo>();
             foreach (var pixelItem in pixelList)
             {
                 PointInfo pointItem = new PointInfo(
@@ -587,34 +587,39 @@ namespace smartSuite.smartSpriteFX.Pictures
             {
                 throw new ArgumentNullException("colorComparer");
             }
+            if (this._buffer == null)
+            {
+                throw new ArgumentNullException("this._buffer");
+            }
 
             #endregion
 
             Color firstPixel = this.GetPixel(0, 0).Value;
+            var pixelList = this._buffer.SELECTALL();
+
             using (var pieceBitmap = new Bitmap(this._width, this._height, PixelFormat.Format32bppArgb))
             {
-                for (int y = 0; y < this._height; y++)
+                foreach (var pixelItem in pixelList)
                 {
-                    for (int x = 0; x < this._width; x++)
+                    PointInfo pointInfo = pixelItem;
+                    #region Entries validation
+
+                    if (pixelItem == null)
                     {
-                        var piecePixel = this.GetPixel(x, y);
-
-                        #region Entries validation
-
-                        if (piecePixel == null)
-                        {
-                            piecePixel = firstPixel;
-                        }
-
-                        #endregion
-
-                        if (colorComparer.Equals(piecePixel.Value, transparentColor))
-                        {
-                            piecePixel = transparentColor;
-                        }
-
-                        pieceBitmap.SetPixel(x, y, piecePixel.Value);
+                        pointInfo.Color = firstPixel;
                     }
+
+                    #endregion
+
+                    if (colorComparer.Equals(pointInfo.Color, transparentColor))
+                    {
+                        pointInfo.Color = transparentColor;
+                    }
+
+                    pieceBitmap.SetPixel(
+                        (int)pointInfo.X,
+                        (int)pointInfo.Y,
+                        pointInfo.Color);
                 }
 
                 // Overwriting piece bitmap
@@ -751,6 +756,57 @@ namespace smartSuite.smartSpriteFX.Pictures
 
             #endregion
             this._buffer.CLEAR();
+        }
+
+        /// <summary>
+        /// Prepare for several updates
+        /// </summary>
+        public void beginBatchUpdate()
+        {
+            #region Entries validation
+
+            if (this._buffer == null)
+            {
+                throw new ArgumentNullException("this._buffer");
+            }
+
+            #endregion
+
+            this._buffer.beginTransaction();
+        }
+
+        /// <summary>
+        /// Ends a batch update
+        /// </summary>
+        public void endBatchUpdate()
+        {
+            #region Entries validation
+
+            if (this._buffer == null)
+            {
+                throw new ArgumentNullException("this._buffer");
+            }
+
+            #endregion
+
+            this._buffer.commitTransaction();
+        }
+
+        /// <summary>
+        /// Cancels a batch update
+        /// </summary>
+        public void cancelBatchUpdate()
+        {
+            #region Entries validation
+
+            if (this._buffer == null)
+            {
+                throw new ArgumentNullException("this._buffer");
+            }
+
+            #endregion
+
+            this._buffer.rollbackTransaction();
         }
     }
 }
