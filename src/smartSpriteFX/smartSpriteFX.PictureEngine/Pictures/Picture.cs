@@ -1,4 +1,5 @@
 
+using smartSuite.smartSpriteFX.PictureEngine.Pictures;
 using smartSuite.smartSpriteFX.PictureEngine.Pictures.ColorPattern;
 using smartSuite.smartSpriteFX.PictureEngine.Pictures.Data;
 using smartSuite.smartSpriteFX.Pictures.ColorPattern;
@@ -435,34 +436,181 @@ namespace smartSuite.smartSpriteFX.Pictures
 
             #endregion
 
+            #region Obsolete Code
+
+            /*
+            String sql = @"
+            CREATE TEMPORARY TABLE TMP_PICTURE
+            (
+                SESSIONID TEXT NOT NULL,
+                X INTEGER  NOT NULL,
+                Y INTEGER  NOT NULL,
+                A INTEGER  NOT NULL,
+                R INTEGER  NOT NULL,
+                G INTEGER  NOT NULL,
+                B INTEGER  NOT NULL,
+                PRIMARY KEY (SESSIONID, X, Y)
+            );
+            CREATE INDEX TMP_PICTURE_A ON TMP_PICTURE (A);
+            CREATE INDEX TMP_PICTURE_R ON TMP_PICTURE (R);
+            CREATE INDEX TMP_PICTURE_G ON TMP_PICTURE (G);
+            CREATE INDEX TMP_PICTURE_B ON TMP_PICTURE (B);
+
+            INSERT INTO TMP_PICTURE
+            (
+                SESSIONID,
+                X,
+                Y,
+                A,
+                R,
+                G,
+                B
+            )
+            SELECT
+                SESSIONID,
+                X,
+                Y,
+                A,
+                R,
+                G,
+                B
+            FROM TB_PICTURE
+            WHERE
+                SESSIONID = @SESSIONID AND
+                -- A = @A AND
+                R = @R AND
+                G = @G AND
+                B = @B;
+
+            SELECT
+                T_ITEM.X,
+                T_ITEM.Y
+            FROM
+                TB_PICTURE T_ITEM
+            WHERE
+                T_ITEM.SESSIONID = @SESSIONID AND
+                (
+                    R <> @R AND
+                    G <> @G AND
+                    B <> @B
+                ) AND 
+                EXISTS
+                (
+                    SELECT 1 FROM
+                    TMP_PICTURE T_ITEM_ASIDE
+                    WHERE
+                        T_ITEM_ASIDE.SESSIONID = T_ITEM.SESSIONID
+                        AND 
+                        (
+                            -- left and right
+                            (
+                                T_ITEM_ASIDE.Y = T_ITEM.Y AND 
+                                (
+                                    T_ITEM_ASIDE.X = T_ITEM.X - 1 OR
+                                    T_ITEM_ASIDE.X = T_ITEM.X + 1
+                                )
+                            )
+                            OR
+                            -- top and bottom
+                            (
+                                T_ITEM_ASIDE.X = T_ITEM.X AND 
+                                (
+                                    T_ITEM_ASIDE.Y = T_ITEM.Y - 1 OR
+                                    T_ITEM_ASIDE.Y = T_ITEM.Y + 1
+                                )
+                            )
+                        )
+                    )
+            ";
+
             List<Point> returnList = new List<Point>();
 
-            foreach (var bufferItem in this._buffer.SELECTALL())
+            using (var dataReader =
+                this._buffer.SELECT(
+                    sql,
+                    PictureDatabase.CreateDbParameter("@A", this._transparentColor.A),
+                    PictureDatabase.CreateDbParameter("@R", this._transparentColor.R),
+                    PictureDatabase.CreateDbParameter("@G", this._transparentColor.G),
+                    PictureDatabase.CreateDbParameter("@B", this._transparentColor.B)))
             {
-                var pointItem = bufferItem;
-
-                #region Entries validation
-
-                // The point can't be transparent
-                if (bufferItem.Color.ToArgb().Equals(this._transparentColor.ToArgb()))
+                while (dataReader.Read())
                 {
-                    continue;
+                    returnList.Add(
+                            new Point(
+                                dataReader.GetInt32(0),
+                                dataReader.GetInt32(1))
+                        );
                 }
+            }
+            return returnList;
+            */
 
-                #endregion
+            #endregion
 
-                Point pointLeft = new Point(pointItem.X - 1, pointItem.Y);
-                Point pointRight = new Point(pointItem.X + 1, pointItem.Y);
-                Point pointTop = new Point(pointItem.X, pointItem.Y - 1);
-                Point pointBottom = new Point(pointItem.X, pointItem.Y + 1);
+            String sql = @"            
+            SELECT
+                -- SESSIONID,
+                X,
+                Y,
+                A,
+                R,
+                G,
+                B
+            FROM TB_PICTURE
+            WHERE
+                SESSIONID = @SESSIONID AND
+                -- A = @A AND
+                NOT (
+                    R = @R AND
+                    G = @G AND
+                    B = @B
+                );
+            ";
 
-                Point pointCornerTopLeft = new Point(pointItem.X - 1, pointItem.Y - 1);
-                Point pointCornerTopRight = new Point(pointItem.X + 1, pointItem.Y - 1);
-                Point pointCornerBottomLeft = new Point(pointItem.X - 1, pointItem.Y + 1);
-                Point pointCornerBottomRight = new Point(pointItem.X + 1, pointItem.Y + 1);
+            List<Point> returnList = new List<Point>();
 
-                Point[] pointArray =
-                    new Point[8]{
+            using (var dataReader =
+                this._buffer.SELECT(
+                    sql,
+                    PictureDatabase.CreateDbParameter("@A", this._transparentColor.A),
+                    PictureDatabase.CreateDbParameter("@R", this._transparentColor.R),
+                    PictureDatabase.CreateDbParameter("@G", this._transparentColor.G),
+                    PictureDatabase.CreateDbParameter("@B", this._transparentColor.B)))
+            {
+                while (dataReader.Read())
+                {
+                    PointInfo pointItem =
+                        new PointInfo(
+                            dataReader.GetInt32(0),
+                            dataReader.GetInt32(1),
+                            Color.FromArgb(
+                                dataReader.GetInt32(2),
+                                dataReader.GetInt32(3),
+                                dataReader.GetInt32(4),
+                                dataReader.GetInt32(5)));
+
+                    #region Entries validation
+
+                    // The point can't be transparent
+                    if (pointItem.Color.ToArgb().Equals(this._transparentColor.ToArgb()))
+                    {
+                        continue;
+                    }
+
+                    #endregion
+
+                    Point pointLeft = new Point(pointItem.X - 1, pointItem.Y);
+                    Point pointRight = new Point(pointItem.X + 1, pointItem.Y);
+                    Point pointTop = new Point(pointItem.X, pointItem.Y - 1);
+                    Point pointBottom = new Point(pointItem.X, pointItem.Y + 1);
+
+                    Point pointCornerTopLeft = new Point(pointItem.X - 1, pointItem.Y - 1);
+                    Point pointCornerTopRight = new Point(pointItem.X + 1, pointItem.Y - 1);
+                    Point pointCornerBottomLeft = new Point(pointItem.X - 1, pointItem.Y + 1);
+                    Point pointCornerBottomRight = new Point(pointItem.X + 1, pointItem.Y + 1);
+
+                    Point[] pointArray =
+                        new Point[8]{
                             pointLeft,
                             pointRight,
                             pointTop,
@@ -471,13 +619,14 @@ namespace smartSuite.smartSpriteFX.Pictures
                             pointCornerTopRight,
                             pointCornerBottomLeft,
                             pointCornerBottomRight
-                        };
+                            };
 
-                foreach (var pointArrayItem in pointArray)
-                {
-                    if (this._buffer.COUNT(pointArrayItem, this._transparentColor) > 0)
+                    foreach (var pointArrayItem in pointArray)
                     {
-                        returnList.Add(pointItem);
+                        if (this._buffer.COUNT(pointArrayItem, this._transparentColor) > 0)
+                        {
+                            returnList.Add(pointItem);
+                        }
                     }
                 }
             }

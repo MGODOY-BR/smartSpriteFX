@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Common;
 using System.Data.SQLite;
 using System.Drawing;
 using System.Linq;
@@ -86,7 +87,12 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
                         G INTEGER  NOT NULL,
                         B INTEGER  NOT NULL,
                         PRIMARY KEY (SESSIONID, X, Y)
-                    );";
+                    );
+                    CREATE INDEX TB_PICTURE_A ON TB_PICTURE (A);
+                    CREATE INDEX TB_PICTURE_R ON TB_PICTURE (R);
+                    CREATE INDEX TB_PICTURE_G ON TB_PICTURE (G);
+                    CREATE INDEX TB_PICTURE_B ON TB_PICTURE (B);
+                    ";
 
                 command.ExecuteNonQuery();
             }
@@ -282,6 +288,51 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
                 }
                 return returnValue;
             }
+        }
+
+        /// <summary>
+        /// Gets the list of results using custom filter
+        /// </summary>
+        /// <param name="commandString">A commandString in SQL format to filter the datas. It´s mandatory to have the parameter @SESSIONID among them.</param>
+        /// <param name="parameterList">Zero or more parameters (starting by "@") to suply values to commandString. However, you mustns't yose @SESSIONID parameter. Use <see cref="PictureDatabase.CreateDbParameter(string, object)"/> method to create it.</param>
+        /// <remarks>
+        /// The columns of TB_PICTURE are:
+        /// <list type="bullet">
+        /// <item>SESSIONID - It´s the identification of current image. It´s need be included in JOIN clauses</item>
+        /// <item>X - It´s the coordinate X</item>
+        /// <item>Y - It´s the coordinate Y</item>
+        /// <item>A - It´s the component A of color</item>
+        /// <item>R - It´s the component R of color</item>
+        /// <item>G - It´s the component G of color</item>
+        /// <item>B - It´s the component B of color</item>
+        /// </list>
+        /// </remarks>
+        /// <example>
+        /// SELECT X, Y, A, R, G, B FROM TB_PICTURE WHERE X=1 AND Y=3 AND SESSIONID=@SESSIONID;
+        /// </example>
+        public SQLiteDataReader SELECT(String commandString, params DbParameter[] parameterList)
+        {
+            using (SQLiteCommand command = new SQLiteCommand(commandString, this._currentConnection))
+            {
+                command.Parameters.AddWithValue("@SESSIONID", this._sessionID);
+                foreach (var parameterItem in parameterList)
+                {
+                    command.Parameters.AddWithValue(parameterItem.ParameterName, parameterItem.Value);
+                }
+
+                return command.ExecuteReader(System.Data.CommandBehavior.Default);
+            }
+        }
+
+        /// <summary>
+        /// Creates and returns the parameter to use with <see cref="PictureDatabase.SELECT(string, KeyValuePair{string, object}[])"/>
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static DbParameter CreateDbParameter(String name, Object value)
+        {
+            return new SQLiteParameter(name, value);
         }
 
         /// <summary>
