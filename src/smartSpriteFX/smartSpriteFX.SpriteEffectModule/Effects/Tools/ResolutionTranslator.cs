@@ -285,11 +285,12 @@ namespace smartSuite.smartSpriteFX.Effects.Tools{
         {
             // Copying picture
             Picture clonePicture = this._originalPicture.Clone();
-            clonePicture.ReleaseBuffer();
+            // clonePicture.ReleaseBuffer();
 
             try
             {
                 clonePicture.beginBatchUpdate();
+                
                 // Changing the internal buffer
                 foreach (var translatedPixelItem in this._translatedPixel)
                 {
@@ -301,6 +302,7 @@ namespace smartSuite.smartSpriteFX.Effects.Tools{
                             translatedPixelItem.Color);
                     }
                 }
+
                 clonePicture.endBatchUpdate();
             }
             catch

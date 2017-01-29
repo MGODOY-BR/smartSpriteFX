@@ -84,23 +84,13 @@ namespace smartSuite.smartSpriteFX.Effects.Filters{
 
             translator.AvoidColorList = this._avoidColorList;
 
-            for (int y = 0; y < frame.Height; y++)
+            var sourceList = frame.GetAllPixels();
+            foreach (var sourceItem in sourceList)
             {
-                for (int x = 0; x < frame.Width; x++)
-                {
-                    var pixel = frame.GetPixel(x, y);
-
-                    #region Entries validation
-
-                    if (pixel == null)
-                    {
-                        continue;
-                    }
-
-                    #endregion
-
-                    translator.Translate(x, y, pixel.Value);
-                }
+                translator.Translate(
+                    (int)sourceItem.X,
+                    (int)sourceItem.Y,
+                    sourceItem.Color);
             }
 
             Picture filteredFrame = translator.CreatedTranslatedPicture();
