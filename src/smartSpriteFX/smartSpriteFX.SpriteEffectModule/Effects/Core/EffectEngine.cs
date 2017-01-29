@@ -146,8 +146,8 @@ namespace smartSuite.smartSpriteFX.Effects.Core{
             EffectEngine._callback = callback;
             EffectEngine._outputPath = null;
 
-            ThreadPool.SetMinThreads(3, 30);
-            ThreadPool.SetMaxThreads(7, 70);
+            ThreadPool.SetMinThreads(4, 40);
+            ThreadPool.SetMaxThreads(6, 60);
 
             EffectEngine._applyingThreadList.Clear();
             List<WaitHandle> syncList = new List<WaitHandle>();
@@ -228,7 +228,7 @@ namespace smartSuite.smartSpriteFX.Effects.Core{
 
             var previewFrame = EffectEngine._iterator.GetCurrent().Clone();
             var frameIndex = EffectEngine._iterator.GetFrameIndex();
-            previewFrame.ClearCache();
+            // previewFrame.ClearCache();
             foreach (var filterItem in EffectEngine._filterList.GetFilterBufferList())
             {
                 var draftFrame = previewFrame.Clone();
@@ -457,8 +457,13 @@ namespace smartSuite.smartSpriteFX.Effects.Core{
                     }
                 }
             }
+            catch
+            {
+                throw;
+            }
             finally
             {
+                frame.ClearCache();
                 waitHandle.Set();
             }
         }

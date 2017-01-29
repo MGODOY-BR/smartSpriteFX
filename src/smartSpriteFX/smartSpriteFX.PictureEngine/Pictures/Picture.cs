@@ -93,24 +93,47 @@ namespace smartSuite.smartSpriteFX.Pictures
             }
 
             HashSet<int> colorSet = new HashSet<int>();
-            for (int y = 0; y < other.Height; y++)
+            try
             {
-                for (int x = 0; x < other.Width; x++)
+                var source = other.GetAllPixels();
+                this.beginBatchUpdate();
+                foreach (var sourceItem in source)
                 {
-                    var color = other.GetPixel(x, y);
-                    if (color != null)
+                    this.ReplacePixel((int)sourceItem.X, (int)sourceItem.Y, sourceItem.Color);
+
+                    var argb = sourceItem.Color.ToArgb();
+                    if (!colorSet.Contains(argb))
                     {
-                        this.ReplacePixel(x, y, color.Value);
-                        var argb = color.Value.ToArgb();
-                        if (!colorSet.Contains(argb))
-                        {
-                            colorSet.Add(argb);
-                        }
+                        colorSet.Add(argb);
                     }
                 }
+                this.endBatchUpdate();
+            }
+            catch
+            {
+                this.cancelBatchUpdate();
+                throw;
             }
 
             this.ColorCount = colorSet.LongCount();
+        }
+
+        /// <summary>
+        /// Gets all the pixels from Picture
+        /// </summary>
+        /// <returns></returns>
+        public List<PointInfo> GetAllPixels()
+        {
+            #region Entries validation
+
+            if (this._buffer == null)
+            {
+                throw new ArgumentNullException("this._buffer");
+            }
+
+            #endregion
+
+            return this._buffer.SELECTALL();
         }
 
         /// <summary>
@@ -607,6 +630,14 @@ namespace smartSuite.smartSpriteFX.Pictures
                     if (pixelItem == null)
                     {
                         pointInfo.Color = firstPixel;
+                    }
+                    if (pointInfo.X >= this._width)
+                    {
+                        continue;
+                    }
+                    if (pointInfo.Y >= this._height)
+                    {
+                        continue;
                     }
 
                     #endregion
