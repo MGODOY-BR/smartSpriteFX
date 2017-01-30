@@ -11,11 +11,12 @@ using System.Drawing;
 using smartSuite.smartSpriteFX.Effects.Infra;
 using smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI;
 
-namespace smartSuite.smartSpriteFX.Effects.Filters{
-	/// <summary>
-	/// Represents a filter to infers transparent background
-	/// </summary>
-	public class TransparentBackgroundFilter : SmartSpriteOriginalFilterBase , IEffectFilter
+namespace smartSuite.smartSpriteFX.Effects.Filters
+{
+    /// <summary>
+    /// Represents a filter to infers transparent background
+    /// </summary>
+    public class TransparentBackgroundFilter : SmartSpriteOriginalFilterBase, IEffectFilter
     {
         /// <summary>
         /// Gets the transparentColor got after <see cref="BackgroundPattern.DoTransparentBorder"/> method.
@@ -50,33 +51,20 @@ namespace smartSuite.smartSpriteFX.Effects.Filters{
         {
             BackgroundPattern backgroundPattern = new BackgroundPattern();
 
-            for (int y = 0; y < frame.Height; y++)
+            var sourceList = frame.GetAllPixels();
+            foreach (var sourceItem in sourceList)
             {
-                if (y == 0)
-                {
-                    for (int x = 0; x < frame.Width; x++)
-                    {
-                        var pixel = frame.GetPixel(x, y);
-
-                        #region Entries validation
-
-                        if (pixel == null)
-                        {
-                            continue;
-                        }
-
-                        #endregion
-
-                        backgroundPattern.Learn(x, y, pixel.Value);
-                    }
-                }
+                backgroundPattern.Learn(
+                    (int)sourceItem.X,
+                    (int)sourceItem.Y,
+                    sourceItem.Color);
             }
 
-            this.TransparentColor = 
+            this.TransparentColor =
                 backgroundPattern.GetReplacementColor(
-                    new Piece(frame, 
-                        new Pictures.Point(0f, 0f), 
-                        new Pictures.Point((float)frame.Width, (float)frame.Height)), 
+                    new Piece(frame,
+                        new Pictures.Point(0f, 0f),
+                        new Pictures.Point((float)frame.Width, (float)frame.Height)),
                     new ColorSupportFormForAnimation());
 
             // Changing transparent color

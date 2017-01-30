@@ -342,7 +342,7 @@ namespace smartSuite.smartSpriteFX.Pictures
         /// <summary>
         /// Formats the coordinates to use as keys.
         /// </summary>
-        private string FormatKey(int x, int y)
+        public string FormatKey(int x, int y)
         {
             return String.Format("{0}_{1}", x, y);
         }

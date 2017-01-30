@@ -99,10 +99,10 @@ namespace smartSuite.smartSpriteFX.Pictures.ColorPattern
                 Color = color
             };
 
-            // Updating the cash of pixels
+            // Updating the cache of pixels
             this._learntCache.Add(this.FormatKey(x, y), pixelInfo);
 
-            // Updating the cash of colors
+            // Updating the cache of colors
             if (!this._learntColors.Contains(color, this._colorComparer))
             {
                 this._learntColors.Add(color);

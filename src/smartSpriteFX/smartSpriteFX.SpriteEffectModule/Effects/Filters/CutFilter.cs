@@ -95,30 +95,50 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
             if (maxX > originalFrame.Width) maxX = originalFrame.Width;
             if (maxY > originalFrame.Height) maxY = originalFrame.Height;
 
-            for (int y = minY; y < maxY; y++)
+            var sourceList = originalFrame.GetAllPixels();
+            foreach (var sourceItem in sourceList)
             {
-                for (int x = minX; x < maxX; x++)
+                int y = (int)sourceItem.Y;
+                int x = (int)sourceItem.X;
+
+                #region Entries validation
+
+                if (y < minY)
                 {
-                    var pixel = originalFrame.GetPixel(x, y);
-                    if (pixel.HasValue)
+                    continue;
+                }
+                if (y >= maxY)
+                {
+                    continue;
+                }
+                if (x < minX)
+                {
+                    continue;
+                }
+                if (x >= maxX)
+                {
+                    continue;
+                }
+
+                #endregion
+
+                var pixel = sourceItem.Color;
+
+                if (transparentBackground != null)
+                {
+                    if (_colorComparer.EqualsButNoAlpha(pixel, transparentBackground.TransparentColor))
                     {
-                        if (transparentBackground != null)
-                        {
-                            if (_colorComparer.EqualsButNoAlpha(pixel.Value, transparentBackground.TransparentColor))
-                            {
-                                pixel = ColorBuffer.GetSlightlyDifferentColor(pixel.Value);
-                            }
-                        }
-                        else if (_colorComparer.EqualsButNoAlpha(pixel.Value, frame.TransparentColor))
-                        {
-                            pixel = ColorBuffer.GetSlightlyDifferentColor(pixel.Value);
-                        }
-                        frame.ReplacePixel(
-                            Math.Abs(x - minX),
-                            Math.Abs(y - minY), 
-                            pixel.Value);
+                        pixel = ColorBuffer.GetSlightlyDifferentColor(pixel);
                     }
                 }
+                else if (_colorComparer.EqualsButNoAlpha(pixel, frame.TransparentColor))
+                {
+                    pixel = ColorBuffer.GetSlightlyDifferentColor(pixel);
+                }
+                frame.ReplacePixel(
+                    Math.Abs(x - minX),
+                    Math.Abs(y - minY),
+                    pixel);
             }
             originalFrame.ReleaseBuffer();
 
