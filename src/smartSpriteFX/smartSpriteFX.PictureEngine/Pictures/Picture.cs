@@ -92,6 +92,12 @@ namespace smartSuite.smartSpriteFX.Pictures
                 this._transparentColor = other._transparentColor;
             }
 
+            this._buffer.Merge(other._buffer);
+            this.ColorCount = this._buffer.CountColor();
+
+            #region Código obsoleto
+
+            /*
             HashSet<int> colorSet = new HashSet<int>();
             try
             {
@@ -116,6 +122,9 @@ namespace smartSuite.smartSpriteFX.Pictures
             }
 
             this.ColorCount = colorSet.LongCount();
+            */
+
+            #endregion
         }
 
         /// <summary>

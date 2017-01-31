@@ -465,6 +465,61 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
         }
 
         /// <summary>
+        /// Merge other dataBase in the current dataBase
+        /// </summary>
+        /// <param name="other"></param>
+        public void Merge(PictureDatabase other)
+        {
+            #region Entries validation
+
+            if (other == null)
+            {
+                throw new ArgumentNullException("other");
+            }
+
+            #endregion
+
+            this.CLEAR();
+
+            // Replicating the datas
+            String commandString = @"
+                INSERT INTO TB_PICTURE 
+                (            
+                    SESSIONID, X, Y, A, R, G, B
+                )
+                SELECT
+                    @SESSIONID_NEW, X, Y, A, R, G, B
+                FROM TB_PICTURE
+                WHERE SESSIONID = @SESSIONID;";
+
+            using (SQLiteCommand command = new SQLiteCommand(commandString, this._currentConnection))
+            {
+                command.Parameters.AddWithValue("@SESSIONID", other._sessionID);
+                command.Parameters.AddWithValue("@SESSIONID_NEW", this._sessionID);
+                command.ExecuteNonQuery();
+            }
+        }
+
+        /// <summary>
+        /// Gets the amount of colors of database
+        /// </summary>
+        /// <param name="other"></param>
+        public long CountColor()
+        {
+            // Replicating the datas
+            String commandString = @"
+                SELECT COUNT(*) FROM TB_PICTURE 
+                WHERE SESSIONID = @SESSIONID
+                GROUP BY A, R, G, B;";
+
+            using (SQLiteCommand command = new SQLiteCommand(commandString, this._currentConnection))
+            {
+                command.Parameters.AddWithValue("@SESSIONID", this._sessionID);
+                return (long)command.ExecuteScalar();
+            }
+        }
+
+        /// <summary>
         /// Begins the transaction
         /// </summary>
         public void beginTransaction()
