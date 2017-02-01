@@ -299,6 +299,10 @@ namespace smartSuite.smartSpriteFX.Pictures
             this._buffer.CreateDatabase();
             this._buffer.CLEAR();
 
+            List<AutoResetEvent> semaphoreList = new List<AutoResetEvent>();
+            ThreadPool.SetMinThreads(2, 50);
+            ThreadPool.SetMaxThreads(10, 1000);
+
             try
             {
                 this._buffer.beginTransaction();
@@ -307,12 +311,37 @@ namespace smartSuite.smartSpriteFX.Pictures
                 {
                     for (int x = 0; x < image.Width; x++)
                     {
-                        var colorInfo =
-                            new ColorInfo(
-                                image.GetPixel(x, y));
+                        AutoResetEvent sign = new AutoResetEvent(false);
+                        semaphoreList.Add(sign);
+                        var colorInfo = new ColorInfo(image.GetPixel(x, y));
+                        object[] stateArgs = new object[4] { x, y, colorInfo, sign };
 
-                        this.LoadColorInfoCache(y, x, colorInfo);
+                        WaitCallback pixelProcessingDelegate = new WaitCallback(delegate (object state)
+                        {
+                            object[] args = (object[])state;
+
+                            int xx = (int)args[0];
+                            int yy = (int)args[1];
+                            ColorInfo myColorInfo = (ColorInfo)args[2];
+                            AutoResetEvent mySign = (AutoResetEvent)args[3];
+
+                            try
+                            {
+                                this.LoadColorInfoCache(yy, xx, myColorInfo);
+                            }
+                            finally
+                            {
+                                mySign.Set();
+                            }
+                        });
+
+                        ThreadPool.QueueUserWorkItem(pixelProcessingDelegate, stateArgs);
                     }
+                }
+
+                foreach (AutoResetEvent signItem in semaphoreList)
+                {
+                    signItem.WaitOne();
                 }
 
                 this._buffer.commitTransaction();
