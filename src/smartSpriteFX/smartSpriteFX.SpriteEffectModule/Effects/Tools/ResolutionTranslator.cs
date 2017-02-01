@@ -285,7 +285,6 @@ namespace smartSuite.smartSpriteFX.Effects.Tools{
         {
             // Copying picture
             Picture clonePicture = this._originalPicture.Clone();
-            // clonePicture.ReleaseBuffer();
 
             try
             {

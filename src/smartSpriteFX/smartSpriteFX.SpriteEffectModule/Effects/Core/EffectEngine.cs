@@ -226,7 +226,8 @@ namespace smartSuite.smartSpriteFX.Effects.Core{
                 EffectEngine._iterator.MoveFirst();
             }
 
-            var previewFrame = EffectEngine._iterator.GetCurrent().Clone();
+            // var previewFrame = EffectEngine._iterator.GetCurrent().Clone();
+            var previewFrame = EffectEngine._iterator.GetCurrent();
             var frameIndex = EffectEngine._iterator.GetFrameIndex();
             // previewFrame.ClearCache();
             foreach (var filterItem in EffectEngine._filterList.GetFilterBufferList())

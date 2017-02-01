@@ -45,7 +45,8 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
         public static PictureDatabase Open()
         {
             PictureDatabase returnValue = new PictureDatabase(); 
-            returnValue._currentConnection = new SQLiteConnection("Data Source=:memory:;");
+            returnValue._currentConnection = new SQLiteConnection(
+                    "Data Source=:memory:; PRAGMA journal_mode=OFF; PRAGMA synchronous=OFF; PRAGMA cache_size=10000;");
             returnValue._currentConnection.Open();
             returnValue._sessionID = Guid.NewGuid().ToString();
 
