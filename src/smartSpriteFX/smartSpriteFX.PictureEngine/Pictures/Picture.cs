@@ -299,8 +299,6 @@ namespace smartSuite.smartSpriteFX.Pictures
             this._buffer.CreateDatabase();
             this._buffer.CLEAR();
 
-            HashSet<int> colorSet = new HashSet<int>();
-
             try
             {
                 this._buffer.beginTransaction();
@@ -312,12 +310,6 @@ namespace smartSuite.smartSpriteFX.Pictures
                         var colorInfo =
                             new ColorInfo(
                                 image.GetPixel(x, y));
-
-                        var argb = colorInfo.GetInnerColor().ToArgb();
-                        if (!colorSet.Contains(argb))
-                        {
-                            colorSet.Add(argb);
-                        }
 
                         this.LoadColorInfoCache(y, x, colorInfo);
                     }
@@ -331,7 +323,7 @@ namespace smartSuite.smartSpriteFX.Pictures
                 throw;
             }
 
-            this.ColorCount = colorSet.LongCount();
+            this.ColorCount = this._buffer.CountColor();
             this._height = image.Height;
             this._width = image.Width;
         }
