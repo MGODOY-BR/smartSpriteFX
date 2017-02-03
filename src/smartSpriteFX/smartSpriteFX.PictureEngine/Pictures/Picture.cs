@@ -334,7 +334,7 @@ namespace smartSuite.smartSpriteFX.Pictures
                                 mySign.Set();
                             }
                         });
-
+                        // pixelProcessingDelegate.Invoke(stateArgs); // <-- For synchronous test
                         ThreadPool.QueueUserWorkItem(pixelProcessingDelegate, stateArgs);
                     }
                 }
