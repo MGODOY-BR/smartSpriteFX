@@ -75,6 +75,10 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
             {
                 throw new ArgumentNullException("PictureDatabase._dataSource", "Connection hadn't been opened yet.");
             }
+            if (PictureDatabase._dataSource.Columns.Count != 0)
+            {
+                return;
+            }
 
             #endregion
 
@@ -170,7 +174,7 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
                     rowItem.EndEdit();
                 }
 
-                PictureDatabase._dataSource.AcceptChanges();
+                // PictureDatabase._dataSource.AcceptChanges();
 
                 return rowArray.Length;
             }
@@ -432,7 +436,8 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
                 "SESSIONID = '@SESSIONID'"
                     .Replace("@SESSIONID", this._sessionID);
 
-            return (long)PictureDatabase._dataSource.Compute("COUNT(*)", commandString);
+            return Convert.ToInt64(
+                PictureDatabase._dataSource.Compute("COUNT(SESSIONID)", commandString));
         }
 
         /// <summary>
@@ -625,17 +630,21 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
 
             #endregion
 
-            var result = from rowItem in PictureDatabase._dataSource.AsEnumerable()
-                         where rowItem.Field<string>("SESSIONID") == this._sessionID
-                         group rowItem by new
-                         {
-                             A = rowItem.Field<int>("A"),
-                             R = rowItem.Field<Int32>("R"),
-                             G = rowItem.Field<Int32>("G"),
-                             B = rowItem.Field<Int32>("B") } into groupItem
-                         select groupItem;
+            lock (PictureDatabase._dataSource)
+            {
+                var result = from rowItem in PictureDatabase._dataSource.AsEnumerable()
+                             where rowItem.Field<string>("SESSIONID") == this._sessionID
+                             group rowItem by new
+                             {
+                                 A = rowItem.Field<int>("A"),
+                                 R = rowItem.Field<Int32>("R"),
+                                 G = rowItem.Field<Int32>("G"),
+                                 B = rowItem.Field<Int32>("B")
+                             } into groupItem
+                             select groupItem;
 
-            return result.Count();
+                return result.Count();
+            }
         }
 
         /// <summary>
