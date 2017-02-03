@@ -84,5 +84,3 @@ C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smart
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX\obj\Debug\smartSpriteFX.csproj.GenerateResource.Cache
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX\obj\Debug\smartSpriteFX.exe
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX\obj\Debug\smartSpriteFX.pdb
-C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX\bin\Debug\System.Data.SQLite.dll
-C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX\bin\Debug\System.Data.SQLite.xml

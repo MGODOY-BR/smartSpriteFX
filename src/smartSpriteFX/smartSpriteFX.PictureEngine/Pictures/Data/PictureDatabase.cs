@@ -3,11 +3,10 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
-using System.Data.SQLite;
+using System.Data.OleDb;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
 {
@@ -22,14 +21,9 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
         private String _sessionID;
 
         /// <summary>
-        /// It´s the current connection
+        /// It´s a datasource
         /// </summary>
-        private SQLiteConnection _currentConnection;
-
-        /// <summary>
-        /// It´s the current transaction
-        /// </summary>
-        private SQLiteTransaction _currentTransaction;
+        private static DataTable _dataSource;
 
         /// <summary>
         /// This constructor has been created for goals of design and can not be used for external calls
@@ -45,10 +39,13 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
         public static PictureDatabase Open()
         {
             PictureDatabase returnValue = new PictureDatabase();
-            returnValue._currentConnection = new SQLiteConnection(
-                "Data Source =:memory:;");    
-
-            returnValue._currentConnection.Open();
+            lock (typeof(PictureDatabase))
+            {
+                if (PictureDatabase._dataSource == null)
+                {
+                    PictureDatabase._dataSource = new DataTable("TB_PICTURE");
+                }
+            }
             returnValue._sessionID = Guid.NewGuid().ToString();
 
             return returnValue;
@@ -59,13 +56,12 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
         /// </summary>
         public void Close()
         {
-            if (this._currentConnection == null)
+            if (PictureDatabase._dataSource == null)
             {
                 return;
             }
 
-            this._currentConnection.Dispose();
-            this._currentConnection = null;
+            this.CLEAR();
         }
 
         /// <summary>
@@ -75,33 +71,32 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
         {
             #region Entries validation
 
-            if (this._currentConnection == null)
+            if (PictureDatabase._dataSource == null)
             {
-                throw new ArgumentNullException("this._currentConnection", "Connection hadn't been opened yet.");
+                throw new ArgumentNullException("PictureDatabase._dataSource", "Connection hadn't been opened yet.");
             }
 
             #endregion
 
-            using (SQLiteCommand command = this._currentConnection.CreateCommand())
+            lock (PictureDatabase._dataSource)
             {
-                command.CommandText =
-                    @"CREATE TABLE TB_PICTURE(
-                        SESSIONID TEXT NOT NULL,
-                        X INTEGER  NOT NULL,
-                        Y INTEGER  NOT NULL,
-                        A INTEGER  NOT NULL,
-                        R INTEGER  NOT NULL,
-                        G INTEGER  NOT NULL,
-                        B INTEGER  NOT NULL,
-                        PRIMARY KEY (SESSIONID, X, Y)
-                    );
-                    CREATE INDEX TB_PICTURE_A ON TB_PICTURE (A);
-                    CREATE INDEX TB_PICTURE_R ON TB_PICTURE (R);
-                    CREATE INDEX TB_PICTURE_G ON TB_PICTURE (G);
-                    CREATE INDEX TB_PICTURE_B ON TB_PICTURE (B);
-                    ";
+                PictureDatabase._dataSource.Columns.Add("SESSIONID", typeof(String));
+                PictureDatabase._dataSource.Columns.Add("X", typeof(Int32));
+                PictureDatabase._dataSource.Columns.Add("Y", typeof(Int32));
+                PictureDatabase._dataSource.Columns.Add("A", typeof(Int32));
+                PictureDatabase._dataSource.Columns.Add("R", typeof(Int32));
+                PictureDatabase._dataSource.Columns.Add("G", typeof(Int32));
+                PictureDatabase._dataSource.Columns.Add("B", typeof(Int32));
 
-                command.ExecuteNonQuery();
+                PictureDatabase._dataSource.Constraints.Add(
+                    "PK",
+                    new DataColumn[3]
+                    {
+                    PictureDatabase._dataSource.Columns["SESSIONID"],
+                    PictureDatabase._dataSource.Columns["X"],
+                    PictureDatabase._dataSource.Columns["Y"]
+                    },
+                    true);
             }
         }
 
@@ -113,19 +108,28 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
         /// <param name="color"></param>
         public void INSERT(int x, int y, Color color)
         {
-            String commandString =
-                "INSERT INTO TB_PICTURE (SESSIONID, X, Y, A, R, G, B) VALUES (@SESSIONID, @X, @Y, @A, @R, @G, @B);";
-            using (SQLiteCommand command = new SQLiteCommand(commandString, this._currentConnection))
-            {
-                command.Parameters.AddWithValue("@SESSIONID", this._sessionID);
-                command.Parameters.AddWithValue("@X", x);
-                command.Parameters.AddWithValue("@Y", y);
-                command.Parameters.AddWithValue("@A", color.A);
-                command.Parameters.AddWithValue("@R", color.R);
-                command.Parameters.AddWithValue("@G", color.G);
-                command.Parameters.AddWithValue("@B", color.B);
+            #region Entries validation
 
-                command.ExecuteNonQuery();
+            if (PictureDatabase._dataSource == null)
+            {
+                throw new ArgumentNullException("PictureDatabase._dataSource", "Connection hadn't been opened yet.");
+            }
+
+            #endregion
+
+            lock (PictureDatabase._dataSource)
+            {
+                var row = PictureDatabase._dataSource.NewRow();
+
+                row["SESSIONID"] = this._sessionID;
+                row["X"] = x;
+                row["Y"] = y;
+                row["A"] = color.A;
+                row["R"] = color.R;
+                row["G"] = color.G;
+                row["B"] = color.B;
+
+                PictureDatabase._dataSource.Rows.Add(row);
             }
         }
 
@@ -138,21 +142,39 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
         /// <returns>Gets the amount of records updated</returns>
         public int UPDATE(int x, int y, Color color)
         {
-            String commandString =
-                "UPDATE TB_PICTURE SET A = @A, R = @R, G = @G, B = @B WHERE SESSIONID=@SESSIONID AND X = @X AND Y = @Y;";
-            using (SQLiteCommand command = new SQLiteCommand(commandString, this._currentConnection))
-            {
-                command.Parameters.AddWithValue("@SESSIONID", this._sessionID);
-                command.Parameters.AddWithValue("@X", x);
-                command.Parameters.AddWithValue("@Y", y);
-                command.Parameters.AddWithValue("@A", (object)color.A);
-                command.Parameters.AddWithValue("@R", (object)color.R);
-                command.Parameters.AddWithValue("@G", (object)color.G);
-                command.Parameters.AddWithValue("@B", (object)color.B);
+            #region Entries validation
 
-                return command.ExecuteNonQuery();
+            if (PictureDatabase._dataSource == null)
+            {
+                throw new ArgumentNullException("PictureDatabase._dataSource", "Connection hadn't been opened yet.");
             }
-        }
+
+            #endregion
+
+            lock (PictureDatabase._dataSource)
+            {
+                var rowArray =
+                    PictureDatabase._dataSource.Select(
+                        "SESSIONID='@SESSIONID' AND X = @X AND Y = @Y"
+                            .Replace("@SESSIONID", this._sessionID)
+                            .Replace("@X", x.ToString())
+                            .Replace("@Y", y.ToString()));
+
+                foreach (var rowItem in rowArray)
+                {
+                    rowItem.BeginEdit();
+                    rowItem["A"] = color.A;
+                    rowItem["R"] = color.R;
+                    rowItem["G"] = color.G;
+                    rowItem["B"] = color.B;
+                    rowItem.EndEdit();
+                }
+
+                PictureDatabase._dataSource.AcceptChanges();
+
+                return rowArray.Length;
+            }
+       }
 
         /// <summary>
         /// Updates colors in all records
@@ -160,22 +182,39 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
         /// <returns>Gets the amount of records updated</returns>
         public int UPDATE(Color color, Color replaceColor)
         {
-            String commandString =
-                "UPDATE TB_PICTURE SET A = @A, R = @R, G = @G, B = @B WHERE SESSIONID = @SESSIONID, A = @A_NEW, R = @R_NEW, G = @G_NEW, B = @B_NEW;";
-            using (SQLiteCommand command = new SQLiteCommand(commandString, this._currentConnection))
+            #region Entries validation
+
+            if (PictureDatabase._dataSource == null)
             {
-                command.Parameters.AddWithValue("@SESSIONID", this._sessionID);
-                command.Parameters.AddWithValue("@A", color.A);
-                command.Parameters.AddWithValue("@R", color.R);
-                command.Parameters.AddWithValue("@G", color.G);
-                command.Parameters.AddWithValue("@B", color.B);
+                throw new ArgumentNullException("PictureDatabase._dataSource", "Connection hadn't been opened yet.");
+            }
 
-                command.Parameters.AddWithValue("@A_NEW", replaceColor.A);
-                command.Parameters.AddWithValue("@R_NEW", replaceColor.R);
-                command.Parameters.AddWithValue("@G_NEW", replaceColor.G);
-                command.Parameters.AddWithValue("@B_NEW", replaceColor.B);
+            #endregion
 
-                return command.ExecuteNonQuery();
+            lock (PictureDatabase._dataSource)
+            {
+                var rowArray =
+                    PictureDatabase._dataSource.Select(
+                            "SESSIONID = '@SESSIONID', A = @A, R = @R, G = @G, B = @B;"
+                            .Replace("@SESSIONID", this._sessionID)
+                            .Replace("@A", color.A.ToString())
+                            .Replace("@R", color.R.ToString())
+                            .Replace("@G", color.G.ToString())
+                            .Replace("@B", color.B.ToString()));
+
+                foreach (var rowItem in rowArray)
+                {
+                    rowItem.BeginEdit();
+                    rowItem["A"] = replaceColor.A;
+                    rowItem["R"] = replaceColor.R;
+                    rowItem["G"] = replaceColor.G;
+                    rowItem["B"] = replaceColor.B;
+                    rowItem.EndEdit();
+                }
+
+                PictureDatabase._dataSource.AcceptChanges();
+
+                return rowArray.Length;
             }
         }
 
@@ -187,29 +226,34 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
         /// <returns></returns>
         public ColorInfo SELECT(int x, int y)
         {
-            String commandString =
-                "SELECT A, R, G, B FROM TB_PICTURE WHERE SESSIONID=@SESSIONID AND x=@X AND y=@Y;";
+            #region Entries validation
 
-            using (SQLiteCommand command = new SQLiteCommand(commandString, this._currentConnection))
+            if (PictureDatabase._dataSource == null)
             {
-                command.Parameters.AddWithValue("@SESSIONID", this._sessionID);
-                command.Parameters.AddWithValue("@X", x);
-                command.Parameters.AddWithValue("@Y", y);
+                throw new ArgumentNullException("PictureDatabase._dataSource", "Connection hadn't been opened yet.");
+            }
 
-                var reader = command.ExecuteReader(System.Data.CommandBehavior.SingleRow);
-                while (reader.Read())
-                {
-                    Color color =
-                        Color.FromArgb(
-                            Convert.ToByte(reader.GetInt32(0)),
-                            Convert.ToByte(reader.GetInt32(1)),
-                            Convert.ToByte(reader.GetInt32(2)),
-                            Convert.ToByte(reader.GetInt32(3)));
+            #endregion
 
-                    return new ColorInfo(color);
-                }
+            var rowArray =
+                PictureDatabase._dataSource.Select(
+                    "SESSIONID='@SESSIONID' AND X = @X AND Y = @Y"
+                        .Replace("@SESSIONID", this._sessionID)
+                        .Replace("@X", x.ToString())
+                        .Replace("@Y", y.ToString()));
 
+            if (rowArray.Length == 0)
+            {
                 return null;
+            }
+            else
+            {
+                return new ColorInfo(
+                    Color.FromArgb(
+                        (int)rowArray[0]["A"],
+                        (int)rowArray[0]["R"],
+                        (int)rowArray[0]["G"],
+                        (int)rowArray[0]["B"]));
             }
         }
 
@@ -236,29 +280,36 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
         /// <returns></returns>
         public List<smartSuite.smartSpriteFX.Pictures.Point> SELECT(Color color)
         {
-            String commandString =
-                "SELECT X, Y FROM TB_PICTURE WHERE SESSIONID=@SESSIONID AND A=@A AND R=@R AND G=@G AND B=@B;";
+            #region Entries validation
 
-            using (SQLiteCommand command = new SQLiteCommand(commandString, this._currentConnection))
+            if (PictureDatabase._dataSource == null)
             {
-                command.Parameters.AddWithValue("@SESSIONID", this._sessionID);
-                command.Parameters.AddWithValue("@A", color.A);
-                command.Parameters.AddWithValue("@R", color.R);
-                command.Parameters.AddWithValue("@G", color.G);
-                command.Parameters.AddWithValue("@B", color.B);
-
-                var reader = command.ExecuteReader(System.Data.CommandBehavior.Default);
-                List<smartSuite.smartSpriteFX.Pictures.Point> returnValue = new List<smartSuite.smartSpriteFX.Pictures.Point>();
-                while (reader.Read())
-                {
-                    returnValue.Add(
-                        new smartSuite.smartSpriteFX.Pictures.Point(
-                            reader.GetInt32(0),
-                            reader.GetInt32(1)));
-                }
-
-                return returnValue;
+                throw new ArgumentNullException("PictureDatabase._dataSource", "Connection hadn't been opened yet.");
             }
+
+            #endregion
+
+            var rowArray =
+                PictureDatabase._dataSource.Select(
+                    "SESSIONID = '@SESSIONID' AND A = @A AND R = @R AND G = @G AND B = @B"
+                        .Replace("@SESSIONID", this._sessionID)
+                        .Replace("@A", color.A.ToString())
+                        .Replace("@R", color.R.ToString())
+                        .Replace("@G", color.G.ToString())
+                        .Replace("@B", color.B.ToString()));
+
+            List<smartSuite.smartSpriteFX.Pictures.Point> returnValue = new List<smartSpriteFX.Pictures.Point>();
+
+            foreach (var rowItem in rowArray)
+            {
+                smartSuite.smartSpriteFX.Pictures.Point point =
+                    new smartSpriteFX.Pictures.Point(
+                                (int)rowItem["X"],
+                                (int)rowItem["Y"]);
+                returnValue.Add(point);
+            }
+
+            return returnValue;
         }
 
         /// <summary>
@@ -269,40 +320,50 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
         /// <returns></returns>
         public List<PointInfo> SELECTALL()
         {
-            String commandString =
-                "SELECT X, Y, A, R, G, B FROM TB_PICTURE WHERE SESSIONID=@SESSIONID;";
+            #region Entries validation
 
-            using (SQLiteCommand command = new SQLiteCommand(commandString, this._currentConnection))
+            if (PictureDatabase._dataSource == null)
             {
-                List<PointInfo> returnValue = new List<PointInfo>();
-
-                command.Parameters.AddWithValue("@SESSIONID", this._sessionID);
-                var reader = command.ExecuteReader(System.Data.CommandBehavior.Default);
-                while (reader.Read())
-                {
-                    Color color =
-                        Color.FromArgb(
-                            Convert.ToByte(reader.GetInt32(2)),
-                            Convert.ToByte(reader.GetInt32(3)),
-                            Convert.ToByte(reader.GetInt32(4)),
-                            Convert.ToByte(reader.GetInt32(5)));
-
-                    returnValue.Add(
-                        new PointInfo(
-                            reader.GetFloat(0), 
-                            reader.GetFloat(1),
-                            color));
-                }
-                return returnValue;
+                throw new ArgumentNullException("PictureDatabase._dataSource", "Connection hadn't been opened yet.");
             }
+
+            #endregion
+
+            var rowArray =
+                    PictureDatabase._dataSource.Select(
+                        "SESSIONID = '@SESSIONID'"
+                            .Replace("@SESSIONID", this._sessionID));
+
+            List<PointInfo> returnValue = new List<PointInfo>();
+
+            foreach (var rowItem in rowArray)
+            {
+                PointInfo point =
+                    new PointInfo(
+                        new smartSpriteFX.Pictures.Point(
+                                    (int)rowItem["X"],
+                                    (int)rowItem["Y"]),
+                        Color.FromArgb(
+                            (int)rowItem["A"],
+                            (int)rowItem["R"],
+                            (int)rowItem["G"],
+                            (int)rowItem["B"]));
+
+                returnValue.Add(point);
+            }
+
+            return returnValue;
         }
 
         /// <summary>
         /// Gets the list of results using custom filter
         /// </summary>
-        /// <param name="commandString">A commandString in SQL format to filter the datas. It´s mandatory to have the parameter @SESSIONID among them.</param>
+        /// <param name="commandString">A commandString such as WHERE clause in SQL format to filter the datas. It´s mandatory to have the parameter @SESSIONID among them.</param>
         /// <param name="parameterList">Zero or more parameters (starting by "@") to suply values to commandString. However, you mustns't yose @SESSIONID parameter. Use <see cref="PictureDatabase.CreateDbParameter(string, object)"/> method to create it.</param>
-        /// <remarks>
+        /// <example>
+        /// X=1 AND Y=3 AND SESSIONID='@SESSIONID';
+        /// </example>
+        /// <returns>
         /// The columns of TB_PICTURE are:
         /// <list type="bullet">
         /// <item>SESSIONID - It´s the identification of current image. It´s need be included in JOIN clauses</item>
@@ -313,22 +374,32 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
         /// <item>G - It´s the component G of color</item>
         /// <item>B - It´s the component B of color</item>
         /// </list>
-        /// </remarks>
-        /// <example>
-        /// SELECT X, Y, A, R, G, B FROM TB_PICTURE WHERE X=1 AND Y=3 AND SESSIONID=@SESSIONID;
-        /// </example>
-        public SQLiteDataReader SELECT(String commandString, params DbParameter[] parameterList)
+        /// </returns>
+        public IDataReader SELECT(String commandString, params DbParameter[] parameterList)
         {
-            using (SQLiteCommand command = new SQLiteCommand(commandString, this._currentConnection))
-            {
-                command.Parameters.AddWithValue("@SESSIONID", this._sessionID);
-                foreach (var parameterItem in parameterList)
-                {
-                    command.Parameters.AddWithValue(parameterItem.ParameterName, parameterItem.Value);
-                }
+            #region Entries validation
 
-                return command.ExecuteReader(System.Data.CommandBehavior.Default);
+            if (PictureDatabase._dataSource == null)
+            {
+                throw new ArgumentNullException("PictureDatabase._dataSource", "Connection hadn't been opened yet.");
             }
+
+            #endregion
+
+            String where =
+                "SESSIONID = '@SESSIONID'"
+                        .Replace("@SESSIONID", this._sessionID);
+
+            foreach (var parameterItem in parameterList)
+            {
+                where = where
+                    .Replace(parameterItem.ParameterName, parameterItem.Value.ToString());
+            }
+
+            var rowArray =
+                PictureDatabase._dataSource.Select(where);
+
+            return PictureDatabase._dataSource.CreateDataReader();
         }
 
         /// <summary>
@@ -339,7 +410,7 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
         /// <returns></returns>
         public static DbParameter CreateDbParameter(String name, Object value)
         {
-            return new SQLiteParameter(name, value);
+            return new OleDbParameter(name, value);
         }
 
         /// <summary>
@@ -348,14 +419,20 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
         /// <returns></returns>
         public long COUNT()
         {
-            String commandString =
-                "SELECT COUNT(*) FROM TB_PICTURE WHERE SESSIONID = @SESSIONID;";
+            #region Entries validation
 
-            using (SQLiteCommand command = new SQLiteCommand(commandString, this._currentConnection))
+            if (PictureDatabase._dataSource == null)
             {
-                command.Parameters.AddWithValue("@SESSIONID", this._sessionID);
-                return (long)command.ExecuteScalar(CommandBehavior.SingleResult);
+                throw new ArgumentNullException("PictureDatabase._dataSource", "Connection hadn't been opened yet.");
             }
+
+            #endregion
+
+            String commandString =
+                "SESSIONID = '@SESSIONID'"
+                    .Replace("@SESSIONID", this._sessionID);
+
+            return (long)PictureDatabase._dataSource.Compute("COUNT(*)", commandString);
         }
 
         /// <summary>
@@ -364,21 +441,26 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
         /// <returns></returns>
         public long COUNT(smartSpriteFX.Pictures.Point point, Color color)
         {
-            String commandString =
-                "SELECT COUNT(*) FROM TB_PICTURE WHERE SESSIONID = @SESSIONID AND X=@X AND Y=@Y AND A=@A AND R=@R AND G=@G AND B=@B;";
+            #region Entries validation
 
-            using (SQLiteCommand command = new SQLiteCommand(commandString, this._currentConnection))
+            if (PictureDatabase._dataSource == null)
             {
-                command.Parameters.AddWithValue("@SESSIONID", this._sessionID);
-                command.Parameters.AddWithValue("@X", point.X);
-                command.Parameters.AddWithValue("@Y", point.Y);
-                command.Parameters.AddWithValue("@A", color.A);
-                command.Parameters.AddWithValue("@R", color.R);
-                command.Parameters.AddWithValue("@G", color.G);
-                command.Parameters.AddWithValue("@B", color.B);
-
-                return (long)command.ExecuteScalar(CommandBehavior.SingleResult);
+                throw new ArgumentNullException("PictureDatabase._dataSource", "Connection hadn't been opened yet.");
             }
+
+            #endregion
+
+            String commandString =
+                "SESSIONID = '@SESSIONID' AND X = @X AND Y = @Y AND A = @A AND R = @R AND G = @G AND B = @B"
+                        .Replace("@SESSIONID", this._sessionID)
+                        .Replace("@X", point.X.ToString())
+                        .Replace("@Y", point.Y.ToString())
+                        .Replace("@A", color.A.ToString())
+                        .Replace("@R", color.R.ToString())
+                        .Replace("@G", color.G.ToString())
+                        .Replace("@B", color.B.ToString());
+
+            return (long)PictureDatabase._dataSource.Compute("COUNT(*)", commandString);
         }
 
         /// <summary>
@@ -387,31 +469,27 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
         /// <returns></returns>
         public bool EXISTS(smartSpriteFX.Pictures.Point point, Color color)
         {
-            String commandString =
-                @"SELECT SESSIONID FROM TB_PICTURE WHERE SESSIONID = @SESSIONID AND X=@X AND Y=@Y AND A=@A AND R=@R AND G=@G AND B=@B;
-                LIMIT 1";
+            #region Entries validation
 
-            using (SQLiteCommand command = new SQLiteCommand(commandString, this._currentConnection))
+            if (PictureDatabase._dataSource == null)
             {
-                command.Parameters.AddWithValue("@SESSIONID", this._sessionID);
-                command.Parameters.AddWithValue("@X", point.X);
-                command.Parameters.AddWithValue("@Y", point.Y);
-                command.Parameters.AddWithValue("@A", color.A);
-                command.Parameters.AddWithValue("@R", color.R);
-                command.Parameters.AddWithValue("@G", color.G);
-                command.Parameters.AddWithValue("@B", color.B);
-
-                string result = (string)command.ExecuteScalar(CommandBehavior.SingleResult);
-
-                if (result != null)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
+                throw new ArgumentNullException("PictureDatabase._dataSource", "Connection hadn't been opened yet.");
             }
+
+            #endregion
+
+            String commandString =
+                "SESSIONID = '@SESSIONID' AND X = @X AND Y = @Y AND A = @A AND R = @R AND G = @G AND B = @B"
+                        .Replace("@SESSIONID", this._sessionID)
+                        .Replace("@X", point.X.ToString())
+                        .Replace("@Y", point.Y.ToString())
+                        .Replace("@A", color.A.ToString())
+                        .Replace("@R", color.R.ToString())
+                        .Replace("@G", color.G.ToString())
+                        .Replace("@B", color.B.ToString());
+
+            var reader = PictureDatabase._dataSource.CreateDataReader();
+            return reader.Read();
         }
 
         /// <summary>
@@ -419,11 +497,26 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
         /// </summary>
         public void CLEAR()
         {
-            String commandString = "DELETE FROM TB_PICTURE WHERE SESSIONID = @SESSIONID;";
-            using (SQLiteCommand command = new SQLiteCommand(commandString, this._currentConnection))
+            #region Entries validation
+
+            if (PictureDatabase._dataSource == null)
             {
-                command.Parameters.AddWithValue("@SESSIONID", this._sessionID);
-                command.ExecuteNonQuery();
+                throw new ArgumentNullException("PictureDatabase._dataSource", "Connection hadn't been opened yet.");
+            }
+
+            #endregion
+
+            String commandString = "SESSIONID = '@SESSIONID'"
+                    .Replace("@SESSIONID", this._sessionID);
+
+            lock (PictureDatabase._dataSource)
+            {
+                var rowList = PictureDatabase._dataSource.Select(commandString);
+                foreach (var rowItem in rowList)
+                {
+                    PictureDatabase._dataSource.Rows.Remove(rowItem);
+                }
+                PictureDatabase._dataSource.AcceptChanges();
             }
         }
 
@@ -435,32 +528,39 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
         {
             #region Entries validation
 
-            if (this._currentConnection == null)
+            if (PictureDatabase._dataSource == null)
             {
-                throw new ArgumentNullException("this._currentConnection");
+                throw new ArgumentNullException("PictureDatabase._dataSource", "Connection hadn't been opened yet.");
             }
 
             #endregion
 
             PictureDatabase returnValue = new PictureDatabase();
-            returnValue._currentConnection = this._currentConnection;
             returnValue._sessionID = Guid.NewGuid().ToString();
 
-            // Replicating the datas
-            String commandString = @"
-            INSERT INTO TB_PICTURE 
-            (            
-                SESSIONID, X, Y, A, R, G, B
-            )
-            SELECT
-                @SESSIONID_NEW, X, Y, A, R, G, B
-            FROM TB_PICTURE
-            WHERE SESSIONID = @SESSIONID;";
-            using (SQLiteCommand command = new SQLiteCommand(commandString, this._currentConnection))
+            lock (PictureDatabase._dataSource)
             {
-                command.Parameters.AddWithValue("@SESSIONID", this._sessionID);
-                command.Parameters.AddWithValue("@SESSIONID_NEW", returnValue._sessionID);
-                command.ExecuteNonQuery();
+                var sourceRowList =
+                    PictureDatabase._dataSource.Select(
+                        "SESSIONID='@SESSIONID'"
+                            .Replace("@SESSIONID", this._sessionID));
+
+                foreach (var sourceRowItem in sourceRowList)
+                {
+                    var targetRow = 
+                        PictureDatabase._dataSource.NewRow();
+
+                    targetRow["SESSIONID"] = returnValue._sessionID;
+                    targetRow["X"] = sourceRowItem["X"];
+                    targetRow["Y"] = sourceRowItem["Y"];
+                    targetRow["A"] = sourceRowItem["A"];
+                    targetRow["R"] = sourceRowItem["R"];
+                    targetRow["G"] = sourceRowItem["G"];
+                    targetRow["B"] = sourceRowItem["B"];
+
+                    PictureDatabase._dataSource.Rows.Add(targetRow);
+                }
+                PictureDatabase._dataSource.AcceptChanges();
             }
 
             return returnValue;
@@ -484,21 +584,29 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
             this.CLEAR();
 
             // Replicating the datas
-            String commandString = @"
-                INSERT INTO TB_PICTURE 
-                (            
-                    SESSIONID, X, Y, A, R, G, B
-                )
-                SELECT
-                    @SESSIONID_NEW, X, Y, A, R, G, B
-                FROM TB_PICTURE
-                WHERE SESSIONID = @SESSIONID;";
-
-            using (SQLiteCommand command = new SQLiteCommand(commandString, this._currentConnection))
+            lock (PictureDatabase._dataSource)
             {
-                command.Parameters.AddWithValue("@SESSIONID", other._sessionID);
-                command.Parameters.AddWithValue("@SESSIONID_NEW", this._sessionID);
-                command.ExecuteNonQuery();
+                var sourceRowList =
+                    PictureDatabase._dataSource.Select(
+                        "SESSIONID='@SESSIONID'"
+                            .Replace("@SESSIONID", other._sessionID));
+
+                foreach (var sourceRowItem in sourceRowList)
+                {
+                    var targetRow =
+                        PictureDatabase._dataSource.NewRow();
+
+                    targetRow["SESSIONID"] = this._sessionID;
+                    targetRow["X"] = sourceRowItem["X"];
+                    targetRow["Y"] = sourceRowItem["Y"];
+                    targetRow["A"] = sourceRowItem["A"];
+                    targetRow["R"] = sourceRowItem["R"];
+                    targetRow["G"] = sourceRowItem["G"];
+                    targetRow["B"] = sourceRowItem["B"];
+
+                    PictureDatabase._dataSource.Rows.Add(targetRow);
+                }
+                PictureDatabase._dataSource.AcceptChanges();
             }
         }
 
@@ -508,17 +616,26 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
         /// <param name="other"></param>
         public long CountColor()
         {
-            // Replicating the datas
-            String commandString = @"
-                SELECT COUNT(*) FROM TB_PICTURE 
-                WHERE SESSIONID = @SESSIONID
-                GROUP BY A, R, G, B;";
+            #region Entries validation
 
-            using (SQLiteCommand command = new SQLiteCommand(commandString, this._currentConnection))
+            if (PictureDatabase._dataSource == null)
             {
-                command.Parameters.AddWithValue("@SESSIONID", this._sessionID);
-                return (long)command.ExecuteScalar();
+                throw new ArgumentNullException("PictureDatabase._dataSource", "Connection hadn't been opened yet.");
             }
+
+            #endregion
+
+            var result = from rowItem in PictureDatabase._dataSource.AsEnumerable()
+                         where rowItem.Field<string>("SESSIONID") == this._sessionID
+                         group rowItem by new
+                         {
+                             A = rowItem.Field<int>("A"),
+                             R = rowItem.Field<Int32>("R"),
+                             G = rowItem.Field<Int32>("G"),
+                             B = rowItem.Field<Int32>("B") } into groupItem
+                         select groupItem;
+
+            return result.Count();
         }
 
         /// <summary>
@@ -526,20 +643,7 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
         /// </summary>
         public void beginTransaction()
         {
-            #region Entries validation
-
-            if (this._currentConnection == null)
-            {
-                throw new ArgumentNullException("this._currentConnection");
-            }
-            if (this._currentTransaction != null)
-            {
-                throw new ApplicationException("A transaction has already started.");
-            }
-
-            #endregion
-
-            this._currentTransaction = this._currentConnection.BeginTransaction();
+            // HACK: Initially, this was prepared for SQlite and another databases.
         }
 
         /// <summary>
@@ -549,19 +653,17 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
         {
             #region Entries validation
 
-            if (this._currentConnection == null)
+            if (PictureDatabase._dataSource == null)
             {
-                throw new ArgumentNullException("this._currentConnection");
-            }
-            if (this._currentTransaction == null)
-            {
-                throw new ApplicationException("None transaction has been started.");
+                throw new ArgumentNullException("PictureDatabase._dataSource", "Connection hadn't been opened yet.");
             }
 
             #endregion
 
-            this._currentTransaction.Rollback();
-            this._currentTransaction = null;
+            lock (PictureDatabase._dataSource)
+            {
+                PictureDatabase._dataSource.RejectChanges();
+            }
         }
 
         /// <summary>
@@ -571,19 +673,17 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
         {
             #region Entries validation
 
-            if (this._currentConnection == null)
+            if (PictureDatabase._dataSource == null)
             {
-                throw new ArgumentNullException("this._currentConnection");
-            }
-            if (this._currentTransaction == null)
-            {
-                throw new ApplicationException("None transaction has been started.");
+                throw new ArgumentNullException("PictureDatabase._dataSource", "Connection hadn't been opened yet.");
             }
 
             #endregion
 
-            this._currentTransaction.Commit();
-            this._currentTransaction = null;
+            lock (PictureDatabase._dataSource)
+            {
+                PictureDatabase._dataSource.AcceptChanges();
+            }
         }
     }
 }
