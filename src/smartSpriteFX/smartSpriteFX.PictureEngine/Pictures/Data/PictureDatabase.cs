@@ -239,25 +239,28 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
 
             #endregion
 
-            var rowArray =
+            lock (PictureDatabase._dataSource)
+            {
+                var rowArray =
                 PictureDatabase._dataSource.Select(
                     "SESSIONID='@SESSIONID' AND X = @X AND Y = @Y"
                         .Replace("@SESSIONID", this._sessionID)
                         .Replace("@X", x.ToString())
                         .Replace("@Y", y.ToString()));
 
-            if (rowArray.Length == 0)
-            {
-                return null;
-            }
-            else
-            {
-                return new ColorInfo(
-                    Color.FromArgb(
-                        (int)rowArray[0]["A"],
-                        (int)rowArray[0]["R"],
-                        (int)rowArray[0]["G"],
-                        (int)rowArray[0]["B"]));
+                if (rowArray.Length == 0)
+                {
+                    return null;
+                }
+                else
+                {
+                    return new ColorInfo(
+                        Color.FromArgb(
+                            (int)rowArray[0]["A"],
+                            (int)rowArray[0]["R"],
+                            (int)rowArray[0]["G"],
+                            (int)rowArray[0]["B"]));
+                }
             }
         }
 
@@ -293,7 +296,9 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
 
             #endregion
 
-            var rowArray =
+            lock (PictureDatabase._dataSource)
+            {
+                var rowArray =
                 PictureDatabase._dataSource.Select(
                     "SESSIONID = '@SESSIONID' AND A = @A AND R = @R AND G = @G AND B = @B"
                         .Replace("@SESSIONID", this._sessionID)
@@ -302,18 +307,19 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
                         .Replace("@G", color.G.ToString())
                         .Replace("@B", color.B.ToString()));
 
-            List<smartSuite.smartSpriteFX.Pictures.Point> returnValue = new List<smartSpriteFX.Pictures.Point>();
+                List<smartSuite.smartSpriteFX.Pictures.Point> returnValue = new List<smartSpriteFX.Pictures.Point>();
 
-            foreach (var rowItem in rowArray)
-            {
-                smartSuite.smartSpriteFX.Pictures.Point point =
-                    new smartSpriteFX.Pictures.Point(
-                                (int)rowItem["X"],
-                                (int)rowItem["Y"]);
-                returnValue.Add(point);
+                foreach (var rowItem in rowArray)
+                {
+                    smartSuite.smartSpriteFX.Pictures.Point point =
+                        new smartSpriteFX.Pictures.Point(
+                                    (int)rowItem["X"],
+                                    (int)rowItem["Y"]);
+                    returnValue.Add(point);
+                }
+
+                return returnValue;
             }
-
-            return returnValue;
         }
 
         /// <summary>
@@ -333,30 +339,33 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
 
             #endregion
 
-            var rowArray =
-                    PictureDatabase._dataSource.Select(
-                        "SESSIONID = '@SESSIONID'"
-                            .Replace("@SESSIONID", this._sessionID));
-
-            List<PointInfo> returnValue = new List<PointInfo>();
-
-            foreach (var rowItem in rowArray)
+            lock (PictureDatabase._dataSource)
             {
-                PointInfo point =
-                    new PointInfo(
-                        new smartSpriteFX.Pictures.Point(
-                                    (int)rowItem["X"],
-                                    (int)rowItem["Y"]),
-                        Color.FromArgb(
-                            (int)rowItem["A"],
-                            (int)rowItem["R"],
-                            (int)rowItem["G"],
-                            (int)rowItem["B"]));
+                var rowArray =
+                        PictureDatabase._dataSource.Select(
+                            "SESSIONID = '@SESSIONID'"
+                                .Replace("@SESSIONID", this._sessionID));
 
-                returnValue.Add(point);
+                List<PointInfo> returnValue = new List<PointInfo>();
+
+                foreach (var rowItem in rowArray)
+                {
+                    PointInfo point =
+                        new PointInfo(
+                            new smartSpriteFX.Pictures.Point(
+                                        (int)rowItem["X"],
+                                        (int)rowItem["Y"]),
+                            Color.FromArgb(
+                                (int)rowItem["A"],
+                                (int)rowItem["R"],
+                                (int)rowItem["G"],
+                                (int)rowItem["B"]));
+
+                    returnValue.Add(point);
+                }
+
+                return returnValue;
             }
-
-            return returnValue;
         }
 
         /// <summary>
@@ -400,10 +409,13 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
                     .Replace(parameterItem.ParameterName, parameterItem.Value.ToString());
             }
 
-            var rowArray =
+            lock (PictureDatabase._dataSource)
+            {
+                var rowArray =
                 PictureDatabase._dataSource.Select(where);
 
-            return PictureDatabase._dataSource.CreateDataReader();
+                return PictureDatabase._dataSource.CreateDataReader();
+            }
         }
 
         /// <summary>
@@ -436,8 +448,11 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
                 "SESSIONID = '@SESSIONID'"
                     .Replace("@SESSIONID", this._sessionID);
 
-            return Convert.ToInt64(
-                PictureDatabase._dataSource.Compute("COUNT(SESSIONID)", commandString));
+            lock (PictureDatabase._dataSource)
+            {
+                return Convert.ToInt64(
+                    PictureDatabase._dataSource.Compute("COUNT(SESSIONID)", commandString));
+            }
         }
 
         /// <summary>
@@ -465,7 +480,10 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
                         .Replace("@G", color.G.ToString())
                         .Replace("@B", color.B.ToString());
 
-            return (long)PictureDatabase._dataSource.Compute("COUNT(*)", commandString);
+            lock (PictureDatabase._dataSource)
+            {
+                return (long)PictureDatabase._dataSource.Compute("COUNT(*)", commandString);
+            }
         }
 
         /// <summary>
@@ -493,8 +511,11 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
                         .Replace("@G", color.G.ToString())
                         .Replace("@B", color.B.ToString());
 
-            var reader = PictureDatabase._dataSource.CreateDataReader();
-            return reader.Read();
+            lock (PictureDatabase._dataSource)
+            {
+                var reader = PictureDatabase._dataSource.CreateDataReader();
+                return reader.Read();
+            }
         }
 
         /// <summary>
