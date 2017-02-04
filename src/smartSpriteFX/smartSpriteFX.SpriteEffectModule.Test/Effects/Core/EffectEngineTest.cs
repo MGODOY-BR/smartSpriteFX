@@ -4,6 +4,7 @@ using smartSuite.smartSpriteFX.Effects.Core;
 using System.Windows.Forms;
 using smartSuite.smartSpriteFX.Effects.FilterEngine;
 using System.IO;
+using smartSuite.smartSpriteFX.PictureEngine.Pictures.Data;
 
 namespace smartSuite.smartSpriteFX.SpriteEffectModule.Test.Effects.Core
 {
@@ -18,6 +19,7 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Test.Effects.Core
         [TestCleanup]
         public void TearDown()
         {
+            PictureDatabase.Clear();
         }
 
         [TestMethod]

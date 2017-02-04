@@ -601,6 +601,43 @@ namespace smartSuite.smartSpriteFX.Pictures
         }
 
         /// <summary>
+        /// Replaces pixels in PointRange
+        /// </summary>
+        /// <param name="pointRange"></param>
+        public void ReplacePixel(PointRange pointRange)
+        {
+            #region Entries validation
+
+            if (pointRange == null)
+            {
+                throw new ArgumentNullException("pointRange");
+            }
+            if (this._buffer == null)
+            {
+                throw new ArgumentNullException("this._buffer");
+            }
+
+            #endregion
+
+            var affectedRowList =
+                this._buffer.SELECT2(
+                    String.Format(
+                        "(X >= {0} AND X <= {1}) AND (Y >= {2} AND Y <= {3})",
+                        pointRange.StartPoint.X,
+                        pointRange.EndPoint.X,
+                        pointRange.StartPoint.Y,
+                        pointRange.EndPoint.Y));
+
+            foreach (var affectedRowItem in affectedRowList)
+            {
+                affectedRowItem["A"] = pointRange.Color.A;
+                affectedRowItem["R"] = pointRange.Color.R;
+                affectedRowItem["G"] = pointRange.Color.G;
+                affectedRowItem["B"] = pointRange.Color.B;
+            }
+        }
+
+        /// <summary>
         /// Overwrites the picture
         /// </summary>
         internal void Overwrite(Color transparentColor)

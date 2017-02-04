@@ -10,6 +10,7 @@ using Microsoft.CSharp;
 using System.CodeDom.Compiler;
 using smartSuite.smartSpriteFX.Effects.Infra;
 using smartSuite.smartSpriteFX.Effects.Infra.UI.Configuratons;
+using smartSuite.smartSpriteFX.PictureEngine.Pictures.Data;
 
 namespace smartSuite.smartSpriteFX.SpriteEffectModule.Test
 {
@@ -65,6 +66,8 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Test
         [TestCleanup]
         public void TearDown()
         {
+            PictureDatabase.Clear();
+
             this._appliedFilteresCount = 0;
             var thirdPartyPluginList = Directory.GetFiles(@"ThirdPartyEffectModulePlugin");
             foreach (var plugin in thirdPartyPluginList)

@@ -77,6 +77,7 @@
     <Compile Include="Pictures\ColorPattern\IAskingForColorDelegate.cs" />
     <Compile Include="Pictures\ColorPattern\LookLikeColorComparer.cs" />
     <Compile Include="Pictures\Data\PictureDatabase.cs" />
+    <Compile Include="Pictures\Data\RowDataReader.cs" />
     <Compile Include="Pictures\Group.cs" />
     <Compile Include="Pictures\Picture.cs" />
     <Compile Include="Pictures\Piece.cs" />

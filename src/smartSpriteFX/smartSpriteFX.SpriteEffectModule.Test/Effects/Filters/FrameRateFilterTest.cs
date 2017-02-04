@@ -4,12 +4,19 @@ using smartSuite.smartSpriteFX.Effects.Filters;
 using smartSuite.smartSpriteFX.Pictures;
 using Rhino.Mocks;
 using System.Collections.Generic;
+using smartSuite.smartSpriteFX.PictureEngine.Pictures.Data;
 
 namespace smartSuite.smartSpriteFX.SpriteEffectModule.Test.Effects.Filters
 {
     [TestClass]
     public class FrameRateFilterTest
     {
+        [TestCleanup]
+        public void TearDown()
+        {
+            PictureDatabase.Clear();
+        }
+
         [TestMethod]
         public void TestApplyFilter()
         {

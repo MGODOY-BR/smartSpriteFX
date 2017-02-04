@@ -371,15 +371,15 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
         /// <summary>
         /// Gets the list of results using custom filter
         /// </summary>
-        /// <param name="commandString">A commandString such as WHERE clause in SQL format to filter the datas. It´s mandatory to have the parameter @SESSIONID among them.</param>
-        /// <param name="parameterList">Zero or more parameters (starting by "@") to suply values to commandString. However, you mustns't yose @SESSIONID parameter. Use <see cref="PictureDatabase.CreateDbParameter(string, object)"/> method to create it.</param>
+        /// <param name="whereClause">A commandString such as WHERE clause in SQL format to filter the datas.</param>
+        /// <param name="parameterList">Zero or more parameters (starting by "@") to suply values to commandString. Use <see cref="PictureDatabase.CreateDbParameter(string, object)"/> method to create it.</param>
         /// <example>
         /// X=1 AND Y=3 AND SESSIONID='@SESSIONID';
         /// </example>
         /// <returns>
         /// The columns of TB_PICTURE are:
         /// <list type="bullet">
-        /// <item>SESSIONID - It´s the identification of current image. It´s need be included in JOIN clauses</item>
+        /// <item>SESSIONID - It´s the identification of current image</item>
         /// <item>X - It´s the coordinate X</item>
         /// <item>Y - It´s the coordinate Y</item>
         /// <item>A - It´s the component A of color</item>
@@ -388,7 +388,33 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
         /// <item>B - It´s the component B of color</item>
         /// </list>
         /// </returns>
-        public IDataReader SELECT(String commandString, params DbParameter[] parameterList)
+        public IDataReader SELECT(String whereClause, params DbParameter[] parameterList)
+        {
+            DataRow[] rowArray = SELECT2(whereClause, parameterList);
+            return new RowDataReader(rowArray);
+        }
+
+        /// <summary>
+        /// Gets the list of results using custom filter
+        /// </summary>
+        /// <param name="whereClause">A commandString such as WHERE clause in SQL format to filter the datas.</param>
+        /// <param name="parameterList">Zero or more parameters (starting by "@") to suply values to commandString. Use <see cref="PictureDatabase.CreateDbParameter(string, object)"/> method to create it.</param>
+        /// <example>
+        /// X=1 AND Y=3 AND SESSIONID='@SESSIONID';
+        /// </example>
+        /// <returns>
+        /// The columns of TB_PICTURE are:
+        /// <list type="bullet">
+        /// <item>SESSIONID - It´s the identification of current image</item>
+        /// <item>X - It´s the coordinate X</item>
+        /// <item>Y - It´s the coordinate Y</item>
+        /// <item>A - It´s the component A of color</item>
+        /// <item>R - It´s the component R of color</item>
+        /// <item>G - It´s the component G of color</item>
+        /// <item>B - It´s the component B of color</item>
+        /// </list>
+        /// </returns>
+        public DataRow[] SELECT2(string whereClause, params DbParameter[] parameterList)
         {
             #region Entries validation
 
@@ -399,8 +425,10 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
 
             #endregion
 
-            String where =
-                "SESSIONID = '@SESSIONID'"
+            String where = "(" + whereClause + ")";
+
+            where +=
+                "AND SESSIONID = '@SESSIONID'"
                         .Replace("@SESSIONID", this._sessionID);
 
             foreach (var parameterItem in parameterList)
@@ -409,13 +437,14 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
                     .Replace(parameterItem.ParameterName, parameterItem.Value.ToString());
             }
 
+            DataRow[] rowArray = null;
             lock (PictureDatabase._dataSource)
             {
-                var rowArray =
-                PictureDatabase._dataSource.Select(where);
-
-                return PictureDatabase._dataSource.CreateDataReader();
+                rowArray =
+                    PictureDatabase._dataSource.Select(where);
             }
+
+            return rowArray;
         }
 
         /// <summary>
@@ -519,6 +548,26 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
         }
 
         /// <summary>
+        /// Clear all the cache
+        /// </summary>
+        internal static void Clear()
+        {
+            #region Entries validation
+
+            if (PictureDatabase._dataSource == null)
+            {
+                return;
+            }
+
+            #endregion
+
+            lock (PictureDatabase._dataSource)
+            {
+                PictureDatabase._dataSource.Clear();
+            }
+        }
+
+        /// <summary>
         /// Deletes all the content of table
         /// </summary>
         public void CLEAR()
@@ -563,6 +612,8 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
 
             PictureDatabase returnValue = new PictureDatabase();
             returnValue._sessionID = Guid.NewGuid().ToString();
+
+            returnValue.CLEAR();
 
             lock (PictureDatabase._dataSource)
             {

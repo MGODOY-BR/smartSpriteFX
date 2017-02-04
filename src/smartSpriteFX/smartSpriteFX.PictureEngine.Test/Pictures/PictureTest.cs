@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using smartSuite.smartSpriteFX.Pictures;
 using System.Linq;
 using System.Drawing;
+using smartSuite.smartSpriteFX.PictureEngine.Pictures.Data;
 
 namespace smartSuite.smartSpriteFX.PictureEngine.Test
 {
@@ -13,6 +14,12 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Test
         public void Setup()
         {
             // Picture.ClearCache();
+        }
+
+        [TestCleanup]
+        public void TearDown()
+        {
+            PictureDatabase.Clear();
         }
 
         [TestMethod]

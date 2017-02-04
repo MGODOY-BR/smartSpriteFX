@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using smartSuite.smartSpriteFX.Pictures;
 using smartSuite.smartSpriteFX.Effects.Filters;
 using smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters;
+using smartSuite.smartSpriteFX.PictureEngine.Pictures.Data;
 
 namespace smartSuite.smartSpriteFX.SpriteEffectModule.Test.Effects.Filters
 {
@@ -13,6 +14,12 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Test.Effects.Filters
         public void Setup()
         {
             // Picture.ClearCache();
+        }
+
+        [TestCleanup]
+        public void TearDown()
+        {
+            PictureDatabase.Clear();
         }
 
         [TestMethod]

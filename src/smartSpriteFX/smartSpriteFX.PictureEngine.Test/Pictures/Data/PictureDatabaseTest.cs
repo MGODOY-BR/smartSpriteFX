@@ -8,6 +8,12 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Test.Pictures.Data
     [TestClass]
     public class PictureDatabaseTest
     {
+        [TestCleanup]
+        public void TearDown()
+        {
+            PictureDatabase.Clear();
+        }
+
         [TestMethod]
         public void TestOpenAndClose()
         {

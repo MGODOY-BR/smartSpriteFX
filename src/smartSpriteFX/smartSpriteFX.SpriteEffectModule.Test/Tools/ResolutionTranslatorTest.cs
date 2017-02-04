@@ -2,12 +2,19 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using smartSuite.smartSpriteFX.Effects.Tools;
 using smartSuite.smartSpriteFX.Pictures;
+using smartSuite.smartSpriteFX.PictureEngine.Pictures.Data;
 
 namespace smartSuite.smartSpriteFX.SpriteEffectModule.Test.Tools
 {
     [TestClass]
     public class ResolutionTranslatorTest
     {
+        [TestCleanup]
+        public void TearDown()
+        {
+            PictureDatabase.Clear();
+        }
+
         [TestMethod]
         public void CreatedTranslatedPictureTest()
         {
