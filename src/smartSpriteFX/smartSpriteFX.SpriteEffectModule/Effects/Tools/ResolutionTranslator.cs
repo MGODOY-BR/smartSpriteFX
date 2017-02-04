@@ -293,16 +293,7 @@ namespace smartSuite.smartSpriteFX.Effects.Tools{
                 // Changing the internal buffer
                 foreach (var translatedPixelItem in this._translatedPixel)
                 {
-                    clonePicture.ReplacePixel(
-                        translatedPixelItem);
-                    // TODO: Criar opção à ToPointList. Queremos o range mesmo para possivelmente usar na cláusula WHERE em ReplacePixel (que deve ter modificação nesse sentido)
-                    //foreach (var pointItem in translatedPixelItem.ToPointList())
-                    //{
-                    //    clonePicture.ReplacePixel(
-                    //        (int)pointItem.X,
-                    //        (int)pointItem.Y,
-                    //        translatedPixelItem.Color);
-                    //}
+                    clonePicture.ReplacePixel(translatedPixelItem);
                 }
 
                 clonePicture.endBatchUpdate();
