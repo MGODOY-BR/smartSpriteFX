@@ -12,6 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
+using smartSuite.smartSpriteFX.PictureEngine.Pictures.Data;
 
 namespace smartSuite.smartSpriteFX.Effects.Core{
 	/// <summary>
@@ -277,6 +278,7 @@ namespace smartSuite.smartSpriteFX.Effects.Core{
             // Loads the filteres
             FilterCollection.Load();
 
+            PictureDatabase.Clear();
             // Loading animation folder
             EffectEngine._iterator = FrameIterator.Open(fullPath);
         }

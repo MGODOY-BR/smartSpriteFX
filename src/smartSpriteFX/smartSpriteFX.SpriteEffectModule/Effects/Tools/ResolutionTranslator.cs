@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 
 namespace smartSuite.smartSpriteFX.Effects.Tools{
 	/// <summary>
@@ -289,15 +290,45 @@ namespace smartSuite.smartSpriteFX.Effects.Tools{
             try
             {
                 clonePicture.beginBatchUpdate();
-                
+
+                List<AutoResetEvent> semaphoreList = new List<AutoResetEvent>();
+                ThreadPool.SetMinThreads(1, 500);
+                ThreadPool.SetMaxThreads(200000, 2000000);
+
                 // Changing the internal buffer
                 foreach (var translatedPixelItem in this._translatedPixel)
                 {
-                    // clonePicture.ReplacePixel(translatedPixelItem);
-                    foreach (var pointItem in translatedPixelItem.ToPointList())
+                    AutoResetEvent sign = new AutoResetEvent(false);
+                    semaphoreList.Add(sign);
+
+                    object[] stateArgs = new object[2] {translatedPixelItem, sign };
+
+                    WaitCallback replacePixelDelegate = new WaitCallback(delegate (object state)
                     {
-                        clonePicture.ReplacePixel((int)pointItem.X, (int)pointItem.Y, translatedPixelItem.Color);
-                    }
+                        object[] args = (object[])state;
+                        PointRange pointRange = (PointRange)args[0];
+                        AutoResetEvent autoResetEvent = (AutoResetEvent)args[1];
+
+                        try
+                        {
+                            // clonePicture.ReplacePixel(translatedPixelItem);
+                            foreach (var pointItem in pointRange.ToPointList())
+                            {
+                                clonePicture.ReplacePixel((int)pointItem.X, (int)pointItem.Y, pointRange.Color);
+                            }
+                        }
+                        finally
+                        {
+                            autoResetEvent.Set();
+                        }
+                    });
+
+                    ThreadPool.QueueUserWorkItem(replacePixelDelegate, stateArgs);
+                }
+
+                foreach (AutoResetEvent signItem in semaphoreList)
+                {
+                    signItem.WaitOne();
                 }
 
                 clonePicture.endBatchUpdate();
