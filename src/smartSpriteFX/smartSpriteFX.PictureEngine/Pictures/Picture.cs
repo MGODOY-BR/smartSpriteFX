@@ -314,8 +314,8 @@ namespace smartSuite.smartSpriteFX.Pictures
                     {
                         AutoResetEvent sign = new AutoResetEvent(false);
                         semaphoreList.Add(sign);
-                        var colorInfo = new ColorInfo(image.GetPixel(x, y));
-                        object[] stateArgs = new object[4] { x, y, colorInfo, sign };
+                        var color = image.GetPixel(x, y);
+                        object[] stateArgs = new object[4] { x, y, color, sign };
 
                         WaitCallback pixelProcessingDelegate = new WaitCallback(delegate (object state)
                         {
@@ -323,12 +323,12 @@ namespace smartSuite.smartSpriteFX.Pictures
 
                             int xx = (int)args[0];
                             int yy = (int)args[1];
-                            ColorInfo myColorInfo = (ColorInfo)args[2];
+                            Color myColor = (Color)args[2];
                             AutoResetEvent mySign = (AutoResetEvent)args[3];
 
                             try
                             {
-                                this.LoadColorInfoCache(yy, xx, myColorInfo);
+                                this.SetPixel(xx, yy, myColor);
                             }
                             finally
                             {
@@ -363,11 +363,11 @@ namespace smartSuite.smartSpriteFX.Pictures
         /// </summary>
         /// <param name="y"></param>
         /// <param name="x"></param>
-        /// <param name="colorInfo"></param>
-        private void LoadColorInfoCache(int y, int x, ColorInfo colorInfo)
+        /// <param name="color"></param>
+        public void SetPixel(int x, int y, Color color)
         {
             // Save private picture
-            this._buffer.INSERT(x, y, colorInfo.GetInnerColor());
+            this._buffer.INSERT(x, y, color);
         }
 
         /// <summary>
@@ -402,11 +402,24 @@ namespace smartSuite.smartSpriteFX.Pictures
         /// Creates and returns a copy of the object
         /// </summary>
         /// <returns></returns>
-        internal Picture Clone()
+        public Picture Clone()
+        {
+            return this.Clone(CloneMode.Full);
+        }
+
+        /// <summary>
+        /// Creates and returns a copy of the object
+        /// </summary>
+        /// <param name="cloneMode">It´s the mode of clonage</param>
+        /// <returns></returns>
+        public Picture Clone(CloneMode cloneMode)
         {
             Picture clone = new Picture();
 
-            clone._buffer = this._buffer.Clone();
+            if (cloneMode == CloneMode.Full)
+            {
+                clone._buffer = this._buffer.Clone();
+            }
 
             // Copying another attributes
             clone._height = this._height;
@@ -922,6 +935,15 @@ namespace smartSuite.smartSpriteFX.Pictures
             #endregion
 
             this._buffer.rollbackTransaction();
+        }
+
+        /// <summary>
+        /// It´s the mode of clone operation
+        /// </summary>
+        public enum CloneMode
+        {
+            Full,
+            StructureOnly
         }
     }
 }

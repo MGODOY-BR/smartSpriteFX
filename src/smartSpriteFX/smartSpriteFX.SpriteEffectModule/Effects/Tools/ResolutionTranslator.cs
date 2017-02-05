@@ -210,11 +210,13 @@ namespace smartSuite.smartSpriteFX.Effects.Tools{
 
             if (x < 0 || x > this._originalPicture.Width)
             {
-                throw new ArgumentOutOfRangeException("Invalid x coordinate");
+                // throw new ArgumentOutOfRangeException("Invalid x coordinate");
+                return;
             }
             if (y < 0 || y > this._originalPicture.Height)
             {
-                throw new ArgumentOutOfRangeException("Invalid y coordinate");
+                // throw new ArgumentOutOfRangeException("Invalid y coordinate");
+                return;
             }
             if (this.PointOcuppied(x, y, this._resolutionTax))
             {
@@ -285,7 +287,7 @@ namespace smartSuite.smartSpriteFX.Effects.Tools{
 		public Picture CreatedTranslatedPicture()
         {
             // Copying picture
-            Picture clonePicture = this._originalPicture.Clone();
+            Picture clonePicture = this._originalPicture.Clone(Picture.CloneMode.StructureOnly);
 
             try
             {
@@ -314,7 +316,8 @@ namespace smartSuite.smartSpriteFX.Effects.Tools{
                             // clonePicture.ReplacePixel(translatedPixelItem);
                             foreach (var pointItem in pointRange.ToPointList())
                             {
-                                clonePicture.ReplacePixel((int)pointItem.X, (int)pointItem.Y, pointRange.Color);
+                                // clonePicture.ReplacePixel((int)pointItem.X, (int)pointItem.Y, pointRange.Color);
+                                clonePicture.SetPixel((int)pointItem.X, (int)pointItem.Y, pointRange.Color);
                             }
                         }
                         finally
