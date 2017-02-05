@@ -563,6 +563,35 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
             }
         }
 
+
+        /// <summary>
+        /// Checks if exists the color for the coordinates
+        /// </summary>
+        /// <returns></returns>
+        public bool EXISTS(smartSpriteFX.Pictures.Point point)
+        {
+            #region Entries validation
+
+            if (PictureDatabase._dataSource == null)
+            {
+                throw new ArgumentNullException("PictureDatabase._dataSource", "Connection hadn't been opened yet.");
+            }
+
+            #endregion
+
+            String commandString =
+                "SESSIONID = '@SESSIONID' AND X = @X AND Y = @Y"
+                        .Replace("@SESSIONID", this._sessionID)
+                        .Replace("@X", point.X.ToString())
+                        .Replace("@Y", point.Y.ToString());
+
+            lock (PictureDatabase._dataSource)
+            {
+                var reader = PictureDatabase._dataSource.CreateDataReader();
+                return reader.Read();
+            }
+        }
+
         /// <summary>
         /// Clear all the cache
         /// </summary>

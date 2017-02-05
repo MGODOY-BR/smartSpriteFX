@@ -938,6 +938,29 @@ namespace smartSuite.smartSpriteFX.Pictures
         }
 
         /// <summary>
+        /// Indicates if a point exists in picture
+        /// </summary>
+        /// <param name="point"></param>
+        /// <returns></returns>
+        public bool Contains(PointInfo point)
+        {
+            #region Entries validation
+
+            if (point == null)
+            {
+                throw new ArgumentNullException("point");
+            }
+            if (this._buffer == null)
+            {
+                throw new ArgumentNullException("this._buffer");
+            }
+
+            #endregion
+
+            return this._buffer.EXISTS(point);
+        }
+
+        /// <summary>
         /// It´s the mode of clone operation
         /// </summary>
         public enum CloneMode
