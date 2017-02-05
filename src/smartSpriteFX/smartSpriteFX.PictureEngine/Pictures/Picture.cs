@@ -6,6 +6,7 @@ using smartSuite.smartSpriteFX.Pictures.ColorPattern;
 using smartSuite.smartSpriteFX.Utilities;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
@@ -346,10 +347,10 @@ namespace smartSuite.smartSpriteFX.Pictures
 
                 this._buffer.commitTransaction();
             }
-            catch
+            catch(Exception ex)
             {
                 this._buffer.rollbackTransaction();
-                throw;
+                throw ex;
             }
 
             this.ColorCount = this._buffer.CountColor();
@@ -619,21 +620,37 @@ namespace smartSuite.smartSpriteFX.Pictures
 
             #endregion
 
-            var affectedRowList =
-                this._buffer.SELECT2(
-                    String.Format(
-                        "(X >= {0} AND X <= {1}) AND (Y >= {2} AND Y <= {3})",
-                        pointRange.StartPoint.X,
-                        pointRange.EndPoint.X,
-                        pointRange.StartPoint.Y,
-                        pointRange.EndPoint.Y));
-
-            foreach (var affectedRowItem in affectedRowList)
+            lock (this._buffer)
             {
-                affectedRowItem["A"] = pointRange.Color.A;
-                affectedRowItem["R"] = pointRange.Color.R;
-                affectedRowItem["G"] = pointRange.Color.G;
-                affectedRowItem["B"] = pointRange.Color.B;
+                var affectedRowList =
+                        from rowItem in this._buffer.AsEnumerable()
+                        where
+                            rowItem.Field<string>("SESSIONID") == this._buffer.SessionID && (rowItem.RowState == DataRowState.Unchanged || rowItem.RowState == DataRowState.Added)
+                            && 
+                            (
+                                rowItem.Field<int>("X") >= pointRange.StartPoint.X &&
+                                rowItem.Field<int>("X") <= pointRange.StartPoint.X &&
+                                rowItem.Field<int>("Y") >= pointRange.EndPoint.Y &&
+                                rowItem.Field<int>("Y") <= pointRange.EndPoint.Y
+                            )
+                        select rowItem;
+
+                try
+                {
+                    foreach (var affectedRowItem in affectedRowList)
+                    {
+                        affectedRowItem.BeginEdit();
+                        affectedRowItem["A"] = pointRange.Color.A;
+                        affectedRowItem["R"] = pointRange.Color.R;
+                        affectedRowItem["G"] = pointRange.Color.G;
+                        affectedRowItem["B"] = pointRange.Color.B;
+                        affectedRowItem.EndEdit();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
             }
         }
 

@@ -1,5 +1,6 @@
 ﻿using smartSuite.smartSpriteFX.Pictures.ColorPattern;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
@@ -30,6 +31,17 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
         /// </summary>
         private PictureDatabase()
         {
+        }
+
+        /// <summary>
+        /// Gets the identification of session
+        /// </summary>
+        public string SessionID
+        {
+            get
+            {
+                return this._sessionID;
+            }
         }
 
         /// <summary>
@@ -162,7 +174,7 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
                         "SESSIONID='@SESSIONID' AND X = @X AND Y = @Y"
                             .Replace("@SESSIONID", this._sessionID)
                             .Replace("@X", x.ToString())
-                            .Replace("@Y", y.ToString()));
+                            .Replace("@Y", y.ToString()), "", DataViewRowState.CurrentRows);
 
                 foreach (var rowItem in rowArray)
                 {
@@ -204,7 +216,7 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
                             .Replace("@A", color.A.ToString())
                             .Replace("@R", color.R.ToString())
                             .Replace("@G", color.G.ToString())
-                            .Replace("@B", color.B.ToString()));
+                            .Replace("@B", color.B.ToString()), "", DataViewRowState.CurrentRows);
 
                 foreach (var rowItem in rowArray)
                 {
@@ -246,7 +258,7 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
                     "SESSIONID='@SESSIONID' AND X = @X AND Y = @Y"
                         .Replace("@SESSIONID", this._sessionID)
                         .Replace("@X", x.ToString())
-                        .Replace("@Y", y.ToString()));
+                        .Replace("@Y", y.ToString()), "", DataViewRowState.CurrentRows);
 
                 if (rowArray.Length == 0)
                 {
@@ -305,7 +317,7 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
                         .Replace("@A", color.A.ToString())
                         .Replace("@R", color.R.ToString())
                         .Replace("@G", color.G.ToString())
-                        .Replace("@B", color.B.ToString()));
+                        .Replace("@B", color.B.ToString()), "", DataViewRowState.CurrentRows);
 
                 List<smartSuite.smartSpriteFX.Pictures.Point> returnValue = new List<smartSpriteFX.Pictures.Point>();
 
@@ -344,7 +356,7 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
                 var rowArray =
                         PictureDatabase._dataSource.Select(
                             "SESSIONID = '@SESSIONID'"
-                                .Replace("@SESSIONID", this._sessionID));
+                                .Replace("@SESSIONID", this._sessionID), "", DataViewRowState.CurrentRows);
 
                 List<PointInfo> returnValue = new List<PointInfo>();
 
@@ -437,14 +449,10 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
                     .Replace(parameterItem.ParameterName, parameterItem.Value.ToString());
             }
 
-            DataRow[] rowArray = null;
             lock (PictureDatabase._dataSource)
             {
-                rowArray =
-                    PictureDatabase._dataSource.Select(where);
+                return PictureDatabase._dataSource.Select(where, "", DataViewRowState.CurrentRows);
             }
-
-            return rowArray;
         }
 
         /// <summary>
@@ -563,7 +571,9 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
 
             lock (PictureDatabase._dataSource)
             {
+                PictureDatabase._dataSource.RejectChanges();
                 PictureDatabase._dataSource.Clear();
+                PictureDatabase._dataSource.AcceptChanges();
             }
         }
 
@@ -586,7 +596,7 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
 
             lock (PictureDatabase._dataSource)
             {
-                var rowList = PictureDatabase._dataSource.Select(commandString);
+                var rowList = PictureDatabase._dataSource.Select(commandString, "", DataViewRowState.CurrentRows);
                 foreach (var rowItem in rowList)
                 {
                     PictureDatabase._dataSource.Rows.Remove(rowItem);
@@ -620,7 +630,7 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
                 var sourceRowList =
                     PictureDatabase._dataSource.Select(
                         "SESSIONID='@SESSIONID'"
-                            .Replace("@SESSIONID", this._sessionID));
+                            .Replace("@SESSIONID", this._sessionID), "", DataViewRowState.CurrentRows);
 
                 foreach (var sourceRowItem in sourceRowList)
                 {
@@ -666,7 +676,7 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
                 var sourceRowList =
                     PictureDatabase._dataSource.Select(
                         "SESSIONID='@SESSIONID'"
-                            .Replace("@SESSIONID", other._sessionID));
+                            .Replace("@SESSIONID", other._sessionID), "", DataViewRowState.CurrentRows);
 
                 foreach (var sourceRowItem in sourceRowList)
                 {
@@ -705,7 +715,7 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
             lock (PictureDatabase._dataSource)
             {
                 var result = from rowItem in PictureDatabase._dataSource.AsEnumerable()
-                             where rowItem.Field<string>("SESSIONID") == this._sessionID
+                             where rowItem.Field<string>("SESSIONID") == this._sessionID && (rowItem.RowState == DataRowState.Unchanged || rowItem.RowState == DataRowState.Added)
                              group rowItem by new
                              {
                                  A = rowItem.Field<int>("A"),
@@ -717,6 +727,15 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
 
                 return result.Count();
             }
+        }
+
+        /// <summary>
+        /// Gets a version of main dataSource for use in Linq filter
+        /// </summary>
+        /// <returns></returns>
+        public EnumerableRowCollection<DataRow> AsEnumerable()
+        {
+            return PictureDatabase._dataSource.AsEnumerable();
         }
 
         /// <summary>
@@ -743,7 +762,14 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
 
             lock (PictureDatabase._dataSource)
             {
-                PictureDatabase._dataSource.RejectChanges();
+                try
+                {
+                    PictureDatabase._dataSource.RejectChanges();
+                }
+                catch
+                {
+                    // Errors here can't turn around the flow
+                }
             }
         }
 

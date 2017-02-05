@@ -298,10 +298,10 @@ namespace smartSuite.smartSpriteFX.Effects.Tools{
 
                 clonePicture.endBatchUpdate();
             }
-            catch
+            catch(Exception ex)
             {
                 clonePicture.cancelBatchUpdate();
-                throw;
+                throw ex;
             }
 
             return clonePicture;
