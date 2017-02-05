@@ -293,7 +293,11 @@ namespace smartSuite.smartSpriteFX.Effects.Tools{
                 // Changing the internal buffer
                 foreach (var translatedPixelItem in this._translatedPixel)
                 {
-                    clonePicture.ReplacePixel(translatedPixelItem);
+                    // clonePicture.ReplacePixel(translatedPixelItem);
+                    foreach (var pointItem in translatedPixelItem.ToPointList())
+                    {
+                        clonePicture.ReplacePixel((int)pointItem.X, (int)pointItem.Y, translatedPixelItem.Color);
+                    }
                 }
 
                 clonePicture.endBatchUpdate();
