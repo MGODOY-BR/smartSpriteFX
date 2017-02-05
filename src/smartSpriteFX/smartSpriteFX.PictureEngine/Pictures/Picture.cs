@@ -301,8 +301,8 @@ namespace smartSuite.smartSpriteFX.Pictures
             this._buffer.CLEAR();
 
             List<AutoResetEvent> semaphoreList = new List<AutoResetEvent>();
-            ThreadPool.SetMinThreads(10, 10);
-            ThreadPool.SetMaxThreads(1000, 1000);
+            ThreadPool.SetMinThreads(1, 500);
+            ThreadPool.SetMaxThreads(2000, 20000);
 
             try
             {

@@ -5,8 +5,11 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
 using System.Data.OleDb;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
@@ -16,6 +19,11 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
     /// </summary>
     internal class PictureDatabase
     {
+        /// <summary>
+        /// It´s the start timeof transaction
+        /// </summary>
+        private DateTime? _transactionStartTime;
+
         /// <summary>
         /// It´s the sessionID of datas.
         /// </summary>
@@ -108,9 +116,9 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
                     "PK",
                     new DataColumn[3]
                     {
-                    PictureDatabase._dataSource.Columns["SESSIONID"],
-                    PictureDatabase._dataSource.Columns["X"],
-                    PictureDatabase._dataSource.Columns["Y"]
+                        PictureDatabase._dataSource.Columns["SESSIONID"],
+                        PictureDatabase._dataSource.Columns["X"],
+                        PictureDatabase._dataSource.Columns["Y"]
                     },
                     true);
             }
@@ -744,11 +752,13 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
         public void beginTransaction()
         {
             // HACK: Initially, this was prepared for SQlite and another databases.
+            this._transactionStartTime = DateTime.Now;
         }
 
         /// <summary>
         /// Rolls back the transaction
         /// </summary>
+        [MethodImpl(MethodImplOptions.NoInlining)]
         public void rollbackTransaction()
         {
             #region Entries validation
@@ -770,12 +780,14 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
                 {
                     // Errors here can't turn around the flow
                 }
+                this.printTransactionTime(new StackFrame(1, true).GetMethod().Name);
             }
         }
 
         /// <summary>
         /// Commits the transaction
         /// </summary>
+        [MethodImpl(MethodImplOptions.NoInlining)]
         public void commitTransaction()
         {
             #region Entries validation
@@ -789,8 +801,34 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
 
             lock (PictureDatabase._dataSource)
             {
-                PictureDatabase._dataSource.AcceptChanges();
+                try
+                {
+                    PictureDatabase._dataSource.AcceptChanges();
+                }
+                finally
+                {
+                    this.printTransactionTime(new StackFrame(1, true).GetMethod().Name);
+                }
             }
+        }
+
+        /// <summary>
+        /// Prints the transaction time
+        /// </summary>
+        private void printTransactionTime(String calledMethod)
+        {
+            #region Entries validation
+
+            if (!this._transactionStartTime.HasValue)
+            {
+                return;
+            }
+
+            #endregion
+
+            TimeSpan time = DateTime.Now.Subtract(this._transactionStartTime.Value);
+            Console.WriteLine("[" + calledMethod + "] Ending transaction. Time: " + time.ToString(@"hh\:mm\:ss"));
+            this._transactionStartTime = null;
         }
     }
 }
