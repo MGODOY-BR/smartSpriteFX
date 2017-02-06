@@ -339,9 +339,14 @@ namespace smartSuite.smartSpriteFX.Effects.Tools{
                                     where !clonePicture.Contains(item)
                                     select item;
 
-                clonePicture.endBatchUpdate();
+                foreach (var lackPointItem in lackPointList)
+                {
+                    clonePicture.SetPixel((int)lackPointItem.X, (int)lackPointItem.Y, lackPointItem.Color);
+                }
+
+                // clonePicture.endBatchUpdate(); // <-- This is freezing th program
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 clonePicture.cancelBatchUpdate();
                 throw ex;

@@ -873,7 +873,7 @@ namespace smartSuite.smartSpriteFX.Pictures
         /// <summary>
         /// Releases buffer
         /// </summary>
-        internal void ReleaseBuffer()
+        public void ReleaseBuffer()
         {
             #region Entries validation
 

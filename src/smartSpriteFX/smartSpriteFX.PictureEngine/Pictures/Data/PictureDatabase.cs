@@ -608,9 +608,11 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
 
             lock (PictureDatabase._dataSource)
             {
-                PictureDatabase._dataSource.RejectChanges();
-                PictureDatabase._dataSource.Clear();
-                PictureDatabase._dataSource.AcceptChanges();
+                //PictureDatabase._dataSource.RejectChanges();
+                //PictureDatabase._dataSource.Clear();
+                //PictureDatabase._dataSource.AcceptChanges();
+                PictureDatabase._dataSource.Dispose();
+                PictureDatabase._dataSource = null;
             }
         }
 
@@ -625,21 +627,37 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
             {
                 throw new ArgumentNullException("PictureDatabase._dataSource", "Connection hadn't been opened yet.");
             }
+            if (PictureDatabase._dataSource.Rows.Count == 0)
+            {
+                return;
+            }
+            if (PictureDatabase._dataSource.Columns.Count == 0)
+            {
+                return;
+            }
 
             #endregion
 
-            String commandString = "SESSIONID = '@SESSIONID'"
-                    .Replace("@SESSIONID", this._sessionID);
+            #region This was making the program freezes
 
-            lock (PictureDatabase._dataSource)
-            {
-                var rowList = PictureDatabase._dataSource.Select(commandString, "", DataViewRowState.CurrentRows);
-                foreach (var rowItem in rowList)
-                {
-                    PictureDatabase._dataSource.Rows.Remove(rowItem);
-                }
-                PictureDatabase._dataSource.AcceptChanges();
-            }
+            //String commandString = "SESSIONID = '@SESSIONID'"
+            //    .Replace("@SESSIONID", this._sessionID);
+
+            //        lock (PictureDatabase._dataSource)
+            //        {
+            //            var rowList = PictureDatabase._dataSource.Select(commandString, "", DataViewRowState.CurrentRows);
+            //            for (int i = 0; i < rowList.Length; i++)
+            //            {
+            //                var rowItem = rowList[i];
+            //                PictureDatabase._dataSource.Rows.Remove(rowItem);
+            //            }
+            //            PictureDatabase._dataSource.AcceptChanges();
+            //        }
+
+            #endregion
+
+            // Workaround to ignore existent datas
+            this._sessionID = Guid.NewGuid().ToString();
         }
 
         /// <summary>
