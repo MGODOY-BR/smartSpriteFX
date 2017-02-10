@@ -30,9 +30,14 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
         private String _sessionID;
 
         /// <summary>
+        /// Relates the key with the point in dataSource
+        /// </summary>
+        private Dictionary<String, PointInfo> _dataSourceIndex;
+
+        /// <summary>
         /// It´s a datasource
         /// </summary>
-        private static DataTable _dataSource;
+        private List<PointInfo> _dataSource;
 
         /// <summary>
         /// This constructor has been created for goals of design and can not be used for external calls
@@ -59,13 +64,8 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
         public static PictureDatabase Open()
         {
             PictureDatabase returnValue = new PictureDatabase();
-            lock (typeof(PictureDatabase))
-            {
-                if (PictureDatabase._dataSource == null)
-                {
-                    PictureDatabase._dataSource = new DataTable("TB_PICTURE");
-                }
-            }
+            returnValue._dataSource = new List<PointInfo>();
+            returnValue._dataSourceIndex = new Dictionary<string, PointInfo>();
             returnValue._sessionID = Guid.NewGuid().ToString();
 
             return returnValue;
@@ -76,7 +76,7 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
         /// </summary>
         public void Close()
         {
-            if (PictureDatabase._dataSource == null)
+            if (this._dataSource == null)
             {
                 return;
             }
@@ -91,37 +91,12 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
         {
             #region Entries validation
 
-            if (PictureDatabase._dataSource == null)
+            if (this._dataSource == null)
             {
-                throw new ArgumentNullException("PictureDatabase._dataSource", "Connection hadn't been opened yet.");
-            }
-            if (PictureDatabase._dataSource.Columns.Count != 0)
-            {
-                return;
+                throw new ArgumentNullException("this._dataSource", "Connection hadn't been opened yet.");
             }
 
             #endregion
-
-            lock (PictureDatabase._dataSource)
-            {
-                PictureDatabase._dataSource.Columns.Add("SESSIONID", typeof(String));
-                PictureDatabase._dataSource.Columns.Add("X", typeof(Int32));
-                PictureDatabase._dataSource.Columns.Add("Y", typeof(Int32));
-                PictureDatabase._dataSource.Columns.Add("A", typeof(Int32));
-                PictureDatabase._dataSource.Columns.Add("R", typeof(Int32));
-                PictureDatabase._dataSource.Columns.Add("G", typeof(Int32));
-                PictureDatabase._dataSource.Columns.Add("B", typeof(Int32));
-
-                PictureDatabase._dataSource.Constraints.Add(
-                    "PK",
-                    new DataColumn[3]
-                    {
-                        PictureDatabase._dataSource.Columns["SESSIONID"],
-                        PictureDatabase._dataSource.Columns["X"],
-                        PictureDatabase._dataSource.Columns["Y"]
-                    },
-                    true);
-            }
         }
 
         /// <summary>
@@ -134,26 +109,19 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
         {
             #region Entries validation
 
-            if (PictureDatabase._dataSource == null)
+            if (this._dataSource == null)
             {
-                throw new ArgumentNullException("PictureDatabase._dataSource", "Connection hadn't been opened yet.");
+                throw new ArgumentNullException("this._dataSource", "Connection hadn't been opened yet.");
             }
 
             #endregion
 
-            lock (PictureDatabase._dataSource)
+            lock (this._dataSource)
             {
-                var row = PictureDatabase._dataSource.NewRow();
+                var row = new PointInfo(x, y, color);
 
-                row["SESSIONID"] = this._sessionID;
-                row["X"] = x;
-                row["Y"] = y;
-                row["A"] = color.A;
-                row["R"] = color.R;
-                row["G"] = color.G;
-                row["B"] = color.B;
-
-                PictureDatabase._dataSource.Rows.Add(row);
+                this._dataSource.Add(row);
+                this._dataSourceIndex.Add(row.ToString(), row);
             }
         }
 
@@ -168,35 +136,25 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
         {
             #region Entries validation
 
-            if (PictureDatabase._dataSource == null)
+            if (this._dataSource == null)
             {
-                throw new ArgumentNullException("PictureDatabase._dataSource", "Connection hadn't been opened yet.");
+                throw new ArgumentNullException("this._dataSource", "Connection hadn't been opened yet.");
             }
 
             #endregion
 
-            lock (PictureDatabase._dataSource)
-            {
-                var rowArray =
-                    PictureDatabase._dataSource.Select(
-                        "SESSIONID='@SESSIONID' AND X = @X AND Y = @Y"
-                            .Replace("@SESSIONID", this._sessionID)
-                            .Replace("@X", x.ToString())
-                            .Replace("@Y", y.ToString()), "", DataViewRowState.CurrentRows);
+            PointInfo pointInfoRef = new PointInfo(x, y, color);
 
-                foreach (var rowItem in rowArray)
+            lock (pointInfoRef.ToString())
+            {
+                if (!this._dataSourceIndex.ContainsKey(pointInfoRef.ToString()))
                 {
-                    rowItem.BeginEdit();
-                    rowItem["A"] = color.A;
-                    rowItem["R"] = color.R;
-                    rowItem["G"] = color.G;
-                    rowItem["B"] = color.B;
-                    rowItem.EndEdit();
+                    return 0;
                 }
 
-                // PictureDatabase._dataSource.AcceptChanges();
-
-                return rowArray.Length;
+                var item = this._dataSourceIndex[pointInfoRef.ToString()];
+                item.Color = color;
+                return 1;
             }
        }
 
@@ -208,38 +166,26 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
         {
             #region Entries validation
 
-            if (PictureDatabase._dataSource == null)
+            if (this._dataSource == null)
             {
-                throw new ArgumentNullException("PictureDatabase._dataSource", "Connection hadn't been opened yet.");
+                throw new ArgumentNullException("this._dataSource", "Connection hadn't been opened yet.");
             }
 
             #endregion
 
-            lock (PictureDatabase._dataSource)
+            var affectResult = from row in this._dataSource
+                               where color.ToArgb() == row.Color.ToArgb()
+                               select row;
+
+            foreach (var affectRow in affectResult)
             {
-                var rowArray =
-                    PictureDatabase._dataSource.Select(
-                            "SESSIONID = '@SESSIONID', A = @A, R = @R, G = @G, B = @B;"
-                            .Replace("@SESSIONID", this._sessionID)
-                            .Replace("@A", color.A.ToString())
-                            .Replace("@R", color.R.ToString())
-                            .Replace("@G", color.G.ToString())
-                            .Replace("@B", color.B.ToString()), "", DataViewRowState.CurrentRows);
-
-                foreach (var rowItem in rowArray)
+                lock (affectRow.ToString())
                 {
-                    rowItem.BeginEdit();
-                    rowItem["A"] = replaceColor.A;
-                    rowItem["R"] = replaceColor.R;
-                    rowItem["G"] = replaceColor.G;
-                    rowItem["B"] = replaceColor.B;
-                    rowItem.EndEdit();
+                    affectRow.Color = replaceColor;
                 }
-
-                PictureDatabase._dataSource.AcceptChanges();
-
-                return rowArray.Length;
             }
+
+            return affectResult.Count();
         }
 
         /// <summary>
@@ -252,36 +198,21 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
         {
             #region Entries validation
 
-            if (PictureDatabase._dataSource == null)
+            if (this._dataSource == null)
             {
-                throw new ArgumentNullException("PictureDatabase._dataSource", "Connection hadn't been opened yet.");
+                throw new ArgumentNullException("this._dataSource", "Connection hadn't been opened yet.");
             }
 
             #endregion
 
-            lock (PictureDatabase._dataSource)
-            {
-                var rowArray =
-                PictureDatabase._dataSource.Select(
-                    "SESSIONID='@SESSIONID' AND X = @X AND Y = @Y"
-                        .Replace("@SESSIONID", this._sessionID)
-                        .Replace("@X", x.ToString())
-                        .Replace("@Y", y.ToString()), "", DataViewRowState.CurrentRows);
+            PointInfo pointInfoRef = new PointInfo(x, y, Color.Transparent);
 
-                if (rowArray.Length == 0)
-                {
-                    return null;
-                }
-                else
-                {
-                    return new ColorInfo(
-                        Color.FromArgb(
-                            (int)rowArray[0]["A"],
-                            (int)rowArray[0]["R"],
-                            (int)rowArray[0]["G"],
-                            (int)rowArray[0]["B"]));
-                }
+            if (!this._dataSourceIndex.ContainsKey(pointInfoRef.ToString()))
+            {
+                return null;
             }
+
+            return new ColorInfo(this._dataSourceIndex[pointInfoRef.ToString()].Color);
         }
 
         /// <summary>
@@ -291,55 +222,36 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
         /// <returns></returns>
         public PointInfo SELECT(smartSpriteFX.Pictures.Point point)
         {
-            var colorInfo = this.SELECT((int)point.X, (int)point.Y);
+            PointInfo pointInfoRef = new PointInfo(point, Color.Transparent);
 
-            if (colorInfo == null)
+            if (!this._dataSourceIndex.ContainsKey(pointInfoRef.ToString()))
             {
                 return null;
             }
 
-            return new PointInfo(point, colorInfo.GetInnerColor());
+            return this._dataSourceIndex[pointInfoRef.ToString()];
         }
 
         /// <summary>
         /// Gets the points for the color
         /// </summary>
         /// <returns></returns>
-        public List<smartSuite.smartSpriteFX.Pictures.Point> SELECT(Color color)
+        public List<PointInfo> SELECT(Color color)
         {
             #region Entries validation
 
-            if (PictureDatabase._dataSource == null)
+            if (this._dataSource == null)
             {
-                throw new ArgumentNullException("PictureDatabase._dataSource", "Connection hadn't been opened yet.");
+                throw new ArgumentNullException("this._dataSource", "Connection hadn't been opened yet.");
             }
 
             #endregion
 
-            lock (PictureDatabase._dataSource)
-            {
-                var rowArray =
-                PictureDatabase._dataSource.Select(
-                    "SESSIONID = '@SESSIONID' AND A = @A AND R = @R AND G = @G AND B = @B"
-                        .Replace("@SESSIONID", this._sessionID)
-                        .Replace("@A", color.A.ToString())
-                        .Replace("@R", color.R.ToString())
-                        .Replace("@G", color.G.ToString())
-                        .Replace("@B", color.B.ToString()), "", DataViewRowState.CurrentRows);
+            var result = from item in this._dataSource
+                         where item.Color.ToArgb() == color.ToArgb()
+                         select item;
 
-                List<smartSuite.smartSpriteFX.Pictures.Point> returnValue = new List<smartSpriteFX.Pictures.Point>();
-
-                foreach (var rowItem in rowArray)
-                {
-                    smartSuite.smartSpriteFX.Pictures.Point point =
-                        new smartSpriteFX.Pictures.Point(
-                                    (int)rowItem["X"],
-                                    (int)rowItem["Y"]);
-                    returnValue.Add(point);
-                }
-
-                return returnValue;
-            }
+            return result.ToList();
         }
 
         /// <summary>
@@ -352,183 +264,55 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
         {
             #region Entries validation
 
-            if (PictureDatabase._dataSource == null)
+            if (this._dataSource == null)
             {
-                throw new ArgumentNullException("PictureDatabase._dataSource", "Connection hadn't been opened yet.");
+                throw new ArgumentNullException("this._dataSource", "Connection hadn't been opened yet.");
             }
 
             #endregion
 
-            lock (PictureDatabase._dataSource)
-            {
-                var rowArray =
-                        PictureDatabase._dataSource.Select(
-                            "SESSIONID = '@SESSIONID'"
-                                .Replace("@SESSIONID", this._sessionID), "", DataViewRowState.CurrentRows);
-
-                List<PointInfo> returnValue = new List<PointInfo>();
-
-                foreach (var rowItem in rowArray)
-                {
-                    PointInfo point =
-                        new PointInfo(
-                            new smartSpriteFX.Pictures.Point(
-                                        (int)rowItem["X"],
-                                        (int)rowItem["Y"]),
-                            Color.FromArgb(
-                                (int)rowItem["A"],
-                                (int)rowItem["R"],
-                                (int)rowItem["G"],
-                                (int)rowItem["B"]));
-
-                    returnValue.Add(point);
-                }
-
-                return returnValue;
-            }
+            return this._dataSource;
         }
 
         /// <summary>
-        /// Gets the list of results using custom filter
-        /// </summary>
-        /// <param name="whereClause">A commandString such as WHERE clause in SQL format to filter the datas.</param>
-        /// <param name="parameterList">Zero or more parameters (starting by "@") to suply values to commandString. Use <see cref="PictureDatabase.CreateDbParameter(string, object)"/> method to create it.</param>
-        /// <example>
-        /// X=1 AND Y=3 AND SESSIONID='@SESSIONID';
-        /// </example>
-        /// <returns>
-        /// The columns of TB_PICTURE are:
-        /// <list type="bullet">
-        /// <item>SESSIONID - It´s the identification of current image</item>
-        /// <item>X - It´s the coordinate X</item>
-        /// <item>Y - It´s the coordinate Y</item>
-        /// <item>A - It´s the component A of color</item>
-        /// <item>R - It´s the component R of color</item>
-        /// <item>G - It´s the component G of color</item>
-        /// <item>B - It´s the component B of color</item>
-        /// </list>
-        /// </returns>
-        public IDataReader SELECT(String whereClause, params DbParameter[] parameterList)
-        {
-            DataRow[] rowArray = SELECT2(whereClause, parameterList);
-            return new RowDataReader(rowArray);
-        }
-
-        /// <summary>
-        /// Gets the list of results using custom filter
-        /// </summary>
-        /// <param name="whereClause">A commandString such as WHERE clause in SQL format to filter the datas.</param>
-        /// <param name="parameterList">Zero or more parameters (starting by "@") to suply values to commandString. Use <see cref="PictureDatabase.CreateDbParameter(string, object)"/> method to create it.</param>
-        /// <example>
-        /// X=1 AND Y=3 AND SESSIONID='@SESSIONID';
-        /// </example>
-        /// <returns>
-        /// The columns of TB_PICTURE are:
-        /// <list type="bullet">
-        /// <item>SESSIONID - It´s the identification of current image</item>
-        /// <item>X - It´s the coordinate X</item>
-        /// <item>Y - It´s the coordinate Y</item>
-        /// <item>A - It´s the component A of color</item>
-        /// <item>R - It´s the component R of color</item>
-        /// <item>G - It´s the component G of color</item>
-        /// <item>B - It´s the component B of color</item>
-        /// </list>
-        /// </returns>
-        public DataRow[] SELECT2(string whereClause, params DbParameter[] parameterList)
-        {
-            #region Entries validation
-
-            if (PictureDatabase._dataSource == null)
-            {
-                throw new ArgumentNullException("PictureDatabase._dataSource", "Connection hadn't been opened yet.");
-            }
-
-            #endregion
-
-            String where = "(" + whereClause + ")";
-
-            where +=
-                "AND SESSIONID = '@SESSIONID'"
-                        .Replace("@SESSIONID", this._sessionID);
-
-            foreach (var parameterItem in parameterList)
-            {
-                where = where
-                    .Replace(parameterItem.ParameterName, parameterItem.Value.ToString());
-            }
-
-            lock (PictureDatabase._dataSource)
-            {
-                return PictureDatabase._dataSource.Select(where, "", DataViewRowState.CurrentRows);
-            }
-        }
-
-        /// <summary>
-        /// Creates and returns the parameter to use with <see cref="PictureDatabase.SELECT(string, KeyValuePair{string, object}[])"/>
-        /// </summary>
-        /// <param name="name"></param>
-        /// <param name="value"></param>
-        /// <returns></returns>
-        public static DbParameter CreateDbParameter(String name, Object value)
-        {
-            return new OleDbParameter(name, value);
-        }
-
-        /// <summary>
-        /// Counts the amount of colors
+        /// Counts the amount of pixels
         /// </summary>
         /// <returns></returns>
         public long COUNT()
         {
             #region Entries validation
 
-            if (PictureDatabase._dataSource == null)
+            if (this._dataSource == null)
             {
-                throw new ArgumentNullException("PictureDatabase._dataSource", "Connection hadn't been opened yet.");
+                throw new ArgumentNullException("this._dataSource", "Connection hadn't been opened yet.");
             }
 
             #endregion
 
-            String commandString =
-                "SESSIONID = '@SESSIONID'"
-                    .Replace("@SESSIONID", this._sessionID);
-
-            lock (PictureDatabase._dataSource)
-            {
-                return Convert.ToInt64(
-                    PictureDatabase._dataSource.Compute("COUNT(SESSIONID)", commandString));
-            }
+            return this._dataSource.Count;
         }
 
         /// <summary>
         /// Counts the amount of colors for the critera
         /// </summary>
         /// <returns></returns>
-        public long COUNT(smartSpriteFX.Pictures.Point point, Color color)
+        public long COUNT(Color color)
         {
             #region Entries validation
 
-            if (PictureDatabase._dataSource == null)
+            if (this._dataSource == null)
             {
-                throw new ArgumentNullException("PictureDatabase._dataSource", "Connection hadn't been opened yet.");
+                throw new ArgumentNullException("this._dataSource", "Connection hadn't been opened yet.");
             }
 
             #endregion
 
-            String commandString =
-                "SESSIONID = '@SESSIONID' AND X = @X AND Y = @Y AND A = @A AND R = @R AND G = @G AND B = @B"
-                        .Replace("@SESSIONID", this._sessionID)
-                        .Replace("@X", point.X.ToString())
-                        .Replace("@Y", point.Y.ToString())
-                        .Replace("@A", color.A.ToString())
-                        .Replace("@R", color.R.ToString())
-                        .Replace("@G", color.G.ToString())
-                        .Replace("@B", color.B.ToString());
+            var result = from item in this._dataSource
+                         where
+                            item.Color.ToArgb() == color.ToArgb()
+                         group item by item.Color.ToArgb();
 
-            lock (PictureDatabase._dataSource)
-            {
-                return (long)PictureDatabase._dataSource.Compute("COUNT(*)", commandString);
-            }
+            return result.Count();
         }
 
         /// <summary>
@@ -539,30 +323,20 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
         {
             #region Entries validation
 
-            if (PictureDatabase._dataSource == null)
+            if (this._dataSource == null)
             {
-                throw new ArgumentNullException("PictureDatabase._dataSource", "Connection hadn't been opened yet.");
+                throw new ArgumentNullException("this._dataSource", "Connection hadn't been opened yet.");
             }
 
             #endregion
 
-            String commandString =
-                "SESSIONID = '@SESSIONID' AND X = @X AND Y = @Y AND A = @A AND R = @R AND G = @G AND B = @B"
-                        .Replace("@SESSIONID", this._sessionID)
-                        .Replace("@X", point.X.ToString())
-                        .Replace("@Y", point.Y.ToString())
-                        .Replace("@A", color.A.ToString())
-                        .Replace("@R", color.R.ToString())
-                        .Replace("@G", color.G.ToString())
-                        .Replace("@B", color.B.ToString());
-
-            lock (PictureDatabase._dataSource)
+            if (!this._dataSourceIndex.ContainsKey(point.ToString()))
             {
-                var reader = PictureDatabase._dataSource.CreateDataReader();
-                return reader.Read();
+                return false;
             }
-        }
 
+            return this._dataSourceIndex[point.ToString()].Color.ToArgb() == color.ToArgb();
+        }
 
         /// <summary>
         /// Checks if exists the color for the coordinates
@@ -572,24 +346,14 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
         {
             #region Entries validation
 
-            if (PictureDatabase._dataSource == null)
+            if (this._dataSource == null)
             {
-                throw new ArgumentNullException("PictureDatabase._dataSource", "Connection hadn't been opened yet.");
+                throw new ArgumentNullException("this._dataSource", "Connection hadn't been opened yet.");
             }
 
             #endregion
 
-            String commandString =
-                "SESSIONID = '@SESSIONID' AND X = @X AND Y = @Y"
-                        .Replace("@SESSIONID", this._sessionID)
-                        .Replace("@X", point.X.ToString())
-                        .Replace("@Y", point.Y.ToString());
-
-            lock (PictureDatabase._dataSource)
-            {
-                var reader = PictureDatabase._dataSource.CreateDataReader();
-                return reader.Read();
-            }
+            return this._dataSourceIndex.ContainsKey(point.ToString());
         }
 
         /// <summary>
@@ -597,23 +361,6 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
         /// </summary>
         internal static void Clear()
         {
-            #region Entries validation
-
-            if (PictureDatabase._dataSource == null)
-            {
-                return;
-            }
-
-            #endregion
-
-            lock (PictureDatabase._dataSource)
-            {
-                //PictureDatabase._dataSource.RejectChanges();
-                //PictureDatabase._dataSource.Clear();
-                //PictureDatabase._dataSource.AcceptChanges();
-                PictureDatabase._dataSource.Dispose();
-                PictureDatabase._dataSource = null;
-            }
         }
 
         /// <summary>
@@ -623,41 +370,19 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
         {
             #region Entries validation
 
-            if (PictureDatabase._dataSource == null)
+            if (this._dataSource == null)
             {
-                throw new ArgumentNullException("PictureDatabase._dataSource", "Connection hadn't been opened yet.");
+                throw new ArgumentNullException("this._dataSource", "Connection hadn't been opened yet.");
             }
-            if (PictureDatabase._dataSource.Rows.Count == 0)
-            {
-                return;
-            }
-            if (PictureDatabase._dataSource.Columns.Count == 0)
+            if (this._dataSource.Count == 0)
             {
                 return;
             }
 
             #endregion
 
-            #region This was making the program freezes
-
-            //String commandString = "SESSIONID = '@SESSIONID'"
-            //    .Replace("@SESSIONID", this._sessionID);
-
-            //        lock (PictureDatabase._dataSource)
-            //        {
-            //            var rowList = PictureDatabase._dataSource.Select(commandString, "", DataViewRowState.CurrentRows);
-            //            for (int i = 0; i < rowList.Length; i++)
-            //            {
-            //                var rowItem = rowList[i];
-            //                PictureDatabase._dataSource.Rows.Remove(rowItem);
-            //            }
-            //            PictureDatabase._dataSource.AcceptChanges();
-            //        }
-
-            #endregion
-
-            // Workaround to ignore existent datas
-            this._sessionID = Guid.NewGuid().ToString();
+            this._dataSource.Clear();
+            this._dataSourceIndex.Clear();
         }
 
         /// <summary>
@@ -668,9 +393,9 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
         {
             #region Entries validation
 
-            if (PictureDatabase._dataSource == null)
+            if (this._dataSource == null)
             {
-                throw new ArgumentNullException("PictureDatabase._dataSource", "Connection hadn't been opened yet.");
+                throw new ArgumentNullException("this._dataSource", "Connection hadn't been opened yet.");
             }
 
             #endregion
@@ -680,29 +405,17 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
 
             returnValue.CLEAR();
 
-            lock (PictureDatabase._dataSource)
+            lock (this._dataSource)
             {
-                var sourceRowList =
-                    PictureDatabase._dataSource.Select(
-                        "SESSIONID='@SESSIONID'"
-                            .Replace("@SESSIONID", this._sessionID), "", DataViewRowState.CurrentRows);
+                var sourceRowList = this._dataSource;
 
                 foreach (var sourceRowItem in sourceRowList)
                 {
-                    var targetRow = 
-                        PictureDatabase._dataSource.NewRow();
+                    var targetRow = sourceRowItem.Clone();
 
-                    targetRow["SESSIONID"] = returnValue._sessionID;
-                    targetRow["X"] = sourceRowItem["X"];
-                    targetRow["Y"] = sourceRowItem["Y"];
-                    targetRow["A"] = sourceRowItem["A"];
-                    targetRow["R"] = sourceRowItem["R"];
-                    targetRow["G"] = sourceRowItem["G"];
-                    targetRow["B"] = sourceRowItem["B"];
-
-                    PictureDatabase._dataSource.Rows.Add(targetRow);
+                    this._dataSource.Add(targetRow);
+                    this._dataSourceIndex.Add(targetRow.ToString(), targetRow);
                 }
-                PictureDatabase._dataSource.AcceptChanges();
             }
 
             return returnValue;
@@ -726,29 +439,15 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
             this.CLEAR();
 
             // Replicating the datas
-            lock (PictureDatabase._dataSource)
+            var sourceRowList = this._dataSource;
+
+            foreach (var sourceRowItem in sourceRowList)
             {
-                var sourceRowList =
-                    PictureDatabase._dataSource.Select(
-                        "SESSIONID='@SESSIONID'"
-                            .Replace("@SESSIONID", other._sessionID), "", DataViewRowState.CurrentRows);
+                var targetRow =
+                    sourceRowItem.Clone();
 
-                foreach (var sourceRowItem in sourceRowList)
-                {
-                    var targetRow =
-                        PictureDatabase._dataSource.NewRow();
-
-                    targetRow["SESSIONID"] = this._sessionID;
-                    targetRow["X"] = sourceRowItem["X"];
-                    targetRow["Y"] = sourceRowItem["Y"];
-                    targetRow["A"] = sourceRowItem["A"];
-                    targetRow["R"] = sourceRowItem["R"];
-                    targetRow["G"] = sourceRowItem["G"];
-                    targetRow["B"] = sourceRowItem["B"];
-
-                    PictureDatabase._dataSource.Rows.Add(targetRow);
-                }
-                PictureDatabase._dataSource.AcceptChanges();
+                this._dataSource.Add(targetRow);
+                this._dataSourceIndex.Add(targetRow.ToString(), targetRow);
             }
         }
 
@@ -760,37 +459,17 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
         {
             #region Entries validation
 
-            if (PictureDatabase._dataSource == null)
+            if (this._dataSource == null)
             {
-                throw new ArgumentNullException("PictureDatabase._dataSource", "Connection hadn't been opened yet.");
+                throw new ArgumentNullException("this._dataSource", "Connection hadn't been opened yet.");
             }
 
             #endregion
 
-            lock (PictureDatabase._dataSource)
-            {
-                var result = from rowItem in PictureDatabase._dataSource.AsEnumerable()
-                             where rowItem.Field<string>("SESSIONID") == this._sessionID && (rowItem.RowState == DataRowState.Unchanged || rowItem.RowState == DataRowState.Added)
-                             group rowItem by new
-                             {
-                                 A = rowItem.Field<int>("A"),
-                                 R = rowItem.Field<Int32>("R"),
-                                 G = rowItem.Field<Int32>("G"),
-                                 B = rowItem.Field<Int32>("B")
-                             } into groupItem
-                             select groupItem;
+            var result = from item in this._dataSource
+                         group item by item.Color.ToArgb();
 
-                return result.Count();
-            }
-        }
-
-        /// <summary>
-        /// Gets a version of main dataSource for use in Linq filter
-        /// </summary>
-        /// <returns></returns>
-        public EnumerableRowCollection<DataRow> AsEnumerable()
-        {
-            return PictureDatabase._dataSource.AsEnumerable();
+            return result.Count();
         }
 
         /// <summary>
@@ -810,25 +489,14 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
         {
             #region Entries validation
 
-            if (PictureDatabase._dataSource == null)
+            if (this._dataSource == null)
             {
-                throw new ArgumentNullException("PictureDatabase._dataSource", "Connection hadn't been opened yet.");
+                throw new ArgumentNullException("this._dataSource", "Connection hadn't been opened yet.");
             }
 
             #endregion
 
-            lock (PictureDatabase._dataSource)
-            {
-                try
-                {
-                    PictureDatabase._dataSource.RejectChanges();
-                }
-                catch
-                {
-                    // Errors here can't turn around the flow
-                }
-                this.printTransactionTime(new StackFrame(1, true).GetMethod().Name);
-            }
+            this.printTransactionTime(new StackFrame(1, true).GetMethod().Name);
         }
 
         /// <summary>
@@ -839,24 +507,14 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
         {
             #region Entries validation
 
-            if (PictureDatabase._dataSource == null)
+            if (this._dataSource == null)
             {
-                throw new ArgumentNullException("PictureDatabase._dataSource", "Connection hadn't been opened yet.");
+                throw new ArgumentNullException("this._dataSource", "Connection hadn't been opened yet.");
             }
 
             #endregion
 
-            lock (PictureDatabase._dataSource)
-            {
-                try
-                {
-                    PictureDatabase._dataSource.AcceptChanges();
-                }
-                finally
-                {
-                    this.printTransactionTime(new StackFrame(1, true).GetMethod().Name);
-                }
-            }
+            this.printTransactionTime(new StackFrame(1, true).GetMethod().Name);
         }
 
         /// <summary>

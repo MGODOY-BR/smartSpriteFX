@@ -636,28 +636,22 @@ namespace smartSuite.smartSpriteFX.Pictures
             lock (this._buffer)
             {
                 var affectedRowList =
-                        from rowItem in this._buffer.AsEnumerable()
+                        from rowItem in this._buffer.SELECTALL()
                         where
-                            rowItem.Field<string>("SESSIONID") == this._buffer.SessionID && (rowItem.RowState == DataRowState.Unchanged || rowItem.RowState == DataRowState.Added)
-                            && 
-                            (
-                                rowItem.Field<int>("X") >= pointRange.StartPoint.X &&
-                                rowItem.Field<int>("X") <= pointRange.StartPoint.X &&
-                                rowItem.Field<int>("Y") >= pointRange.EndPoint.Y &&
-                                rowItem.Field<int>("Y") <= pointRange.EndPoint.Y
-                            )
+                            rowItem.X >= pointRange.StartPoint.X &&
+                            rowItem.X <= pointRange.StartPoint.X &&
+                            rowItem.Y >= pointRange.EndPoint.Y &&
+                            rowItem.Y <= pointRange.EndPoint.Y
                         select rowItem;
 
                 try
                 {
                     foreach (var affectedRowItem in affectedRowList)
                     {
-                        affectedRowItem.BeginEdit();
-                        affectedRowItem["A"] = pointRange.Color.A;
-                        affectedRowItem["R"] = pointRange.Color.R;
-                        affectedRowItem["G"] = pointRange.Color.G;
-                        affectedRowItem["B"] = pointRange.Color.B;
-                        affectedRowItem.EndEdit();
+                        lock (affectedRowItem.ToString())
+                        {
+                            affectedRowItem.Color = pointRange.Color;
+                        }
                     }
                 }
                 catch (Exception ex)
