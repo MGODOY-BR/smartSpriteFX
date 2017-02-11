@@ -85,21 +85,6 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
         }
 
         /// <summary>
-        /// Creates the database in memory.
-        /// </summary>
-        public void CreateDatabase()
-        {
-            #region Entries validation
-
-            if (this._dataSource == null)
-            {
-                throw new ArgumentNullException("this._dataSource", "Connection hadn't been opened yet.");
-            }
-
-            #endregion
-        }
-
-        /// <summary>
         /// Inserts a record
         /// </summary>
         /// <param name="x"></param>
@@ -400,7 +385,7 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
 
             #endregion
 
-            PictureDatabase returnValue = new PictureDatabase();
+            PictureDatabase returnValue = PictureDatabase.Open();
             returnValue._sessionID = Guid.NewGuid().ToString();
 
             returnValue.CLEAR();
@@ -413,8 +398,8 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
                 {
                     var targetRow = sourceRowItem.Clone();
 
-                    this._dataSource.Add(targetRow);
-                    this._dataSourceIndex.Add(targetRow.ToString(), targetRow);
+                    returnValue._dataSource.Add(targetRow);
+                    returnValue._dataSourceIndex.Add(targetRow.ToString(), targetRow);
                 }
             }
 
@@ -439,15 +424,19 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
             this.CLEAR();
 
             // Replicating the datas
-            var sourceRowList = this._dataSource;
+            var sourceRowList = other._dataSource;
 
             foreach (var sourceRowItem in sourceRowList)
             {
                 var targetRow =
                     sourceRowItem.Clone();
 
-                this._dataSource.Add(targetRow);
-                this._dataSourceIndex.Add(targetRow.ToString(), targetRow);
+                // this._dataSource.Add(targetRow);
+                // this._dataSourceIndex.Add(targetRow.ToString(), targetRow);
+                if (this.UPDATE((int)targetRow.X, (int)targetRow.Y, targetRow.Color) == 0)
+                {
+                    this.INSERT((int)targetRow.X, (int)targetRow.Y, targetRow.Color);
+                }
             }
         }
 

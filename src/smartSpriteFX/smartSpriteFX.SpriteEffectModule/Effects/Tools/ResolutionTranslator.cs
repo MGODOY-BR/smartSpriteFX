@@ -316,8 +316,8 @@ namespace smartSuite.smartSpriteFX.Effects.Tools{
                             // clonePicture.ReplacePixel(translatedPixelItem);
                             foreach (var pointItem in pointRange.ToPointList())
                             {
-                                // clonePicture.ReplacePixel((int)pointItem.X, (int)pointItem.Y, pointRange.Color);
-                                clonePicture.SetPixel((int)pointItem.X, (int)pointItem.Y, pointRange.Color);
+                                clonePicture.ReplacePixel((int)pointItem.X, (int)pointItem.Y, pointRange.Color);
+                                // clonePicture.SetPixel((int)pointItem.X, (int)pointItem.Y, pointRange.Color);
                             }
                         }
                         finally
@@ -341,10 +341,10 @@ namespace smartSuite.smartSpriteFX.Effects.Tools{
 
                 foreach (var lackPointItem in lackPointList)
                 {
-                    clonePicture.SetPixel((int)lackPointItem.X, (int)lackPointItem.Y, lackPointItem.Color);
+                    clonePicture.ReplacePixel((int)lackPointItem.X, (int)lackPointItem.Y, lackPointItem.Color);
                 }
 
-                // clonePicture.endBatchUpdate(); // <-- This is freezing th program
+                clonePicture.endBatchUpdate();
             }
             catch (Exception ex)
             {

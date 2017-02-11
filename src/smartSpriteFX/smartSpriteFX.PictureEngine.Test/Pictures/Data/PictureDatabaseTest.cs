@@ -49,46 +49,11 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Test.Pictures.Data
         }
 
         [TestMethod]
-        public void TestCreateDataBase()
-        {
-            #region Scenario setup
-
-            PictureDatabase test = PictureDatabase.Open();
-
-            #endregion
-
-            #region Running the tested operation
-
-            Exception evidence = null;
-            try
-            {
-                test.CreateDatabase();
-            }
-            catch (Exception ex)
-            {
-                evidence = ex;
-            }
-
-            #endregion
-
-            #region Getting the evidences
-
-            #endregion
-
-            #region Validating the evidences
-
-            Assert.IsNull(evidence, evidence != null ? evidence.ToString() : null);
-
-            #endregion
-        }
-
-        [TestMethod]
         public void TestSELECT()
         {
             #region Scenario setup
 
             PictureDatabase test = PictureDatabase.Open();
-            test.CreateDatabase();
             test.INSERT(1, 1, System.Drawing.Color.FromArgb(0, 1, 2, 3));
             test.INSERT(2, 2, System.Drawing.Color.FromArgb(10, 11, 12, 13));
 
@@ -121,7 +86,6 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Test.Pictures.Data
             #region Scenario setup
 
             PictureDatabase test = PictureDatabase.Open();
-            test.CreateDatabase();
             test.INSERT(1, 1, System.Drawing.Color.FromArgb(0, 1, 2, 3));
             test.INSERT(2, 2, System.Drawing.Color.FromArgb(10, 11, 12, 13));
 
@@ -154,7 +118,6 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Test.Pictures.Data
             #region Scenario setup
 
             PictureDatabase test = PictureDatabase.Open();
-            test.CreateDatabase();
             var color = System.Drawing.Color.FromArgb(0, 1, 2, 3);
             var color2 = System.Drawing.Color.FromArgb(10, 11, 12, 13);
 
@@ -188,7 +151,6 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Test.Pictures.Data
             #region Scenario setup
 
             PictureDatabase test = PictureDatabase.Open();
-            test.CreateDatabase();
             test.INSERT(1, 1, System.Drawing.Color.FromArgb(0, 1, 2, 3));
             test.INSERT(2, 2, System.Drawing.Color.FromArgb(10, 11, 12, 13));
 
@@ -218,7 +180,6 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Test.Pictures.Data
             #region Scenario setup
 
             PictureDatabase test = PictureDatabase.Open();
-            test.CreateDatabase();
             test.INSERT(1, 1, System.Drawing.Color.FromArgb(0, 1, 2, 3));
             test.INSERT(2, 2, System.Drawing.Color.FromArgb(10, 11, 12, 13));
 
@@ -247,7 +208,6 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Test.Pictures.Data
             #region Scenario setup
 
             PictureDatabase test = PictureDatabase.Open();
-            test.CreateDatabase();
             test.INSERT(1, 1, System.Drawing.Color.FromArgb(0, 1, 2, 3));
             test.INSERT(2, 2, System.Drawing.Color.FromArgb(10, 11, 12, 13));
 
@@ -279,7 +239,6 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Test.Pictures.Data
             #region Scenario setup
 
             PictureDatabase test = PictureDatabase.Open();
-            test.CreateDatabase();
             test.INSERT(1, 1, System.Drawing.Color.FromArgb(0, 1, 2, 3));
             test.INSERT(2, 2, System.Drawing.Color.FromArgb(10, 11, 12, 13));
 
@@ -316,7 +275,6 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Test.Pictures.Data
             #region Scenario setup
 
             PictureDatabase test = PictureDatabase.Open();
-            test.CreateDatabase();
             test.INSERT(1, 1, System.Drawing.Color.FromArgb(0, 1, 2, 3));
             test.INSERT(2, 2, System.Drawing.Color.FromArgb(10, 11, 12, 13));
 

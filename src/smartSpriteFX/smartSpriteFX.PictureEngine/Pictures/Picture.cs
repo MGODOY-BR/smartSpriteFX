@@ -95,37 +95,6 @@ namespace smartSuite.smartSpriteFX.Pictures
 
             this._buffer.Merge(other._buffer);
             this.ColorCount = this._buffer.CountColor();
-
-            #region Código obsoleto
-
-            /*
-            HashSet<int> colorSet = new HashSet<int>();
-            try
-            {
-                var source = other.GetAllPixels();
-                this.beginBatchUpdate();
-                foreach (var sourceItem in source)
-                {
-                    this.ReplacePixel((int)sourceItem.X, (int)sourceItem.Y, sourceItem.Color);
-
-                    var argb = sourceItem.Color.ToArgb();
-                    if (!colorSet.Contains(argb))
-                    {
-                        colorSet.Add(argb);
-                    }
-                }
-                this.endBatchUpdate();
-            }
-            catch
-            {
-                this.cancelBatchUpdate();
-                throw;
-            }
-
-            this.ColorCount = colorSet.LongCount();
-            */
-
-            #endregion
         }
 
         /// <summary>
@@ -174,7 +143,6 @@ namespace smartSuite.smartSpriteFX.Pictures
         internal Picture()
         {
             this._buffer = PictureDatabase.Open();
-            this._buffer.CreateDatabase();
         }
 
         /// <summary>
@@ -297,7 +265,6 @@ namespace smartSuite.smartSpriteFX.Pictures
             #endregion
 
             this._buffer = PictureDatabase.Open();
-            this._buffer.CreateDatabase();
             this._buffer.CLEAR();
 
             List<AutoResetEvent> semaphoreList = new List<AutoResetEvent>();
