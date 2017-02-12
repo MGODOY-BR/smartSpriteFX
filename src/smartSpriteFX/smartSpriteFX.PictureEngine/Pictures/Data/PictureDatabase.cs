@@ -240,10 +240,8 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
         }
 
         /// <summary>
-        /// Gets all the colors
+        /// Gets all the points
         /// </summary>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
         /// <returns></returns>
         public List<PointInfo> SELECTALL()
         {
@@ -256,6 +254,7 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
 
             #endregion
 
+            this._dataSource.Sort();
             return this._dataSource;
         }
 
@@ -428,8 +427,8 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
 
             foreach (var sourceRowItem in sourceRowList)
             {
-                var targetRow =
-                    sourceRowItem.Clone();
+                var targetRow = // sourceRowItem.Clone();
+                    sourceRowItem;
 
                 // this._dataSource.Add(targetRow);
                 // this._dataSourceIndex.Add(targetRow.ToString(), targetRow);

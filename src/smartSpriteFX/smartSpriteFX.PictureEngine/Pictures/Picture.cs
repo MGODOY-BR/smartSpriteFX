@@ -574,10 +574,14 @@ namespace smartSuite.smartSpriteFX.Pictures
 
             #endregion
 
-            var affectedPixel = this._buffer.UPDATE(x, y, newColor);
-            if (affectedPixel == 0)
+            String key = this.FormatKey(x, y);
+            lock (key)
             {
-                this._buffer.INSERT(x, y, newColor);
+                var affectedPixel = this._buffer.UPDATE(x, y, newColor);
+                if (affectedPixel == 0)
+                {
+                    this._buffer.INSERT(x, y, newColor);
+                }
             }
         }
 
@@ -675,7 +679,18 @@ namespace smartSuite.smartSpriteFX.Pictures
 
             #endregion
 
-            Color firstPixel = this.GetPixel(0, 0).Value;
+            var firstPixelRef = this.GetPixel(0, 0);
+
+            Color firstPixel;
+            if (firstPixelRef.HasValue)
+            {
+                firstPixel = firstPixelRef.Value;
+            }
+            else
+            {
+                firstPixel = Color.Transparent;
+            }
+
             var pixelList = this._buffer.SELECTALL();
 
             using (var pieceBitmap = new Bitmap(this._width, this._height, PixelFormat.Format32bppArgb))

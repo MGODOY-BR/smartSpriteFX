@@ -43,7 +43,7 @@ namespace smartSuite.smartSpriteFX.Effects.Tools{
         private ColorEqualityComparer _comparer = new ColorEqualityComparer();
 
         /// <summary>
-        /// Is a dictionary made of colors and collection of pixels
+        /// It's a dictionary made of colors and collection of pixels
         /// </summary>
         private List<PointRange> _translatedPixel = new List<PointRange>();
 
@@ -326,7 +326,8 @@ namespace smartSuite.smartSpriteFX.Effects.Tools{
                         }
                     });
 
-                    ThreadPool.QueueUserWorkItem(replacePixelDelegate, stateArgs);
+                    // ThreadPool.QueueUserWorkItem(replacePixelDelegate, stateArgs);
+                    replacePixelDelegate.Invoke(stateArgs);
                 }
 
                 foreach (AutoResetEvent signItem in semaphoreList)

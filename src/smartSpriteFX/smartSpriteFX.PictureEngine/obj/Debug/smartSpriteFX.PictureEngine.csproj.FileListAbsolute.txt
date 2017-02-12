@@ -24,3 +24,4 @@ C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smart
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.PictureEngine\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.PictureEngine\bin\Debug\EntityFramework.xml
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.PictureEngine\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.PictureEngine\obj\Debug\smartSpriteFX.PictureEngine.csprojResolveAssemblyReference.cache
