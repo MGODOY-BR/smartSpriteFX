@@ -11,6 +11,7 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Threading;
 
 namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
 {
@@ -425,17 +426,38 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
             // Replicating the datas
             var sourceRowList = other._dataSource;
 
+            List<AutoResetEvent> semaphoreList = new List<AutoResetEvent>();
+
             foreach (var sourceRowItem in sourceRowList)
             {
-                var targetRow = // sourceRowItem.Clone();
-                    sourceRowItem;
+                AutoResetEvent sign = new AutoResetEvent(false);
+                semaphoreList.Add(sign);
 
-                // this._dataSource.Add(targetRow);
-                // this._dataSourceIndex.Add(targetRow.ToString(), targetRow);
-                if (this.UPDATE((int)targetRow.X, (int)targetRow.Y, targetRow.Color) == 0)
+                object[] stateArgs = new object[2] { sourceRowItem, sign };
+                WaitCallback pixelProcessingDelegate = new WaitCallback(delegate (object state)
                 {
-                    this.INSERT((int)targetRow.X, (int)targetRow.Y, targetRow.Color);
-                }
+                    object[] args = (object[])state;
+                    PointInfo pointInfo = (PointInfo)args[0];
+                    AutoResetEvent autoResetEvent = (AutoResetEvent)args[1];
+
+                    try
+                    {
+                        if (this.UPDATE((int)pointInfo.X, (int)pointInfo.Y, pointInfo.Color) == 0)
+                        {
+                            this.INSERT((int)pointInfo.X, (int)pointInfo.Y, pointInfo.Color);
+                        }
+                    }
+                    finally
+                    {
+                        autoResetEvent.Set();
+                    }
+                });
+                ThreadPool.QueueUserWorkItem(pixelProcessingDelegate, stateArgs);
+            }
+
+            foreach (AutoResetEvent signItem in semaphoreList)
+            {
+                signItem.WaitOne();
             }
         }
 
@@ -484,7 +506,7 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
 
             #endregion
 
-            this.printTransactionTime(new StackFrame(1, true).GetMethod().Name);
+            this.printTransactionTime(new StackFrame(2, true).GetMethod().Name);
         }
 
         /// <summary>
@@ -502,7 +524,7 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
 
             #endregion
 
-            this.printTransactionTime(new StackFrame(1, true).GetMethod().Name);
+            this.printTransactionTime(new StackFrame(2, true).GetMethod().Name);
         }
 
         /// <summary>

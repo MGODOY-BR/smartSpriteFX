@@ -93,8 +93,20 @@ namespace smartSuite.smartSpriteFX.Pictures
                 this._transparentColor = other._transparentColor;
             }
 
-            this._buffer.Merge(other._buffer);
-            this.ColorCount = this._buffer.CountColor();
+            try
+            {
+                this.beginBatchUpdate();
+
+                this._buffer.Merge(other._buffer);
+                this.ColorCount = this._buffer.CountColor();
+
+                this.endBatchUpdate();
+            }
+            catch
+            {
+                this.cancelBatchUpdate();
+                throw;
+            }
         }
 
         /// <summary>
@@ -302,7 +314,6 @@ namespace smartSuite.smartSpriteFX.Pictures
                                 mySign.Set();
                             }
                         });
-                        // pixelProcessingDelegate.Invoke(stateArgs); // <-- For synchronous test
                         ThreadPool.QueueUserWorkItem(pixelProcessingDelegate, stateArgs);
                     }
                 }

@@ -313,11 +313,9 @@ namespace smartSuite.smartSpriteFX.Effects.Tools{
 
                         try
                         {
-                            // clonePicture.ReplacePixel(translatedPixelItem);
                             foreach (var pointItem in pointRange.ToPointList())
                             {
                                 clonePicture.ReplacePixel((int)pointItem.X, (int)pointItem.Y, pointRange.Color);
-                                // clonePicture.SetPixel((int)pointItem.X, (int)pointItem.Y, pointRange.Color);
                             }
                         }
                         finally
@@ -326,8 +324,7 @@ namespace smartSuite.smartSpriteFX.Effects.Tools{
                         }
                     });
 
-                    // ThreadPool.QueueUserWorkItem(replacePixelDelegate, stateArgs);
-                    replacePixelDelegate.Invoke(stateArgs);
+                    ThreadPool.QueueUserWorkItem(replacePixelDelegate, stateArgs);
                 }
 
                 foreach (AutoResetEvent signItem in semaphoreList)
