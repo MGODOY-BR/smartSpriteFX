@@ -302,27 +302,7 @@ namespace smartSuite.smartSpriteFX.Effects.Tools{
                     replacePixelList.AddRange(translatedPixelItem.ToPointInfoList());
                 }
 
-                #region Getting the update point
-
-                var updatePointList = from item in replacePixelList
-                                      where this._originalPicture.Contains(item)
-                                      select item;
-
-                // Adding existent points
-                clonePicture.SetPixel(updatePointList.ToList());
-
-                #endregion
-
-                #region Getting the new points
-
-                var newPointList = from item in replacePixelList
-                                    where !this._originalPicture.Contains(item)
-                                    select item;
-
-                // Adding new points
-                clonePicture.SetPixel(newPointList.ToList());
-
-                #endregion
+                clonePicture.SetPixel(replacePixelList);
 
                 #region Fullfiled the lacks
 
