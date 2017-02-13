@@ -30,7 +30,13 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Test.Effects.Core
             EffectEngine.Initializate(@"StubAnimation\Enumerated");
 
             PictureBox pictureBoxStub = new PictureBox();
+
             EffectEngine.SetPreviewBoard(pictureBoxStub);
+
+            EffectEngine.GetIterator().MoveFirst();
+
+            EffectEngine.SetSourcePreviewImage(
+                EffectEngine.GetIterator().GetCurrent());
 
             var filterPallete = FilterCollection.GetFilterPallete();
 

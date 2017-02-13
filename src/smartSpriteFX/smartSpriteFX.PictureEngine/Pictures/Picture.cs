@@ -349,6 +349,14 @@ namespace smartSuite.smartSpriteFX.Pictures
         }
 
         /// <summary>
+        /// Loads the color info cache
+        /// </summary>
+        public void SetPixel(List<PointInfo> pointInfoList)
+        {
+            this._buffer.INSERT(pointInfoList);
+        }
+
+        /// <summary>
         /// Formats the coordinates to use as keys.
         /// </summary>
         public string FormatKey(int x, int y)

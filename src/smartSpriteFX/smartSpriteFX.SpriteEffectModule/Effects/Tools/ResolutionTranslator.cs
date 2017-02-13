@@ -332,15 +332,12 @@ namespace smartSuite.smartSpriteFX.Effects.Tools{
                     signItem.WaitOne();
                 }
 
-                //Fullfiled the lacks
+                // Fullfiled the lacks
                 var lackPointList = from item in _originalPicture.GetAllPixels()
                                     where !clonePicture.Contains(item)
                                     select item;
 
-                foreach (var lackPointItem in lackPointList)
-                {
-                    clonePicture.ReplacePixel((int)lackPointItem.X, (int)lackPointItem.Y, lackPointItem.Color);
-                }
+                clonePicture.SetPixel(lackPointList.ToList());
 
                 clonePicture.endBatchUpdate();
             }

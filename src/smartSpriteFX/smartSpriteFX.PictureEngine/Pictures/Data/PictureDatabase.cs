@@ -12,6 +12,7 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
 {
@@ -109,6 +110,47 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
                 this._dataSource.Add(row);
                 this._dataSourceIndex.Add(row.ToString(), row);
             }
+        }
+
+        /// <summary>
+        /// Inserts a bunch of points
+        /// </summary>
+        /// <param name="pointInfoList"></param>
+        public void INSERT(List<PointInfo> pointInfoList)
+        {
+            #region Entries validation
+
+            if (pointInfoList == null)
+            {
+                throw new ArgumentNullException("pointInfoList");
+            }
+            if (this._dataSource == null)
+            {
+                throw new ArgumentNullException("this._dataSource");
+            }
+            if (this._dataSourceIndex == null)
+            {
+                throw new ArgumentNullException("this._dataSourceIndex");
+            }
+
+            #endregion
+
+            lock (this._dataSource)
+            {
+                this._dataSource.AddRange(pointInfoList);
+            }
+
+            Task taskIndex = new Task(delegate ()
+            {
+                lock (_dataSourceIndex)
+                {
+                    foreach (var pointInfoItem in pointInfoList)
+                    {
+                        _dataSourceIndex.Add(pointInfoItem.ToString(), pointInfoItem);
+                    }
+                }
+            });
+            taskIndex.Start();
         }
 
         /// <summary>
@@ -426,39 +468,62 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
             // Replicating the datas
             var sourceRowList = other._dataSource;
 
-            List<AutoResetEvent> semaphoreList = new List<AutoResetEvent>();
+            // Getting the lack points
+            var lackPointList = from item in other.SELECTALL()
+                                where !this.EXISTS(item)
+                                select item;
 
-            foreach (var sourceRowItem in sourceRowList)
+            // Getting the update points
+            var updatePointList = from item in other.SELECTALL()
+                                where this.EXISTS(item)
+                                select item;
+
+            // Updating the update points
+            foreach (var updateItem in updatePointList)
             {
-                AutoResetEvent sign = new AutoResetEvent(false);
-                semaphoreList.Add(sign);
-
-                object[] stateArgs = new object[2] { sourceRowItem, sign };
-                WaitCallback pixelProcessingDelegate = new WaitCallback(delegate (object state)
-                {
-                    object[] args = (object[])state;
-                    PointInfo pointInfo = (PointInfo)args[0];
-                    AutoResetEvent autoResetEvent = (AutoResetEvent)args[1];
-
-                    try
-                    {
-                        if (this.UPDATE((int)pointInfo.X, (int)pointInfo.Y, pointInfo.Color) == 0)
-                        {
-                            this.INSERT((int)pointInfo.X, (int)pointInfo.Y, pointInfo.Color);
-                        }
-                    }
-                    finally
-                    {
-                        autoResetEvent.Set();
-                    }
-                });
-                ThreadPool.QueueUserWorkItem(pixelProcessingDelegate, stateArgs);
+                this.UPDATE((int)updateItem.X, (int)updateItem.Y, updateItem.Color);
             }
 
-            foreach (AutoResetEvent signItem in semaphoreList)
-            {
-                signItem.WaitOne();
-            }
+            // Adding the lack points
+            this.INSERT(lackPointList.ToList());
+
+            #region Obsolete algoritmn
+
+            //List<AutoResetEvent> semaphoreList = new List<AutoResetEvent>();
+
+            //foreach (var sourceRowItem in sourceRowList)
+            //{
+            //    AutoResetEvent sign = new AutoResetEvent(false);
+            //    semaphoreList.Add(sign);
+
+            //    object[] stateArgs = new object[2] { sourceRowItem, sign };
+            //    WaitCallback pixelProcessingDelegate = new WaitCallback(delegate (object state)
+            //    {
+            //        object[] args = (object[])state;
+            //        PointInfo pointInfo = (PointInfo)args[0];
+            //        AutoResetEvent autoResetEvent = (AutoResetEvent)args[1];
+
+            //        try
+            //        {
+            //            if (this.UPDATE((int)pointInfo.X, (int)pointInfo.Y, pointInfo.Color) == 0)
+            //            {
+            //                this.INSERT((int)pointInfo.X, (int)pointInfo.Y, pointInfo.Color);
+            //            }
+            //        }
+            //        finally
+            //        {
+            //            autoResetEvent.Set();
+            //        }
+            //    });
+            //    ThreadPool.QueueUserWorkItem(pixelProcessingDelegate, stateArgs);
+            //}
+
+            //foreach (AutoResetEvent signItem in semaphoreList)
+            //{
+            //    signItem.WaitOne();
+            //}
+
+            #endregion
         }
 
         /// <summary>

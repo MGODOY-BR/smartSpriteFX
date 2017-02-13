@@ -164,6 +164,8 @@ namespace smartSuite.smartSpriteFX.Forms.Controls.Animations.Frames
         {
             FrameSelectionEventArgs eventArgs = (FrameSelectionEventArgs)pictureBox.Tag;
             EffectEngine.GetIterator().MoveTo(eventArgs.FrameIndex);
+            EffectEngine.SetSourcePreviewImage(
+                EffectEngine.GetIterator().GetCurrent());
 
             this.SelectingFrame(pictureBox, eventArgs);
             this.numCurrentFrame.Value = eventArgs.FrameIndex + 1;

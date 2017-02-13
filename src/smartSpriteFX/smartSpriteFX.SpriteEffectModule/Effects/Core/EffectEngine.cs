@@ -46,6 +46,11 @@ namespace smartSuite.smartSpriteFX.Effects.Core{
         private static PictureBox _previewBoard;
 
         /// <summary>
+        /// It´s a image used like a source to <see cref="UpdatePreviewBoard"/> method
+        /// </summary>
+        private static Picture _sourcePreviewImage;
+
+        /// <summary>
         /// It´s the list of thread used during Apply method
         /// </summary>
         private static List<Thread> _applyingThreadList = new List<Thread>();
@@ -71,6 +76,24 @@ namespace smartSuite.smartSpriteFX.Effects.Core{
         public static void Apply()
         {
             EffectEngine.Apply(null);
+        }
+
+        /// <summary>
+        /// Sets the source preview image to use in <see cref="UpdatePreviewBoard"/> method
+        /// </summary>
+        /// <param name="sourcePreviewImage"></param>
+        public static void SetSourcePreviewImage(Picture sourcePreviewImage)
+        {
+            #region Entries validation
+
+            if (sourcePreviewImage == null)
+            {
+                throw new ArgumentNullException("sourcePreviewImage");
+            }
+
+            #endregion
+
+            _sourcePreviewImage = sourcePreviewImage;
         }
 
         /// <summary>
@@ -219,16 +242,14 @@ namespace smartSuite.smartSpriteFX.Effects.Core{
             {
                 throw new ArgumentException("EffectEngine._filterList", "None filter has been selected!");
             }
+            if (_sourcePreviewImage == null)
+            {
+                throw new ArgumentNullException("_sourcePreviewImage", "You must choose an image before");
+            }
 
             #endregion
 
-            if (EffectEngine._iterator.GetFrameIndex() == -1)
-            {
-                EffectEngine._iterator.MoveFirst();
-            }
-
-            // var previewFrame = EffectEngine._iterator.GetCurrent().Clone();
-            var previewFrame = EffectEngine._iterator.GetCurrent();
+            var previewFrame = _sourcePreviewImage;
             var frameIndex = EffectEngine._iterator.GetFrameIndex();
             // previewFrame.ClearCache();
             foreach (var filterItem in EffectEngine._filterList.GetFilterBufferList())
