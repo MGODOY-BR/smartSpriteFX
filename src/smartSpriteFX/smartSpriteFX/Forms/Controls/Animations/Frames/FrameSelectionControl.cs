@@ -162,21 +162,30 @@ namespace smartSuite.smartSpriteFX.Forms.Controls.Animations.Frames
         /// <param name="sender"></param>
         private void OnSelectingFrame(PictureBox pictureBox)
         {
-            FrameSelectionEventArgs eventArgs = (FrameSelectionEventArgs)pictureBox.Tag;
-            EffectEngine.GetIterator().MoveTo(eventArgs.FrameIndex);
-            EffectEngine.SetSourcePreviewImage(
-                EffectEngine.GetIterator().GetCurrent());
-
-            this.SelectingFrame(pictureBox, eventArgs);
-            this.numCurrentFrame.Value = eventArgs.FrameIndex + 1;
-
-            if (this._lastSelectedFrame != null)
+            try
             {
-                this._lastSelectedFrame.BorderStyle = BorderStyle.FixedSingle;
-            }
+                pictureBox.FindForm().Cursor = Cursors.WaitCursor;
 
-            this._lastSelectedFrame = pictureBox;
-            pictureBox.BorderStyle = BorderStyle.Fixed3D;
+                FrameSelectionEventArgs eventArgs = (FrameSelectionEventArgs)pictureBox.Tag;
+                EffectEngine.GetIterator().MoveTo(eventArgs.FrameIndex);
+                EffectEngine.SetSourcePreviewImage(
+                    EffectEngine.GetIterator().GetCurrent());
+
+                this.SelectingFrame(pictureBox, eventArgs);
+                this.numCurrentFrame.Value = eventArgs.FrameIndex + 1;
+
+                if (this._lastSelectedFrame != null)
+                {
+                    this._lastSelectedFrame.BorderStyle = BorderStyle.FixedSingle;
+                }
+
+                this._lastSelectedFrame = pictureBox;
+                pictureBox.BorderStyle = BorderStyle.Fixed3D;
+            }
+            finally
+            {
+                pictureBox.FindForm().Cursor = Cursors.Default;
+            }
         }
 
         /// <summary>

@@ -10,6 +10,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading;
+using smartSuite.smartSpriteFX.PictureEngine.Pictures;
 
 namespace smartSuite.smartSpriteFX.Effects.Tools{
 	/// <summary>
@@ -293,51 +294,45 @@ namespace smartSuite.smartSpriteFX.Effects.Tools{
             {
                 clonePicture.beginBatchUpdate();
 
-                List<AutoResetEvent> semaphoreList = new List<AutoResetEvent>();
-                ThreadPool.SetMinThreads(1, 500);
-                ThreadPool.SetMaxThreads(200000, 2000000);
+                List<PointInfo> replacePixelList = new List<PointInfo>();
 
-                // Changing the internal buffer
+                // Creating point info
                 foreach (var translatedPixelItem in this._translatedPixel)
                 {
-                    AutoResetEvent sign = new AutoResetEvent(false);
-                    semaphoreList.Add(sign);
-
-                    object[] stateArgs = new object[2] {translatedPixelItem, sign };
-
-                    WaitCallback replacePixelDelegate = new WaitCallback(delegate (object state)
-                    {
-                        object[] args = (object[])state;
-                        PointRange pointRange = (PointRange)args[0];
-                        AutoResetEvent autoResetEvent = (AutoResetEvent)args[1];
-
-                        try
-                        {
-                            foreach (var pointItem in pointRange.ToPointList())
-                            {
-                                clonePicture.ReplacePixel((int)pointItem.X, (int)pointItem.Y, pointRange.Color);
-                            }
-                        }
-                        finally
-                        {
-                            autoResetEvent.Set();
-                        }
-                    });
-
-                    ThreadPool.QueueUserWorkItem(replacePixelDelegate, stateArgs);
+                    replacePixelList.AddRange(translatedPixelItem.ToPointInfoList());
                 }
 
-                foreach (AutoResetEvent signItem in semaphoreList)
-                {
-                    signItem.WaitOne();
-                }
+                #region Getting the update point
 
-                // Fullfiled the lacks
+                var updatePointList = from item in replacePixelList
+                                      where this._originalPicture.Contains(item)
+                                      select item;
+
+                // Adding existent points
+                clonePicture.SetPixel(updatePointList.ToList());
+
+                #endregion
+
+                #region Getting the new points
+
+                var newPointList = from item in replacePixelList
+                                    where !this._originalPicture.Contains(item)
+                                    select item;
+
+                // Adding new points
+                clonePicture.SetPixel(newPointList.ToList());
+
+                #endregion
+
+                #region Fullfiled the lacks
+
                 var lackPointList = from item in _originalPicture.GetAllPixels()
                                     where !clonePicture.Contains(item)
                                     select item;
 
                 clonePicture.SetPixel(lackPointList.ToList());
+                
+                #endregion
 
                 clonePicture.endBatchUpdate();
             }

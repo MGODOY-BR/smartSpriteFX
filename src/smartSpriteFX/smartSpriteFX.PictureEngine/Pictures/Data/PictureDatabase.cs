@@ -146,7 +146,10 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
                 {
                     foreach (var pointInfoItem in pointInfoList)
                     {
-                        _dataSourceIndex.Add(pointInfoItem.ToString(), pointInfoItem);
+                        if (!_dataSourceIndex.ContainsKey(pointInfoItem.ToString()))
+                        {
+                            _dataSourceIndex.Add(pointInfoItem.ToString(), pointInfoItem);
+                        }
                     }
                 }
             });
@@ -486,44 +489,6 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
 
             // Adding the lack points
             this.INSERT(lackPointList.ToList());
-
-            #region Obsolete algoritmn
-
-            //List<AutoResetEvent> semaphoreList = new List<AutoResetEvent>();
-
-            //foreach (var sourceRowItem in sourceRowList)
-            //{
-            //    AutoResetEvent sign = new AutoResetEvent(false);
-            //    semaphoreList.Add(sign);
-
-            //    object[] stateArgs = new object[2] { sourceRowItem, sign };
-            //    WaitCallback pixelProcessingDelegate = new WaitCallback(delegate (object state)
-            //    {
-            //        object[] args = (object[])state;
-            //        PointInfo pointInfo = (PointInfo)args[0];
-            //        AutoResetEvent autoResetEvent = (AutoResetEvent)args[1];
-
-            //        try
-            //        {
-            //            if (this.UPDATE((int)pointInfo.X, (int)pointInfo.Y, pointInfo.Color) == 0)
-            //            {
-            //                this.INSERT((int)pointInfo.X, (int)pointInfo.Y, pointInfo.Color);
-            //            }
-            //        }
-            //        finally
-            //        {
-            //            autoResetEvent.Set();
-            //        }
-            //    });
-            //    ThreadPool.QueueUserWorkItem(pixelProcessingDelegate, stateArgs);
-            //}
-
-            //foreach (AutoResetEvent signItem in semaphoreList)
-            //{
-            //    signItem.WaitOne();
-            //}
-
-            #endregion
         }
 
         /// <summary>
