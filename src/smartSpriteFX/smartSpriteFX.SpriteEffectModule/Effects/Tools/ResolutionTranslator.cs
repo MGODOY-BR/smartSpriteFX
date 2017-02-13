@@ -284,7 +284,7 @@ namespace smartSuite.smartSpriteFX.Effects.Tools{
 		/// Creates a picture from translated pixel cache
 		/// </summary>
 		/// <returns></returns>
-		public Picture CreatedTranslatedPicture()
+		public Picture CreateTranslatedPicture()
         {
             // Copying picture
             Picture clonePicture = this._originalPicture.Clone(Picture.CloneMode.StructureOnly);

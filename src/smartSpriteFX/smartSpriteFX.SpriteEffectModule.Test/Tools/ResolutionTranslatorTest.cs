@@ -27,7 +27,7 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Test.Tools
             #region Running the tested operation
 
             ResolutionTranslator test = new ResolutionTranslator(frame, 1366, 768, 320, 224, 512);
-            var evidence = test.CreatedTranslatedPicture();
+            var evidence = test.CreateTranslatedPicture();
 
             #endregion
 

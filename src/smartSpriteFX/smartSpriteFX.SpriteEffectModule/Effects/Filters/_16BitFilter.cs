@@ -179,7 +179,7 @@ namespace smartSuite.smartSpriteFX.Effects.Filters{
                     sourceItem.Color);
             }
 
-            Picture filteredFrame = translator.CreatedTranslatedPicture();
+            Picture filteredFrame = translator.CreateTranslatedPicture();
             // Releasing the buffer
             frame.ReleaseBuffer();
             // Importing the pixeled buffer of translated picture
