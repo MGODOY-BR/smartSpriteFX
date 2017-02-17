@@ -929,7 +929,14 @@ namespace smartSuite.smartSpriteFX.Pictures
 
             #endregion
 
-            this._buffer.rollbackTransaction();
+            try
+            {
+                this._buffer.rollbackTransaction();
+            }
+            catch
+            {
+                // Errors in this place can't turn around the normal flow of work
+            }
         }
 
         /// <summary>

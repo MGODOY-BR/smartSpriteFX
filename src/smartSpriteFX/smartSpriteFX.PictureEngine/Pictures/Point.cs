@@ -61,6 +61,25 @@ namespace smartSuite.smartSpriteFX.Pictures{
             }
         }
 
+        // override object.Equals
+        public override bool Equals(object obj)
+        {
+            if (obj == null || GetType() != obj.GetType())
+            {
+                return false;
+            }
+
+            Point other = (Point)obj;
+
+            return this.CompareTo(other) == 0;
+        }
+
+        // override object.GetHashCode
+        public override int GetHashCode()
+        {
+            return this.ToString().GetHashCode();
+        }
+
         /// <summary>
         /// Returns a clone of point
         /// </summary>

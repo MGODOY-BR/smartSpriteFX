@@ -103,12 +103,15 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
 
             #endregion
 
-            lock (this._dataSource)
+            lock (this._dataSourceIndex)
             {
-                var row = new PointInfo(x, y, color);
+                lock (this._dataSource)
+                {
+                    var row = new PointInfo(x, y, color);
 
-                this._dataSource.Add(row);
-                this._dataSourceIndex.Add(row.ToString(), row);
+                    this._dataSource.Add(row);
+                    this._dataSourceIndex.Add(row.ToString(), row);
+                }
             }
         }
 
@@ -135,25 +138,25 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
 
             #endregion
 
-            lock (this._dataSource)
+            lock (_dataSourceIndex)
             {
-                this._dataSource.AddRange(pointInfoList);
-            }
+                // Protecting from duplicate keys
+                pointInfoList.RemoveAll(item => _dataSourceIndex.ContainsKey(item.ToString()));
 
-            Task taskIndex = new Task(delegate ()
-            {
-                lock (_dataSourceIndex)
+                lock (this._dataSource)
+                {
+                    this._dataSource.AddRange(pointInfoList);
+                }
+
+                Task taskIndex = new Task(delegate ()
                 {
                     foreach (var pointInfoItem in pointInfoList)
                     {
-                        if (!_dataSourceIndex.ContainsKey(pointInfoItem.ToString()))
-                        {
-                            _dataSourceIndex.Add(pointInfoItem.ToString(), pointInfoItem);
-                        }
+                        _dataSourceIndex.Add(pointInfoItem.ToString(), pointInfoItem);
                     }
-                }
-            });
-            taskIndex.Start();
+                });
+                taskIndex.Start();
+            }
         }
 
         /// <summary>
@@ -176,16 +179,19 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
 
             PointInfo pointInfoRef = new PointInfo(x, y, color);
 
-            lock (pointInfoRef.ToString())
+            lock (this._dataSourceIndex)
             {
-                if (!this._dataSourceIndex.ContainsKey(pointInfoRef.ToString()))
+                lock (pointInfoRef.ToString())
                 {
-                    return 0;
-                }
+                    if (!this._dataSourceIndex.ContainsKey(pointInfoRef.ToString()))
+                    {
+                        return 0;
+                    }
 
-                var item = this._dataSourceIndex[pointInfoRef.ToString()];
-                item.Color = color;
-                return 1;
+                    var item = this._dataSourceIndex[pointInfoRef.ToString()];
+                    item.Color = color;
+                    return 1;
+                }
             }
        }
 
@@ -236,14 +242,17 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
 
             #endregion
 
-            PointInfo pointInfoRef = new PointInfo(x, y, Color.Transparent);
-
-            if (!this._dataSourceIndex.ContainsKey(pointInfoRef.ToString()))
+            lock (this._dataSourceIndex)
             {
-                return null;
-            }
+                PointInfo pointInfoRef = new PointInfo(x, y, Color.Transparent);
 
-            return new ColorInfo(this._dataSourceIndex[pointInfoRef.ToString()].Color);
+                if (!this._dataSourceIndex.ContainsKey(pointInfoRef.ToString()))
+                {
+                    return null;
+                }
+
+                return new ColorInfo(this._dataSourceIndex[pointInfoRef.ToString()].Color);
+            }
         }
 
         /// <summary>
@@ -255,12 +264,15 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
         {
             PointInfo pointInfoRef = new PointInfo(point, Color.Transparent);
 
-            if (!this._dataSourceIndex.ContainsKey(pointInfoRef.ToString()))
+            lock (this._dataSourceIndex)
             {
-                return null;
-            }
+                if (!this._dataSourceIndex.ContainsKey(pointInfoRef.ToString()))
+                {
+                    return null;
+                }
 
-            return this._dataSourceIndex[pointInfoRef.ToString()];
+                return this._dataSourceIndex[pointInfoRef.ToString()];
+            }
         }
 
         /// <summary>
@@ -360,12 +372,15 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
 
             #endregion
 
-            if (!this._dataSourceIndex.ContainsKey(point.ToString()))
+            lock (this._dataSourceIndex)
             {
-                return false;
-            }
+                if (!this.EXISTS(point))
+                {
+                    return false;
+                }
 
-            return this._dataSourceIndex[point.ToString()].Color.ToArgb() == color.ToArgb();
+                return this._dataSourceIndex[point.ToString()].Color.ToArgb() == color.ToArgb();
+            }
         }
 
         /// <summary>
@@ -383,7 +398,10 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
 
             #endregion
 
-            return this._dataSourceIndex.ContainsKey(point.ToString());
+            lock (this._dataSourceIndex)
+            {
+                return this._dataSourceIndex.ContainsKey(point.ToString());
+            }
         }
 
         /// <summary>
@@ -411,8 +429,11 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
 
             #endregion
 
-            this._dataSource.Clear();
-            this._dataSourceIndex.Clear();
+            lock (this._dataSourceIndex)
+            {
+                this._dataSource.Clear();
+                this._dataSourceIndex.Clear();
+            }
         }
 
         /// <summary>
@@ -435,16 +456,19 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
 
             returnValue.CLEAR();
 
-            lock (this._dataSource)
+            lock (returnValue._dataSourceIndex)
             {
-                var sourceRowList = this._dataSource;
-
-                foreach (var sourceRowItem in sourceRowList)
+                lock (this._dataSource)
                 {
-                    var targetRow = sourceRowItem.Clone();
+                    var sourceRowList = this._dataSource;
 
-                    returnValue._dataSource.Add(targetRow);
-                    returnValue._dataSourceIndex.Add(targetRow.ToString(), targetRow);
+                    foreach (var sourceRowItem in sourceRowList)
+                    {
+                        var targetRow = sourceRowItem.Clone();
+
+                        returnValue._dataSource.Add(targetRow);
+                        returnValue._dataSourceIndex.Add(targetRow.ToString(), targetRow);
+                    }
                 }
             }
 
@@ -469,17 +493,17 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
             this.CLEAR();
 
             // Replicating the datas
-            var sourceRowList = other._dataSource;
+            var sourceRowList = other.SELECTALL();
 
             // Getting the lack points
-            var lackPointList = from item in other.SELECTALL()
+            var lackPointList = from item in sourceRowList
                                 where !this.EXISTS(item)
                                 select item;
 
             // Getting the update points
-            var updatePointList = from item in other.SELECTALL()
-                                where this.EXISTS(item)
-                                select item;
+            var updatePointList = from item in sourceRowList
+                                  where this.EXISTS(item)
+                                  select item;
 
             // Updating the update points
             foreach (var updateItem in updatePointList)

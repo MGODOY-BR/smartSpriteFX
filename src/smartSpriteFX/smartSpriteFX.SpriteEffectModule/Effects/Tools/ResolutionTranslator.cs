@@ -311,10 +311,18 @@ namespace smartSuite.smartSpriteFX.Effects.Tools{
                                     select item;
 
                 clonePicture.SetPixel(lackPointList.ToList());
-                
+
                 #endregion
 
                 clonePicture.endBatchUpdate();
+            }
+            catch (NullReferenceException)
+            {
+                // Errors this type can't interrupt the normal flow of works
+            }
+            catch (ArgumentException)
+            {
+                // Errors this type can't interrupt the normal flow of works
             }
             catch (Exception ex)
             {
