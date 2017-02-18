@@ -183,10 +183,7 @@ namespace smartSuite.smartSpriteFX.Effects.Filters{
             // Releasing the buffer
             frame.ReleaseBuffer();
             // Importing the pixeled buffer of translated picture
-            frame.Merge(filteredFrame);
-            // Release memory
-            filteredFrame.ReleaseBuffer();
-            filteredFrame.Dispose();
+            frame.ShareDataWithMe(filteredFrame);
 
             return true;
         }

@@ -128,6 +128,24 @@ namespace smartSuite.smartSpriteFX.Pictures
         }
 
         /// <summary>
+        /// Gets the databases from another picture
+        /// </summary>
+        /// <param name="other"></param>
+        public void ShareDataWithMe(Picture other)
+        {
+            #region Entries validation
+
+            if (other == null)
+            {
+                throw new ArgumentNullException("other");
+            }
+
+            #endregion
+
+            this._buffer = other._buffer;
+        }
+
+        /// <summary>
         /// Replaces the color for a new one.
         /// </summary>
         /// <param name="oldColor"></param>
