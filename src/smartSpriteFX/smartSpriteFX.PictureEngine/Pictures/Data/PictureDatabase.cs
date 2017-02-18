@@ -148,14 +148,15 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
                     this._dataSource.AddRange(pointInfoList);
                 }
 
-                Task taskIndex = new Task(delegate ()
-                {
+                // HACK: Removed because of errors in syncronism occured in Merge operation and Load
+                //Task taskIndex = new Task(delegate ()
+                //{
                     foreach (var pointInfoItem in pointInfoList)
                     {
                         _dataSourceIndex.Add(pointInfoItem.ToString(), pointInfoItem);
                     }
-                });
-                taskIndex.Start();
+                //});
+                //taskIndex.Start();
             }
         }
 
