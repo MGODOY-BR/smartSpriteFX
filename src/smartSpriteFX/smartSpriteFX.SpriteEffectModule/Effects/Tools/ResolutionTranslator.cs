@@ -292,7 +292,7 @@ namespace smartSuite.smartSpriteFX.Effects.Tools{
 
             try
             {
-                clonePicture.beginBatchUpdate();
+                clonePicture.BeginBatchUpdate();
 
                 List<PointInfo> replacePixelList = new List<PointInfo>();
 
@@ -314,7 +314,7 @@ namespace smartSuite.smartSpriteFX.Effects.Tools{
 
                 #endregion
 
-                clonePicture.endBatchUpdate();
+                clonePicture.EndBatchUpdate();
             }
             catch (NullReferenceException)
             {
@@ -326,7 +326,7 @@ namespace smartSuite.smartSpriteFX.Effects.Tools{
             }
             catch (Exception ex)
             {
-                clonePicture.cancelBatchUpdate();
+                clonePicture.CancelBatchUpdate();
                 throw ex;
             }
 

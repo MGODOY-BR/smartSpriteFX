@@ -95,16 +95,16 @@ namespace smartSuite.smartSpriteFX.Pictures
 
             try
             {
-                this.beginBatchUpdate();
+                this.BeginBatchUpdate();
 
                 this._buffer.Merge(other._buffer);
                 this.ColorCount = this._buffer.CountColor();
 
-                this.endBatchUpdate();
+                this.EndBatchUpdate();
             }
             catch
             {
-                this.cancelBatchUpdate();
+                this.CancelBatchUpdate();
                 throw;
             }
         }
@@ -321,7 +321,7 @@ namespace smartSuite.smartSpriteFX.Pictures
 
             try
             {
-                this._buffer.beginTransaction();
+                this._buffer.BeginTransaction();
 
                 for (int y = 0; y < image.Height; y++)
                 {
@@ -359,11 +359,11 @@ namespace smartSuite.smartSpriteFX.Pictures
                     signItem.WaitOne();
                 }
 
-                this._buffer.commitTransaction();
+                this._buffer.CommitTransaction();
             }
             catch(Exception ex)
             {
-                this._buffer.rollbackTransaction();
+                this._buffer.RollbackTransaction();
                 throw ex;
             }
 
@@ -920,7 +920,7 @@ namespace smartSuite.smartSpriteFX.Pictures
         /// <summary>
         /// Prepare for several updates
         /// </summary>
-        public void beginBatchUpdate()
+        public void BeginBatchUpdate()
         {
             #region Entries validation
 
@@ -931,13 +931,13 @@ namespace smartSuite.smartSpriteFX.Pictures
 
             #endregion
 
-            this._buffer.beginTransaction();
+            this._buffer.BeginTransaction();
         }
 
         /// <summary>
         /// Ends a batch update
         /// </summary>
-        public void endBatchUpdate()
+        public void EndBatchUpdate()
         {
             #region Entries validation
 
@@ -948,13 +948,13 @@ namespace smartSuite.smartSpriteFX.Pictures
 
             #endregion
 
-            this._buffer.commitTransaction();
+            this._buffer.CommitTransaction();
         }
 
         /// <summary>
         /// Cancels a batch update
         /// </summary>
-        public void cancelBatchUpdate()
+        public void CancelBatchUpdate()
         {
             #region Entries validation
 
@@ -967,7 +967,7 @@ namespace smartSuite.smartSpriteFX.Pictures
 
             try
             {
-                this._buffer.rollbackTransaction();
+                this._buffer.RollbackTransaction();
             }
             catch
             {

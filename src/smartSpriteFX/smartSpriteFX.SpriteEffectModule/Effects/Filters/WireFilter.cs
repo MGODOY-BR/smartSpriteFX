@@ -39,7 +39,7 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
             var sourceList = frame.GetAllPixels();
             try
             {
-                frame.beginBatchUpdate();
+                frame.BeginBatchUpdate();
 
                 foreach (var sourceItem in sourceList)
                 {
@@ -73,11 +73,11 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
                     lastColor = newColor;
                 }
 
-                frame.endBatchUpdate();
+                frame.EndBatchUpdate();
             }
             catch
             {
-                frame.cancelBatchUpdate();
+                frame.CancelBatchUpdate();
                 throw;
             }
 

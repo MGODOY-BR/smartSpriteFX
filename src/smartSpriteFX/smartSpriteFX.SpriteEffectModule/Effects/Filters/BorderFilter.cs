@@ -126,18 +126,18 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
 
             try
             {
-                frame.beginBatchUpdate();
+                frame.BeginBatchUpdate();
                 // Drawing the trace border
                 foreach (var traceBorderPointItem in traceBorderPointList)
                 {
                     frame.ReplacePixel(
                         (int)traceBorderPointItem.Value.X, (int)traceBorderPointItem.Value.Y, traceBorderPointItem.Value.Color);
                 }
-                frame.endBatchUpdate();
+                frame.EndBatchUpdate();
             }
             catch
             {
-                frame.cancelBatchUpdate();
+                frame.CancelBatchUpdate();
                 throw;
             }
 

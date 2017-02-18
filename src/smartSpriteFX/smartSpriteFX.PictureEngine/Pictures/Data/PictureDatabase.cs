@@ -561,7 +561,7 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
         /// <summary>
         /// Begins the transaction
         /// </summary>
-        public void beginTransaction()
+        public void BeginTransaction()
         {
             // HACK: Initially, this was prepared for SQlite and another databases.
             this._transactionStartTime = DateTime.Now;
@@ -571,7 +571,7 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
         /// Rolls back the transaction
         /// </summary>
         [MethodImpl(MethodImplOptions.NoInlining)]
-        public void rollbackTransaction()
+        public void RollbackTransaction()
         {
             #region Entries validation
 
@@ -582,14 +582,14 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
 
             #endregion
 
-            this.printTransactionTime(new StackFrame(2, true).GetMethod().Name);
+            this.PrintTransactionTime(new StackFrame(2, true).GetMethod().Name);
         }
 
         /// <summary>
         /// Commits the transaction
         /// </summary>
         [MethodImpl(MethodImplOptions.NoInlining)]
-        public void commitTransaction()
+        public void CommitTransaction()
         {
             #region Entries validation
 
@@ -600,13 +600,13 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
 
             #endregion
 
-            this.printTransactionTime(new StackFrame(2, true).GetMethod().Name);
+            this.PrintTransactionTime(new StackFrame(2, true).GetMethod().Name);
         }
 
         /// <summary>
         /// Prints the transaction time
         /// </summary>
-        private void printTransactionTime(String calledMethod)
+        private void PrintTransactionTime(String calledMethod)
         {
             #region Entries validation
 

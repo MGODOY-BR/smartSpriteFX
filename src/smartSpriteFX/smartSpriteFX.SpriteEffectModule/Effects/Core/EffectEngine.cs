@@ -249,7 +249,7 @@ namespace smartSuite.smartSpriteFX.Effects.Core{
 
             #endregion
 
-            var previewFrame = _sourcePreviewImage;
+            var previewFrame = _sourcePreviewImage.Clone();
             var frameIndex = EffectEngine._iterator.GetFrameIndex();
             // previewFrame.ClearCache();
             foreach (var filterItem in EffectEngine._filterList.GetFilterBufferList())
