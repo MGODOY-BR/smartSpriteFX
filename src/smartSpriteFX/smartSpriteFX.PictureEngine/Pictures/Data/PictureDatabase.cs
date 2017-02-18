@@ -516,6 +516,28 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
         }
 
         /// <summary>
+        /// Gets all the colors of database
+        /// </summary>
+        /// <param name="other"></param>
+        public List<Color> GetAllColors()
+        {
+            #region Entries validation
+
+            if (this._dataSource == null)
+            {
+                throw new ArgumentNullException("this._dataSource", "Connection hadn't been opened yet.");
+            }
+
+            #endregion
+
+            var result = from item in this._dataSource
+                         group item by item.Color into g
+                         select g.Key;
+
+            return result.ToList();
+        }
+
+        /// <summary>
         /// Gets the amount of colors of database
         /// </summary>
         /// <param name="other"></param>
@@ -531,7 +553,7 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
             #endregion
 
             var result = from item in this._dataSource
-                         group item by item.Color.ToArgb();
+                         group item by item.Color;
 
             return result.Count();
         }

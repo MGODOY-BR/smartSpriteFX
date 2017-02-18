@@ -128,6 +128,24 @@ namespace smartSuite.smartSpriteFX.Pictures
         }
 
         /// <summary>
+        /// Gets all the colors from Picture
+        /// </summary>
+        /// <returns></returns>
+        public List<Color> GetAllColors()
+        {
+            #region Entries validation
+
+            if (this._buffer == null)
+            {
+                throw new ArgumentNullException("this._buffer");
+            }
+
+            #endregion
+
+            return this._buffer.GetAllColors();
+        }
+
+        /// <summary>
         /// Gets the databases from another picture
         /// </summary>
         /// <param name="other"></param>

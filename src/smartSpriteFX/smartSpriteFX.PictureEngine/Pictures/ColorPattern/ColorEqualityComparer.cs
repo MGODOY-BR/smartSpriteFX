@@ -10,7 +10,7 @@ namespace smartSuite.smartSpriteFX.Pictures.ColorPattern
     /// <summary>
     /// Represents a color equality comparer for colors
     /// </summary>
-    public class ColorEqualityComparer : IEqualityComparer<Color>
+    public class ColorEqualityComparer : IEqualityComparer<Color>, IComparer<Color>
     {
         /// <summary>
         /// It´s a sensibility, used to check similiar colors
@@ -281,6 +281,26 @@ namespace smartSuite.smartSpriteFX.Pictures.ColorPattern
             #endregion
 
             return obj.ToArgb();
+        }
+
+        public int Compare(Color x, Color y)
+        {
+            if (x.ToArgb() == y.ToArgb())
+            {
+                return 0;
+            }
+            if (this.Equals(x, y))
+            {
+                return 0;
+            }
+            if (this.EqualsButNoAlpha(x, y))
+            {
+                return 0;
+            }
+            else
+            {
+                return x.ToArgb().CompareTo(y.ToArgb());
+            }
         }
     }
 }
