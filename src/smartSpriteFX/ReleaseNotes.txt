@@ -1,7 +1,12 @@
 vAlpha 2.0.0.4
 
 New Feactures
+- Search feacture in Effect Filters has been added
 
 Improvements
+- Increasement of performance in:
+	- old-school video game filters
+	- transparent background filters
+- Great improvement in Picture class in library for development
 
 Bugfixes
