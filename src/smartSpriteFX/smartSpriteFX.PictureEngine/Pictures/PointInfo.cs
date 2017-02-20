@@ -29,7 +29,16 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures
         public Color Color
         {
             get;
-            private set;
+            set;
+        }
+
+        /// <summary>
+        /// Clones the current object;
+        /// </summary>
+        /// <returns></returns>
+        public new PointInfo Clone()
+        {
+            return new PointInfo(this.X, this.Y, this.Color); 
         }
     }
 }

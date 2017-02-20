@@ -1,9 +1,15 @@
-vAlpha 2.0.0.3
+vAlpha 2.0.0.4
 
 New Feactures
+- Search feacture in Effect Filters has been added
+- New Filter: Shadow Filter
 
 Improvements
-- Controls of navigation of animation
+- Increasement of performance in:
+	- old-school video game filters
+	- transparent background filters
+- Great improvement in Picture class in library for development
+- Added find capability to filter collection
 
 Bugfixes
-- Skiping corrupted frames from load instead of the entire folder, during the openning of an animation
+-

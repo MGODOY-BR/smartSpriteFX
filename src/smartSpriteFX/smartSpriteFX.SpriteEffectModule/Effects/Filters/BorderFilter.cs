@@ -108,7 +108,8 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
                 var pointBorderItem = pointBorderList[i];
 
                 // Getting the original color
-                var originalColor = frame.GetPixel((int)pointBorderItem.X, (int)pointBorderItem.Y);
+                // var originalColor = frame.GetPixel((int)pointBorderItem.X, (int)pointBorderItem.Y);
+                var originalColor = pointBorderItem.Color;
 
                 // Getting the trace border
                 var list = this.MakeTraceBorder(pointBorderItem);
@@ -123,11 +124,21 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
                 }
             }
 
-            // Drawing the trace border
-            foreach (var traceBorderPointItem in traceBorderPointList)
+            try
             {
-                frame.ReplacePixel(
-                    (int)traceBorderPointItem.Value.X, (int)traceBorderPointItem.Value.Y, traceBorderPointItem.Value.Color);
+                frame.BeginBatchUpdate();
+                // Drawing the trace border
+                foreach (var traceBorderPointItem in traceBorderPointList)
+                {
+                    frame.ReplacePixel(
+                        (int)traceBorderPointItem.Value.X, (int)traceBorderPointItem.Value.Y, traceBorderPointItem.Value.Color);
+                }
+                frame.EndBatchUpdate();
+            }
+            catch
+            {
+                frame.CancelBatchUpdate();
+                throw;
             }
 
             return true;

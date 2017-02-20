@@ -35,40 +35,50 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
                 EffectEngine.GetTransparentBackgroundFilter();
 
             Color? lastColor = null;
-            for (int y = 0; y < frame.Height; y++)
+
+            var sourceList = frame.GetAllPixels();
+            try
             {
-                for (int x = 0; x < frame.Width; x++)
+                frame.BeginBatchUpdate();
+
+                foreach (var sourceItem in sourceList)
                 {
-                    var pixel = frame.GetPixel(x, y);
+                    int x = (int)sourceItem.X;
+                    int y = (int)sourceItem.Y;
+                    Color pixel = sourceItem.Color;
 
-                    if (pixel.HasValue)
+                    var newColor =
+                        _colorBuffer.GetSimilarColor(pixel);
+
+                    if (transparentBackgroundFilter != null)
                     {
-                        var newColor =
-                            _colorBuffer.GetSimilarColor(pixel.Value);
-
-                        if (transparentBackgroundFilter != null)
-                        {
-                            if (_colorComparer.EqualsButNoAlpha(newColor, transparentBackgroundFilter.TransparentColor))
-                            {
-                                newColor = ColorBuffer.GetSlightlyDifferentColor(newColor);
-                            }
-                        }
-                        else if (_colorComparer.EqualsButNoAlpha(newColor, frame.TransparentColor))
+                        if (_colorComparer.EqualsButNoAlpha(newColor, transparentBackgroundFilter.TransparentColor))
                         {
                             newColor = ColorBuffer.GetSlightlyDifferentColor(newColor);
                         }
-
-                        if (lastColor.HasValue && _colorComparer.LooksLikeBySensibility2(newColor, lastColor.Value))
-                        {
-                            frame.ReplacePixel(x, y, Color.Black);
-                        }
-                        else
-                        {
-                            frame.ReplacePixel(x, y, newColor);
-                        }
-                        lastColor = newColor;
                     }
+                    else if (_colorComparer.EqualsButNoAlpha(newColor, frame.TransparentColor))
+                    {
+                        newColor = ColorBuffer.GetSlightlyDifferentColor(newColor);
+                    }
+
+                    if (lastColor.HasValue && _colorComparer.LooksLikeBySensibility2(newColor, lastColor.Value))
+                    {
+                        frame.ReplacePixel(x, y, Color.Black);
+                    }
+                    else
+                    {
+                        frame.ReplacePixel(x, y, newColor);
+                    }
+                    lastColor = newColor;
                 }
+
+                frame.EndBatchUpdate();
+            }
+            catch
+            {
+                frame.CancelBatchUpdate();
+                throw;
             }
 
             return true;

@@ -51,18 +51,33 @@ namespace smartSuite.smartSpriteFX.Pictures{
             {
                 return -1;
             }
-            if (this.X < other.X)
-            {
-                return -1;
-            }
-            if (this.Y.CompareTo(other.Y) == 0 && this.X.CompareTo(other.X) == 0)
-            {
-                return 0;
-            }
-            else
+            else if (this.Y > other.Y)
             {
                 return 1;
             }
+            else
+            {
+                return this.X.CompareTo(other.X);
+            }
+        }
+
+        // override object.Equals
+        public override bool Equals(object obj)
+        {
+            if (obj == null || GetType() != obj.GetType())
+            {
+                return false;
+            }
+
+            Point other = (Point)obj;
+
+            return this.CompareTo(other) == 0;
+        }
+
+        // override object.GetHashCode
+        public override int GetHashCode()
+        {
+            return this.ToString().GetHashCode();
         }
 
         /// <summary>

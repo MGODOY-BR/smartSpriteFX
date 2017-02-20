@@ -12,6 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
+using smartSuite.smartSpriteFX.PictureEngine.Pictures.Data;
 
 namespace smartSuite.smartSpriteFX.Effects.Core{
 	/// <summary>
@@ -45,6 +46,11 @@ namespace smartSuite.smartSpriteFX.Effects.Core{
         private static PictureBox _previewBoard;
 
         /// <summary>
+        /// It´s a image used like a source to <see cref="UpdatePreviewBoard"/> method
+        /// </summary>
+        private static Picture _sourcePreviewImage;
+
+        /// <summary>
         /// It´s the list of thread used during Apply method
         /// </summary>
         private static List<Thread> _applyingThreadList = new List<Thread>();
@@ -70,6 +76,24 @@ namespace smartSuite.smartSpriteFX.Effects.Core{
         public static void Apply()
         {
             EffectEngine.Apply(null);
+        }
+
+        /// <summary>
+        /// Sets the source preview image to use in <see cref="UpdatePreviewBoard"/> method
+        /// </summary>
+        /// <param name="sourcePreviewImage"></param>
+        public static void SetSourcePreviewImage(Picture sourcePreviewImage)
+        {
+            #region Entries validation
+
+            if (sourcePreviewImage == null)
+            {
+                throw new ArgumentNullException("sourcePreviewImage");
+            }
+
+            #endregion
+
+            _sourcePreviewImage = sourcePreviewImage;
         }
 
         /// <summary>
@@ -146,8 +170,8 @@ namespace smartSuite.smartSpriteFX.Effects.Core{
             EffectEngine._callback = callback;
             EffectEngine._outputPath = null;
 
-            ThreadPool.SetMinThreads(3, 30);
-            ThreadPool.SetMaxThreads(7, 70);
+            ThreadPool.SetMinThreads(4, 40);
+            ThreadPool.SetMaxThreads(6, 60);
 
             EffectEngine._applyingThreadList.Clear();
             List<WaitHandle> syncList = new List<WaitHandle>();
@@ -218,20 +242,22 @@ namespace smartSuite.smartSpriteFX.Effects.Core{
             {
                 throw new ArgumentException("EffectEngine._filterList", "None filter has been selected!");
             }
+            if (_sourcePreviewImage == null)
+            {
+                throw new ArgumentNullException("_sourcePreviewImage", "You must choose an image before");
+            }
 
             #endregion
 
-            if (EffectEngine._iterator.GetFrameIndex() == -1)
-            {
-                EffectEngine._iterator.MoveFirst();
-            }
-
-            var previewFrame = EffectEngine._iterator.GetCurrent().Clone();
+            var previewFrame = _sourcePreviewImage.Clone();
             var frameIndex = EffectEngine._iterator.GetFrameIndex();
-            previewFrame.ClearCache();
+            // previewFrame.ClearCache();
             foreach (var filterItem in EffectEngine._filterList.GetFilterBufferList())
             {
-                var draftFrame = previewFrame.Clone();
+                // var draftFrame = previewFrame.Clone();
+                Picture draftFrame = previewFrame.Clone(Picture.CloneMode.StructureOnly);
+                draftFrame.ShareDataWithMe(previewFrame);
+
                 if (filterItem.ApplyFilter(draftFrame, frameIndex))
                 {
                     previewFrame = draftFrame;
@@ -276,6 +302,7 @@ namespace smartSuite.smartSpriteFX.Effects.Core{
             // Loads the filteres
             FilterCollection.Load();
 
+            PictureDatabase.Clear();
             // Loading animation folder
             EffectEngine._iterator = FrameIterator.Open(fullPath);
         }
@@ -297,16 +324,27 @@ namespace smartSuite.smartSpriteFX.Effects.Core{
         /// </returns>
         public static TransparentBackgroundFilter GetTransparentBackgroundFilter()
         {
+            return EffectEngine.FindFilter<TransparentBackgroundFilter>();
+        }
+
+        /// <summary>
+        /// Finds the filter in collection of selected filters.
+        /// </summary>
+        /// <typeparam name="T">The type of desired filter</typeparam>
+        /// <returns>The instance of the fires found filter or null if it doesn't exist.</returns>
+        public static T FindFilter<T>() where T : IEffectFilter
+        {
             var selectedFilterList = EffectEngine.GetSelectedFilterList();
+            Type typeFilter = typeof(T);
             foreach (var filterItem in selectedFilterList)
             {
-                if (filterItem is TransparentBackgroundFilter)
+                if (typeFilter.IsInstanceOfType(filterItem))
                 {
-                    return filterItem as TransparentBackgroundFilter;
+                    return (T)filterItem;
                 }
             }
 
-            return null;
+            return default(T);
         }
 
         /// <summary>
@@ -457,8 +495,13 @@ namespace smartSuite.smartSpriteFX.Effects.Core{
                     }
                 }
             }
+            catch
+            {
+                throw;
+            }
             finally
             {
+                frame.ClearCache();
                 waitHandle.Set();
             }
         }

@@ -4,6 +4,7 @@ using Rhino.Mocks;
 using smartSuite.smartSpriteFX.Animations;
 using smartSuite.smartSpriteFX.Pictures;
 using System.Collections.Generic;
+using smartSuite.smartSpriteFX.PictureEngine.Pictures.Data;
 
 namespace smartSuite.smartSpriteFX.SpriteEffectModule.Test.Animations
 {
@@ -18,6 +19,7 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Test.Animations
         [TestCleanup]
         public void TearDown()
         {
+            PictureDatabase.Clear();
         }
 
         [TestMethod]

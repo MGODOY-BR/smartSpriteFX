@@ -33,6 +33,16 @@ namespace smartSuite.smartSpriteFX.Effects.Facade{
         }
 
         /// <summary>
+        /// Finds the filter in collection of selected filters.
+        /// </summary>
+        /// <typeparam name="T">The type of desired filter</typeparam>
+        /// <returns>The instance of the fires found filter or null if it doesn't exist.</returns>
+        public static T FindFilter<T>() where T : IEffectFilter
+        {
+            return EffectEngine.FindFilter<T>();
+        }
+
+        /// <summary>
         /// Gets the <see cref="TransparentBackgroundFilter"/> in selected filter list.
         /// </summary>
         /// <returns>
@@ -44,7 +54,7 @@ namespace smartSuite.smartSpriteFX.Effects.Facade{
         }
 
         /// <summary>
-        /// Gets the controls collection for preview board
+        /// Gets the control collection for preview board
         /// </summary>
         /// <returns></returns>
         public static ControlCollection GetControlCollectionFromPreviewBoard()

@@ -1,4 +1,5 @@
 
+using smartSuite.smartSpriteFX.PictureEngine.Pictures;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -143,6 +144,19 @@ namespace smartSuite.smartSpriteFX.Pictures{
         }
 
         /// <summary>
+        /// Converts the range in a point list
+        /// </summary>
+        /// <returns></returns>
+        public List<PointInfo> ToPointInfoList()
+        {
+            List<PointInfo> returnList = new List<PointInfo>();
+
+            returnList.AddRange(this.ConvertMeToPointInfoList());
+
+            return returnList;
+        }
+
+        /// <summary>
         /// Converts the current point list to a set of points
         /// </summary>
         /// <returns></returns>
@@ -168,6 +182,40 @@ namespace smartSuite.smartSpriteFX.Pictures{
                 for (int x = (int)this._startPoint.X; x < this._endPoint.X; x++)
                 {
                     returnList.Add(new Point(x, y));
+                }
+            }
+
+            return returnList;
+        }
+
+        /// <summary>
+        /// Converts the current point list to a set of points
+        /// </summary>
+        /// <returns></returns>
+        private List<PointInfo> ConvertMeToPointInfoList()
+        {
+            #region Entries validation
+
+            if (this._startPoint == null)
+            {
+                throw new ApplicationException("The point range hasn't been initialized yet. It´s needed called SetPoint at least at once.");
+            }
+            List<PointInfo> returnList = new List<PointInfo>();
+            if (this._endPoint == null)
+            {
+                returnList.Add(
+                    new PointInfo(this._startPoint, this.Color));
+                return returnList;
+            }
+
+            #endregion
+
+            for (int y = (int)this._startPoint.Y; y < this._endPoint.Y; y++)
+            {
+                for (int x = (int)this._startPoint.X; x < this._endPoint.X; x++)
+                {
+                    returnList.Add(
+                        new PointInfo(x, y, this.Color));
                 }
             }
 

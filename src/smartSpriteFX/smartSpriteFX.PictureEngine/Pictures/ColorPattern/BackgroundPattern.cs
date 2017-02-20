@@ -16,19 +16,9 @@ namespace smartSuite.smartSpriteFX.Pictures.ColorPattern
     public class BackgroundPattern
     {
         /// <summary>
-        /// It´s the cache of pixel information
-        /// </summary>
-        private Dictionary<String, PixelInfo> _learntCache = new Dictionary<string, PixelInfo>();
-
-        /// <summary>
         /// It´s a comparator for colors
         /// </summary>
         private ColorEqualityComparer _colorComparer = new ColorEqualityComparer();
-
-        /// <summary>
-        /// It´s a list of learnt colors
-        /// </summary>
-        private HashSet<Color> _learntColors = new HashSet<Color>();
 
         /// <summary>
         /// It´s the point of left coordinate
@@ -57,7 +47,6 @@ namespace smartSuite.smartSpriteFX.Pictures.ColorPattern
         internal Color GetReplacementColor(Piece piece, IAskingForColorDelegate askingForColorDelegate)
         {
             return this.GetReplacementColor(
-                    this._learntCache,
                     piece.PointA,
                     piece.PointC,
                     piece.PointD,
@@ -98,15 +87,6 @@ namespace smartSuite.smartSpriteFX.Pictures.ColorPattern
                 Y = y,
                 Color = color
             };
-
-            // Updating the cash of pixels
-            this._learntCache.Add(this.FormatKey(x, y), pixelInfo);
-
-            // Updating the cash of colors
-            if (!this._learntColors.Contains(color, this._colorComparer))
-            {
-                this._learntColors.Add(color);
-            }
 
             var refPoint = new Point(x, y);
 
@@ -256,7 +236,6 @@ namespace smartSuite.smartSpriteFX.Pictures.ColorPattern
             // Getting the replacement colors
             var transparentReplacementColor =
                 this.GetReplacementColor(
-                    this._learntCache,
                     piece.PointA,
                     piece.PointC,
                     piece.PointD,
@@ -265,32 +244,6 @@ namespace smartSuite.smartSpriteFX.Pictures.ColorPattern
                     askingForColorDelegate);
 
             this.TransparentColor = transparentReplacementColor;
-
-            /*
-            for (int y = (int)piece.PointA.Y; y < piece.PointB.Y; y++)
-            {
-                // Scanning the taken picture
-                for (int x = (int)piece.PointA.X; x < piece.PointB.X; x++)
-                {
-                    try
-                    {
-                        // Getting pixel
-                        var pixel = pieceTakenPicture.GetPixel(x, y);
-
-                        // Checking if it is replacement color
-                        if (this._colorComparer.LooksLike(transparentReplacementColor, pixel))
-                        {
-                            // Replacing picture
-                            pieceTakenPicture.ReplacePixel(x, y, pixel);
-                        }
-                    }
-                    catch (IndexOutOfRangeException)
-                    {
-                        break;
-                    }
-                }
-            }
-            */
 
             // Refreshing picture
             pieceTakenPicture.Overwrite(transparentReplacementColor);   // <-- TODO: Change replacementColor to put a pattern
@@ -301,7 +254,6 @@ namespace smartSuite.smartSpriteFX.Pictures.ColorPattern
         /// </summary>
         /// <returns></returns>
         private Color GetReplacementColor(
-            Dictionary<String, PixelInfo> learntCache, 
             Point topLeftPiece, 
             Point topRightPiece, 
             Point lowerLeftPiece, 
@@ -320,6 +272,11 @@ namespace smartSuite.smartSpriteFX.Pictures.ColorPattern
             {
                 throw new ArgumentNullException("piece");
             }
+            var picture = piece.GetReferencePicture();
+            if (picture == null)
+            {
+                throw new ArgumentNullException("picture");
+            }
 
             #endregion
 
@@ -336,12 +293,14 @@ namespace smartSuite.smartSpriteFX.Pictures.ColorPattern
                 Frequency = 0
             };
 
-            int counter = 0;
+            var colorList = picture.GetAllColors();
+            colorList.Sort(this._colorComparer);
 
-            while (counter < this._learntColors.Count)
+            int counter = 0;
+            while (counter < colorList.Count)
             {
-                horizontalColor = this.GetHorizontalReplacementColor(learntCache, topLeftPiece, topRightPiece, invalidColorList);
-                verticalColor = this.GetVerticalReplacementColor(learntCache, topLeftPiece, topRightPiece, invalidColorList);
+                horizontalColor = this.GetHorizontalReplacementColor(picture, topLeftPiece, topRightPiece, invalidColorList);
+                verticalColor = this.GetVerticalReplacementColor(picture, topLeftPiece, topRightPiece, invalidColorList);
 
                 invalidColorList.Add(horizontalColor.Color);
                 invalidColorList.Add(verticalColor.Color);
@@ -371,7 +330,7 @@ namespace smartSuite.smartSpriteFX.Pictures.ColorPattern
             #region Handling with undefined color
 
             // TODO: It necessary to improve this condiction to avoid bad interpretation of background mistakes
-            if (counter == this._learntColors.Count && counter > 1) // <-- This means that there no common color among the axis. We need help from user
+            if (counter == colorList.Count && counter > 1) // <-- This means that there no common color among the axis. We need help from user
             {
                 return
                     askingForColorDelegate.AnswerMe(piece, invalidColorList);
@@ -387,13 +346,13 @@ namespace smartSuite.smartSpriteFX.Pictures.ColorPattern
         /// </summary>
         /// <param name="invalidColorList">It´s a list of colors to ignore</param>
         /// <returns></returns>
-        private ColorFrequency GetHorizontalReplacementColor(Dictionary<String, PixelInfo> learntCache, Point topLeftPiece, Point topRightPiece, List<Color> invalidColorList)
+        private ColorFrequency GetHorizontalReplacementColor(Picture picture, Point topLeftPiece, Point topRightPiece, List<Color> invalidColorList)
         {
             #region Entries validation
 
-            if (learntCache == null)
+            if (picture == null)
             {
-                throw new ArgumentNullException("learntCache");
+                throw new ArgumentNullException("picture");
             }
             if (topLeftPiece == null)
             {
@@ -422,31 +381,29 @@ namespace smartSuite.smartSpriteFX.Pictures.ColorPattern
             // Getting the horizontal pattern
             for (int x = (int)this._topLeft.X; x < (int)this._topRight.X; x++)
             {
-                var key = this.FormatKey(x, (int)this._topLeft.Y);
+                var color = picture.GetPixel(x, (int)this._topLeft.Y);
 
                 #region Entries validation
 
-                if (!learntCache.ContainsKey(key))
+                if (color == null)
                 {
                     continue;
                 }
 
                 #endregion
 
-                var pixelInfo = learntCache[key];
-
                 #region Applying filter to avoid ignored colors
 
-                if (pixelInfo.Color == Color.Transparent)
+                if (color == Color.Transparent)
                 {
                     frequentlyColor = new ColorFrequency
                     {
-                        Color = pixelInfo.Color,
+                        Color = color.Value,
                         Frequency = 1
                     };
                     break;
                 }
-                if (invalidColorList.Contains(pixelInfo.Color))
+                if (invalidColorList.Contains(color.Value))
                 {
                     continue;
                 }
@@ -456,7 +413,7 @@ namespace smartSuite.smartSpriteFX.Pictures.ColorPattern
                 #region Counting
 
                 //if (!patternList.ContainsKey(pixelInfo.Color))
-                var similarColor = this.GetSimilarColor(patternList.Keys, pixelInfo.Color);
+                var similarColor = this.GetSimilarColor(patternList.Keys, color.Value);
                 if(!patternList.ContainsKey(similarColor))
                 {
                     // patternList.Add(pixelInfo.Color, 1);
@@ -477,7 +434,7 @@ namespace smartSuite.smartSpriteFX.Pictures.ColorPattern
                 {
                     frequentlyColor = new ColorFrequency
                     {
-                        Color = pixelInfo.Color,
+                        Color = color.Value,
                         Frequency = 1
                     };
                 }
@@ -488,7 +445,7 @@ namespace smartSuite.smartSpriteFX.Pictures.ColorPattern
                 {
                     frequentlyColor = new ColorFrequency
                     {
-                        Color = pixelInfo.Color,
+                        Color = color.Value,
                         // Frequency = patternList[pixelInfo.Color]
                         Frequency = patternList[similarColor]
                     };
@@ -564,13 +521,13 @@ namespace smartSuite.smartSpriteFX.Pictures.ColorPattern
         /// </summary>
         /// <param name="invalidColorList">It´s a list of colors to ignore</param>
         /// <returns></returns>
-        private ColorFrequency GetVerticalReplacementColor(Dictionary<String, PixelInfo> learntCache, Point lowerLeftPiece, Point lowerRightPiece, List<Color> invalidColorList)
+        private ColorFrequency GetVerticalReplacementColor(Picture picture, Point lowerLeftPiece, Point lowerRightPiece, List<Color> invalidColorList)
         {
             #region Entries validation
 
-            if (learntCache == null)
+            if (picture == null)
             {
-                throw new ArgumentNullException("learntCache");
+                throw new ArgumentNullException("picture");
             }
             if (lowerLeftPiece == null)
             {
@@ -599,31 +556,29 @@ namespace smartSuite.smartSpriteFX.Pictures.ColorPattern
             // Getting the horizontal pattern
             for (int y = (int)this._topLeft.Y - 1; y < (int)this._lowerLeft.Y + 1; y++)
             {
-                var key = this.FormatKey((int)this._lowerLeft.X, y);
+                var color = picture.GetPixel((int)this._lowerLeft.X, y);
 
                 #region Entries validation
 
-                if (!learntCache.ContainsKey(key))
+                if (color == null)
                 {
                     continue;
                 }
 
                 #endregion
 
-                var pixelInfo = learntCache[key];
-
                 #region Applying filter to avoid ignored colors
 
-                if (pixelInfo.Color == Color.Transparent)
+                if (color.Value == Color.Transparent)
                 {
                     frequentlyColor = new ColorFrequency
                     {
-                        Color = pixelInfo.Color,
+                        Color = color.Value,
                         Frequency = 1
                     };
                     break;
                 }
-                if (invalidColorList.Contains(pixelInfo.Color))
+                if (invalidColorList.Contains(color.Value))
                 {
                     continue;
                 }
@@ -632,13 +587,13 @@ namespace smartSuite.smartSpriteFX.Pictures.ColorPattern
 
                 #region Counting
 
-                if (!patternList.ContainsKey(pixelInfo.Color))
+                if (!patternList.ContainsKey(color.Value))
                 {
-                    patternList.Add(pixelInfo.Color, 1);
+                    patternList.Add(color.Value, 1);
                 }
                 else
                 {
-                    patternList[pixelInfo.Color]++;
+                    patternList[color.Value]++;
                 }
                 counter++;
 
@@ -650,18 +605,18 @@ namespace smartSuite.smartSpriteFX.Pictures.ColorPattern
                 {
                     frequentlyColor = new ColorFrequency
                     {
-                        Color = pixelInfo.Color,
+                        Color = color.Value,
                         Frequency = 1
                     };
                 }
 
                 // Testing the frequency
-                if (patternList[pixelInfo.Color] > frequentlyColor.Frequency)
+                if (patternList[color.Value] > frequentlyColor.Frequency)
                 {
                     frequentlyColor = new ColorFrequency
                     {
-                        Color = pixelInfo.Color,
-                        Frequency = patternList[pixelInfo.Color]
+                        Color = color.Value,
+                        Frequency = patternList[color.Value]
                     };
                 }
 

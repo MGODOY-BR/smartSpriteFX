@@ -4,6 +4,7 @@ using smartSuite.smartSpriteFX.Effects.Core;
 using System.Windows.Forms;
 using smartSuite.smartSpriteFX.Effects.FilterEngine;
 using System.IO;
+using smartSuite.smartSpriteFX.PictureEngine.Pictures.Data;
 
 namespace smartSuite.smartSpriteFX.SpriteEffectModule.Test.Effects.Core
 {
@@ -18,6 +19,7 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Test.Effects.Core
         [TestCleanup]
         public void TearDown()
         {
+            PictureDatabase.Clear();
         }
 
         [TestMethod]
@@ -28,7 +30,13 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Test.Effects.Core
             EffectEngine.Initializate(@"StubAnimation\Enumerated");
 
             PictureBox pictureBoxStub = new PictureBox();
+
             EffectEngine.SetPreviewBoard(pictureBoxStub);
+
+            EffectEngine.GetIterator().MoveFirst();
+
+            EffectEngine.SetSourcePreviewImage(
+                EffectEngine.GetIterator().GetCurrent());
 
             var filterPallete = FilterCollection.GetFilterPallete();
 

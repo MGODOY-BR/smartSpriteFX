@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using smartSuite.smartSpriteFX.Effects.Filters;
 using smartSuite.smartSpriteFX.Effects.FilterEngine;
+using smartSuite.smartSpriteFX.Forms.Utilities;
 
 namespace smartSuite.smartSpriteFX.Forms.Controls.EffectFilterPallete
 {
@@ -17,6 +18,15 @@ namespace smartSuite.smartSpriteFX.Forms.Controls.EffectFilterPallete
     /// </summary>
     public partial class EffectFilterPalleteControl : UserControl
     {
+        /// <summary>
+        /// It´s a dataSource of researchs
+        /// </summary>
+        private KeyValuePair<String, IEnumerable<TreeNode>>? _searchDataSource;
+        /// <summary>
+        /// It´s the current treenode
+        /// </summary>
+        private TreeNode _currentTreeNode;
+
         public EffectFilterPalleteControl()
         {
             InitializeComponent();
@@ -101,6 +111,82 @@ namespace smartSuite.smartSpriteFX.Forms.Controls.EffectFilterPallete
                     treeNode.Nodes.Add(treeNodeItem);
                 }
                 this.treeView1.Nodes.Add(treeNode);
+            }
+        }
+
+        /// <summary>
+        /// Performs a find operation
+        /// </summary>
+        private void DoFind()
+        {
+            String criteria = this.txtFind.Text;
+            if (String.IsNullOrWhiteSpace(criteria))
+            {
+                return;
+            }
+            if (this._searchDataSource == null || this._searchDataSource.Value.Key != criteria)
+            {
+                this._searchDataSource = 
+                    new KeyValuePair<string, IEnumerable<TreeNode>>(
+                        criteria, 
+                        this.FindTreeNode(criteria));
+            }
+
+            if (this.treeView1.SelectedNode != null)
+            {
+                this._currentTreeNode = this.treeView1.SelectedNode;
+            }
+
+            IEnumerable<TreeNode> treeViewList = this._searchDataSource.Value.Value;
+            foreach (var treeViewItem in treeViewList)
+            {
+                if (treeViewItem == this._currentTreeNode)
+                {
+                    continue;
+                }
+                if (treeViewItem.Parent != null)
+                {
+                    treeViewItem.Parent.Expand();
+                }
+                treeViewItem.Checked = true;
+                this._currentTreeNode = treeViewItem;
+                break;
+            }
+        }
+
+        /// <summary>
+        /// Gets a list of nodes for the criteria
+        /// </summary>
+        /// <param name="criteria"></param>
+        /// <returns></returns>
+        private IEnumerable<TreeNode> FindTreeNode(string criteria)
+        {
+            #region Entries validation
+
+            if (String.IsNullOrEmpty(criteria))
+            {
+                throw new ArgumentNullException("criteria");
+            }
+
+            #endregion
+
+            var treeViewNodeList = TreeViewUtil.GetAllTreeNodes(this.treeView1.Nodes);
+            var treeViewList = from treeViewItem in treeViewNodeList
+                               where treeViewItem.Text.IndexOf(criteria, StringComparison.CurrentCultureIgnoreCase) > -1
+                               select treeViewItem;
+            return treeViewList;
+        }
+
+        private void btnFind_Click(object sender, EventArgs e)
+        {
+            DoFind();
+        }
+
+        private void txtFind_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Enter)
+            {
+                this.DoFind();
             }
         }
     }

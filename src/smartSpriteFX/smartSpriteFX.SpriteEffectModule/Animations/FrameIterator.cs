@@ -129,7 +129,7 @@ namespace smartSuite.smartSpriteFX.Animations{
 		}
 
 		/// <summary>
-		/// Closes ans release the object
+		/// Closes and release the object
 		/// </summary>
 		public void Close()
         {

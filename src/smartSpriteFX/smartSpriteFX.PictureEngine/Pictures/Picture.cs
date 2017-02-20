@@ -1,9 +1,12 @@
 
+using smartSuite.smartSpriteFX.PictureEngine.Pictures;
 using smartSuite.smartSpriteFX.PictureEngine.Pictures.ColorPattern;
+using smartSuite.smartSpriteFX.PictureEngine.Pictures.Data;
 using smartSuite.smartSpriteFX.Pictures.ColorPattern;
 using smartSuite.smartSpriteFX.Utilities;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
@@ -11,6 +14,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading;
+using smartSuite.smartSpriteFX.Pictures.PixelPatterns;
 
 namespace smartSuite.smartSpriteFX.Pictures
 {
@@ -20,7 +24,6 @@ namespace smartSuite.smartSpriteFX.Pictures
     [Serializable]
     public class Picture
     {
-
         /// <summary>
         /// Represents the width of picture
         /// </summary>
@@ -40,12 +43,7 @@ namespace smartSuite.smartSpriteFX.Pictures
         /// It´s a buffer of colors, where key it's a combination of x and y coordinates. 
         /// </summary>
         [NonSerialized]
-        private Dictionary<String, ColorInfo> _buffer;
-
-        /// <summary>
-        /// It´s a cache of colors, used to save memory
-        /// </summary>
-        private Dictionary<int, ColorInfo> _colorInfoBuffer = new Dictionary<int, ColorInfo>();
+        private PictureDatabase _buffer;
 
         /// <summary>
         /// Gets the amount of color of current picture
@@ -96,25 +94,92 @@ namespace smartSuite.smartSpriteFX.Pictures
                 this._transparentColor = other._transparentColor;
             }
 
-            HashSet<int> colorSet = new HashSet<int>();
-            for (int y = 0; y < other.Height; y++)
+            try
             {
-                for (int x = 0; x < other.Width; x++)
-                {
-                    var color = other.GetPixel(x, y);
-                    if (color != null)
-                    {
-                        this.ReplacePixel(x, y, color.Value);
-                        var argb = color.Value.ToArgb();
-                        if (!colorSet.Contains(argb))
-                        {
-                            colorSet.Add(argb);
-                        }
-                    }
-                }
+                this.BeginBatchUpdate();
+
+                this._buffer.Merge(other._buffer);
+                this.ColorCount = this._buffer.CountColor();
+
+                this.EndBatchUpdate();
+            }
+            catch
+            {
+                this.CancelBatchUpdate();
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Gets all the pixels from Picture
+        /// </summary>
+        /// <returns></returns>
+        public List<PointInfo> GetAllPixels()
+        {
+            #region Entries validation
+
+            if (this._buffer == null)
+            {
+                throw new ArgumentNullException("this._buffer");
             }
 
-            this.ColorCount = colorSet.LongCount();
+            #endregion
+
+            return this._buffer.SELECTALL();
+        }
+
+        /// <summary>
+        /// Gets all the colors from Picture
+        /// </summary>
+        /// <returns></returns>
+        public List<Color> GetAllColors()
+        {
+            #region Entries validation
+
+            if (this._buffer == null)
+            {
+                throw new ArgumentNullException("this._buffer");
+            }
+
+            #endregion
+
+            return this._buffer.GetAllColors();
+        }
+
+        /// <summary>
+        /// Removes the pixel
+        /// </summary>
+        /// <returns>An indicator informing that the pixel has been excluded.</returns>
+        public bool RemovePixel(int x, int y)
+        {
+            #region Entries validation
+
+            if (this._buffer == null)
+            {
+                throw new ArgumentNullException("this._buffer");
+            }
+
+            #endregion
+
+            return this._buffer.DELETE(x, y);
+        }
+
+        /// <summary>
+        /// Gets the databases from another picture
+        /// </summary>
+        /// <param name="other"></param>
+        public void ShareDataWithMe(Picture other)
+        {
+            #region Entries validation
+
+            if (other == null)
+            {
+                throw new ArgumentNullException("other");
+            }
+
+            #endregion
+
+            this._buffer = other._buffer;
         }
 
         /// <summary>
@@ -124,13 +189,16 @@ namespace smartSuite.smartSpriteFX.Pictures
         /// <param name="newColor"></param>
         public void ReplaceColor(Color oldColor, Color newColor)
         {
-            foreach (var item in this._buffer)
+            #region Entries validation
+
+            if (this._buffer == null)
             {
-                if (item.Value.GetInnerColor().ToArgb() == oldColor.ToArgb())
-                {
-                    item.Value.SetInnerColor(newColor);
-                }
+                throw new ArgumentNullException("this._buffer");
             }
+
+            #endregion
+
+            this._buffer.UPDATE(oldColor, newColor);
         }
 
         /// <summary>
@@ -141,7 +209,7 @@ namespace smartSuite.smartSpriteFX.Pictures
         /// </remarks>
         internal Picture()
         {
-            this._buffer = new Dictionary<string, ColorInfo>();
+            this._buffer = PictureDatabase.Open();
         }
 
         /// <summary>
@@ -256,45 +324,71 @@ namespace smartSuite.smartSpriteFX.Pictures
             {
                 throw new ArgumentNullException("image");
             }
+            if (this._buffer != null && this._buffer.COUNT() > 0)
+            {
+                return;
+            }
 
             #endregion
 
-            lock (_colorInfoBuffer)
+            this._buffer = PictureDatabase.Open();
+            this._buffer.CLEAR();
+
+            List<AutoResetEvent> semaphoreList = new List<AutoResetEvent>();
+            ThreadPool.SetMinThreads(1, 500);
+            ThreadPool.SetMaxThreads(2000, 20000);
+
+            try
             {
-                #region Entries validation
-
-                if (this._buffer != null && this._buffer.Count > 0)
-                {
-                    return;
-                }
-
-                #endregion
-
-                this._buffer = new Dictionary<string, ColorInfo>();
-                HashSet<int> colorSet = new HashSet<int>();
+                this._buffer.BeginTransaction();
 
                 for (int y = 0; y < image.Height; y++)
                 {
                     for (int x = 0; x < image.Width; x++)
                     {
-                        var colorInfo =
-                            new ColorInfo(
-                                image.GetPixel(x, y));
+                        AutoResetEvent sign = new AutoResetEvent(false);
+                        semaphoreList.Add(sign);
+                        var color = image.GetPixel(x, y);
+                        object[] stateArgs = new object[4] { x, y, color, sign };
 
-                        var argb = colorInfo.GetInnerColor().ToArgb();
-                        if (!colorSet.Contains(argb))
+                        WaitCallback pixelProcessingDelegate = new WaitCallback(delegate (object state)
                         {
-                            colorSet.Add(argb);
-                        }
+                            object[] args = (object[])state;
 
-                        this.LoadColorInfoCache(y, x, colorInfo);
+                            int xx = (int)args[0];
+                            int yy = (int)args[1];
+                            Color myColor = (Color)args[2];
+                            AutoResetEvent mySign = (AutoResetEvent)args[3];
+
+                            try
+                            {
+                                this.SetPixel(xx, yy, myColor);
+                            }
+                            finally
+                            {
+                                mySign.Set();
+                            }
+                        });
+                        ThreadPool.QueueUserWorkItem(pixelProcessingDelegate, stateArgs);
                     }
                 }
 
-                this.ColorCount = colorSet.LongCount();
-                this._height = image.Height;
-                this._width = image.Width;
+                foreach (AutoResetEvent signItem in semaphoreList)
+                {
+                    signItem.WaitOne();
+                }
+
+                this._buffer.CommitTransaction();
             }
+            catch(Exception ex)
+            {
+                this._buffer.RollbackTransaction();
+                throw ex;
+            }
+
+            this.ColorCount = this._buffer.CountColor();
+            this._height = image.Height;
+            this._width = image.Width;
         }
 
         /// <summary>
@@ -302,31 +396,25 @@ namespace smartSuite.smartSpriteFX.Pictures
         /// </summary>
         /// <param name="y"></param>
         /// <param name="x"></param>
-        /// <param name="colorInfo"></param>
-        private void LoadColorInfoCache(int y, int x, ColorInfo colorInfo)
+        /// <param name="color"></param>
+        public void SetPixel(int x, int y, Color color)
         {
-            var colorInfoKey =
-                colorInfo.GetInnerColor().ToArgb();
+            // Save private picture
+            this._buffer.INSERT(x, y, color);
+        }
 
-            lock (_colorInfoBuffer)
-            {
-                // Save color info
-                if (!_colorInfoBuffer.ContainsKey(colorInfoKey))
-                {
-                    _colorInfoBuffer.Add(colorInfoKey, colorInfo);
-                }
-
-                // Save private picture
-                this._buffer.Add(
-                    this.FormatKey(x, y),
-                    _colorInfoBuffer[colorInfoKey]);
-            }
+        /// <summary>
+        /// Loads the color info cache
+        /// </summary>
+        public void SetPixel(List<PointInfo> pointInfoList)
+        {
+            this._buffer.INSERT(pointInfoList);
         }
 
         /// <summary>
         /// Formats the coordinates to use as keys.
         /// </summary>
-        private string FormatKey(int x, int y)
+        public string FormatKey(int x, int y)
         {
             return String.Format("{0}_{1}", x, y);
         }
@@ -355,17 +443,23 @@ namespace smartSuite.smartSpriteFX.Pictures
         /// Creates and returns a copy of the object
         /// </summary>
         /// <returns></returns>
-        internal Picture Clone()
+        public Picture Clone()
+        {
+            return this.Clone(CloneMode.Full);
+        }
+
+        /// <summary>
+        /// Creates and returns a copy of the object
+        /// </summary>
+        /// <param name="cloneMode">It´s the mode of clonage</param>
+        /// <returns></returns>
+        public Picture Clone(CloneMode cloneMode)
         {
             Picture clone = new Picture();
 
-            clone._buffer = new Dictionary<string, ColorInfo>();
-
-            // Copying the buffer
-            foreach (var bufferItem in this._buffer)
+            if (cloneMode == CloneMode.Full)
             {
-                clone._buffer.Add(
-                    bufferItem.Key, bufferItem.Value.Clone());
+                clone._buffer = this._buffer.Clone();
             }
 
             // Copying another attributes
@@ -374,10 +468,6 @@ namespace smartSuite.smartSpriteFX.Pictures
             clone.ColorCount = this.ColorCount;
             clone._transparentColor = this._transparentColor;
             clone._fullPath = this._fullPath;
-            foreach (var colorInfoBufferItem in this._colorInfoBuffer)
-            {
-                clone._colorInfoBuffer.Add(colorInfoBufferItem.Key, colorInfoBufferItem.Value);
-            }
 
             return clone;
         }
@@ -392,26 +482,24 @@ namespace smartSuite.smartSpriteFX.Pictures
         {
             #region Entries validation
 
-            if (this._buffer.Count == 0)
+            if (this._buffer.COUNT() == 0)
             {
                 throw new ArgumentException("Empty picture.");
             }
 
             #endregion
 
-            var key = this.FormatKey(x, y);
-
             if (this._buffer == null)
             {
                 this.LoadBuffer(this._fullPath);
             }
-            if (!this._buffer.ContainsKey(key))
+            var item = this._buffer.SELECT(x, y);
+            if (item == null)
             {
                 return null;
             }
 
-            Color pixel = this._buffer[key].GetInnerColor();
-            return pixel;
+            return item.GetInnerColor();
         }
 
         /// <summary>
@@ -439,90 +527,97 @@ namespace smartSuite.smartSpriteFX.Pictures
 
             List<Point> returnList = new List<Point>();
             var colorCacheList = this._buffer;
-            foreach (KeyValuePair<String, ColorInfo> colorCacheItem in colorCacheList)
+            foreach (var findColorItem in colorList)
             {
-                foreach (var findColorItem in colorList)
-                {
-                    ColorInfo findColorInfo = new ColorInfo(findColorItem);
-
-                    if (findColorInfo.Equals(colorCacheItem.Value))
-                    {
-                        returnList.Add(
-                            this.ToPoint(colorCacheItem.Key));
-                    }
-                }
+                returnList.AddRange(
+                    this._buffer.SELECT(findColorItem));
             }
 
             return returnList;
         }
 
         /// <summary>
-        /// Gets the point of image considered borderers
+        /// Gets the point of image considered border
         /// </summary>
         /// <returns></returns>
-        public List<Point> ListBorder()
+        public List<PointInfo> ListBorder()
         {
             #region Entries validation
 
             if (this._buffer == null)
             {
-                return new List<Point>();
+                return new List<PointInfo>();
             }
 
             #endregion
 
-            List<Point> returnList = new List<Point>();
+            Dictionary<String, Color> pixelList = new Dictionary<string, Color>();
 
-            foreach (var bufferItem in this._buffer)
+            #region Filling the buffer
+
+            var bufferList = this._buffer.SELECTALL();
+            foreach (var bufferItem in bufferList)
             {
-                var pointItem = this.ToPoint(bufferItem.Key);
+                pixelList.Add(
+                    this.FormatKey((int)bufferItem.X, (int)bufferItem.Y), bufferItem.Color);
+            }
+
+            #endregion
+
+            List<PointInfo> returnList = new List<PointInfo>();
+            foreach (var pixelItem in pixelList)
+            {
+                PointInfo pointItem = new PointInfo(
+                       this.ToPoint(pixelItem.Key), pixelItem.Value);
 
                 #region Entries validation
 
                 // The point can't be transparent
-                if (bufferItem.Value.GetInnerColor().ToArgb().Equals(this._transparentColor.ToArgb()))
+                if (pointItem.Color.ToArgb().Equals(this._transparentColor.ToArgb()))
                 {
                     continue;
                 }
 
                 #endregion
 
-                string keyLeft = this.FormatKey((int)pointItem.X - 1, (int)pointItem.Y);
-                string keyRight = this.FormatKey((int)pointItem.X + 1, (int)pointItem.Y);
-                string keyTop = this.FormatKey((int)pointItem.X, (int)pointItem.Y - 1);
-                string keyBottom = this.FormatKey((int)pointItem.X, (int)pointItem.Y + 1);
+                Point pointLeft = new Point(pointItem.X - 1, pointItem.Y);
+                Point pointRight = new Point(pointItem.X + 1, pointItem.Y);
+                Point pointTop = new Point(pointItem.X, pointItem.Y - 1);
+                Point pointBottom = new Point(pointItem.X, pointItem.Y + 1);
 
-                string keyCornerTopLeft = this.FormatKey((int)pointItem.X - 1, (int)pointItem.Y - 1);
-                string keyCornerTopRight = this.FormatKey((int)pointItem.X + 1, (int)pointItem.Y - 1);
-                string keyCornerBottomLeft = this.FormatKey((int)pointItem.X - 1, (int)pointItem.Y + 1);
-                string keyCornerBottomRight = this.FormatKey((int)pointItem.X + 1, (int)pointItem.Y + 1);
+                Point pointCornerTopLeft = new Point(pointItem.X - 1, pointItem.Y - 1);
+                Point pointCornerTopRight = new Point(pointItem.X + 1, pointItem.Y - 1);
+                Point pointCornerBottomLeft = new Point(pointItem.X - 1, pointItem.Y + 1);
+                Point pointCornerBottomRight = new Point(pointItem.X + 1, pointItem.Y + 1);
 
-                String[] keyArray =
-                    new String[8]{
-                            keyLeft,
-                            keyRight,
-                            keyTop,
-                            keyBottom,
-                            keyCornerTopLeft,
-                            keyCornerTopRight,
-                            keyCornerBottomLeft,
-                            keyCornerBottomRight
+                Point[] pointArray =
+                    new Point[8]{
+                            pointLeft,
+                            pointRight,
+                            pointTop,
+                            pointBottom,
+                            pointCornerTopLeft,
+                            pointCornerTopRight,
+                            pointCornerBottomLeft,
+                            pointCornerBottomRight
                         };
 
-                foreach (var keyItem in keyArray)
+                foreach (var pointArrayItem in pointArray)
                 {
-                    #region Entries validation
+                    var key = this.FormatKey((int)pointArrayItem.X, (int)pointArrayItem.Y);
 
-                    if (!this._buffer.ContainsKey(keyItem))
+                    #region Validation
+
+                    if (!pixelList.ContainsKey(key))
                     {
                         continue;
                     }
 
                     #endregion
 
-                    var colorItem = this._buffer[keyItem];
+                    Color colorPixel = pixelList[key];
 
-                    if (colorItem.GetInnerColor().ToArgb().Equals(this._transparentColor.ToArgb()))
+                    if(colorPixel.Equals(this._transparentColor))
                     {
                         returnList.Add(pointItem);
                     }
@@ -546,32 +641,67 @@ namespace smartSuite.smartSpriteFX.Pictures
             {
                 throw new ArgumentNullException("newColor");
             }
+            if (this._buffer == null)
+            {
+                throw new ArgumentNullException("this._buffer");
+            }
 
             #endregion
 
-            var key = this.FormatKey(x, y);
-
-            lock (_colorInfoBuffer)
+            String key = this.FormatKey(x, y);
+            lock (key)
             {
-                var colorInfo = new ColorInfo(newColor);
-                var keyArgb = colorInfo.GetInnerColor().ToArgb();
-
-                if (!_colorInfoBuffer.ContainsKey(keyArgb))
+                var affectedPixel = this._buffer.UPDATE(x, y, newColor);
+                if (affectedPixel == 0)
                 {
-                    _colorInfoBuffer.Add(keyArgb, colorInfo);
+                    this._buffer.INSERT(x, y, newColor);
                 }
-                colorInfo = _colorInfoBuffer[keyArgb];
+            }
+        }
 
-                var colorInfoKey =
-                    colorInfo.GetInnerColor().ToArgb();
+        /// <summary>
+        /// Replaces pixels in PointRange
+        /// </summary>
+        /// <param name="pointRange"></param>
+        public void ReplacePixel(PointRange pointRange)
+        {
+            #region Entries validation
 
-                if (!this._buffer.ContainsKey(key))
+            if (pointRange == null)
+            {
+                throw new ArgumentNullException("pointRange");
+            }
+            if (this._buffer == null)
+            {
+                throw new ArgumentNullException("this._buffer");
+            }
+
+            #endregion
+
+            lock (this._buffer)
+            {
+                var affectedRowList =
+                        from rowItem in this._buffer.SELECTALL()
+                        where
+                            rowItem.X >= pointRange.StartPoint.X &&
+                            rowItem.X <= pointRange.StartPoint.X &&
+                            rowItem.Y >= pointRange.EndPoint.Y &&
+                            rowItem.Y <= pointRange.EndPoint.Y
+                        select rowItem;
+
+                try
                 {
-                    this._buffer.Add(key, colorInfo);
+                    foreach (var affectedRowItem in affectedRowList)
+                    {
+                        lock (affectedRowItem.ToString())
+                        {
+                            affectedRowItem.Color = pointRange.Color;
+                        }
+                    }
                 }
-                else
+                catch (Exception ex)
                 {
-                    this._buffer[key] = colorInfo;
+                    throw ex;
                 }
             }
         }
@@ -616,34 +746,58 @@ namespace smartSuite.smartSpriteFX.Pictures
             {
                 throw new ArgumentNullException("colorComparer");
             }
+            if (this._buffer == null)
+            {
+                throw new ArgumentNullException("this._buffer");
+            }
 
             #endregion
 
-            Color firstPixel = this.GetPixel(0, 0).Value;
+            var firstPixelRef = this.GetPixel(0, 0);
+
+            Color firstPixel;
+            if (firstPixelRef.HasValue)
+            {
+                firstPixel = firstPixelRef.Value;
+            }
+            else
+            {
+                firstPixel = Color.Transparent;
+            }
+
+            var pixelList = this._buffer.SELECTALL();
+
             using (var pieceBitmap = new Bitmap(this._width, this._height, PixelFormat.Format32bppArgb))
             {
-                for (int y = 0; y < this._height; y++)
+                foreach (var pixelItem in pixelList)
                 {
-                    for (int x = 0; x < this._width; x++)
+                    PointInfo pointInfo = pixelItem;
+                    #region Entries validation
+
+                    if (pixelItem == null)
                     {
-                        var piecePixel = this.GetPixel(x, y);
-
-                        #region Entries validation
-
-                        if (piecePixel == null)
-                        {
-                            piecePixel = firstPixel;
-                        }
-
-                        #endregion
-
-                        if (colorComparer.Equals(piecePixel.Value, transparentColor))
-                        {
-                            piecePixel = transparentColor;
-                        }
-
-                        pieceBitmap.SetPixel(x, y, piecePixel.Value);
+                        pointInfo.Color = firstPixel;
                     }
+                    if (pointInfo.X >= this._width)
+                    {
+                        continue;
+                    }
+                    if (pointInfo.Y >= this._height)
+                    {
+                        continue;
+                    }
+
+                    #endregion
+
+                    if (colorComparer.Equals(pointInfo.Color, transparentColor))
+                    {
+                        pointInfo.Color = transparentColor;
+                    }
+
+                    pieceBitmap.SetPixel(
+                        (int)pointInfo.X,
+                        (int)pointInfo.Y,
+                        pointInfo.Color);
                 }
 
                 // Overwriting piece bitmap
@@ -706,10 +860,16 @@ namespace smartSuite.smartSpriteFX.Pictures
         /// </summary>
         public void ClearCache()
         {
-            lock (this._colorInfoBuffer)
+            #region Entries validation
+
+            if (this._buffer == null)
             {
-                this._colorInfoBuffer.Clear();
+                throw new ArgumentNullException("this._buffer");
             }
+
+            #endregion
+
+            this._buffer.CLEAR();
         }
 
         /// <summary>
@@ -763,10 +923,107 @@ namespace smartSuite.smartSpriteFX.Pictures
         /// <summary>
         /// Releases buffer
         /// </summary>
-        internal void ReleaseBuffer()
+        public void ReleaseBuffer()
         {
-            this._buffer.Clear();
-            this._colorInfoBuffer.Clear();
+            #region Entries validation
+
+            if (this._buffer == null)
+            {
+                throw new ArgumentNullException("this._buffer");
+            }
+
+            #endregion
+            this._buffer.CLEAR();
+        }
+
+        /// <summary>
+        /// Prepare for several updates
+        /// </summary>
+        public void BeginBatchUpdate()
+        {
+            #region Entries validation
+
+            if (this._buffer == null)
+            {
+                throw new ArgumentNullException("this._buffer");
+            }
+
+            #endregion
+
+            this._buffer.BeginTransaction();
+        }
+
+        /// <summary>
+        /// Ends a batch update
+        /// </summary>
+        public void EndBatchUpdate()
+        {
+            #region Entries validation
+
+            if (this._buffer == null)
+            {
+                throw new ArgumentNullException("this._buffer");
+            }
+
+            #endregion
+
+            this._buffer.CommitTransaction();
+        }
+
+        /// <summary>
+        /// Cancels a batch update
+        /// </summary>
+        public void CancelBatchUpdate()
+        {
+            #region Entries validation
+
+            if (this._buffer == null)
+            {
+                throw new ArgumentNullException("this._buffer");
+            }
+
+            #endregion
+
+            try
+            {
+                this._buffer.RollbackTransaction();
+            }
+            catch
+            {
+                // Errors in this place can't turn around the normal flow of work
+            }
+        }
+
+        /// <summary>
+        /// Indicates if a point exists in picture
+        /// </summary>
+        /// <param name="point"></param>
+        /// <returns></returns>
+        public bool Contains(PointInfo point)
+        {
+            #region Entries validation
+
+            if (point == null)
+            {
+                throw new ArgumentNullException("point");
+            }
+            if (this._buffer == null)
+            {
+                throw new ArgumentNullException("this._buffer");
+            }
+
+            #endregion
+
+            return this._buffer.EXISTS(point);
+        }
+
+        /// <summary>
+        /// It´s the mode of clone operation
+        /// </summary>
+        public enum CloneMode
+        {
+            Full,
+            StructureOnly
         }
     }
 }

@@ -71,47 +71,53 @@
             Sets the points regardless of the state of filter
             </summary>
         </member>
-        <member name="T:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.WireFilter">
+        <member name="T:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.ShadowFilter">
             <summary>
-            Represents a filter used to make images seems like made by wires, like Tron movie
+            It´s a filter that draws a shadow uppon the image
             </summary>
         </member>
-        <member name="F:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.WireFilter._colorBuffer">
+        <member name="F:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.ShadowFilter._sunStrenght">
             <summary>
-            It´s the color buffer used to simply the colors
+            It´s the strenght of sun
             </summary>
         </member>
-        <member name="F:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.WireFilter._colorComparer">
+        <member name="P:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.ShadowFilter.SunStrenght">
             <summary>
-            A comparer used to compare colors.
+            Sets or gets the sun strenght
             </summary>
         </member>
-        <member name="M:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.WireFilter.GetIdentification">
+        <member name="M:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.ShadowFilter.GetIdentification">
             <summary>
             Gets the identification
             </summary>
             <returns></returns>
         </member>
-        <member name="T:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.ResizeToFitFilter">
+        <member name="F:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI.ShadowConfigurationPanelControl._filterSettable">
             <summary>
-            It´s a filter used to reduce the too big image to fit in another filters
+            É o filtro da sombra
             </summary>
         </member>
-        <member name="F:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.ResizeToFitFilter._screenWidth">
+        <member name="M:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI.ShadowConfigurationPanelControl.RefreshForm">
             <summary>
-            It´s the width
+            Refreshes the form field
             </summary>
         </member>
-        <member name="F:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.ResizeToFitFilter._screenHeight">
-            <summary>
-            It´s the height
+        <member name="F:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI.ShadowConfigurationPanelControl.components">
+            <summary> 
+            Required designer variable.
             </summary>
         </member>
-        <member name="M:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.ResizeToFitFilter.GetIdentification">
-            <summary>
-            Gets the identification
+        <member name="M:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI.ShadowConfigurationPanelControl.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
             </summary>
-            <returns></returns>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI.ShadowConfigurationPanelControl.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
         </member>
         <member name="T:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI.ColorListControl">
             <summary>
@@ -404,6 +410,48 @@
             the contents of this method with the code editor.
             </summary>
         </member>
+        <member name="T:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.WireFilter">
+            <summary>
+            Represents a filter used to make images seems like made by wires, like Tron movie
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.WireFilter._colorBuffer">
+            <summary>
+            It´s the color buffer used to simply the colors
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.WireFilter._colorComparer">
+            <summary>
+            A comparer used to compare colors.
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.WireFilter.GetIdentification">
+            <summary>
+            Gets the identification
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.ResizeToFitFilter">
+            <summary>
+            It´s a filter used to reduce the too big image to fit in another filters
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.ResizeToFitFilter._screenWidth">
+            <summary>
+            It´s the width
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.ResizeToFitFilter._screenHeight">
+            <summary>
+            It´s the height
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.ResizeToFitFilter.GetIdentification">
+            <summary>
+            Gets the identification
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.BorderFilter">
             <summary>
             It´s a filter that emphasizes the border of picture
@@ -554,6 +602,27 @@
             Clears the cache
             </summary>
         </member>
+        <member name="T:smartSuite.smartSpriteFX.SpriteEffectModule.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.SpriteEffectModule.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.SpriteEffectModule.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.SpriteEffectModule.Properties.Resources.sun">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
         <member name="T:smartSuite.smartSpriteFX.Animations.FrameIterator">
             <summary>
             Represents a iterator to travel through the pictures.
@@ -628,7 +697,7 @@
         </member>
         <member name="M:smartSuite.smartSpriteFX.Animations.FrameIterator.Close">
             <summary>
-            Closes ans release the object
+            Closes and release the object
             </summary>
         </member>
         <member name="M:smartSuite.smartSpriteFX.Animations.FrameIterator.MoveTo(System.Int32)">
@@ -696,6 +765,11 @@
             The preview board to see the results
             </summary>
         </member>
+        <member name="F:smartSuite.smartSpriteFX.Effects.Core.EffectEngine._sourcePreviewImage">
+            <summary>
+            It´s a image used like a source to <see cref="M:smartSuite.smartSpriteFX.Effects.Core.EffectEngine.UpdatePreviewBoard"/> method
+            </summary>
+        </member>
         <member name="F:smartSuite.smartSpriteFX.Effects.Core.EffectEngine._applyingThreadList">
             <summary>
             It´s the list of thread used during Apply method
@@ -717,6 +791,12 @@
             Applies the filter collection to all the animation
             </summary>
             <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Effects.Core.EffectEngine.SetSourcePreviewImage(smartSuite.smartSpriteFX.Pictures.Picture)">
+            <summary>
+            Sets the source preview image to use in <see cref="M:smartSuite.smartSpriteFX.Effects.Core.EffectEngine.UpdatePreviewBoard"/> method
+            </summary>
+            <param name="sourcePreviewImage"></param>
         </member>
         <member name="M:smartSuite.smartSpriteFX.Effects.Core.EffectEngine.CancelApplying">
             <summary>
@@ -772,6 +852,13 @@
             <returns>
             The filter in selected filter list, or null if none has been found.
             </returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Effects.Core.EffectEngine.FindFilter``1">
+            <summary>
+            Finds the filter in collection of selected filters.
+            </summary>
+            <typeparam name="T">The type of desired filter</typeparam>
+            <returns>The instance of the fires found filter or null if it doesn't exist.</returns>
         </member>
         <member name="M:smartSuite.smartSpriteFX.Effects.Core.EffectEngine.ClearFilter">
             <summary>
@@ -850,6 +937,13 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:smartSuite.smartSpriteFX.Effects.Facade.EffectFacade.FindFilter``1">
+            <summary>
+            Finds the filter in collection of selected filters.
+            </summary>
+            <typeparam name="T">The type of desired filter</typeparam>
+            <returns>The instance of the fires found filter or null if it doesn't exist.</returns>
+        </member>
         <member name="M:smartSuite.smartSpriteFX.Effects.Facade.EffectFacade.GetTransparentBackgroundFilter">
             <summary>
             Gets the <see cref="T:smartSuite.smartSpriteFX.Effects.Filters.TransparentBackgroundFilter"/> in selected filter list.
@@ -860,7 +954,7 @@
         </member>
         <member name="M:smartSuite.smartSpriteFX.Effects.Facade.EffectFacade.GetControlCollectionFromPreviewBoard">
             <summary>
-            Gets the controls collection for preview board
+            Gets the control collection for preview board
             </summary>
             <returns></returns>
         </member>
@@ -1483,7 +1577,7 @@
         </member>
         <member name="F:smartSuite.smartSpriteFX.Effects.Tools.ResolutionTranslator._translatedPixel">
             <summary>
-            Is a dictionary made of colors and collection of pixels
+            It's a dictionary made of colors and collection of pixels
             </summary>
         </member>
         <member name="F:smartSuite.smartSpriteFX.Effects.Tools.ResolutionTranslator._hasTransparentFilter">
@@ -1561,7 +1655,7 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:smartSuite.smartSpriteFX.Effects.Tools.ResolutionTranslator.CreatedTranslatedPicture">
+        <member name="M:smartSuite.smartSpriteFX.Effects.Tools.ResolutionTranslator.CreateTranslatedPicture">
             <summary>
             Creates a picture from translated pixel cache
             </summary>

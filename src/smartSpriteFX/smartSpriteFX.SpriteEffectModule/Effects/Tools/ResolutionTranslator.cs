@@ -9,6 +9,8 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
+using smartSuite.smartSpriteFX.PictureEngine.Pictures;
 
 namespace smartSuite.smartSpriteFX.Effects.Tools{
 	/// <summary>
@@ -42,7 +44,7 @@ namespace smartSuite.smartSpriteFX.Effects.Tools{
         private ColorEqualityComparer _comparer = new ColorEqualityComparer();
 
         /// <summary>
-        /// Is a dictionary made of colors and collection of pixels
+        /// It's a dictionary made of colors and collection of pixels
         /// </summary>
         private List<PointRange> _translatedPixel = new List<PointRange>();
 
@@ -209,11 +211,13 @@ namespace smartSuite.smartSpriteFX.Effects.Tools{
 
             if (x < 0 || x > this._originalPicture.Width)
             {
-                throw new ArgumentOutOfRangeException("Invalid x coordinate");
+                // throw new ArgumentOutOfRangeException("Invalid x coordinate");
+                return;
             }
             if (y < 0 || y > this._originalPicture.Height)
             {
-                throw new ArgumentOutOfRangeException("Invalid y coordinate");
+                // throw new ArgumentOutOfRangeException("Invalid y coordinate");
+                return;
             }
             if (this.PointOcuppied(x, y, this._resolutionTax))
             {
@@ -281,22 +285,49 @@ namespace smartSuite.smartSpriteFX.Effects.Tools{
 		/// Creates a picture from translated pixel cache
 		/// </summary>
 		/// <returns></returns>
-		public Picture CreatedTranslatedPicture()
+		public Picture CreateTranslatedPicture()
         {
             // Copying picture
-            Picture clonePicture = this._originalPicture.Clone();
-            clonePicture.ReleaseBuffer();
+            Picture clonePicture = this._originalPicture.Clone(Picture.CloneMode.StructureOnly);
 
-            // Changing the internal buffer
-            foreach (var translatedPixelItem in this._translatedPixel)
+            try
             {
-                foreach (var pointItem in translatedPixelItem.ToPointList())
+                clonePicture.BeginBatchUpdate();
+
+                List<PointInfo> replacePixelList = new List<PointInfo>();
+
+                // Creating point info
+                foreach (var translatedPixelItem in this._translatedPixel)
                 {
-                    clonePicture.ReplacePixel(
-                        (int)pointItem.X,
-                        (int)pointItem.Y,
-                        translatedPixelItem.Color);
+                    replacePixelList.AddRange(translatedPixelItem.ToPointInfoList());
                 }
+
+                clonePicture.SetPixel(replacePixelList);
+
+                #region Fullfiled the lacks
+
+                var lackPointList = from item in _originalPicture.GetAllPixels()
+                                    where !clonePicture.Contains(item)
+                                    select item;
+
+                clonePicture.SetPixel(lackPointList.ToList());
+
+                #endregion
+
+                clonePicture.EndBatchUpdate();
+            }
+            catch (NullReferenceException)
+            {
+                // Errors this type can't interrupt the normal flow of works
+            }
+            catch (ArgumentException)
+            {
+                // Errors this type can't interrupt the normal flow of works
+            }
+            catch (Exception ex)
+            {
+                clonePicture.CancelBatchUpdate();
+                throw ex;
             }
 
             return clonePicture;

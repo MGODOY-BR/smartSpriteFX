@@ -12,6 +12,7 @@ using System.IO;
 using smartSuite.smartSpriteFX.Effects.Infra;
 using smartSuite.smartSpriteFX.Effects.Core;
 using System.Drawing.Imaging;
+using smartSuite.smartSpriteFX.PictureEngine.Pictures;
 
 namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
 {
@@ -77,18 +78,29 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
             float lastX = 0;
             float lastY = 0;
             int xx = 0, yy = 0;
+
+            Dictionary<String, PointInfo> cacheList = new Dictionary<string, PointInfo>(); 
+            var sourceList = frame.GetAllPixels();
+            foreach (var sourceItem in sourceList)
+            {
+                String key = frame.FormatKey((int)sourceItem.X, (int)sourceItem.Y);
+                cacheList.Add(key, sourceItem);
+            }
+
             for (double y = 0; y < frame.Height; y+= step)
             {
                 xx = 0;
                 for (double x = 0; x < frame.Width; x+= step)
                 {
-                    var color = frame.GetPixel((int)x, (int)y);
-                    if (color.HasValue && xx < bitmap.Width && yy < bitmap.Height)
+                    String key = frame.FormatKey((int)x, (int)y);
+
+                    var color = cacheList[key].Color;
+                    if (xx < bitmap.Width && yy < bitmap.Height)
                     {
                         bitmap.SetPixel(
                             xx,
                             yy,
-                            color.Value);
+                            color);
 
                         lastX = xx;
                         lastY = yy;

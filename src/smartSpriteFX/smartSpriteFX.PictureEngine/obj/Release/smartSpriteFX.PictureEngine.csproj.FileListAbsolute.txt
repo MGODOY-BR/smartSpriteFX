@@ -1,6 +1,12 @@
+C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.PictureEngine\bin\Release\smartSpriteFX.PictureEngine.dll.config
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.PictureEngine\bin\Release\smartSpriteFX.PictureEngine.XML
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.PictureEngine\bin\Release\smartSpriteFX.PictureEngine.dll
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.PictureEngine\bin\Release\smartSpriteFX.PictureEngine.pdb
+C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.PictureEngine\bin\Release\EntityFramework.dll
+C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.PictureEngine\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.PictureEngine\bin\Release\EntityFramework.xml
+C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.PictureEngine\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.PictureEngine\obj\Release\smartSpriteFX.PictureEngine.csprojResolveAssemblyReference.cache
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.PictureEngine\obj\Release\smartSuite.smartSpriteFX.Forms.ColorSupportForm.resources
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.PictureEngine\obj\Release\smartSuite.smartSpriteFX.PictureEngine.Templates.UnityMetaFile.resources
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.PictureEngine\obj\Release\smartSpriteFX.PictureEngine.csproj.GenerateResource.Cache

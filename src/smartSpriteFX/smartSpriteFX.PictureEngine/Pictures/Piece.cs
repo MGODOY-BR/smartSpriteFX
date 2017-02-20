@@ -121,6 +121,15 @@ namespace smartSuite.smartSpriteFX.Pictures
         }
 
         /// <summary>
+        /// Gets the reference picture whose the picture is part of it
+        /// </summary>
+        /// <returns></returns>
+        public Picture GetReferencePicture()
+        {
+            return this._referencePicture;
+        }
+
+        /// <summary>
         /// Gets the full path, based on the parent pieces
         /// </summary>
         /// <returns></returns>
