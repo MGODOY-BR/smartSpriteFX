@@ -10,6 +10,7 @@ using smartSuite.smartSpriteFX.Effects.Infra;
 using smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI;
 using smartSuite.smartSpriteFX.Effects.Facade;
 using smartSuite.smartSpriteFX.Pictures.PixelPatterns;
+using smartSuite.smartSpriteFX.Effects.Core;
 
 namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
 {
@@ -30,7 +31,13 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
             if (transparentBackground == null)
             {
                 throw new ApplicationException(
-                    this.GetType().Name + " requires a Transparent Background Filter placed before it to run");
+                    this.GetType().Name + " requires a " + new TransparentBackgroundFilter().GetIdentification().GetName() + " placed before it to run");
+            }
+            if (EffectFacade.FindFilter<CropFilter>() == null && EffectFacade.FindFilter<CutFilter>() == null)
+            {
+                throw new ApplicationException(
+                    this.GetType().Name + " requires " + new CropFilter().GetIdentification().GetName() + 
+                    " or " + new CutFilter().GetIdentification().GetName()  + " placed before it to run");
             }
 
             #endregion
@@ -133,7 +140,7 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
             var identification = base.GetIdentification();
             identification.SetName("Shadow");
             identification.SetDescription("A filter which draws a shadow uppon the picture (requires a Transparent Background filter before)");
-            identification.SetGroup("Nature");
+            identification.SetGroup("Environment");
 
             return identification;
         }

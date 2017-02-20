@@ -324,16 +324,27 @@ namespace smartSuite.smartSpriteFX.Effects.Core{
         /// </returns>
         public static TransparentBackgroundFilter GetTransparentBackgroundFilter()
         {
+            return EffectEngine.FindFilter<TransparentBackgroundFilter>();
+        }
+
+        /// <summary>
+        /// Finds the filter in collection of selected filters.
+        /// </summary>
+        /// <typeparam name="T">The type of desired filter</typeparam>
+        /// <returns>The instance of the fires found filter or null if it doesn't exist.</returns>
+        public static T FindFilter<T>() where T : IEffectFilter
+        {
             var selectedFilterList = EffectEngine.GetSelectedFilterList();
+            Type typeFilter = typeof(T);
             foreach (var filterItem in selectedFilterList)
             {
-                if (filterItem is TransparentBackgroundFilter)
+                if (typeFilter.IsInstanceOfType(filterItem))
                 {
-                    return filterItem as TransparentBackgroundFilter;
+                    return (T)filterItem;
                 }
             }
 
-            return null;
+            return default(T);
         }
 
         /// <summary>
