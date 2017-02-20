@@ -19,6 +19,26 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
     /// </summary>
     public class ShadowFilter : SmartSpriteOriginalFilterBase
     {
+        /// <summary>
+        /// It´s the strenght of sun
+        /// </summary>
+        private int _sunStrenght;
+
+        /// <summary>
+        /// Sets or gets the sun strenght
+        /// </summary>
+        public int SunStrenght
+        {
+            get
+            {
+                return _sunStrenght;
+            }
+            set
+            {
+                _sunStrenght = value;
+            }
+        }
+
         public override bool ApplyFilter(Picture frame, int index)
         {
             #region Entries validation
@@ -45,7 +65,7 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
             List<PixelInfo> shadowPixelList = new List<PixelInfo>();
 
             int percentageHeight = 
-                frame.Height / 20;
+                frame.Height / _sunStrenght;
 
             for (int y = 0; y < frame.Height; y+= percentageHeight)
             {
@@ -124,11 +144,12 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
 
         public override void Reset()
         {
+            _sunStrenght = 20;
         }
 
         public override IConfigurationPanel ShowConfigurationPanel()
         {
-            return new NoneConfigurationPanelControl();
+            return new ShadowConfigurationPanelControl();
         }
 
         /// <summary>
