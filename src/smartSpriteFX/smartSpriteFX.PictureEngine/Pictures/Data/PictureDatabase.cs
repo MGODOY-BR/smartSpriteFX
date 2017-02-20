@@ -20,7 +20,7 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
     /// <summary>
     /// Represents a manager for databases
     /// </summary>
-    internal class PictureDatabase
+    public class PictureDatabase
     {
         /// <summary>
         /// It´s the start timeof transaction

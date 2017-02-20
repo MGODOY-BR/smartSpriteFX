@@ -1202,21 +1202,6 @@
             Prints the transaction time
             </summary>
         </member>
-        <member name="T:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.RowDataReader">
-            <summary>
-            Represents a data reader for a subset of rows
-            </summary>
-        </member>
-        <member name="F:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.RowDataReader._rowArray">
-            <summary>
-            It´s the subset
-            </summary>
-        </member>
-        <member name="F:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.RowDataReader._rowIndex">
-            <summary>
-            It´s the current row index.
-            </summary>
-        </member>
         <member name="T:smartSuite.smartSpriteFX.PictureEngine.Pictures.PointInfo">
             <summary>
             Represents a composition of point and aditional information
