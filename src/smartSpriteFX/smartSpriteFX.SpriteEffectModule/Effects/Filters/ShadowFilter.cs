@@ -67,6 +67,8 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
             int percentageHeight = 
                 frame.Height / _sunStrenght;
 
+            #region Scan
+
             for (int y = 0; y < frame.Height; y+= percentageHeight)
             {
                 for (int x = 0; x < frame.Width; x++)
@@ -90,9 +92,9 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
                 }
             }
 
-            int oldHeight = frame.Height;
-            frame.Height += percentageHeight + 1;
-            int yy = frame.Height + 1;
+            #endregion
+
+            #region Preparation
 
             var shadowPixelGroup = from pixel in shadowPixelList
                                    group pixel by pixel.Y into g
@@ -105,6 +107,13 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
             });
 
             var middleShadow = groupList.Count / 2;
+
+            int oldHeight = frame.Height;
+            frame.Height += percentageHeight + middleShadow;
+
+            #endregion
+
+            #region Printing
 
             var groupEnumerator = groupList.GetEnumerator();
             for (int y = oldHeight - middleShadow; y < frame.Height; y++)
@@ -138,6 +147,8 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
                     frame.SetPixel(item.X, y, System.Drawing.Color.Black);
                 }
             }
+
+            #endregion
 
             return true;
         }
