@@ -14,6 +14,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading;
+using smartSuite.smartSpriteFX.Pictures.PixelPatterns;
 
 namespace smartSuite.smartSpriteFX.Pictures
 {
@@ -143,6 +144,24 @@ namespace smartSuite.smartSpriteFX.Pictures
             #endregion
 
             return this._buffer.GetAllColors();
+        }
+
+        /// <summary>
+        /// Removes the pixel
+        /// </summary>
+        /// <returns>An indicator informing that the pixel has been excluded.</returns>
+        public bool RemovePixel(int x, int y)
+        {
+            #region Entries validation
+
+            if (this._buffer == null)
+            {
+                throw new ArgumentNullException("this._buffer");
+            }
+
+            #endregion
+
+            return this._buffer.DELETE(x, y);
         }
 
         /// <summary>

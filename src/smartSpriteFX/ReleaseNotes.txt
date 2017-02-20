@@ -2,6 +2,7 @@ vAlpha 2.0.0.4
 
 New Feactures
 - Search feacture in Effect Filters has been added
+- New Filter: Shadow Filter
 
 Improvements
 - Increasement of performance in:

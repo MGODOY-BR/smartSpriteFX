@@ -13,6 +13,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using smartSuite.smartSpriteFX.Pictures.PixelPatterns;
 
 namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
 {
@@ -109,8 +110,8 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
                 {
                     var row = new PointInfo(x, y, color);
 
-                    this._dataSource.Add(row);
                     this._dataSourceIndex.Add(row.ToString(), row);
+                    this._dataSource.Add(row);
                 }
             }
         }
@@ -157,6 +158,43 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
                     }
                 //});
                 //taskIndex.Start();
+            }
+        }
+
+        /// <summary>
+        /// Removes the pixel
+        /// </summary>
+        /// <returns>An indicator informing that the pixel has been excluded.</returns>
+        public bool DELETE(int x, int y)
+        {
+            #region Entries validation
+
+
+            #endregion
+
+            lock (this._dataSourceIndex)
+            {
+                lock (this._dataSource)
+                {
+                    PointInfo pointInfo = new PointInfo(x, y, Color.Transparent);
+                    var key = pointInfo.ToString();
+
+                    #region Entries validation
+
+                    if (!this._dataSourceIndex.ContainsKey(key))
+                    {
+                        return false;
+                    }
+
+                    #endregion
+
+                    var row = this._dataSourceIndex[key];
+
+                    this._dataSource.Remove(row);
+                    this._dataSourceIndex.Remove(key);
+
+                    return true;
+                }
             }
         }
 
