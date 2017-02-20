@@ -9,5 +9,7 @@ Improvements
 	- old-school video game filters
 	- transparent background filters
 - Great improvement in Picture class in library for development
+- Added find capability to filter collection
 
 Bugfixes
+-

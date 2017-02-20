@@ -1,1 +1,0 @@
-﻿Put the third-party effect module plugin in this folder

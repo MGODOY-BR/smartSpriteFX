@@ -72,19 +72,9 @@
             It´s an object which studies the pixels to detect background pattern
             </summary>
         </member>
-        <member name="F:smartSuite.smartSpriteFX.Pictures.ColorPattern.BackgroundPattern._learntCache">
-            <summary>
-            It´s the cache of pixel information
-            </summary>
-        </member>
         <member name="F:smartSuite.smartSpriteFX.Pictures.ColorPattern.BackgroundPattern._colorComparer">
             <summary>
             It´s a comparator for colors
-            </summary>
-        </member>
-        <member name="F:smartSuite.smartSpriteFX.Pictures.ColorPattern.BackgroundPattern._learntColors">
-            <summary>
-            It´s a list of learnt colors
             </summary>
         </member>
         <member name="F:smartSuite.smartSpriteFX.Pictures.ColorPattern.BackgroundPattern._topLeft">
@@ -160,13 +150,13 @@
             <param name="piece">It´s a piece to deal.</param>
             <param name="askingForColorDelegate">An instance used to support the algorithm after an indefinition of a color.</param>
         </member>
-        <member name="M:smartSuite.smartSpriteFX.Pictures.ColorPattern.BackgroundPattern.GetReplacementColor(System.Collections.Generic.Dictionary{System.String,smartSuite.smartSpriteFX.Pictures.PixelPatterns.PixelInfo},smartSuite.smartSpriteFX.Pictures.Point,smartSuite.smartSpriteFX.Pictures.Point,smartSuite.smartSpriteFX.Pictures.Point,smartSuite.smartSpriteFX.Pictures.Point,smartSuite.smartSpriteFX.Pictures.Piece,smartSuite.smartSpriteFX.Pictures.ColorPattern.IAskingForColorDelegate)">
+        <member name="M:smartSuite.smartSpriteFX.Pictures.ColorPattern.BackgroundPattern.GetReplacementColor(smartSuite.smartSpriteFX.Pictures.Point,smartSuite.smartSpriteFX.Pictures.Point,smartSuite.smartSpriteFX.Pictures.Point,smartSuite.smartSpriteFX.Pictures.Point,smartSuite.smartSpriteFX.Pictures.Piece,smartSuite.smartSpriteFX.Pictures.ColorPattern.IAskingForColorDelegate)">
             <summary>
             Gets the replacement colors
             </summary>
             <returns></returns>
         </member>
-        <member name="M:smartSuite.smartSpriteFX.Pictures.ColorPattern.BackgroundPattern.GetHorizontalReplacementColor(System.Collections.Generic.Dictionary{System.String,smartSuite.smartSpriteFX.Pictures.PixelPatterns.PixelInfo},smartSuite.smartSpriteFX.Pictures.Point,smartSuite.smartSpriteFX.Pictures.Point,System.Collections.Generic.List{System.Drawing.Color})">
+        <member name="M:smartSuite.smartSpriteFX.Pictures.ColorPattern.BackgroundPattern.GetHorizontalReplacementColor(smartSuite.smartSpriteFX.Pictures.Picture,smartSuite.smartSpriteFX.Pictures.Point,smartSuite.smartSpriteFX.Pictures.Point,System.Collections.Generic.List{System.Drawing.Color})">
             <summary>
             Gets a replacement color for horizontal coordinates
             </summary>
@@ -181,7 +171,7 @@
             <param name="colorList"></param>
             <returns></returns>
         </member>
-        <member name="M:smartSuite.smartSpriteFX.Pictures.ColorPattern.BackgroundPattern.GetVerticalReplacementColor(System.Collections.Generic.Dictionary{System.String,smartSuite.smartSpriteFX.Pictures.PixelPatterns.PixelInfo},smartSuite.smartSpriteFX.Pictures.Point,smartSuite.smartSpriteFX.Pictures.Point,System.Collections.Generic.List{System.Drawing.Color})">
+        <member name="M:smartSuite.smartSpriteFX.Pictures.ColorPattern.BackgroundPattern.GetVerticalReplacementColor(smartSuite.smartSpriteFX.Pictures.Picture,smartSuite.smartSpriteFX.Pictures.Point,smartSuite.smartSpriteFX.Pictures.Point,System.Collections.Generic.List{System.Drawing.Color})">
             <summary>
             Gets a replacement color for vertical coordinates
             </summary>
@@ -412,11 +402,6 @@
             It´s a buffer of colors, where key it's a combination of x and y coordinates. 
             </summary>
         </member>
-        <member name="F:smartSuite.smartSpriteFX.Pictures.Picture._colorInfoBuffer">
-            <summary>
-            It´s a cache of colors, used to save memory
-            </summary>
-        </member>
         <member name="P:smartSuite.smartSpriteFX.Pictures.Picture.ColorCount">
             <summary>
             Gets the amount of color of current picture
@@ -430,6 +415,30 @@
         <member name="M:smartSuite.smartSpriteFX.Pictures.Picture.Merge(smartSuite.smartSpriteFX.Pictures.Picture)">
             <summary>
             Merge the buffer of another picture
+            </summary>
+            <param name="other"></param>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Pictures.Picture.GetAllPixels">
+            <summary>
+            Gets all the pixels from Picture
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Pictures.Picture.GetAllColors">
+            <summary>
+            Gets all the colors from Picture
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Pictures.Picture.RemovePixel(System.Int32,System.Int32)">
+            <summary>
+            Removes the pixel
+            </summary>
+            <returns>An indicator informing that the pixel has been excluded.</returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Pictures.Picture.ShareDataWithMe(smartSuite.smartSpriteFX.Pictures.Picture)">
+            <summary>
+            Gets the databases from another picture
             </summary>
             <param name="other"></param>
         </member>
@@ -489,13 +498,18 @@
             Load the buffer
             </summary>
         </member>
-        <member name="M:smartSuite.smartSpriteFX.Pictures.Picture.LoadColorInfoCache(System.Int32,System.Int32,smartSuite.smartSpriteFX.Pictures.ColorPattern.ColorInfo)">
+        <member name="M:smartSuite.smartSpriteFX.Pictures.Picture.SetPixel(System.Int32,System.Int32,System.Drawing.Color)">
             <summary>
             Loads the color info cache
             </summary>
             <param name="y"></param>
             <param name="x"></param>
-            <param name="colorInfo"></param>
+            <param name="color"></param>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Pictures.Picture.SetPixel(System.Collections.Generic.List{smartSuite.smartSpriteFX.PictureEngine.Pictures.PointInfo})">
+            <summary>
+            Loads the color info cache
+            </summary>
         </member>
         <member name="M:smartSuite.smartSpriteFX.Pictures.Picture.FormatKey(System.Int32,System.Int32)">
             <summary>
@@ -515,6 +529,13 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:smartSuite.smartSpriteFX.Pictures.Picture.Clone(smartSuite.smartSpriteFX.Pictures.Picture.CloneMode)">
+            <summary>
+            Creates and returns a copy of the object
+            </summary>
+            <param name="cloneMode">It´s the mode of clonage</param>
+            <returns></returns>
+        </member>
         <member name="M:smartSuite.smartSpriteFX.Pictures.Picture.GetPixel(System.Int32,System.Int32)">
             <summary>
             Gets a pixel from coordinate
@@ -531,7 +552,7 @@
         </member>
         <member name="M:smartSuite.smartSpriteFX.Pictures.Picture.ListBorder">
             <summary>
-            Gets the point of image considered borderers
+            Gets the point of image considered border
             </summary>
             <returns></returns>
         </member>
@@ -542,6 +563,12 @@
             <param name="x"></param>
             <param name="y"></param>
             <param name="newColor" />		
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Pictures.Picture.ReplacePixel(smartSuite.smartSpriteFX.Pictures.PointRange)">
+            <summary>
+            Replaces pixels in PointRange
+            </summary>
+            <param name="pointRange"></param>
         </member>
         <member name="M:smartSuite.smartSpriteFX.Pictures.Picture.Overwrite(System.Drawing.Color)">
             <summary>
@@ -576,6 +603,33 @@
         <member name="M:smartSuite.smartSpriteFX.Pictures.Picture.ReleaseBuffer">
             <summary>
             Releases buffer
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Pictures.Picture.BeginBatchUpdate">
+            <summary>
+            Prepare for several updates
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Pictures.Picture.EndBatchUpdate">
+            <summary>
+            Ends a batch update
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Pictures.Picture.CancelBatchUpdate">
+            <summary>
+            Cancels a batch update
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Pictures.Picture.Contains(smartSuite.smartSpriteFX.PictureEngine.Pictures.PointInfo)">
+            <summary>
+            Indicates if a point exists in picture
+            </summary>
+            <param name="point"></param>
+            <returns></returns>
+        </member>
+        <member name="T:smartSuite.smartSpriteFX.Pictures.Picture.CloneMode">
+            <summary>
+            It´s the mode of clone operation
             </summary>
         </member>
         <member name="T:smartSuite.smartSpriteFX.Pictures.Piece">
@@ -632,6 +686,12 @@
             <summary>
             Corrects points based on main points
             </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Pictures.Piece.GetReferencePicture">
+            <summary>
+            Gets the reference picture whose the picture is part of it
+            </summary>
+            <returns></returns>
         </member>
         <member name="M:smartSuite.smartSpriteFX.Pictures.Piece.GetFullPath">
             <summary>
@@ -910,7 +970,19 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:smartSuite.smartSpriteFX.Pictures.PointRange.ToPointInfoList">
+            <summary>
+            Converts the range in a point list
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:smartSuite.smartSpriteFX.Pictures.PointRange.ConvertMeToPointList">
+            <summary>
+            Converts the current point list to a set of points
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Pictures.PointRange.ConvertMeToPointInfoList">
             <summary>
             Converts the current point list to a set of points
             </summary>
@@ -944,30 +1016,205 @@
             It´s a inner comparer
             </summary>
         </member>
-        <member name="T:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.DataBase">
+        <member name="T:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase">
             <summary>
             Represents a manager for databases
             </summary>
         </member>
-        <member name="F:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.DataBase._currentConnection">
+        <member name="F:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase._transactionStartTime">
             <summary>
-            It´s the current connection
+            It´s the start timeof transaction
             </summary>
         </member>
-        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.DataBase.#ctor">
+        <member name="F:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase._sessionID">
+            <summary>
+            It´s the sessionID of datas.
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase._dataSourceIndex">
+            <summary>
+            Relates the key with the point in dataSource
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase._dataSource">
+            <summary>
+            It´s a datasource
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase.#ctor">
             <summary>
             This constructor has been created for goals of design and can not be used for external calls
             </summary>
         </member>
-        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.DataBase.Open">
+        <member name="P:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase.SessionID">
+            <summary>
+            Gets the identification of session
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase.Open">
             <summary>
             Gets a opened database
             </summary>
             <returns></returns>
         </member>
-        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.DataBase.Close">
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase.Close">
             <summary>
             Closes the database
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase.INSERT(System.Int32,System.Int32,System.Drawing.Color)">
+            <summary>
+            Inserts a record
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <param name="color"></param>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase.INSERT(System.Collections.Generic.List{smartSuite.smartSpriteFX.PictureEngine.Pictures.PointInfo})">
+            <summary>
+            Inserts a bunch of points
+            </summary>
+            <param name="pointInfoList"></param>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase.DELETE(System.Int32,System.Int32)">
+            <summary>
+            Removes the pixel
+            </summary>
+            <returns>An indicator informing that the pixel has been excluded.</returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase.UPDATE(System.Int32,System.Int32,System.Drawing.Color)">
+            <summary>
+            Updates a record
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <param name="color"></param>
+            <returns>Gets the amount of records updated</returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase.UPDATE(System.Drawing.Color,System.Drawing.Color)">
+            <summary>
+            Updates colors in all records
+            </summary>
+            <returns>Gets the amount of records updated</returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase.SELECT(System.Int32,System.Int32)">
+            <summary>
+            Gets the color information of coordination
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase.SELECT(smartSuite.smartSpriteFX.Pictures.Point)">
+            <summary>
+            Gets the pointInfo of the point
+            </summary>
+            <param name="point"></param>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase.SELECT(System.Drawing.Color)">
+            <summary>
+            Gets the points for the color
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase.SELECTALL">
+            <summary>
+            Gets all the points
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase.COUNT">
+            <summary>
+            Counts the amount of pixels
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase.COUNT(System.Drawing.Color)">
+            <summary>
+            Counts the amount of colors for the critera
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase.EXISTS(smartSuite.smartSpriteFX.Pictures.Point,System.Drawing.Color)">
+            <summary>
+            Checks if exists the color for the coordinates
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase.EXISTS(smartSuite.smartSpriteFX.Pictures.Point)">
+            <summary>
+            Checks if exists the color for the coordinates
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase.Clear">
+            <summary>
+            Clear all the cache
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase.CLEAR">
+            <summary>
+            Deletes all the content of table
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase.Clone">
+            <summary>
+            Clones the database
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase.Merge(smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase)">
+            <summary>
+            Merge other dataBase in the current dataBase
+            </summary>
+            <param name="other"></param>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase.GetAllColors">
+            <summary>
+            Gets all the colors of database
+            </summary>
+            <param name="other"></param>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase.CountColor">
+            <summary>
+            Gets the amount of colors of database
+            </summary>
+            <param name="other"></param>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase.BeginTransaction">
+            <summary>
+            Begins the transaction
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase.RollbackTransaction">
+            <summary>
+            Rolls back the transaction
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase.CommitTransaction">
+            <summary>
+            Commits the transaction
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase.PrintTransactionTime(System.String)">
+            <summary>
+            Prints the transaction time
+            </summary>
+        </member>
+        <member name="T:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.RowDataReader">
+            <summary>
+            Represents a data reader for a subset of rows
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.RowDataReader._rowArray">
+            <summary>
+            It´s the subset
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.RowDataReader._rowIndex">
+            <summary>
+            It´s the current row index.
             </summary>
         </member>
         <member name="T:smartSuite.smartSpriteFX.PictureEngine.Pictures.PointInfo">
@@ -979,6 +1226,12 @@
             <summary>
             Gets or sets color
             </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.PointInfo.Clone">
+            <summary>
+            Clones the current object;
+            </summary>
+            <returns></returns>
         </member>
         <member name="T:smartSuite.smartSpriteFX.PictureEngine.Templates.UnityMetaFile">
             <summary>

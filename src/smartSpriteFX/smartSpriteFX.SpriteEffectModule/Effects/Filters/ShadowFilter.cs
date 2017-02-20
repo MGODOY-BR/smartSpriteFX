@@ -171,7 +171,7 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
         {
             var identification = base.GetIdentification();
             identification.SetName("Shadow");
-            identification.SetDescription("A filter which draws a shadow uppon the picture (requires a Transparent Background filter before)");
+            identification.SetDescription("A filter which draws a shadow uppon the picture (requires a Transparent Background, Crop or Cut filter before)");
             identification.SetGroup("Environment");
 
             return identification;
