@@ -61,5 +61,59 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Test
 
             #endregion
         }
+
+        [TestMethod]
+        public void GetLinesTest()
+        {
+            #region Scenario setup
+
+            Picture test = Picture.GetInstance(@"Stubs\Character.stub.png");
+
+            #endregion
+
+            #region Running the tested operation
+
+            var evidence = test.GetLines();
+
+            #endregion
+
+            #region Getting the evidences
+
+
+            #endregion
+
+            #region Validating the evidences
+
+            Assert.AreEqual(371, evidence.Count());
+
+            #endregion
+        }
+
+        [TestMethod]
+        public void GetColumnsTest()
+        {
+            #region Scenario setup
+
+            Picture test = Picture.GetInstance(@"Stubs\Character.stub.png");
+
+            #endregion
+
+            #region Running the tested operation
+
+            var evidence = test.GetColumns();
+
+            #endregion
+
+            #region Getting the evidences
+
+
+            #endregion
+
+            #region Validating the evidences
+
+            Assert.AreEqual(310, evidence.Count());
+
+            #endregion
+        }
     }
 }
