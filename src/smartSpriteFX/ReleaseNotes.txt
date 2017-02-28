@@ -1,10 +1,11 @@
 vAlpha 2.0.0.5
 
 New Feactures
-- Button "Apply One"
+- Brand new filters:
+	- Made by Hand
 
 Improvements
--
+- Button "Apply One"
 
 Bugfixes
 -
