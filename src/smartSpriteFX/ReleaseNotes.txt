@@ -1,15 +1,10 @@
-vAlpha 2.0.0.4
+vAlpha 2.0.0.5
 
 New Feactures
-- Search feacture in Effect Filters has been added
-- New Filter: Shadow Filter
+- Button "Apply One"
 
 Improvements
-- Increasement of performance in:
-	- old-school video game filters
-	- transparent background filters
-- Great improvement in Picture class in library for development
-- Added find capability to filter collection
+-
 
 Bugfixes
 -

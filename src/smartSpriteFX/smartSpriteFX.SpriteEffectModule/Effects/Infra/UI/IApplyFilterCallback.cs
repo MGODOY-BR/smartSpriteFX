@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using smartSuite.smartSpriteFX.Pictures;
 
 namespace smartSuite.smartSpriteFX.SpriteEffectModule.Infra.UI
 {
@@ -25,5 +26,10 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Infra.UI
         /// Applies the filters, considering the UI infrastructure
         /// </summary>
         void ApplyFilter();
+
+        /// <summary>
+        /// Applies the filters on the specified frame, considering the UI infrastructure
+        /// </summary>
+        void ApplyFilter(Picture frame);
     }
 }

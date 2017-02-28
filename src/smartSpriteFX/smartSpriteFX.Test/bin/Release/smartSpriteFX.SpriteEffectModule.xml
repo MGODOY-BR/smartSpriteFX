@@ -579,6 +579,11 @@
             Applies the filters, considering the UI infrastructure
             </summary>
         </member>
+        <member name="M:smartSuite.smartSpriteFX.SpriteEffectModule.Infra.UI.IApplyFilterCallback.ApplyFilter(smartSuite.smartSpriteFX.Pictures.Picture)">
+            <summary>
+            Applies the filters on the specified frame, considering the UI infrastructure
+            </summary>
+        </member>
         <member name="T:smartSuite.smartSpriteFX.SpriteEffectModule.Forms.ColorSupportFormForAnimation">
             <summary>
             It´s a version of <see cref="T:smartSuite.smartSpriteFX.Forms.ColorSupportForm"/> used to support animations 
@@ -650,7 +655,7 @@
         </member>
         <member name="M:smartSuite.smartSpriteFX.Animations.FrameIterator.#ctor">
             <summary>
-            Creats a instance of the object.
+            Creates a instance of the object.
             </summary>
             <remarks>This constructor was created to achieve designs goal. You shouldn't use it on your code.</remarks>
         </member>
@@ -705,6 +710,13 @@
             Moves the current cursor to the selected frame
             </summary>
             <param name="frameIndex"></param>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Animations.FrameIterator.Open(smartSuite.smartSpriteFX.Pictures.Picture[])">
+            <summary>
+            Gets a frameIterator it has contained just the selected frames
+            </summary>
+            <param name="frameList">The selected frames</param>
+            <returns></returns>
         </member>
         <member name="M:smartSuite.smartSpriteFX.Animations.FrameIterator.Open(System.String)">
             <summary>
@@ -813,12 +825,27 @@
             <summary>
             Applies the filter collection to all animation, but considering UI controls infrastructure
             </summary>
-            <param name="callback"></param>
+            <param name="callback">A control used to shows the result of processing, like a progress bar</param>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Effects.Core.EffectEngine.ApplyFromUI(smartSuite.smartSpriteFX.SpriteEffectModule.Infra.UI.IApplyFilterCallback,smartSuite.smartSpriteFX.Pictures.Picture)">
+            <summary>
+            Applies the filter collection in the frame, but considering UI controls infrastructure
+            </summary>
+            <param name="callback">A control used to shows the result of processing, like a progress bar</param>
+            <param name="frame">The frame to apply on</param>
         </member>
         <member name="M:smartSuite.smartSpriteFX.Effects.Core.EffectEngine.Apply(smartSuite.smartSpriteFX.SpriteEffectModule.Infra.UI.IApplyFilterCallback)">
             <summary>
             Applies the filter collection to all the animation
             </summary>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Effects.Core.EffectEngine.Apply(smartSuite.smartSpriteFX.SpriteEffectModule.Infra.UI.IApplyFilterCallback,smartSuite.smartSpriteFX.Pictures.Picture[])">
+            <summary>
+            Applies the filter collection to all the animation
+            </summary>
+            <param name="callback">The controls that will be informed about the progress of processing</param>
+            <param name="selectedFrameList">The list of selected frames to apply the filters. If null, all the frames of animation folder will be used</param>
             <returns></returns>
         </member>
         <member name="M:smartSuite.smartSpriteFX.Effects.Core.EffectEngine.GetIterator">

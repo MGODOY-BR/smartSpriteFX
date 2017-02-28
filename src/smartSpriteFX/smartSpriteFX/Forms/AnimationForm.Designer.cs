@@ -28,17 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.topPanel = new System.Windows.Forms.Panel();
             this.frameBox = new System.Windows.Forms.GroupBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.previewBoard = new System.Windows.Forms.PictureBox();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.chkBoxFitImage = new System.Windows.Forms.CheckBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnPreview = new System.Windows.Forms.Button();
             this.btnApplyAll = new System.Windows.Forms.Button();
+            this.pnlFilterPanel = new System.Windows.Forms.Panel();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.txtSettingsDescription = new System.Windows.Forms.TextBox();
             this.pnlSettingsMain = new System.Windows.Forms.Panel();
@@ -49,16 +53,17 @@
             this.panelBrowser = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panelTool = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.previewBoard = new System.Windows.Forms.PictureBox();
-            this.pnlFilterPanel = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnApplyOne = new System.Windows.Forms.Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.statusStrip1.SuspendLayout();
             this.topPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.previewBoard)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
@@ -73,8 +78,6 @@
             this.panelContainer.SuspendLayout();
             this.panelToolContainer.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.previewBoard)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -130,6 +133,30 @@
             this.splitContainer1.SplitterDistance = 605;
             this.splitContainer1.TabIndex = 5;
             // 
+            // panel1
+            // 
+            this.panel1.AutoScroll = true;
+            this.panel1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.panel1.BackgroundImage = global::smartSuite.smartSpriteFX.Properties.Resources.background;
+            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.previewBoard);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(605, 337);
+            this.panel1.TabIndex = 0;
+            // 
+            // previewBoard
+            // 
+            this.previewBoard.BackColor = System.Drawing.Color.Transparent;
+            this.previewBoard.Location = new System.Drawing.Point(0, 0);
+            this.previewBoard.Name = "previewBoard";
+            this.previewBoard.Size = new System.Drawing.Size(100, 50);
+            this.previewBoard.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.previewBoard.TabIndex = 0;
+            this.previewBoard.TabStop = false;
+            // 
             // splitContainer2
             // 
             this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -161,6 +188,8 @@
             this.chkBoxFitImage.Size = new System.Drawing.Size(68, 17);
             this.chkBoxFitImage.TabIndex = 3;
             this.chkBoxFitImage.Text = "Fit image";
+            this.toolTip1.SetToolTip(this.chkBoxFitImage, "Forces the image to fit in the preview area (it doesn\'t modify the real image, or" +
+        " the result of filters)");
             this.chkBoxFitImage.UseVisualStyleBackColor = true;
             this.chkBoxFitImage.CheckedChanged += new System.EventHandler(this.chkBoxFitImage_CheckedChanged);
             // 
@@ -177,6 +206,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btnApplyOne);
             this.groupBox2.Controls.Add(this.btnPreview);
             this.groupBox2.Controls.Add(this.btnApplyAll);
             this.groupBox2.Location = new System.Drawing.Point(3, 9);
@@ -192,19 +222,34 @@
             this.btnPreview.Size = new System.Drawing.Size(93, 23);
             this.btnPreview.TabIndex = 1;
             this.btnPreview.Text = "PREVIEW";
+            this.toolTip1.SetToolTip(this.btnPreview, "Previews the result of filters");
             this.btnPreview.UseVisualStyleBackColor = true;
             this.btnPreview.Click += new System.EventHandler(this.btnPreview_Click);
             // 
             // btnApplyAll
             // 
             this.btnApplyAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnApplyAll.Location = new System.Drawing.Point(6, 74);
+            this.btnApplyAll.Location = new System.Drawing.Point(6, 100);
             this.btnApplyAll.Name = "btnApplyAll";
             this.btnApplyAll.Size = new System.Drawing.Size(93, 31);
             this.btnApplyAll.TabIndex = 0;
             this.btnApplyAll.Text = "APPLY ALL";
+            this.toolTip1.SetToolTip(this.btnApplyAll, "Applies all the filters against all the frames in animation folder");
             this.btnApplyAll.UseVisualStyleBackColor = true;
             this.btnApplyAll.Click += new System.EventHandler(this.btnApplyAll_Click);
+            // 
+            // pnlFilterPanel
+            // 
+            this.pnlFilterPanel.AutoScroll = true;
+            this.pnlFilterPanel.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.pnlFilterPanel.BackgroundImage = global::smartSuite.smartSpriteFX.Properties.Resources.FilterBox;
+            this.pnlFilterPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pnlFilterPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pnlFilterPanel.Dock = System.Windows.Forms.DockStyle.Right;
+            this.pnlFilterPanel.Location = new System.Drawing.Point(113, 0);
+            this.pnlFilterPanel.Name = "pnlFilterPanel";
+            this.pnlFilterPanel.Size = new System.Drawing.Size(151, 146);
+            this.pnlFilterPanel.TabIndex = 0;
             // 
             // splitContainer3
             // 
@@ -321,43 +366,6 @@
             this.panelTool.Size = new System.Drawing.Size(167, 169);
             this.panelTool.TabIndex = 1;
             // 
-            // panel1
-            // 
-            this.panel1.AutoScroll = true;
-            this.panel1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.panel1.BackgroundImage = global::smartSuite.smartSpriteFX.Properties.Resources.background;
-            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel1.Controls.Add(this.previewBoard);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(605, 337);
-            this.panel1.TabIndex = 0;
-            // 
-            // previewBoard
-            // 
-            this.previewBoard.BackColor = System.Drawing.Color.Transparent;
-            this.previewBoard.Location = new System.Drawing.Point(0, 0);
-            this.previewBoard.Name = "previewBoard";
-            this.previewBoard.Size = new System.Drawing.Size(100, 50);
-            this.previewBoard.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.previewBoard.TabIndex = 0;
-            this.previewBoard.TabStop = false;
-            // 
-            // pnlFilterPanel
-            // 
-            this.pnlFilterPanel.AutoScroll = true;
-            this.pnlFilterPanel.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.pnlFilterPanel.BackgroundImage = global::smartSuite.smartSpriteFX.Properties.Resources.FilterBox;
-            this.pnlFilterPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pnlFilterPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pnlFilterPanel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pnlFilterPanel.Location = new System.Drawing.Point(113, 0);
-            this.pnlFilterPanel.Name = "pnlFilterPanel";
-            this.pnlFilterPanel.Size = new System.Drawing.Size(151, 146);
-            this.pnlFilterPanel.TabIndex = 0;
-            // 
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.White;
@@ -368,6 +376,18 @@
             this.pictureBox1.Size = new System.Drawing.Size(1162, 29);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            // 
+            // btnApplyOne
+            // 
+            this.btnApplyOne.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnApplyOne.Location = new System.Drawing.Point(5, 44);
+            this.btnApplyOne.Name = "btnApplyOne";
+            this.btnApplyOne.Size = new System.Drawing.Size(93, 31);
+            this.btnApplyOne.TabIndex = 2;
+            this.btnApplyOne.Text = "Apply One";
+            this.toolTip1.SetToolTip(this.btnApplyOne, "Applies all the filters in the current frame only");
+            this.btnApplyOne.UseVisualStyleBackColor = true;
+            this.btnApplyOne.Click += new System.EventHandler(this.btnApplyOne_Click);
             // 
             // AnimationForm
             // 
@@ -390,6 +410,9 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.previewBoard)).EndInit();
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel1.PerformLayout();
             this.splitContainer2.Panel2.ResumeLayout(false);
@@ -408,9 +431,6 @@
             this.panelContainer.ResumeLayout(false);
             this.panelToolContainer.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.previewBoard)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -444,5 +464,7 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.CheckBox chkBoxFitImage;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.Button btnApplyOne;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

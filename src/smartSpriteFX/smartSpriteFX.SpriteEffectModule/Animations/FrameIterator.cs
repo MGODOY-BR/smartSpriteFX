@@ -35,7 +35,7 @@ namespace smartSuite.smartSpriteFX.Animations{
         private static AnimationComparer _animationComparer = new AnimationComparer();
 
         /// <summary>
-        /// Creats a instance of the object.
+        /// Creates a instance of the object.
         /// </summary>
         /// <remarks>This constructor was created to achieve designs goal. You shouldn't use it on your code.</remarks>
         private FrameIterator()
@@ -158,6 +158,43 @@ namespace smartSuite.smartSpriteFX.Animations{
             #endregion
 
             this._frameIndex = frameIndex;
+        }
+
+        /// <summary>
+        /// Gets a frameIterator it has contained just the selected frames
+        /// </summary>
+        /// <param name="frameList">The selected frames</param>
+        /// <returns></returns>
+        internal static FrameIterator Open(params Picture[] frameList)
+        {
+            #region Entries validation
+
+            if (frameList == null)
+            {
+                throw new ArgumentNullException("frameList");
+            }
+
+            #endregion
+
+            FrameIterator iterator = new FrameIterator();
+            foreach (var frameItem in frameList)
+            {
+                #region Entries validation
+
+                if (frameItem == null)
+                {
+                    throw new ArgumentNullException("frameItem");
+                }
+                if (String.IsNullOrEmpty(frameItem.FullPath))
+                {
+                    throw new ArgumentNullException("frameItem.FullPath");
+                }
+
+                #endregion
+
+                iterator._fileList.Add(frameItem.FullPath);
+            }
+            return iterator;
         }
 
         /// <summary>
