@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using smartSuite.smartSpriteFX.Pictures;
 
 namespace smartSuite.smartSpriteFX.Forms
 {
@@ -27,6 +28,12 @@ namespace smartSuite.smartSpriteFX.Forms
         public void ApplyFilter()
         {
             this.backgroundWorker1.RunWorkerAsync();
+            this.ShowUpdateProgress();
+        }
+
+        public void ApplyFilter(Picture frame)
+        {
+            this.backgroundWorker1.RunWorkerAsync(frame);
             this.ShowUpdateProgress();
         }
 
@@ -56,7 +63,16 @@ namespace smartSuite.smartSpriteFX.Forms
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
-            EffectEngine.Apply(this);
+            var selectedFrame = (Picture)e.Argument;
+
+            if (selectedFrame != null)
+            {
+                EffectEngine.Apply(this, selectedFrame);
+            }
+            else
+            {
+                EffectEngine.Apply(this);
+            }
         }
 
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)

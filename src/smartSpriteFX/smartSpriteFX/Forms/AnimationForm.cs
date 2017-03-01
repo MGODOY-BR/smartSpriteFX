@@ -479,5 +479,23 @@ namespace smartSuite.smartSpriteFX.Forms
             this.FitImage(this.chkBoxFitImage.Checked);
         }
 
+        private void btnApplyOne_Click(object sender, EventArgs e)
+        {
+            #region Entries validation
+
+            if (EffectEngine.GetSelectedFilterList() == null)
+            {
+                throw new ArgumentNullException("EffectEngine.GetSelectedFilterList()");
+            }
+            if (EffectEngine.GetSelectedFilterList().Count == 0)
+            {
+                MessageBoxUtil.Show("There's no filter to preview. Please open the animation folder first and after select one or more filters.", MessageBoxIcon.Error);
+                return;
+            }
+
+            #endregion
+
+            EffectEngine.ApplyFromUI(new ProgressForm(), EffectEngine.GetIterator().GetCurrent());
+        }
     }
 }

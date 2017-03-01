@@ -35,7 +35,7 @@ namespace smartSuite.smartSpriteFX.Animations{
         private static AnimationComparer _animationComparer = new AnimationComparer();
 
         /// <summary>
-        /// Creats a instance of the object.
+        /// Creates a instance of the object.
         /// </summary>
         /// <remarks>This constructor was created to achieve designs goal. You shouldn't use it on your code.</remarks>
         private FrameIterator()
@@ -161,6 +161,43 @@ namespace smartSuite.smartSpriteFX.Animations{
         }
 
         /// <summary>
+        /// Gets a frameIterator it has contained just the selected frames
+        /// </summary>
+        /// <param name="frameList">The selected frames</param>
+        /// <returns></returns>
+        internal static FrameIterator Open(params Picture[] frameList)
+        {
+            #region Entries validation
+
+            if (frameList == null)
+            {
+                throw new ArgumentNullException("frameList");
+            }
+
+            #endregion
+
+            FrameIterator iterator = new FrameIterator();
+            foreach (var frameItem in frameList)
+            {
+                #region Entries validation
+
+                if (frameItem == null)
+                {
+                    throw new ArgumentNullException("frameItem");
+                }
+                if (String.IsNullOrEmpty(frameItem.FullPath))
+                {
+                    throw new ArgumentNullException("frameItem.FullPath");
+                }
+
+                #endregion
+
+                iterator._fileList.Add(frameItem.FullPath);
+            }
+            return iterator;
+        }
+
+        /// <summary>
         /// Gets a frameIterator from path
         /// </summary>
         /// <param name="fullPath">A path of a file or directory</param>
@@ -193,9 +230,6 @@ namespace smartSuite.smartSpriteFX.Animations{
             }
 
             #endregion
-
-            // ordering the list, following the prefix number
-            iterator._fileList.Sort(_animationComparer);
 
             return iterator;
         }
@@ -236,14 +270,32 @@ namespace smartSuite.smartSpriteFX.Animations{
 
             #endregion
 
-            fileList.AddRange(
+            List<string> result = GetFileList(fullPath);
+
+            fileList.AddRange(result);
+        }
+
+        /// <summary>
+        /// Gets the file list
+        /// </summary>
+        /// <param name="fullPath"></param>
+        /// <returns></returns>
+        internal static List<string> GetFileList(string fullPath)
+        {
+            List<string> result = new List<string>();
+
+            result.AddRange(
                 Directory.GetFiles(fullPath, "*.png", SearchOption.TopDirectoryOnly));
-            fileList.AddRange(
+            result.AddRange(
                 Directory.GetFiles(fullPath, "*.bmp", SearchOption.TopDirectoryOnly));
-            fileList.AddRange(
+            result.AddRange(
                 Directory.GetFiles(fullPath, "*.jpg", SearchOption.TopDirectoryOnly));
-            fileList.AddRange(
+            result.AddRange(
                 Directory.GetFiles(fullPath, "*.jpeg", SearchOption.TopDirectoryOnly));
+
+            result.Sort(_animationComparer);
+
+            return result;
         }
 
         /// <summary>

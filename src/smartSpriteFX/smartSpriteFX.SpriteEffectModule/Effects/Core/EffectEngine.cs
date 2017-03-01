@@ -133,7 +133,7 @@ namespace smartSuite.smartSpriteFX.Effects.Core{
         /// <summary>
         /// Applies the filter collection to all animation, but considering UI controls infrastructure
         /// </summary>
-        /// <param name="callback"></param>
+        /// <param name="callback">A control used to shows the result of processing, like a progress bar</param>
         public static void ApplyFromUI(IApplyFilterCallback callback)
         {
             #region Entries validation
@@ -149,14 +149,57 @@ namespace smartSuite.smartSpriteFX.Effects.Core{
         }
 
         /// <summary>
+        /// Applies the filter collection in the frame, but considering UI controls infrastructure
+        /// </summary>
+        /// <param name="callback">A control used to shows the result of processing, like a progress bar</param>
+        /// <param name="frame">The frame to apply on</param>
+        public static void ApplyFromUI(IApplyFilterCallback callback, Picture frame)
+        {
+            #region Entries validation
+
+            if (callback == null)
+            {
+                throw new ArgumentNullException("callback");
+            }
+
+            #endregion
+
+            callback.ApplyFilter(frame);
+        }
+
+        /// <summary>
         /// Applies the filter collection to all the animation
         /// </summary>
         /// <returns></returns>
         public static void Apply(IApplyFilterCallback callback)
         {
+            Apply(callback, null);
+        }
+
+        /// <summary>
+        /// Applies the filter collection to all the animation
+        /// </summary>
+        /// <param name="callback">The controls that will be informed about the progress of processing</param>
+        /// <param name="selectedFrameList">The list of selected frames to apply the filters. If null, all the frames of animation folder will be used</param>
+        /// <returns></returns>
+        public static void Apply(IApplyFilterCallback callback, params Picture[] selectedFrameList)
+        {
+            FrameIterator frameIterator = null;
+
+            if (selectedFrameList == null)
+            {
+                frameIterator =
+                    EffectEngine._iterator;
+            }
+            else
+            {
+                frameIterator =
+                    FrameIterator.Open(selectedFrameList);
+            }
+
             #region Entries validation
 
-            if (EffectEngine._iterator == null)
+            if (frameIterator == null)
             {
                 throw new ArgumentNullException("EffectEngine._iterator");
             }
@@ -175,10 +218,10 @@ namespace smartSuite.smartSpriteFX.Effects.Core{
 
             EffectEngine._applyingThreadList.Clear();
             List<WaitHandle> syncList = new List<WaitHandle>();
-            EffectEngine._iterator.Reset();
+            frameIterator.Reset();
             EffectEngine._completedTask = 0;
 
-            while (EffectEngine._iterator.Next())
+            while (frameIterator.Next())
             {
                 WaitHandle sync = new AutoResetEvent(false);
                 syncList.Add(sync);
@@ -186,8 +229,8 @@ namespace smartSuite.smartSpriteFX.Effects.Core{
                     ApplyWaitCallback, 
                     new object[3]
                     {
-                        EffectEngine._iterator.GetCurrent().Clone(),
-                        EffectEngine._iterator.GetFrameIndex(),
+                        frameIterator.GetCurrent().Clone(),
+                        frameIterator.GetFrameIndex(),
                         sync
                     });
             }

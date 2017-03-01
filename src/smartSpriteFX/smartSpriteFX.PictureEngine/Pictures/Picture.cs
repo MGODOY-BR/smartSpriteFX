@@ -1015,6 +1015,52 @@ namespace smartSuite.smartSpriteFX.Pictures
             #endregion
 
             return this._buffer.EXISTS(point);
+        } 
+
+        /// <summary>
+        /// Gets pixels based on column
+        /// </summary>
+        /// <returns></returns>
+        public List<PointInfo>[] GetColumns()
+        {
+            var bufferList = this._buffer.SELECTALL();
+            List<PointInfo>[] result = new List<PointInfo>[this.Width];
+
+            for (int x = 0; x < this.Width; x++)
+            {
+                var pixelList = from pixelItem in bufferList
+                                where pixelItem.X == x
+                                select pixelItem;
+
+                var list = pixelList.ToList();
+                list.Sort();
+                result[x] = list;
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// Gets pixels based on lines
+        /// </summary>
+        /// <returns></returns>
+        public List<PointInfo>[] GetLines()
+        {
+            var bufferList = this._buffer.SELECTALL();
+            List<PointInfo>[] result = new List<PointInfo>[this.Height];
+
+            for (int y = 0; y < this.Height; y++)
+            {
+                var pixelList = from pixelItem in bufferList
+                                where pixelItem.Y == y
+                                select pixelItem;
+
+                var list = pixelList.ToList();
+                list.Sort();
+                result[y] = list;
+            }
+
+            return result;
         }
 
         /// <summary>
