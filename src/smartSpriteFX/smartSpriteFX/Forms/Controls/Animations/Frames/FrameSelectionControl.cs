@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.IO;
 using smartSuite.smartSpriteFX.SpriteEffectModule.Animations;
 using smartSuite.smartSpriteFX.Effects.Core;
+using smartSuite.smartSpriteFX.Animations;
 
 namespace smartSuite.smartSpriteFX.Forms.Controls.Animations.Frames
 {
@@ -79,9 +80,8 @@ namespace smartSuite.smartSpriteFX.Forms.Controls.Animations.Frames
             flowLayoutPanel1.Controls.Clear();
             this._fileList.Clear();
             this._fileList.AddRange(
-                Directory.GetFiles(this._path));
-
-            this._fileList.Sort(_animationComparer);
+                FrameIterator.GetFileList(this._path));
+                //Directory.GetFiles(this._path));
 
             this.numCurrentFrame.Minimum = 1;
             this.numCurrentFrame.Maximum = this._fileList.Count;

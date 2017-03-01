@@ -627,6 +627,18 @@
             <param name="point"></param>
             <returns></returns>
         </member>
+        <member name="M:smartSuite.smartSpriteFX.Pictures.Picture.GetColumns">
+            <summary>
+            Gets pixels based on column
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Pictures.Picture.GetLines">
+            <summary>
+            Gets pixels based on lines
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:smartSuite.smartSpriteFX.Pictures.Picture.CloneMode">
             <summary>
             It´s the mode of clone operation

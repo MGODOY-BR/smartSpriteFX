@@ -231,9 +231,6 @@ namespace smartSuite.smartSpriteFX.Animations{
 
             #endregion
 
-            // ordering the list, following the prefix number
-            iterator._fileList.Sort(_animationComparer);
-
             return iterator;
         }
 
@@ -273,14 +270,32 @@ namespace smartSuite.smartSpriteFX.Animations{
 
             #endregion
 
-            fileList.AddRange(
+            List<string> result = GetFileList(fullPath);
+
+            fileList.AddRange(result);
+        }
+
+        /// <summary>
+        /// Gets the file list
+        /// </summary>
+        /// <param name="fullPath"></param>
+        /// <returns></returns>
+        internal static List<string> GetFileList(string fullPath)
+        {
+            List<string> result = new List<string>();
+
+            result.AddRange(
                 Directory.GetFiles(fullPath, "*.png", SearchOption.TopDirectoryOnly));
-            fileList.AddRange(
+            result.AddRange(
                 Directory.GetFiles(fullPath, "*.bmp", SearchOption.TopDirectoryOnly));
-            fileList.AddRange(
+            result.AddRange(
                 Directory.GetFiles(fullPath, "*.jpg", SearchOption.TopDirectoryOnly));
-            fileList.AddRange(
+            result.AddRange(
                 Directory.GetFiles(fullPath, "*.jpeg", SearchOption.TopDirectoryOnly));
+
+            result.Sort(_animationComparer);
+
+            return result;
         }
 
         /// <summary>

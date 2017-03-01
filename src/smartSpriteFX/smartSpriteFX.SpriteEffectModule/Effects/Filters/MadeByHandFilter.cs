@@ -12,14 +12,24 @@ using System.Drawing;
 using smartSuite.smartSpriteFX.Pictures.ColorPattern;
 using smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI;
 using smartSuite.smartSpriteFX.Effects.Infra;
+using smartSuite.smartSpriteFX.Effects.Core;
 
 namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
 {
     /// <summary>
     /// Represents a filter used to emulate draw made by hand
     /// </summary>
-    public class MadeByHandFilter : SmartSpriteOriginalFilterBase
+    public class MadeByHandFilter : SmartSpriteOriginalFilterBase, IContrastOrientedObject
     {
+        /// <summary>
+        /// Gets or sets the contrast
+        /// </summary>
+        public int Contrast
+        {
+            get;
+            set;
+        }
+
         public override bool ApplyFilter(Picture frame, int index)
         {
             List<PointInfo>[] columnList =
@@ -29,6 +39,16 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
                 frame.GetLines();
 
             ColorEqualityComparer comparer = new ColorEqualityComparer();
+            ColorBuffer colorBuffer = new ColorBuffer(36, this.Contrast);
+
+            var transparentFilter =
+                EffectEngine.GetTransparentBackgroundFilter();
+
+            Color transparentColor = Color.Transparent;
+            if (transparentFilter != null)
+            {
+                transparentColor = transparentFilter.TransparentColor;
+            }
 
             // Column handling
             Color comparing = Color.Transparent;
@@ -36,10 +56,26 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
             {
                 foreach (var pointItem in columnItem)
                 {
-                    Color currentColor = pointItem.Color;
+                    #region Entries validation
+
+                    if (comparer.Equals(transparentColor, pointItem.Color))
+                    {
+                        continue;
+                    }
+
+                    #endregion
+
+                    Color currentColor =
+                        colorBuffer.GetSimilarColor(
+                            pointItem.Color);
+
                     if (!comparer.LooksLikeBySensibility3(comparing, currentColor))
                     {
                         pointItem.Color = Color.Black;
+                    }
+                    else
+                    {
+                        pointItem.Color = currentColor;
                     }
                     comparing = currentColor;
                 }
@@ -51,10 +87,26 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
             {
                 foreach (var pointItem in lineItem)
                 {
-                    Color currentColor = pointItem.Color;
+                    #region Entries validation
+
+                    if (comparer.Equals(transparentColor, pointItem.Color))
+                    {
+                        continue;
+                    }
+
+                    #endregion
+
+                    Color currentColor =
+                        colorBuffer.GetSimilarColor(
+                            pointItem.Color);
+
                     if (!comparer.LooksLikeBySensibility3(comparing, currentColor))
                     {
                         pointItem.Color = Color.Black;
+                    }
+                    else
+                    {
+                        pointItem.Color = currentColor;
                     }
                     comparing = currentColor;
                 }
@@ -65,11 +117,12 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
 
         public override void Reset()
         {
+            this.Contrast = 15;
         }
 
         public override IConfigurationPanel ShowConfigurationPanel()
         {
-            return new NoneConfigurationPanelControl();
+            return new ContrastConfigurationPanelControl();
         }
 
         /// <summary>

@@ -8,4 +8,4 @@ Improvements
 - Button "Apply One"
 
 Bugfixes
--
+- Sometimes when "Preview" button was been used, another frame was been used instead of the chosen
