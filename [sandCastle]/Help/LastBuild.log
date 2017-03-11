@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shfbBuild product="Sandcastle Help File Builder and Tools" version="2016.9.17.0" projectFile="C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\smartSpriteFX.helpProject.shfbproj" started="01/03/2017 00:11:43">
+<shfbBuild product="Sandcastle Help File Builder and Tools" version="2016.9.17.0" projectFile="C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\smartSpriteFX.helpProject.shfbproj" started="11/03/2017 17:35:21">
 <buildStep step="Initializing">
 Finding tools...
 The Sandcastle tools are located in &#39;C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\&#39;
@@ -43,16 +43,16 @@ Copying XML comments files
 <buildStep step="GenerateSharedContent">
 Generating shared content files (en-US, Ingl&#234;s (Estados Unidos))...
 <plugIn name="Lightweight Website Style" behavior="After" priority="1000">
-</plugIn>    Last step completed in 00:00:00,1562
+</plugIn>    Last step completed in 00:00:00,1096
 </buildStep>
 <buildStep step="GenerateApiFilter">
 Generating API filter for MRefBuilder...
-    Last step completed in 00:00:00,0312
+    Last step completed in 00:00:00,0135
 </buildStep>
 <buildStep step="GenerateReflectionInfo">
 Generating reflection information...
 [C:\Windows\Microsoft.NET\Framework64\v4.0.30319\MSBuild.exe - GenerateRefInfo.proj]
-Compila‡&#198;o de 01/03/2017 00:11:45 iniciada.
+Compila‡&#198;o de 11/03/2017 17:35:23 iniciada.
 Projeto &quot;C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\GenerateRefInfo.proj&quot; no n&#162; 1 (destinos padr&#198;o).
 PrepareForBuild:
   Criando o diret&#162;rio &quot;obj\Debug\&quot;.
@@ -72,13 +72,13 @@ Projeto de compila‡&#198;o pronto &quot;C:\Users\Marcelo\Documents\Repositorio
 
 Compila‡&#198;o com ˆxito.
 
-Tempo Decorrido 00:00:02.70
-    Last step completed in 00:00:03,3757
+Tempo Decorrido 00:00:02.29
+    Last step completed in 00:00:02,7106
 </buildStep>
 <buildStep step="TransformReflectionInfo">
 Transforming reflection output...
 [C:\Windows\Microsoft.NET\Framework64\v4.0.30319\MSBuild.exe - TransformManifest.proj]
-Compila‡&#198;o de 01/03/2017 00:11:48 iniciada.
+Compila‡&#198;o de 11/03/2017 17:35:26 iniciada.
 Projeto &quot;C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\TransformManifest.proj&quot; no n&#162; 1 (destinos padr&#198;o).
 TransformManifest:
   XslTransform (v2016.9.17.0)
@@ -102,26 +102,26 @@ Projeto de compila‡&#198;o pronto &quot;C:\Users\Marcelo\Documents\Repositorio
 
 Compila‡&#198;o com ˆxito.
 
-Tempo Decorrido 00:00:04.71
-    Last step completed in 00:00:04,8748
+Tempo Decorrido 00:00:04.97
+    Last step completed in 00:00:05,1745
 </buildStep>
 <buildStep step="GenerateNamespaceSummaries">
 Generating namespace summary information...
-    Last step completed in 00:00:00,2962
+    Last step completed in 00:00:00,3417
 </buildStep>
 <buildStep step="CopyAdditionalContent">
 Copying additional content files...
 No additional content to copy
-    Last step completed in 00:00:00,0090
+    Last step completed in 00:00:00,0055
 </buildStep>
 <buildStep step="MergeTablesOfContents">
 Merging conceptual and additional tables of contents...
-    Last step completed in 00:00:00,0000
+    Last step completed in 00:00:00,0005
 </buildStep>
 <buildStep step="GenerateIntermediateTableOfContents">
 Generating intermediate table of contents file...
 [C:\Windows\Microsoft.NET\Framework64\v4.0.30319\MSBuild.exe - GenerateIntermediateTOC.proj]
-Compila‡&#198;o de 01/03/2017 00:11:54 iniciada.
+Compila‡&#198;o de 11/03/2017 17:35:31 iniciada.
 Projeto &quot;C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\GenerateIntermediateTOC.proj&quot; no n&#162; 1 (destinos padr&#198;o).
 GenerateIntermediateTOC:
   XslTransform (v2016.9.17.0)
@@ -132,26 +132,26 @@ Projeto de compila‡&#198;o pronto &quot;C:\Users\Marcelo\Documents\Repositorio
 
 Compila‡&#198;o com ˆxito.
 
-Tempo Decorrido 00:00:00.43
+Tempo Decorrido 00:00:00.48
 Generating conceptual content intermediate TOC file...
-    Last step completed in 00:00:00,6765
+    Last step completed in 00:00:00,7520
 </buildStep>
 <buildStep step="CreateBuildAssemblerConfigs">
 Creating Sandcastle configuration files...
     sandcastle.config
-    Last step completed in 00:00:01,0457
+    Last step completed in 00:00:00,8110
 </buildStep>
 <buildStep step="MergeCustomConfigs">
 Merging custom build component configurations
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\sandcastle.config
   Updating reference topic configurations.
   No conceptual content.  Removing conceptual content components.
-    Last step completed in 00:00:00,0260
+    Last step completed in 00:00:00,0150
 </buildStep>
 <buildStep step="BuildTopics">
 Building help topics...
 [C:\Windows\Microsoft.NET\Framework64\v4.0.30319\MSBuild.exe - BuildTopics.proj]
-Compila‡&#198;o de 01/03/2017 00:11:55 iniciada.
+Compila‡&#198;o de 11/03/2017 17:35:33 iniciada.
 Projeto &quot;C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\BuildTopics.proj&quot; no n&#162; 1 (destinos padr&#198;o).
 BuildTopics:
   BuildAssembler (v2016.9.17.0)
@@ -166,8 +166,8 @@ Projeto de compila‡&#198;o pronto &quot;C:\Users\Marcelo\Documents\Repositorio
 
 Compila‡&#198;o com ˆxito.
 
-Tempo Decorrido 00:00:36.80
-    Last step completed in 00:00:37,1466
+Tempo Decorrido 00:00:34.85
+    Last step completed in 00:00:35,2297
 </buildStep>
 <buildStep step="CombiningIntermediateTocFiles">
 Combining conceptual and API intermediate TOC files...
@@ -187,7 +187,7 @@ Processed 643 HTML files
 Sorting keywords and generating See Also indices
 Saving HTML Help 1 keyword index to C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\smartSpriteFX Library Technical Reference.hhk
 Saving HTML Help 1 table of contents to C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\smartSpriteFX Library Technical Reference.hhc
-    Last step completed in 00:00:02,0133
+    Last step completed in 00:00:02,2123
 </buildStep>
 <buildStep step="CopyStandardHelpContent">
 Copying standard help content...
@@ -253,7 +253,7 @@ C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyle
 C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-zh-CN.css -&gt; C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\styles\branding-zh-CN.css
 C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-zh-TW.css -&gt; C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\styles\branding-zh-TW.css
 C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding.css -&gt; C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\styles\branding.css
-    Last step completed in 00:00:00,6535
+    Last step completed in 00:00:01,6517
 </buildStep>
 <buildStep step="GenerateHelpFormatTableOfContents">
 Generating HTML Help 1 table of contents file...
@@ -265,7 +265,7 @@ Generating HTML Help 1 index file...
 </buildStep>
 <buildStep step="GenerateHelpProject">
 Generating HTML Help 1 project file...
-    Last step completed in 00:00:00,0180
+    Last step completed in 00:00:00,0195
 </buildStep>
 <buildStep step="CompilingHelpFile">
 Compiling HTML Help 1 file...
@@ -280,7 +280,7 @@ Compiling HTML Help 1 file...
   
   
   
-  Compile time: 0 minutes, 11 seconds
+  Compile time: 0 minutes, 13 seconds
   
   645	Topics
   
@@ -294,19 +294,19 @@ Compiling HTML Help 1 file...
   
   
   
-  Created c:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\smartSpriteFX Library Technical Reference.chm, 1,399,771 bytes
+  Created c:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\smartSpriteFX Library Technical Reference.chm, 1,400,177 bytes
   
-  Compression decreased file by 9,032,245 bytes.
+  Compression decreased file by 9,031,765 bytes.
   
-    Last step completed in 00:00:14,3812
+    Last step completed in 00:00:15,6795
 </buildStep>
 <buildStep step="CleanIntermediates">
 Removing intermediate files...
-    Last step completed in 00:00:00,4734
+    Last step completed in 00:00:00,7652
 </buildStep>
 <buildStep step="Completed">
 
-Build completed successfully at 01/03/2017 00:12:50.  Total time: 00:01:07,3119
+Build completed successfully at 11/03/2017 17:36:28.  Total time: 00:01:07,2477
 
 </buildStep>
 </shfbBuild>

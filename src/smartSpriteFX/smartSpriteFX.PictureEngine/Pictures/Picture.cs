@@ -482,7 +482,18 @@ namespace smartSuite.smartSpriteFX.Pictures
         {
             #region Entries validation
 
-            if (this._buffer.COUNT() == 0)
+            long bufferSize = 0;
+
+            if (this._buffer != null)
+            {
+                bufferSize = this._buffer.COUNT();
+            }
+
+            if (bufferSize == 0 && !String.IsNullOrWhiteSpace(this._fullPath))
+            {
+                this.LoadBuffer(this._fullPath);
+            }
+            else if (bufferSize == 0)
             {
                 throw new ArgumentException("Empty picture.");
             }

@@ -248,7 +248,8 @@ namespace smartSuite.smartSpriteFX.Pictures
 
                             if (piecePixel == null)
                             {
-                                throw new ArgumentNullException("piecePixel");
+                                continue;
+                                // throw new ArgumentNullException("piecePixel");
                             }
 
                             #endregion

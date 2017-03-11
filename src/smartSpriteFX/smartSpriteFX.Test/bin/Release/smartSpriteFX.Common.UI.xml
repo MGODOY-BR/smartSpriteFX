@@ -129,10 +129,9 @@
             <param name="piece"></param>
             <returns></returns>
         </member>
-        <member name="M:smartSuite.smartSpriteFX.Forms.Controls.DraftControl.SendToUnity(System.String)">
+        <member name="M:smartSuite.smartSpriteFX.Forms.Controls.DraftControl.SavePieces(System.String)">
             <summary>
-            Send pieces to 
-            
+            Save pieces
             </summary>
             <param name="folderDestination"></param>
         </member>
