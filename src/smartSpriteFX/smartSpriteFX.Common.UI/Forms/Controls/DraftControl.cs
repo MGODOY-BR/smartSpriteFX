@@ -406,11 +406,10 @@ namespace smartSuite.smartSpriteFX.Forms.Controls
         }
 
         /// <summary>
-        /// Send pieces to 
-        /// 
+        /// Save pieces
         /// </summary>
         /// <param name="folderDestination"></param>
-        public void SendToUnity(string folderDestination)
+        public void SavePieces(string folderDestination)
         {
             #region Entries validation
 

@@ -563,7 +563,7 @@ namespace smartSuite.smartSpriteFX.Forms
         private void savePiecesBackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
             String selectedPath = e.Argument as String;
-            this.draftControl1.SendToUnity(selectedPath);
+            this.draftControl1.SavePieces(selectedPath);
             e.Result = selectedPath;
         }
 
