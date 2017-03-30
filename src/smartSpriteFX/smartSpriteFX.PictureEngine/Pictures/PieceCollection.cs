@@ -63,11 +63,12 @@ namespace smartSuite.smartSpriteFX.Pictures{
             this._referencePicture = picture;
         }
 
-		/// <summary>
-		/// Generates the pieces created
-		/// </summary>
-		/// <param name="folder"></param>
-		public void Generate(String folder) {
+        /// <summary>
+        /// Generates the pieces created
+        /// </summary>
+        /// <param name="folder"></param>
+        /// <param name="inferTransparentBackground">It sets the generator to generate pieces with transparent background;</param>
+        public void Generate(String folder, bool inferTransparentBackground) {
 
             #region Entries validation
 
@@ -130,7 +131,7 @@ namespace smartSuite.smartSpriteFX.Pictures{
                 else
                 {
                     // Generating pieces with no groups
-                    piece.TakePicture(folder + @"\" + piece.Name);
+                    piece.TakePicture(folder + @"\" + piece.Name, inferTransparentBackground);
                 }
             }
 
@@ -139,7 +140,7 @@ namespace smartSuite.smartSpriteFX.Pictures{
             {
                 string groupFolder = Path.Combine(folder, groupReference.Key);
                 Console.WriteLine(groupFolder);
-                groupReference.Value.Generate(groupFolder);
+                groupReference.Value.Generate(groupFolder, inferTransparentBackground);
             }
 		}
         

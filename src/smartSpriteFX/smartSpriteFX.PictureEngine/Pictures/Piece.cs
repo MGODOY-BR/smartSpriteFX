@@ -10,6 +10,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Text;
+using smartSuite.smartSpriteFX.PictureEngine.Pictures.ColorPattern;
 
 namespace smartSuite.smartSpriteFX.Pictures
 {
@@ -178,7 +179,8 @@ namespace smartSuite.smartSpriteFX.Pictures
         /// Generates a file with the content of piece of image
         /// </summary>
         /// <param name="fullPath"></param>
-        public void TakePicture(String fullPath)
+        /// <param name="inferTransparentBackground">It sets the generator to generate pieces with transparent background;</param>
+        public void TakePicture(String fullPath, bool inferTransparentBackground)
         {
             #region Entries validation
 
@@ -213,8 +215,12 @@ namespace smartSuite.smartSpriteFX.Pictures
 
             #endregion
 
-            // Creating an object to dettect the transparent background
-            BackgroundPattern backgroundPattern = new BackgroundPattern();
+            BackgroundPattern backgroundPattern = null;
+            if (inferTransparentBackground)
+            {
+                // Creating an object to detect the transparent background
+                backgroundPattern = new BackgroundPattern();
+            }
 
             using (var pieceBitmap =
                 new Bitmap(
@@ -243,7 +249,6 @@ namespace smartSuite.smartSpriteFX.Pictures
                             var piecePixel =
                                 this._referencePicture.GetPixel(x, y);
 
-
                             #region Entries validation
 
                             if (piecePixel == null)
@@ -265,7 +270,10 @@ namespace smartSuite.smartSpriteFX.Pictures
                             else
                             {
                                 // Learning pattern
-                                backgroundPattern.Learn(x, y, piecePixel.Value);
+                                if (backgroundPattern != null)
+                                {
+                                    backgroundPattern.Learn(x, y, piecePixel.Value);
+                                }
                             }
                         }
                         catch (IndexOutOfRangeException)
@@ -287,10 +295,13 @@ namespace smartSuite.smartSpriteFX.Pictures
                 // Saving piece bitmap
                 pieceBitmap.Save(this._takenPictureFullFileName, ImageFormat.Png);
 
-                // Making transparent background
-                backgroundPattern.DoTransparentBorder(
-                    this,
-                    this.OnAskingForBackgroundColorDelegate());
+                if (backgroundPattern != null)
+                {
+                    // Making transparent background
+                    backgroundPattern.DoTransparentBorder(
+                        this,
+                        this.OnAskingForBackgroundColorDelegate());
+                }
 
                 // HACK: This function was disabled due to the fact that it couldn't reachs the holped effect
                 /*
@@ -310,7 +321,10 @@ namespace smartSuite.smartSpriteFX.Pictures
             if (this.Parent != null)
             {
                 // Covering the parent
-                this.Parent.OverCover(this);
+                if (backgroundPattern != null)
+                {
+                    this.Parent.OverCover(this);
+                }
             }
         }
 

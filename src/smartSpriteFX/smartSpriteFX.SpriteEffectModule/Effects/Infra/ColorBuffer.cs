@@ -8,6 +8,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using smartSuite.smartSpriteFX.PictureEngine.Pictures.ColorPattern;
 
 namespace smartSuite.smartSpriteFX.Effects.Infra
 {
@@ -50,11 +51,7 @@ namespace smartSuite.smartSpriteFX.Effects.Infra
         public static Color GetSlightlyDifferentColor(Color color)
         {
             return
-                Color.FromArgb(
-                    color.A,
-                    color.R,
-                    ColorBuffer.GetSlightlyDifferentColorComponent(color.G),
-                    color.B);
+                ColorUtil.GetSlightlyDifferentColor(color);
         }
 
         /// <summary>
@@ -133,16 +130,7 @@ namespace smartSuite.smartSpriteFX.Effects.Infra
         /// <returns></returns>
         public static int GetSlightlyDifferentColorComponent(int colorComponent)
         {
-            int factor = 5;
-
-            if (colorComponent + factor > 255)
-            {
-                return colorComponent - factor;
-            }
-            else
-            {
-                return colorComponent + factor;
-            }
+            return ColorUtil.GetSlightlyDifferentColorComponent(colorComponent);
         }
 
         /// <summary>

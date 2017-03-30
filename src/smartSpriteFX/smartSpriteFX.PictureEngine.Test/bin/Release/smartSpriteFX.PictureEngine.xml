@@ -371,11 +371,12 @@
             It´s a list of child list
             </summary>
         </member>
-        <member name="M:smartSuite.smartSpriteFX.Pictures.Group.Generate(System.String)">
+        <member name="M:smartSuite.smartSpriteFX.Pictures.Group.Generate(System.String,System.Boolean)">
             <summary>
             Generates a group structure
             </summary>
             <param name="folder"></param>
+            <param name="inferTransparentBackground">It sets the generator to generate pieces with transparent background;</param>
         </member>
         <member name="T:smartSuite.smartSpriteFX.Pictures.Picture">
             <summary>
@@ -651,7 +652,7 @@
         </member>
         <member name="F:smartSuite.smartSpriteFX.Pictures.Piece._takenPictureFullFileName">
             <summary>
-            Gets the generated file name from <see cref="M:smartSuite.smartSpriteFX.Pictures.Piece.TakePicture(System.String)"/> method.
+            Gets the generated file name from <see cref="!:TakePicture(string)"/> method.
             </summary>
         </member>
         <member name="P:smartSuite.smartSpriteFX.Pictures.Piece.Name">
@@ -717,11 +718,12 @@
             </summary>
             <param name="newName"></param>
         </member>
-        <member name="M:smartSuite.smartSpriteFX.Pictures.Piece.TakePicture(System.String)">
+        <member name="M:smartSuite.smartSpriteFX.Pictures.Piece.TakePicture(System.String,System.Boolean)">
             <summary>
             Generates a file with the content of piece of image
             </summary>
             <param name="fullPath"></param>
+            <param name="inferTransparentBackground">It sets the generator to generate pieces with transparent background;</param>
         </member>
         <member name="M:smartSuite.smartSpriteFX.Pictures.Piece.OnAskingForBackgroundColorDelegate">
             <summary>
@@ -777,11 +779,12 @@
             Gets the reference picture
             </summary>
         </member>
-        <member name="M:smartSuite.smartSpriteFX.Pictures.PieceCollection.Generate(System.String)">
+        <member name="M:smartSuite.smartSpriteFX.Pictures.PieceCollection.Generate(System.String,System.Boolean)">
             <summary>
             Generates the pieces created
             </summary>
             <param name="folder"></param>
+            <param name="inferTransparentBackground">It sets the generator to generate pieces with transparent background;</param>
         </member>
         <member name="M:smartSuite.smartSpriteFX.Pictures.PieceCollection.Save(System.String)">
             <summary>
@@ -1017,6 +1020,25 @@
             <param name="initialY"></param>
             <param name="finalX"></param>
             <param name="finalY"></param>
+        </member>
+        <member name="T:smartSuite.smartSpriteFX.PictureEngine.Pictures.ColorPattern.ColorUtil">
+            <summary>
+            Offers utilities to mantains colors
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.ColorPattern.ColorUtil.GetSlightlyDifferentColorComponent(System.Int32)">
+            <summary>
+            Gets the color component slighty different to trick the transparent mechanism
+            </summary>
+            <param name="colorComponent"></param>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.ColorPattern.ColorUtil.GetSlightlyDifferentColor(System.Drawing.Color)">
+            <summary>
+            Gets the color slighty different to trick the transparent mechanism 
+            </summary>
+            <param name="color"></param>
+            <returns></returns>
         </member>
         <member name="T:smartSuite.smartSpriteFX.PictureEngine.Pictures.ColorPattern.LookLikeColorComparer">
             <summary>

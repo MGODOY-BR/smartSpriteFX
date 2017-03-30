@@ -409,7 +409,8 @@ namespace smartSuite.smartSpriteFX.Forms.Controls
         /// Save pieces
         /// </summary>
         /// <param name="folderDestination"></param>
-        public void SavePieces(string folderDestination)
+        /// <param name="inferTransparentBackground">It sets the generator to generate pieces with transparent background;</param>
+        public void SavePieces(string folderDestination, bool inferTransparentBackground)
         {
             #region Entries validation
 
@@ -424,7 +425,7 @@ namespace smartSuite.smartSpriteFX.Forms.Controls
 
             #endregion
 
-            this._pieces.Generate(folderDestination);
+            this._pieces.Generate(folderDestination, inferTransparentBackground);
         }
 
         /// <summary>

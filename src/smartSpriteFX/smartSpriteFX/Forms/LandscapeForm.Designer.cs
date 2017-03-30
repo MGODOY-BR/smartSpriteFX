@@ -51,6 +51,7 @@
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.btnSaveState = new System.Windows.Forms.Button();
             this.btnCutInPieces = new System.Windows.Forms.Button();
+            this.chkInferTransparentBackground = new System.Windows.Forms.CheckBox();
             this.openDraftFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.openSmartSpriteFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
@@ -258,13 +259,15 @@
             this.tableLayoutPieceBlock.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPieceBlock.Controls.Add(this.treeView1, 0, 1);
             this.tableLayoutPieceBlock.Controls.Add(this.tableLayoutPanel4, 0, 2);
+            this.tableLayoutPieceBlock.Controls.Add(this.chkInferTransparentBackground, 0, 3);
             this.tableLayoutPieceBlock.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPieceBlock.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPieceBlock.Name = "tableLayoutPieceBlock";
-            this.tableLayoutPieceBlock.RowCount = 3;
+            this.tableLayoutPieceBlock.RowCount = 4;
             this.tableLayoutPieceBlock.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.260726F));
             this.tableLayoutPieceBlock.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 92.73927F));
-            this.tableLayoutPieceBlock.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 68F));
+            this.tableLayoutPieceBlock.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 64F));
+            this.tableLayoutPieceBlock.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
             this.tableLayoutPieceBlock.Size = new System.Drawing.Size(200, 340);
             this.tableLayoutPieceBlock.TabIndex = 1;
             this.tableLayoutPieceBlock.Visible = false;
@@ -281,9 +284,9 @@
             // treeView1
             // 
             this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeView1.Location = new System.Drawing.Point(3, 22);
+            this.treeView1.Location = new System.Drawing.Point(3, 21);
             this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(194, 246);
+            this.treeView1.Size = new System.Drawing.Size(194, 227);
             this.treeView1.TabIndex = 1;
             this.toolTip1.SetToolTip(this.treeView1, "Piece hierarchy (big things are to comes up from here in near future...)");
             // 
@@ -295,11 +298,11 @@
             this.tableLayoutPanel4.Controls.Add(this.btnSaveState, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.btnCutInPieces, 1, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 274);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 254);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(194, 63);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(194, 58);
             this.tableLayoutPanel4.TabIndex = 2;
             // 
             // btnSaveState
@@ -308,7 +311,7 @@
             this.btnSaveState.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSaveState.Location = new System.Drawing.Point(3, 3);
             this.btnSaveState.Name = "btnSaveState";
-            this.btnSaveState.Size = new System.Drawing.Size(91, 57);
+            this.btnSaveState.Size = new System.Drawing.Size(91, 52);
             this.btnSaveState.TabIndex = 0;
             this.btnSaveState.Text = "Save Project";
             this.toolTip1.SetToolTip(this.btnSaveState, "Click to save your work");
@@ -322,12 +325,24 @@
             this.btnCutInPieces.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCutInPieces.Location = new System.Drawing.Point(100, 3);
             this.btnCutInPieces.Name = "btnCutInPieces";
-            this.btnCutInPieces.Size = new System.Drawing.Size(91, 57);
+            this.btnCutInPieces.Size = new System.Drawing.Size(91, 52);
             this.btnCutInPieces.TabIndex = 1;
             this.btnCutInPieces.Text = "Save/Cut in Pieces";
             this.toolTip1.SetToolTip(this.btnCutInPieces, "Click to procced to cut the pieces and use them in Unity");
             this.btnCutInPieces.UseVisualStyleBackColor = false;
             this.btnCutInPieces.Click += new System.EventHandler(this.btnCutInPieces_Click);
+            // 
+            // chkInferTransparentBackground
+            // 
+            this.chkInferTransparentBackground.AutoSize = true;
+            this.chkInferTransparentBackground.Checked = true;
+            this.chkInferTransparentBackground.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkInferTransparentBackground.Location = new System.Drawing.Point(3, 318);
+            this.chkInferTransparentBackground.Name = "chkInferTransparentBackground";
+            this.chkInferTransparentBackground.Size = new System.Drawing.Size(163, 17);
+            this.chkInferTransparentBackground.TabIndex = 3;
+            this.chkInferTransparentBackground.Text = "Infer transparent background";
+            this.chkInferTransparentBackground.UseVisualStyleBackColor = true;
             // 
             // openDraftFileDialog1
             // 
@@ -430,5 +445,6 @@
         private System.Windows.Forms.VScrollBar vScrollBar1;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.FlowLayoutPanel browserPanel;
+        private System.Windows.Forms.CheckBox chkInferTransparentBackground;
     }
 }

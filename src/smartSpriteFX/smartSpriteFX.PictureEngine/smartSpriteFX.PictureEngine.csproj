@@ -74,6 +74,7 @@
     <Compile Include="Pictures\ColorPattern\ColorFactor.cs" />
     <Compile Include="Pictures\ColorPattern\ColorFrequency.cs" />
     <Compile Include="Pictures\ColorPattern\ColorInfo.cs" />
+    <Compile Include="Pictures\ColorPattern\ColorUtil.cs" />
     <Compile Include="Pictures\ColorPattern\IAskingForColorDelegate.cs" />
     <Compile Include="Pictures\ColorPattern\LookLikeColorComparer.cs" />
     <Compile Include="Pictures\Data\PictureDatabase.cs" />

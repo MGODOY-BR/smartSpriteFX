@@ -1,8 +1,8 @@
-vAlpha 2.0.0.6
+vAlpha 2.0.0.7
 
 New Feactures
 
 Improvements
+- It was been added check box to generate or note pieces with transparent background to Landspace mode
 
 Bugfixes
-- Save pieces command in landscape mode has been fixed

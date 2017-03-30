@@ -129,11 +129,12 @@
             <param name="piece"></param>
             <returns></returns>
         </member>
-        <member name="M:smartSuite.smartSpriteFX.Forms.Controls.DraftControl.SavePieces(System.String)">
+        <member name="M:smartSuite.smartSpriteFX.Forms.Controls.DraftControl.SavePieces(System.String,System.Boolean)">
             <summary>
             Save pieces
             </summary>
             <param name="folderDestination"></param>
+            <param name="inferTransparentBackground">It sets the generator to generate pieces with transparent background;</param>
         </member>
         <member name="M:smartSuite.smartSpriteFX.Forms.Controls.DraftControl.LoadPieces(smartSuite.smartSpriteFX.Pictures.PieceCollection)">
             <summary>

@@ -53,11 +53,12 @@ namespace smartSuite.smartSpriteFX.Pictures
             this.RelatedPieceList = new List<Piece>();
         }
 
-		/// <summary>
-		/// Generates a group structure
-		/// </summary>
-		/// <param name="folder"></param>
-		public void Generate(String folder)
+        /// <summary>
+        /// Generates a group structure
+        /// </summary>
+        /// <param name="folder"></param>
+        /// <param name="inferTransparentBackground">It sets the generator to generate pieces with transparent background;</param>
+        public void Generate(String folder, bool inferTransparentBackground)
         {
             #region Entries validation
 
@@ -96,13 +97,13 @@ namespace smartSuite.smartSpriteFX.Pictures
             // Generating pieces
             foreach (var piece in this.RelatedPieceList)
             {
-                piece.TakePicture(folder);
+                piece.TakePicture(folder, inferTransparentBackground);
             }
 
             // Generating group children
             foreach (var group in this.ChildGroupList)
             {
-                group.Generate(folder);
+                group.Generate(folder, inferTransparentBackground);
             }
 		}
 
