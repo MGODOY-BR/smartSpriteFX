@@ -100,11 +100,9 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
                 }
                 yy++;
             }
-            bitmap.Save(newFile);
 
             frame.ReleaseBuffer();
             frame.LoadBuffer(bitmap);
-            EffectEngine.ReloadPreviewBoard(newFile);
             return true;
         }
 
