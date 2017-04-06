@@ -97,10 +97,8 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
                             color);
                     }
                     xx++;
-                    lastX = x;
                 }
                 yy++;
-                lastY = y;
             }
             bitmap.Save(newFile);
 
