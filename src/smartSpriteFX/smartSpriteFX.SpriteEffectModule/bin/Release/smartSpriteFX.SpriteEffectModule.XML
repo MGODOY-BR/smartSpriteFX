@@ -81,6 +81,16 @@
             Gets or sets the contrast
             </summary>
         </member>
+        <member name="T:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.IScaleOrientedObject">
+            <summary>
+            Defines a filter that is based in scale terms.
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.IScaleOrientedObject.Scale">
+            <summary>
+            Gets or sets the scale proportion
+            </summary>
+        </member>
         <member name="T:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.MadeByHandFilter">
             <summary>
             Represents a filter used to emulate draw made by hand
@@ -92,6 +102,22 @@
             </summary>
         </member>
         <member name="M:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.MadeByHandFilter.GetIdentification">
+            <summary>
+            Gets the identification
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.ScaleFilter">
+            <summary>
+            Represents a filter capable to scale images
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.ScaleFilter.Scale">
+            <summary>
+            Sets or gets the scale
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.ScaleFilter.GetIdentification">
             <summary>
             Gets the identification
             </summary>
@@ -143,6 +169,48 @@
             <summary> 
             Required method for Designer support - do not modify 
             the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI.ScaleConfigurationPanelControl._filterSettable">
+            <summary>
+            It´s the filter which is been settled down
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI.ScaleConfigurationPanelControl.MaxScaleAllowed">
+            <summary>
+            Gets or sets the maximum scale allowed
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI.ScaleConfigurationPanelControl.MinScaleAllowed">
+            <summary>
+            Gets or sets the minimum scale allowed
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI.ScaleConfigurationPanelControl.RefreshForm">
+            <summary>
+            Refreshs the form
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI.ScaleConfigurationPanelControl.SetScaleControl">
+            <summary>
+            Sets the scale control
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI.ScaleConfigurationPanelControl.components">
+            <summary> 
+            Variável de designer necessária.
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI.ScaleConfigurationPanelControl.Dispose(System.Boolean)">
+            <summary> 
+            Limpar os recursos que estão sendo usados.
+            </summary>
+            <param name="disposing">true se for necessário descartar os recursos gerenciados; caso contrário, false.</param>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI.ScaleConfigurationPanelControl.InitializeComponent">
+            <summary> 
+            Método necessário para suporte ao Designer - não modifique 
+            o conteúdo deste método com o editor de código.
             </summary>
         </member>
         <member name="F:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI.ShadowConfigurationPanelControl._filterSettable">

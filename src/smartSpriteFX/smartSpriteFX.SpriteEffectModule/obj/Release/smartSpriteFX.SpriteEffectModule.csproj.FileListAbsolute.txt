@@ -23,3 +23,4 @@ C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smart
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule\obj\Release\smartSpriteFX.SpriteEffectModule.dll
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule\obj\Release\smartSpriteFX.SpriteEffectModule.pdb
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule\bin\Release\smartSpriteFX.PictureEngine.dll.config
+C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule\obj\Release\smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI.ScaleConfigurationPanelControl.resources
