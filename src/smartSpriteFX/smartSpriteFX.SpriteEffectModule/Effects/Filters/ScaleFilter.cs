@@ -80,8 +80,6 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
 
             var step = Math.Pow(this.Scale, -1);
             int xx = 0, yy = 0;
-            double lastX = 0;
-            double lastY = 0;
 
             for (double y = 0; y < frame.Height; y += step)
             {
@@ -98,10 +96,10 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
                             yy,
                             color);
                     }
-                    if (lastX != x) xx++;
+                    xx++;
                     lastX = x;
                 }
-                if (lastY != y) yy++;
+                yy++;
                 lastY = y;
             }
             bitmap.Save(newFile);
@@ -119,7 +117,7 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
 
         public override IConfigurationPanel ShowConfigurationPanel()
         {
-            return new ScaleConfigurationPanelControl(0.5F, 2F);
+            return new ScaleConfigurationPanelControl(0.01F, 2F);
         }
     }
 }
