@@ -1,8 +1,8 @@
-vAlpha 2.0.0.7
+vAlpha 3.0.0.0
 
 New Feactures
+- New filter: Scale
 
 Improvements
-- It was been added check box to generate or note pieces with transparent background to Landspace mode
 
 Bugfixes

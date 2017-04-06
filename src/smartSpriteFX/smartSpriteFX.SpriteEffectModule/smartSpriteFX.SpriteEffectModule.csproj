@@ -57,13 +57,21 @@
     <Compile Include="Effects\Filters\CropFilter.cs" />
     <Compile Include="Effects\Filters\CutFilter.cs" />
     <Compile Include="Effects\Filters\IContrastOrientedObject.cs" />
+    <Compile Include="Effects\Filters\IScaleOrientedObject.cs" />
     <Compile Include="Effects\Filters\MadeByHandFilter.cs" />
+    <Compile Include="Effects\Filters\ScaleFilter.cs" />
     <Compile Include="Effects\Filters\ShadowFilter.cs" />
     <Compile Include="Effects\Filters\UI\ContrastConfigurationPanelControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Effects\Filters\UI\ContrastConfigurationPanelControl.Designer.cs">
       <DependentUpon>ContrastConfigurationPanelControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Effects\Filters\UI\ScaleConfigurationPanelControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Effects\Filters\UI\ScaleConfigurationPanelControl.Designer.cs">
+      <DependentUpon>ScaleConfigurationPanelControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Effects\Filters\UI\ShadowConfigurationPanelControl.cs">
       <SubType>UserControl</SubType>
@@ -181,6 +189,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Effects\Filters\UI\ResolutionConfigurationPanelControl.resx">
       <DependentUpon>ResolutionConfigurationPanelControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Effects\Filters\UI\ScaleConfigurationPanelControl.resx">
+      <DependentUpon>ScaleConfigurationPanelControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Effects\Filters\UI\ShadowConfigurationPanelControl.resx">
       <DependentUpon>ShadowConfigurationPanelControl.cs</DependentUpon>
