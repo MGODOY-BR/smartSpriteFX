@@ -24,7 +24,6 @@ namespace smartSuite.smartSpriteFX
             Application.Run(new SelectModeScreenForm());
 
             ReleaseTempFiles();
-
         }
 
         /// <summary>

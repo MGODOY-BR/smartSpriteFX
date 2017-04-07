@@ -80,7 +80,6 @@
       <DependentUpon>ShadowConfigurationPanelControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Effects\Filters\WireFilter.cs" />
-    <Compile Include="Effects\Filters\ResizeToFitFilter.cs" />
     <Compile Include="Effects\Filters\UI\ColorListControl.cs">
       <SubType>UserControl</SubType>
     </Compile>

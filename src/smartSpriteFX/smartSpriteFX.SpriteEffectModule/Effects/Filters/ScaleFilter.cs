@@ -51,7 +51,7 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
             var path = Path.GetDirectoryName(fullPath);
             var newPath = Path.Combine(path, "filtered");
 
-            lock (typeof(ResizeToFitFilter))
+            lock (this.GetType())
             {
                 if (!Directory.Exists(newPath))
                 {

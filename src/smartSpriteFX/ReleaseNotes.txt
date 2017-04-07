@@ -1,7 +1,7 @@
 vAlpha 3.0.0.0
 
 New Feactures
-- New filter: Scale
+- Resize to fit was replaced by brand new Scale
 
 Improvements
 
