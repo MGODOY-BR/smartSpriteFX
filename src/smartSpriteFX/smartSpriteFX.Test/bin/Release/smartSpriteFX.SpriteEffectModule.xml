@@ -552,27 +552,6 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="T:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.ResizeToFitFilter">
-            <summary>
-            It´s a filter used to reduce the too big image to fit in another filters
-            </summary>
-        </member>
-        <member name="F:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.ResizeToFitFilter._screenWidth">
-            <summary>
-            It´s the width
-            </summary>
-        </member>
-        <member name="F:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.ResizeToFitFilter._screenHeight">
-            <summary>
-            It´s the height
-            </summary>
-        </member>
-        <member name="M:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.ResizeToFitFilter.GetIdentification">
-            <summary>
-            Gets the identification
-            </summary>
-            <returns></returns>
-        </member>
         <member name="T:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.BorderFilter">
             <summary>
             It´s a filter that emphasizes the border of picture
