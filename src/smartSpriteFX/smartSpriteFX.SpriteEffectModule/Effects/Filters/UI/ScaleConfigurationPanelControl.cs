@@ -50,10 +50,6 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI
             {
                 throw new ArgumentOutOfRangeException("Invalid range of scale");
             }
-            if(minScaleAllowed == 0)
-            {
-                throw new ArgumentOutOfRangeException("minScaleAllowed", "maxScaleAllowed needs to be greater than 0");
-            }
 
             #endregion
 
@@ -103,8 +99,8 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI
 
             this.tckScale.Minimum = Convert.ToInt32(this.MinScaleAllowed / 0.10);
             this.tckScale.Maximum = Convert.ToInt32(this.MaxScaleAllowed / 0.10);
-            this.tckScale.SmallChange = 1;
-            this.tckScale.LargeChange = 1;
+            this.tckScale.SmallChange = Convert.ToInt32(this.MaxScaleAllowed / 8);
+            this.tckScale.LargeChange = Convert.ToInt32(this.MaxScaleAllowed / 4);
 
             SetScaleControl();
         }

@@ -2,6 +2,11 @@ vAlpha 3.0.0.0
 
 New Feactures
 - Resize to fit was replaced by brand new Scale
+- New filter: Green Filter
+- New filter: Red Filter
+- New filter: Blue Filter
+- New filter: Alpha Filter
+- New filter: Bright Filter
 
 Improvements
 

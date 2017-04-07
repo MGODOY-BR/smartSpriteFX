@@ -54,8 +54,13 @@
     <Compile Include="Animations\AnimationComparer.cs" />
     <Compile Include="Animations\FrameIterator.cs" />
     <Compile Include="Effects\Core\EffectEngine.cs" />
+    <Compile Include="Effects\Filters\AlphaFilter.cs" />
+    <Compile Include="Effects\Filters\BrightFilter.cs" />
     <Compile Include="Effects\Filters\CropFilter.cs" />
     <Compile Include="Effects\Filters\CutFilter.cs" />
+    <Compile Include="Effects\Filters\BlueFilter.cs" />
+    <Compile Include="Effects\Filters\RedFilter.cs" />
+    <Compile Include="Effects\Filters\GreenFilter.cs" />
     <Compile Include="Effects\Filters\IContrastOrientedObject.cs" />
     <Compile Include="Effects\Filters\IScaleOrientedObject.cs" />
     <Compile Include="Effects\Filters\MadeByHandFilter.cs" />

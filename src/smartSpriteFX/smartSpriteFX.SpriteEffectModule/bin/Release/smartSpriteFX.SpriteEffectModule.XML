@@ -71,6 +71,22 @@
             Sets the points regardless of the state of filter
             </summary>
         </member>
+        <member name="T:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.GreenFilter">
+            <summary>
+            Represents a filter which enfasizes de green color
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.GreenFilter.Scale">
+            <summary>
+            Gets or sets the scale of color
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.GreenFilter.GetIdentification">
+            <summary>
+            Gets the identification
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.IContrastOrientedObject">
             <summary>
             Defines an object oriented by contrast
