@@ -294,10 +294,9 @@ namespace smartSuite.smartSpriteFX.Effects.Core{
 
             var previewFrame = _sourcePreviewImage.Clone();
             var frameIndex = EffectEngine._iterator.GetFrameIndex();
-            // previewFrame.ClearCache();
+
             foreach (var filterItem in EffectEngine._filterList.GetFilterBufferList())
             {
-                // var draftFrame = previewFrame.Clone();
                 Picture draftFrame = previewFrame.Clone(Picture.CloneMode.StructureOnly);
                 draftFrame.ShareDataWithMe(previewFrame);
 
