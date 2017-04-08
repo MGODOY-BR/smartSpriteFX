@@ -9,6 +9,46 @@
             It´s a comparison used to sort animation
             </summary>
         </member>
+        <member name="T:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.AlphaFilter">
+            <summary>
+            Represents a filter which enfasizes the alpha color
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.AlphaFilter.Scale">
+            <summary>
+            Gets or sets the scale of color
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.AlphaFilter.GetIdentification">
+            <summary>
+            Gets the identification
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.BrightFilter">
+            <summary>
+            Represents a filter which enfasizes the bright
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.BrightFilter.Scale">
+            <summary>
+            Gets or sets the scale of color
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.BrightFilter.ApplyBright(System.Int32,System.Int32)">
+            <summary>
+            Applies the bright to color
+            </summary>
+            <param name="color"></param>
+            <param name="bright"></param>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.BrightFilter.GetIdentification">
+            <summary>
+            Gets the identification
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.CropFilter">
             <summary>
             Represents a filter that automatically reduce the frames just to figure
@@ -71,9 +111,41 @@
             Sets the points regardless of the state of filter
             </summary>
         </member>
+        <member name="T:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.BlueFilter">
+            <summary>
+            Represents a filter which enfasizes the blue color
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.BlueFilter.Scale">
+            <summary>
+            Gets or sets the scale of color
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.BlueFilter.GetIdentification">
+            <summary>
+            Gets the identification
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.RedFilter">
+            <summary>
+            Represents a filter which enfasizes the red color
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.RedFilter.Scale">
+            <summary>
+            Gets or sets the scale of color
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.RedFilter.GetIdentification">
+            <summary>
+            Gets the identification
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.GreenFilter">
             <summary>
-            Represents a filter which enfasizes de green color
+            Represents a filter which enfasizes the green color
             </summary>
         </member>
         <member name="P:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.GreenFilter.Scale">
