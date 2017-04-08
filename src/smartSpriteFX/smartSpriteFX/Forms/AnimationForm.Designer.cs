@@ -40,6 +40,7 @@
             this.chkBoxFitImage = new System.Windows.Forms.CheckBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnApplyOne = new System.Windows.Forms.Button();
             this.btnPreview = new System.Windows.Forms.Button();
             this.btnApplyAll = new System.Windows.Forms.Button();
             this.pnlFilterPanel = new System.Windows.Forms.Panel();
@@ -54,8 +55,10 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panelTool = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnApplyOne = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnLoad = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
             this.statusStrip1.SuspendLayout();
             this.topPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -79,13 +82,14 @@
             this.panelToolContainer.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 496);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 693);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(1162, 22);
             this.statusStrip1.TabIndex = 1;
@@ -129,7 +133,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(983, 337);
+            this.splitContainer1.Size = new System.Drawing.Size(983, 534);
             this.splitContainer1.SplitterDistance = 605;
             this.splitContainer1.TabIndex = 5;
             // 
@@ -144,7 +148,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(605, 337);
+            this.panel1.Size = new System.Drawing.Size(605, 534);
             this.panel1.TabIndex = 0;
             // 
             // previewBoard
@@ -175,8 +179,8 @@
             this.splitContainer2.Panel2.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.splitContainer2.Panel2.Controls.Add(this.splitContainer3);
             this.splitContainer2.Panel2.Controls.Add(this.pnlSettingTop);
-            this.splitContainer2.Size = new System.Drawing.Size(374, 337);
-            this.splitContainer2.SplitterDistance = 148;
+            this.splitContainer2.Size = new System.Drawing.Size(374, 534);
+            this.splitContainer2.SplitterDistance = 233;
             this.splitContainer2.TabIndex = 0;
             // 
             // chkBoxFitImage
@@ -197,11 +201,12 @@
             // 
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.panel2.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.panel2.Controls.Add(this.groupBox3);
             this.panel2.Controls.Add(this.groupBox2);
             this.panel2.Controls.Add(this.pnlFilterPanel);
             this.panel2.Location = new System.Drawing.Point(88, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(264, 146);
+            this.panel2.Size = new System.Drawing.Size(264, 231);
             this.panel2.TabIndex = 2;
             // 
             // groupBox2
@@ -214,6 +219,18 @@
             this.groupBox2.Size = new System.Drawing.Size(104, 140);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
+            // 
+            // btnApplyOne
+            // 
+            this.btnApplyOne.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnApplyOne.Location = new System.Drawing.Point(5, 44);
+            this.btnApplyOne.Name = "btnApplyOne";
+            this.btnApplyOne.Size = new System.Drawing.Size(93, 31);
+            this.btnApplyOne.TabIndex = 2;
+            this.btnApplyOne.Text = "Apply One";
+            this.toolTip1.SetToolTip(this.btnApplyOne, "Applies all the filters in the current frame only");
+            this.btnApplyOne.UseVisualStyleBackColor = true;
+            this.btnApplyOne.Click += new System.EventHandler(this.btnApplyOne_Click);
             // 
             // btnPreview
             // 
@@ -248,7 +265,7 @@
             this.pnlFilterPanel.Dock = System.Windows.Forms.DockStyle.Right;
             this.pnlFilterPanel.Location = new System.Drawing.Point(113, 0);
             this.pnlFilterPanel.Name = "pnlFilterPanel";
-            this.pnlFilterPanel.Size = new System.Drawing.Size(151, 146);
+            this.pnlFilterPanel.Size = new System.Drawing.Size(151, 231);
             this.pnlFilterPanel.TabIndex = 0;
             // 
             // splitContainer3
@@ -265,8 +282,8 @@
             // splitContainer3.Panel2
             // 
             this.splitContainer3.Panel2.Controls.Add(this.pnlSettingsMain);
-            this.splitContainer3.Size = new System.Drawing.Size(374, 152);
-            this.splitContainer3.SplitterDistance = 55;
+            this.splitContainer3.Size = new System.Drawing.Size(374, 264);
+            this.splitContainer3.SplitterDistance = 95;
             this.splitContainer3.TabIndex = 2;
             // 
             // txtSettingsDescription
@@ -280,7 +297,7 @@
             this.txtSettingsDescription.Name = "txtSettingsDescription";
             this.txtSettingsDescription.ReadOnly = true;
             this.txtSettingsDescription.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtSettingsDescription.Size = new System.Drawing.Size(374, 55);
+            this.txtSettingsDescription.Size = new System.Drawing.Size(374, 95);
             this.txtSettingsDescription.TabIndex = 0;
             // 
             // pnlSettingsMain
@@ -292,7 +309,7 @@
             this.pnlSettingsMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlSettingsMain.Location = new System.Drawing.Point(0, 0);
             this.pnlSettingsMain.Name = "pnlSettingsMain";
-            this.pnlSettingsMain.Size = new System.Drawing.Size(374, 93);
+            this.pnlSettingsMain.Size = new System.Drawing.Size(374, 165);
             this.pnlSettingsMain.TabIndex = 1;
             // 
             // pnlSettingTop
@@ -321,7 +338,7 @@
             this.panelContainer.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelContainer.Location = new System.Drawing.Point(0, 159);
             this.panelContainer.Name = "panelContainer";
-            this.panelContainer.Size = new System.Drawing.Size(179, 337);
+            this.panelContainer.Size = new System.Drawing.Size(179, 534);
             this.panelContainer.TabIndex = 4;
             // 
             // panelToolContainer
@@ -336,7 +353,7 @@
             this.panelToolContainer.RowCount = 2;
             this.panelToolContainer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 42.44373F));
             this.panelToolContainer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 57.55627F));
-            this.panelToolContainer.Size = new System.Drawing.Size(179, 337);
+            this.panelToolContainer.Size = new System.Drawing.Size(179, 534);
             this.panelToolContainer.TabIndex = 0;
             // 
             // panelBrowser
@@ -344,16 +361,16 @@
             this.panelBrowser.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelBrowser.Location = new System.Drawing.Point(3, 3);
             this.panelBrowser.Name = "panelBrowser";
-            this.panelBrowser.Size = new System.Drawing.Size(173, 137);
+            this.panelBrowser.Size = new System.Drawing.Size(173, 220);
             this.panelBrowser.TabIndex = 0;
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.panelTool);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(3, 146);
+            this.groupBox1.Location = new System.Drawing.Point(3, 229);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(173, 188);
+            this.groupBox1.Size = new System.Drawing.Size(173, 302);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Toolbox";
@@ -363,7 +380,7 @@
             this.panelTool.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelTool.Location = new System.Drawing.Point(3, 16);
             this.panelTool.Name = "panelTool";
-            this.panelTool.Size = new System.Drawing.Size(167, 169);
+            this.panelTool.Size = new System.Drawing.Size(167, 283);
             this.panelTool.TabIndex = 1;
             // 
             // pictureBox1
@@ -377,23 +394,37 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // btnApplyOne
+            // groupBox3
             // 
-            this.btnApplyOne.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnApplyOne.Location = new System.Drawing.Point(5, 44);
-            this.btnApplyOne.Name = "btnApplyOne";
-            this.btnApplyOne.Size = new System.Drawing.Size(93, 31);
-            this.btnApplyOne.TabIndex = 2;
-            this.btnApplyOne.Text = "Apply One";
-            this.toolTip1.SetToolTip(this.btnApplyOne, "Applies all the filters in the current frame only");
-            this.btnApplyOne.UseVisualStyleBackColor = true;
-            this.btnApplyOne.Click += new System.EventHandler(this.btnApplyOne_Click);
+            this.groupBox3.Controls.Add(this.btnSave);
+            this.groupBox3.Controls.Add(this.btnLoad);
+            this.groupBox3.Location = new System.Drawing.Point(3, 162);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(104, 58);
+            this.groupBox3.TabIndex = 2;
+            this.groupBox3.TabStop = false;
+            // 
+            // btnLoad
+            // 
+            this.btnLoad.Location = new System.Drawing.Point(6, 19);
+            this.btnLoad.Name = "btnLoad";
+            this.btnLoad.Size = new System.Drawing.Size(39, 27);
+            this.btnLoad.TabIndex = 0;
+            this.btnLoad.UseVisualStyleBackColor = true;
+            // 
+            // btnSave
+            // 
+            this.btnSave.Location = new System.Drawing.Point(60, 19);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(39, 27);
+            this.btnSave.TabIndex = 1;
+            this.btnSave.UseVisualStyleBackColor = true;
             // 
             // AnimationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1162, 518);
+            this.ClientSize = new System.Drawing.Size(1162, 715);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.panelContainer);
             this.Controls.Add(this.topPanel);
@@ -432,6 +463,7 @@
             this.panelToolContainer.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.groupBox3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -466,5 +498,8 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.Button btnApplyOne;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Button btnLoad;
     }
 }

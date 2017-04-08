@@ -8,6 +8,8 @@ using smartSuite.smartSpriteFX.Effects.Infra.UI.Configuratons;
 using smartSuite.smartSpriteFX.Pictures;
 using smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI;
 using smartSuite.smartSpriteFX.Effects.Infra;
+using smartSuite.smartSpriteFX.Effects.Core;
+using System.Drawing;
 
 namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
 {
@@ -26,6 +28,39 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
         /// </summary>
         private CutFilter _cutFilter = new CutFilter();
 
+        /// <summary>
+        /// Gets the detected transparent color
+        /// </summary>
+        /// <returns></returns>
+        public Color GetTransparentColor()
+        {
+            #region Entries validation
+
+            if(_transparentBackgroundFilter == null)
+            {
+                return Color.Transparent;
+            }
+
+            #endregion
+
+            return _transparentBackgroundFilter.TransparentColor;
+        }
+
+        /// <summary>
+        /// Gets or create a transparent background filter
+        /// </summary>
+        /// <returns></returns>
+        private static TransparentBackgroundFilter CreateTransparentBackgroundFilter()
+        {
+            var resultValue = EffectEngine.GetTransparentBackgroundFilter();
+
+            if(resultValue == null)
+            {
+                resultValue = new TransparentBackgroundFilter();
+            }
+            return resultValue;
+        }
+
         public override bool ApplyFilter(Picture frame, int index)
         {
             this._transparentBackgroundFilter.ApplyFilter(frame, index);
@@ -37,8 +72,8 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
             var maxY = listBorder.Max(pointItem => pointItem.Y);
 
             this._cutFilter.SetPoint(
-                new Point(minX, minY), 
-                new Point(maxX, maxY));
+                new Pictures.Point(minX, minY), 
+                new Pictures.Point(maxX, maxY));
 
             this._cutFilter.ApplyFilter(frame, index);
 

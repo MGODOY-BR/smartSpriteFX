@@ -12,3 +12,8 @@ Improvements
 
 Bugfixes
 - A few UI fixes
+- Conflict between Crop and Transparent Background has been corrected!!
+- Conflict between Free Cut and Transparent Background has been corrected!!
+- Conflict between Made by Hand and Crop has been corrected!!
+
+

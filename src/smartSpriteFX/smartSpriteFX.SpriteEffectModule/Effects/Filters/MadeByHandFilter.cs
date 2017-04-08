@@ -44,10 +44,17 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
             var transparentFilter =
                 EffectEngine.GetTransparentBackgroundFilter();
 
+            var cropFilter =
+                EffectEngine.FindFilter<CropFilter>();
+
             Color transparentColor = Color.Transparent;
             if (transparentFilter != null)
             {
                 transparentColor = transparentFilter.TransparentColor;
+            }
+            if(cropFilter != null)
+            {
+                transparentColor = cropFilter.GetTransparentColor();
             }
 
             // Column handling

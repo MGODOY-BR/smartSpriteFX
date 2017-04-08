@@ -64,6 +64,18 @@
             It´s a cutFilter
             </summary>
         </member>
+        <member name="M:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.CropFilter.GetTransparentColor">
+            <summary>
+            Gets the detected transparent color
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.CropFilter.CreateTransparentBackgroundFilter">
+            <summary>
+            Gets or create a transparent background filter
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.CropFilter.GetIdentification">
             <summary>
             Gets the identification
