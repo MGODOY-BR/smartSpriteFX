@@ -64,7 +64,7 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
 
         public override void Reset()
         {
-            this.Scale = 100;
+            this.Scale = 0;
         }
 
         public override IConfigurationPanel ShowConfigurationPanel()
