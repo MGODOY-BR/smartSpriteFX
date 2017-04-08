@@ -11,3 +11,4 @@ New Feactures
 Improvements
 
 Bugfixes
+- A few UI fixes
