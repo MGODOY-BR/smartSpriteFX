@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using smartSuite.smartSpriteFX.PictureEngine.Pictures;
+using smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters;
 
 namespace smartSuite.smartSpriteFX.Effects.Tools{
 	/// <summary>
@@ -188,7 +189,11 @@ namespace smartSuite.smartSpriteFX.Effects.Tools{
             var transparentBackgroundFilter = 
                 EffectEngine.GetTransparentBackgroundFilter();
 
-            if (transparentBackgroundFilter != null)
+            // Checking for crop filter
+            var cropFilter =
+                EffectEngine.FindFilter<CropFilter>();
+
+            if (transparentBackgroundFilter != null || cropFilter != null)
             {
                 this._hasTransparentFilter = true;
             }
