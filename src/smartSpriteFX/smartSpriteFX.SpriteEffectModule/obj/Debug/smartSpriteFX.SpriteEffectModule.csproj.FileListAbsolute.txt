@@ -59,9 +59,9 @@ C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smart
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule\obj\Debug\smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI.CutConfigurationPanelControl.resources
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule\obj\Debug\smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI.NoneConfigurationPanelControl.resources
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule\obj\Debug\smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI.ResolutionConfigurationPanelControl.resources
+C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule\obj\Debug\smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI.ScaleConfigurationPanelControl.resources
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule\obj\Debug\smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI.ShadowConfigurationPanelControl.resources
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule\obj\Debug\smartSuite.smartSpriteFX.SpriteEffectModule.Properties.Resources.resources
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule\obj\Debug\smartSpriteFX.SpriteEffectModule.csproj.GenerateResource.Cache
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule\obj\Debug\smartSpriteFX.SpriteEffectModule.dll
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule\obj\Debug\smartSpriteFX.SpriteEffectModule.pdb
-C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule\obj\Debug\smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI.ScaleConfigurationPanelControl.resources

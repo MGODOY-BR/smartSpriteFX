@@ -13,6 +13,7 @@ using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 using smartSuite.smartSpriteFX.PictureEngine.Pictures.Data;
+using System.Globalization;
 
 namespace smartSuite.smartSpriteFX.Effects.Core{
 	/// <summary>
@@ -563,16 +564,20 @@ namespace smartSuite.smartSpriteFX.Effects.Core{
 
             #endregion
 
+            Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
+
             using (var stream = File.CreateText(fileName))
             {
-                foreach (var filterItem in EffectEngine.GetSelectedFilterList())
+                var filterSet = EffectEngine.GetSelectedFilterList();
+                for (int i = 0; i < filterSet.Count; i++)
                 {
-                    var type = fileName.GetType();
+                    var filterItem = filterSet[i];
+                    var type = filterItem.GetType();
 
                     #region Property serializarion
 
                     StringBuilder propertyBuilder = new StringBuilder();
-                    foreach (var property in type.GetProperties(System.Reflection.BindingFlags.SetProperty))
+                    foreach (var property in type.GetProperties())
                     {
                         String valueString = null;
                         object valueObject = property.GetValue(filterItem);
@@ -596,13 +601,20 @@ namespace smartSuite.smartSpriteFX.Effects.Core{
                             }
                         }
 
-                        propertyBuilder.AppendFormat(@"\{{0}={1}\}", property.Name, valueString);
+                        propertyBuilder.Append("{");
+                        propertyBuilder.AppendFormat("{0}{1}", property.Name, valueString);
+                        propertyBuilder.Append("}");
                     }
 
                     #endregion
 
-                    stream.WriteLine(
-                        String.Format("{0}={1}", type.Name, propertyBuilder.ToString()));
+                    stream.Write(
+                        String.Format("{2}-{0}={1}", type.Name, propertyBuilder.ToString(), i));
+
+                    if(i + 1 != filterSet.Count)
+                    {
+                        stream.WriteLine();
+                    }
                 }
             }
         }

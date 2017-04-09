@@ -57,6 +57,7 @@ C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSpri
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSpriteFX\smartSpriteFX\bin\Debug\smartSpriteFX.exe.config
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSpriteFX\smartSpriteFX\obj\Debug\smartSpriteFX.exe
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSpriteFX\smartSpriteFX\obj\Debug\smartSpriteFX.pdb
+C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX\bin\Debug\My Filter Sets\empty.txt
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX\bin\Debug\Temp\empty.txt
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX\bin\Debug\ThirdPartyEffectModulePlugin\READ-ME.txt
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX\bin\Debug\smartSpriteFX.exe.config
@@ -85,4 +86,3 @@ C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smart
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX\obj\Debug\smartSpriteFX.csproj.GenerateResource.Cache
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX\obj\Debug\smartSpriteFX.exe
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX\obj\Debug\smartSpriteFX.pdb
-C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX\bin\Debug\My Filter Sets\empty.txt

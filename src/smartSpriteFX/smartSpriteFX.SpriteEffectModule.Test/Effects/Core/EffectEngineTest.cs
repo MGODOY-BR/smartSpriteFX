@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using smartSuite.smartSpriteFX.Effects.FilterEngine;
 using System.IO;
 using smartSuite.smartSpriteFX.PictureEngine.Pictures.Data;
+using smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters;
 
 namespace smartSuite.smartSpriteFX.SpriteEffectModule.Test.Effects.Core
 {
@@ -129,6 +130,10 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Test.Effects.Core
             filterCollection.Register(filterPallete[1], 2);
             filterCollection.Register(filterPallete[2], 3);
 
+            ScaleFilter scaleFilter = new ScaleFilter();
+            scaleFilter.Scale = 2.2f;
+            filterCollection.Register(scaleFilter, 4);
+
             int filterIndex = 0;
             foreach (var filterItem in filterCollection.GetFilterBufferList())
             {
@@ -152,7 +157,7 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Test.Effects.Core
 
             #region Validating the evidences
 
-            Assert.AreEqual(10, evidenceLine.Length);
+            Assert.AreEqual(4, evidenceLine.Length);
 
             #endregion
         }
