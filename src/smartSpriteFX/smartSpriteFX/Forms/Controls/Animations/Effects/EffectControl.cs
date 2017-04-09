@@ -71,7 +71,7 @@ namespace smartSuite.smartSpriteFX.Forms.Controls.Animations.Effects
 
         private void btnDown_Click(object sender, EventArgs e)
         {
-            this.OnUserInteracted(EffectControlCommandEnum.DOW);
+            this.OnUserInteracted(EffectControlCommandEnum.DOWN);
         }
 
         /// <summary>
@@ -104,7 +104,7 @@ namespace smartSuite.smartSpriteFX.Forms.Controls.Animations.Effects
         {
             EXCLUDE,
             UP,
-            DOW,
+            DOWN,
             SETTINGS
         }
 

@@ -199,7 +199,7 @@ namespace smartSuite.smartSpriteFX.Forms
                     this._effectControlOrderCollection.Up(e.Control);
                     break;
 
-                case EffectControl.EffectControlCommandEnum.DOW:
+                case EffectControl.EffectControlCommandEnum.DOWN:
                     this._effectControlOrderCollection.Down(e.Control);
                     break;
 
@@ -212,6 +212,16 @@ namespace smartSuite.smartSpriteFX.Forms
             }
 
             this.EffectBind(this._effectControlOrderCollection);
+
+            switch (e.CommandType)
+            {
+                case EffectControl.EffectControlCommandEnum.UP:
+                case EffectControl.EffectControlCommandEnum.DOWN:
+                    e.Control.Focus();
+                    break;
+                default:
+                    break;
+            }
         }
 
         /// <summary>

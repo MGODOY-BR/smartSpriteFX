@@ -7,6 +7,7 @@ New Feactures
 - New filter: Blue Filter
 - New filter: Alpha Filter
 - New filter: Bright Filter
+- Now it is possible save and reload the filter set!!!!
 
 Improvements
 
@@ -16,6 +17,4 @@ Bugfixes
 - Conflict between Free Cut and Transparent Background has been corrected!!
 - Conflict between Made by Hand and Crop has been corrected!!
 - Conflict between all Old-School Game filters and Crop has been corrected!!
-
-
-
+- Changing in order of an effect doesn't loose focus of it anymore

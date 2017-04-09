@@ -1,3 +1,4 @@
+C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.Test\bin\Release\My Filter Sets\empty.txt
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.Test\bin\Release\Temp\empty.txt
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.Test\bin\Release\ThirdPartyEffectModulePlugin\READ-ME.txt
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.Test\bin\Release\smartSpriteFX.Test.dll
@@ -18,4 +19,3 @@ C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smart
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.Test\obj\Release\smartSpriteFX.Test.csprojResolveAssemblyReference.cache
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.Test\obj\Release\smartSpriteFX.Test.dll
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.Test\obj\Release\smartSpriteFX.Test.pdb
-C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.Test\bin\Release\My Filter Sets\empty.txt
