@@ -554,13 +554,16 @@ namespace smartSuite.smartSpriteFX.Forms
             EffectEngine.LoadFilterSet(this.filterSetOpenDialog.FileName);
 
             this.pnlFilterPanel.Controls.Clear();
+            List<IEffectFilter> selectedFilterList = EffectEngine.GetSelectedFilterList();
 
-            foreach (var filter in EffectEngine.GetSelectedFilterList())
+            for (int i = selectedFilterList.Count - 1; i >= 0; i--)
             {
+                var filter = selectedFilterList[i];
+
                 // Adding filter to filter box
                 EffectControl effectControl = this.CreateEffectControl(filter);
-                this.pnlFilterPanel.Controls.Add(effectControl);
                 this._effectControlOrderCollection.Register(effectControl);
+                this.pnlFilterPanel.Controls.Add(effectControl);
             }
 
             // Reseting settings panel
