@@ -272,6 +272,11 @@
   <ItemGroup>
     <None Include="Resources\pendrive.0.filtered.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="My Filter Sets\empty.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>

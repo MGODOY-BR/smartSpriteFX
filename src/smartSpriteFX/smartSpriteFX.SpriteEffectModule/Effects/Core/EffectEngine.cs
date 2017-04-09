@@ -547,5 +547,64 @@ namespace smartSuite.smartSpriteFX.Effects.Core{
                 waitHandle.Set();
             }
         }
+
+        /// <summary>
+        /// Saves the filter set
+        /// </summary>
+        /// <param name="fileName">The file name</param>
+        public static void SaveFilterSet(string fileName)
+        {
+            #region Entries validation
+
+            if (String.IsNullOrEmpty(fileName))
+            {
+                throw new ArgumentNullException("fileName");
+            }
+
+            #endregion
+
+            using (var stream = File.CreateText(fileName))
+            {
+                foreach (var filterItem in EffectEngine.GetSelectedFilterList())
+                {
+                    var type = fileName.GetType();
+
+                    #region Property serializarion
+
+                    StringBuilder propertyBuilder = new StringBuilder();
+                    foreach (var property in type.GetProperties(System.Reflection.BindingFlags.SetProperty))
+                    {
+                        String valueString = null;
+                        object valueObject = property.GetValue(filterItem);
+
+                        if (valueObject != null)
+                        {
+                            if (!property.GetType().IsArray)
+                            {
+                                valueString = String.Format("[{0}]", valueObject.ToString());
+                            }
+                            else
+                            {
+                                StringBuilder propertyValueArray = new StringBuilder();
+                                foreach (var valueItem in (object[])valueObject)
+                                {
+                                    if (valueItem != null)
+                                    {
+                                        propertyValueArray.AppendFormat("[{0}]", valueItem);
+                                    }
+                                }
+                            }
+                        }
+
+                        propertyBuilder.AppendFormat(@"\{{0}={1}\}", property.Name, valueString);
+                    }
+
+                    #endregion
+
+                    stream.WriteLine(
+                        String.Format("{0}={1}", type.Name, propertyBuilder.ToString()));
+                }
+            }
+        }
     }
 }

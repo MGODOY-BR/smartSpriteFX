@@ -18,6 +18,8 @@ using smartSuite.smartSpriteFX.Forms.Controls.EffectFilterPallete;
 using smartSuite.smartSpriteFX.Forms.Controls.NoneConfigurationPanel;
 using smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI;
 using smartSuite.smartSpriteFX.Forms.Controls.SwitchMode;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
 
 namespace smartSuite.smartSpriteFX.Forms
 {
@@ -103,6 +105,7 @@ namespace smartSuite.smartSpriteFX.Forms
 
                 EffectEngine.Initializate(e.UserChoice);
                 EffectEngine.SetPreviewBoard(previewBoard);
+                this.filterSetFrame.Visible = true;
 
                 this.toolStripStatusLabel1.Text = "";
 
@@ -498,6 +501,27 @@ namespace smartSuite.smartSpriteFX.Forms
             #endregion
 
             EffectEngine.ApplyFromUI(new ProgressForm(), EffectEngine.GetIterator().GetCurrent());
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            this.filterSetSaveDialog.ShowDialog();
+        }
+
+        private void btnLoad_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void filterSetSaveDialog_FileOk(object sender, CancelEventArgs e)
+        {
+            EffectEngine.SaveFilterSet(this.filterSetSaveDialog.FileName);
+            MessageBoxUtil.Show("Filter set has been saved succesfully!", MessageBoxButtons.OK);
+        }
+
+        private void filterSetOpenDialog_FileOk(object sender, CancelEventArgs e)
+        {
+
         }
     }
 }
