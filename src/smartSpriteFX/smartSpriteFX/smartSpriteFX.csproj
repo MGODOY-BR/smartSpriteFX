@@ -266,6 +266,12 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\opened-folder.0.filtered.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pendrive.0.filtered.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>

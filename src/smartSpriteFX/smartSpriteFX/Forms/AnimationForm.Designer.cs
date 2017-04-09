@@ -34,16 +34,14 @@
             this.topPanel = new System.Windows.Forms.Panel();
             this.frameBox = new System.Windows.Forms.GroupBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.previewBoard = new System.Windows.Forms.PictureBox();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.chkBoxFitImage = new System.Windows.Forms.CheckBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnApplyOne = new System.Windows.Forms.Button();
             this.btnPreview = new System.Windows.Forms.Button();
             this.btnApplyAll = new System.Windows.Forms.Button();
-            this.pnlFilterPanel = new System.Windows.Forms.Panel();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.txtSettingsDescription = new System.Windows.Forms.TextBox();
             this.pnlSettingsMain = new System.Windows.Forms.Panel();
@@ -54,24 +52,25 @@
             this.panelBrowser = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panelTool = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.btnLoad = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.previewBoard = new System.Windows.Forms.PictureBox();
             this.btnSave = new System.Windows.Forms.Button();
+            this.btnLoad = new System.Windows.Forms.Button();
+            this.pnlFilterPanel = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.statusStrip1.SuspendLayout();
             this.topPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.previewBoard)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
             this.splitContainer3.Panel1.SuspendLayout();
@@ -81,8 +80,9 @@
             this.panelContainer.SuspendLayout();
             this.panelToolContainer.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.previewBoard)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStrip1
@@ -137,30 +137,6 @@
             this.splitContainer1.SplitterDistance = 605;
             this.splitContainer1.TabIndex = 5;
             // 
-            // panel1
-            // 
-            this.panel1.AutoScroll = true;
-            this.panel1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.panel1.BackgroundImage = global::smartSuite.smartSpriteFX.Properties.Resources.background;
-            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel1.Controls.Add(this.previewBoard);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(605, 534);
-            this.panel1.TabIndex = 0;
-            // 
-            // previewBoard
-            // 
-            this.previewBoard.BackColor = System.Drawing.Color.Transparent;
-            this.previewBoard.Location = new System.Drawing.Point(0, 0);
-            this.previewBoard.Name = "previewBoard";
-            this.previewBoard.Size = new System.Drawing.Size(100, 50);
-            this.previewBoard.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.previewBoard.TabIndex = 0;
-            this.previewBoard.TabStop = false;
-            // 
             // splitContainer2
             // 
             this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -199,22 +175,32 @@
             // 
             // panel2
             // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.panel2.BackColor = System.Drawing.SystemColors.ControlDark;
             this.panel2.Controls.Add(this.groupBox3);
             this.panel2.Controls.Add(this.groupBox2);
             this.panel2.Controls.Add(this.pnlFilterPanel);
-            this.panel2.Location = new System.Drawing.Point(88, 0);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel2.Location = new System.Drawing.Point(77, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(264, 231);
+            this.panel2.Size = new System.Drawing.Size(297, 233);
             this.panel2.TabIndex = 2;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.btnSave);
+            this.groupBox3.Controls.Add(this.btnLoad);
+            this.groupBox3.Location = new System.Drawing.Point(3, 154);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(131, 74);
+            this.groupBox3.TabIndex = 2;
+            this.groupBox3.TabStop = false;
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.btnApplyOne);
             this.groupBox2.Controls.Add(this.btnPreview);
             this.groupBox2.Controls.Add(this.btnApplyAll);
-            this.groupBox2.Location = new System.Drawing.Point(3, 9);
+            this.groupBox2.Location = new System.Drawing.Point(21, 9);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(104, 140);
             this.groupBox2.TabIndex = 1;
@@ -254,19 +240,6 @@
             this.toolTip1.SetToolTip(this.btnApplyAll, "Applies all the filters against all the frames in animation folder");
             this.btnApplyAll.UseVisualStyleBackColor = true;
             this.btnApplyAll.Click += new System.EventHandler(this.btnApplyAll_Click);
-            // 
-            // pnlFilterPanel
-            // 
-            this.pnlFilterPanel.AutoScroll = true;
-            this.pnlFilterPanel.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.pnlFilterPanel.BackgroundImage = global::smartSuite.smartSpriteFX.Properties.Resources.FilterBox;
-            this.pnlFilterPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pnlFilterPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pnlFilterPanel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pnlFilterPanel.Location = new System.Drawing.Point(113, 0);
-            this.pnlFilterPanel.Name = "pnlFilterPanel";
-            this.pnlFilterPanel.Size = new System.Drawing.Size(151, 231);
-            this.pnlFilterPanel.TabIndex = 0;
             // 
             // splitContainer3
             // 
@@ -383,6 +356,65 @@
             this.panelTool.Size = new System.Drawing.Size(167, 283);
             this.panelTool.TabIndex = 1;
             // 
+            // panel1
+            // 
+            this.panel1.AutoScroll = true;
+            this.panel1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.panel1.BackgroundImage = global::smartSuite.smartSpriteFX.Properties.Resources.background;
+            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.previewBoard);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(605, 534);
+            this.panel1.TabIndex = 0;
+            // 
+            // previewBoard
+            // 
+            this.previewBoard.BackColor = System.Drawing.Color.Transparent;
+            this.previewBoard.Location = new System.Drawing.Point(0, 0);
+            this.previewBoard.Name = "previewBoard";
+            this.previewBoard.Size = new System.Drawing.Size(100, 50);
+            this.previewBoard.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.previewBoard.TabIndex = 0;
+            this.previewBoard.TabStop = false;
+            // 
+            // btnSave
+            // 
+            this.btnSave.BackgroundImage = global::smartSuite.smartSpriteFX.Properties.Resources.pendrive_0_filtered;
+            this.btnSave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnSave.Location = new System.Drawing.Point(66, 9);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(59, 59);
+            this.btnSave.TabIndex = 1;
+            this.toolTip1.SetToolTip(this.btnSave, "Save the current filter set");
+            this.btnSave.UseVisualStyleBackColor = true;
+            // 
+            // btnLoad
+            // 
+            this.btnLoad.BackgroundImage = global::smartSuite.smartSpriteFX.Properties.Resources.opened_folder_0_filtered;
+            this.btnLoad.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnLoad.Location = new System.Drawing.Point(6, 9);
+            this.btnLoad.Name = "btnLoad";
+            this.btnLoad.Size = new System.Drawing.Size(54, 59);
+            this.btnLoad.TabIndex = 0;
+            this.toolTip1.SetToolTip(this.btnLoad, "Open an existent filter set");
+            this.btnLoad.UseVisualStyleBackColor = true;
+            // 
+            // pnlFilterPanel
+            // 
+            this.pnlFilterPanel.AutoScroll = true;
+            this.pnlFilterPanel.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.pnlFilterPanel.BackgroundImage = global::smartSuite.smartSpriteFX.Properties.Resources.FilterBox;
+            this.pnlFilterPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pnlFilterPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pnlFilterPanel.Dock = System.Windows.Forms.DockStyle.Right;
+            this.pnlFilterPanel.Location = new System.Drawing.Point(140, 0);
+            this.pnlFilterPanel.Name = "pnlFilterPanel";
+            this.pnlFilterPanel.Size = new System.Drawing.Size(157, 233);
+            this.pnlFilterPanel.TabIndex = 0;
+            // 
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.White;
@@ -393,32 +425,6 @@
             this.pictureBox1.Size = new System.Drawing.Size(1162, 29);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.btnSave);
-            this.groupBox3.Controls.Add(this.btnLoad);
-            this.groupBox3.Location = new System.Drawing.Point(3, 162);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(104, 58);
-            this.groupBox3.TabIndex = 2;
-            this.groupBox3.TabStop = false;
-            // 
-            // btnLoad
-            // 
-            this.btnLoad.Location = new System.Drawing.Point(6, 19);
-            this.btnLoad.Name = "btnLoad";
-            this.btnLoad.Size = new System.Drawing.Size(39, 27);
-            this.btnLoad.TabIndex = 0;
-            this.btnLoad.UseVisualStyleBackColor = true;
-            // 
-            // btnSave
-            // 
-            this.btnSave.Location = new System.Drawing.Point(60, 19);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(39, 27);
-            this.btnSave.TabIndex = 1;
-            this.btnSave.UseVisualStyleBackColor = true;
             // 
             // AnimationForm
             // 
@@ -441,15 +447,13 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.previewBoard)).EndInit();
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel1.PerformLayout();
             this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.splitContainer3.Panel1.ResumeLayout(false);
             this.splitContainer3.Panel1.PerformLayout();
@@ -462,8 +466,10 @@
             this.panelContainer.ResumeLayout(false);
             this.panelToolContainer.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.previewBoard)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.groupBox3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
