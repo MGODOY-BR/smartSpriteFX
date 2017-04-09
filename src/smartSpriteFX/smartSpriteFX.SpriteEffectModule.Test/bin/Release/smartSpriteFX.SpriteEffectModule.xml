@@ -1154,6 +1154,18 @@
             </list>
             </param>
         </member>
+        <member name="M:smartSuite.smartSpriteFX.Effects.Core.EffectEngine.SaveFilterSet(System.String)">
+            <summary>
+            Saves the filter set
+            </summary>
+            <param name="fileName">The file name</param>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Effects.Core.EffectEngine.LoadFilterSet(System.String)">
+            <summary>
+            Gets the filter set
+            </summary>
+            <param name="fileName"></param>
+        </member>
         <member name="T:smartSuite.smartSpriteFX.Effects.Facade.EffectFacade">
             <summary>
             Offers the ways to interact with engine

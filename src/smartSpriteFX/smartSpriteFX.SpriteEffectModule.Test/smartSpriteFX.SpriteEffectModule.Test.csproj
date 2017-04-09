@@ -90,6 +90,9 @@
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="smartSpriteFX.key.pfx" />
+    <None Include="Stubs\stub.filterSet">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="StubAnimation\Enumerated\2_Circle.stub.bmp">

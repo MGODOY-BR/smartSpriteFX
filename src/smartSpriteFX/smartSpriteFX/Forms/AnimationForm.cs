@@ -74,15 +74,35 @@ namespace smartSuite.smartSpriteFX.Forms
         /// <param name="e"></param>
         private void EffectFilterPalleteControl_SelectedFilterEvent(object sender, EffectFilterPalleteControl.SelectionFilterEventArgs e)
         {
-            EffectControl effectControl = new EffectControl();
-            effectControl.SetFilter(e.Filter);
-            effectControl.Dock = DockStyle.Top;
-            effectControl.UserInteracted += EffectControl_UserInteracted;
-
+            // Adding filter to filter box
+            EffectControl effectControl = this.CreateEffectControl(e.Filter);
             _effectControlOrderCollection.Register(effectControl);
+
             this.EffectBind(_effectControlOrderCollection);
 
             // Reseting settings panel
+            this.ResetSettingsPanel();
+        }
+
+        /// <summary>
+        /// Creates a effect control
+        /// </summary>
+        /// <param name="filter"></param>
+        /// <returns></returns>
+        private EffectControl CreateEffectControl(IEffectFilter filter)
+        {
+            EffectControl effectControl = new EffectControl();
+            effectControl.SetFilter(filter);
+            effectControl.Dock = DockStyle.Top;
+            effectControl.UserInteracted += EffectControl_UserInteracted;
+            return effectControl;
+        }
+
+        /// <summary>
+        /// Resets the settings panel
+        /// </summary>
+        private void ResetSettingsPanel()
+        {
             if (this.pnlSettingsMain.Controls.Count > 0)
             {
                 var control = this.pnlSettingsMain.Controls[0];
@@ -510,7 +530,7 @@ namespace smartSuite.smartSpriteFX.Forms
 
         private void btnLoad_Click(object sender, EventArgs e)
         {
-
+            this.filterSetOpenDialog.ShowDialog();
         }
 
         private void filterSetSaveDialog_FileOk(object sender, CancelEventArgs e)
@@ -521,7 +541,20 @@ namespace smartSuite.smartSpriteFX.Forms
 
         private void filterSetOpenDialog_FileOk(object sender, CancelEventArgs e)
         {
+            EffectEngine.LoadFilterSet(this.filterSetOpenDialog.FileName);
 
+            this.pnlFilterPanel.Controls.Clear();
+
+            foreach (var filter in EffectEngine.GetSelectedFilterList())
+            {
+                // Adding filter to filter box
+                EffectControl effectControl = this.CreateEffectControl(filter);
+                this.pnlFilterPanel.Controls.Add(effectControl);
+                this._effectControlOrderCollection.Register(effectControl);
+            }
+
+            // Reseting settings panel
+            this.ResetSettingsPanel();
         }
     }
 }

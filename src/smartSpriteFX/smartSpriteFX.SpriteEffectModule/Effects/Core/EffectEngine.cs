@@ -14,6 +14,7 @@ using System.Threading;
 using System.Windows.Forms;
 using smartSuite.smartSpriteFX.PictureEngine.Pictures.Data;
 using System.Globalization;
+using System.Text.RegularExpressions;
 
 namespace smartSuite.smartSpriteFX.Effects.Core{
 	/// <summary>
@@ -615,6 +616,88 @@ namespace smartSuite.smartSpriteFX.Effects.Core{
                     {
                         stream.WriteLine();
                     }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Gets the filter set
+        /// </summary>
+        /// <param name="fileName"></param>
+        public static void LoadFilterSet(string fileName)
+        {
+            #region Entries validation
+
+            if (String.IsNullOrEmpty(fileName))
+            {
+                throw new ArgumentNullException("fileName");
+            }
+            List<IEffectFilter> filterList = FilterCollection.GetFilterPallete();
+            if (filterList.Count == 0)
+            {
+                throw new ArgumentNullException("It´s needs load the filter buffer list first");
+            }
+
+            #endregion
+
+            Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
+
+            Regex mainRegEx = new Regex(@"^(\d+)-(_{0,1}\w+)=(.*)$", RegexOptions.Compiled);
+            Regex propertiesRegEx = new Regex(@"\{(\w+)\[(.+)\]{1,}\}", RegexOptions.Compiled);
+
+            List<IEffectFilter> selectedFilterList = EffectEngine.GetSelectedFilterList();
+            selectedFilterList.Clear();
+            using (var stream = File.OpenText(fileName))
+            {
+                string line = stream.ReadLine();
+                while (line != null)
+                {
+                    var mainMatch = mainRegEx.Match(line);
+
+                    int index = int.Parse(mainMatch.Groups[1].Value);
+                    string filterTypeName = mainMatch.Groups[2].Value;
+
+                    for (int i = 0; i < filterList.Count; i++)
+                    {
+                        var filterItem = filterList[i];
+                        if (filterTypeName.Equals(filterItem.GetType().Name))
+                        {
+                            EffectEngine.RegisterFilter(filterItem, index);
+
+                            #region Recovering the state
+
+                            var propertyMatchList =
+                                propertiesRegEx.Matches(mainMatch.Groups[3].Value);
+
+                            foreach (Match propertyMatchItem in propertyMatchList)
+                            {
+                                string propertyName = propertyMatchItem.Groups[1].Value;
+                                var property = filterItem.GetType().GetProperty(propertyName);
+
+                                if (!property.PropertyType.IsArray)
+                                {
+                                    property.SetValue(
+                                        filterItem,
+                                        Convert.ChangeType(
+                                            propertyMatchItem.Groups[2].Value,
+                                            property.PropertyType));
+                                }
+                                else
+                                {
+                                    for (int ii = 2; ii < propertyMatchItem.Groups.Count; ii++)
+                                    {
+                                        property.SetValue(
+                                            filterItem,
+                                            propertyMatchItem.Groups[ii].Value);
+                                    }
+                                }
+                            }
+
+                            #endregion
+                        }
+                    }
+
+                    line = stream.ReadLine();
                 }
             }
         }

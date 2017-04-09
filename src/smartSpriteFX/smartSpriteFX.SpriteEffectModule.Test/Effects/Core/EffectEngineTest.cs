@@ -117,6 +117,36 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Test.Effects.Core
         }
 
         [TestMethod]
+        public void LoadFilterSetTest()
+        {
+            #region Scenario setup
+
+            EffectEngine.Initializate(@"StubAnimation\Enumerated");
+            EffectEngine.GetSelectedFilterList().Clear();
+
+            #endregion
+
+            #region Running the tested operation
+
+            EffectEngine.LoadFilterSet(@"Stubs\stub.filterSet");
+
+            #endregion
+
+            #region Getting the evidences
+
+            var evidenceLine = EffectEngine.GetSelectedFilterList();
+
+            #endregion
+
+            #region Validating the evidences
+
+            Assert.AreEqual(4, evidenceLine.Count);
+            Assert.AreEqual(2.2f, ((ScaleFilter)evidenceLine[3]).Scale); 
+
+            #endregion
+        }
+
+        [TestMethod]
         public void SaveFilterSetTest()
         {
             #region Scenario setup
