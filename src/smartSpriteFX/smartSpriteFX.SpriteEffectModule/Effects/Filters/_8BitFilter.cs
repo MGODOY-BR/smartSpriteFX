@@ -122,7 +122,7 @@ namespace smartSuite.smartSpriteFX.Effects.Filters{
         }
 
 
-        int IResolutionFilterSetter.ColorBufferAmount
+        public int ColorBufferAmount
         {
             get
             {
@@ -134,7 +134,7 @@ namespace smartSuite.smartSpriteFX.Effects.Filters{
             }
         }
 
-        int IResolutionFilterSetter.DestinationScreenWidth
+        public int DestinationScreenWidth
         {
             get
             {
@@ -146,7 +146,7 @@ namespace smartSuite.smartSpriteFX.Effects.Filters{
             }
         }
 
-        int IResolutionFilterSetter.DestinationScreenHeight
+        public int DestinationScreenHeight
         {
             get
             {
@@ -158,7 +158,7 @@ namespace smartSuite.smartSpriteFX.Effects.Filters{
             }
         }
 
-        int IResolutionFilterSetter.Contrast
+        public int Contrast
         {
             get
             {
@@ -170,7 +170,7 @@ namespace smartSuite.smartSpriteFX.Effects.Filters{
             }
         }
 
-        int IResolutionFilterSetter.TotalScreenWidth
+        public int TotalScreenWidth
         {
             get
             {
@@ -182,7 +182,7 @@ namespace smartSuite.smartSpriteFX.Effects.Filters{
             }
         }
 
-        int IResolutionFilterSetter.TotalScreenHeight
+        public int TotalScreenHeight
         {
             get
             {
@@ -194,7 +194,7 @@ namespace smartSuite.smartSpriteFX.Effects.Filters{
             }
         }
 
-        List<Color> IResolutionFilterSetter.AvoidColorList
+        public List<Color> AvoidColorList
         {
             get
             {
@@ -205,7 +205,6 @@ namespace smartSuite.smartSpriteFX.Effects.Filters{
                 this._avoidColorList = value;
             }
         }
-
 
     }
 }

@@ -215,8 +215,8 @@ namespace smartSuite.smartSpriteFX.Effects.Core{
             EffectEngine._callback = callback;
             EffectEngine._outputPath = null;
 
-            ThreadPool.SetMinThreads(4, 40);
-            ThreadPool.SetMaxThreads(6, 60);
+            ThreadPool.SetMinThreads(1, 40);
+            ThreadPool.SetMaxThreads(4, 80);
 
             EffectEngine._applyingThreadList.Clear();
             List<WaitHandle> syncList = new List<WaitHandle>();
@@ -666,7 +666,7 @@ namespace smartSuite.smartSpriteFX.Effects.Core{
             Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
 
             Regex mainRegEx = new Regex(@"^(\d+)-(_{0,1}\w+)=(.*)$", RegexOptions.Compiled);
-            Regex propertiesRegEx = new Regex(@"\{(\w+)\[(.+)\]{1,}\}", RegexOptions.Compiled);
+            Regex propertiesRegEx = new Regex(@"\{(\w+)\[([a-z0-9\.\,]+)\]{1,}\}", RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
             List<IEffectFilter> selectedFilterList = EffectEngine.GetSelectedFilterList();
             selectedFilterList.Clear();
@@ -697,22 +697,29 @@ namespace smartSuite.smartSpriteFX.Effects.Core{
                                 string propertyName = propertyMatchItem.Groups[1].Value;
                                 var property = filterItem.GetType().GetProperty(propertyName);
 
-                                if (!property.PropertyType.IsArray)
+                                try
                                 {
-                                    property.SetValue(
-                                        filterItem,
-                                        Convert.ChangeType(
-                                            propertyMatchItem.Groups[2].Value,
-                                            property.PropertyType));
-                                }
-                                else
-                                {
-                                    for (int ii = 2; ii < propertyMatchItem.Groups.Count; ii++)
+                                    if (!property.PropertyType.IsArray)
                                     {
                                         property.SetValue(
                                             filterItem,
-                                            propertyMatchItem.Groups[ii].Value);
+                                            Convert.ChangeType(
+                                                propertyMatchItem.Groups[2].Value,
+                                                property.PropertyType));
                                     }
+                                    else
+                                    {
+                                        for (int ii = 2; ii < propertyMatchItem.Groups.Count; ii++)
+                                        {
+                                            property.SetValue(
+                                                filterItem,
+                                                propertyMatchItem.Groups[ii].Value);
+                                        }
+                                    }
+                                }
+                                catch(Exception ex)
+                                {
+                                    Console.WriteLine(ex.ToString());
                                 }
                             }
 

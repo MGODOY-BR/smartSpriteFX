@@ -218,6 +218,7 @@ namespace smartSuite.smartSpriteFX.Forms
             {
                 case EffectControl.EffectControlCommandEnum.UP:
                 case EffectControl.EffectControlCommandEnum.DOWN:
+                case EffectControl.EffectControlCommandEnum.SETTINGS:
                     e.Control.Focus();
                     break;
                 default:
