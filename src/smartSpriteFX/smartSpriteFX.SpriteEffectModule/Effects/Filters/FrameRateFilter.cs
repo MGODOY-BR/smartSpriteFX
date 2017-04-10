@@ -88,8 +88,7 @@ namespace smartSuite.smartSpriteFX.Effects.Filters{
             this._frameCount++;
             this._lastFrameIndex = index;
             var framesPerSec =
-                40 -
-                Math.Round(this._framesPerSec, 
+                Math.Round(40 / this._framesPerSec, 
                     0, 
                     MidpointRounding.ToEven);
 
