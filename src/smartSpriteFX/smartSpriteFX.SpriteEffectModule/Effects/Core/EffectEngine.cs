@@ -215,8 +215,8 @@ namespace smartSuite.smartSpriteFX.Effects.Core{
             EffectEngine._callback = callback;
             EffectEngine._outputPath = null;
 
-            ThreadPool.SetMinThreads(1, 40);
-            ThreadPool.SetMaxThreads(8, 80);
+            ThreadPool.SetMinThreads(3, 40);
+            ThreadPool.SetMaxThreads(10, 80);
 
             EffectEngine._applyingThreadList.Clear();
             List<WaitHandle> syncList = new List<WaitHandle>();
@@ -551,8 +551,6 @@ namespace smartSuite.smartSpriteFX.Effects.Core{
             {
                 EffectEngine._outputPath =
                     EffectEngine._filterList.Apply(frame, index);
-
-                Thread.Sleep(100);
 
                 if (EffectEngine._callback != null)
                 {

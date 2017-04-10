@@ -323,17 +323,17 @@ namespace smartSuite.smartSpriteFX.Effects.FilterEngine{
             String folder =
                 Path.Combine(baseFolder, "filtered");
 
+            if (String.IsNullOrEmpty(outputPath))
+            {
+                outputPath = folder;
+            }
+
             for (int i = 0; i < this._filterBufferList.Count; i++)
             {
                 var filter = this._filterBufferList[i];
 
                 if (filter.ApplyFilter(picture, frameIndex))
                 {
-                    if (String.IsNullOrEmpty(outputPath))
-                    {
-                        outputPath = folder;
-                    }
-
                     String file =
                         Path.Combine(
                             folder,
@@ -345,6 +345,10 @@ namespace smartSuite.smartSpriteFX.Effects.FilterEngine{
                     }
 
                     picture.SaveCopy(file);
+                }
+                else
+                {
+                    break;
                 }
             }
 

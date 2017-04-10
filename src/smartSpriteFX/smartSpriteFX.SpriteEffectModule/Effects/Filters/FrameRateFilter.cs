@@ -87,20 +87,27 @@ namespace smartSuite.smartSpriteFX.Effects.Filters{
         {
             this._frameCount++;
             this._lastFrameIndex = index;
-            float currentFrameRate = this._frameCount;
-            float framesPerSecRate = this._framesPerSec;
+            var framesPerSec =
+                40 -
+                Math.Round(this._framesPerSec, 
+                    0, 
+                    MidpointRounding.ToEven);
 
-            if (framesPerSecRate <= currentFrameRate || this._keyFrames.Contains(index))
+            if (this._frameCount >= framesPerSec || this._keyFrames.Contains(index))
             {
                 this._frameCount = 0;
                 return true;
             }
-
-            return false;
+            else
+            {
+                return false;
+            }
         }
 
         public override void Reset()
         {
+            this._frameCount = 0;
+            this._lastFrameIndex = 0;
             this._framesPerSec = 20f;
             this._keyFrames.Clear();
         }

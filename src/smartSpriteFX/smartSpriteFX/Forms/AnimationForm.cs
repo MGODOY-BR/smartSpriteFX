@@ -556,6 +556,7 @@ namespace smartSuite.smartSpriteFX.Forms
         private void filterSetSaveDialog_FileOk(object sender, CancelEventArgs e)
         {
             EffectEngine.SaveFilterSet(this.filterSetSaveDialog.FileName);
+            this.filterSetSaveDialog.FileName = "";
             MessageBoxUtil.Show("Filter set has been saved succesfully!", MessageBoxButtons.OK);
         }
 
