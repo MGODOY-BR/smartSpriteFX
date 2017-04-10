@@ -899,17 +899,6 @@ namespace smartSuite.smartSpriteFX.Pictures
 
             #endregion
 
-            /*
-            lock (Picture._pictureCache)
-            {
-                if (!Picture._pictureCache.ContainsKey(fullFileName))
-                {
-                    Picture._pictureCache.Add(fullFileName, new Picture(fullFileName));
-                }
-
-                return Picture._pictureCache[fullFileName];
-            }
-            */
             return new Picture(fullFileName);
         }
 
