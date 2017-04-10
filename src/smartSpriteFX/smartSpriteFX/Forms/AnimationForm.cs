@@ -138,6 +138,7 @@ namespace smartSuite.smartSpriteFX.Forms
                 frameSelectionControl.LoadThumbNails();
                 this.frameBox.Controls.Clear();
                 this.frameBox.Controls.Add(frameSelectionControl);
+                this.previewBoard.Image = null;
 
                 Settings.Default.lastAnimationFolder = e.UserChoice;
                 Settings.Default.Save();
@@ -184,7 +185,6 @@ namespace smartSuite.smartSpriteFX.Forms
         /// <param name="e"></param>
         private void EffectControl_UserInteracted(object sender, EffectControl.EffectControlEventArgs e)
         {
-            txtSettingsDescription.Clear();
             switch (e.CommandType)
             {
                 case EffectControl.EffectControlCommandEnum.EXCLUDE:
@@ -193,6 +193,7 @@ namespace smartSuite.smartSpriteFX.Forms
                     EffectEngine.GetPreviewBoard().Controls.Clear();
                     // Resetting the effect board
                     pnlSettingsMain.Controls.Clear();
+                    txtSettingsDescription.Clear();
                     break;
 
                 case EffectControl.EffectControlCommandEnum.UP:

@@ -156,6 +156,7 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Test.Effects.Core
             var filterPallete = FilterCollection.GetFilterPallete();
 
             FilterCollection filterCollection = new FilterCollection();
+            EffectEngine.GetSelectedFilterList().Clear();
             filterCollection.Register(filterPallete[0], 1);
             filterCollection.Register(filterPallete[1], 2);
             filterCollection.Register(filterPallete[2], 3);

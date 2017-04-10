@@ -311,23 +311,24 @@ namespace smartSuite.smartSpriteFX.Effects.FilterEngine{
             #endregion
 
             String outputPath = null;
+
+            String baseFolder =
+                Path.GetDirectoryName(
+                    picture.FullPath);
+
+            String baseFile =
+                Path.GetFileName(
+                    picture.FullPath);
+
+            String folder =
+                Path.Combine(baseFolder, "filtered");
+
             for (int i = 0; i < this._filterBufferList.Count; i++)
             {
                 var filter = this._filterBufferList[i];
 
                 if (filter.ApplyFilter(picture, frameIndex))
                 {
-                    String baseFolder =
-                        Path.GetDirectoryName(
-                            picture.FullPath);
-
-                    String baseFile =
-                        Path.GetFileName(
-                            picture.FullPath);
-
-                    String folder =
-                        Path.Combine(baseFolder, "filtered");
-
                     if (String.IsNullOrEmpty(outputPath))
                     {
                         outputPath = folder;

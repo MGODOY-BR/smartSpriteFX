@@ -223,6 +223,29 @@ namespace smartSuite.smartSpriteFX.Effects.Core{
             frameIterator.Reset();
             EffectEngine._completedTask = 0;
 
+            string outputFilterPath =
+                Path.Combine(
+                    Path.GetDirectoryName(frameIterator.GetFileList()[0]),
+                    "filtered");
+
+            #region Cleaning the path
+
+            if (Directory.Exists(outputFilterPath))
+            {
+                var enumeratorFileList =
+                    Directory.EnumerateFiles(outputFilterPath).GetEnumerator();
+
+                while (enumeratorFileList.MoveNext())
+                {
+                    if (File.Exists(enumeratorFileList.Current))
+                    {
+                        File.Delete(enumeratorFileList.Current);
+                    }
+                }
+            }
+
+            #endregion
+
             while (frameIterator.Next())
             {
                 WaitHandle sync = new AutoResetEvent(false);

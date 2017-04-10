@@ -18,3 +18,4 @@ Bugfixes
 - Conflict between Made by Hand and Crop has been corrected!!
 - Conflict between all Old-School Game filters and Crop has been corrected!!
 - Changing in order of an effect doesn't loose focus of it anymore
+- FrameRate has been corrected

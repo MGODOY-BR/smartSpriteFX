@@ -12,3 +12,11 @@ C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSpri
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSpriteFX.PictureEngine\obj\Debug\smartSpriteFX.PictureEngine.csproj.GenerateResource.Cache
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSpriteFX.PictureEngine\obj\Debug\smartSpriteFX.PictureEngine.dll
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSprite\src\smartSprite\smartSpriteFX.PictureEngine\obj\Debug\smartSpriteFX.PictureEngine.pdb
+C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.PictureEngine\bin\Debug\smartSpriteFX.PictureEngine.dll.config
+C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.PictureEngine\bin\Debug\smartSpriteFX.PictureEngine.dll
+C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.PictureEngine\bin\Debug\smartSpriteFX.PictureEngine.pdb
+C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.PictureEngine\obj\Debug\smartSuite.smartSpriteFX.Forms.ColorSupportForm.resources
+C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.PictureEngine\obj\Debug\smartSuite.smartSpriteFX.PictureEngine.Templates.UnityMetaFile.resources
+C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.PictureEngine\obj\Debug\smartSpriteFX.PictureEngine.csproj.GenerateResource.Cache
+C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.PictureEngine\obj\Debug\smartSpriteFX.PictureEngine.dll
+C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.PictureEngine\obj\Debug\smartSpriteFX.PictureEngine.pdb

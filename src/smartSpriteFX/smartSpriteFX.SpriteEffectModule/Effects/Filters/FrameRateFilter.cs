@@ -6,12 +6,15 @@ using System.Text;
 using smartSuite.smartSpriteFX.Effects.Infra.UI.Configuratons;
 using smartSuite.smartSpriteFX.Pictures;
 using smartSuite.smartSpriteFX.Effects.Infra;
+using smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI;
+using smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters;
 
 namespace smartSuite.smartSpriteFX.Effects.Filters{
     /// <summary>
     /// It´s a filter that simulates changing of frame rate of an animation
     /// </summary>
-    public class FrameRateFilter : SmartSpriteOriginalFilterBase {
+    public class FrameRateFilter : SmartSpriteOriginalFilterBase, IScaleOrientedObject
+    {
 
         #region Not configurable state
 
@@ -45,6 +48,18 @@ namespace smartSuite.smartSpriteFX.Effects.Filters{
             get
             {
                 return _keyFrames;
+            }
+        }
+
+        public float Scale
+        {
+            get
+            {
+                return _framesPerSec;
+            }
+            set
+            {
+                _framesPerSec = value;
             }
         }
 
@@ -92,7 +107,7 @@ namespace smartSuite.smartSpriteFX.Effects.Filters{
 
         public override IConfigurationPanel ShowConfigurationPanel()
         {
-            throw new NotImplementedException();
+            return new ScaleConfigurationPanelControl(10f, 40f);
         }
     }
 }
