@@ -448,6 +448,14 @@ namespace smartSuite.smartSpriteFX.Forms
                     index++;
                 }
             }
+
+            /// <summary>
+            /// Clears the colection
+            /// </summary>
+            public void Clear()
+            {
+                this._effectControlCacheList.Clear();
+            }
         }
 
         private void btnPreview_Click(object sender, EventArgs e)
@@ -554,6 +562,7 @@ namespace smartSuite.smartSpriteFX.Forms
             EffectEngine.LoadFilterSet(this.filterSetOpenDialog.FileName);
 
             this.pnlFilterPanel.Controls.Clear();
+            this._effectControlOrderCollection.Clear();
             List<IEffectFilter> selectedFilterList = EffectEngine.GetSelectedFilterList();
 
             for (int i = selectedFilterList.Count - 1; i >= 0; i--)
