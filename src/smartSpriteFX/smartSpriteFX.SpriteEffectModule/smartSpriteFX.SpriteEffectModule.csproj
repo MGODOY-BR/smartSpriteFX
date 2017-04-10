@@ -59,6 +59,7 @@
     <Compile Include="Effects\Filters\CropFilter.cs" />
     <Compile Include="Effects\Filters\CutFilter.cs" />
     <Compile Include="Effects\Filters\BlueFilter.cs" />
+    <Compile Include="Effects\Filters\PaintedByHandFilter.cs" />
     <Compile Include="Effects\Filters\RedFilter.cs" />
     <Compile Include="Effects\Filters\GreenFilter.cs" />
     <Compile Include="Effects\Filters\IContrastOrientedObject.cs" />

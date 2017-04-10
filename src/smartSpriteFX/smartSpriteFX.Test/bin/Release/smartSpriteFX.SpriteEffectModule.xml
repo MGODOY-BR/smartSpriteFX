@@ -139,6 +139,22 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="T:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.PaintedByHandFilter">
+            <summary>
+            Represents a filter used to emulate painted by hand
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.PaintedByHandFilter.Contrast">
+            <summary>
+            Gets or sets the contrast
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.PaintedByHandFilter.GetIdentification">
+            <summary>
+            Gets the identification
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.RedFilter">
             <summary>
             Represents a filter which enfasizes the red color

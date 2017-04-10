@@ -7,6 +7,7 @@ New Feactures
 - New filter: Blue Filter
 - New filter: Alpha Filter
 - New filter: Bright Filter
+- New filter: Painted by Hand
 - Now it is possible save and reload the filter set!!!!
 
 Improvements
