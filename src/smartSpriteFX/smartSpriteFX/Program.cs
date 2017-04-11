@@ -56,6 +56,10 @@ namespace smartSuite.smartSpriteFX
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
+            else if (exception is ArgumentException)
+            {
+                MessageBoxUtil.Show("Required information", exception.Message, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
             else if (exception is ApplicationException)
             {
                 MessageBoxUtil.Show("Required information", exception);

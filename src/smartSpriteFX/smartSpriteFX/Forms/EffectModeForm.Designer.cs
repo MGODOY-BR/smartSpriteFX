@@ -1,6 +1,6 @@
 ﻿namespace smartSuite.smartSpriteFX.Forms
 {
-    partial class AnimationForm
+    partial class EffectModeForm
     {
         /// <summary>
         /// Required designer variable.
@@ -450,7 +450,7 @@
             this.filterSetSaveDialog.Title = "Save filter box as filter set";
             this.filterSetSaveDialog.FileOk += new System.ComponentModel.CancelEventHandler(this.filterSetSaveDialog_FileOk);
             // 
-            // AnimationForm
+            // EffectModeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -460,8 +460,8 @@
             this.Controls.Add(this.topPanel);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.pictureBox1);
-            this.Name = "AnimationForm";
-            this.Text = "SmartSpriteFX - Effect \"Animation-oriented\" Mode";
+            this.Name = "EffectModeForm";
+            this.Text = "smartSpriteFX - Effect \"Animation-oriented\" Mode";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.AnimationForm_Load);
             this.statusStrip1.ResumeLayout(false);

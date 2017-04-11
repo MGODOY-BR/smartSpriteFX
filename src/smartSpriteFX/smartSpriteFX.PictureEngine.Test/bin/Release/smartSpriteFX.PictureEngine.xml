@@ -419,6 +419,12 @@
             </summary>
             <param name="other"></param>
         </member>
+        <member name="M:smartSuite.smartSpriteFX.Pictures.Picture.GetInstanceLazy(System.String)">
+            <summary>
+            Gets the instance of object without load the buffer.
+            </summary>
+            <param name="fileNameItem"></param>
+        </member>
         <member name="M:smartSuite.smartSpriteFX.Pictures.Picture.GetAllPixels">
             <summary>
             Gets all the pixels from Picture

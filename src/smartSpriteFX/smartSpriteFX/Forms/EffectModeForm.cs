@@ -23,7 +23,7 @@ using System.IO;
 
 namespace smartSuite.smartSpriteFX.Forms
 {
-    public partial class AnimationForm : Form
+    public partial class EffectModeForm : Form
     {
         /// <summary>
         /// Controls the sort of effect control.
@@ -35,7 +35,7 @@ namespace smartSuite.smartSpriteFX.Forms
         /// </summary>
         private EffectFilterPalleteControl _effectFilterPalleteControl = new EffectFilterPalleteControl();
 
-        public AnimationForm()
+        public EffectModeForm()
         {
             InitializeComponent();
 

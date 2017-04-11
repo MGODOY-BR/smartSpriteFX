@@ -10,14 +10,29 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using smartSuite.smartSpriteFX.Pictures;
+using smartSuite.smartSpriteFX.Forms.Utilities;
 
 namespace smartSuite.smartSpriteFX.Forms
 {
     public partial class ProgressForm : Form, IApplyFilterCallback
     {
+        /// <summary>
+        /// It´s a conclusion message that must be shown after the processing
+        /// </summary>
+        private IConclusionMessage _conclusionMessage;
+
         public ProgressForm()
         {
             InitializeComponent();
+
+            this._conclusionMessage = new EffectDoneDefaultConclusionMessage(this);
+        }
+
+        public ProgressForm(IConclusionMessage conclusionMessage)
+        {
+            InitializeComponent();
+
+            this._conclusionMessage = conclusionMessage;
         }
 
         public void ShowUpdateProgress()
@@ -34,6 +49,12 @@ namespace smartSuite.smartSpriteFX.Forms
         public void ApplyFilter(Picture frame)
         {
             this.backgroundWorker1.RunWorkerAsync(frame);
+            this.ShowUpdateProgress();
+        }
+
+        public void ApplyFilter(List<Picture> pictureList)
+        {
+            this.backgroundWorker1.RunWorkerAsync(pictureList);
             this.ShowUpdateProgress();
         }
 
@@ -63,11 +84,16 @@ namespace smartSuite.smartSpriteFX.Forms
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
-            var selectedFrame = (Picture)e.Argument;
+            Picture selectedFrame = e.Argument as Picture;
+            List<Picture> pictureList = e.Argument as List<Picture>;
 
-            if (selectedFrame != null)
+            if (selectedFrame != null && pictureList == null)
             {
                 EffectEngine.Apply(this, selectedFrame);
+            }
+            else if (selectedFrame == null && pictureList != null)
+            {
+                EffectEngine.Apply(this, pictureList.ToArray());
             }
             else
             {
@@ -77,10 +103,7 @@ namespace smartSuite.smartSpriteFX.Forms
 
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            string path = EffectEngine.GetOutputPath();
-            PathAlertForm pathAlertForm = new PathAlertForm();
-            pathAlertForm.Open("Concluded!", path);
-            this.Close();
+            this._conclusionMessage.Show(null);
         }
     }
 }

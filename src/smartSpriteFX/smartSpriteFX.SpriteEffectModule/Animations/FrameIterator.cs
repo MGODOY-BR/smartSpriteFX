@@ -235,6 +235,32 @@ namespace smartSuite.smartSpriteFX.Animations{
         }
 
         /// <summary>
+        /// Gets a frameIterator from picture list
+        /// </summary>
+        /// <param name="pictureList"></param>
+        /// <returns></returns>
+        internal static FrameIterator Open(List<Picture> pictureList)
+        {
+            #region Entries validation
+
+            if (pictureList == null)
+            {
+                throw new ArgumentNullException("pictureList");
+            }
+
+            #endregion
+
+            FrameIterator iterator = new FrameIterator();
+
+            foreach (var pictureItem in pictureList)
+            {
+                iterator._fileList.Add(pictureItem.FullPath);
+            }
+
+            return iterator;
+        }
+
+        /// <summary>
         /// Gets the total amount of frames
         /// </summary>
         /// <returns></returns>
@@ -276,6 +302,21 @@ namespace smartSuite.smartSpriteFX.Animations{
         }
 
         /// <summary>
+        /// Gets the supporte image types
+        /// </summary>
+        /// <returns></returns>
+        internal static String[] GetSupportedImages()
+        {
+            return new String[4]
+            {
+                "*.png",
+                "*.bmp",
+                "*.jpg",
+                "*.jpeg"
+            };
+        }
+
+        /// <summary>
         /// Gets the file list
         /// </summary>
         /// <param name="fullPath"></param>
@@ -284,14 +325,11 @@ namespace smartSuite.smartSpriteFX.Animations{
         {
             List<string> result = new List<string>();
 
-            result.AddRange(
-                Directory.GetFiles(fullPath, "*.png", SearchOption.TopDirectoryOnly));
-            result.AddRange(
-                Directory.GetFiles(fullPath, "*.bmp", SearchOption.TopDirectoryOnly));
-            result.AddRange(
-                Directory.GetFiles(fullPath, "*.jpg", SearchOption.TopDirectoryOnly));
-            result.AddRange(
-                Directory.GetFiles(fullPath, "*.jpeg", SearchOption.TopDirectoryOnly));
+            foreach (var extension in GetSupportedImages())
+            {
+                result.AddRange(
+                    Directory.GetFiles(fullPath, extension, SearchOption.TopDirectoryOnly));
+            }
 
             result.Sort(_animationComparer);
 

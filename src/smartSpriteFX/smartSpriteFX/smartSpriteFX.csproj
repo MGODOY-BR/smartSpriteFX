@@ -78,11 +78,17 @@
     <Compile Include="Forms\AboutBoxForm.Designer.cs">
       <DependentUpon>AboutBoxForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\AnimationForm.cs">
+    <Compile Include="Forms\EffectModeBatchForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\AnimationForm.Designer.cs">
-      <DependentUpon>AnimationForm.cs</DependentUpon>
+    <Compile Include="Forms\EffectModeBatchForm.Designer.cs">
+      <DependentUpon>EffectModeBatchForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\EffectModeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\EffectModeForm.Designer.cs">
+      <DependentUpon>EffectModeForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Controls\Animations\Effects\EffectControl.cs">
       <SubType>UserControl</SubType>
@@ -123,11 +129,11 @@
     <Compile Include="Forms\PathAlertForm.Designer.cs">
       <DependentUpon>PathAlertForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\LandscapeForm.cs">
+    <Compile Include="Forms\LandscapeModeForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\LandscapeForm.Designer.cs">
-      <DependentUpon>LandscapeForm.cs</DependentUpon>
+    <Compile Include="Forms\LandscapeModeForm.Designer.cs">
+      <DependentUpon>LandscapeModeForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\ProgressForm.cs">
       <SubType>Form</SubType>
@@ -141,14 +147,20 @@
     <Compile Include="Forms\SelectModeScreenForm.Designer.cs">
       <DependentUpon>SelectModeScreenForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Utilities\EffectBatchDoneDefaultConclusionMessage.cs" />
+    <Compile Include="Forms\Utilities\EffectDoneDefaultConclusionMessage.cs" />
+    <Compile Include="Forms\Utilities\IConclusionMessage.cs" />
     <Compile Include="Forms\Utilities\TreeViewUtil.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\AboutBoxForm.resx">
       <DependentUpon>AboutBoxForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\AnimationForm.resx">
-      <DependentUpon>AnimationForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\EffectModeBatchForm.resx">
+      <DependentUpon>EffectModeBatchForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\EffectModeForm.resx">
+      <DependentUpon>EffectModeForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Controls\Animations\Effects\EffectControl.resx">
       <DependentUpon>EffectControl.cs</DependentUpon>
@@ -168,8 +180,8 @@
     <EmbeddedResource Include="Forms\PathAlertForm.resx">
       <DependentUpon>PathAlertForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\LandscapeForm.resx">
-      <DependentUpon>LandscapeForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\LandscapeModeForm.resx">
+      <DependentUpon>LandscapeModeForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ProgressForm.resx">
       <DependentUpon>ProgressForm.cs</DependentUpon>

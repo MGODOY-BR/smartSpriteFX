@@ -1,6 +1,6 @@
 ﻿namespace smartSuite.smartSpriteFX.Forms
 {
-    partial class LandscapeForm
+    partial class LandscapeModeForm
     {
         /// <summary>
         /// Required designer variable.
@@ -376,15 +376,15 @@
             this.progressTime.Interval = 5;
             this.progressTime.Tick += new System.EventHandler(this.progressTime_Tick);
             // 
-            // LandscapeForm
+            // LandscapeModeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1019, 411);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.statusStrip1);
-            this.Name = "LandscapeForm";
-            this.Text = "SmartSpriteFX - Landscape \"Piece-oriented\" Mode";
+            this.Name = "LandscapeModeForm";
+            this.Text = "smartSpriteFX - Landscape \"Piece-oriented\" Mode";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();

@@ -23,7 +23,7 @@ namespace smartSuite.smartSpriteFX.Forms
     /// <summary>
     /// Represents a form to handle the effect mode, animation-oriented
     /// </summary>
-    public partial class LandscapeForm : Form
+    public partial class LandscapeModeForm : Form
     {
         /// <summary>
         /// Contains just the relevant treenode
@@ -40,7 +40,7 @@ namespace smartSuite.smartSpriteFX.Forms
         /// </summary>
         private SmartBrowser _projectBrowser = new SmartBrowser();
 
-        public LandscapeForm()
+        public LandscapeModeForm()
         {
             InitializeComponent();
 

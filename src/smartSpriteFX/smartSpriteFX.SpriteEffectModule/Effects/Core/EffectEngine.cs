@@ -98,6 +98,7 @@ namespace smartSuite.smartSpriteFX.Effects.Core{
             _sourcePreviewImage = sourcePreviewImage;
         }
 
+
         /// <summary>
         /// Cancels the apply method
         /// </summary>
@@ -176,6 +177,15 @@ namespace smartSuite.smartSpriteFX.Effects.Core{
         public static void Apply(IApplyFilterCallback callback)
         {
             Apply(callback, null);
+        }
+
+        /// <summary>
+        /// Applies the filter collection in the frame, but considering UI controls infrastructure
+        /// </summary>
+        public static void ApplyFromUI(IApplyFilterCallback callback, List<Picture> pictureList)
+        {
+            EffectEngine._iterator = FrameIterator.Open(pictureList);
+            callback.ApplyFilter(pictureList);
         }
 
         /// <summary>
@@ -351,6 +361,16 @@ namespace smartSuite.smartSpriteFX.Effects.Core{
         /// <param name="fullPath">It´s the path of animation</param>
         public static void Initializate(String fullPath)
         {
+            Initializate();
+            // Loading animation folder
+            EffectEngine._iterator = FrameIterator.Open(fullPath);
+        }
+
+        /// <summary>
+        /// Initializates the engine
+        /// </summary>
+        public static void Initializate()
+        {
             // Cleaning the Temp directory
             var tempFiles = Directory.GetFiles("Temp", "*.*");
             foreach (var tempFileItem in tempFiles)
@@ -370,8 +390,6 @@ namespace smartSuite.smartSpriteFX.Effects.Core{
             FilterCollection.Load();
 
             PictureDatabase.Clear();
-            // Loading animation folder
-            EffectEngine._iterator = FrameIterator.Open(fullPath);
         }
 
         /// <summary>

@@ -31,5 +31,10 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Infra.UI
         /// Applies the filters on the specified frame, considering the UI infrastructure
         /// </summary>
         void ApplyFilter(Picture frame);
+
+        /// <summary>
+        /// Applies the filters on the specified frame, considering the UI infrastructure
+        /// </summary>
+        void ApplyFilter(List<Picture> pictureList);
     }
 }

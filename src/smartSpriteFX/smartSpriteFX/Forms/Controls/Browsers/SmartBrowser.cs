@@ -57,6 +57,15 @@ namespace smartSuite.smartSpriteFX.Forms.Controls.Browsers
         public String UserChoice { get; set; }
 
         /// <summary>
+        /// Indicates that apply button must be hidden
+        /// </summary>
+        public bool HideApplyButton
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
         /// Loads the last user choice
         /// </summary>
         /// <param name="userChoice"></param>
@@ -162,6 +171,7 @@ namespace smartSuite.smartSpriteFX.Forms.Controls.Browsers
             this.openFileDialog1.Filter = this.DialogFilter;
 
             this.txtFileName.Text = this.UserChoice;
+            this.btnApply.Visible = !this.HideApplyButton;
         }
 
         /// <summary>

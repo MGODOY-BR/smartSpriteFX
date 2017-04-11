@@ -800,6 +800,11 @@
             Applies the filters on the specified frame, considering the UI infrastructure
             </summary>
         </member>
+        <member name="M:smartSuite.smartSpriteFX.SpriteEffectModule.Infra.UI.IApplyFilterCallback.ApplyFilter(System.Collections.Generic.List{smartSuite.smartSpriteFX.Pictures.Picture})">
+            <summary>
+            Applies the filters on the specified frame, considering the UI infrastructure
+            </summary>
+        </member>
         <member name="T:smartSuite.smartSpriteFX.SpriteEffectModule.Forms.ColorSupportFormForAnimation">
             <summary>
             It´s a version of <see cref="T:smartSuite.smartSpriteFX.Forms.ColorSupportForm"/> used to support animations 
@@ -941,6 +946,13 @@
             <param name="fullPath">A path of a file or directory</param>
             <returns></returns>
         </member>
+        <member name="M:smartSuite.smartSpriteFX.Animations.FrameIterator.Open(System.Collections.Generic.List{smartSuite.smartSpriteFX.Pictures.Picture})">
+            <summary>
+            Gets a frameIterator from picture list
+            </summary>
+            <param name="pictureList"></param>
+            <returns></returns>
+        </member>
         <member name="M:smartSuite.smartSpriteFX.Animations.FrameIterator.CountFrames">
             <summary>
             Gets the total amount of frames
@@ -951,6 +963,12 @@
             <summary>
             Fills the file list
             </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Animations.FrameIterator.GetSupportedImages">
+            <summary>
+            Gets the supporte image types
+            </summary>
+            <returns></returns>
         </member>
         <member name="M:smartSuite.smartSpriteFX.Animations.FrameIterator.GetFileList(System.String)">
             <summary>
@@ -1063,6 +1081,11 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:smartSuite.smartSpriteFX.Effects.Core.EffectEngine.ApplyFromUI(smartSuite.smartSpriteFX.SpriteEffectModule.Infra.UI.IApplyFilterCallback,System.Collections.Generic.List{smartSuite.smartSpriteFX.Pictures.Picture})">
+            <summary>
+            Applies the filter collection in the frame, but considering UI controls infrastructure
+            </summary>
+        </member>
         <member name="M:smartSuite.smartSpriteFX.Effects.Core.EffectEngine.Apply(smartSuite.smartSpriteFX.SpriteEffectModule.Infra.UI.IApplyFilterCallback,smartSuite.smartSpriteFX.Pictures.Picture[])">
             <summary>
             Applies the filter collection to all the animation
@@ -1088,6 +1111,11 @@
             Initializates the engine
             </summary>
             <param name="fullPath">It´s the path of animation</param>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Effects.Core.EffectEngine.Initializate">
+            <summary>
+            Initializates the engine
+            </summary>
         </member>
         <member name="M:smartSuite.smartSpriteFX.Effects.Core.EffectEngine.GetSelectedFilterList">
             <summary>

@@ -111,6 +111,26 @@ namespace smartSuite.smartSpriteFX.Pictures
         }
 
         /// <summary>
+        /// Gets the instance of object without load the buffer.
+        /// </summary>
+        /// <param name="fileNameItem"></param>
+        public static Picture GetInstanceLazy(string fileNameItem)
+        {
+            #region Entries validation
+
+            if (String.IsNullOrEmpty(fileNameItem))
+            {
+                throw new ArgumentNullException("fileNameItem");
+            }
+
+            #endregion
+
+            Picture resultValue = new Picture();
+            resultValue._fullPath = fileNameItem;
+            return resultValue;
+        }
+
+        /// <summary>
         /// Gets all the pixels from Picture
         /// </summary>
         /// <returns></returns>

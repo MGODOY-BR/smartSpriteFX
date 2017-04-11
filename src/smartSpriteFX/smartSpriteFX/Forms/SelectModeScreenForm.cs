@@ -29,24 +29,24 @@ namespace smartSuite.smartSpriteFX.Forms
 
         private void btnLandscapeMode_Click(object sender, EventArgs e)
         {
-            if (!this.CheckCanProceed<LandscapeForm>())
+            if (!this.CheckCanProceed<LandscapeModeForm>())
             {
                 return;
             }
 
-            _currentMode = new LandscapeForm();
+            _currentMode = new LandscapeModeForm();
             _currentMode.FormClosed += _currentMode_FormClosed;
             _currentMode.Show();
         }
 
         private void btnEffectMode_Click(object sender, EventArgs e)
         {
-            if (!this.CheckCanProceed<AnimationForm>())
+            if (!this.CheckCanProceed<EffectModeForm>())
             {
                 return;
             }
 
-            _currentMode = new AnimationForm();
+            _currentMode = new EffectModeForm();
             _currentMode.FormClosed += _currentMode_FormClosed;
             _currentMode.Show();
         }
@@ -102,6 +102,12 @@ namespace smartSuite.smartSpriteFX.Forms
                     SelectModeScreenForm._currentMode.Focus();
                 }
             }
+        }
+
+        private void btnEffectModeBatch_Click(object sender, EventArgs e)
+        {
+            EffectModeBatchForm form = new EffectModeBatchForm();
+            form.ShowDialog();
         }
     }
 }
