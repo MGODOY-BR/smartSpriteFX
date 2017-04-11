@@ -1,6 +1,7 @@
 ﻿using smartSuite.smartSpriteFX.Animations;
 using smartSuite.smartSpriteFX.Effects.Core;
 using smartSuite.smartSpriteFX.Forms.Controls.Browsers;
+using smartSuite.smartSpriteFX.Forms.Controls.SwitchMode;
 using smartSuite.smartSpriteFX.Forms.Utilities;
 using smartSuite.smartSpriteFX.Pictures;
 using System;
@@ -50,6 +51,10 @@ namespace smartSuite.smartSpriteFX.Forms
             filterSetBrowser.ChosenByUserEvent += FilterSetBrowser_ChosenByUserEvent;
             filterSetBrowser.HideApplyButton = true;
             this.grpFilterSet.Controls.Add(filterSetBrowser);
+
+            var switchModeControl = new SwitchModeControl();
+            switchModeControl.Dock = DockStyle.Right;
+            this.pictureBox1.Controls.Add(switchModeControl);
         }
 
         private void FilterSetBrowser_ChosenByUserEvent(object sender, SmartBrowserEventArgs e)

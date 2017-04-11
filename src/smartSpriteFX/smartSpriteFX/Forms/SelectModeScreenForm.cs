@@ -27,30 +27,6 @@ namespace smartSuite.smartSpriteFX.Forms
             InitializeComponent();
         }
 
-        private void btnLandscapeMode_Click(object sender, EventArgs e)
-        {
-            if (!this.CheckCanProceed<LandscapeModeForm>())
-            {
-                return;
-            }
-
-            _currentMode = new LandscapeModeForm();
-            _currentMode.FormClosed += _currentMode_FormClosed;
-            _currentMode.Show();
-        }
-
-        private void btnEffectMode_Click(object sender, EventArgs e)
-        {
-            if (!this.CheckCanProceed<EffectModeForm>())
-            {
-                return;
-            }
-
-            _currentMode = new EffectModeForm();
-            _currentMode.FormClosed += _currentMode_FormClosed;
-            _currentMode.Show();
-        }
-
         /// <summary>
         /// Checks if the flow can resume
         /// </summary>
@@ -75,7 +51,6 @@ namespace smartSuite.smartSpriteFX.Forms
                     return false;
                 }
             }
-            this.Close();
             _currentMode.Focus();
 
             return false;
@@ -104,10 +79,40 @@ namespace smartSuite.smartSpriteFX.Forms
             }
         }
 
+        private void btnLandscapeMode_Click(object sender, EventArgs e)
+        {
+            if (!this.CheckCanProceed<LandscapeModeForm>())
+            {
+                return;
+            }
+
+            _currentMode = new LandscapeModeForm();
+            _currentMode.FormClosed += _currentMode_FormClosed;
+            _currentMode.Show();
+        }
+
+        private void btnEffectMode_Click(object sender, EventArgs e)
+        {
+            if (!this.CheckCanProceed<EffectModeForm>())
+            {
+                return;
+            }
+
+            _currentMode = new EffectModeForm();
+            _currentMode.FormClosed += _currentMode_FormClosed;
+            _currentMode.Show();
+        }
+
         private void btnEffectModeBatch_Click(object sender, EventArgs e)
         {
-            EffectModeBatchForm form = new EffectModeBatchForm();
-            form.ShowDialog();
+            if (!this.CheckCanProceed<EffectModeBatchForm>())
+            {
+                return;
+            }
+
+            _currentMode = new EffectModeBatchForm();
+            _currentMode.FormClosed += _currentMode_FormClosed;
+            _currentMode.Show();
         }
     }
 }

@@ -32,12 +32,14 @@
             this.grpFilterSet = new System.Windows.Forms.GroupBox();
             this.grpCommand = new System.Windows.Forms.GroupBox();
             this.btnApplyAll = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.grpCommand.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // grpOriginFolder
             // 
-            this.grpOriginFolder.Location = new System.Drawing.Point(12, 12);
+            this.grpOriginFolder.Location = new System.Drawing.Point(12, 39);
             this.grpOriginFolder.Name = "grpOriginFolder";
             this.grpOriginFolder.Size = new System.Drawing.Size(199, 142);
             this.grpOriginFolder.TabIndex = 0;
@@ -46,7 +48,7 @@
             // 
             // grpFilterSet
             // 
-            this.grpFilterSet.Location = new System.Drawing.Point(217, 12);
+            this.grpFilterSet.Location = new System.Drawing.Point(217, 39);
             this.grpFilterSet.Name = "grpFilterSet";
             this.grpFilterSet.Size = new System.Drawing.Size(199, 142);
             this.grpFilterSet.TabIndex = 1;
@@ -56,7 +58,7 @@
             // grpCommand
             // 
             this.grpCommand.Controls.Add(this.btnApplyAll);
-            this.grpCommand.Location = new System.Drawing.Point(422, 12);
+            this.grpCommand.Location = new System.Drawing.Point(422, 39);
             this.grpCommand.Name = "grpCommand";
             this.grpCommand.Size = new System.Drawing.Size(199, 142);
             this.grpCommand.TabIndex = 2;
@@ -74,23 +76,34 @@
             this.btnApplyAll.UseVisualStyleBackColor = true;
             this.btnApplyAll.Click += new System.EventHandler(this.btnApplyAll_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.White;
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pictureBox1.Image = global::smartSuite.smartSpriteFX.Properties.Resources.logo;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(629, 28);
+            this.pictureBox1.TabIndex = 3;
+            this.pictureBox1.TabStop = false;
+            // 
             // EffectModeBatchForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(629, 169);
+            this.ClientSize = new System.Drawing.Size(629, 193);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.grpCommand);
             this.Controls.Add(this.grpFilterSet);
             this.Controls.Add(this.grpOriginFolder);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "EffectModeBatchForm";
-            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "smartSpriteFX - Effect Mode Batch";
             this.Load += new System.EventHandler(this.EffectModeBatchForm_Load);
             this.grpCommand.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -101,5 +114,6 @@
         private System.Windows.Forms.GroupBox grpFilterSet;
         private System.Windows.Forms.GroupBox grpCommand;
         private System.Windows.Forms.Button btnApplyAll;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
