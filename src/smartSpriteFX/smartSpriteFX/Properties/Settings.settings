@@ -1,5 +1,5 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="smartSpriteFX.Properties" GeneratedClassName="Settings">
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="smartSuite.smartSpriteFX.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
     <Setting Name="lastDraftFolder" Type="System.String" Scope="User">
@@ -12,6 +12,12 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="lastAnimationFolder" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="lastParentFolder" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="lastFilterSet" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
   </Settings>

@@ -83,6 +83,7 @@ namespace smartSuite.smartSpriteFX.Forms.Controls.Browsers
             this.UserChoice = userChoice;
             this.openFileDialog1.FileName = userChoice;
             this.folderBrowserDialog1.SelectedPath = userChoice;
+            this.txtFileName.Text = userChoice;
         }
 
         private void openFileDialog1_FileOk(object sender, CancelEventArgs e)

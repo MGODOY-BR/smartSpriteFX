@@ -463,7 +463,7 @@
             this.Name = "EffectModeForm";
             this.Text = "smartSpriteFX - Effect \"Animation-oriented\" Mode";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.AnimationForm_Load);
+            this.Load += new System.EventHandler(this.EffectModeForm_Load);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.topPanel.ResumeLayout(false);

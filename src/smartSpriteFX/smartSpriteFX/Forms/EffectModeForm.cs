@@ -58,9 +58,15 @@ namespace smartSuite.smartSpriteFX.Forms
             _effectFilterPalleteControl.SelectedFilterEvent += EffectFilterPalleteControl_SelectedFilterEvent;
 
             this.previewBoard.LoadCompleted += PreviewBoard_LoadCompleted;
+
+            if (!String.IsNullOrWhiteSpace(Settings.Default.lastFilterSet))
+            {
+                this.filterSetOpenDialog.FileName = Settings.Default.lastFilterSet;
+                this.filterSetSaveDialog.FileName = Settings.Default.lastFilterSet;
+            }
         }
 
-        private void AnimationForm_Load(object sender, EventArgs e)
+        private void EffectModeForm_Load(object sender, EventArgs e)
         {
             var switchModeControl = new SwitchModeControl();
             switchModeControl.Dock = DockStyle.Right;
@@ -556,6 +562,10 @@ namespace smartSuite.smartSpriteFX.Forms
         private void filterSetSaveDialog_FileOk(object sender, CancelEventArgs e)
         {
             EffectEngine.SaveFilterSet(this.filterSetSaveDialog.FileName);
+
+            Settings.Default.lastFilterSet = this.filterSetSaveDialog.FileName;
+            Settings.Default.Save();
+
             this.filterSetSaveDialog.FileName = "";
             MessageBoxUtil.Show("Filter set has been saved succesfully!", MessageBoxButtons.OK);
         }
@@ -580,6 +590,9 @@ namespace smartSuite.smartSpriteFX.Forms
 
             // Reseting settings panel
             this.ResetSettingsPanel();
+
+            Settings.Default.lastFilterSet = this.filterSetOpenDialog.FileName;
+            Settings.Default.Save();
         }
     }
 }

@@ -4,6 +4,7 @@ using smartSuite.smartSpriteFX.Forms.Controls.Browsers;
 using smartSuite.smartSpriteFX.Forms.Controls.SwitchMode;
 using smartSuite.smartSpriteFX.Forms.Utilities;
 using smartSuite.smartSpriteFX.Pictures;
+using smartSuite.smartSpriteFX.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -42,6 +43,10 @@ namespace smartSuite.smartSpriteFX.Forms
             originBrowser.ChosenByUserEvent += OriginBrowser_ChosenByUserEvent;
             originBrowser.HideApplyButton = true;
             this.grpOriginFolder.Controls.Add(originBrowser);
+            if (!String.IsNullOrEmpty(Settings.Default.lastParentFolder))
+            {
+                originBrowser.LoadLastUserChoice(Settings.Default.lastParentFolder);
+            }
 
             SmartBrowser filterSetBrowser = new SmartBrowser();
             filterSetBrowser.Dock = DockStyle.Fill;
@@ -51,6 +56,10 @@ namespace smartSuite.smartSpriteFX.Forms
             filterSetBrowser.ChosenByUserEvent += FilterSetBrowser_ChosenByUserEvent;
             filterSetBrowser.HideApplyButton = true;
             this.grpFilterSet.Controls.Add(filterSetBrowser);
+            if (!String.IsNullOrEmpty(Settings.Default.lastFilterSet))
+            {
+                filterSetBrowser.LoadLastUserChoice(Settings.Default.lastFilterSet);
+            }
 
             var switchModeControl = new SwitchModeControl();
             switchModeControl.Dock = DockStyle.Right;
@@ -102,6 +111,10 @@ namespace smartSuite.smartSpriteFX.Forms
             EffectEngine.ApplyFromUI(
                 (ProgressForm)conclusionMessage.Parent, 
                 pictureList);
+
+            Settings.Default.lastFilterSet = this._filterSetPath;
+            Settings.Default.lastParentFolder = this._originFolder;
+            Settings.Default.Save();
         }
     }
 }
