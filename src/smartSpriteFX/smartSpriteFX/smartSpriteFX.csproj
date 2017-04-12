@@ -288,6 +288,9 @@
     <Content Include="My Filter Sets\empty.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\landscapemode.png" />
+    <None Include="Resources\effectmode.png" />
+    <None Include="Resources\effectbatch.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

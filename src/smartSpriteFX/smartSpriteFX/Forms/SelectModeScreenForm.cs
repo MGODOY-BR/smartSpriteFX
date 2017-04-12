@@ -1,4 +1,5 @@
 ﻿using smartSuite.smartSpriteFX.Forms.Controls.SwitchMode;
+using smartSuite.smartSpriteFX.Properties;
 using smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI;
 using System;
 using System.Collections.Generic;
@@ -113,6 +114,52 @@ namespace smartSuite.smartSpriteFX.Forms
             _currentMode = new EffectModeBatchForm();
             _currentMode.FormClosed += _currentMode_FormClosed;
             _currentMode.Show();
+        }
+
+        private void btnLandscapeMode_MouseMove(object sender, MouseEventArgs e)
+        {
+            this.ShowDemoPicture(
+                Resources.landscapemode, 
+                "Cut pieces of images to use them like independent images. Images inside of another images can have their background inferred to transparent automatically");
+        }
+
+        private void btnEffectMode_MouseMove(object sender, MouseEventArgs e)
+        {
+            this.ShowDemoPicture(
+                Resources.effectmode,
+                "Apply filters to get different and interesting effects to one or more images");
+        }
+
+        private void btnEffectModeBatch_MouseMove(object sender, MouseEventArgs e)
+        {
+            this.ShowDemoPicture(
+                Resources.effectbatch,
+                "Use filter sets of effect mode to apply on all whole tree of directories");
+        }
+
+        /// <summary>
+        /// Shows the demo picture
+        /// </summary>
+        /// <param name="explanationPicture">An explanation picture</param>
+        /// <param name="explanationText">An explanation text</param>
+        private void ShowDemoPicture(Bitmap explanationPicture, string explanationText)
+        {
+            #region Entries validation
+
+            if (explanationPicture == null)
+            {
+                throw new ArgumentNullException("explanationPicture");
+            }
+            if (String.IsNullOrEmpty(explanationText))
+            {
+                throw new ArgumentNullException("explanationText");
+            }
+
+            #endregion
+
+            this.imgDemo.BackgroundImage = explanationPicture;
+            this.lblDescription.Text = explanationText;
+            this.lblDescription.Visible = true;
         }
     }
 }
