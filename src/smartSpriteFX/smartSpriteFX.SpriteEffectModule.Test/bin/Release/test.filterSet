@@ -1,8 +1,4 @@
-0-_8BitFilter=
-1-_24BitFilter=
-2-_16BitFilter=
+0-_8BitFilter={ColorBufferAmount[32]}{DestinationScreenWidth[256]}{DestinationScreenHeight[192]}{Contrast[0]}{TotalScreenWidth[1366]}{TotalScreenHeight[768]}{AvoidColorList[System.Collections.Generic.List`1[System.Drawing.Color]]}
+1-_24BitFilter={ColorBufferAmount[4096]}{DestinationScreenWidth[370]}{DestinationScreenHeight[274]}{Contrast[0]}{TotalScreenWidth[1366]}{TotalScreenHeight[768]}{AvoidColorList[System.Collections.Generic.List`1[System.Drawing.Color]]}
+2-_16BitFilter={ColorBufferAmount[64]}{DestinationScreenWidth[306]}{DestinationScreenHeight[274]}{Contrast[0]}{TotalScreenWidth[1366]}{TotalScreenHeight[768]}{AvoidColorList[System.Collections.Generic.List`1[System.Drawing.Color]]}
 3-ScaleFilter={Scale[2.2]}
-4-_8BitFilter=
-5-_24BitFilter=
-6-_16BitFilter=
-7-ScaleFilter={Scale[2.2]}
