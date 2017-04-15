@@ -64,7 +64,7 @@
             this.btnEffectMode.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.btnEffectMode.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnEffectMode.Font = new System.Drawing.Font("Open Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEffectMode.Location = new System.Drawing.Point(280, 3);
+            this.btnEffectMode.Location = new System.Drawing.Point(263, 3);
             this.btnEffectMode.Name = "btnEffectMode";
             this.btnEffectMode.Size = new System.Drawing.Size(212, 41);
             this.btnEffectMode.TabIndex = 1;

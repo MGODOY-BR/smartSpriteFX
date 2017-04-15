@@ -461,7 +461,7 @@
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.pictureBox1);
             this.Name = "EffectModeForm";
-            this.Text = "smartSpriteFX - Effect \"Animation-oriented\" Mode";
+            this.Text = "smartSpriteFX - Effect Mode";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.EffectModeForm_Load);
             this.statusStrip1.ResumeLayout(false);

@@ -384,7 +384,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.statusStrip1);
             this.Name = "LandscapeModeForm";
-            this.Text = "smartSpriteFX - Landscape \"Piece-oriented\" Mode";
+            this.Text = "smartSpriteFX - Landscape Mode";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
