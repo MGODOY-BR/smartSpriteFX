@@ -1,0 +1,1096 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>smartSpriteFX</name>
+    </assembly>
+    <members>
+        <member name="F:smartSuite.smartSpriteFX.Forms.AboutBoxForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.AboutBoxForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.AboutBoxForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSpriteFX.Forms.EffectModeBatchForm._originFolder">
+            <summary>
+            It is the origin folder
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSpriteFX.Forms.EffectModeBatchForm._filterSetPath">
+            <summary>
+            It is the filter set path
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSpriteFX.Forms.EffectModeBatchForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.EffectModeBatchForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.EffectModeBatchForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSpriteFX.Forms.EffectModeForm._effectControlOrderCollection">
+            <summary>
+            Controls the sort of effect control.
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSpriteFX.Forms.EffectModeForm._effectFilterPalleteControl">
+            <summary>
+            It´s the control that shows the filters to select
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.EffectModeForm.EffectFilterPalleteControl_SelectedFilterEvent(System.Object,smartSuite.smartSpriteFX.Forms.Controls.EffectFilterPallete.EffectFilterPalleteControl.SelectionFilterEventArgs)">
+            <summary>
+            Occurs when the user selects a filter
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.EffectModeForm.CreateEffectControl(smartSuite.smartSpriteFX.Effects.Filters.IEffectFilter)">
+            <summary>
+            Creates a effect control
+            </summary>
+            <param name="filter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.EffectModeForm.ResetSettingsPanel">
+            <summary>
+            Resets the settings panel
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.EffectModeForm.SmartBrowser_ChosenByUserEvent(System.Object,smartSuite.smartSpriteFX.Forms.Controls.Browsers.SmartBrowserEventArgs)">
+            <summary>
+            It´s occurs when the user selects the animation folder
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.EffectModeForm.FrameSelectionControl_LoadingFrameError(System.Object,smartSuite.smartSpriteFX.Forms.Controls.Animations.Frames.FrameSelectionErrorEventArgs)">
+            <summary>
+            Occurs during an error in load a frame
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.EffectModeForm.EffectBind(smartSuite.smartSpriteFX.Forms.EffectModeForm.EffectControlOrderCollection)">
+            <summary>
+            Refresh the effect list
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.EffectModeForm.EffectControl_UserInteracted(System.Object,smartSuite.smartSpriteFX.Forms.Controls.Animations.Effects.EffectControl.EffectControlEventArgs)">
+            <summary>
+            Occurs when user interacts with EffectControl
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.EffectModeForm.ShowSettings(smartSuite.smartSpriteFX.Effects.Filters.IEffectFilter)">
+            <summary>
+            Shows the Setting panel
+            </summary>
+            <param name="effectFilter"></param>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.EffectModeForm.FrameSelectionControl_SelectingFrame(System.Object,smartSuite.smartSpriteFX.Forms.Controls.Animations.Frames.FrameSelectionEventArgs)">
+            <summary>
+            It´s occurs when the frame is selected
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.EffectModeForm.btnApplyAll_Click(System.Object,System.EventArgs)">
+            <summary>
+            Applies the filters
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="T:smartSuite.smartSpriteFX.Forms.EffectModeForm.EffectControlOrderCollection">
+            <summary>
+            Controls the order of effect control
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSpriteFX.Forms.EffectModeForm.EffectControlOrderCollection._effectControlCacheList">
+            <summary>
+            Relates the effectControl and order index
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.EffectModeForm.EffectControlOrderCollection.Register(smartSuite.smartSpriteFX.Forms.Controls.Animations.Effects.EffectControl)">
+            <summary>
+            Registers the control
+            </summary>
+            <param name="control"></param>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.EffectModeForm.EffectControlOrderCollection.Up(smartSuite.smartSpriteFX.Forms.Controls.Animations.Effects.EffectControl)">
+            <summary>
+            Ups the control order
+            </summary>
+            <param name="control"></param>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.EffectModeForm.EffectControlOrderCollection.Down(smartSuite.smartSpriteFX.Forms.Controls.Animations.Effects.EffectControl)">
+            <summary>
+            Downs the control order
+            </summary>
+            <param name="control"></param>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.EffectModeForm.EffectControlOrderCollection.GetSortedList">
+            <summary>
+            Gets the sorted list
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.EffectModeForm.EffectControlOrderCollection.Remove(smartSuite.smartSpriteFX.Forms.Controls.Animations.Effects.EffectControl)">
+            <summary>
+            Removes control
+            </summary>
+            <param name="effectControl"></param>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.EffectModeForm.EffectControlOrderCollection.Clear">
+            <summary>
+            Clears the colection
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.EffectModeForm.FitImage(System.Boolean)">
+            <summary>
+            Fit image in container
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.EffectModeForm.PreviewBoard_LoadCompleted(System.Object,System.ComponentModel.AsyncCompletedEventArgs)">
+            <summary>
+            Occurs when preview board is reloaded
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="F:smartSuite.smartSpriteFX.Forms.EffectModeForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.EffectModeForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.EffectModeForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:smartSuite.smartSpriteFX.Forms.Controls.Animations.Effects.EffectControl">
+            <summary>
+            Represents am effect filter UI
+            </summary>
+        </member>
+        <member name="E:smartSuite.smartSpriteFX.Forms.Controls.Animations.Effects.EffectControl.UserInteracted">
+            <summary>
+            Occurs when user interact with control
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSpriteFX.Forms.Controls.Animations.Effects.EffectControl._filter">
+            <summary>
+            It´s the filter handled.
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.Controls.Animations.Effects.EffectControl.SetFilter(smartSuite.smartSpriteFX.Effects.Filters.IEffectFilter)">
+            <summary>
+            Sets the filter
+            </summary>
+            <param name="filter"></param>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.Controls.Animations.Effects.EffectControl.GetFilter">
+            <summary>
+            Gets the filter
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.Controls.Animations.Effects.EffectControl.OnUserInteracted(smartSuite.smartSpriteFX.Forms.Controls.Animations.Effects.EffectControl.EffectControlCommandEnum)">
+            <summary>
+            Triggers the event
+            </summary>
+            <param name="command"></param>
+        </member>
+        <member name="T:smartSuite.smartSpriteFX.Forms.Controls.Animations.Effects.EffectControl.EffectControlCommandEnum">
+            <summary>
+            Enumates the command for EffectControl events
+            </summary>
+            <seealso cref="T:smartSuite.smartSpriteFX.Forms.Controls.Animations.Effects.EffectControl.EffectControlEventArgs"/>
+        </member>
+        <member name="T:smartSuite.smartSpriteFX.Forms.Controls.Animations.Effects.EffectControl.EffectControlEventArgs">
+            <summary>
+            Represents the state for EffectControl events
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.Forms.Controls.Animations.Effects.EffectControl.EffectControlEventArgs.CommandType">
+            <summary>
+            It´s the command type
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.Forms.Controls.Animations.Effects.EffectControl.EffectControlEventArgs.Control">
+            <summary>
+            It´s the EffectControl
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSpriteFX.Forms.Controls.Animations.Effects.EffectControl.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.Controls.Animations.Effects.EffectControl.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.Controls.Animations.Effects.EffectControl.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:smartSuite.smartSpriteFX.Forms.Controls.Animations.Frames.FrameSelectionControl">
+            <summary>
+            It´s a control to selecion of frame
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSpriteFX.Forms.Controls.Animations.Frames.FrameSelectionControl._path">
+            <summary>
+            It´s a path of animation folder
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSpriteFX.Forms.Controls.Animations.Frames.FrameSelectionControl._fileList">
+            <summary>
+            It´s a list of sorted loaded file
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSpriteFX.Forms.Controls.Animations.Frames.FrameSelectionControl._animationComparer">
+            <summary>
+            It´s a comparer used to sort files
+            </summary>
+        </member>
+        <member name="E:smartSuite.smartSpriteFX.Forms.Controls.Animations.Frames.FrameSelectionControl.SelectingFrame">
+            <summary>
+            It happens when a frame is selected
+            </summary>
+        </member>
+        <member name="E:smartSuite.smartSpriteFX.Forms.Controls.Animations.Frames.FrameSelectionControl.LoadingFrameError">
+            <summary>
+            It happens when an frame has issues to me loaded
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSpriteFX.Forms.Controls.Animations.Frames.FrameSelectionControl._lastSelectedFrame">
+            <summary>
+            It's the last selected frame
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.Controls.Animations.Frames.FrameSelectionControl.SetPath(System.String)">
+            <summary>
+            Sets the path
+            </summary>
+            <param name="path"></param>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.Controls.Animations.Frames.FrameSelectionControl.LoadThumbNails">
+            <summary>
+            Loads the control content with thumbnails
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.Controls.Animations.Frames.FrameSelectionControl.PictureBox_Click(System.Object,System.EventArgs)">
+            <summary>
+            It ocurrs when user click in picture
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.Controls.Animations.Frames.FrameSelectionControl.OnSelectingFrame(System.Windows.Forms.PictureBox)">
+            <summary>
+            Occurs when a frame was selecting.
+            </summary>
+            <param name="sender"></param>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.Controls.Animations.Frames.FrameSelectionControl.ClearFrames">
+            <summary>
+            Clears the frames
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSpriteFX.Forms.Controls.Animations.Frames.FrameSelectionControl.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.Controls.Animations.Frames.FrameSelectionControl.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.Controls.Animations.Frames.FrameSelectionControl.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:smartSuite.smartSpriteFX.Forms.Controls.Animations.Frames.FrameSelectionErrorEventArgs">
+            <summary>
+            It´s argument from FrameSelection event handler to handle error
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.Forms.Controls.Animations.Frames.FrameSelectionErrorEventArgs.Message">
+            <summary>
+            It´s a text
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.Forms.Controls.Animations.Frames.FrameSelectionErrorEventArgs.Exception">
+            <summary>
+            It´s an exception
+            </summary>
+        </member>
+        <member name="T:smartSuite.smartSpriteFX.Forms.Controls.Animations.Frames.FrameSelectionEventArgs">
+            <summary>
+            It´s argument from FrameSelection event handler
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.Forms.Controls.Animations.Frames.FrameSelectionEventArgs.FrameIndex">
+            <summary>
+            It´s the frame index in an animation
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.Forms.Controls.Animations.Frames.FrameSelectionEventArgs.FilePath">
+            <summary>
+            It´s the path of animation
+            </summary>
+        </member>
+        <member name="T:smartSuite.smartSpriteFX.Forms.Controls.Browsers.SmartBrowser">
+            <summary>
+            Represents a default browser
+            </summary>
+        </member>
+        <member name="E:smartSuite.smartSpriteFX.Forms.Controls.Browsers.SmartBrowser.ChosenByUserEvent">
+            <summary>
+            Occurs when the user concludes the choice
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.Forms.Controls.Browsers.SmartBrowser.BrowserType">
+            <summary>
+            It´s the kind of browse
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.Forms.Controls.Browsers.SmartBrowser.FrameTitle">
+            <summary>
+            It´s the frame title
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.Forms.Controls.Browsers.SmartBrowser.DialogTitle">
+            <summary>
+            It´s the title of dialog
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.Forms.Controls.Browsers.SmartBrowser.DialogFilter">
+            <summary>
+            It´s the filter of files to be shown.
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.Forms.Controls.Browsers.SmartBrowser.UserChoice">
+            <summary>
+            It´s the choice of user (file or folder)
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.Forms.Controls.Browsers.SmartBrowser.HideApplyButton">
+            <summary>
+            Indicates that apply button must be hidden
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.Controls.Browsers.SmartBrowser.LoadLastUserChoice(System.String)">
+            <summary>
+            Loads the last user choice
+            </summary>
+            <param name="userChoice"></param>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.Controls.Browsers.SmartBrowser.DoChoice(System.String)">
+            <summary>
+            Selects the option
+            </summary>
+            <param name="fileName"></param>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.Controls.Browsers.SmartBrowser.Reload">
+            <summary>
+            Updates the controls
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.Controls.Browsers.SmartBrowser.ClearText">
+            <summary>
+            Clears the textbox
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSpriteFX.Forms.Controls.Browsers.SmartBrowser.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.Controls.Browsers.SmartBrowser.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.Controls.Browsers.SmartBrowser.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:smartSuite.smartSpriteFX.Forms.Controls.Browsers.SmartBrowserTypeEnum">
+            <summary>
+            Relates the type of smart browser instance
+            </summary>
+        </member>
+        <member name="T:smartSuite.smartSpriteFX.Forms.Controls.Browsers.SmartBrowserEventArgs">
+            <summary>
+            It´s the argument for smart browser
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.Forms.Controls.Browsers.SmartBrowserEventArgs.UserChoice">
+            <summary>
+            It´s the user choice
+            </summary>
+        </member>
+        <member name="T:smartSuite.smartSpriteFX.Forms.Controls.EffectFilterPallete.EffectFilterPalleteControl">
+            <summary>
+            Represents an UI interface where user selects the filteres
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSpriteFX.Forms.Controls.EffectFilterPallete.EffectFilterPalleteControl._searchDataSource">
+            <summary>
+            It´s a dataSource of researchs
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSpriteFX.Forms.Controls.EffectFilterPallete.EffectFilterPalleteControl._currentTreeNode">
+            <summary>
+            It´s the current treenode
+            </summary>
+        </member>
+        <member name="E:smartSuite.smartSpriteFX.Forms.Controls.EffectFilterPallete.EffectFilterPalleteControl.SelectedFilterEvent">
+            <summary>
+            Occurs when the selection of some filter is seleted by user.
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.Controls.EffectFilterPallete.EffectFilterPalleteControl.TreeView1_DoubleClick(System.Object,System.EventArgs)">
+            <summary>
+            Occurs then the user selects the filter
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="T:smartSuite.smartSpriteFX.Forms.Controls.EffectFilterPallete.EffectFilterPalleteControl.SelectionFilterEventArgs">
+            <summary>
+            Represents states to events of selection of filters
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.Forms.Controls.EffectFilterPallete.EffectFilterPalleteControl.SelectionFilterEventArgs.Filter">
+            <summary>
+            It´s the selected filter
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.Controls.EffectFilterPallete.EffectFilterPalleteControl.Bind">
+            <summary>
+            Fills the control
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.Controls.EffectFilterPallete.EffectFilterPalleteControl.DoFind">
+            <summary>
+            Performs a find operation
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.Controls.EffectFilterPallete.EffectFilterPalleteControl.FindTreeNode(System.String)">
+            <summary>
+            Gets a list of nodes for the criteria
+            </summary>
+            <param name="criteria"></param>
+            <returns></returns>
+        </member>
+        <member name="F:smartSuite.smartSpriteFX.Forms.Controls.EffectFilterPallete.EffectFilterPalleteControl.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.Controls.EffectFilterPallete.EffectFilterPalleteControl.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.Controls.EffectFilterPallete.EffectFilterPalleteControl.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSpriteFX.Forms.Controls.SwitchMode.SwitchModeControl.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.Controls.SwitchMode.SwitchModeControl.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.Controls.SwitchMode.SwitchModeControl.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSpriteFX.Forms.PathAlertForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.PathAlertForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.PathAlertForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:smartSuite.smartSpriteFX.Forms.LandscapeModeForm">
+            <summary>
+            Represents a form to handle the effect mode, animation-oriented
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSpriteFX.Forms.LandscapeModeForm._dataTreeNodeList">
+            <summary>
+            Contains just the relevant treenode
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSpriteFX.Forms.LandscapeModeForm._draftBrowser">
+            <summary>
+            It´s a browser for start from draft
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSpriteFX.Forms.LandscapeModeForm._projectBrowser">
+            <summary>
+            It´s a browser for load project
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.LandscapeModeForm.GetExceptSmartMap(System.String[])">
+            <summary>
+            Get a list informed, except for the smartMaps files.
+            </summary>
+            <param name="fileList"></param>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.LandscapeModeForm.GetSelectedNodesString(System.Windows.Forms.TreeNodeCollection)">
+            <summary>
+            Gets the list of selected nodes
+            </summary>
+            <param name="nodes"></param>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.LandscapeModeForm.GetSelectedNodes(System.Windows.Forms.TreeNodeCollection)">
+            <summary>
+            Gets the list of selected nodes
+            </summary>
+            <param name="nodes"></param>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.LandscapeModeForm.LoadSettings">
+            <summary>
+            Loads settings
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.LandscapeModeForm.LoadDefaultSetting(System.String,smartSuite.smartSpriteFX.Forms.Controls.Browsers.SmartBrowser)">
+            <summary>
+            Loads the specific default value
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.LandscapeModeForm.Interrupt">
+            <summary>
+            Interrupts the user interface
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.LandscapeModeForm.Resume">
+            <summary>
+            Resumes the user interface
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.LandscapeModeForm.EnableForm(System.Boolean)">
+            <summary>
+            Enables / disables form
+            </summary>
+            <param name="enabled"></param>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.LandscapeModeForm.DoOpenDraft(System.String)">
+            <summary>
+            Opens the draft
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.LandscapeModeForm.DoOpenProject(System.String)">
+            <summary>
+            Opens the project
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.LandscapeModeForm.RebuidTreeView">
+            <summary>
+            Rebuild the treeView
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.LandscapeModeForm.ShowControls">
+            <summary>
+            Show main controls
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.LandscapeModeForm.SetupScroll">
+            <summary>
+            Setup the scroll bars
+            </summary>
+            <remarks>
+            I prefered use this than AutoScroll because of the behavior of scroll towards form use.
+            We are using image when it focused, that is a different aproach.
+            </remarks>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.LandscapeModeForm.RefreshHookCreationMode">
+            <summary>
+            Refresh the hook creation mode
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.LandscapeModeForm.FillTreeNodeList(smartSuite.smartSpriteFX.Pictures.Piece)">
+            <summary>
+            Fills and refresh the treeNodeList with the piece assigned
+            </summary>
+            <param name="piece"></param>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.LandscapeModeForm.GetTreeNode(smartSuite.smartSpriteFX.Pictures.Piece,System.Windows.Forms.TreeNodeCollection)">
+            <summary>
+            Gets the treeNode from node collection
+            </summary>
+            <param name="piece"></param>
+            <param name="nodes"></param>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.LandscapeModeForm.GetTreeNode(smartSuite.smartSpriteFX.Pictures.Piece,System.Collections.Generic.List{System.Windows.Forms.TreeNode})">
+            <summary>
+            Gets the treeNode from node collection
+            </summary>
+            <param name="piece"></param>
+            <param name="nodes"></param>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.LandscapeModeForm.ApplyProject">
+            <summary>
+            Applies the text in textBox to project
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.LandscapeModeForm.ApplyDraft">
+            <summary>
+            Applies the draft
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.LandscapeModeForm.OnLoad(System.EventArgs)">
+            <summary>
+            Loads the form
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.LandscapeModeForm.DraftControl1_GettingSettings(System.Object,smartSuite.smartSpriteFX.Forms.Controls.ToolboxState.DraftSettings)">
+            <summary>
+            Occurs when the draft controls needs to check toolbars
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.LandscapeModeForm.TreeView1_AfterCheck(System.Object,System.Windows.Forms.TreeViewEventArgs)">
+            <summary>
+            Handles the click on check boxes
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.LandscapeModeForm.DraftControl1_PieceSetChanged(System.Object,smartSuite.smartSpriteFX.Forms.Controls.DraftControlState.PieceEventArgs)">
+            <summary>
+            Occurs then any piece was modified in somehow in draft board
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.LandscapeModeForm.TreeView1_AfterSelect(System.Object,System.Windows.Forms.TreeViewEventArgs)">
+            <summary>
+            Occurs when a node is selected
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.LandscapeModeForm.btnCutInPieces_Click(System.Object,System.EventArgs)">
+            <summary>
+            Occurs when the user exports the project to Unity
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.LandscapeModeForm.btnSaveState_Click(System.Object,System.EventArgs)">
+            <summary>
+            Saves the PieceCollection to resume the work in the next time
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="F:smartSuite.smartSpriteFX.Forms.LandscapeModeForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.LandscapeModeForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.LandscapeModeForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSpriteFX.Forms.ProgressForm._conclusionMessage">
+            <summary>
+            It´s a conclusion message that must be shown after the processing
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSpriteFX.Forms.ProgressForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.ProgressForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.ProgressForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:smartSuite.smartSpriteFX.Forms.SelectModeScreenForm">
+            <summary>
+            It´s a screen form used to alternate among the available edit modes
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSpriteFX.Forms.SelectModeScreenForm._currentMode">
+            <summary>
+            It´s the current mode.
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.SelectModeScreenForm.CheckCanProceed``1">
+            <summary>
+            Checks if the flow can resume
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.SelectModeScreenForm.ShowDemoPicture(System.Drawing.Bitmap,System.String)">
+            <summary>
+            Shows the demo picture
+            </summary>
+            <param name="explanationPicture">An explanation picture</param>
+            <param name="explanationText">An explanation text</param>
+        </member>
+        <member name="F:smartSuite.smartSpriteFX.Forms.SelectModeScreenForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.SelectModeScreenForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.SelectModeScreenForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:smartSuite.smartSpriteFX.Forms.Utilities.EffectBatchDoneDefaultConclusionMessage">
+            <summary>
+            Represents a message shown when effect applied has done.
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSpriteFX.Forms.Utilities.EffectBatchDoneDefaultConclusionMessage._parent">
+            <summary>
+            It´s the parent form
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSpriteFX.Forms.Utilities.EffectBatchDoneDefaultConclusionMessage._message">
+            <summary>
+            It´s the message to be shown
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.Forms.Utilities.EffectBatchDoneDefaultConclusionMessage.Parent">
+            <summary>
+            Gets or sets the parent
+            </summary>
+        </member>
+        <member name="T:smartSuite.smartSpriteFX.Forms.Utilities.EffectDoneDefaultConclusionMessage">
+            <summary>
+            Represents a message shown when effect applied has done.
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSpriteFX.Forms.Utilities.EffectDoneDefaultConclusionMessage._parent">
+            <summary>
+            It´s the parent form
+            </summary>
+        </member>
+        <member name="T:smartSuite.smartSpriteFX.Forms.Utilities.IConclusionMessage">
+            <summary>
+            Defines a conclusion message that needs be shown
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.Utilities.IConclusionMessage.Show(System.String)">
+            <summary>
+            Shows the message
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="T:smartSuite.smartSpriteFX.Forms.Utilities.TreeViewUtil">
+            <summary>
+            Offers utilities to work with treeviews and pieces
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.Utilities.TreeViewUtil.ConvertToTreeNode(smartSuite.smartSpriteFX.Pictures.Piece)">
+            <summary>
+            Convert a piece to a TreeNode object
+            </summary>
+            <param name="piece"></param>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.Utilities.TreeViewUtil.CloneDataTreeNodeList(System.Collections.Generic.List{System.Windows.Forms.TreeNode})">
+            <summary>
+            Gets a clone of list
+            </summary>
+            <param name="dataTreeNodeList"></param>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.Utilities.TreeViewUtil.GetParentNode(System.Windows.Forms.TreeNode,System.Collections.Generic.List{System.Windows.Forms.TreeNode})">
+            <summary>
+            Gets the group applicable to treeNodeList
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.Utilities.TreeViewUtil.ContainsTreeNodeList(System.Windows.Forms.TreeNode,System.Collections.Generic.List{System.Windows.Forms.TreeNode})">
+            <summary>
+            Checks if the data tree node exists in data buffer, based on Piece associed
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.Utilities.TreeViewUtil.ContainsTreeNodeList(System.Windows.Forms.TreeNode,System.Windows.Forms.TreeNodeCollection)">
+            <summary>
+            Checks if the data tree node exists in data buffer, based on Piece associed
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.Utilities.TreeViewUtil.DoContainsTreeNodeList(System.Windows.Forms.TreeNode,System.Collections.IList)">
+            <summary>
+            Checks if the data tree node exists in data buffer, based on Piece associed
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.Utilities.TreeViewUtil.MoveToNodeList(System.Windows.Forms.TreeNode,System.Windows.Forms.TreeNode)">
+            <summary>
+            Move node to a nodelist
+            </summary>
+            <param name="item"></param>
+            <param name="treeNodeGroup"></param>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.Utilities.TreeViewUtil.DetermineChildren(System.Windows.Forms.TreeNode,System.Collections.Generic.List{System.Windows.Forms.TreeNode})">
+            <summary>
+            Determines the children of treeNode
+            </summary>
+            <param name="treeNode"></param>
+            <param name="nodeList"></param>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.Utilities.TreeViewUtil.ResetParent(System.Collections.Generic.List{System.Windows.Forms.TreeNode})">
+            <summary>
+            Reset the parent of each nodes
+            </summary>
+            <param name="dataTreeNodeList"></param>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.Utilities.TreeViewUtil.GetAllTreeNodes(System.Windows.Forms.TreeNodeCollection)">
+            <summary>
+            Gets all the treenodes, regardless of levels, from the treeNodeList
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.Utilities.TreeViewUtil.OrganizeFamily(System.Collections.Generic.List{System.Windows.Forms.TreeNode})">
+            <summary>
+            Sets the family of pieces
+            </summary>
+            <param name="dataTreeNodeList"></param>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.Utilities.TreeViewUtil.BuildTreeHierarchy(System.Collections.Generic.List{smartSuite.smartSpriteFX.Pictures.Piece},System.Collections.Generic.List{System.Windows.Forms.TreeNode})">
+            <summary>
+            Gets a build of tree hierarchy created from dataTreeNode
+            </summary>
+            <param name="pieceList"></param>
+            <param name="dataTreeNodeList"></param>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.Utilities.TreeViewUtil.RemoveFromParent(System.Windows.Forms.TreeNode)">
+            <summary>
+            Removesa node from its parent
+            </summary>
+            <param name="treeNode"></param>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.Utilities.TreeViewUtil.GetTreeNode(System.Collections.Generic.List{System.Windows.Forms.TreeNode},smartSuite.smartSpriteFX.Pictures.Piece)">
+            <summary>
+            Gets a treenode respective to piece item.
+            </summary>
+            <param name="dataTreeNodeList"></param>
+            <param name="pieceItem"></param>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.Utilities.TreeViewUtil.GetPieceList(System.Collections.Generic.List{System.Windows.Forms.TreeNode})">
+            <summary>
+            Gets the piece list from TreeNode
+            </summary>
+            <param name="dataTreeNodeList"></param>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Program.Main">
+            <summary>
+            The main entry point for the application.
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Program.ReleaseTempFiles">
+            <summary>
+            Releases the temporary files
+            </summary>
+        </member>
+        <member name="T:smartSuite.smartSpriteFX.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.Properties.Resources.arrow">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.Properties.Resources.background">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.Properties.Resources.down">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.Properties.Resources.effectbatch">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.Properties.Resources.EffectControl">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.Properties.Resources.effectmode">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.Properties.Resources.error">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.Properties.Resources.FilterBox">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.Properties.Resources.Find">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.Properties.Resources.FxDemo">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.Properties.Resources.Hook">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.Properties.Resources.landscapemode">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.Properties.Resources.logo">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.Properties.Resources.opened_folder_0_filtered">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.Properties.Resources.pendrive_0_filtered">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.Properties.Resources.promo_landscape_mode">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.Properties.Resources.up">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+    </members>
+</doc>
