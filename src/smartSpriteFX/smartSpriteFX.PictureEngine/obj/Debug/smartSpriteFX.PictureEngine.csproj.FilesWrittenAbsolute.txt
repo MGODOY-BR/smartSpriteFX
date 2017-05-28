@@ -1,0 +1,8 @@
+/home/marcelo/Documentos/Repositorio GIT/smartSpriteFX/src/smartSpriteFX/smartSpriteFX.PictureEngine/obj/Debug/.NETFramework,Version=v4.5.2.AssemblyAttribute.cs
+/home/marcelo/Documentos/Repositorio GIT/smartSpriteFX/src/smartSpriteFX/smartSpriteFX.PictureEngine/obj/Debug/smartSuite.smartSpriteFX.Forms.ColorSupportForm.resources
+/home/marcelo/Documentos/Repositorio GIT/smartSpriteFX/src/smartSpriteFX/smartSpriteFX.PictureEngine/obj/Debug/smartSuite.smartSpriteFX.PictureEngine.Templates.UnityMetaFile.resources
+/home/marcelo/Documentos/Repositorio GIT/smartSpriteFX/src/smartSpriteFX/smartSpriteFX.PictureEngine/bin/Debug/smartSpriteFX.PictureEngine.dll.config
+/home/marcelo/Documentos/Repositorio GIT/smartSpriteFX/src/smartSpriteFX/smartSpriteFX.PictureEngine/bin/Debug/smartSpriteFX.PictureEngine.pdb
+/home/marcelo/Documentos/Repositorio GIT/smartSpriteFX/src/smartSpriteFX/smartSpriteFX.PictureEngine/bin/Debug/smartSpriteFX.PictureEngine.dll
+/home/marcelo/Documentos/Repositorio GIT/smartSpriteFX/src/smartSpriteFX/smartSpriteFX.PictureEngine/obj/Debug/smartSpriteFX.PictureEngine.dll
+/home/marcelo/Documentos/Repositorio GIT/smartSpriteFX/src/smartSpriteFX/smartSpriteFX.PictureEngine/obj/Debug/smartSpriteFX.PictureEngine.pdb

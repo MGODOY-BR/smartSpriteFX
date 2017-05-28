@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -53,14 +53,10 @@
     <DocumentationFile>bin\Release\smartSpriteFX.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup>
-    <SignAssembly>true</SignAssembly>
-  </PropertyGroup>
-  <PropertyGroup>
     <AssemblyOriginatorKeyFile>smartSpriteFX.key.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -71,6 +67,7 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Forms\AboutBoxForm.cs">
@@ -228,7 +225,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\smartSpriteFX.Common.UI\smartSpriteFX.Common.UI.csproj">
-      <Project>{03f65981-2e12-42fc-93eb-3e8088107515}</Project>
+      <Project>{03F65981-2E12-42FC-93EB-3E8088107515}</Project>
       <Name>smartSpriteFX.Common.UI</Name>
     </ProjectReference>
     <ProjectReference Include="..\smartSpriteFX.PictureEngine\smartSpriteFX.PictureEngine.csproj">
@@ -236,7 +233,7 @@
       <Name>smartSpriteFX.PictureEngine</Name>
     </ProjectReference>
     <ProjectReference Include="..\smartSpriteFX.SpriteEffectModule\smartSpriteFX.SpriteEffectModule.csproj">
-      <Project>{09dee0f5-2b1a-44e9-be7c-9dc0eb93bee8}</Project>
+      <Project>{09DEE0F5-2B1A-44E9-BE7C-9DC0EB93BEE8}</Project>
       <Name>smartSpriteFX.SpriteEffectModule</Name>
     </ProjectReference>
   </ItemGroup>

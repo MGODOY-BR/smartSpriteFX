@@ -1373,37 +1373,37 @@
         </member>
         <member name="F:smartSuite.smartSpriteFX.Effects.Filters._8BitFilter._colorBufferAmount">
             <summary>
-            It´s the color buffer amount
+            It�s the color buffer amount
             </summary>
         </member>
         <member name="F:smartSuite.smartSpriteFX.Effects.Filters._8BitFilter._destinationScreenWidth">
             <summary>
-            It´s the destination width
+            It�s the destination width
             </summary>
         </member>
         <member name="F:smartSuite.smartSpriteFX.Effects.Filters._8BitFilter._destinationScreenHeight">
             <summary>
-            It´s the destination height
+            It�s the destination height
             </summary>
         </member>
         <member name="F:smartSuite.smartSpriteFX.Effects.Filters._8BitFilter._screenWidth">
             <summary>
-            It´s the origin width
+            It�s the origin width
             </summary>
         </member>
         <member name="F:smartSuite.smartSpriteFX.Effects.Filters._8BitFilter._screenHeight">
             <summary>
-            It´s the origin height
+            It�s the origin height
             </summary>
         </member>
         <member name="F:smartSuite.smartSpriteFX.Effects.Filters._8BitFilter._contrast">
             <summary>
-            It´s a contrast among the colors
+            It�s a contrast among the colors
             </summary>
         </member>
         <member name="F:smartSuite.smartSpriteFX.Effects.Filters._8BitFilter._avoidColorList">
             <summary>
-            It´s a list of color to avoid
+            It�s a list of color to avoid
             </summary>
         </member>
         <member name="M:smartSuite.smartSpriteFX.Effects.Filters._8BitFilter.GetIdentification">
@@ -1427,37 +1427,37 @@
         </member>
         <member name="F:smartSuite.smartSpriteFX.Effects.Filters._24BitFilter._colorBufferAmount">
             <summary>
-            It´s the color buffer amount
+            It�s the color buffer amount
             </summary>
         </member>
         <member name="F:smartSuite.smartSpriteFX.Effects.Filters._24BitFilter._destinationScreenWidth">
             <summary>
-            It´s the destination width
+            It�s the destination width
             </summary>
         </member>
         <member name="F:smartSuite.smartSpriteFX.Effects.Filters._24BitFilter._destinationScreenHeight">
             <summary>
-            It´s the destination height
+            It�s the destination height
             </summary>
         </member>
         <member name="F:smartSuite.smartSpriteFX.Effects.Filters._24BitFilter._screenWidth">
             <summary>
-            It´s the origin width
+            It�s the origin width
             </summary>
         </member>
         <member name="F:smartSuite.smartSpriteFX.Effects.Filters._24BitFilter._screenHeight">
             <summary>
-            It´s the origin height
+            It�s the origin height
             </summary>
         </member>
         <member name="F:smartSuite.smartSpriteFX.Effects.Filters._24BitFilter._contrast">
             <summary>
-            It´s a contrast among the colors
+            It�s a contrast among the colors
             </summary>
         </member>
         <member name="F:smartSuite.smartSpriteFX.Effects.Filters._24BitFilter._avoidColorList">
             <summary>
-            It´s a list of color to avoid
+            It�s a list of color to avoid
             </summary>
         </member>
         <member name="M:smartSuite.smartSpriteFX.Effects.Filters._24BitFilter.GetIdentification">
@@ -1481,37 +1481,37 @@
         </member>
         <member name="F:smartSuite.smartSpriteFX.Effects.Filters._16BitFilter._colorBufferAmount">
             <summary>
-            It´s the color buffer amount
+            It�s the color buffer amount
             </summary>
         </member>
         <member name="F:smartSuite.smartSpriteFX.Effects.Filters._16BitFilter._destinationScreenWidth">
             <summary>
-            It´s the destination width
+            It�s the destination width
             </summary>
         </member>
         <member name="F:smartSuite.smartSpriteFX.Effects.Filters._16BitFilter._destinationScreenHeight">
             <summary>
-            It´s the destination height
+            It�s the destination height
             </summary>
         </member>
         <member name="F:smartSuite.smartSpriteFX.Effects.Filters._16BitFilter._screenWidth">
             <summary>
-            It´s the origin width
+            It�s the origin width
             </summary>
         </member>
         <member name="F:smartSuite.smartSpriteFX.Effects.Filters._16BitFilter._screenHeight">
             <summary>
-            It´s the origin height
+            It�s the origin height
             </summary>
         </member>
         <member name="F:smartSuite.smartSpriteFX.Effects.Filters._16BitFilter._contrast">
             <summary>
-            It´s a contrast among the colors
+            It�s a contrast among the colors
             </summary>
         </member>
         <member name="F:smartSuite.smartSpriteFX.Effects.Filters._16BitFilter._avoidColorList">
             <summary>
-            It´s a list of color to avoid
+            It�s a list of color to avoid
             </summary>
         </member>
         <member name="M:smartSuite.smartSpriteFX.Effects.Filters._16BitFilter.GetIdentification">
