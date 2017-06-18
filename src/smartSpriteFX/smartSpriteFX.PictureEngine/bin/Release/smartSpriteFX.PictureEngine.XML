@@ -918,7 +918,7 @@
         </member>
         <member name="P:smartSuite.smartSpriteFX.Pictures.Point.Y">
             <summary>
-            It�s a coordinate Y
+            It´s a coordinate Y
             </summary>
         </member>
         <member name="M:smartSuite.smartSpriteFX.Pictures.Point.Clone">

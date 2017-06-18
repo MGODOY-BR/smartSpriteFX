@@ -116,7 +116,24 @@ namespace smartSuite.smartSpriteFX.Forms.Controls.Animations.Frames
                             FrameIndex = i
                         };
                         pictureBox.Click += PictureBox_Click;
-                        flowLayoutPanel1.Controls.Add(pictureBox);
+
+                        Label title = new Label();
+                        title.Text = Path.GetFileName(fileItem);
+                        title.ForeColor = Color.White;
+                        title.BorderStyle = BorderStyle.FixedSingle;
+                        title.Click += delegate (Object sender, EventArgs e)
+                        {
+                            this.OnSelectingFrame(pictureBox);
+                        };
+
+                        Panel panel = new Panel();
+                        panel.BorderStyle = BorderStyle.FixedSingle;
+                        panel.Controls.Add(title);
+                        title.Dock = DockStyle.Right;
+                        panel.Controls.Add(pictureBox);
+
+                        panel.Width = pictureBox.Width + title.Width; 
+                        flowLayoutPanel1.Controls.Add(panel);
                     }
                 }
                 catch(Exception ex)
