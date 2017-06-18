@@ -302,11 +302,6 @@
             It's the last selected frame
             </summary>
         </member>
-        <member name="F:smartSuite.smartSpriteFX.Forms.Controls.Animations.Frames.FrameSelectionControl._toolTip">
-            <summary>
-            It´s the toopTip manager
-            </summary>
-        </member>
         <member name="M:smartSuite.smartSpriteFX.Forms.Controls.Animations.Frames.FrameSelectionControl.SetPath(System.String)">
             <summary>
             Sets the path

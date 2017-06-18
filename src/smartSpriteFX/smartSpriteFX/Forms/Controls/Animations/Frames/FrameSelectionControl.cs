@@ -81,7 +81,9 @@ namespace smartSuite.smartSpriteFX.Forms.Controls.Animations.Frames
             this._fileList.Clear();
             this._fileList.AddRange(
                 FrameIterator.GetFileList(this._path));
-                //Directory.GetFiles(this._path));
+
+            // Sorting list
+            _fileList.Sort();
 
             this.numCurrentFrame.Minimum = 1;
             this.numCurrentFrame.Maximum = this._fileList.Count;

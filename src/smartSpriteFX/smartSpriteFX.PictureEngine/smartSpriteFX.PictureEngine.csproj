@@ -37,6 +37,9 @@
   <PropertyGroup>
     <AssemblyOriginatorKeyFile>smartSpriteFX.key.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
