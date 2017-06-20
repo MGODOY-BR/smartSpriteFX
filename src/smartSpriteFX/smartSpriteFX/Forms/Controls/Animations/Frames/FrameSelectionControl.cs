@@ -82,9 +82,6 @@ namespace smartSuite.smartSpriteFX.Forms.Controls.Animations.Frames
             this._fileList.AddRange(
                 FrameIterator.GetFileList(this._path));
 
-            // Sorting list
-            _fileList.Sort();
-
             this.numCurrentFrame.Minimum = 1;
             this.numCurrentFrame.Maximum = this._fileList.Count;
             this.lblTotal.Text = String.Format("(Total: {0})", this._fileList.Count);
