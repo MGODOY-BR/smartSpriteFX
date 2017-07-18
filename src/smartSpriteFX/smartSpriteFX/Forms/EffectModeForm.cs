@@ -20,6 +20,7 @@ using smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI;
 using smartSuite.smartSpriteFX.Forms.Controls.SwitchMode;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
+using System.Configuration;
 
 namespace smartSuite.smartSpriteFX.Forms
 {
@@ -45,12 +46,22 @@ namespace smartSuite.smartSpriteFX.Forms
             smartBrowser.DialogTitle = "Open a animation folder";
             smartBrowser.FrameTitle = "Animation folder";
             smartBrowser.Dock = DockStyle.Fill;
-            if (!String.IsNullOrEmpty(Settings.Default.lastAnimationFolder))
+            try
             {
-                smartBrowser.LoadLastUserChoice(Settings.Default.lastAnimationFolder);
+                if (!String.IsNullOrEmpty(Settings.Default.lastAnimationFolder))
+                {
+                    smartBrowser.LoadLastUserChoice(Settings.Default.lastAnimationFolder);
+                }
             }
-            smartBrowser.ChosenByUserEvent += SmartBrowser_ChosenByUserEvent;
-            this.panelBrowser.Controls.Add(smartBrowser);
+            catch(ConfigurationErrorsException)
+            {
+                // Errors of this kind can't turn away the flow.
+            }
+            finally
+            {
+                smartBrowser.ChosenByUserEvent += SmartBrowser_ChosenByUserEvent;
+                this.panelBrowser.Controls.Add(smartBrowser);
+            }
 
             // Showing pallete tool window
             _effectFilterPalleteControl.Dock = DockStyle.Fill;
@@ -59,10 +70,17 @@ namespace smartSuite.smartSpriteFX.Forms
 
             this.previewBoard.LoadCompleted += PreviewBoard_LoadCompleted;
 
-            if (!String.IsNullOrWhiteSpace(Settings.Default.lastFilterSet))
+            try
             {
-                this.filterSetOpenDialog.FileName = Settings.Default.lastFilterSet;
-                this.filterSetSaveDialog.FileName = Settings.Default.lastFilterSet;
+                if (!String.IsNullOrWhiteSpace(Settings.Default.lastFilterSet))
+                {
+                    this.filterSetOpenDialog.FileName = Settings.Default.lastFilterSet;
+                    this.filterSetSaveDialog.FileName = Settings.Default.lastFilterSet;
+                }
+            }
+            catch (ConfigurationErrorsException)
+            {
+                // Errors of this kind can't turn away the flow.
             }
         }
 
