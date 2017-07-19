@@ -1,8 +1,3 @@
-C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.Common.UI\obj\Release\smartSuite.smartSpriteFX.Forms.Controls.DraftControl.resources
-C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.Common.UI\obj\Release\smartSuite.smartSpriteFX.Forms.Controls.HookControl.resources
-C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.Common.UI\obj\Release\smartSuite.smartSpriteFX.Forms.Controls.LineControl.resources
-C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.Common.UI\obj\Release\smartSuite.smartSpriteFX.Common.UI.Properties.Resource.resources
-C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.Common.UI\obj\Release\smartSpriteFX.Common.UI.csproj.GenerateResource.Cache
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.Common.UI\bin\Release\smartSpriteFX.Common.UI.XML
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.Common.UI\bin\Release\smartSpriteFX.Common.UI.dll
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.Common.UI\bin\Release\smartSpriteFX.Common.UI.pdb
@@ -11,5 +6,10 @@ C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smart
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.Common.UI\bin\Release\smartSpriteFX.PictureEngine.xml
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.Common.UI\bin\Release\smartSpriteFX.PictureEngine.dll.config
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.Common.UI\obj\Release\smartSpriteFX.Common.UI.csprojResolveAssemblyReference.cache
+C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.Common.UI\obj\Release\smartSuite.smartSpriteFX.Forms.Controls.DraftControl.resources
+C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.Common.UI\obj\Release\smartSuite.smartSpriteFX.Forms.Controls.HookControl.resources
+C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.Common.UI\obj\Release\smartSuite.smartSpriteFX.Forms.Controls.LineControl.resources
+C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.Common.UI\obj\Release\smartSuite.smartSpriteFX.Common.UI.Properties.Resource.resources
+C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.Common.UI\obj\Release\smartSpriteFX.Common.UI.csproj.GenerateResource.Cache
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.Common.UI\obj\Release\smartSpriteFX.Common.UI.dll
 C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.Common.UI\obj\Release\smartSpriteFX.Common.UI.pdb
