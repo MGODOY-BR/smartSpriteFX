@@ -9,3 +9,4 @@ Improvements
 Bugfixes
 - Frame order has been corrected
 - Version incompability in user settings
+- Temp directory is created when it doesn't exist

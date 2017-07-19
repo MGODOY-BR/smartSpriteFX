@@ -164,8 +164,18 @@ namespace smartSuite.smartSpriteFX.Forms
                 this.frameBox.Controls.Add(frameSelectionControl);
                 this.previewBoard.Image = null;
 
-                Settings.Default.lastAnimationFolder = e.UserChoice;
-                Settings.Default.Save();
+                try
+                {
+                    Settings.Default.lastAnimationFolder = e.UserChoice;
+                }
+                catch(ConfigurationErrorsException)
+                {
+                    // Errors this kind can't turn around the flow
+                }
+                finally
+                {
+                    Settings.Default.Save();
+                }
 
                 _effectFilterPalleteControl.Bind();
             }
