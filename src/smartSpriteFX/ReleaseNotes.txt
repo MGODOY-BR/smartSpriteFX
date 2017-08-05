@@ -2,6 +2,7 @@ vAlpha 3.0.0.1
 
 New Feactures
 - Wellcome Linux SO! Now we are compatible through Mono framework!!
+- Brand new filter: AlignToBottom
 
 Improvements
 - Frames has brought its file names
