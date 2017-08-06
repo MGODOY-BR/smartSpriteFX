@@ -393,6 +393,16 @@
             Represents whe height of picture
             </summary>
         </member>
+        <member name="P:smartSuite.smartSpriteFX.Pictures.Picture.OriginalWidth">
+            <summary>
+            Gets the original width of picture with no filters applied
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.Pictures.Picture.OriginalHeight">
+            <summary>
+            Gets the original height of picture with no filters applied
+            </summary>
+        </member>
         <member name="F:smartSuite.smartSpriteFX.Pictures.Picture._transparentColor">
             <summary>
             It´s the transparent color

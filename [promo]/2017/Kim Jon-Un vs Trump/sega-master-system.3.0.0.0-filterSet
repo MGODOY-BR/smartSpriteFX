@@ -1,0 +1,3 @@
+0-ScaleFilter={Scale[0.5]}
+1-PaintedByHandFilter={Contrast[15]}
+2-_8BitFilter={ColorBufferAmount[32]}{DestinationScreenWidth[256]}{DestinationScreenHeight[192]}{Contrast[0]}{TotalScreenWidth[1366]}{TotalScreenHeight[768]}{AvoidColorList[System.Collections.Generic.List`1[System.Drawing.Color]]}

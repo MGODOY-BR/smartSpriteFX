@@ -1,0 +1,11 @@
+/home/marcelo/Documentos/Repositorio GIT/smartSpriteFX/src/smartSpriteFX/smartSpriteFX.Common.UI/obj/Release/.NETFramework,Version=v4.5.2.AssemblyAttribute.cs
+/home/marcelo/Documentos/Repositorio GIT/smartSpriteFX/src/smartSpriteFX/smartSpriteFX.Common.UI/obj/Release/smartSuite.smartSpriteFX.Forms.Controls.DraftControl.resources
+/home/marcelo/Documentos/Repositorio GIT/smartSpriteFX/src/smartSpriteFX/smartSpriteFX.Common.UI/obj/Release/smartSuite.smartSpriteFX.Forms.Controls.HookControl.resources
+/home/marcelo/Documentos/Repositorio GIT/smartSpriteFX/src/smartSpriteFX/smartSpriteFX.Common.UI/obj/Release/smartSuite.smartSpriteFX.Forms.Controls.LineControl.resources
+/home/marcelo/Documentos/Repositorio GIT/smartSpriteFX/src/smartSpriteFX/smartSpriteFX.Common.UI/obj/Release/smartSuite.smartSpriteFX.Common.UI.Properties.Resource.resources
+/home/marcelo/Documentos/Repositorio GIT/smartSpriteFX/src/smartSpriteFX/smartSpriteFX.Common.UI/bin/Release/smartSpriteFX.Common.UI.pdb
+/home/marcelo/Documentos/Repositorio GIT/smartSpriteFX/src/smartSpriteFX/smartSpriteFX.Common.UI/bin/Release/smartSpriteFX.Common.UI.dll
+/home/marcelo/Documentos/Repositorio GIT/smartSpriteFX/src/smartSpriteFX/smartSpriteFX.Common.UI/obj/Release/smartSpriteFX.Common.UI.dll
+/home/marcelo/Documentos/Repositorio GIT/smartSpriteFX/src/smartSpriteFX/smartSpriteFX.Common.UI/obj/Release/smartSpriteFX.Common.UI.pdb
+/home/marcelo/Documentos/Repositorio GIT/smartSpriteFX/src/smartSpriteFX/smartSpriteFX.Common.UI/bin/Release/smartSpriteFX.PictureEngine.dll
+/home/marcelo/Documentos/Repositorio GIT/smartSpriteFX/src/smartSpriteFX/smartSpriteFX.Common.UI/bin/Release/smartSpriteFX.PictureEngine.pdb

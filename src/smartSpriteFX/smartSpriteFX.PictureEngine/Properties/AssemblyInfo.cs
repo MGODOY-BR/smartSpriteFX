@@ -34,6 +34,7 @@ using System.Runtime.InteropServices;
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.1")]
 [assembly: AssemblyFileVersion("1.0.0.5")]
+
 [assembly: InternalsVisibleTo("smartSpriteFX.SpriteEffectModule, PublicKey=00240000048000009400000006020000002400005253413100040000010001009d93e3c5162bc1" +
 "036e1f9d2573966dbc2b878d094f0bd39d90a34fe209f7f51c04368a55423c4599fecde91a0918" +
 "62f5f8c2f133c42599b19c0f068b84f8ad21a1f74923963663256fef533cb0f9ca91f9a252cc39" +

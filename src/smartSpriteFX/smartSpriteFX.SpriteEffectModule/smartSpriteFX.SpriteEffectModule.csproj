@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -33,10 +33,10 @@
     <DocumentationFile>bin\Release\smartSpriteFX.SpriteEffectModule.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup>
-    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>smartSpriteFX.key.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>smartSpriteFX.key.pfx</AssemblyOriginatorKeyFile>
+    <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -54,6 +54,7 @@
     <Compile Include="Animations\AnimationComparer.cs" />
     <Compile Include="Animations\FrameIterator.cs" />
     <Compile Include="Effects\Core\EffectEngine.cs" />
+    <Compile Include="Effects\Filters\AlignToBottomFilter.cs" />
     <Compile Include="Effects\Filters\AlphaFilter.cs" />
     <Compile Include="Effects\Filters\BrightFilter.cs" />
     <Compile Include="Effects\Filters\CropFilter.cs" />
@@ -165,7 +166,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\smartSpriteFX.Common.UI\smartSpriteFX.Common.UI.csproj">
-      <Project>{03f65981-2e12-42fc-93eb-3e8088107515}</Project>
+      <Project>{03F65981-2E12-42FC-93EB-3E8088107515}</Project>
       <Name>smartSpriteFX.Common.UI</Name>
     </ProjectReference>
     <ProjectReference Include="..\smartSpriteFX.PictureEngine\smartSpriteFX.PictureEngine.csproj">

@@ -343,6 +343,10 @@ namespace smartSuite.smartSpriteFX.Effects.Core{
 
             // Saving the result file
             var tempFile = Path.Combine("Temp", Guid.NewGuid().ToString());
+            if(!Directory.Exists("Temp"))
+            {
+                Directory.CreateDirectory("Temp");
+            }
             previewFrame.SaveCopy(tempFile);
 
             // Clearing the preview board

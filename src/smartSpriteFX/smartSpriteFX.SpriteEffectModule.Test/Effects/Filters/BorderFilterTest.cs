@@ -53,6 +53,8 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Test.Effects.Filters
 
             // HACK: Too complex assertion
             // Assert.AreEqual(...;
+            Assert.AreEqual(371, frame.OriginalHeight);
+            Assert.AreEqual(310, frame.OriginalWidth);
 
             #endregion
         }

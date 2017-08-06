@@ -1,23 +1,13 @@
-vAlpha 3.0.0.0
+vAlpha 3.0.0.1
 
 New Feactures
-- Resize to fit was replaced by brand new Scale
-- New filter: Green Filter
-- New filter: Red Filter
-- New filter: Blue Filter
-- New filter: Alpha Filter
-- New filter: Bright Filter
-- New filter: Painted by Hand
-- Now it is possible save and reload the filter set!!!!
-- New Effect Batch Mode!!!!
+- Wellcome Linux SO! Now we are compatible through Mono framework!!
+- Brand new filter: AlignToBottom
 
 Improvements
+- Frames has brought its file names
 
 Bugfixes
-- A few UI fixes
-- Conflict between Crop and Transparent Background has been corrected!!
-- Conflict between Free Cut and Transparent Background has been corrected!!
-- Conflict between Made by Hand and Crop has been corrected!!
-- Conflict between all Old-School Game filters and Crop has been corrected!!
-- Changing in order of an effect doesn't loose focus of it anymore
-- FrameRate has been corrected
+- Frame order has been corrected
+- Version incompability in user settings
+- Temp directory is created when it doesn't exist

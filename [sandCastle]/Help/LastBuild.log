@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shfbBuild product="Sandcastle Help File Builder and Tools" version="2016.9.17.0" projectFile="C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\smartSpriteFX.helpProject.shfbproj" started="15/04/2017 00:26:41">
+<shfbBuild product="Sandcastle Help File Builder and Tools" version="2017.5.15.0" projectFile="C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\smartSpriteFX.helpProject.shfbproj" started="06/08/2017 14:57:02">
 <buildStep step="Initializing">
 Finding tools...
 The Sandcastle tools are located in &#39;C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\&#39;
@@ -12,8 +12,8 @@ Locating components in the following folder(s):
 Using framework reflection data for &#39;.NET Framework 4.5.2&#39; located in &#39;C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\Data\.NETFramework&#39;
 Using presentation style &#39;VS2013&#39; located in &#39;C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013&#39;
 Loading and initializing plug-ins...
-Lightweight Website Style Version 2016.9.17.0
-Copyright &#169; 2006-2016, Eric Woodruff, All Rights Reserved
+Lightweight Website Style Version 2017.5.15.0
+Copyright &#169; 2006-2017, Eric Woodruff, All Rights Reserved
 Portions Copyright &#169; 2014, Sam Harwell, All Rights Reserved
 </buildStep>
 <buildStep step="ValidatingDocumentationSources">
@@ -39,80 +39,78 @@ Copying XML comments files
     C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule\bin\Release\smartSpriteFX.SpriteEffectModule.XML -&gt; C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\smartSpriteFX.SpriteEffectModule.XML
 </buildStep>
 <buildStep step="GenerateSharedContent">
-Generating shared content files (en-US, Ingl&#234;s (Estados Unidos))...
+Generating shared content files (en-US, English (United States))...
 <plugIn name="Lightweight Website Style" behavior="After" priority="1000">
-</plugIn>    Last step completed in 00:00:00,0221
+</plugIn>    Last step completed in 00:00:00,0655
 </buildStep>
 <buildStep step="GenerateApiFilter">
 Generating API filter for MRefBuilder...
-    Last step completed in 00:00:00,0175
+    Last step completed in 00:00:00,0040
 </buildStep>
 <buildStep step="GenerateReflectionInfo">
 Generating reflection information...
-[C:\Windows\Microsoft.NET\Framework64\v4.0.30319\MSBuild.exe - GenerateRefInfo.proj]
-Compila‡&#198;o de 15/04/2017 00:26:42 iniciada.
+[C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\MSBuild.exe - GenerateRefInfo.proj]
+Compila‡&#198;o de 06/08/2017 14:57:04 iniciada.
 Projeto &quot;C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\GenerateRefInfo.proj&quot; no n&#162; 1 (destinos padr&#198;o).
-O arquivo de projeto cont‚m o ToolsVersion=&quot;12.0&quot;. Esse conjunto de ferramentas ‚ desconhecido ou est&#160; ausente, o que talvez possa ser resolvido com a instala‡&#198;o da vers&#198;o apropriada do MSBuild. Tamb‚m ‚ poss&#161;vel que a compila‡&#198;o tenha sido for‡ada para uma vers&#198;o espec&#161;fica do ToolsVersion por motivo de pol&#161;tica. Tratando o projeto como se tivesse o ToolsVersion=&quot;4.0&quot;. Para obter mais informa‡&#228;es, consulte http://go.microsoft.com/fwlink/?LinkId=291333.
 PrepareForBuild:
   Criando o diret&#162;rio &quot;obj\Debug\&quot;.
 GenerateRefInfo:
-  MRefBuilder (v2016.9.17.0)
-  Copyright &#184; 2006-2016, Microsoft Corporation, All Rights Reserved.
+  MRefBuilder (v2017.5.15.0)
+  Copyright &#184; 2006-2017, Microsoft Corporation, All Rights Reserved.
   Portions Copyright &#184; 2006-2016, Eric Woodruff, All Rights Reserved.
   No source code context base path specified.  Source context information is unavailable.
   Loaded 3 assemblies for reflection and 1 dependency assemblies.
-  Wrote information on 29 namespaces, 80 types, and 461 members
+  Wrote information on 29 namespaces, 81 types, and 468 members
   Copiando o arquivo de &quot;reflection.org&quot; para &quot;reflection.all&quot;.
-  XslTransform (v2016.9.17.0)
-  Copyright &#184; 2006-2016, Microsoft Corporation, All Rights Reserved.
+  XslTransform (v2017.5.15.0)
+  Copyright &#184; 2006-2017, Microsoft Corporation, All Rights Reserved.
   Portions Copyright &#184; 2006-2016, Eric Woodruff, All Rights Reserved.
   Applying XSL transformation &#39;C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\ProductionTransforms\MergeDuplicates.xsl&#39;.
 Projeto de compila‡&#198;o pronto &quot;C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\GenerateRefInfo.proj&quot; (destinos padr&#198;o).
 
 Compila‡&#198;o com ˆxito.
 
-Tempo Decorrido 00:00:02.10
-    Last step completed in 00:00:02,4073
+Tempo Decorrido 00:00:01.47
+    Last step completed in 00:00:01,8877
 </buildStep>
 <buildStep step="TransformReflectionInfo">
 Transforming reflection output...
-[C:\Windows\Microsoft.NET\Framework64\v4.0.30319\MSBuild.exe - TransformManifest.proj]
-Compila‡&#198;o de 15/04/2017 00:26:44 iniciada.
+[C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\MSBuild.exe - TransformManifest.proj]
+Compila‡&#198;o de 06/08/2017 14:57:05 iniciada.
 Projeto &quot;C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\TransformManifest.proj&quot; no n&#162; 1 (destinos padr&#198;o).
-O arquivo de projeto cont‚m o ToolsVersion=&quot;12.0&quot;. Esse conjunto de ferramentas ‚ desconhecido ou est&#160; ausente, o que talvez possa ser resolvido com a instala‡&#198;o da vers&#198;o apropriada do MSBuild. Tamb‚m ‚ poss&#161;vel que a compila‡&#198;o tenha sido for‡ada para uma vers&#198;o espec&#161;fica do ToolsVersion por motivo de pol&#161;tica. Tratando o projeto como se tivesse o ToolsVersion=&quot;4.0&quot;. Para obter mais informa‡&#228;es, consulte http://go.microsoft.com/fwlink/?LinkId=291333.
 TransformManifest:
-  XslTransform (v2016.9.17.0)
-  Copyright &#184; 2006-2016, Microsoft Corporation, All Rights Reserved.
+  XslTransform (v2017.5.15.0)
+  Copyright &#184; 2006-2017, Microsoft Corporation, All Rights Reserved.
   Portions Copyright &#184; 2006-2016, Eric Woodruff, All Rights Reserved.
   Applying XSL transformation &#39;C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\\ProductionTransforms\ApplyVSDocModel.xsl&#39;.
   Copiando o arquivo de &quot;reflection.xml&quot; para &quot;reflection.ungrouped&quot;.
-  AddNamespaceGroups (v2016.9.17.0)
-  Copyright &#184; 2006-2016, Eric Woodruff, All Rights Reserved
+  AddNamespaceGroups (v2017.5.15.0)
+  Copyright &#184; 2006-2017, Eric Woodruff, All Rights Reserved
   Added 8 namespace group entries
   Copiando o arquivo de &quot;reflection.xml&quot; para &quot;reflection.nofilenames&quot;.
-  XslTransform (v2016.9.17.0)
-  Copyright &#184; 2006-2016, Microsoft Corporation, All Rights Reserved.
+  XslTransform (v2017.5.15.0)
+  Copyright &#184; 2006-2017, Microsoft Corporation, All Rights Reserved.
   Portions Copyright &#184; 2006-2016, Eric Woodruff, All Rights Reserved.
   Applying XSL transformation &#39;C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\ProductionTransforms\AddFilenames.xsl&#39;.
-  XslTransform (v2016.9.17.0)
-  Copyright &#184; 2006-2016, Microsoft Corporation, All Rights Reserved.
+  XslTransform (v2017.5.15.0)
+  Copyright &#184; 2006-2017, Microsoft Corporation, All Rights Reserved.
   Portions Copyright &#184; 2006-2016, Eric Woodruff, All Rights Reserved.
   Applying XSL transformation &#39;C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\ProductionTransforms\ReflectionToManifest.xsl&#39;.
 Projeto de compila‡&#198;o pronto &quot;C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\TransformManifest.proj&quot; (destinos padr&#198;o).
 
 Compila‡&#198;o com ˆxito.
 
-Tempo Decorrido 00:00:04.65
-    Last step completed in 00:00:04,9211
+Tempo Decorrido 00:00:03.91
+    Last step completed in 00:00:04,0395
 </buildStep>
 <buildStep step="GenerateNamespaceSummaries">
 Generating namespace summary information...
-    Last step completed in 00:00:00,1794
+    Last step completed in 00:00:00,2261
 </buildStep>
 <buildStep step="CopyAdditionalContent">
 Copying additional content files...
 No additional content to copy
-    Last step completed in 00:00:00,0020
+    Last step completed in 00:00:00,0025
 </buildStep>
 <buildStep step="MergeTablesOfContents">
 Merging conceptual and additional tables of contents...
@@ -120,27 +118,26 @@ Merging conceptual and additional tables of contents...
 </buildStep>
 <buildStep step="GenerateIntermediateTableOfContents">
 Generating intermediate table of contents file...
-[C:\Windows\Microsoft.NET\Framework64\v4.0.30319\MSBuild.exe - GenerateIntermediateTOC.proj]
-Compila‡&#198;o de 15/04/2017 00:26:50 iniciada.
+[C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\MSBuild.exe - GenerateIntermediateTOC.proj]
+Compila‡&#198;o de 06/08/2017 14:57:10 iniciada.
 Projeto &quot;C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\GenerateIntermediateTOC.proj&quot; no n&#162; 1 (destinos padr&#198;o).
-O arquivo de projeto cont‚m o ToolsVersion=&quot;12.0&quot;. Esse conjunto de ferramentas ‚ desconhecido ou est&#160; ausente, o que talvez possa ser resolvido com a instala‡&#198;o da vers&#198;o apropriada do MSBuild. Tamb‚m ‚ poss&#161;vel que a compila‡&#198;o tenha sido for‡ada para uma vers&#198;o espec&#161;fica do ToolsVersion por motivo de pol&#161;tica. Tratando o projeto como se tivesse o ToolsVersion=&quot;4.0&quot;. Para obter mais informa‡&#228;es, consulte http://go.microsoft.com/fwlink/?LinkId=291333.
 GenerateIntermediateTOC:
-  XslTransform (v2016.9.17.0)
-  Copyright &#184; 2006-2016, Microsoft Corporation, All Rights Reserved.
+  XslTransform (v2017.5.15.0)
+  Copyright &#184; 2006-2017, Microsoft Corporation, All Rights Reserved.
   Portions Copyright &#184; 2006-2016, Eric Woodruff, All Rights Reserved.
   Applying XSL transformation &#39;C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\\ProductionTransforms\CreateVSToc.xsl&#39;.
 Projeto de compila‡&#198;o pronto &quot;C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\GenerateIntermediateTOC.proj&quot; (destinos padr&#198;o).
 
 Compila‡&#198;o com ˆxito.
 
-Tempo Decorrido 00:00:01.13
+Tempo Decorrido 00:00:00.32
 Generating conceptual content intermediate TOC file...
-    Last step completed in 00:00:01,4518
+    Last step completed in 00:00:00,5239
 </buildStep>
 <buildStep step="CreateBuildAssemblerConfigs">
 Creating Sandcastle configuration files...
     sandcastle.config
-    Last step completed in 00:00:00,2060
+    Last step completed in 00:00:00,5096
 </buildStep>
 <buildStep step="MergeCustomConfigs">
 Merging custom build component configurations
@@ -151,46 +148,45 @@ C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Worki
 </buildStep>
 <buildStep step="BuildTopics">
 Building help topics...
-[C:\Windows\Microsoft.NET\Framework64\v4.0.30319\MSBuild.exe - BuildTopics.proj]
-Compila‡&#198;o de 15/04/2017 00:26:51 iniciada.
+[C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\MSBuild.exe - BuildTopics.proj]
+Compila‡&#198;o de 06/08/2017 14:57:11 iniciada.
 Projeto &quot;C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\BuildTopics.proj&quot; no n&#162; 1 (destinos padr&#198;o).
-O arquivo de projeto cont‚m o ToolsVersion=&quot;12.0&quot;. Esse conjunto de ferramentas ‚ desconhecido ou est&#160; ausente, o que talvez possa ser resolvido com a instala‡&#198;o da vers&#198;o apropriada do MSBuild. Tamb‚m ‚ poss&#161;vel que a compila‡&#198;o tenha sido for‡ada para uma vers&#198;o espec&#161;fica do ToolsVersion por motivo de pol&#161;tica. Tratando o projeto como se tivesse o ToolsVersion=&quot;4.0&quot;. Para obter mais informa‡&#228;es, consulte http://go.microsoft.com/fwlink/?LinkId=291333.
 BuildTopics:
-  BuildAssembler (v2016.9.17.0)
-  Copyright &#184; 2006-2016, Microsoft Corporation, All Rights Reserved.
+  BuildAssembler (v2017.5.15.0)
+  Copyright &#184; 2006-2017, Microsoft Corporation, All Rights Reserved.
   Portions Copyright &#184; 2006-2016, Eric Woodruff, All Rights Reserved.
   Loading configuration...
   Processing topics...
-  Processed 746 topic(s)
+  Processed 755 topic(s)
   CopyFromIndexComponent: &quot;reflection&quot; in-memory cache entries used: 5 of 15.
-  CopyFromIndexComponent: &quot;comments&quot; in-memory cache entries used: 3 of 30.
+  CopyFromIndexComponent: &quot;comments&quot; in-memory cache entries used: 4 of 30.
+  SaveComponent: Waiting for the document writer task to finish (40 Help1 API file(s) remaining)...
 Projeto de compila‡&#198;o pronto &quot;C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\BuildTopics.proj&quot; (destinos padr&#198;o).
 
 Compila‡&#198;o com ˆxito.
 
-Tempo Decorrido 00:00:14.26
-    Last step completed in 00:00:14,5464
+Tempo Decorrido 00:00:15.08
+    Last step completed in 00:00:15,2372
 </buildStep>
 <buildStep step="CombiningIntermediateTocFiles">
 Combining conceptual and API intermediate TOC files...
-    Last step completed in 00:00:00,0045
+    Last step completed in 00:00:00,0050
 </buildStep>
 <buildStep step="ExtractingHtmlInfo">
 Extracting HTML info for HTML Help 1 and/or website...
-[C:\Windows\Microsoft.NET\Framework64\v4.0.30319\MSBuild.exe - ExtractHtmlInfo.proj]
-O arquivo de projeto cont‚m o ToolsVersion=&quot;12.0&quot;. Esse conjunto de ferramentas ‚ desconhecido ou est&#160; ausente, o que talvez possa ser resolvido com a instala‡&#198;o da vers&#198;o apropriada do MSBuild. Tamb‚m ‚ poss&#161;vel que a compila‡&#198;o tenha sido for‡ada para uma vers&#198;o espec&#161;fica do ToolsVersion por motivo de pol&#161;tica. Tratando o projeto como se tivesse o ToolsVersion=&quot;4.0&quot;. Para obter mais informa‡&#228;es, consulte http://go.microsoft.com/fwlink/?LinkId=291333.
-Sandcastle Help File Builder and Tools, version 2016.9.17.0
-Copyright &#184; 2006-2016, Eric Woodruff, All Rights Reserved
+[C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\MSBuild.exe - ExtractHtmlInfo.proj]
+Sandcastle Help File Builder and Tools, version 2017.5.15.0
+Copyright &#184; 2006-2017, Eric Woodruff, All Rights Reserved
 E-Mail: Eric@EWoodruff.us
 
 Using LCID &#39;1033&#39;, code page &#39;65001&#39;, encoding charset &#39;UTF-8&#39;.
 
 Processing Help 1 files in C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1
-Processed 746 HTML files
+Processed 755 HTML files
 Sorting keywords and generating See Also indices
 Saving HTML Help 1 keyword index to C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\smartSpriteFX Library Technical Reference.hhk
 Saving HTML Help 1 table of contents to C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\smartSpriteFX Library Technical Reference.hhc
-    Last step completed in 00:00:02,3141
+    Last step completed in 00:00:01,5623
 </buildStep>
 <buildStep step="CopyStandardHelpContent">
 Copying standard help content...
@@ -256,7 +252,7 @@ C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyle
 C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-zh-CN.css -&gt; C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\styles\branding-zh-CN.css
 C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-zh-TW.css -&gt; C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\styles\branding-zh-TW.css
 C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding.css -&gt; C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\styles\branding.css
-    Last step completed in 00:00:00,1570
+    Last step completed in 00:00:00,8499
 </buildStep>
 <buildStep step="GenerateHelpFormatTableOfContents">
 Generating HTML Help 1 table of contents file...
@@ -268,12 +264,11 @@ Generating HTML Help 1 index file...
 </buildStep>
 <buildStep step="GenerateHelpProject">
 Generating HTML Help 1 project file...
-    Last step completed in 00:00:00,0095
+    Last step completed in 00:00:00,0135
 </buildStep>
 <buildStep step="CompilingHelpFile">
 Compiling HTML Help 1 file...
-[C:\Windows\Microsoft.NET\Framework64\v4.0.30319\MSBuild.exe - Build1xHelpFile.proj]
-O arquivo de projeto cont‚m o ToolsVersion=&quot;12.0&quot;. Esse conjunto de ferramentas ‚ desconhecido ou est&#160; ausente, o que talvez possa ser resolvido com a instala‡&#198;o da vers&#198;o apropriada do MSBuild. Tamb‚m ‚ poss&#161;vel que a compila‡&#198;o tenha sido for‡ada para uma vers&#198;o espec&#161;fica do ToolsVersion por motivo de pol&#161;tica. Tratando o projeto como se tivesse o ToolsVersion=&quot;4.0&quot;. Para obter mais informa‡&#228;es, consulte http://go.microsoft.com/fwlink/?LinkId=291333.
+[C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\MSBuild.exe - Build1xHelpFile.proj]
   Microsoft HTML Help Compiler 4.74.8702
   
   
@@ -286,11 +281,11 @@ O arquivo de projeto cont‚m o ToolsVersion=&quot;12.0&quot;. Esse conjunto de 
   
   Compile time: 0 minutes, 11 seconds
   
-  748	Topics
+  757	Topics
   
-  7,720	Local links
+  7,832	Local links
   
-  26,698	Internet links
+  26,727	Internet links
   
   0	Graphics
   
@@ -298,19 +293,19 @@ O arquivo de projeto cont‚m o ToolsVersion=&quot;12.0&quot;. Esse conjunto de 
   
   
   
-  Created c:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\smartSpriteFX Library Technical Reference.chm, 1,157,955 bytes
+  Created c:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\smartSpriteFX Library Technical Reference.chm, 1,168,049 bytes
   
-  Compression decreased file by 8,905,856 bytes.
+  Compression decreased file by 8,978,369 bytes.
   
-    Last step completed in 00:00:13,4017
+    Last step completed in 00:00:13,0815
 </buildStep>
 <buildStep step="CleanIntermediates">
 Removing intermediate files...
-    Last step completed in 00:00:00,3320
+    Last step completed in 00:00:00,2298
 </buildStep>
 <buildStep step="Completed">
 
-Build completed successfully at 15/04/2017 00:27:22.  Total time: 00:00:40,5970
+Build completed successfully at 06/08/2017 14:57:41.  Total time: 00:00:39,6855
 
 </buildStep>
 </shfbBuild>
