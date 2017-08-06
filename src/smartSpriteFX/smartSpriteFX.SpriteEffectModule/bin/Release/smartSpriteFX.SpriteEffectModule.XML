@@ -9,10 +9,16 @@
             It´s a comparison used to sort animation
             </summary>
         </member>
-        <member name="T:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.AlignToBottom">
+        <member name="T:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.AlignToBottomFilter">
             <summary>
             Aligns the image to bottom
             </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.AlignToBottomFilter.GetIdentification">
+            <summary>
+            Gets the identification
+            </summary>
+            <returns></returns>
         </member>
         <member name="T:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.AlphaFilter">
             <summary>

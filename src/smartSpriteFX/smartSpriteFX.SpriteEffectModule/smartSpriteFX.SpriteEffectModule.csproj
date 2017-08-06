@@ -54,7 +54,7 @@
     <Compile Include="Animations\AnimationComparer.cs" />
     <Compile Include="Animations\FrameIterator.cs" />
     <Compile Include="Effects\Core\EffectEngine.cs" />
-    <Compile Include="Effects\Filters\AlignToBottom.cs" />
+    <Compile Include="Effects\Filters\AlignToBottomFilter.cs" />
     <Compile Include="Effects\Filters\AlphaFilter.cs" />
     <Compile Include="Effects\Filters\BrightFilter.cs" />
     <Compile Include="Effects\Filters\CropFilter.cs" />

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace smartSuite.smartSpriteFX.SpriteEffectModule.Test.Effects.Filters
 {
     [TestClass]
-    public class AlignToBottomTest
+    public class AlignToBottomFilterTest
     {
         [TestMethod]
         public void ApplyTest()
@@ -23,7 +23,7 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Test.Effects.Filters
 
             #region Running the tested operation
 
-            AlignToBottom test = new AlignToBottom();
+            AlignToBottomFilter test = new AlignToBottomFilter();
             var evidence = test.ApplyFilter(frame, 0);
 
             #endregion
@@ -38,7 +38,7 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Test.Effects.Filters
             #region Validating the evidences
 
             Assert.IsTrue(evidence, "Filter ignored");
-            Assert.AreEqual(frame.OriginalHeight, frame.Height, "Height hasn't been restored");
+            Assert.AreEqual(128, frame.Height, "Height hasn't been restored");
             Assert.AreEqual(frame.Height, evidenceMaxY, "Bottom has not been aligned");
             Assert.AreNotEqual(0, evidenceMinY, "MinY hasn't been translated");
 
