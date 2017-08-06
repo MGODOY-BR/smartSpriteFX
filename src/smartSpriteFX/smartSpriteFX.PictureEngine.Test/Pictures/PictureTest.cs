@@ -58,6 +58,8 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Test
             #region Validating the evidences
 
             Assert.AreEqual(5, evidenceList.Count());
+            Assert.AreEqual(371, test.OriginalHeight);
+            Assert.AreEqual(310, test.OriginalWidth);
 
             #endregion
         }
@@ -85,6 +87,8 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Test
             #region Validating the evidences
 
             Assert.AreEqual(371, evidence.Count());
+            Assert.AreEqual(371, test.OriginalHeight);
+            Assert.AreEqual(310, test.OriginalWidth);
 
             #endregion
         }
@@ -112,6 +116,8 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Test
             #region Validating the evidences
 
             Assert.AreEqual(310, evidence.Count());
+            Assert.AreEqual(371, test.OriginalHeight);
+            Assert.AreEqual(310, test.OriginalWidth);
 
             #endregion
         }

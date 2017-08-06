@@ -124,6 +124,8 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Test
             #region Validating the evidences
 
             Assert.AreEqual(filterList.Length, _appliedFilteresCount);
+            Assert.AreEqual(48, frame.OriginalHeight);
+            Assert.AreEqual(48, frame.OriginalWidth);
 
             #endregion
         }
@@ -161,6 +163,8 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Test
             #region Validating the evidences
 
             Assert.AreEqual(filterList.Length, evidenciaList.Count);
+            Assert.AreEqual(48, frame.OriginalHeight);
+            Assert.AreEqual(48, frame.OriginalWidth);
 
             #endregion
         }
@@ -202,6 +206,8 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Test
             Assert.AreEqual(filterList[1], evidenciaList[0]);
             Assert.AreEqual(filterList[0], evidenciaList[1]);
             Assert.AreEqual(filterList[2], evidenciaList[2]);
+            Assert.AreEqual(48, frame.OriginalHeight);
+            Assert.AreEqual(48, frame.OriginalWidth);
 
             #endregion
         }
@@ -241,6 +247,8 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Test
             #region Validating the evidences
 
             Assert.AreEqual(filterList.Length - 1, evidenciaList.Count);
+            Assert.AreEqual(48, frame.OriginalHeight);
+            Assert.AreEqual(48, frame.OriginalWidth);
 
             #endregion
         }
@@ -455,6 +463,8 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Test
             Assert.AreSame(filterList[1], evidenceList[0]);
             Assert.AreSame(filterList[2], evidenceList[1]);
             Assert.AreSame(filterList[0], evidenceList[2]);
+            Assert.AreEqual(48, frame.OriginalHeight);
+            Assert.AreEqual(48, frame.OriginalWidth);
 
             #endregion
         }

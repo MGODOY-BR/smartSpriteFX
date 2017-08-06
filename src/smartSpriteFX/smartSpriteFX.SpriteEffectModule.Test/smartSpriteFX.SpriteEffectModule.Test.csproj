@@ -72,6 +72,7 @@
     <Compile Include="Animations\FrameIteratorTest.cs" />
     <Compile Include="Effects\Core\EffectEngineTest.cs" />
     <Compile Include="Effects\FilterEngine\FilterCollectionTest.cs" />
+    <Compile Include="Effects\Filters\AlignToBottomFilterTest.cs" />
     <Compile Include="Effects\Filters\FrameRateFilterTest.cs" />
     <Compile Include="Effects\Filters\BorderFilterTest.cs" />
     <Compile Include="Effects\Filters\TransparentBackgroundFilterTest.cs" />
@@ -130,6 +131,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Stubs\Character.stub.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Stubs\Something.stub.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
