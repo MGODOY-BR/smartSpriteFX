@@ -32,20 +32,14 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
             }
             else
             {
-                var lineList = frame.GetLines();
-                var lineRef = lineList[0];
-                var minY = lineRef.Min(p => p.Y);
-                var maxY = lineRef.Max(p => p.Y);
-                var yOffSetMin = Math.Abs(previousHeight - minY);
-                var yOffSetMax = Math.Abs(previousHeight - maxY);
-                var yOffSet = yOffSetMin + yOffSetMax;
+                var pixelList = frame.GetAllPixels();
+                var maxY = pixelList.Max(p => p.Y);
+                var offSet = Math.Abs(previousHeight - maxY);
 
                 // frame.Height = frame.OriginalHeight; // <-- This can't be done because it invalidates the scale filter
                 frame.Height = previousHeight;
-                foreach (var lineItem in lineList)
-                {
-                    lineItem.ForEach(l => l.Y = (yOffSetMax - l.Y));
-                }
+
+                frame.GetAllPixels().ForEach(p => p.Y = (offSet + p.Y));
             }
 
             return true;
