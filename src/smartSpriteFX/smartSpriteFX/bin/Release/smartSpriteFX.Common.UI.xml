@@ -410,5 +410,26 @@
             It´s the owner of the piece
             </summary>
         </member>
+        <member name="T:smartSuite.smartSpriteFX.Common.UI.Properties.Resource">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.Common.UI.Properties.Resource.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.Common.UI.Properties.Resource.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.Common.UI.Properties.Resource.Hook">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
     </members>
 </doc>
