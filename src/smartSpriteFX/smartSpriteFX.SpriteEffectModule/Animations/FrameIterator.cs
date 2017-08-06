@@ -331,7 +331,7 @@ namespace smartSuite.smartSpriteFX.Animations{
                     Directory.GetFiles(fullPath, extension, SearchOption.TopDirectoryOnly));
             }
 
-            // result.Sort(_animationComparer);
+            result.Sort(_animationComparer);
 
             return result;
         }
