@@ -62,7 +62,7 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
         {
             var identification = base.GetIdentification();
             identification.SetName("Align to Bottom");
-            identification.SetDescription("A filter used to align the central image to bottom. It brings CropFilter inside and comes up a transparent background.");
+            identification.SetDescription("A filter used to align the central image to bottom. It brings CropFilter inside.");
             identification.SetGroup("Picture");
 
             return identification;
