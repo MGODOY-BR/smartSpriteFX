@@ -12,19 +12,41 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Animations
     /// </summary>
     public class AnimationComparer : IComparer<string>
     {
-        private Regex _regEx = new Regex(@"(\d+).*", RegexOptions.Compiled);
+        private Regex _numericRegEx = new Regex(@"(\d+)", RegexOptions.Compiled);
 
         public int Compare(String path, String other)
         {
-            if (_regEx.IsMatch(path) && _regEx.IsMatch(other))
+            if (_numericRegEx.IsMatch(path) && _numericRegEx.IsMatch(other))
             {
-                var pathRegEx = _regEx.Match(path);
-                var otherRegEx = _regEx.Match(other);
+                var pathRegExList = _numericRegEx.Matches(path);
+                var otherRegExList = _numericRegEx.Matches(other);
 
-                return
-                    int.Parse(pathRegEx.Groups[1].Value)
-                        .CompareTo(
-                            int.Parse(otherRegEx.Groups[1].Value));
+                for (int j = 0; j < pathRegExList.Count; j++)
+                {
+                    var pathRegEx = pathRegExList[j];
+
+                    #region Entries validation
+
+                    if (j > otherRegExList.Count - 1)
+                    {
+                        continue;
+                    }
+
+                    #endregion
+
+                    var otherRegEx = otherRegExList[j];
+                    int compare = 
+                        int.Parse(pathRegEx.Value)
+                                    .CompareTo(
+                                        int.Parse(otherRegEx.Value));
+
+                    if(compare != 0)
+                    {
+                        return compare;
+                    }
+                }
+
+                return 0;
             }
             else
             {

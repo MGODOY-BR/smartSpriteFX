@@ -68,6 +68,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Animations\AnimationComparerTest.cs" />
     <Compile Include="Animations\FrameIteratorTest.cs" />
     <Compile Include="Effects\Core\EffectEngineTest.cs" />
     <Compile Include="Effects\FilterEngine\FilterCollectionTest.cs" />
