@@ -35,6 +35,16 @@ namespace smartSuite.smartSpriteFX.Pictures
         private int _height;
 
         /// <summary>
+        /// Gets the original width of picture with no filters applied
+        /// </summary>
+        public int OriginalWidth { get; private set; }
+
+        /// <summary>
+        /// Gets the original height of picture with no filters applied
+        /// </summary>
+        public int OriginalHeight { get; private set; }
+
+        /// <summary>
         /// It´s the transparent color
         /// </summary>
         private Color _transparentColor = Color.Transparent;
@@ -328,6 +338,9 @@ namespace smartSuite.smartSpriteFX.Pictures
                     this._height = bitmap.Height;
                     this._width = bitmap.Width;
 
+                    this.OriginalHeight = this._height;
+                    this.OriginalWidth = this._width;
+
                     this.LoadBuffer(bitmap);
                 }
             }
@@ -488,6 +501,9 @@ namespace smartSuite.smartSpriteFX.Pictures
             clone.ColorCount = this.ColorCount;
             clone._transparentColor = this._transparentColor;
             clone._fullPath = this._fullPath;
+
+            clone.OriginalWidth = this.OriginalWidth;
+            clone.OriginalHeight = this.OriginalHeight;
 
             return clone;
         }

@@ -39,6 +39,8 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Test.Tools
 
             Assert.AreEqual(frame.Width, evidence.Width);
             Assert.AreEqual(frame.Height, evidence.Height);
+            Assert.AreEqual(371, frame.OriginalHeight);
+            Assert.AreEqual(310, frame.OriginalWidth);
             // Assert... <-- This assert is too complex to be done here. The real test should be done in CreatedTranslatedPicture()
 
             #endregion

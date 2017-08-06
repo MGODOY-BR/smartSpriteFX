@@ -9,6 +9,11 @@
             It´s a comparison used to sort animation
             </summary>
         </member>
+        <member name="T:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.AlignToBottom">
+            <summary>
+            Aligns the image to bottom
+            </summary>
+        </member>
         <member name="T:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.AlphaFilter">
             <summary>
             Represents a filter which enfasizes the alpha color

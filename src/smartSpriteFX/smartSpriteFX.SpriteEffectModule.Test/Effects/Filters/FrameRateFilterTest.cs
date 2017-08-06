@@ -73,6 +73,12 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Test.Effects.Filters
                 Assert.AreNotEqual(
                     evidenceIndexList[i], evidenceIndexList[i + 1]);
             }
+            // There's not data loaded in this scenario
+            //foreach (var frameItem in frameList)
+            //{
+            //    Assert.AreEqual(371, frameItem.OriginalHeight);
+            //    Assert.AreEqual(310, frameItem.OriginalWidth);
+            //}
 
             #endregion
         }
