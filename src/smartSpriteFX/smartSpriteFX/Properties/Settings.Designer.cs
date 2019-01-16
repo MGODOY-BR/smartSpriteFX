@@ -12,7 +12,7 @@ namespace smartSuite.smartSpriteFX.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.1.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.8.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -92,6 +92,30 @@ namespace smartSuite.smartSpriteFX.Properties {
             }
             set {
                 this["lastFilterSet"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string joinSpriteOriginFolder {
+            get {
+                return ((string)(this["joinSpriteOriginFolder"]));
+            }
+            set {
+                this["joinSpriteOriginFolder"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string joinSpriteDestinyFile {
+            get {
+                return ((string)(this["joinSpriteDestinyFile"]));
+            }
+            set {
+                this["joinSpriteDestinyFile"] = value;
             }
         }
     }

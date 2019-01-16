@@ -1,5 +1,6 @@
 ﻿using smartSuite.smartSpriteFX.Animations;
 using smartSuite.smartSpriteFX.Effects.Core;
+using smartSuite.smartSpriteFX.Effects.Facade;
 using smartSuite.smartSpriteFX.Forms.Controls.Browsers;
 using smartSuite.smartSpriteFX.Forms.Controls.SwitchMode;
 using smartSuite.smartSpriteFX.Forms.Utilities;
@@ -64,6 +65,9 @@ namespace smartSuite.smartSpriteFX.Forms
             var switchModeControl = new SwitchModeControl();
             switchModeControl.Dock = DockStyle.Right;
             this.pictureBox1.Controls.Add(switchModeControl);
+
+            this._filterSetPath = filterSetBrowser.UserChoice;
+            this._originFolder = originBrowser.UserChoice;
         }
 
         private void FilterSetBrowser_ChosenByUserEvent(object sender, SmartBrowserEventArgs e)
@@ -115,6 +119,11 @@ namespace smartSuite.smartSpriteFX.Forms
             Settings.Default.lastFilterSet = this._filterSetPath;
             Settings.Default.lastParentFolder = this._originFolder;
             Settings.Default.Save();
+        }
+
+        private void chkPutFrameIndex_CheckedChanged(object sender, EventArgs e)
+        {
+            EffectFacade.DoNotPutFrameIndex = !chkPutFrameIndex.Checked;
         }
     }
 }

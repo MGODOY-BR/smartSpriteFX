@@ -43,6 +43,7 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.btnLoad = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.chkPutFrameIndex = new System.Windows.Forms.CheckBox();
             this.btnApplyOne = new System.Windows.Forms.Button();
             this.btnPreview = new System.Windows.Forms.Button();
             this.btnApplyAll = new System.Windows.Forms.Button();
@@ -217,7 +218,7 @@
             this.filterSetFrame.Controls.Add(this.btnLoad);
             this.filterSetFrame.Location = new System.Drawing.Point(3, 146);
             this.filterSetFrame.Name = "filterSetFrame";
-            this.filterSetFrame.Size = new System.Drawing.Size(131, 82);
+            this.filterSetFrame.Size = new System.Drawing.Size(138, 82);
             this.filterSetFrame.TabIndex = 2;
             this.filterSetFrame.TabStop = false;
             this.filterSetFrame.Text = "Filter set";
@@ -249,19 +250,33 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.chkPutFrameIndex);
             this.groupBox2.Controls.Add(this.btnApplyOne);
             this.groupBox2.Controls.Add(this.btnPreview);
             this.groupBox2.Controls.Add(this.btnApplyAll);
-            this.groupBox2.Location = new System.Drawing.Point(24, 6);
+            this.groupBox2.Location = new System.Drawing.Point(3, 6);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(104, 134);
+            this.groupBox2.Size = new System.Drawing.Size(138, 138);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
+            // 
+            // chkPutFrameIndex
+            // 
+            this.chkPutFrameIndex.AutoSize = true;
+            this.chkPutFrameIndex.Checked = true;
+            this.chkPutFrameIndex.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkPutFrameIndex.Location = new System.Drawing.Point(8, 52);
+            this.chkPutFrameIndex.Name = "chkPutFrameIndex";
+            this.chkPutFrameIndex.Size = new System.Drawing.Size(128, 17);
+            this.chkPutFrameIndex.TabIndex = 3;
+            this.chkPutFrameIndex.Text = "put index in extension";
+            this.chkPutFrameIndex.UseVisualStyleBackColor = true;
+            this.chkPutFrameIndex.CheckedChanged += new System.EventHandler(this.chkPutFrameIndex_CheckedChanged);
             // 
             // btnApplyOne
             // 
             this.btnApplyOne.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnApplyOne.Location = new System.Drawing.Point(5, 44);
+            this.btnApplyOne.Location = new System.Drawing.Point(23, 70);
             this.btnApplyOne.Name = "btnApplyOne";
             this.btnApplyOne.Size = new System.Drawing.Size(93, 31);
             this.btnApplyOne.TabIndex = 2;
@@ -272,7 +287,7 @@
             // 
             // btnPreview
             // 
-            this.btnPreview.Location = new System.Drawing.Point(6, 19);
+            this.btnPreview.Location = new System.Drawing.Point(23, 19);
             this.btnPreview.Name = "btnPreview";
             this.btnPreview.Size = new System.Drawing.Size(93, 23);
             this.btnPreview.TabIndex = 1;
@@ -284,7 +299,7 @@
             // btnApplyAll
             // 
             this.btnApplyAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnApplyAll.Location = new System.Drawing.Point(6, 90);
+            this.btnApplyAll.Location = new System.Drawing.Point(23, 102);
             this.btnApplyAll.Name = "btnApplyAll";
             this.btnApplyAll.Size = new System.Drawing.Size(93, 31);
             this.btnApplyAll.TabIndex = 0;
@@ -301,9 +316,9 @@
             this.pnlFilterPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pnlFilterPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pnlFilterPanel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pnlFilterPanel.Location = new System.Drawing.Point(140, 0);
+            this.pnlFilterPanel.Location = new System.Drawing.Point(147, 0);
             this.pnlFilterPanel.Name = "pnlFilterPanel";
-            this.pnlFilterPanel.Size = new System.Drawing.Size(157, 233);
+            this.pnlFilterPanel.Size = new System.Drawing.Size(150, 233);
             this.pnlFilterPanel.TabIndex = 0;
             // 
             // splitContainer3
@@ -435,17 +450,15 @@
             // filterSetOpenDialog
             // 
             this.filterSetOpenDialog.DefaultExt = "*.filterSet";
-            this.filterSetOpenDialog.Filter = "Current version filter set file|*.3.0.0.0-filterSet|Regardless of version Filter " +
-    "Set|*.filterSet";
+            this.filterSetOpenDialog.Filter = "Filter Set|*.*filterSet";
             this.filterSetOpenDialog.InitialDirectory = "My Filter Sets";
             this.filterSetOpenDialog.Title = "Open a filter set to fill filter box";
             this.filterSetOpenDialog.FileOk += new System.ComponentModel.CancelEventHandler(this.filterSetOpenDialog_FileOk);
             // 
             // filterSetSaveDialog
             // 
-            this.filterSetSaveDialog.DefaultExt = "*.3.0.0.0-filterSet";
-            this.filterSetSaveDialog.Filter = "Current version filter set file|*.3.0.0.0-filterSet|Regardless of version Filter " +
-    "Set|*.filterSet";
+            this.filterSetSaveDialog.DefaultExt = "filterSet";
+            this.filterSetSaveDialog.Filter = "Filter Set|*.*filterSet";
             this.filterSetSaveDialog.InitialDirectory = "My Filter Sets";
             this.filterSetSaveDialog.Title = "Save filter box as filter set";
             this.filterSetSaveDialog.FileOk += new System.ComponentModel.CancelEventHandler(this.filterSetSaveDialog_FileOk);
@@ -460,6 +473,7 @@
             this.Controls.Add(this.topPanel);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.pictureBox1);
+            this.KeyPreview = true;
             this.Name = "EffectModeForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "smartSpriteFX - Effect Mode";
@@ -483,6 +497,7 @@
             this.panel2.ResumeLayout(false);
             this.filterSetFrame.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.splitContainer3.Panel1.ResumeLayout(false);
             this.splitContainer3.Panel1.PerformLayout();
             this.splitContainer3.Panel2.ResumeLayout(false);
@@ -534,5 +549,6 @@
         private System.Windows.Forms.Button btnLoad;
         private System.Windows.Forms.OpenFileDialog filterSetOpenDialog;
         private System.Windows.Forms.SaveFileDialog filterSetSaveDialog;
+        private System.Windows.Forms.CheckBox chkPutFrameIndex;
     }
 }

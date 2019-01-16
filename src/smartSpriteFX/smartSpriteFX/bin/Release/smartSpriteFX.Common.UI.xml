@@ -226,6 +226,16 @@
             It´s the tracked vertical line by the huck
             </summary>
         </member>
+        <member name="P:smartSuite.smartSpriteFX.Forms.Controls.HookControl.HorizontalMovement">
+            <summary>
+            Defines if the horizontal movement can procceds
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.Forms.Controls.HookControl.VerticalMovement">
+            <summary>
+            Defines if the vertical movement can procceds
+            </summary>
+        </member>
         <member name="E:smartSuite.smartSpriteFX.Forms.Controls.HookControl.Deleting">
             <summary>
             Occurs before deleting
@@ -271,9 +281,9 @@
             Gets the older huck from pair
             </summary>
         </member>
-        <member name="M:smartSuite.smartSpriteFX.Forms.Controls.HookControl.GetNewerHuckFromPair">
+        <member name="M:smartSuite.smartSpriteFX.Forms.Controls.HookControl.GetNewestHuckFromPair">
             <summary>
-            Gets the newer huck from pair
+            Gets the newest huck from pair
             </summary>
         </member>
         <member name="M:smartSuite.smartSpriteFX.Forms.Controls.HookControl.CreatePoint">

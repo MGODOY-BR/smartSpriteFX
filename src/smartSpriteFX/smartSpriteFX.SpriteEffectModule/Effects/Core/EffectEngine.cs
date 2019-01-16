@@ -15,6 +15,7 @@ using System.Windows.Forms;
 using smartSuite.smartSpriteFX.PictureEngine.Pictures.Data;
 using System.Globalization;
 using System.Text.RegularExpressions;
+using smartSuite.smartSpriteFX.PictureEngine.Pictures;
 
 namespace smartSuite.smartSpriteFX.Effects.Core{
 	/// <summary>
@@ -98,6 +99,14 @@ namespace smartSuite.smartSpriteFX.Effects.Core{
             _sourcePreviewImage = sourcePreviewImage;
         }
 
+        /// <summary>
+        /// Gets thw source preview image
+        /// </summary>
+        /// <returns></returns>
+        public static Picture GetSourcePreviewImage()
+        {
+            return _sourcePreviewImage;
+        }
 
         /// <summary>
         /// Cancels the apply method
@@ -240,16 +249,20 @@ namespace smartSuite.smartSpriteFX.Effects.Core{
 
             #region Cleaning the path
 
-            if (Directory.Exists(outputFilterPath))
+            if (selectedFrameList == null)
             {
-                var enumeratorFileList =
-                    Directory.EnumerateFiles(outputFilterPath).GetEnumerator();
-
-                while (enumeratorFileList.MoveNext())
+                // HACK: Just remove directory if all the animation has been selected
+                if (Directory.Exists(outputFilterPath))
                 {
-                    if (File.Exists(enumeratorFileList.Current))
+                    var enumeratorFileList =
+                        Directory.EnumerateFiles(outputFilterPath).GetEnumerator();
+
+                    while (enumeratorFileList.MoveNext())
                     {
-                        File.Delete(enumeratorFileList.Current);
+                        if (File.Exists(enumeratorFileList.Current))
+                        {
+                            File.Delete(enumeratorFileList.Current);
+                        }
                     }
                 }
             }
@@ -330,7 +343,7 @@ namespace smartSuite.smartSpriteFX.Effects.Core{
             var previewFrame = _sourcePreviewImage.Clone();
             var frameIndex = EffectEngine._iterator.GetFrameIndex();
 
-            foreach (var filterItem in EffectEngine._filterList.GetFilterBufferList())
+            foreach (var filterItem in EffectEngine._filterList.GetFilterBufferList().Where(f => !(f is FrameRateFilter)))
             {
                 Picture draftFrame = previewFrame.Clone(Picture.CloneMode.StructureOnly);
                 draftFrame.ShareDataWithMe(previewFrame);
@@ -688,7 +701,7 @@ namespace smartSuite.smartSpriteFX.Effects.Core{
             Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
 
             Regex mainRegEx = new Regex(@"^(\d+)-(_{0,1}\w+)=(.*)$", RegexOptions.Compiled);
-            Regex propertiesRegEx = new Regex(@"\{(\w+)\[([a-z0-9\.\,]+)\]{1,}\}", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+            Regex propertiesRegEx = new Regex(@"\{(\w+)\[([a-z0-9\.\,\s=]+)\]{1,}\}", RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
             List<IEffectFilter> selectedFilterList = EffectEngine.GetSelectedFilterList();
             selectedFilterList.Clear();
@@ -723,19 +736,21 @@ namespace smartSuite.smartSpriteFX.Effects.Core{
                                 {
                                     if (!property.PropertyType.IsArray)
                                     {
+                                        String value = propertyMatchItem.Groups[2].Value;
+
                                         property.SetValue(
                                             filterItem,
-                                            Convert.ChangeType(
-                                                propertyMatchItem.Groups[2].Value,
-                                                property.PropertyType));
+                                            FormatValue(property.PropertyType, value));
                                     }
                                     else
                                     {
                                         for (int ii = 2; ii < propertyMatchItem.Groups.Count; ii++)
                                         {
+                                            String value = propertyMatchItem.Groups[ii].Value;
+
                                             property.SetValue(
                                                 filterItem,
-                                                propertyMatchItem.Groups[ii].Value);
+                                                FormatValue(property.PropertyType, value));
                                         }
                                     }
                                 }
@@ -753,5 +768,39 @@ namespace smartSuite.smartSpriteFX.Effects.Core{
                 }
             }
         }
+
+        /// <summary>
+        /// Formats the value
+        /// </summary>
+        /// <param name="propertyType"></param>
+        /// <param name="valueString"></param>
+        /// <returns></returns>
+        private static object FormatValue(Type propertyType, string valueString)
+        {
+            #region Entries validation
+
+            if (propertyType == null)
+            {
+                throw new ArgumentNullException("propertyType");
+            }
+            if (String.IsNullOrEmpty(valueString))
+            {
+                return null;
+            }
+
+            #endregion
+
+            Object value = valueString;
+
+            if (propertyType.GetInterface(typeof(IFromString).Name) != null)
+            {
+                IFromString deserializable = (IFromString)Activator.CreateInstance(propertyType);
+                deserializable.FillMe(valueString);
+                value = deserializable;
+            }
+
+            return Convert.ChangeType(value, propertyType);
+        }
     }
+
 }

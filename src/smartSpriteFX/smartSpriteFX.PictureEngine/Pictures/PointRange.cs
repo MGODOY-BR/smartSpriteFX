@@ -10,7 +10,7 @@ namespace smartSuite.smartSpriteFX.Pictures{
 	/// <summary>
 	/// It´s a range of points, similar to a rectangle
 	/// </summary>
-	public class PointRange
+	public class PointRange : IComparable<PointRange>, IEquatable<PointRange>
     {
         /// <summary>
         /// It´s a start point of point range
@@ -27,8 +27,53 @@ namespace smartSuite.smartSpriteFX.Pictures{
         /// </summary>
         public Color Color { get; set; }
 
+        public PointRange()
+        {
+
+        }
+
+        public int CompareTo(PointRange other)
+        {
+            #region Entries validation
+
+            if (other == null)
+            {
+                return 1;
+            }
+            if(this.ToString().Equals(other.ToString()))
+            {
+                return 0;
+            }
+
+            #endregion
+
+            return this.StartPoint.CompareTo(other.StartPoint);
+        }
+
         /// <summary>
-        /// Gets the start point
+        /// Creates an instance of the object
+        /// </summary>
+        public PointRange(Point startPoint, Point endPoint)
+        {
+            #region Entries validation
+
+            if (startPoint == null)
+            {
+                throw new ArgumentNullException("startPoint");
+            }
+            if (endPoint == null)
+            {
+                throw new ArgumentNullException("endPoint");
+            }
+
+            #endregion
+
+            this._startPoint = startPoint;
+            this._endPoint = endPoint;
+        }
+
+        /// <summary>
+        /// Gets or sets the start point
         /// </summary>
         public Point StartPoint
         {
@@ -36,10 +81,14 @@ namespace smartSuite.smartSpriteFX.Pictures{
             {
                 return _startPoint;
             }
+            set
+            {
+                this._startPoint = value;
+            }
         }
 
         /// <summary>
-        /// Gets the endpoint
+        /// Gets or sets the endpoint
         /// </summary>
         public Point EndPoint
         {
@@ -47,11 +96,29 @@ namespace smartSuite.smartSpriteFX.Pictures{
             {
                 return _endPoint;
             }
+            set
+            {
+                this._endPoint = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets the size of range
+        /// </summary>
+        public Point Size
+        {
+            get
+            {
+                return new Point(
+                    this._endPoint.X - this._startPoint.X,
+                    this._endPoint.Y - this._startPoint.Y);
+            }
         }
 
         /// <summary>
         /// It´s the current Point range.
         /// </summary>
+        [Obsolete("This element is obsolet and can't be used.")]
         private PointRange _currentRange;
 
         /// <summary>
@@ -59,8 +126,14 @@ namespace smartSuite.smartSpriteFX.Pictures{
         /// </summary>
         /// <param name="x"></param>
         /// <param name="y"></param>
-        public void SetPoint(int x, int y)
+        [Obsolete("This method is obsolet and can't be used.", true)]
+        public void SetPoint(float x, float y)
         {
+            if(this._currentRange == null)
+            {
+                this._currentRange = new PointRange();
+            }
+
             lock (this._currentRange)
             {
                 if (this._currentRange._startPoint == null)
@@ -84,10 +157,18 @@ namespace smartSuite.smartSpriteFX.Pictures{
         /// <summary>
         /// Gets a indicator informing that the point is contained inside of point range.
         /// </summary>
+        public bool IsContained(Point point)
+        {
+            return this.IsContained(point.X, point.Y);
+        }
+
+        /// <summary>
+        /// Gets a indicator informing that the point is contained inside of point range.
+        /// </summary>
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <returns></returns>
-        public bool IsContained(int x, int y)
+        public bool IsContained(float x, float y)
         {
             #region Entries validation
 
@@ -112,7 +193,7 @@ namespace smartSuite.smartSpriteFX.Pictures{
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <returns></returns>
-        private bool HaveThisContained(int x, int y)
+        private bool HaveThisContained(float x, float y)
         {
             #region Entries validation
 
@@ -229,7 +310,7 @@ namespace smartSuite.smartSpriteFX.Pictures{
         /// <param name="initialY"></param>
         /// <param name="finalX"></param>
         /// <param name="finalY"></param>
-        public void SetPoint(int initialX, int initialY, int finalX, int finalY)
+        public void SetPoint(float initialX, float initialY, float finalX, float finalY)
         {
             this._startPoint = new Point(initialX, initialY);
             this._endPoint = new Point(finalX, finalY);
@@ -242,22 +323,84 @@ namespace smartSuite.smartSpriteFX.Pictures{
         /// <param name="initialY"></param>
         /// <param name="finalX"></param>
         /// <param name="finalY"></param>
-        public void UpdatePoint(int initialX, int initialY, int finalX, int finalY)
+        public void UpdatePoint(float initialX, float initialY, float finalX, float finalY)
         {
             if (this._startPoint == null)
             {
-                this._startPoint = new Point((float)initialX, (float)initialY);
+                this._startPoint = new Point(initialX, initialY);
             }
 
             if (this._endPoint == null)
             {
-                this._endPoint = new Point((float)finalX, (float)finalY);
+                this._endPoint = new Point(finalX, finalY);
             }
             else
             {
-                this._endPoint.X = (float)finalX;
-                this._endPoint.Y = (float)finalY;
+                this._startPoint.X = initialX;
+                this._startPoint.Y = initialY;
+                this._endPoint.X = finalX;
+                this._endPoint.Y = finalY;
             }
+        }
+
+        /// <summary>
+        /// Updates the end points
+        /// </summary>
+        /// <param name="finalX"></param>
+        /// <param name="finalY"></param>
+        public void UpdatePoint(float finalX, float finalY)
+        {
+            if (this._startPoint == null)
+            {
+                this._startPoint = new Point(finalX, finalY);
+            }
+
+            if (this._endPoint == null)
+            {
+                this._endPoint = new Point(finalX, finalY);
+            }
+            else
+            {
+                this._endPoint.X = finalX;
+                this._endPoint.Y = finalY;
+            }
+        }
+
+        /// <summary>
+        /// Updates the end points
+        /// </summary>
+        public void UpdatePoint(Point endPoint)
+        {
+            this.UpdatePoint(endPoint.X, endPoint.Y);
+        }
+
+        /// <summary>
+        /// Updates the whole range
+        /// </summary>
+        public void UpdatePoint(Point startPoint, Point endPoint)
+        {
+            this.UpdatePoint(startPoint.X, startPoint.Y, endPoint.X, endPoint.Y);
+        }
+
+        /// <summary>
+        /// Calculate the hypotenuse
+        /// </summary>
+        /// <returns></returns>
+        public double CalculateHypotenuse()
+        {
+            var a = this.EndPoint.X - this.StartPoint.X;
+            var b = this.EndPoint.Y - this.StartPoint.Y;
+            return Math.Sqrt((a * a) + (b * b));
+        }
+
+        public override string ToString()
+        {
+            return this.StartPoint.ToString() + " / " + this.EndPoint.ToString();
+        }
+
+        public bool Equals(PointRange other)
+        {
+            return this.CompareTo(other) == 0;
         }
     }
 }

@@ -26,5 +26,8 @@ namespace smartSuite.smartSprite.Pictures{
 		/// </summary>
 		public float Y;
 
+
+
+
 	}
 }

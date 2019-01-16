@@ -161,5 +161,30 @@ namespace smartSuite.smartSpriteFX.Forms
             this.lblDescription.Text = explanationText;
             this.lblDescription.Visible = true;
         }
+
+        private void btnLettlerModeBatch_Click(object sender, EventArgs e)
+        {
+            if (!this.CheckCanProceed<ImageLetterModeForm>())
+            {
+                return;
+            }
+
+            _currentMode = new ImageLetterModeForm();
+            _currentMode.FormClosed += _currentMode_FormClosed;
+            _currentMode.Show();
+        }
+
+        private void btnLettlerModeBatch_MouseMove(object sender, MouseEventArgs e)
+        {
+            this.ShowDemoPicture(
+                Resources.lettlerMode,
+                "Generates sets of characters in image galleries");
+        }
+
+        private void btnTools_Click(object sender, EventArgs e)
+        {
+            ToolsForm form = new ToolsForm();
+            form.ShowDialog();
+        }
     }
 }

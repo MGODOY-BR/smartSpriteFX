@@ -1,0 +1,3 @@
+Implementar para tornar Picture.GetInstance mais rápido:
+
+https://www.codeproject.com/Tips/240428/Work-with-Bitmaps-Faster-in-Csharp-3

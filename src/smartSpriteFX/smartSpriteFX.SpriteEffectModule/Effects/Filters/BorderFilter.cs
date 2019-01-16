@@ -98,9 +98,12 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
                 new Dictionary<string, PointInfo>();
 
             // Enphasizing the color
-            if (this._borderColor == Color.Transparent)
+            if (frame.TransparentColor != null)
             {
-                this._borderColor = ColorUtil.Invert(frame.TransparentColor);
+                if (this._borderColor == Color.Transparent)
+                {
+                    this._borderColor = ColorUtil.Invert(frame.TransparentColor.Value);
+                }
             }
 
             for (int i = 0; i < pointBorderList.Count; i++)

@@ -24,7 +24,7 @@ namespace smartSuite.smartSpriteFX.Effects.Filters
         public Color TransparentColor
         {
             get;
-            private set;
+            protected set;
         }
 
         /// <summary>

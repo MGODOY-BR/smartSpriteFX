@@ -16,7 +16,7 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
     /// <summary>
     /// Represents a filter which is used to cut frames
     /// </summary>
-    public class CutFilter : SmartSpriteOriginalFilterBase
+    public class CutFilter : SmartSpriteOriginalFilterBase, ICutFilter
     {
         /// <summary>
         /// A comparer used to compare colors.
@@ -42,6 +42,10 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
             {
                 return _pointA;
             }
+            internal set
+            {
+                _pointA = value;
+            }
         }
 
         /// <summary>
@@ -53,6 +57,10 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
             {
                 return _pointB;
             }
+            internal set
+            {
+                _pointB = value;
+            }
         }
 
         public override bool ApplyFilter(Picture frame, int index)
@@ -61,11 +69,17 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
 
             if (this._pointA == null && this._pointB == null)
             {
-                this._pointA.X = 0;
-                this._pointA.Y = 0;
+                this._pointA = new Point
+                {
+                    X = 0,
+                    Y = 0,
+                };
 
-                this._pointB.X = frame.Width;
-                this._pointB.Y = frame.Height;
+                this._pointB = new Point
+                {
+                    X = frame.Width,
+                    Y = frame.Height,
+                };
             }
             if (this._pointA.CompareTo(this._pointB) > 0)
             {

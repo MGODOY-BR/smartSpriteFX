@@ -81,6 +81,7 @@
             this.txtFileName.Name = "txtFileName";
             this.txtFileName.Size = new System.Drawing.Size(248, 47);
             this.txtFileName.TabIndex = 2;
+            this.txtFileName.TextChanged += new System.EventHandler(this.txtFileName_TextChanged);
             // 
             // openFileDialog1
             // 

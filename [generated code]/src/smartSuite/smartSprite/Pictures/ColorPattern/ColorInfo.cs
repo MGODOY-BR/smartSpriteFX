@@ -21,6 +21,7 @@ namespace smartSuite.smartSprite.Pictures.ColorPattern{
 		/// </summary>
 		private void _innerColor;
 
+
 		/// <summary>
 		/// Creates an instance of the object
 		/// </summary>

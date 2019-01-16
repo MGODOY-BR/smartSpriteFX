@@ -14,84 +14,21 @@
             Aligns the image to bottom
             </summary>
         </member>
+        <member name="P:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.AlignToBottomFilter.BottomMargin">
+            <summary>
+            Gets or sets the bottom margin
+            </summary>
+        </member>
         <member name="M:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.AlignToBottomFilter.GetIdentification">
             <summary>
             Gets the identification
             </summary>
             <returns></returns>
         </member>
-        <member name="T:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.AlphaFilter">
+        <member name="T:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.ICutFilter">
             <summary>
-            Represents a filter which enfasizes the alpha color
+            Defines a filter that cut image
             </summary>
-        </member>
-        <member name="P:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.AlphaFilter.Scale">
-            <summary>
-            Gets or sets the scale of color
-            </summary>
-        </member>
-        <member name="M:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.AlphaFilter.GetIdentification">
-            <summary>
-            Gets the identification
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="T:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.BrightFilter">
-            <summary>
-            Represents a filter which enfasizes the bright
-            </summary>
-        </member>
-        <member name="P:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.BrightFilter.Scale">
-            <summary>
-            Gets or sets the scale of color
-            </summary>
-        </member>
-        <member name="M:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.BrightFilter.ApplyBright(System.Int32,System.Int32)">
-            <summary>
-            Applies the bright to color
-            </summary>
-            <param name="color"></param>
-            <param name="bright"></param>
-            <returns></returns>
-        </member>
-        <member name="M:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.BrightFilter.GetIdentification">
-            <summary>
-            Gets the identification
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="T:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.CropFilter">
-            <summary>
-            Represents a filter that automatically reduce the frames just to figure
-            </summary>
-        </member>
-        <member name="F:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.CropFilter._transparentBackgroundFilter">
-            <summary>
-            It´s a transparent backgroundfilter
-            </summary>
-        </member>
-        <member name="F:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.CropFilter._cutFilter">
-            <summary>
-            It´s a cutFilter
-            </summary>
-        </member>
-        <member name="M:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.CropFilter.GetTransparentColor">
-            <summary>
-            Gets the detected transparent color
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.CropFilter.CreateTransparentBackgroundFilter">
-            <summary>
-            Gets or create a transparent background filter
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.CropFilter.GetIdentification">
-            <summary>
-            Gets the identification
-            </summary>
-            <returns></returns>
         </member>
         <member name="T:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.CutFilter">
             <summary>
@@ -134,21 +71,30 @@
             Sets the points regardless of the state of filter
             </summary>
         </member>
-        <member name="T:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.BlueFilter">
+        <member name="T:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.IBottomMarginEffectFilter">
             <summary>
-            Represents a filter which enfasizes the blue color
+            Defines how filter which supports bottom margin definition should be
             </summary>
         </member>
-        <member name="P:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.BlueFilter.Scale">
+        <member name="P:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.IBottomMarginEffectFilter.BottomMargin">
             <summary>
-            Gets or sets the scale of color
+            Gets or sets the bottom margin
             </summary>
         </member>
-        <member name="M:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.BlueFilter.GetIdentification">
+        <member name="T:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.IOnlyBottomMarginEffectFilter">
             <summary>
-            Gets the identification
+            Represents a filter that relies on bottom margin only
             </summary>
-            <returns></returns>
+        </member>
+        <member name="T:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.IMarginEnabledEffect">
+            <summary>
+            Defines how a margin-enabled margin should be
+            </summary>
+        </member>
+        <member name="T:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.MirrorFilter">
+            <summary>
+            Represents a filter capable to expand the frame, adding a mirror image from original
+            </summary>
         </member>
         <member name="T:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.PaintedByHandFilter">
             <summary>
@@ -166,37 +112,35 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="T:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.RedFilter">
+        <member name="T:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.PenTraceFilter">
             <summary>
-            Represents a filter which enfasizes the red color
+            Represents a filter which keep just pen traces
             </summary>
         </member>
-        <member name="P:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.RedFilter.Scale">
+        <member name="F:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.PenTraceFilter._newTraceColor">
             <summary>
-            Gets or sets the scale of color
+            It's the new trace color
             </summary>
         </member>
-        <member name="M:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.RedFilter.GetIdentification">
+        <member name="F:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.PenTraceFilter._extraDarknessFactor">
             <summary>
-            Gets the identification
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="T:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.GreenFilter">
-            <summary>
-            Represents a filter which enfasizes the green color
+            It's a factor that enfasizes the darkness of pen
             </summary>
         </member>
-        <member name="P:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.GreenFilter.Scale">
+        <member name="F:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.PenTraceFilter._penColorComparer">
             <summary>
-            Gets or sets the scale of color
+            It's a comparer of color
             </summary>
         </member>
-        <member name="M:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.GreenFilter.GetIdentification">
+        <member name="P:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.PenTraceFilter.NewTraceColor">
             <summary>
-            Gets the identification
+            It's the new trace color
             </summary>
-            <returns></returns>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.PenTraceFilter.ExtraDarknessFactor">
+            <summary>
+            It's a factor that enfasizes the darkness of pen
+            </summary>
         </member>
         <member name="T:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.IContrastOrientedObject">
             <summary>
@@ -293,6 +237,108 @@
             <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         </member>
         <member name="M:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI.ContrastConfigurationPanelControl.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI.MarginPanelControl.LeftMargin">
+            <summary>
+            Gets or sets de respective margin
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI.MarginPanelControl.RightMargin">
+            <summary>
+            Gets or sets de respective margin
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI.MarginPanelControl.TopMargin">
+            <summary>
+            Gets or sets de respective margin
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI.MarginPanelControl.BottomMargin">
+            <summary>
+            Gets or sets de respective margin
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI.MarginPanelControl._mainHook">
+            <summary>
+            It's the main hook
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI.MarginPanelControl._secondHook">
+            <summary>
+            It's the main hook
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI.MarginPanelControl._marginEnabledEffect">
+            <summary>
+            It's the effect filter based on margin
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI.MarginPanelControl.LoadHooks(smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.IMarginEnabledEffect)">
+            <summary>
+            Loads hooks
+            </summary>
+            <param name="marginEnabledEffect"></param>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI.MarginPanelControl.RefreshForm">
+            <summary>
+            Refreshes the form
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI.MarginPanelControl.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI.MarginPanelControl.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI.MarginPanelControl.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI.PenTraceConfigurationPanelControl._innerFilter">
+            <summary>
+            It's the pen trace
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI.PenTraceConfigurationPanelControl.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI.PenTraceConfigurationPanelControl.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI.PenTraceConfigurationPanelControl.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI.ReplaceColorsPanelControl.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI.ReplaceColorsPanelControl.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI.ReplaceColorsPanelControl.InitializeComponent">
             <summary> 
             Required method for Designer support - do not modify 
             the contents of this method with the code editor.
@@ -855,6 +901,16 @@
               resource lookups using this strongly typed resource class.
             </summary>
         </member>
+        <member name="P:smartSuite.smartSpriteFX.SpriteEffectModule.Properties.Resources.get_color_cursor">
+            <summary>
+              Looks up a localized resource of type System.Byte[].
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.SpriteEffectModule.Properties.Resources.get_color_png">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
         <member name="P:smartSuite.smartSpriteFX.SpriteEffectModule.Properties.Resources.sun">
             <summary>
               Looks up a localized resource of type System.Drawing.Bitmap.
@@ -1062,6 +1118,12 @@
             </summary>
             <param name="sourcePreviewImage"></param>
         </member>
+        <member name="M:smartSuite.smartSpriteFX.Effects.Core.EffectEngine.GetSourcePreviewImage">
+            <summary>
+            Gets thw source preview image
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:smartSuite.smartSpriteFX.Effects.Core.EffectEngine.CancelApplying">
             <summary>
             Cancels the apply method
@@ -1221,160 +1283,12 @@
             </summary>
             <param name="fileName"></param>
         </member>
-        <member name="T:smartSuite.smartSpriteFX.Effects.Facade.EffectFacade">
+        <member name="M:smartSuite.smartSpriteFX.Effects.Core.EffectEngine.FormatValue(System.Type,System.String)">
             <summary>
-            Offers the ways to interact with engine
+            Formats the value
             </summary>
-        </member>
-        <member name="M:smartSuite.smartSpriteFX.Effects.Facade.EffectFacade.GetIterator">
-            <summary>
-            Gets the iterator of animation
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:smartSuite.smartSpriteFX.Effects.Facade.EffectFacade.UpdatePreviewBoard">
-            <summary>
-            Updates the main view board and returns the image.
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:smartSuite.smartSpriteFX.Effects.Facade.EffectFacade.FindFilter``1">
-            <summary>
-            Finds the filter in collection of selected filters.
-            </summary>
-            <typeparam name="T">The type of desired filter</typeparam>
-            <returns>The instance of the fires found filter or null if it doesn't exist.</returns>
-        </member>
-        <member name="M:smartSuite.smartSpriteFX.Effects.Facade.EffectFacade.GetTransparentBackgroundFilter">
-            <summary>
-            Gets the <see cref="T:smartSuite.smartSpriteFX.Effects.Filters.TransparentBackgroundFilter"/> in selected filter list.
-            </summary>
-            <returns>
-            The filter in selected filter list, or null if none has been found.
-            </returns>
-        </member>
-        <member name="M:smartSuite.smartSpriteFX.Effects.Facade.EffectFacade.GetControlCollectionFromPreviewBoard">
-            <summary>
-            Gets the control collection for preview board
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:smartSuite.smartSpriteFX.Effects.Facade.EffectFacade.RegisterFilter(smartSuite.smartSpriteFX.Effects.Filters.IEffectFilter,System.Int32)">
-            <summary>
-            Registers a filter
-            </summary>
-            <param name="effectFilter">A effect</param>
-            <param name="frameIndex">An order of filter</param>
-        </member>
-        <member name="M:smartSuite.smartSpriteFX.Effects.Facade.EffectFacade.UnRegisterFilter(smartSuite.smartSpriteFX.Effects.Filters.IEffectFilter)">
-            <summary>
-            Unregisters a filter
-            </summary>
-            <param name="effectFilter">A effect</param>
-        </member>
-        <member name="M:smartSuite.smartSpriteFX.Effects.Facade.EffectFacade.UpFilterOrder(smartSuite.smartSpriteFX.Effects.Filters.IEffectFilter)">
-            <summary>
-            Ups the filter in list order
-            </summary>
-            <param name="filter">An instance of filter</param>
-        </member>
-        <member name="M:smartSuite.smartSpriteFX.Effects.Facade.EffectFacade.DownFilterOrder(smartSuite.smartSpriteFX.Effects.Filters.IEffectFilter)">
-            <summary>
-            Downs the filter in list order
-            </summary>
-            <param name="filter">An instance of filter</param>
-        </member>
-        <member name="T:smartSuite.smartSpriteFX.Effects.FilterEngine.FilterCollection">
-            <summary>
-            It´s a collection of filters
-            </summary>
-        </member>
-        <member name="F:smartSuite.smartSpriteFX.Effects.FilterEngine.FilterCollection._loadErrorList">
-            <summary>
-            It´s the error list collection occurred during the Load method
-            </summary>
-        </member>
-        <member name="F:smartSuite.smartSpriteFX.Effects.FilterEngine.FilterCollection._filterPallete">
-            <summary>
-            It´s a collection of all filters that can be used.
-            </summary>
-        </member>
-        <member name="F:smartSuite.smartSpriteFX.Effects.FilterEngine.FilterCollection._filterBufferList">
-            <summary>
-            It´s a collection of filter to apply
-            </summary>
-        </member>
-        <member name="M:smartSuite.smartSpriteFX.Effects.FilterEngine.FilterCollection.Load">
-            <summary>
-            Load the filter pallete
-            </summary>
-        </member>
-        <member name="M:smartSuite.smartSpriteFX.Effects.FilterEngine.FilterCollection.GetFilterPallete">
-            <summary>
-            Gets the list pallete
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:smartSuite.smartSpriteFX.Effects.FilterEngine.FilterCollection.GetFilterBufferList">
-            <summary>
-            Gets a list of filter list
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:smartSuite.smartSpriteFX.Effects.FilterEngine.FilterCollection.Register(smartSuite.smartSpriteFX.Effects.Filters.IEffectFilter,System.Int32)">
-            <summary>
-            Registers a filter to work.
-            </summary>
-            <param name="filter">A filter to apply</param>
-            <param name="filterOrderIndex">An index of filter to apply the filter.</param>
-        </member>
-        <member name="M:smartSuite.smartSpriteFX.Effects.FilterEngine.FilterCollection.UpOrder(smartSuite.smartSpriteFX.Effects.Filters.IEffectFilter)">
-            <summary>
-            Ups the filter in list order
-            </summary>
-            <param name="filter">An instance of filter</param>
-        </member>
-        <member name="M:smartSuite.smartSpriteFX.Effects.FilterEngine.FilterCollection.Count">
-            <summary>
-            Gets the amount of selected filter
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:smartSuite.smartSpriteFX.Effects.FilterEngine.FilterCollection.Clear">
-            <summary>
-            Clears the filter buffer list
-            </summary>
-        </member>
-        <member name="M:smartSuite.smartSpriteFX.Effects.FilterEngine.FilterCollection.DownOrder(smartSuite.smartSpriteFX.Effects.Filters.IEffectFilter)">
-            <summary>
-            Downs the filter in list order
-            </summary>
-            <param name="filter">An instance of filter</param>
-        </member>
-        <member name="M:smartSuite.smartSpriteFX.Effects.FilterEngine.FilterCollection.Register(smartSuite.smartSpriteFX.Effects.Filters.IEffectFilter)">
-            <summary>
-            Registers a filter to work.
-            </summary>
-            <param name="filter">A filter to apply</param>
-        </member>
-        <member name="M:smartSuite.smartSpriteFX.Effects.FilterEngine.FilterCollection.UnRegister(smartSuite.smartSpriteFX.Effects.Filters.IEffectFilter)">
-            <summary>
-            Removes the filter
-            </summary>
-            <param name="filter" />		
-        </member>
-        <member name="M:smartSuite.smartSpriteFX.Effects.FilterEngine.FilterCollection.Apply(smartSuite.smartSpriteFX.Pictures.Picture,System.Int32)">
-            <summary>
-            Applies all the filter buffer list in order
-            </summary>
-            <param name="picture"></param>
-            <param name="frameIndex">It´s the frame index in an animation</param>
-            <returns>The output path</returns>
-        </member>
-        <member name="M:smartSuite.smartSpriteFX.Effects.FilterEngine.FilterCollection.GetLoadErrorList">
-            <summary>
-            Gets error list eventually occurred during the Load() method.
-            </summary>
+            <param name="propertyType"></param>
+            <param name="valueString"></param>
             <returns></returns>
         </member>
         <member name="T:smartSuite.smartSpriteFX.Effects.Filters._8BitFilter">
@@ -1665,6 +1579,120 @@
             </summary>
             <param name="frame"></param>
             <param name="index"></param>
+            <returns></returns>
+        </member>
+        <member name="T:smartSuite.smartSpriteFX.Effects.FilterEngine.FilterCollection">
+            <summary>
+            It´s a collection of filters
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSpriteFX.Effects.FilterEngine.FilterCollection._loadErrorList">
+            <summary>
+            It´s the error list collection occurred during the Load method
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSpriteFX.Effects.FilterEngine.FilterCollection._filterPallete">
+            <summary>
+            It´s a collection of all filters that can be used.
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSpriteFX.Effects.FilterEngine.FilterCollection._filterBufferList">
+            <summary>
+            It´s a collection of filter to apply
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.Effects.FilterEngine.FilterCollection.DoNotPutFrameIndex">
+            <summary>
+            Instructs to ignore frame index in filtered file names
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Effects.FilterEngine.FilterCollection.Load">
+            <summary>
+            Load the filter pallete
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Effects.FilterEngine.FilterCollection.GetFilterPallete">
+            <summary>
+            Gets the list pallete
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Effects.FilterEngine.FilterCollection.GetFilterBufferList">
+            <summary>
+            Gets a list of filter list
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Effects.FilterEngine.FilterCollection.Register(smartSuite.smartSpriteFX.Effects.Filters.IEffectFilter,System.Int32)">
+            <summary>
+            Registers a filter to work.
+            </summary>
+            <param name="filter">A filter to apply</param>
+            <param name="filterOrderIndex">An index of filter to apply the filter.</param>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Effects.FilterEngine.FilterCollection.UpOrder(smartSuite.smartSpriteFX.Effects.Filters.IEffectFilter)">
+            <summary>
+            Ups the filter in list order
+            </summary>
+            <param name="filter">An instance of filter</param>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Effects.FilterEngine.FilterCollection.Count">
+            <summary>
+            Gets the amount of selected filter
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Effects.FilterEngine.FilterCollection.Clear">
+            <summary>
+            Clears the filter buffer list
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Effects.FilterEngine.FilterCollection.DownOrder(smartSuite.smartSpriteFX.Effects.Filters.IEffectFilter)">
+            <summary>
+            Downs the filter in list order
+            </summary>
+            <param name="filter">An instance of filter</param>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Effects.FilterEngine.FilterCollection.Register(smartSuite.smartSpriteFX.Effects.Filters.IEffectFilter)">
+            <summary>
+            Registers a filter to work.
+            </summary>
+            <param name="filter">A filter to apply</param>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Effects.FilterEngine.FilterCollection.UnRegister(smartSuite.smartSpriteFX.Effects.Filters.IEffectFilter)">
+            <summary>
+            Removes the filter
+            </summary>
+            <param name="filter" />		
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Effects.FilterEngine.FilterCollection.Apply(smartSuite.smartSpriteFX.Pictures.Picture,System.Int32)">
+            <summary>
+            Applies all the filter buffer list in order
+            </summary>
+            <param name="picture"></param>
+            <param name="frameIndex">It´s the frame index in an animation</param>
+            <returns>The output path</returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Effects.FilterEngine.FilterCollection.GenerateFilteredImage(smartSuite.smartSpriteFX.Pictures.Picture,System.String)">
+            <summary>
+            Generates the filtered image
+            </summary>
+            <param name="picture"></param>
+            <param name="file"></param>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Effects.FilterEngine.FilterCollection.FormatFileName(System.Int32,System.String,System.String)">
+            <summary>
+            Mounts and gets the file name
+            </summary>
+            <param name="frameIndex"></param>
+            <param name="baseFile"></param>
+            <param name="folder"></param>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Effects.FilterEngine.FilterCollection.GetLoadErrorList">
+            <summary>
+            Gets error list eventually occurred during the Load() method.
+            </summary>
             <returns></returns>
         </member>
         <member name="T:smartSuite.smartSpriteFX.Effects.Infra.ColorBuffer">

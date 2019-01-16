@@ -1,93 +1,84 @@
-﻿using smartSuite.smartSpriteFX.Effects.Filters;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using smartSuite.smartSpriteFX.Effects.Infra.UI.Configuratons;
-using smartSuite.smartSpriteFX.Pictures;
-using smartSuite.smartSpriteFX.Effects.Infra;
-using System.Drawing;
-using smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI;
+// Decompiled with JetBrains decompiler
+// Type: smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.RedFilter
+// Assembly: smartSpriteFX.SpriteEffectModule, Version=1.0.0.1, Culture=neutral, PublicKeyToken=ce706f4351ff1c90
+// MVID: E6BC09AE-E985-4C4F-953A-4846430587BE
+// Assembly location: C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule\obj\Release\smartSpriteFX.SpriteEffectModule.dll
+
 using smartSuite.smartSpriteFX.Effects.Core;
+using smartSuite.smartSpriteFX.Effects.Filters;
+using smartSuite.smartSpriteFX.Effects.Infra;
+using smartSuite.smartSpriteFX.Effects.Infra.UI.Configuratons;
+using smartSuite.smartSpriteFX.PictureEngine.Pictures;
+using smartSuite.smartSpriteFX.Pictures;
+using smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI;
+using System.Collections.Generic;
+using System.Drawing;
 
 namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
 {
-    /// <summary>
-    /// Represents a filter which enfasizes the red color
-    /// </summary>
-    public class RedFilter : SmartSpriteOriginalFilterBase, IScaleOrientedObject
+  public class RedFilter : SmartSpriteOriginalFilterBase, IScaleOrientedObject
+  {
+    public float Scale { get; set; }
+
+    public override bool ApplyFilter(Picture frame, int index)
     {
-        /// <summary>
-        /// Gets or sets the scale of color
-        /// </summary>
-        public float Scale
+      TransparentBackgroundFilter backgroundFilter = EffectEngine.GetTransparentBackgroundFilter();
+      CropFilter filter = EffectEngine.FindFilter<CropFilter>();
+      using (List<PointInfo>.Enumerator enumerator = frame.GetAllPixels().GetEnumerator())
+      {
+        while (enumerator.MoveNext())
         {
-            get;
-            set;
+          PointInfo current = enumerator.Current;
+          Color color1;
+          if (backgroundFilter != null)
+          {
+            color1 = backgroundFilter.TransparentColor;
+            int argb1 = color1.ToArgb();
+            color1 = current.Color;
+            int argb2 = color1.ToArgb();
+            if (argb1 == argb2)
+              continue;
+          }
+          if (filter != null)
+          {
+            color1 = filter.GetTransparentColor();
+            int argb1 = color1.ToArgb();
+            color1 = current.Color;
+            int argb2 = color1.ToArgb();
+            if (argb1 == argb2)
+              continue;
+          }
+          color1 = current.Color;
+          int a = (int) color1.A;
+          int scale = (int) this.Scale;
+          color1 = current.Color;
+          int g = (int) color1.G;
+          color1 = current.Color;
+          int b = (int) color1.B;
+          Color color2 = Color.FromArgb(a, scale, g, b);
+          frame.ReplacePixel((int) ((Pictures.Point) current).X, (int) ((Pictures.Point) current).Y, color2);
         }
-
-        public override bool ApplyFilter(Picture frame, int index)
-        {
-            var transparentBackgroundFilter =
-                EffectEngine.GetTransparentBackgroundFilter();
-
-            var cropFilter = EffectEngine.FindFilter<CropFilter>();
-
-            var pixelList = frame.GetAllPixels();
-            foreach (var pixelItem in pixelList)
-            {
-                #region Transparent background dealing
-
-                if (transparentBackgroundFilter != null)
-                {
-                    if (transparentBackgroundFilter.TransparentColor.ToArgb() ==
-                        pixelItem.Color.ToArgb())
-                    {
-                        continue;
-                    }
-                }
-                if (cropFilter != null)
-                {
-                    if (cropFilter.GetTransparentColor().ToArgb() ==
-                        pixelItem.Color.ToArgb())
-                    {
-                        continue;
-                    }
-                }
-
-                #endregion
-
-                Color newColor = Color.FromArgb(pixelItem.Color.A, (int)this.Scale, pixelItem.Color.G, pixelItem.Color.B);
-                frame.ReplacePixel((int)pixelItem.X, (int)pixelItem.Y, newColor);
-            }
-
-            return true;
-        }
-
-        public override void Reset()
-        {
-            this.Scale = 255;
-        }
-
-        public override IConfigurationPanel ShowConfigurationPanel()
-        {
-            return new ScaleConfigurationPanelControl(0, 255);
-        }
-
-        /// <summary>
-        /// Gets the identification
-        /// </summary>
-        /// <returns></returns>
-        public override Identification GetIdentification()
-        {
-            var identification = base.GetIdentification();
-            identification.SetName("Red");
-            identification.SetDescription("A filter used to enfisize the red color");
-            identification.SetGroup("Color");
-
-            return identification;
-        }
-
+      }
+      return true;
     }
+
+    public override void Reset()
+    {
+      this.Scale = (float) byte.MaxValue;
+    }
+
+    public override IConfigurationPanel ShowConfigurationPanel()
+    {
+      return (IConfigurationPanel) new ScaleConfigurationPanelControl(0.0f, (float) byte.MaxValue);
+    }
+
+    public override Identification GetIdentification()
+    {
+      Identification identification = base.GetIdentification();
+      identification.SetName("Red");
+      identification.SetDescription("A filter used to enfisize the red color");
+      identification.SetGroup("Color");
+      return identification;
+    }
+  }
 }

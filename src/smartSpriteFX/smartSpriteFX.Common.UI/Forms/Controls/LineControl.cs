@@ -51,13 +51,13 @@ namespace smartSuite.smartSpriteFX.Forms.Controls
             switch (style)
             {
                 case LineControlStyle.Horizontal:
-                    this.Height = 1;
+                    this.Height = 10;
                     this.Width = (int)size;
                     break;
 
                 case LineControlStyle.Vertical:
                     this.Height = (int)size;
-                    this.Width = 1;
+                    this.Width = 10;
                     break;
 
                 default:
@@ -90,11 +90,13 @@ namespace smartSuite.smartSpriteFX.Forms.Controls
         {
             if (bold)
             {
-                this.BorderStyle = BorderStyle.Fixed3D;
+                // this.BorderStyle = BorderStyle.Fixed3D;
+                this.BackColor = Color.Yellow;
             }
             else
             {
-                this.BorderStyle = BorderStyle.None;
+                // this.BorderStyle = BorderStyle.None;
+                this.BackColor = Color.Blue;
             }
         }
 

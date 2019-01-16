@@ -3,6 +3,7 @@ using smartSuite.smartSpriteFX.Effects.Filters;
 using smartSuite.smartSpriteFX.Pictures;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -29,10 +30,15 @@ namespace smartSuite.smartSpriteFX.Effects.FilterEngine{
 		/// </summary>
 		private List<IEffectFilter> _filterBufferList = new List<IEffectFilter>();
 
-		/// <summary>
-		/// Load the filter pallete
-		/// </summary>
-		public static void Load()
+        /// <summary>
+        /// Instructs to ignore frame index in filtered file names
+        /// </summary>
+        public static bool DoNotPutFrameIndex { get; set; }
+
+        /// <summary>
+        /// Load the filter pallete
+        /// </summary>
+        public static void Load()
         {
             lock (FilterCollection._filterPallete)
             {
@@ -83,6 +89,7 @@ namespace smartSuite.smartSpriteFX.Effects.FilterEngine{
                     lock (FilterCollection._loadErrorList)
                     {
                         FilterCollection._loadErrorList.Add(ex.ToString());
+                        Trace.WriteLine(ex.ToString());
                     }
                 }
             }
@@ -328,31 +335,63 @@ namespace smartSuite.smartSpriteFX.Effects.FilterEngine{
                 outputPath = folder;
             }
 
+            var frameRateFilter = this._filterBufferList.FirstOrDefault(f => f is FrameRateFilter);
+
+            #region Entries validation
+
+            if (frameRateFilter != null)
+            {
+                if (!frameRateFilter.ApplyFilter(picture, frameIndex)) return outputPath;
+            }
+
+            #endregion
+
             for (int i = 0; i < this._filterBufferList.Count; i++)
             {
                 var filter = this._filterBufferList[i];
 
+                if (filter is FrameRateFilter) continue;
+
                 if (filter.ApplyFilter(picture, frameIndex))
                 {
-                    String file =
-                        Path.Combine(
-                            folder,
-                            Path.GetFileNameWithoutExtension(baseFile) + "." + frameIndex.ToString() + ".filtered" + Path.GetExtension(baseFile));
+                    string file = this.FormatFileName(frameIndex, baseFile, folder);
 
                     if (!Directory.Exists(folder))
                     {
                         Directory.CreateDirectory(folder);
                     }
 
-                    picture.SaveCopy(file);
-                }
-                else
-                {
-                    break;
+                    this.GenerateFilteredImage(picture, file);
                 }
             }
 
             return outputPath;
+        }
+
+        /// <summary>
+        /// Generates the filtered image
+        /// </summary>
+        /// <param name="picture"></param>
+        /// <param name="file"></param>
+        public virtual void GenerateFilteredImage(Picture picture, string file)
+        {
+            picture.SaveCopy(file);
+        }
+
+        /// <summary>
+        /// Mounts and gets the file name
+        /// </summary>
+        /// <param name="frameIndex"></param>
+        /// <param name="baseFile"></param>
+        /// <param name="folder"></param>
+        /// <returns></returns>
+        private string FormatFileName(int frameIndex, string baseFile, string folder)
+        {
+            return Path.Combine(
+                    folder,
+                    Path.GetFileNameWithoutExtension(baseFile) +
+                    ((FilterCollection.DoNotPutFrameIndex) ? "" : "." + frameIndex.ToString()) +
+                    ".filtered" + Path.GetExtension(baseFile));
         }
 
         /// <summary>

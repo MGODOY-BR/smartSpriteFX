@@ -120,12 +120,15 @@ namespace smartSuite.smartSpriteFX.Forms.Controls.Browsers
             this.UserChoice = fileName;
             try
             {
-                this.ChosenByUserEvent(
-                    this,
-                    new SmartBrowserEventArgs
-                    {
-                        UserChoice = this.UserChoice
-                    });
+                if (this.ChosenByUserEvent != null)
+                {
+                    this.ChosenByUserEvent(
+                        this,
+                        new SmartBrowserEventArgs
+                        {
+                            UserChoice = this.UserChoice
+                        });
+                }
             }
             catch
             {
@@ -187,6 +190,11 @@ namespace smartSuite.smartSpriteFX.Forms.Controls.Browsers
         private void btnApply_Click(object sender, EventArgs e)
         {
             this.DoChoice(this.txtFileName.Text);
+        }
+
+        private void txtFileName_TextChanged(object sender, EventArgs e)
+        {
+            this.UserChoice = this.txtFileName.Text;
         }
     }
 

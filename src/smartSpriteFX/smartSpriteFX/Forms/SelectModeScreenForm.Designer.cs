@@ -33,9 +33,11 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.btnEffectModeBatch = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnLettlerModeBatch = new System.Windows.Forms.Button();
             this.imgDemo = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblDescription = new System.Windows.Forms.Label();
+            this.btnTools = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgDemo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -50,7 +52,7 @@
             this.btnLandscapeMode.Font = new System.Drawing.Font("Open Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLandscapeMode.Location = new System.Drawing.Point(3, 3);
             this.btnLandscapeMode.Name = "btnLandscapeMode";
-            this.btnLandscapeMode.Size = new System.Drawing.Size(196, 41);
+            this.btnLandscapeMode.Size = new System.Drawing.Size(167, 41);
             this.btnLandscapeMode.TabIndex = 1;
             this.btnLandscapeMode.Text = "Landscape Mode";
             this.btnLandscapeMode.UseVisualStyleBackColor = true;
@@ -64,9 +66,9 @@
             this.btnEffectMode.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.btnEffectMode.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnEffectMode.Font = new System.Drawing.Font("Open Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEffectMode.Location = new System.Drawing.Point(263, 3);
+            this.btnEffectMode.Location = new System.Drawing.Point(238, 2);
             this.btnEffectMode.Name = "btnEffectMode";
-            this.btnEffectMode.Size = new System.Drawing.Size(212, 41);
+            this.btnEffectMode.Size = new System.Drawing.Size(167, 41);
             this.btnEffectMode.TabIndex = 1;
             this.btnEffectMode.Text = "Effect Mode";
             this.btnEffectMode.UseVisualStyleBackColor = true;
@@ -77,7 +79,7 @@
             // 
             this.panel4.BackColor = System.Drawing.Color.Transparent;
             this.panel4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.panel4.Location = new System.Drawing.Point(455, 3);
+            this.panel4.Location = new System.Drawing.Point(632, 2);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(296, 26);
             this.panel4.TabIndex = 1;
@@ -89,9 +91,9 @@
             this.btnEffectModeBatch.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.btnEffectModeBatch.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnEffectModeBatch.Font = new System.Drawing.Font("Open Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEffectModeBatch.Location = new System.Drawing.Point(539, 4);
+            this.btnEffectModeBatch.Location = new System.Drawing.Point(463, 4);
             this.btnEffectModeBatch.Name = "btnEffectModeBatch";
-            this.btnEffectModeBatch.Size = new System.Drawing.Size(212, 41);
+            this.btnEffectModeBatch.Size = new System.Drawing.Size(167, 41);
             this.btnEffectModeBatch.TabIndex = 2;
             this.btnEffectModeBatch.Text = "Effect Mode Batch";
             this.btnEffectModeBatch.UseVisualStyleBackColor = true;
@@ -100,14 +102,32 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnTools);
+            this.panel1.Controls.Add(this.btnLettlerModeBatch);
             this.panel1.Controls.Add(this.btnLandscapeMode);
             this.panel1.Controls.Add(this.btnEffectMode);
             this.panel1.Controls.Add(this.btnEffectModeBatch);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(0, 430);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(754, 48);
+            this.panel1.Size = new System.Drawing.Size(928, 48);
             this.panel1.TabIndex = 4;
+            // 
+            // btnLettlerModeBatch
+            // 
+            this.btnLettlerModeBatch.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
+            this.btnLettlerModeBatch.FlatAppearance.BorderSize = 5;
+            this.btnLettlerModeBatch.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.btnLettlerModeBatch.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnLettlerModeBatch.Font = new System.Drawing.Font("Open Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLettlerModeBatch.Location = new System.Drawing.Point(682, 2);
+            this.btnLettlerModeBatch.Name = "btnLettlerModeBatch";
+            this.btnLettlerModeBatch.Size = new System.Drawing.Size(167, 41);
+            this.btnLettlerModeBatch.TabIndex = 3;
+            this.btnLettlerModeBatch.Text = "Image Letter Mode";
+            this.btnLettlerModeBatch.UseVisualStyleBackColor = true;
+            this.btnLettlerModeBatch.Click += new System.EventHandler(this.btnLettlerModeBatch_Click);
+            this.btnLettlerModeBatch.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnLettlerModeBatch_MouseMove);
             // 
             // imgDemo
             // 
@@ -116,18 +136,19 @@
             this.imgDemo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.imgDemo.Location = new System.Drawing.Point(0, 29);
             this.imgDemo.Name = "imgDemo";
-            this.imgDemo.Size = new System.Drawing.Size(754, 401);
+            this.imgDemo.Size = new System.Drawing.Size(928, 401);
             this.imgDemo.TabIndex = 5;
             this.imgDemo.TabStop = false;
             // 
             // pictureBox1
             // 
+            this.pictureBox1.BackColor = System.Drawing.Color.White;
             this.pictureBox1.BackgroundImage = global::smartSuite.smartSpriteFX.Properties.Resources.logo;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(754, 29);
+            this.pictureBox1.Size = new System.Drawing.Size(928, 29);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
@@ -142,12 +163,23 @@
             this.lblDescription.TabIndex = 6;
             this.lblDescription.Visible = false;
             // 
+            // btnTools
+            // 
+            this.btnTools.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTools.Location = new System.Drawing.Point(880, 3);
+            this.btnTools.Name = "btnTools";
+            this.btnTools.Size = new System.Drawing.Size(45, 37);
+            this.btnTools.TabIndex = 4;
+            this.btnTools.Text = "...";
+            this.btnTools.UseVisualStyleBackColor = true;
+            this.btnTools.Click += new System.EventHandler(this.btnTools_Click);
+            // 
             // SelectModeScreenForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(754, 478);
+            this.ClientSize = new System.Drawing.Size(928, 478);
             this.Controls.Add(this.lblDescription);
             this.Controls.Add(this.imgDemo);
             this.Controls.Add(this.panel1);
@@ -177,5 +209,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox imgDemo;
         private System.Windows.Forms.Label lblDescription;
+        private System.Windows.Forms.Button btnLettlerModeBatch;
+        private System.Windows.Forms.Button btnTools;
     }
 }

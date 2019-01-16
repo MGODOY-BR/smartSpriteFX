@@ -15,6 +15,8 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading;
 using smartSuite.smartSpriteFX.Pictures.PixelPatterns;
+using System.Drawing.Drawing2D;
+using System.Text.RegularExpressions;
 
 namespace smartSuite.smartSpriteFX.Pictures
 {
@@ -35,6 +37,13 @@ namespace smartSuite.smartSpriteFX.Pictures
         private int _height;
 
         /// <summary>
+        /// It's a filter used during the loading buffer process
+        /// </summary>
+        /// <seealso cref="LoadBuffer(Bitmap)"/>
+        /// <seealso cref="LoadBuffer(string)"/>
+        private IColorFilter _colorFilter;
+
+        /// <summary>
         /// Gets the original width of picture with no filters applied
         /// </summary>
         public int OriginalWidth { get; private set; }
@@ -47,13 +56,7 @@ namespace smartSuite.smartSpriteFX.Pictures
         /// <summary>
         /// It´s the transparent color
         /// </summary>
-        private Color _transparentColor = Color.Transparent;
-
-        /// <summary>
-        /// It´s a buffer of colors, where key it's a combination of x and y coordinates. 
-        /// </summary>
-        [NonSerialized]
-        private PictureDatabase _buffer;
+        private Color? _transparentColor = null;
 
         /// <summary>
         /// Gets the amount of color of current picture
@@ -67,7 +70,7 @@ namespace smartSuite.smartSpriteFX.Pictures
         /// <summary>
         /// Creates an image
         /// </summary>
-        private Picture(String fullPath)
+        private Picture(String fullPath, IColorFilter colorFilter)
         {
             #region Entries validation
 
@@ -75,10 +78,15 @@ namespace smartSuite.smartSpriteFX.Pictures
             {
                 throw new ArgumentNullException("fullPath");
             }
+            if (colorFilter == null)
+            {
+                throw new ArgumentNullException("colorFilter");
+            }
 
             #endregion
 
             this._fullPath = fullPath;
+            this._colorFilter = colorFilter;
 
             // Loading the bit array
             this.LoadBuffer(fullPath);
@@ -108,8 +116,8 @@ namespace smartSuite.smartSpriteFX.Pictures
             {
                 this.BeginBatchUpdate();
 
-                this._buffer.Merge(other._buffer);
-                this.ColorCount = this._buffer.CountColor();
+                this.Buffer.Merge(other.Buffer);
+                this.ColorCount = this.Buffer.CountColor();
 
                 this.EndBatchUpdate();
             }
@@ -121,26 +129,6 @@ namespace smartSuite.smartSpriteFX.Pictures
         }
 
         /// <summary>
-        /// Gets the instance of object without load the buffer.
-        /// </summary>
-        /// <param name="fileNameItem"></param>
-        public static Picture GetInstanceLazy(string fileNameItem)
-        {
-            #region Entries validation
-
-            if (String.IsNullOrEmpty(fileNameItem))
-            {
-                throw new ArgumentNullException("fileNameItem");
-            }
-
-            #endregion
-
-            Picture resultValue = new Picture();
-            resultValue._fullPath = fileNameItem;
-            return resultValue;
-        }
-
-        /// <summary>
         /// Gets all the pixels from Picture
         /// </summary>
         /// <returns></returns>
@@ -148,14 +136,14 @@ namespace smartSuite.smartSpriteFX.Pictures
         {
             #region Entries validation
 
-            if (this._buffer == null)
+            if (this.Buffer == null)
             {
-                throw new ArgumentNullException("this._buffer");
+                throw new ArgumentNullException("this.Buffer");
             }
 
             #endregion
 
-            return this._buffer.SELECTALL();
+            return this.Buffer.SELECTALL();
         }
 
         /// <summary>
@@ -166,14 +154,14 @@ namespace smartSuite.smartSpriteFX.Pictures
         {
             #region Entries validation
 
-            if (this._buffer == null)
+            if (this.Buffer == null)
             {
-                throw new ArgumentNullException("this._buffer");
+                throw new ArgumentNullException("this.Buffer");
             }
 
             #endregion
 
-            return this._buffer.GetAllColors();
+            return this.Buffer.GetAllColors();
         }
 
         /// <summary>
@@ -184,14 +172,14 @@ namespace smartSuite.smartSpriteFX.Pictures
         {
             #region Entries validation
 
-            if (this._buffer == null)
+            if (this.Buffer == null)
             {
-                throw new ArgumentNullException("this._buffer");
+                throw new ArgumentNullException("this.Buffer");
             }
 
             #endregion
 
-            return this._buffer.DELETE(x, y);
+            return this.Buffer.DELETE(x, y);
         }
 
         /// <summary>
@@ -209,7 +197,7 @@ namespace smartSuite.smartSpriteFX.Pictures
 
             #endregion
 
-            this._buffer = other._buffer;
+            this.Buffer = other.Buffer;
         }
 
         /// <summary>
@@ -221,14 +209,14 @@ namespace smartSuite.smartSpriteFX.Pictures
         {
             #region Entries validation
 
-            if (this._buffer == null)
+            if (this.Buffer == null)
             {
-                throw new ArgumentNullException("this._buffer");
+                throw new ArgumentNullException("this.Buffer");
             }
 
             #endregion
 
-            this._buffer.UPDATE(oldColor, newColor);
+            this.Buffer.UPDATE(oldColor, newColor);
         }
 
         /// <summary>
@@ -239,7 +227,8 @@ namespace smartSuite.smartSpriteFX.Pictures
         /// </remarks>
         internal Picture()
         {
-            this._buffer = PictureDatabase.Open();
+            this.Buffer = PictureDatabase.Open();
+            this._colorFilter = new NoneColorFilter();
         }
 
         /// <summary>
@@ -300,7 +289,7 @@ namespace smartSuite.smartSpriteFX.Pictures
         /// <summary>
         /// Sets or gets the transparent color
         /// </summary>
-        public Color TransparentColor
+        public Color? TransparentColor
         {
             get
             {
@@ -311,6 +300,11 @@ namespace smartSuite.smartSpriteFX.Pictures
                 this._transparentColor = value;
             }
         }
+
+        /// <summary>
+        /// Gets the buffer
+        /// </summary>
+        public PictureDatabase Buffer { get; private set; }
 
         /// <summary>
         /// Loads the buffer of image
@@ -357,15 +351,15 @@ namespace smartSuite.smartSpriteFX.Pictures
             {
                 throw new ArgumentNullException("image");
             }
-            if (this._buffer != null && this._buffer.COUNT() > 0)
+            if (this.Buffer != null && this.Buffer.COUNT() > 0)
             {
                 return;
             }
 
             #endregion
 
-            this._buffer = PictureDatabase.Open();
-            this._buffer.CLEAR();
+            this.Buffer = PictureDatabase.Open();
+            this.Buffer.CLEAR();
 
             List<AutoResetEvent> semaphoreList = new List<AutoResetEvent>();
             ThreadPool.SetMinThreads(1, 500);
@@ -373,15 +367,25 @@ namespace smartSuite.smartSpriteFX.Pictures
 
             try
             {
-                this._buffer.BeginTransaction();
+                this.Buffer.BeginTransaction();
 
                 for (int y = 0; y < image.Height; y++)
                 {
                     for (int x = 0; x < image.Width; x++)
                     {
+                        var color = image.GetPixel(x, y);
+
+                        #region Filtering colors
+
+                        if (!this._colorFilter.IsValid(x, y, color))
+                        {
+                            continue;
+                        }
+
+                        #endregion
+
                         AutoResetEvent sign = new AutoResetEvent(false);
                         semaphoreList.Add(sign);
-                        var color = image.GetPixel(x, y);
                         object[] stateArgs = new object[4] { x, y, color, sign };
 
                         WaitCallback pixelProcessingDelegate = new WaitCallback(delegate (object state)
@@ -411,15 +415,15 @@ namespace smartSuite.smartSpriteFX.Pictures
                     signItem.WaitOne();
                 }
 
-                this._buffer.CommitTransaction();
+                this.Buffer.CommitTransaction();
             }
             catch(Exception ex)
             {
-                this._buffer.RollbackTransaction();
+                this.Buffer.RollbackTransaction();
                 throw ex;
             }
 
-            this.ColorCount = this._buffer.CountColor();
+            this.ColorCount = this.Buffer.CountColor();
             this._height = image.Height;
             this._width = image.Width;
         }
@@ -433,7 +437,7 @@ namespace smartSuite.smartSpriteFX.Pictures
         public void SetPixel(int x, int y, Color color)
         {
             // Save private picture
-            this._buffer.INSERT(x, y, color);
+            this.Buffer.INSERT(x, y, color);
         }
 
         /// <summary>
@@ -441,7 +445,65 @@ namespace smartSuite.smartSpriteFX.Pictures
         /// </summary>
         public void SetPixel(List<PointInfo> pointInfoList)
         {
-            this._buffer.INSERT(pointInfoList);
+            this.Buffer.INSERT(pointInfoList);
+        }
+
+        /// <summary>
+        /// Draws a string in picture
+        /// </summary>
+        /// <param name="text"></param>
+        public void DrawString(string text, float offSetX, float offSetY)
+        {
+            Font font = new Font("Arial", 12f);
+            var sizeLetter = System.Windows.Forms.TextRenderer.MeasureText(text.ToString(), font);
+
+            SolidBrush brush = new SolidBrush(Color.Black);
+
+            using (Bitmap bmp = new Bitmap(sizeLetter.Width, sizeLetter.Height, PixelFormat.Format32bppArgb))
+            {
+                RectangleF rectf = new RectangleF(0, 0, sizeLetter.Width, sizeLetter.Height);
+
+                Graphics graphics = Graphics.FromImage(bmp);
+
+                graphics.SmoothingMode = SmoothingMode.AntiAlias;
+                graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
+                SolidBrush backgroundBrush = new SolidBrush(Color.Yellow);
+
+                graphics.FillRectangle(
+                    backgroundBrush,
+                    rectf);
+
+                graphics.DrawString(text, font, brush, rectf);
+                graphics.Flush();
+
+                #region Updating the internal memory buffer
+
+                var buffer = new PointInfo[sizeLetter.Width * sizeLetter.Height];
+                int count = 0;
+                for (int y = 0; y < sizeLetter.Height; y++)
+                {
+                    for (int x = 0; x < sizeLetter.Width; x++)
+                    {
+                        var pixel = bmp.GetPixel(x, y);
+
+                        if(pixel != Color.Transparent && pixel.ToArgb() != backgroundBrush.Color.ToArgb())
+                        {
+                            int xx = x + (int)offSetX;
+                            int yy = y + (int)offSetY;
+                            buffer[count] = new PointInfo(xx, yy, pixel);
+                            // this.SetPixel(x + (int)offSetX, y + (int)offSetY, pixel);
+                        }
+                        count++;
+                    }
+                }
+
+                var bufferList = new List<PointInfo>(buffer);
+
+                this.SetPixel(bufferList);
+
+                #endregion
+            }
         }
 
         /// <summary>
@@ -449,7 +511,8 @@ namespace smartSuite.smartSpriteFX.Pictures
         /// </summary>
         public string FormatKey(int x, int y)
         {
-            return String.Format("{0}_{1}", x, y);
+            // return String.Format("{0}_{1}", x, y);
+            return PictureDatabase.FormatKeyIndex(new Point((float)x, (float)y));
         }
 
         /// <summary>
@@ -468,8 +531,10 @@ namespace smartSuite.smartSpriteFX.Pictures
 
             #endregion
 
-            var keyComponents = key.Split('_');
-            return new Point(float.Parse(keyComponents[0]), float.Parse(keyComponents[1]));
+            var point = new Point();
+            point.FillMe(key);
+
+            return point;
         }
 
         /// <summary>
@@ -492,7 +557,7 @@ namespace smartSuite.smartSpriteFX.Pictures
 
             if (cloneMode == CloneMode.Full)
             {
-                clone._buffer = this._buffer.Clone();
+                clone.Buffer = this.Buffer.Clone();
             }
 
             // Copying another attributes
@@ -520,9 +585,9 @@ namespace smartSuite.smartSpriteFX.Pictures
 
             long bufferSize = 0;
 
-            if (this._buffer != null)
+            if (this.Buffer != null)
             {
-                bufferSize = this._buffer.COUNT();
+                bufferSize = this.Buffer.COUNT();
             }
 
             if (bufferSize == 0 && !String.IsNullOrWhiteSpace(this._fullPath))
@@ -536,11 +601,11 @@ namespace smartSuite.smartSpriteFX.Pictures
 
             #endregion
 
-            if (this._buffer == null)
+            if (this.Buffer == null)
             {
                 this.LoadBuffer(this._fullPath);
             }
-            var item = this._buffer.SELECT(x, y);
+            var item = this.Buffer.SELECT(x, y);
             if (item == null)
             {
                 return null;
@@ -565,7 +630,7 @@ namespace smartSuite.smartSpriteFX.Pictures
             {
                 throw new ArgumentOutOfRangeException("It´s needed one color at least");
             }
-            if (this._buffer == null)
+            if (this.Buffer == null)
             {
                 return new List<Point>();
             }
@@ -573,11 +638,11 @@ namespace smartSuite.smartSpriteFX.Pictures
             #endregion
 
             List<Point> returnList = new List<Point>();
-            var colorCacheList = this._buffer;
+            var colorCacheList = this.Buffer;
             foreach (var findColorItem in colorList)
             {
                 returnList.AddRange(
-                    this._buffer.SELECT(findColorItem));
+                    this.Buffer.SELECT(findColorItem));
             }
 
             return returnList;
@@ -591,38 +656,25 @@ namespace smartSuite.smartSpriteFX.Pictures
         {
             #region Entries validation
 
-            if (this._buffer == null)
+            if (this.Buffer == null)
             {
                 return new List<PointInfo>();
             }
 
             #endregion
 
-            Dictionary<String, Color> pixelList = new Dictionary<string, Color>();
-
-            #region Filling the buffer
-
-            var bufferList = this._buffer.SELECTALL();
-            foreach (var bufferItem in bufferList)
-            {
-                pixelList.Add(
-                    this.FormatKey((int)bufferItem.X, (int)bufferItem.Y), bufferItem.Color);
-            }
-
-            #endregion
-
             List<PointInfo> returnList = new List<PointInfo>();
-            foreach (var pixelItem in pixelList)
+            foreach (var pointItem in this.Buffer.SELECTALL())
             {
-                PointInfo pointItem = new PointInfo(
-                       this.ToPoint(pixelItem.Key), pixelItem.Value);
-
                 #region Entries validation
 
                 // The point can't be transparent
-                if (pointItem.Color.ToArgb().Equals(this._transparentColor.ToArgb()))
+                if (this._transparentColor != null)
                 {
-                    continue;
+                    if (pointItem.Color.ToArgb().Equals(this._transparentColor.Value.ToArgb()))
+                    {
+                        continue;
+                    }
                 }
 
                 #endregion
@@ -651,18 +703,10 @@ namespace smartSuite.smartSpriteFX.Pictures
 
                 foreach (var pointArrayItem in pointArray)
                 {
-                    var key = this.FormatKey((int)pointArrayItem.X, (int)pointArrayItem.Y);
+                    var colorInfo = this.Buffer.SELECT((int)pointArrayItem.X, (int)pointArrayItem.Y);
+                    if (colorInfo == null) continue;
 
-                    #region Validation
-
-                    if (!pixelList.ContainsKey(key))
-                    {
-                        continue;
-                    }
-
-                    #endregion
-
-                    Color colorPixel = pixelList[key];
+                    Color colorPixel = colorInfo.GetInnerColor();
 
                     if(colorPixel.Equals(this._transparentColor))
                     {
@@ -679,7 +723,7 @@ namespace smartSuite.smartSpriteFX.Pictures
         /// </summary>
         /// <param name="x"></param>
         /// <param name="y"></param>
-        /// <param name="newColor" />		
+        /// <param name="newColor" />	
         public void ReplacePixel(int x, int y, Color newColor)
         {
             #region Entries validation
@@ -688,9 +732,9 @@ namespace smartSuite.smartSpriteFX.Pictures
             {
                 throw new ArgumentNullException("newColor");
             }
-            if (this._buffer == null)
+            if (this.Buffer == null)
             {
-                throw new ArgumentNullException("this._buffer");
+                throw new ArgumentNullException("this.Buffer");
             }
 
             #endregion
@@ -698,10 +742,10 @@ namespace smartSuite.smartSpriteFX.Pictures
             String key = this.FormatKey(x, y);
             lock (key)
             {
-                var affectedPixel = this._buffer.UPDATE(x, y, newColor);
+                var affectedPixel = this.Buffer.UPDATE(x, y, newColor);
                 if (affectedPixel == 0)
                 {
-                    this._buffer.INSERT(x, y, newColor);
+                    this.Buffer.INSERT(x, y, newColor);
                 }
             }
         }
@@ -718,17 +762,17 @@ namespace smartSuite.smartSpriteFX.Pictures
             {
                 throw new ArgumentNullException("pointRange");
             }
-            if (this._buffer == null)
+            if (this.Buffer == null)
             {
-                throw new ArgumentNullException("this._buffer");
+                throw new ArgumentNullException("this.Buffer");
             }
 
             #endregion
 
-            lock (this._buffer)
+            lock (this.Buffer)
             {
                 var affectedRowList =
-                        from rowItem in this._buffer.SELECTALL()
+                        from rowItem in this.Buffer.SELECTALL()
                         where
                             rowItem.X >= pointRange.StartPoint.X &&
                             rowItem.X <= pointRange.StartPoint.X &&
@@ -756,7 +800,7 @@ namespace smartSuite.smartSpriteFX.Pictures
         /// <summary>
         /// Overwrites the picture
         /// </summary>
-        internal void Overwrite(Color transparentColor)
+        internal void Overwrite(Color? transparentColor)
         {
             #region Entries validation
 
@@ -781,7 +825,7 @@ namespace smartSuite.smartSpriteFX.Pictures
         /// </summary>
         /// <param name="fileName"></param>
         /// <param name="transparentColor"></param>
-        private void Save(string fileName, Color transparentColor, IEqualityComparer<Color> colorComparer)
+        private void Save(string fileName, Color? transparentColor, IEqualityComparer<Color> colorComparer)
         {
             #region Entries validation
 
@@ -793,9 +837,9 @@ namespace smartSuite.smartSpriteFX.Pictures
             {
                 throw new ArgumentNullException("colorComparer");
             }
-            if (this._buffer == null)
+            if (this.Buffer == null)
             {
-                throw new ArgumentNullException("this._buffer");
+                throw new ArgumentNullException("this.Buffer");
             }
 
             #endregion
@@ -812,12 +856,21 @@ namespace smartSuite.smartSpriteFX.Pictures
                 firstPixel = Color.Transparent;
             }
 
-            var pixelList = this._buffer.SELECTALL();
+            var pixelList = this.Buffer.SELECTALL();
 
             using (var pieceBitmap = new Bitmap(this._width, this._height, PixelFormat.Format32bppArgb))
             {
                 foreach (var pixelItem in pixelList)
                 {
+                    #region Entries validation
+
+                    if (pixelItem == null)
+                    {
+                        continue;
+                    }
+
+                    #endregion
+
                     PointInfo pointInfo = pixelItem;
                     #region Entries validation
 
@@ -836,9 +889,12 @@ namespace smartSuite.smartSpriteFX.Pictures
 
                     #endregion
 
-                    if (colorComparer.Equals(pointInfo.Color, transparentColor))
+                    if (transparentColor != null)
                     {
-                        pointInfo.Color = transparentColor;
+                        if (colorComparer.Equals(pointInfo.Color, transparentColor.Value))
+                        {
+                            pointInfo.Color = transparentColor.Value;
+                        }
                     }
 
                     pieceBitmap.SetPixel(
@@ -848,7 +904,10 @@ namespace smartSuite.smartSpriteFX.Pictures
                 }
 
                 // Overwriting piece bitmap
-                pieceBitmap.MakeTransparent(transparentColor);
+                if (transparentColor != null)
+                {
+                    pieceBitmap.MakeTransparent(transparentColor.Value);
+                }
                 pieceBitmap.Save(fileName, ImageFormat.Png);
             }
         }
@@ -857,9 +916,9 @@ namespace smartSuite.smartSpriteFX.Pictures
 
         public void Dispose()
         {
-            if (this._buffer != null)
+            if (this.Buffer != null)
             {
-                // this._buffer.Clear();
+                // this.Buffer.Clear();
             }
         }
 
@@ -909,22 +968,32 @@ namespace smartSuite.smartSpriteFX.Pictures
         {
             #region Entries validation
 
-            if (this._buffer == null)
+            if (this.Buffer == null)
             {
-                throw new ArgumentNullException("this._buffer");
+                throw new ArgumentNullException("this.Buffer");
             }
 
             #endregion
 
-            this._buffer.CLEAR();
+            this.Buffer.CLEAR();
         }
 
         /// <summary>
-        /// Gets a instance of picture
+        /// Gets an instance of picture
         /// </summary>
         /// <param name="fullFileName"></param>
         /// <returns></returns>
         public static Picture GetInstance(String fullFileName)
+        {
+            return GetInstance(fullFileName, new NoneColorFilter());
+        }
+
+        /// <summary>
+        /// Gets an instance of picture
+        /// </summary>
+        /// <param name="fullFileName"></param>
+        /// <returns></returns>
+        public static Picture GetInstance(String fullFileName, IColorFilter colorFilter)
         {
             #region Entries validation
 
@@ -935,7 +1004,78 @@ namespace smartSuite.smartSpriteFX.Pictures
 
             #endregion
 
-            return new Picture(fullFileName);
+            return new Picture(fullFileName, colorFilter);
+        }
+
+        /// <summary>
+        /// Gets an instance of object. This method was projected for unit testing purposes.
+        /// </summary>
+        /// <returns></returns>
+        internal static Picture GetInstance(Bitmap bitmap)
+        {
+            return GetInstance(bitmap, new NoneColorFilter());
+        }
+
+        /// <summary>
+        /// Gets an instance of object. This method was projected for unit testing purposes.
+        /// </summary>
+        /// <returns></returns>
+        internal static Picture GetInstance(Bitmap bitmap, IColorFilter colorFilter)
+        {
+            #region Entries validation
+
+            if (colorFilter == null)
+            {
+                throw new ArgumentNullException("colorFilter");
+            }
+
+            #endregion
+
+            Picture returnValue = new Picture();
+            returnValue._height = bitmap.Height;
+            returnValue._width = bitmap.Width;
+            returnValue._colorFilter = colorFilter;
+
+            returnValue.OriginalHeight = bitmap.Height;
+            returnValue.OriginalWidth = bitmap.Width;
+
+            returnValue.LoadBuffer(bitmap);
+
+            return returnValue;
+        }
+
+        /// <summary>
+        /// Gets the instance of object without load the buffer.
+        /// </summary>
+        /// <param name="fileNameItem"></param>
+        public static Picture GetInstanceLazy(string fileNameItem)
+        {
+            return GetInstanceLazy(fileNameItem, new NoneColorFilter());
+        }
+
+        /// <summary>
+        /// Gets the instance of object without load the buffer.
+        /// </summary>
+        /// <param name="fileNameItem"></param>
+        public static Picture GetInstanceLazy(string fileNameItem, IColorFilter colorFilter)
+        {
+            #region Entries validation
+
+            if (String.IsNullOrEmpty(fileNameItem))
+            {
+                throw new ArgumentNullException("fileNameItem");
+            }
+            if (colorFilter == null)
+            {
+                throw new ArgumentNullException("colorFilter");
+            }
+
+            #endregion
+
+            Picture resultValue = new Picture();
+            resultValue._fullPath = fileNameItem;
+            resultValue._colorFilter = colorFilter;
+            return resultValue;
         }
 
         /// <summary>
@@ -963,13 +1103,13 @@ namespace smartSuite.smartSpriteFX.Pictures
         {
             #region Entries validation
 
-            if (this._buffer == null)
+            if (this.Buffer == null)
             {
-                throw new ArgumentNullException("this._buffer");
+                throw new ArgumentNullException("this.Buffer");
             }
 
             #endregion
-            this._buffer.CLEAR();
+            this.Buffer.CLEAR();
         }
 
         /// <summary>
@@ -979,14 +1119,14 @@ namespace smartSuite.smartSpriteFX.Pictures
         {
             #region Entries validation
 
-            if (this._buffer == null)
+            if (this.Buffer == null)
             {
-                throw new ArgumentNullException("this._buffer");
+                throw new ArgumentNullException("this.Buffer");
             }
 
             #endregion
 
-            this._buffer.BeginTransaction();
+            this.Buffer.BeginTransaction();
         }
 
         /// <summary>
@@ -996,14 +1136,14 @@ namespace smartSuite.smartSpriteFX.Pictures
         {
             #region Entries validation
 
-            if (this._buffer == null)
+            if (this.Buffer == null)
             {
-                throw new ArgumentNullException("this._buffer");
+                throw new ArgumentNullException("this.Buffer");
             }
 
             #endregion
 
-            this._buffer.CommitTransaction();
+            this.Buffer.CommitTransaction();
         }
 
         /// <summary>
@@ -1013,16 +1153,16 @@ namespace smartSuite.smartSpriteFX.Pictures
         {
             #region Entries validation
 
-            if (this._buffer == null)
+            if (this.Buffer == null)
             {
-                throw new ArgumentNullException("this._buffer");
+                throw new ArgumentNullException("this.Buffer");
             }
 
             #endregion
 
             try
             {
-                this._buffer.RollbackTransaction();
+                this.Buffer.RollbackTransaction();
             }
             catch
             {
@@ -1043,14 +1183,14 @@ namespace smartSuite.smartSpriteFX.Pictures
             {
                 throw new ArgumentNullException("point");
             }
-            if (this._buffer == null)
+            if (this.Buffer == null)
             {
-                throw new ArgumentNullException("this._buffer");
+                throw new ArgumentNullException("this.Buffer");
             }
 
             #endregion
 
-            return this._buffer.EXISTS(point);
+            return this.Buffer.EXISTS(point);
         } 
 
         /// <summary>
@@ -1059,7 +1199,7 @@ namespace smartSuite.smartSpriteFX.Pictures
         /// <returns></returns>
         public List<PointInfo>[] GetColumns()
         {
-            var bufferList = this._buffer.SELECTALL();
+            var bufferList = this.Buffer.SELECTALL();
             List<PointInfo>[] result = new List<PointInfo>[this.Width];
 
             for (int x = 0; x < this.Width; x++)
@@ -1082,7 +1222,7 @@ namespace smartSuite.smartSpriteFX.Pictures
         /// <returns></returns>
         public List<PointInfo>[] GetLines()
         {
-            var bufferList = this._buffer.SELECTALL();
+            var bufferList = this.Buffer.SELECTALL();
             List<PointInfo>[] result = new List<PointInfo>[this.Height];
 
             for (int y = 0; y < this.Height; y++)

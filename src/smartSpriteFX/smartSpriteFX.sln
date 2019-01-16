@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "smartSpriteFX", "smartSpriteFX\smartSpriteFX.csproj", "{4B45999C-8BB2-4134-BA02-653293BF42C3}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -12,9 +12,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "smartSpriteFX.Test", "smart
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "smartSpriteFX.PictureEngine", "smartSpriteFX.PictureEngine\smartSpriteFX.PictureEngine.csproj", "{D374DAC6-55C3-465A-B27F-EF762E7F0CC5}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{94E04DED-4FC5-4E3F-B52E-B0E54E7AD7EB}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0 - Annotations", "0 - Annotations", "{94E04DED-4FC5-4E3F-B52E-B0E54E7AD7EB}"
 	ProjectSection(SolutionItems) = preProject
 		ReleaseNotes.txt = ReleaseNotes.txt
+		TODO.txt = TODO.txt
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "smartSpriteFX.SpriteEffectModule", "smartSpriteFX.SpriteEffectModule\smartSpriteFX.SpriteEffectModule.csproj", "{09DEE0F5-2B1A-44E9-BE7C-9DC0EB93BEE8}"
@@ -27,6 +28,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "smartSpriteFX.PictureEngine.Test", "smartSpriteFX.PictureEngine.Test\smartSpriteFX.PictureEngine.Test.csproj", "{39ABA4E2-F667-4443-A404-ABA4A1B79248}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "smartSpriteFX.Common.UI", "smartSpriteFX.Common.UI\smartSpriteFX.Common.UI.csproj", "{03F65981-2E12-42FC-93EB-3E8088107515}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Modules", "1 - Modules", "{A0E5DA7E-9DE7-4136-AECF-83017878C287}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Unit Test", "2 - Unit Test", "{E1F40E5D-9F53-4297-8CB8-41105BE79523}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -65,5 +70,17 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4B45999C-8BB2-4134-BA02-653293BF42C3} = {A0E5DA7E-9DE7-4136-AECF-83017878C287}
+		{6B79E3E2-DBBF-4166-9858-C369B07709AB} = {E1F40E5D-9F53-4297-8CB8-41105BE79523}
+		{D374DAC6-55C3-465A-B27F-EF762E7F0CC5} = {A0E5DA7E-9DE7-4136-AECF-83017878C287}
+		{09DEE0F5-2B1A-44E9-BE7C-9DC0EB93BEE8} = {A0E5DA7E-9DE7-4136-AECF-83017878C287}
+		{C8DB0E15-31F8-40DE-9645-79FE2114D06B} = {E1F40E5D-9F53-4297-8CB8-41105BE79523}
+		{39ABA4E2-F667-4443-A404-ABA4A1B79248} = {E1F40E5D-9F53-4297-8CB8-41105BE79523}
+		{03F65981-2E12-42FC-93EB-3E8088107515} = {A0E5DA7E-9DE7-4136-AECF-83017878C287}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C9F4FFA5-A0E7-465A-8893-7AA9FEC1A16B}
 	EndGlobalSection
 EndGlobal

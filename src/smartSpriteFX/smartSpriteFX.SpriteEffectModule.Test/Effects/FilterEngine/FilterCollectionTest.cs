@@ -1,6 +1,5 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Rhino.Mocks;
 using smartSuite.smartSpriteFX.Pictures;
 using smartSuite.smartSpriteFX.Effects.FilterEngine;
 using smartSuite.smartSpriteFX.Effects.Filters;
@@ -11,6 +10,7 @@ using System.CodeDom.Compiler;
 using smartSuite.smartSpriteFX.Effects.Infra;
 using smartSuite.smartSpriteFX.Effects.Infra.UI.Configuratons;
 using smartSuite.smartSpriteFX.PictureEngine.Pictures.Data;
+using NSubstitute;
 
 namespace smartSuite.smartSpriteFX.SpriteEffectModule.Test
 {
@@ -45,6 +45,7 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Test
         [TestInitialize]
         public void Setup()
         {
+            FilterCollection.DoNotPutFrameIndex = false;
             this._appliedFilteresCount = 0;
             var thirdPartyPluginList = Directory.GetFiles(@"ThirdPartyEffectModulePlugin");
             foreach (var plugin in thirdPartyPluginList)
@@ -66,6 +67,7 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Test
         [TestCleanup]
         public void TearDown()
         {
+            FilterCollection.DoNotPutFrameIndex = false;
             PictureDatabase.Clear();
 
             this._appliedFilteresCount = 0;
@@ -91,21 +93,24 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Test
         {
             #region Scenario setup
 
+            string evidenceGeneratedFile = null;
             Picture frame = Picture.GetInstance(@"Stubs\Circle.stub.bmp");
 
             IEffectFilter[] filterList = new IEffectFilter[3];
 
-            FilterCollection test = new FilterCollection();
+            FilterCollection test = Substitute.ForPartsOf<FilterCollection>();
+            test.When(x => x.GenerateFilteredImage(Arg.Any<Picture>(), Arg.Any<string>())).Do(x => evidenceGeneratedFile = x.Arg<string>());
 
             for (int i = 0; i < filterList.Length; i++)
             {
-                filterList[i] = MockRepository.GenerateMock<IEffectFilter>();
+                var testItem = Substitute.For<IEffectFilter>();
 
                 // Stub ApplyFilter
-                filterList[i].Stub<IEffectFilter>(x => x.ApplyFilter(null, 0))
-                    .IgnoreArguments()
-                    .Do(new ApplyFilterDelegate(ApplyStub));
+                testItem.When(x => x.ApplyFilter(Arg.Any<Picture>(), Arg.Any<int>()))
+                    .Do(x => ApplyStub(x.Arg<Picture>(), x.Arg<int>())
+                    .Returns(true));
 
+                filterList[i] = testItem;
                 test.Register(filterList[i], i);
             }
 
@@ -126,6 +131,56 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Test
             Assert.AreEqual(filterList.Length, _appliedFilteresCount);
             Assert.AreEqual(48, frame.OriginalHeight);
             Assert.AreEqual(48, frame.OriginalWidth);
+            Assert.AreEqual(@"Stubs\filtered\Circle.stub.0.filtered.bmp", evidenceGeneratedFile);
+
+            #endregion
+        }
+
+        [TestMethod]
+        public void ApplyDoNotPutFrameIndexTest()
+        {
+            #region Scenario setup
+
+            string evidenceGeneratedFile = null;
+            Picture frame = Picture.GetInstance(@"Stubs\Circle.stub.bmp");
+
+            IEffectFilter[] filterList = new IEffectFilter[3];
+
+            FilterCollection.DoNotPutFrameIndex = true;
+            FilterCollection test = Substitute.ForPartsOf<FilterCollection>();
+            test.When(x => x.GenerateFilteredImage(Arg.Any<Picture>(), Arg.Any<string>())).Do(x => evidenceGeneratedFile = x.Arg<string>());
+
+            for (int i = 0; i < filterList.Length; i++)
+            {
+                var testItem = Substitute.For<IEffectFilter>();
+
+                // Stub ApplyFilter
+                testItem.When(x => x.ApplyFilter(Arg.Any<Picture>(), Arg.Any<int>()))
+                    .Do(x => ApplyStub(x.Arg<Picture>(), x.Arg<int>())
+                    .Returns(true));
+
+                filterList[i] = testItem;
+                test.Register(filterList[i], i);
+            }
+
+            #endregion
+
+            #region Running the tested operation
+
+            test.Apply(frame, 0);
+
+            #endregion
+
+            #region Getting the evidences
+
+            #endregion
+
+            #region Validating the evidences
+
+            Assert.AreEqual(filterList.Length, _appliedFilteresCount);
+            Assert.AreEqual(48, frame.OriginalHeight);
+            Assert.AreEqual(48, frame.OriginalWidth);
+            Assert.AreEqual(@"Stubs\filtered\Circle.stub.filtered.bmp", evidenceGeneratedFile);
 
             #endregion
         }
@@ -147,7 +202,7 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Test
 
             for (int i = 0; i < filterList.Length; i++)
             {
-                filterList[i] = MockRepository.GenerateMock<IEffectFilter>();
+                filterList[i] = Substitute.For<IEffectFilter>();
 
                 test.Register(filterList[i], i);
             }
@@ -184,13 +239,13 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Test
 
             #region Running the tested operation
 
-            filterList[0] = MockRepository.GenerateMock<IEffectFilter>();
+            filterList[0] = Substitute.For<IEffectFilter>();
             test.Register(filterList[0], 1);
 
-            filterList[1] = MockRepository.GenerateMock<IEffectFilter>();
+            filterList[1] = Substitute.For<IEffectFilter>();
             test.Register(filterList[1], 0);
 
-            filterList[2] = MockRepository.GenerateMock<IEffectFilter>();
+            filterList[2] = Substitute.For<IEffectFilter>();
             test.Register(filterList[2], 2);
 
             #endregion
@@ -225,7 +280,7 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Test
 
             for (int i = 0; i < filterList.Length; i++)
             {
-                filterList[i] = MockRepository.GenerateMock<IEffectFilter>();
+                filterList[i] = Substitute.For<IEffectFilter>();
 
                 test.Register(filterList[i], i);
             }

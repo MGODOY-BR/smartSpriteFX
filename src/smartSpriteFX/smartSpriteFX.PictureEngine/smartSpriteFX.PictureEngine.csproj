@@ -13,6 +13,7 @@
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -54,6 +55,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AutoPainting\AutoPaintingManager.cs" />
+    <Compile Include="AutoPainting\Grids\DegreeOfRelashionshipEnum.cs" />
+    <Compile Include="AutoPainting\Grids\Grid.cs" />
+    <Compile Include="AutoPainting\Grids\GridPart.cs" />
+    <Compile Include="AutoPainting\LinkedPointAndPolygon.cs" />
+    <Compile Include="AutoPainting\Polygon.cs" />
+    <Compile Include="AutoPainting\PolygonStatusEnum.cs" />
+    <Compile Include="AutoPainting\Settings\PaintingSettings.cs" />
+    <Compile Include="AutoPainting\Settings\PolygonClassification.cs" />
+    <Compile Include="AutoPainting\Settings\Profile.cs" />
+    <Compile Include="AutoPainting\Traces\AngleManager.cs" />
+    <Compile Include="AutoPainting\Traces\Corner.cs" />
+    <Compile Include="AutoPainting\Traces\Line.cs" />
+    <Compile Include="AutoPainting\Traces\LineBuilder.cs" />
+    <Compile Include="AutoPainting\Traces\SegmentClassificationEnum.cs" />
+    <Compile Include="AutoPainting\Traces\PointHand.cs" />
+    <Compile Include="AutoPainting\Traces\TraceSorter.cs" />
     <Compile Include="Forms\ColorSupportForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -68,9 +86,14 @@
     <Compile Include="Pictures\ColorPattern\ColorInfo.cs" />
     <Compile Include="Pictures\ColorPattern\ColorUtil.cs" />
     <Compile Include="Pictures\ColorPattern\IAskingForColorDelegate.cs" />
+    <Compile Include="Pictures\ColorPattern\IColorFilter.cs" />
     <Compile Include="Pictures\ColorPattern\LookLikeColorComparer.cs" />
+    <Compile Include="Pictures\ColorPattern\NoneColorFilter.cs" />
+    <Compile Include="Pictures\ColorPattern\PenColorComparer.cs" />
     <Compile Include="Pictures\Data\PictureDatabase.cs" />
+    <Compile Include="Pictures\Data\PictureDatabaseIndexManager.cs" />
     <Compile Include="Pictures\Group.cs" />
+    <Compile Include="Pictures\IFromString.cs" />
     <Compile Include="Pictures\Picture.cs" />
     <Compile Include="Pictures\Piece.cs" />
     <Compile Include="Pictures\PieceCollection.cs" />
@@ -79,6 +102,7 @@
     <Compile Include="Pictures\PixelPatterns\PixelInfo.cs" />
     <Compile Include="Pictures\PixelPatterns\PixelPattern.cs" />
     <Compile Include="Pictures\Point.cs" />
+    <Compile Include="Pictures\LinkedPoint.cs" />
     <Compile Include="Pictures\PointInfo.cs" />
     <Compile Include="Pictures\PointRange.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

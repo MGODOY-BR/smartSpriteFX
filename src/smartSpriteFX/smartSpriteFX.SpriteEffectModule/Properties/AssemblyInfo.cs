@@ -33,7 +33,7 @@ using System.Runtime.InteropServices;
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.1")]
-[assembly: AssemblyFileVersion("1.0.0.2")]
+[assembly: AssemblyFileVersion("1.0.0.3")]
 
 [assembly: InternalsVisibleTo("smartSpriteFX.SpriteEffectModule.Test, PublicKey=00240000048000009400000006020000002400005253413100040000010001009d93e3c5162bc1" +
 "036e1f9d2573966dbc2b878d094f0bd39d90a34fe209f7f51c04368a55423c4599fecde91a0918" +

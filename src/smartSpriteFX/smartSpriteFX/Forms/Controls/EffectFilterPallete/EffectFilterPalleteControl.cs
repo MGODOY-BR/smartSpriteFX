@@ -112,6 +112,7 @@ namespace smartSuite.smartSpriteFX.Forms.Controls.EffectFilterPallete
                 }
                 this.treeView1.Nodes.Add(treeNode);
             }
+            this.treeView1.Sort();
         }
 
         /// <summary>

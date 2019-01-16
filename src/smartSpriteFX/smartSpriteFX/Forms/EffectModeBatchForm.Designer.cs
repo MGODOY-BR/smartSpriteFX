@@ -33,6 +33,7 @@
             this.grpCommand = new System.Windows.Forms.GroupBox();
             this.btnApplyAll = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.chkPutFrameIndex = new System.Windows.Forms.CheckBox();
             this.grpCommand.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -57,6 +58,7 @@
             // 
             // grpCommand
             // 
+            this.grpCommand.Controls.Add(this.chkPutFrameIndex);
             this.grpCommand.Controls.Add(this.btnApplyAll);
             this.grpCommand.Location = new System.Drawing.Point(422, 39);
             this.grpCommand.Name = "grpCommand";
@@ -87,6 +89,19 @@
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             // 
+            // chkPutFrameIndex
+            // 
+            this.chkPutFrameIndex.AutoSize = true;
+            this.chkPutFrameIndex.Checked = true;
+            this.chkPutFrameIndex.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkPutFrameIndex.Location = new System.Drawing.Point(38, 42);
+            this.chkPutFrameIndex.Name = "chkPutFrameIndex";
+            this.chkPutFrameIndex.Size = new System.Drawing.Size(128, 17);
+            this.chkPutFrameIndex.TabIndex = 4;
+            this.chkPutFrameIndex.Text = "put index in extension";
+            this.chkPutFrameIndex.UseVisualStyleBackColor = true;
+            this.chkPutFrameIndex.CheckedChanged += new System.EventHandler(this.chkPutFrameIndex_CheckedChanged);
+            // 
             // EffectModeBatchForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -103,6 +118,7 @@
             this.Text = "smartSpriteFX - Effect Mode Batch";
             this.Load += new System.EventHandler(this.EffectModeBatchForm_Load);
             this.grpCommand.ResumeLayout(false);
+            this.grpCommand.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
@@ -115,5 +131,6 @@
         private System.Windows.Forms.GroupBox grpCommand;
         private System.Windows.Forms.Button btnApplyAll;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.CheckBox chkPutFrameIndex;
     }
 }

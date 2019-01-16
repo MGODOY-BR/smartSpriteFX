@@ -57,7 +57,7 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
                             newColor = ColorBuffer.GetSlightlyDifferentColor(newColor);
                         }
                     }
-                    else if (_colorComparer.EqualsButNoAlpha(newColor, frame.TransparentColor))
+                    else if (frame.TransparentColor.HasValue && _colorComparer.EqualsButNoAlpha(newColor, frame.TransparentColor.Value))
                     {
                         newColor = ColorBuffer.GetSlightlyDifferentColor(newColor);
                     }

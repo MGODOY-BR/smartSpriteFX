@@ -11,6 +11,7 @@
     <AssemblyName>smartSpriteFX.SpriteEffectModule</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -56,11 +57,18 @@
     <Compile Include="Effects\Core\EffectEngine.cs" />
     <Compile Include="Effects\Filters\AlignToBottomFilter.cs" />
     <Compile Include="Effects\Filters\AlphaFilter.cs" />
+    <Compile Include="Effects\Filters\ICutFilter.cs" />
+    <Compile Include="Effects\Filters\ReplaceColorFilter.cs" />
     <Compile Include="Effects\Filters\BrightFilter.cs" />
     <Compile Include="Effects\Filters\CropFilter.cs" />
     <Compile Include="Effects\Filters\CutFilter.cs" />
     <Compile Include="Effects\Filters\BlueFilter.cs" />
+    <Compile Include="Effects\Filters\IBottomMarginEffectFilter.cs" />
+    <Compile Include="Effects\Filters\IOnlyBottomMarginEffectFilter.cs" />
+    <Compile Include="Effects\Filters\IMarginEnabledEffect.cs" />
+    <Compile Include="Effects\Filters\MirrorFilter.cs" />
     <Compile Include="Effects\Filters\PaintedByHandFilter.cs" />
+    <Compile Include="Effects\Filters\PenTraceFilter.cs" />
     <Compile Include="Effects\Filters\RedFilter.cs" />
     <Compile Include="Effects\Filters\GreenFilter.cs" />
     <Compile Include="Effects\Filters\IContrastOrientedObject.cs" />
@@ -68,11 +76,30 @@
     <Compile Include="Effects\Filters\MadeByHandFilter.cs" />
     <Compile Include="Effects\Filters\ScaleFilter.cs" />
     <Compile Include="Effects\Filters\ShadowFilter.cs" />
+    <Compile Include="Effects\Filters\SmouthTransparentBackgroundFilter.cs" />
     <Compile Include="Effects\Filters\UI\ContrastConfigurationPanelControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Effects\Filters\UI\ContrastConfigurationPanelControl.Designer.cs">
       <DependentUpon>ContrastConfigurationPanelControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Effects\Filters\UI\MarginPanelControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Effects\Filters\UI\MarginPanelControl.Designer.cs">
+      <DependentUpon>MarginPanelControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Effects\Filters\UI\PenTraceConfigurationPanelControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Effects\Filters\UI\PenTraceConfigurationPanelControl.Designer.cs">
+      <DependentUpon>PenTraceConfigurationPanelControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Effects\Filters\UI\ReplaceColorsPanelControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Effects\Filters\UI\ReplaceColorsPanelControl.Designer.cs">
+      <DependentUpon>ReplaceColorsPanelControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Effects\Filters\UI\ScaleConfigurationPanelControl.cs">
       <SubType>UserControl</SubType>
@@ -157,6 +184,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\sun.png" />
+    <None Include="Resources\get-color-png.png" />
+    <None Include="Resources\get-color-cursor.cur" />
     <Content Include="Temp\empty.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -190,8 +219,17 @@
     <EmbeddedResource Include="Effects\Filters\UI\CutConfigurationPanelControl.resx">
       <DependentUpon>CutConfigurationPanelControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Effects\Filters\UI\MarginPanelControl.resx">
+      <DependentUpon>MarginPanelControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Effects\Filters\UI\NoneConfigurationPanelControl.resx">
       <DependentUpon>NoneConfigurationPanelControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Effects\Filters\UI\PenTraceConfigurationPanelControl.resx">
+      <DependentUpon>PenTraceConfigurationPanelControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Effects\Filters\UI\ReplaceColorsPanelControl.resx">
+      <DependentUpon>ReplaceColorsPanelControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Effects\Filters\UI\ResolutionConfigurationPanelControl.resx">
       <DependentUpon>ResolutionConfigurationPanelControl.cs</DependentUpon>

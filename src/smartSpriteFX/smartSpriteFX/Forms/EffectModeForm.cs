@@ -21,6 +21,7 @@ using smartSuite.smartSpriteFX.Forms.Controls.SwitchMode;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 using System.Configuration;
+using smartSuite.smartSpriteFX.Effects.Facade;
 
 namespace smartSuite.smartSpriteFX.Forms
 {
@@ -163,6 +164,7 @@ namespace smartSuite.smartSpriteFX.Forms
                 this.frameBox.Controls.Clear();
                 this.frameBox.Controls.Add(frameSelectionControl);
                 this.previewBoard.Image = null;
+                this.previewBoard.BorderStyle = BorderStyle.Fixed3D;
 
                 try
                 {
@@ -331,6 +333,7 @@ namespace smartSuite.smartSpriteFX.Forms
         /// <param name="e"></param>
         private void FrameSelectionControl_SelectingFrame(object sender, FrameSelectionEventArgs e)
         {
+            previewBoard.Controls.Clear();
             previewBoard.Image = Image.FromFile(e.FilePath);
         }
 
@@ -621,6 +624,11 @@ namespace smartSuite.smartSpriteFX.Forms
 
             Settings.Default.lastFilterSet = this.filterSetOpenDialog.FileName;
             Settings.Default.Save();
+        }
+
+        private void chkPutFrameIndex_CheckedChanged(object sender, EventArgs e)
+        {
+            EffectFacade.DoNotPutFrameIndex = !chkPutFrameIndex.Checked;
         }
     }
 }

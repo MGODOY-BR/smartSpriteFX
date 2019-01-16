@@ -273,7 +273,7 @@ namespace smartSuite.smartSpriteFX.Forms.Controls
                 this._lastHook = null;
 
                 var hook1 = newHook.GetOlderHuckFromPair();
-                var hook2 = newHook.GetNewerHuckFromPair();
+                var hook2 = newHook.GetNewestHuckFromPair();
 
                 smartSuite.smartSpriteFX.Pictures.Point point1;
                 smartSuite.smartSpriteFX.Pictures.Point point2;

@@ -11,6 +11,7 @@ using smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI;
 using smartSuite.smartSpriteFX.Effects.Facade;
 using smartSuite.smartSpriteFX.Pictures.PixelPatterns;
 using smartSuite.smartSpriteFX.Effects.Core;
+using System.Drawing;
 
 namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
 {
@@ -47,17 +48,26 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
             {
                 throw new ArgumentNullException("frame");
             }
-            var transparentBackground = EffectFacade.GetTransparentBackgroundFilter();
-            if (transparentBackground == null)
+            Color? transparentColor;
+            if (frame.TransparentColor == null)
             {
-                throw new ApplicationException(
-                    this.GetType().Name + " requires a " + new TransparentBackgroundFilter().GetIdentification().GetName() + " placed before it to run");
+                var transparentBackground = EffectFacade.GetTransparentBackgroundFilter();
+                if (transparentBackground == null)
+                {
+                    throw new ApplicationException(
+                        this.GetType().Name + " requires a " + new TransparentBackgroundFilter().GetIdentification().GetName() + " placed before it to run");
+                }
+                transparentColor = transparentBackground.TransparentColor;
             }
-            if (EffectFacade.FindFilter<CropFilter>() == null && EffectFacade.FindFilter<CutFilter>() == null)
+            else
+            {
+                transparentColor = frame.TransparentColor;
+            }
+            if (EffectFacade.FindFilter<ICutFilter>() == null)
             {
                 throw new ApplicationException(
-                    this.GetType().Name + " requires " + new CropFilter().GetIdentification().GetName() + 
-                    " or " + new CutFilter().GetIdentification().GetName()  + " placed before it to run");
+                    this.GetType().Name + " requires some cut filter placed before it to run. Try " + new CropFilter().GetIdentification().GetName() + 
+                    " or " + new CutFilter().GetIdentification().GetName()  + ", for instance");
             }
 
             #endregion
@@ -81,7 +91,7 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
                     {
                         continue;
                     }
-                    if (pixel.Value.ToArgb().Equals(transparentBackground.TransparentColor.ToArgb()))
+                    if (pixel.Value.ToArgb().Equals(transparentColor.Value.ToArgb()))
                     {
                         continue;
                     }
@@ -133,11 +143,11 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
                     #region Entries validation
 
                     var existentPixel = frame.GetPixel(item.X, y);
-                    if (existentPixel != null && existentPixel != transparentBackground.TransparentColor)
+                    if (existentPixel != null && existentPixel != transparentColor.Value)
                     {
                         continue;
                     }
-                    if (existentPixel == transparentBackground.TransparentColor)
+                    if (existentPixel == transparentColor.Value)
                     {
                         frame.RemovePixel(item.X, y);
                     }

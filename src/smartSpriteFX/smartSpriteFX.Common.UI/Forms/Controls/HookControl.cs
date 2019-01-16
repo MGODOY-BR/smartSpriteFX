@@ -76,9 +76,22 @@ namespace smartSuite.smartSpriteFX.Forms.Controls
         /// </summary>
         public LineControl LineVertical { get; set; }
 
+        /// <summary>
+        /// Defines if the horizontal movement can procceds
+        /// </summary>
+        public bool HorizontalMovement { get; set; }
+
+        /// <summary>
+        /// Defines if the vertical movement can procceds
+        /// </summary>
+        public bool VerticalMovement { get; set; }
+
         public HookControl()
         {
             InitializeComponent();
+
+            this.HorizontalMovement = true;
+            this.VerticalMovement = true;
 
             this.MouseMove += HuckControl_MouseMove;
             this.MouseUp += HookControl_MouseUp;
@@ -111,7 +124,7 @@ namespace smartSuite.smartSpriteFX.Forms.Controls
 
             if (this.Deleting == null)
             {
-                throw new NotImplementedException("this.Deleting");
+                return;
             }
 
             #endregion
@@ -163,14 +176,15 @@ namespace smartSuite.smartSpriteFX.Forms.Controls
 
             if (this.PositionChanged == null)
             {
-                throw new NotImplementedException();
+                return;
             }
+
+            #endregion
+
             this.PositionChanged(this, new HookEventArgs
             {
                 MainHook = this.GetOlderHuckFromPair()
             });
-
-            #endregion
         }
 
         #endregion
@@ -198,7 +212,7 @@ namespace smartSuite.smartSpriteFX.Forms.Controls
             
             */
             HookControl older = this.GetOlderHuckFromPair();
-            HookControl newer = this.GetNewerHuckFromPair();
+            HookControl newer = this.GetNewestHuckFromPair();
 
             older.LineHorizontal = new LineControl(older);
             older.LineVertical = new LineControl(older);
@@ -228,8 +242,13 @@ namespace smartSuite.smartSpriteFX.Forms.Controls
         /// </summary>
         private void ResizeLines(HookControl older, HookControl newer)
         {
-            Point currentPoint = new Point(newer.Left + (newer.Width / 2), newer.Top + (newer.Height / 2));
-            Point pairPoint = new Point(older.Left + (older.Width / 2), older.Top + (older.Height / 2));
+            Point currentPoint =
+                // new Point(newer.Left + (newer.Width / 2), newer.Top + (newer.Height / 2));
+                new Point(newer.Left, newer.Top);
+
+            Point pairPoint =
+                // new Point(older.Left + (older.Width / 2), older.Top + (older.Height / 2));
+                new Point(older.Left, older.Top);
 
             LineControl AC = older.LineHorizontal;
             LineControl AD = older.LineVertical;
@@ -237,7 +256,7 @@ namespace smartSuite.smartSpriteFX.Forms.Controls
             LineControl CB = newer.LineVertical;
 
             AC.Resize(LineControlState.LineControlStyle.Horizontal, MathUtil.SubtractAbsolute(currentPoint.X, pairPoint.X));
-            DB.Resize(AC.Style, AC.Width);
+            DB.Resize(AC.Style, AC.Width + this.Width);
 
             AD.Resize(LineControlState.LineControlStyle.Vertical, MathUtil.SubtractAbsolute(currentPoint.Y, pairPoint.Y));
             CB.Resize(AD.Style, AD.Height);
@@ -280,9 +299,9 @@ namespace smartSuite.smartSpriteFX.Forms.Controls
         }
 
         /// <summary>
-        /// Gets the newer huck from pair
+        /// Gets the newest huck from pair
         /// </summary>
-        public HookControl GetNewerHuckFromPair()
+        public HookControl GetNewestHuckFromPair()
         {
             #region Entries validation
 
@@ -352,8 +371,14 @@ namespace smartSuite.smartSpriteFX.Forms.Controls
         {
             if (e.Button == MouseButtons.Left)
             {
-                this.Top += e.Y - this.Height / 2;
-                this.Left += e.X - this.Width / 2;
+                if (this.VerticalMovement)
+                {
+                    this.Top += e.Y - this.Height / 2;
+                }
+                if (this.HorizontalMovement)
+                {
+                    this.Left += e.X - this.Width / 2;
+                }
 
                 this._point.X = this.Left;
                 this._point.Y = this.Top;
@@ -371,7 +396,7 @@ namespace smartSuite.smartSpriteFX.Forms.Controls
         public void RefreshLines()
         {
             HookControl older = this.GetOlderHuckFromPair();
-            HookControl newer = this.GetNewerHuckFromPair();
+            HookControl newer = this.GetNewestHuckFromPair();
 
             this.ResizeLines(
                 older,

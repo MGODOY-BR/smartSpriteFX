@@ -30,11 +30,6 @@ namespace smartSuite.smartSpriteFX.Forms.Controls.Animations.Frames
         private List<string> _fileList = new List<string>();
 
         /// <summary>
-        /// It´s a comparer used to sort files
-        /// </summary>
-        private AnimationComparer _animationComparer = new AnimationComparer();
-
-        /// <summary>
         /// It happens when a frame is selected
         /// </summary>
         public event EventHandler<FrameSelectionEventArgs> SelectingFrame;
@@ -88,6 +83,15 @@ namespace smartSuite.smartSpriteFX.Forms.Controls.Animations.Frames
 
             for (int i = 0; i < this._fileList.Count; i++)
             {
+                #region Entries validation
+
+                if (i > 200)
+                {
+                    break;
+                }
+
+                #endregion
+
                 var fileItem = this._fileList[i];
 
                 Stream imageStreamSource = new FileStream(fileItem, FileMode.Open, FileAccess.Read, FileShare.Read);

@@ -35,7 +35,7 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
         /// <summary>
         /// Relates the key with the point in dataSource
         /// </summary>
-        private Dictionary<String, PointInfo> _dataSourceIndex;
+        private Dictionary<String, int> _dataSourceIndex;
 
         /// <summary>
         /// It´s a datasource
@@ -61,6 +61,16 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
         }
 
         /// <summary>
+        /// Relates the key with the point in dataSource
+        /// </summary>
+        public Dictionary<string, int> DataSourceIndex { get => _dataSourceIndex; }
+
+        /// <summary>
+        /// It´s a datasource
+        /// </summary>
+        public List<PointInfo> DataSource { get => _dataSource; }
+
+        /// <summary>
         /// Gets a opened database
         /// </summary>
         /// <returns></returns>
@@ -68,7 +78,7 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
         {
             PictureDatabase returnValue = new PictureDatabase();
             returnValue._dataSource = new List<PointInfo>();
-            returnValue._dataSourceIndex = new Dictionary<string, PointInfo>();
+            returnValue._dataSourceIndex = new Dictionary<string, int>();
             returnValue._sessionID = Guid.NewGuid().ToString();
 
             return returnValue;
@@ -109,9 +119,21 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
                 lock (this._dataSource)
                 {
                     var row = new PointInfo(x, y, color);
+                    int index = this._dataSourceIndex.Count;
+                    var key = row.ToString();
 
-                    this._dataSourceIndex.Add(row.ToString(), row);
-                    this._dataSource.Add(row);
+                    try
+                    {
+                        this._dataSourceIndex.Add(key, index);
+                        this._dataSource.Add(row);
+                    }
+                    catch (ArgumentException ex)
+                    {
+                        Trace.WriteLine(ex.ToString());
+
+                        index = this._dataSourceIndex[key];
+                        this._dataSource[index].Color = color;
+                    }
                 }
             }
         }
@@ -142,10 +164,13 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
             lock (_dataSourceIndex)
             {
                 // Protecting from duplicate keys
-                pointInfoList.RemoveAll(item => _dataSourceIndex.ContainsKey(item.ToString()));
+                // pointInfoList.RemoveAll(item => _dataSourceIndex.ContainsKey(item.ToString()));
+                pointInfoList.RemoveAll(item => item == null || item.Color == Color.Transparent);
 
                 lock (this._dataSource)
                 {
+                    // HACK: Disabled due to the performance matters:
+                    // _dataSource.RemoveAll(item => pointInfoList.Contains(item));
                     this._dataSource.AddRange(pointInfoList);
                 }
 
@@ -154,7 +179,24 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
                 //{
                     foreach (var pointInfoItem in pointInfoList)
                     {
-                        _dataSourceIndex.Add(pointInfoItem.ToString(), pointInfoItem);
+                        #region Entries validation
+
+                        if(pointInfoItem == null)
+                        {
+                            continue;
+                        }
+
+                    #endregion
+
+                        int index = _dataSourceIndex.Count;
+                        if (!_dataSourceIndex.ContainsKey(pointInfoItem.ToString()))
+                        {
+                            _dataSourceIndex.Add(pointInfoItem.ToString(), index);
+                        }
+                        else
+                        {
+                            _dataSourceIndex[pointInfoItem.ToString()] = index;
+                        }
                     }
                 //});
                 //taskIndex.Start();
@@ -188,9 +230,9 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
 
                     #endregion
 
-                    var row = this._dataSourceIndex[key];
+                    var index = this._dataSourceIndex[key];
 
-                    this._dataSource.Remove(row);
+                    this._dataSource.RemoveAt(index);
                     this._dataSourceIndex.Remove(key);
 
                     return true;
@@ -227,8 +269,9 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
                         return 0;
                     }
 
-                    var item = this._dataSourceIndex[pointInfoRef.ToString()];
-                    item.Color = color;
+                    var index = this._dataSourceIndex[pointInfoRef.ToString()];
+                    this._dataSource[index].Color = color;
+
                     return 1;
                 }
             }
@@ -290,7 +333,8 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
                     return null;
                 }
 
-                return new ColorInfo(this._dataSourceIndex[pointInfoRef.ToString()].Color);
+                int index = this._dataSourceIndex[pointInfoRef.ToString()];
+                return new ColorInfo(this._dataSource[index].Color);
             }
         }
 
@@ -310,7 +354,8 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
                     return null;
                 }
 
-                return this._dataSourceIndex[pointInfoRef.ToString()];
+                int index = this._dataSourceIndex[pointInfoRef.ToString()];
+                return this._dataSource[index];
             }
         }
 
@@ -351,7 +396,7 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
 
             #endregion
 
-            this._dataSource.Sort();
+            // this._dataSource.Sort();
             return this._dataSource;
         }
 
@@ -418,7 +463,8 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
                     return false;
                 }
 
-                return this._dataSourceIndex[point.ToString()].Color.ToArgb() == color.ToArgb();
+                int index = this._dataSourceIndex[point.ToString()];
+                return this._dataSource[index].Color.ToArgb() == color.ToArgb();
             }
         }
 
@@ -499,19 +545,79 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
             {
                 lock (this._dataSource)
                 {
+                    returnValue._dataSource.Clear();
+                    returnValue._dataSourceIndex.Clear();
+
                     var sourceRowList = this._dataSource;
 
-                    foreach (var sourceRowItem in sourceRowList)
-                    {
-                        var targetRow = sourceRowItem.Clone();
+                    #region Starting the indices
 
-                        returnValue._dataSource.Add(targetRow);
-                        returnValue._dataSourceIndex.Add(targetRow.ToString(), targetRow);
-                    }
+                    AutoResetEvent indexSync = new AutoResetEvent(false);
+
+                    ThreadPool.QueueUserWorkItem(new WaitCallback(delegate (object state)
+                    {
+                        foreach (var sourceRowItem in sourceRowList)
+                        {
+                            var targetRow = sourceRowItem.Clone();
+                            string key = PictureDatabase.FormatKeyIndex(targetRow);
+
+                            if(returnValue._dataSourceIndex.ContainsKey(key))
+                            {
+                                key += string.Format(" ({0})", Guid.NewGuid().ToString().Substring(0, 8));
+                            }
+
+                            returnValue._dataSourceIndex.Add(
+                                key,
+                                returnValue._dataSourceIndex.Count);
+                        }
+                        indexSync.Set();
+                    }));
+
+                    #endregion
+
+                    #region Starting the data
+
+                    AutoResetEvent dataSync = new AutoResetEvent(false);
+                    ThreadPool.QueueUserWorkItem(new WaitCallback(delegate (object state)
+                    {
+                        foreach (var sourceRowItem in sourceRowList)
+                        {
+                            var targetRow = sourceRowItem.Clone();
+
+                            returnValue._dataSource.Add(targetRow);
+                            // This isn't made here anymore for performance issues:
+                            //returnValue._dataSourceIndex.Add(targetRow.ToString(), targetRow);
+                        }
+                        dataSync.Set();
+                    }));
+
+                    #endregion
+
+                    indexSync.WaitOne();
+                    dataSync.WaitOne();
                 }
             }
 
             return returnValue;
+        }
+
+        /// <summary>
+        /// Formats the index used in indexes
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        public static string FormatKeyIndex(smartSuite.smartSpriteFX.Pictures.Point data)
+        {
+            #region Entries validation
+
+            if (data == null)
+            {
+                throw new ArgumentNullException("data");
+            }
+
+            #endregion
+
+            return data.ToString();
         }
 
         /// <summary>

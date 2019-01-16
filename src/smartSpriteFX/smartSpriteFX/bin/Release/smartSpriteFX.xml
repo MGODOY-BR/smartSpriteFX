@@ -282,11 +282,6 @@
             It´s a list of sorted loaded file
             </summary>
         </member>
-        <member name="F:smartSuite.smartSpriteFX.Forms.Controls.Animations.Frames.FrameSelectionControl._animationComparer">
-            <summary>
-            It´s a comparer used to sort files
-            </summary>
-        </member>
         <member name="E:smartSuite.smartSpriteFX.Forms.Controls.Animations.Frames.FrameSelectionControl.SelectingFrame">
             <summary>
             It happens when a frame is selected
@@ -557,6 +552,38 @@
         <member name="M:smartSuite.smartSpriteFX.Forms.Controls.SwitchMode.SwitchModeControl.InitializeComponent">
             <summary> 
             Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSpriteFX.Forms.ImageLetterModeForm.smartBrowser1">
+            <summary>
+            Represents an smartBrowser control
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.ImageLetterModeForm.FillCharacterSetList">
+            <summary>
+            Fills the character set list
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.ImageLetterModeForm.Generate(System.Collections.Generic.List{smartSuite.smartSpriteFX.Forms.Utilities.CharacterSet.ICharacterSet},System.String,System.Drawing.Font,System.Drawing.Color,System.Drawing.Color)">
+            <summary>
+            Generates the images
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSpriteFX.Forms.ImageLetterModeForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.ImageLetterModeForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.ImageLetterModeForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
             the contents of this method with the code editor.
             </summary>
         </member>
@@ -838,6 +865,87 @@
             the contents of this method with the code editor.
             </summary>
         </member>
+        <member name="F:smartSuite.smartSpriteFX.Forms.ToolsForm._originSpriteSheetBrowser">
+            <summary>
+            It's the browser of origin in join proccess
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSpriteFX.Forms.ToolsForm._destinationSpriteSheetBrowser">
+            <summary>
+            It's the browser of destination in join proccess
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSpriteFX.Forms.ToolsForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.ToolsForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.ToolsForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:smartSuite.smartSpriteFX.Forms.Utilities.CharacterSet.CharacterSet">
+            <summary>
+            Gets the character set
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSpriteFX.Forms.Utilities.CharacterSet.CharacterSet._innetList">
+            <summary>
+            Represents a list of allowed character sets.
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.Utilities.CharacterSet.CharacterSet.GetList">
+            <summary>
+            Gets the list of allowed character sets
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:smartSuite.smartSpriteFX.Forms.Utilities.CharacterSet.CJKUnifiedIdeogramsCharacterSet">
+            <summary>
+            Represents a Chinese / Japanese / Korean character set.
+            </summary>
+        </member>
+        <member name="T:smartSuite.smartSpriteFX.Forms.Utilities.CharacterSet.ExtraLusofoneCharacterSet">
+            <summary>
+            Represents a character correspondent to accent in lusophone countries
+            </summary>
+        </member>
+        <member name="T:smartSuite.smartSpriteFX.Forms.Utilities.CharacterSet.ICharacterSet">
+            <summary>
+            Defines how a character set must be
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.Utilities.CharacterSet.ICharacterSet.GetMinRange">
+            <summary>
+            Gets the minimum range
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.Utilities.CharacterSet.ICharacterSet.GetMaxRange">
+            <summary>
+            Gets the maximum range
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.Utilities.CharacterSet.ICharacterSet.GetShortName">
+            <summary>
+            Gets the short name of character set, used to generate folders
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:smartSuite.smartSpriteFX.Forms.Utilities.CharacterSet.CommonOcidentalCharacterSet">
+            <summary>
+            Represents a character set common in ocident
+            </summary>
+        </member>
         <member name="T:smartSuite.smartSpriteFX.Forms.Utilities.EffectBatchDoneDefaultConclusionMessage">
             <summary>
             Represents a message shown when effect applied has done.
@@ -878,6 +986,169 @@
             Shows the message
             </summary>
             <param name="message"></param>
+        </member>
+        <member name="T:smartSuite.smartSpriteFX.Forms.Utilities.SpriteSheet.Dimension">
+            <summary>
+            Represents the dimension of sprite map
+            </summary>
+        </member>
+        <member name="T:smartSuite.smartSpriteFX.Forms.Utilities.SpriteSheet.DrawerDelegate">
+            <summary>
+            Represents a actor to handle the object graphic
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSpriteFX.Forms.Utilities.SpriteSheet.DrawerDelegate._graphic">
+            <summary>
+            It's the underlying graphic object
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSpriteFX.Forms.Utilities.SpriteSheet.DrawerDelegate._image">
+            <summary>
+            It's the image to save
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.Utilities.SpriteSheet.DrawerDelegate.#ctor(System.Drawing.Image)">
+            <summary>
+            Creates an instance of object
+            </summary>
+            <param name="image"></param>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.Utilities.SpriteSheet.DrawerDelegate.DrawImage(System.Drawing.Image,System.Drawing.RectangleF)">
+            <summary>
+            Draw the image
+            </summary>
+            <param name="image"></param>
+            <param name="rect"></param>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.Utilities.SpriteSheet.DrawerDelegate.GetImage(System.String)">
+            <summary>
+            Gets the image from path
+            </summary>
+            <param name="path"></param>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.Utilities.SpriteSheet.DrawerDelegate.Save(System.String)">
+            <summary>
+            Saves the picture
+            </summary>
+        </member>
+        <member name="T:smartSuite.smartSpriteFX.Forms.Utilities.SpriteSheet.SpriteFileListOrganizer">
+            <summary>
+            Represents an analysis of a lsit of sprite
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSpriteFX.Forms.Utilities.SpriteSheet.SpriteFileListOrganizer._folderPath">
+            <summary>
+            It's the folder path
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSpriteFX.Forms.Utilities.SpriteSheet.SpriteFileListOrganizer._largerSprite">
+            <summary>
+            Gets the larger dimensions of sprite
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.Utilities.SpriteSheet.SpriteFileListOrganizer.#ctor(System.String)">
+            <summary>
+            Creates an instance of object
+            </summary>
+            <param name="folderPath"></param>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.Forms.Utilities.SpriteSheet.SpriteFileListOrganizer.LargerSprite">
+            <summary>
+            Gets the dimension of image
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.Forms.Utilities.SpriteSheet.SpriteFileListOrganizer.FileCount">
+            <summary>
+            Gets the amount of files
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.Utilities.SpriteSheet.SpriteFileListOrganizer.Load">
+            <summary>
+            Loads the folderPath 
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.Utilities.SpriteSheet.SpriteFileListOrganizer.ListImages">
+            <summary>
+            List the images of folder path
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.Utilities.SpriteSheet.SpriteFileListOrganizer.GetImageDimension(System.String)">
+            <summary>
+            Gets the image dimension
+            </summary>
+            <param name="fileItem"></param>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.Utilities.SpriteSheet.SpriteFileListOrganizer.CalculateSpriteSheet">
+            <summary>
+            Calculates the best sprite sheet possible
+            </summary>
+        </member>
+        <member name="T:smartSuite.smartSpriteFX.Forms.Utilities.SpriteSheet.SpriteMatrixInfo">
+            <summary>
+            Represents the sprite matrix information
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.Forms.Utilities.SpriteSheet.SpriteMatrixInfo.ColumnCount">
+            <summary>
+            Gets or sets the column count
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.Forms.Utilities.SpriteSheet.SpriteMatrixInfo.RowCount">
+            <summary>
+            Gets or sets the row count
+            </summary>
+        </member>
+        <member name="T:smartSuite.smartSpriteFX.Forms.Utilities.SpriteSheet.SpriteSheetMaker">
+            <summary>
+            Represents a maker of sprite sheet
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSpriteFX.Forms.Utilities.SpriteSheet.SpriteSheetMaker._organizer">
+            <summary>
+            It's the organizer
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.Utilities.SpriteSheet.SpriteSheetMaker.#ctor(smartSuite.smartSpriteFX.Forms.Utilities.SpriteSheet.SpriteFileListOrganizer)">
+            <summary>
+            Creates an instance of object
+            </summary>
+            <param name="organizer"></param>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.Utilities.SpriteSheet.SpriteSheetMaker.Generate(System.String)">
+            <summary>
+            Generates the SpriteMaker
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.Utilities.SpriteSheet.SpriteSheetMaker.GetStreamText(System.String)">
+            <summary>
+            Gets a stream for info txt file
+            </summary>
+            <param name="spriteSheetFileName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.Utilities.SpriteSheet.SpriteSheetMaker.GetStreamUVInfo(System.String)">
+            <summary>
+            Gets a stream for info csv file
+            </summary>
+            <param name="spriteSheetFileName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.Utilities.SpriteSheet.SpriteSheetMaker.CopyFrameToSpriteSheet(System.Drawing.Image,smartSuite.smartSpriteFX.Forms.Utilities.SpriteSheet.DrawerDelegate,System.Drawing.RectangleF)">
+            <summary>
+            Copies frame to position in frame
+            </summary>
+            <param name="frame"></param>
+            <param name="drawer"></param>
+            <param name="areaToDraw"></param>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.Utilities.SpriteSheet.SpriteSheetMaker.GetDrawerDelegate(System.Drawing.Image)">
+            <summary>
+            Gets the drawer delegate
+            </summary>
+            <returns></returns>
         </member>
         <member name="T:smartSuite.smartSpriteFX.Forms.Utilities.TreeViewUtil">
             <summary>
@@ -1063,6 +1334,11 @@
             </summary>
         </member>
         <member name="P:smartSuite.smartSpriteFX.Properties.Resources.landscapemode">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.Properties.Resources.lettlerMode">
             <summary>
               Looks up a localized resource of type System.Drawing.Bitmap.
             </summary>

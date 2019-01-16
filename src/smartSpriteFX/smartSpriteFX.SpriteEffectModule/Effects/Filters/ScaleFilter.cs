@@ -70,13 +70,20 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
 
             Bitmap bitmap = new Bitmap(widthScaled, heightScaled, PixelFormat.Format32bppArgb);
 
-            Dictionary<String, PointInfo> cacheList = new Dictionary<string, PointInfo>();
-            var sourceList = frame.GetAllPixels();
-            foreach (var sourceItem in sourceList)
-            {
-                String key = frame.FormatKey((int)sourceItem.X, (int)sourceItem.Y);
-                cacheList.Add(key, sourceItem);
-            }
+            // Dictionary<String, PointInfo> cacheList = frame.Buffer.DataSourceIndex;
+
+            #region Obsolete code
+
+            // Dictionary<String, PointInfo> cacheList = new Dictionary<string, PointInfo>();
+
+            //var sourceList = frame.GetAllPixels();
+            //foreach (var sourceItem in sourceList)
+            //{
+            //    String key = frame.FormatKey((int)sourceItem.X, (int)sourceItem.Y);
+            //    cacheList.Add(key, sourceItem);
+            //}
+
+            #endregion
 
             var step = Math.Pow(this.Scale, -1);
             int xx = 0, yy = 0;
@@ -88,7 +95,14 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
                 {
                     String key = frame.FormatKey((int)x, (int)y);
 
-                    var color = cacheList[key].Color;
+                    //if (!cacheList.ContainsKey(key))
+                    //{
+                    //    continue;
+                    //}
+
+                    Color color = // cacheList[key].Color;
+                        frame.Buffer.SELECT((int)x, (int)y).GetInnerColor();
+
                     if (xx < bitmap.Width && yy < bitmap.Height)
                     {
                         bitmap.SetPixel(

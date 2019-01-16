@@ -4,6 +4,1272 @@
         <name>smartSpriteFX.PictureEngine</name>
     </assembly>
     <members>
+        <member name="T:smartSuite.smartSprite.AutoPainting.AutoPaintingManager">
+            <summary>
+            Manages the auto-painting
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSprite.AutoPainting.AutoPaintingManager.Profile">
+            <summary>
+            It's the profile
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSprite.AutoPainting.AutoPaintingManager.#ctor(System.String)">
+            <summary>
+            Creates an instance of object
+            </summary>
+            <param name="fileName" />		
+        </member>
+        <member name="M:smartSuite.smartSprite.AutoPainting.AutoPaintingManager.LoadProfile(System.String)">
+            <param name="fileName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSprite.AutoPainting.AutoPaintingManager.Paint(System.Drawing.Image)">
+            <summary>
+            Paints the image
+            </summary>
+            <param name="image"></param>
+            <returns></returns>
+        </member>
+        <member name="T:smartSuite.smartSprite.AutoPainting.Grids.DegreeOfRelashionshipEnum">
+            <summary>
+            Relates the relashioship grid part
+            </summary>
+        </member>
+        <member name="T:smartSuite.smartSprite.AutoPainting.Grids.Grid">
+            <summary>
+            Represents a grid covering the image
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSprite.AutoPainting.Grids.Grid.RowCount">
+            <summary>
+            It's the row count
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSprite.AutoPainting.Grids.Grid.ColumnCount">
+            <summary>
+            It's the column count
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSprite.AutoPainting.Grids.Grid.Size">
+            <summary>
+            It's the size of whole grid area, in pixels
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSprite.AutoPainting.Grids.Grid.Start">
+            <summary>
+            It's the start position in picture
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSprite.AutoPainting.Grids.Grid.GridPartList">
+            <summary>
+            Gets the list of grid parts 
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSprite.AutoPainting.Grids.Grid.Precision">
+            <summary>
+            It's the precision of grid
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSprite.AutoPainting.Grids.Grid.Build(smartSuite.smartSpriteFX.PictureEngine.Pictures.PointInfo[])">
+            <summary>
+            Builds the grid
+            </summary>
+        </member>
+        <member name="T:smartSuite.smartSprite.AutoPainting.Grids.GridPart">
+            <summary>
+            Represents a piece of grid
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSprite.AutoPainting.Grids.GridPart._penColorComparer">
+            <summary>
+            It's the colorComparer, used in IsPenColor method
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSprite.AutoPainting.Grids.GridPart.Column">
+            <summary>
+            It's the column
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSprite.AutoPainting.Grids.GridPart.Row">
+            <summary>
+            It's the row of grid part
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSprite.AutoPainting.Grids.GridPart.Size">
+            <summary>
+            It's the size of grid part
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSprite.AutoPainting.Grids.GridPart.PointA">
+            <summary>
+            It's the very beginning Point
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSprite.AutoPainting.Grids.GridPart.PointB">
+            <summary>
+            It's the very ending Point
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSprite.AutoPainting.Grids.GridPart.PointList">
+            <summary>
+            It is the point list
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSprite.AutoPainting.Grids.GridPart.LineList">
+            <summary>
+            Gets or sets the line list
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSprite.AutoPainting.Grids.GridPart.ParentGrid">
+            <summary>
+            It's the parent grid
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSprite.AutoPainting.Grids.GridPart.HasContained(smartSuite.smartSpriteFX.PictureEngine.AutoPainting.Traces.PointHand)">
+            <summary>
+            Gets an indicator informing if the point are contained in grid part
+            </summary>
+            <param name="pointHand"></param>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSprite.AutoPainting.Grids.GridPart.Associate(smartSuite.smartSpriteFX.Pictures.Point,System.Drawing.Color)">
+            <summary>
+            Associates the point to grid part
+            </summary>
+            <param name="point"></param>
+        </member>
+        <member name="M:smartSuite.smartSprite.AutoPainting.Grids.GridPart.Associate(System.Collections.Generic.IEnumerable{smartSuite.smartSpriteFX.PictureEngine.Pictures.PointInfo})">
+            <summary>
+            Associates the set of point and color to grid part
+            </summary>
+            <param name="pointItemIterator"></param>
+        </member>
+        <member name="M:smartSuite.smartSprite.AutoPainting.Grids.GridPart.IsContained(smartSuite.smartSpriteFX.Pictures.Point)">
+            <summary>
+            Gets an indicator informing if the point are contained inside of grid part
+            </summary>
+            <param name="point"></param>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSprite.AutoPainting.Grids.GridPart.CheckAdjacent(smartSuite.smartSprite.AutoPainting.Grids.GridPart)">
+            <summary>
+            Checks if the grid part is adjacent to this own and returns a degree of relashionship
+            </summary>
+            <param name="other"></param>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSprite.AutoPainting.Grids.GridPart.IsThereAnyPointInEdge">
+            <summary>
+            Gets an indicator informing if there any point in edge of grid part
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSprite.AutoPainting.Grids.GridPart.GetUpperSideLeftGridPart">
+            <summary>
+            Gets the relative grid part
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSprite.AutoPainting.Grids.GridPart.GetUpperSideRightGridPart">
+            <summary>
+            Gets the relative grid part
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSprite.AutoPainting.Grids.GridPart.GetUpperSideGridPart">
+            <summary>
+            Gets the relative grid part
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSprite.AutoPainting.Grids.GridPart.GetDownSideLeftGridPart">
+            <summary>
+            Gets the relative grid part
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSprite.AutoPainting.Grids.GridPart.GetDownSideRightGridPart">
+            <summary>
+            Gets the relative grid part
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSprite.AutoPainting.Grids.GridPart.GetDownSideGridPart">
+            <summary>
+            Gets the relative grid part
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSprite.AutoPainting.Grids.GridPart.GetLeftSideGridPart">
+            <summary>
+            Gets the relative grid part
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSprite.AutoPainting.Grids.GridPart.GetRightSideGridPart">
+            <summary>
+            Gets the relative grid part
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSprite.AutoPainting.Grids.GridPart.GetRelativeParts">
+            <summary>
+            Gets all the relative part
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:smartSuite.smartSprite.AutoPainting.Polygon">
+            <summary>
+            Represents a polygon
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSprite.AutoPainting.Polygon.Status">
+            <summary>
+            Gets the status of polygon
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSprite.AutoPainting.Polygon._paintingColor">
+            <summary>
+            It's the color of paiting
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSprite.AutoPainting.Polygon.Classification">
+            <summary>
+            It's the classification of polygon
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSprite.AutoPainting.Polygon.LineList">
+            <summary>
+            Gets the line list
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSprite.AutoPainting.Polygon.CornerList">
+            <summary>
+            Contains a list of corners
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSprite.AutoPainting.Polygon.Grid">
+            <summary>
+            It's the grid generated
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSprite.AutoPainting.Polygon.Paint(System.Drawing.Image)">
+            <summary>
+            Paint the polygon color in image
+            </summary>
+            <param name="image"></param>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSprite.AutoPainting.Polygon.DrawDebug(System.String)">
+            <summary>
+            Draws the debug
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSprite.AutoPainting.Polygon.GetPointList">
+            <summary>
+            Gets the point list
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSprite.AutoPainting.Polygon.TryComplete">
+            <summary>
+            Tries complete the polygon.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSprite.AutoPainting.Polygon.Distribute(smartSuite.smartSprite.AutoPainting.Grids.Grid,System.Single,smartSuite.smartSpriteFX.PictureEngine.Pictures.PointInfo[])">
+            <summary>
+            Distributes the point list into polygon list
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSprite.AutoPainting.Polygon.CalculateStatus">
+            <summary>
+            Calculates the state classification of polygon
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSprite.AutoPainting.Polygon.NextLine(smartSuite.smartSprite.AutoPainting.Traces.Line,System.Collections.Generic.List{smartSuite.smartSprite.AutoPainting.Traces.Line})">
+            <summary>
+            Gets the next line
+            </summary>
+        </member>
+        <member name="T:smartSuite.smartSprite.AutoPainting.PolygonStatusEnum">
+            <summary>
+            Relates the status of polygon
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSprite.AutoPainting.PolygonStatusEnum.EMPTY">
+            <summary>
+            The polygon has no points at all
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSprite.AutoPainting.PolygonStatusEnum.NOT_RECOGNIZED">
+            <summary>
+            The set of points is not recognized as a polygon
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSprite.AutoPainting.PolygonStatusEnum.INCOMPLETE">
+            <summary>
+            The set of points is not entirely recognized as a polygon (require been enclosed)
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSprite.AutoPainting.PolygonStatusEnum.COMPLETE">
+            <summary>
+            The set of points is allthrough recognized as a polygon
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSprite.AutoPainting.PolygonStatusEnum.PIECE">
+            <summary>
+            The polygon is part of other polygon
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSprite.AutoPainting.PolygonStatusEnum.PENDING">
+            <summary>
+            A deep analysis polygon is required
+            </summary>
+        </member>
+        <member name="T:smartSuite.smartSprite.AutoPainting.Settings.PaintingSettings">
+            <summary>
+            Joins the panting IA settings
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSprite.AutoPainting.Settings.PaintingSettings.ColorStrenght">
+            <summary>
+            It's the color strenght
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSprite.AutoPainting.Settings.PaintingSettings.PrecisionGrid">
+            <summary>
+            It's the precision of grid
+            </summary>
+        </member>
+        <member name="T:smartSuite.smartSprite.AutoPainting.Settings.PolygonClassification">
+            <summary>
+            Represents the classification of polygon
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSprite.AutoPainting.Settings.PolygonClassification.Name">
+            <summary>
+            It's the name of classification
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSprite.AutoPainting.Settings.PolygonClassification._classificationList">
+            <summary>
+            It's the classification list
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSprite.AutoPainting.Settings.PolygonClassification.Settings">
+            <summary>
+            It's the settigns of classification
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSprite.AutoPainting.Settings.PolygonClassification.Create">
+            <summary>
+            Creates a new classification with a random name
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSprite.AutoPainting.Settings.PolygonClassification.Incorporate(smartSuite.smartSprite.AutoPainting.Settings.PolygonClassification)">
+            <summary>
+            Incorporates the classification
+            </summary>
+            <param name="classification" />		
+        </member>
+        <member name="T:smartSuite.smartSprite.AutoPainting.Settings.Profile">
+            <summary>
+            It's the profile
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSprite.AutoPainting.Settings.Profile.TraceColor">
+            <summary>
+            It's the trace color
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSprite.AutoPainting.Settings.Profile.ClassificationList">
+            <summary>
+            It's a list of polygon classification
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSprite.AutoPainting.Settings.Profile.Save(System.String)">
+            <summary>
+            Saves the profile
+            </summary>
+            <param name="fileName" />		
+        </member>
+        <member name="M:smartSuite.smartSprite.AutoPainting.Settings.Profile.Load">
+            <summary>
+            Applies the profile
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:smartSuite.smartSprite.AutoPainting.Traces.Line">
+            <summary>
+            Represents a line made of ordered points
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSprite.AutoPainting.Traces.Line._angleManager">
+            <summary>
+            It's the angle manager
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSprite.AutoPainting.Traces.Line.PointRadio">
+            <summary>
+            Gets or sets the point radio
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSprite.AutoPainting.Traces.Line.PointCache">
+            <summary>
+            It's the cache of points
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSprite.AutoPainting.Traces.Line.OwnerPolygonList">
+            <summary>
+            Gets or sets the parent polygon
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSprite.AutoPainting.Traces.Line.CornerList">
+            <summary>
+            It's an eventual corner between the lines
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSprite.AutoPainting.Traces.Line.WasAnalysed">
+            <summary>
+            Gets an indicator informing if the line has been analysed
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSprite.AutoPainting.Traces.Line.#ctor(smartSuite.smartSpriteFX.Pictures.Point,smartSuite.smartSpriteFX.PictureEngine.AutoPainting.Traces.PointHand,smartSuite.smartSpriteFX.PictureEngine.AutoPainting.Traces.PointHand)">
+            <summary>
+            Creates a line between the points
+            </summary>
+            <param name="startPoint"></param>
+            <param name="endPoint"></param>
+        </member>
+        <member name="M:smartSuite.smartSprite.AutoPainting.Traces.Line.Sort">
+            <summary>
+            Sort the lines
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSprite.AutoPainting.Traces.Line.IsSequel(smartSuite.smartSprite.AutoPainting.Traces.Line)">
+            <summary>
+            Informs if the lines are in sequence
+            </summary>
+            <param name="line"></param>
+            <returns></returns>
+        </member>
+        <member name="P:smartSuite.smartSprite.AutoPainting.Traces.Line.IsEmpty">
+            <summary>
+            Gets an indicator informing if there some points in line
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:smartSuite.smartSprite.AutoPainting.Traces.Line.OnwerGridPart">
+            <summary>
+            It's the owner grid part
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSprite.AutoPainting.Traces.Line.Assimilate(smartSuite.smartSpriteFX.PictureEngine.AutoPainting.Traces.PointHand)">
+            <summary>
+            Assimilates (if it can) the point and returns an indicator about it.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSprite.AutoPainting.Traces.Line.GetEdges">
+            <summary>
+            Gets the edges
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSprite.AutoPainting.Traces.Line.IsCorner(smartSuite.smartSpriteFX.PictureEngine.AutoPainting.Traces.PointHand,smartSuite.smartSpriteFX.PictureEngine.AutoPainting.Traces.PointHand)">
+            <summary>
+            Get an indicator informing if the both points compounds a corner
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSprite.AutoPainting.Traces.Line.CalculateSin(smartSuite.smartSpriteFX.PictureEngine.AutoPainting.Traces.PointHand,smartSuite.smartSpriteFX.PictureEngine.AutoPainting.Traces.PointHand)">
+            <summary>
+            Calculate the sin between the points
+            </summary>
+            <param name="point"></param>
+            <param name="other"></param>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSprite.AutoPainting.Traces.Line.IsInclined(smartSuite.smartSpriteFX.PictureEngine.AutoPainting.Traces.PointHand,smartSuite.smartSpriteFX.PictureEngine.AutoPainting.Traces.PointHand)">
+            <summary>
+            Gets an indicator informing if the other point is inclined relating to the current
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSprite.AutoPainting.Traces.Line.Assimilate(smartSuite.smartSprite.AutoPainting.Traces.Line)">
+            <summary>
+            Assimilates (if it can) the line and returns an indicator about it.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSprite.AutoPainting.Traces.Line.MergePoint(smartSuite.smartSpriteFX.PictureEngine.AutoPainting.Traces.PointHand)">
+            <summary>
+            Merges the point
+            </summary>
+            <param name="point"></param>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSprite.AutoPainting.Traces.Line.Assimilate(smartSuite.smartSprite.AutoPainting.Traces.Line,System.Func{smartSuite.smartSprite.AutoPainting.Traces.Line,smartSuite.smartSprite.AutoPainting.Traces.Line,System.Boolean})">
+            <summary>
+            Assimilates (if it can) the line and returns an indicator about it.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSprite.AutoPainting.Traces.Line.CanBeSequel(smartSuite.smartSpriteFX.PictureEngine.AutoPainting.Traces.PointHand,smartSuite.smartSpriteFX.PictureEngine.AutoPainting.Traces.PointHand)">
+            <summary>
+            Checks if the other point can complete a sequel of another one
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSprite.AutoPainting.Traces.Line.Classify(smartSuite.smartSpriteFX.PictureEngine.AutoPainting.Traces.PointHand,smartSuite.smartSpriteFX.PictureEngine.AutoPainting.Traces.PointHand)">
+            <summary>
+            Classifies the line
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSprite.AutoPainting.Traces.Line.GetMinX(smartSuite.smartSpriteFX.PictureEngine.AutoPainting.Traces.PointHand)">
+            <summary>
+            Gets the minimum X
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSprite.AutoPainting.Traces.Line.GetMaxX(smartSuite.smartSpriteFX.PictureEngine.AutoPainting.Traces.PointHand)">
+            <summary>
+            Gets the maximum X
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSprite.AutoPainting.Traces.Line.GetMinY(smartSuite.smartSpriteFX.PictureEngine.AutoPainting.Traces.PointHand)">
+            <summary>
+            Gets the minimum Y
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSprite.AutoPainting.Traces.Line.GetMaxY(smartSuite.smartSpriteFX.PictureEngine.AutoPainting.Traces.PointHand)">
+            <summary>
+            Gets the maximum Y
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:smartSuite.smartSprite.AutoPainting.Traces.LineBuilder">
+            <summary>
+            Offers capabilities to extract lines from owner grid.
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSprite.AutoPainting.Traces.LineBuilder._pointRadio">
+            <summary>
+            It's the size of the point
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSprite.AutoPainting.Traces.LineBuilder.OwnerGridPart">
+            <summary>
+            Gets or sets the owner grid part
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSprite.AutoPainting.Traces.LineBuilder.ExtractLines">
+            <summary>
+            Organizes the points in lines
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:smartSuite.smartSpriteFX.PictureEngine.AutoPainting.LinkedPointAndPolygon">
+            <summary>
+            Represents a version of point and relative prepared to be grouped in polygons
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.PictureEngine.AutoPainting.LinkedPointAndPolygon.Polygon">
+            <summary>
+            A polygon belonged
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.PictureEngine.AutoPainting.LinkedPointAndPolygon.HasDistributed">
+            <summary>
+            Indicates if the point has been checked in distribute proccess
+            </summary>
+        </member>
+        <member name="T:smartSuite.smartSpriteFX.PictureEngine.AutoPainting.Traces.AngleManager">
+            <summary>
+            Manages the angle evolution
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.PictureEngine.AutoPainting.Traces.AngleManager.LeanTolerance">
+            <summary>
+            It's a tolerance required to a difference been considered a angle
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSpriteFX.PictureEngine.AutoPainting.Traces.AngleManager._leanFactor">
+            <summary>
+            It's the tend to lean
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.PictureEngine.AutoPainting.Traces.AngleManager.CornerList">
+            <summary>
+            It's the corner detected during the scan
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSpriteFX.PictureEngine.AutoPainting.Traces.AngleManager._buffer">
+            <summary>
+            It's the calculation lean buffer
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSpriteFX.PictureEngine.AutoPainting.Traces.AngleManager._hasStarted">
+            <summary>
+            Indicates if the calculation has been started
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.AutoPainting.Traces.AngleManager.Scan(smartSuite.smartSpriteFX.PictureEngine.AutoPainting.Traces.PointHand[])">
+            <summary>
+            Scans the points, looking for lean variance
+            </summary>
+            <param name="pointHand"></param>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.AutoPainting.Traces.AngleManager.TooDifferent(System.Double)">
+            <summary>
+            Gets an indicator informing that the lean is too different from the last one
+            </summary>
+            <param name="lean"></param>
+            <returns></returns>
+        </member>
+        <member name="T:smartSuite.smartSpriteFX.PictureEngine.AutoPainting.Traces.Corner">
+            <summary>
+            Represents the corner between two lines
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.PictureEngine.AutoPainting.Traces.Corner.Vertice">
+            <summary>
+            It's the vertice of angle
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.PictureEngine.AutoPainting.Traces.Corner.Angle">
+            <summary>
+            It's the angle of corner
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.AutoPainting.Traces.Corner.DrawDebug(System.String,smartSuite.smartSpriteFX.Pictures.Picture)">
+            <summary>
+            Draws a caption in a picture used for debug purposes
+            </summary>
+            <param name="debugPicture"></param>
+            <param name="caption"></param>
+        </member>
+        <member name="T:smartSuite.smartSpriteFX.PictureEngine.AutoPainting.Traces.SegmentClassificationEnum">
+            <summary>
+            Relates the classification of a piece of line
+            </summary>
+        </member>
+        <member name="T:smartSuite.smartSpriteFX.PictureEngine.AutoPainting.Traces.PointHand">
+            <summary>
+            Represents a point made by hand
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.PictureEngine.AutoPainting.Traces.PointHand.OwnerLine">
+            <summary>
+            Gets the owner line
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.AutoPainting.Traces.PointHand.CalculateMiddlePoints">
+            <summary>
+            Calculate the middle points
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.AutoPainting.Traces.PointHand.GetEdges">
+            <summary>
+            Gets the edges of point
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:smartSuite.smartSpriteFX.PictureEngine.AutoPainting.Traces.TraceSorter">
+            <summary>
+            Puts a list of point in sort of trace
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.AutoPainting.Traces.TraceSorter.Sort(System.Collections.Generic.List{smartSuite.smartSpriteFX.PictureEngine.AutoPainting.Traces.PointHand})">
+            <summary>
+            Sorts the point to follow the trace and returns the result
+            </summary>
+        </member>
+        <member name="T:smartSuite.smartSpriteFX.PictureEngine.AutoPainting.Traces.TraceSorter.AxisIteratorAlgorithm">
+            <summary>
+            Represents the iterator algorithmn for the axis
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.PictureEngine.AutoPainting.Traces.TraceSorter.AxisIteratorAlgorithm.Start">
+            <summary>
+            It's the start point
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.PictureEngine.AutoPainting.Traces.TraceSorter.AxisIteratorAlgorithm.RuleFunctionDelegate">
+            <summary>
+            It's the rule to be executing
+            </summary>
+            <remarks>
+            param -> The current axis
+            </remarks>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.PictureEngine.AutoPainting.Traces.TraceSorter.AxisIteratorAlgorithm.StepFunctionDelegate">
+            <summary>
+            The step function
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSpriteFX.PictureEngine.AutoPainting.Traces.TraceSorter.AxisIteratorAlgorithm.EdgeFunctionDelegate">
+            <summary>
+            The function to be used in the edge of Y
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSpriteFX.PictureEngine.AutoPainting.Traces.TraceSorter.AxisIteratorAlgorithm.IsLastPointFunctionDelegate">
+            <summary>
+            Gets the indicator informing if the point is the last of the set
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSpriteFX.PictureEngine.AutoPainting.Traces.TraceSorter.AxisIteratorAlgorithm.OpositeAlgorithmDelegate">
+            <summary>
+            The oposite algorithm delegate
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSpriteFX.PictureEngine.AutoPainting.Traces.TraceSorter.AxisIteratorAlgorithm.GetLastXFunctionDelegate">
+            <summary>
+            Gets the last in the set
+            </summary>
+        </member>
+        <member name="T:smartSuite.smartSpriteFX.PictureEngine.AutoPainting.Traces.TraceSorter.Depot">
+            <summary>
+            Controls the queue order
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.PictureEngine.AutoPainting.Traces.TraceSorter.Depot.Edges">
+            <summary>
+            Gets the edges
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.AutoPainting.Traces.TraceSorter.Depot.HasFullScanned(System.Collections.Generic.List{smartSuite.smartSpriteFX.PictureEngine.AutoPainting.Traces.PointHand})">
+            <summary>
+            Gets an indicator informing if all the source had been scanned already
+            </summary>
+            <param name="source"></param>
+            <returns></returns>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.PictureEngine.AutoPainting.Traces.TraceSorter.Depot.LatestPoint">
+            <summary>
+            Gets the latest point used through the Put method
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.AutoPainting.Traces.TraceSorter.Depot.Put(smartSuite.smartSpriteFX.PictureEngine.AutoPainting.Traces.PointHand)">
+            <summary>
+            Put a point in one of queues
+            </summary>
+            <param name="pointHand"></param>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.AutoPainting.Traces.TraceSorter.Depot.Overhide(System.Collections.Generic.List{smartSuite.smartSpriteFX.PictureEngine.AutoPainting.Traces.PointHand})">
+            <summary>
+            Overhides the original list
+            </summary>
+            <param name="list"></param>
+        </member>
+        <member name="T:smartSuite.smartSpriteFX.PictureEngine.AutoPainting.Traces.TraceSorter.StubbornBehaviourScanner">
+            <summary>
+            Scans the stubborn behaviour
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSpriteFX.PictureEngine.AutoPainting.Traces.TraceSorter.StubbornBehaviourScanner._pointScan">
+            <summary>
+            It's the last point scan
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.PictureEngine.AutoPainting.Traces.TraceSorter.StubbornBehaviourScanner.StubbornCount">
+            <summary>
+            Gets the amount of stubborn loopings in the same coordinates
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.AutoPainting.Traces.TraceSorter.StubbornBehaviourScanner.Scan(System.Single,System.Single)">
+            <summary>
+            Scans the time
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.AutoPainting.Traces.TraceSorter.StubbornBehaviourScanner.Reset">
+            <summary>
+            Resets the state of stubborn
+            </summary>
+        </member>
+        <member name="T:smartSuite.smartSpriteFX.PictureEngine.AutoPainting.Traces.TraceSorter.TimeOutManager">
+            <summary>
+            Manages the timeout
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.AutoPainting.Traces.TraceSorter.TimeOutManager.HasTimeOut">
+            <summary>
+            Indicates if the time has gone
+            </summary>
+        </member>
+        <member name="T:smartSuite.smartSpriteFX.PictureEngine.AutoPainting.Traces.TraceSorter.EdgeDetection">
+            <summary>
+            Detects the Edges
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.AutoPainting.Traces.TraceSorter.EdgeDetection.GetEdge(System.Collections.Generic.List{smartSuite.smartSpriteFX.PictureEngine.AutoPainting.Traces.PointHand},System.Single,System.Single)">
+            <summary>
+            Gets the edge
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:smartSuite.smartSpriteFX.PictureEngine.Pictures.ColorPattern.ColorUtil">
+            <summary>
+            Offers utilities to mantains colors
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.ColorPattern.ColorUtil.GetSlightlyDifferentColorComponent(System.Int32)">
+            <summary>
+            Gets the color component slighty different to trick the transparent mechanism
+            </summary>
+            <param name="colorComponent"></param>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.ColorPattern.ColorUtil.GetSlightlyDifferentColor(System.Drawing.Color)">
+            <summary>
+            Gets the color slighty different to trick the transparent mechanism 
+            </summary>
+            <param name="color"></param>
+            <returns></returns>
+        </member>
+        <member name="T:smartSuite.smartSpriteFX.PictureEngine.Pictures.ColorPattern.IColorFilter">
+            <summary>
+            Defines how a color filter must be
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.ColorPattern.IColorFilter.IsValid(System.Int32,System.Int32,System.Drawing.Color)">
+            <summary>
+            Gets if the color is valid
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:smartSuite.smartSpriteFX.PictureEngine.Pictures.ColorPattern.LookLikeColorComparer">
+            <summary>
+            Represents a color comparer based on similiarity between color, used for pour acuracy.
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSpriteFX.PictureEngine.Pictures.ColorPattern.LookLikeColorComparer.innerComparer">
+            <summary>
+            It´s a inner comparer
+            </summary>
+        </member>
+        <member name="T:smartSuite.smartSpriteFX.PictureEngine.Pictures.ColorPattern.NoneColorFilter">
+            <summary>
+            Represents a filter color with no effect at all
+            </summary>
+        </member>
+        <member name="T:smartSuite.smartSpriteFX.PictureEngine.Pictures.ColorPattern.PenColorComparer">
+            <summary>
+            It's a comparer prepared to identify just pen colors
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSpriteFX.PictureEngine.Pictures.ColorPattern.PenColorComparer._pointCache">
+            <summary>
+            It's the cache of point
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSpriteFX.PictureEngine.Pictures.ColorPattern.PenColorComparer._pointPhoto">
+            <summary>
+            It's the photo of original point
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSpriteFX.PictureEngine.Pictures.ColorPattern.PenColorComparer._pointSizeList">
+            <summary>
+            It's a list of point sizes
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSpriteFX.PictureEngine.Pictures.ColorPattern.PenColorComparer._extraDarkness">
+            <summary>
+            It's an addictional darkness used to ignore more colors
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSpriteFX.PictureEngine.Pictures.ColorPattern.PenColorComparer._lastValidation">
+            <summary>
+            It's the last validation
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.PictureEngine.Pictures.ColorPattern.PenColorComparer.ExtraDarkness">
+            <summary>
+            It's an addictional darkness used to ignore more colors
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.ColorPattern.PenColorComparer.UpdateTraceAttributes(System.Int32,System.Int32)">
+            <summary>
+            Updates trace attributes
+            </summary>
+            <remarks>So far, Y is not been considered properly. It is needed control all the parallel Y</remarks>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.ColorPattern.PenColorComparer.CalculatePointRadio">
+            <summary>
+            Calculate the point radio
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase">
+            <summary>
+            Represents a manager for databases
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase._transactionStartTime">
+            <summary>
+            It´s the start timeof transaction
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase._sessionID">
+            <summary>
+            It´s the sessionID of datas.
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase._dataSourceIndex">
+            <summary>
+            Relates the key with the point in dataSource
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase._dataSource">
+            <summary>
+            It´s a datasource
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase.#ctor">
+            <summary>
+            This constructor has been created for goals of design and can not be used for external calls
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase.SessionID">
+            <summary>
+            Gets the identification of session
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase.DataSourceIndex">
+            <summary>
+            Relates the key with the point in dataSource
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase.DataSource">
+            <summary>
+            It´s a datasource
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase.Open">
+            <summary>
+            Gets a opened database
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase.Close">
+            <summary>
+            Closes the database
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase.INSERT(System.Int32,System.Int32,System.Drawing.Color)">
+            <summary>
+            Inserts a record
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <param name="color"></param>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase.INSERT(System.Collections.Generic.List{smartSuite.smartSpriteFX.PictureEngine.Pictures.PointInfo})">
+            <summary>
+            Inserts a bunch of points
+            </summary>
+            <param name="pointInfoList"></param>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase.DELETE(System.Int32,System.Int32)">
+            <summary>
+            Removes the pixel
+            </summary>
+            <returns>An indicator informing that the pixel has been excluded.</returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase.UPDATE(System.Int32,System.Int32,System.Drawing.Color)">
+            <summary>
+            Updates a record
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <param name="color"></param>
+            <returns>Gets the amount of records updated</returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase.UPDATE(System.Drawing.Color,System.Drawing.Color)">
+            <summary>
+            Updates colors in all records
+            </summary>
+            <returns>Gets the amount of records updated</returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase.SELECT(System.Int32,System.Int32)">
+            <summary>
+            Gets the color information of coordination
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase.SELECT(smartSuite.smartSpriteFX.Pictures.Point)">
+            <summary>
+            Gets the pointInfo of the point
+            </summary>
+            <param name="point"></param>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase.SELECT(System.Drawing.Color)">
+            <summary>
+            Gets the points for the color
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase.SELECTALL">
+            <summary>
+            Gets all the points
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase.COUNT">
+            <summary>
+            Counts the amount of pixels
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase.COUNT(System.Drawing.Color)">
+            <summary>
+            Counts the amount of colors for the critera
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase.EXISTS(smartSuite.smartSpriteFX.Pictures.Point,System.Drawing.Color)">
+            <summary>
+            Checks if exists the color for the coordinates
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase.EXISTS(smartSuite.smartSpriteFX.Pictures.Point)">
+            <summary>
+            Checks if exists the color for the coordinates
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase.Clear">
+            <summary>
+            Clear all the cache
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase.CLEAR">
+            <summary>
+            Deletes all the content of table
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase.Clone">
+            <summary>
+            Clones the database
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase.FormatKeyIndex(smartSuite.smartSpriteFX.Pictures.Point)">
+            <summary>
+            Formats the index used in indexes
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase.Merge(smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase)">
+            <summary>
+            Merge other dataBase in the current dataBase
+            </summary>
+            <param name="other"></param>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase.GetAllColors">
+            <summary>
+            Gets all the colors of database
+            </summary>
+            <param name="other"></param>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase.CountColor">
+            <summary>
+            Gets the amount of colors of database
+            </summary>
+            <param name="other"></param>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase.BeginTransaction">
+            <summary>
+            Begins the transaction
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase.RollbackTransaction">
+            <summary>
+            Rolls back the transaction
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase.CommitTransaction">
+            <summary>
+            Commits the transaction
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase.PrintTransactionTime(System.String)">
+            <summary>
+            Prints the transaction time
+            </summary>
+        </member>
+        <member name="T:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabaseIndexManager">
+            <summary>
+            Controls the index database manager
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabaseIndexManager.UnderlineIndex">
+            <summary>
+            It's the underline index reference
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabaseIndexManager.UnderlineData">
+            <summary>
+            It's the under
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabaseIndexManager.EnlistIndex(System.String,System.Int32)">
+            <summary>
+            Enlist an index.
+            </summary>
+            <param name="key"></param>
+            <param name="index"></param>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabaseIndexManager.WaitForCompletion">
+            <summary>
+            Synchronizes the calling to feed of index
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:smartSuite.smartSpriteFX.PictureEngine.Pictures.IFromString">
+            <summary>
+            Defines how an object that can be filled from  a string
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.IFromString.FillMe(System.String)">
+            <summary>
+            Fills the data
+            </summary>
+            <param name="valueString"></param>
+        </member>
+        <member name="T:smartSuite.smartSpriteFX.PictureEngine.Pictures.LinkedPoint">
+            <summary>
+            Represents a point which saves information about another adjacent points
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.PictureEngine.Pictures.LinkedPoint.HasRelativesLoaded">
+            <summary>
+            Indicates if the relatives point has been loaded
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSpriteFX.PictureEngine.Pictures.LinkedPoint._relativeList">
+            <summary>
+            It's the list of relative points
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.LinkedPoint.GetRelativeList">
+            <summary>
+            Gets the relative list
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.LinkedPoint.RegisterRelationship(smartSuite.smartSpriteFX.Pictures.Point)">
+            <summary>
+            Register a relationship between this point and the indicated
+            </summary>
+            <param name="point"></param>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.LinkedPoint.IndicatesNoRelationship">
+            <summary>
+            Indicates that this point hasn't any relates at all
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.LinkedPoint.IsRelative(smartSuite.smartSpriteFX.Pictures.Point)">
+            <summary>
+            Gets an indicator informing if the point is relative of this one
+            </summary>
+            <param name="point"></param>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.LinkedPoint.HasRelatives">
+            <summary>
+            Gets an indicator informing if this point has relatives
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:smartSuite.smartSpriteFX.PictureEngine.Pictures.PointInfo">
+            <summary>
+            Represents a composition of point and aditional information
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.PictureEngine.Pictures.PointInfo.Color">
+            <summary>
+            Gets or sets color
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.PointInfo.Clone">
+            <summary>
+            Clones the current object;
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:smartSuite.smartSpriteFX.PictureEngine.Templates.UnityMetaFile">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.PictureEngine.Templates.UnityMetaFile.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.PictureEngine.Templates.UnityMetaFile.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.PictureEngine.Templates.UnityMetaFile.EmptyGameObject">
+             <summary>
+               Looks up a localized string similar to fileFormatVersion: 2
+            guid: [guid-without-trace]
+            folderAsset: yes
+            timeCreated: 1450310219
+            licenseType: Free
+            DefaultImporter:
+              userData: 
+              assetBundleName: 
+              assetBundleVariant: .
+             </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.PictureEngine.Templates.UnityMetaFile.GameObject2D">
+             <summary>
+               Looks up a localized string similar to fileFormatVersion: 2
+            guid: [guid-without-trace]
+            timeCreated: 1450637947
+            licenseType: Free
+            TextureImporter:
+              fileIDToRecycleName: {}
+              serializedVersion: 2
+              mipmaps:
+                mipMapMode: 0
+                enableMipMap: 1
+                linearTexture: 0
+                correctGamma: 0
+                fadeOut: 0
+                borderMipMap: 0
+                mipMapFadeDistanceStart: 1
+                mipMapFadeDistanceEnd: 3
+              bumpmap:
+                convertToNormalMap: 0
+                externalNormalMap: 0
+                heightScale: .25
+                normalMapFilter: 0
+              isReadable: 0
+              grayScaleToAlpha: 0
+              generateCubemap: 0
+              cube [rest of string was truncated]&quot;;.
+             </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.PictureEngine.Templates.UnityMetaFile.GuidPlaceHolder">
+            <summary>
+              Looks up a localized string similar to [guid-without-trace].
+            </summary>
+        </member>
         <member name="T:smartSuite.smartSpriteFX.Forms.ColorSupportForm">
             <summary>
             Represents a form to ask for the user supports for a definition
@@ -393,6 +1659,13 @@
             Represents whe height of picture
             </summary>
         </member>
+        <member name="F:smartSuite.smartSpriteFX.Pictures.Picture._colorFilter">
+            <summary>
+            It's a filter used during the loading buffer process
+            </summary>
+            <seealso cref="M:smartSuite.smartSpriteFX.Pictures.Picture.LoadBuffer(System.Drawing.Bitmap)"/>
+            <seealso cref="M:smartSuite.smartSpriteFX.Pictures.Picture.LoadBuffer(System.String)"/>
+        </member>
         <member name="P:smartSuite.smartSpriteFX.Pictures.Picture.OriginalWidth">
             <summary>
             Gets the original width of picture with no filters applied
@@ -408,17 +1681,12 @@
             It´s the transparent color
             </summary>
         </member>
-        <member name="F:smartSuite.smartSpriteFX.Pictures.Picture._buffer">
-            <summary>
-            It´s a buffer of colors, where key it's a combination of x and y coordinates. 
-            </summary>
-        </member>
         <member name="P:smartSuite.smartSpriteFX.Pictures.Picture.ColorCount">
             <summary>
             Gets the amount of color of current picture
             </summary>
         </member>
-        <member name="M:smartSuite.smartSpriteFX.Pictures.Picture.#ctor(System.String)">
+        <member name="M:smartSuite.smartSpriteFX.Pictures.Picture.#ctor(System.String,smartSuite.smartSpriteFX.PictureEngine.Pictures.ColorPattern.IColorFilter)">
             <summary>
             Creates an image
             </summary>
@@ -428,12 +1696,6 @@
             Merge the buffer of another picture
             </summary>
             <param name="other"></param>
-        </member>
-        <member name="M:smartSuite.smartSpriteFX.Pictures.Picture.GetInstanceLazy(System.String)">
-            <summary>
-            Gets the instance of object without load the buffer.
-            </summary>
-            <param name="fileNameItem"></param>
         </member>
         <member name="M:smartSuite.smartSpriteFX.Pictures.Picture.GetAllPixels">
             <summary>
@@ -504,6 +1766,11 @@
             Sets or gets the transparent color
             </summary>
         </member>
+        <member name="P:smartSuite.smartSpriteFX.Pictures.Picture.Buffer">
+            <summary>
+            Gets the buffer
+            </summary>
+        </member>
         <member name="M:smartSuite.smartSpriteFX.Pictures.Picture.LoadBuffer(System.String)">
             <summary>
             Loads the buffer of image
@@ -527,6 +1794,12 @@
             <summary>
             Loads the color info cache
             </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Pictures.Picture.DrawString(System.String,System.Single,System.Single)">
+            <summary>
+            Draws a string in picture
+            </summary>
+            <param name="text"></param>
         </member>
         <member name="M:smartSuite.smartSpriteFX.Pictures.Picture.FormatKey(System.Int32,System.Int32)">
             <summary>
@@ -579,7 +1852,7 @@
             </summary>
             <param name="x"></param>
             <param name="y"></param>
-            <param name="newColor" />		
+            <param name="newColor" />	
         </member>
         <member name="M:smartSuite.smartSpriteFX.Pictures.Picture.ReplacePixel(smartSuite.smartSpriteFX.Pictures.PointRange)">
             <summary>
@@ -587,12 +1860,12 @@
             </summary>
             <param name="pointRange"></param>
         </member>
-        <member name="M:smartSuite.smartSpriteFX.Pictures.Picture.Overwrite(System.Drawing.Color)">
+        <member name="M:smartSuite.smartSpriteFX.Pictures.Picture.Overwrite(System.Nullable{System.Drawing.Color})">
             <summary>
             Overwrites the picture
             </summary>
         </member>
-        <member name="M:smartSuite.smartSpriteFX.Pictures.Picture.Save(System.String,System.Drawing.Color,System.Collections.Generic.IEqualityComparer{System.Drawing.Color})">
+        <member name="M:smartSuite.smartSpriteFX.Pictures.Picture.Save(System.String,System.Nullable{System.Drawing.Color},System.Collections.Generic.IEqualityComparer{System.Drawing.Color})">
             <summary>
             Saves the file
             </summary>
@@ -606,10 +1879,41 @@
         </member>
         <member name="M:smartSuite.smartSpriteFX.Pictures.Picture.GetInstance(System.String)">
             <summary>
-            Gets a instance of picture
+            Gets an instance of picture
             </summary>
             <param name="fullFileName"></param>
             <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Pictures.Picture.GetInstance(System.String,smartSuite.smartSpriteFX.PictureEngine.Pictures.ColorPattern.IColorFilter)">
+            <summary>
+            Gets an instance of picture
+            </summary>
+            <param name="fullFileName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Pictures.Picture.GetInstance(System.Drawing.Bitmap)">
+            <summary>
+            Gets an instance of object. This method was projected for unit testing purposes.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Pictures.Picture.GetInstance(System.Drawing.Bitmap,smartSuite.smartSpriteFX.PictureEngine.Pictures.ColorPattern.IColorFilter)">
+            <summary>
+            Gets an instance of object. This method was projected for unit testing purposes.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Pictures.Picture.GetInstanceLazy(System.String)">
+            <summary>
+            Gets the instance of object without load the buffer.
+            </summary>
+            <param name="fileNameItem"></param>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Pictures.Picture.GetInstanceLazy(System.String,smartSuite.smartSpriteFX.PictureEngine.Pictures.ColorPattern.IColorFilter)">
+            <summary>
+            Gets the instance of object without load the buffer.
+            </summary>
+            <param name="fileNameItem"></param>
         </member>
         <member name="M:smartSuite.smartSpriteFX.Pictures.Picture.SaveCopy(System.String)">
             <summary>
@@ -921,6 +2225,11 @@
             Represents a cartesyan coordinate
             </summary>
         </member>
+        <member name="F:smartSuite.smartSpriteFX.Pictures.Point._regExDataFromFile">
+            <summary>
+            It's a regex that extract data from fileSet
+            </summary>
+        </member>
         <member name="P:smartSuite.smartSpriteFX.Pictures.Point.X">
             <summary>
             It's a coordinate X
@@ -931,10 +2240,67 @@
             It´s a coordinate Y
             </summary>
         </member>
+        <member name="M:smartSuite.smartSpriteFX.Pictures.Point.GetDictionaryComparer">
+            <summary>
+            Gets a dictionary to use with comparer
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:smartSuite.smartSpriteFX.Pictures.Point.Clone">
             <summary>
             Returns a clone of point
             </summary>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Pictures.Point.FillMe(System.String)">
+            <summary>
+            Fills the data
+            </summary>
+            <param name="valueString"></param>
+        </member>
+        <member name="T:smartSuite.smartSpriteFX.Pictures.Point.PointStringComparer">
+            <summary>
+            Offers a comparer to correct string sortings
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Pictures.Point.PointStringComparer.Compare(System.String,System.String)">
+            <summary>
+            Gets the comparison factor
+            </summary>
+            <param name="x">A string like the return of Point.ToString()</param>
+            <param name="y">A string like the return of Point.ToString()</param>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Pictures.Point.NearlyEqualsTo(smartSuite.smartSpriteFX.Pictures.Point)">
+            <summary>
+            Compares the current point to another and returns true if both are almost similar
+            </summary>
+            <param name="other"></param>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Pictures.Point.NearlyEqualsTo(smartSuite.smartSpriteFX.Pictures.Point,System.Int32)">
+            <summary>
+            Compares the current point to another and returns true if both are almost similar
+            </summary>
+            <param name="other"></param>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Pictures.Point.CompareIntervalViceVersa(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Compares two numbers by interval in both way
+            </summary>
+            <param name="numberA"></param>
+            <param name="numberB"></param>
+            <param name="tolerance"></param>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Pictures.Point.CompareInterval(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Compares two numbers by interval
+            </summary>
+            <param name="numberA"></param>
+            <param name="numberB"></param>
+            <param name="tolerance"></param>
             <returns></returns>
         </member>
         <member name="T:smartSuite.smartSpriteFX.Pictures.PointRange">
@@ -957,14 +2323,24 @@
             It´s the color of range
             </summary>
         </member>
+        <member name="M:smartSuite.smartSpriteFX.Pictures.PointRange.#ctor(smartSuite.smartSpriteFX.Pictures.Point,smartSuite.smartSpriteFX.Pictures.Point)">
+            <summary>
+            Creates an instance of the object
+            </summary>
+        </member>
         <member name="P:smartSuite.smartSpriteFX.Pictures.PointRange.StartPoint">
             <summary>
-            Gets the start point
+            Gets or sets the start point
             </summary>
         </member>
         <member name="P:smartSuite.smartSpriteFX.Pictures.PointRange.EndPoint">
             <summary>
-            Gets the endpoint
+            Gets or sets the endpoint
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.Pictures.PointRange.Size">
+            <summary>
+            Gets the size of range
             </summary>
         </member>
         <member name="F:smartSuite.smartSpriteFX.Pictures.PointRange._currentRange">
@@ -972,14 +2348,19 @@
             It´s the current Point range.
             </summary>
         </member>
-        <member name="M:smartSuite.smartSpriteFX.Pictures.PointRange.SetPoint(System.Int32,System.Int32)">
+        <member name="M:smartSuite.smartSpriteFX.Pictures.PointRange.SetPoint(System.Single,System.Single)">
             <summary>
             Set a point
             </summary>
             <param name="x"></param>
             <param name="y"></param>
         </member>
-        <member name="M:smartSuite.smartSpriteFX.Pictures.PointRange.IsContained(System.Int32,System.Int32)">
+        <member name="M:smartSuite.smartSpriteFX.Pictures.PointRange.IsContained(smartSuite.smartSpriteFX.Pictures.Point)">
+            <summary>
+            Gets a indicator informing that the point is contained inside of point range.
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Pictures.PointRange.IsContained(System.Single,System.Single)">
             <summary>
             Gets a indicator informing that the point is contained inside of point range.
             </summary>
@@ -987,7 +2368,7 @@
             <param name="y"></param>
             <returns></returns>
         </member>
-        <member name="M:smartSuite.smartSpriteFX.Pictures.PointRange.HaveThisContained(System.Int32,System.Int32)">
+        <member name="M:smartSuite.smartSpriteFX.Pictures.PointRange.HaveThisContained(System.Single,System.Single)">
             <summary>
             Verifies if the current point range have the X and Y contained.
             </summary>
@@ -1019,7 +2400,7 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:smartSuite.smartSpriteFX.Pictures.PointRange.SetPoint(System.Int32,System.Int32,System.Int32,System.Int32)">
+        <member name="M:smartSuite.smartSpriteFX.Pictures.PointRange.SetPoint(System.Single,System.Single,System.Single,System.Single)">
             <summary>
             Sets the range
             </summary>
@@ -1028,7 +2409,7 @@
             <param name="finalX"></param>
             <param name="finalY"></param>
         </member>
-        <member name="M:smartSuite.smartSpriteFX.Pictures.PointRange.UpdatePoint(System.Int32,System.Int32,System.Int32,System.Int32)">
+        <member name="M:smartSuite.smartSpriteFX.Pictures.PointRange.UpdatePoint(System.Single,System.Single,System.Single,System.Single)">
             <summary>
             Updates the points
             </summary>
@@ -1037,298 +2418,28 @@
             <param name="finalX"></param>
             <param name="finalY"></param>
         </member>
-        <member name="T:smartSuite.smartSpriteFX.PictureEngine.Pictures.ColorPattern.ColorUtil">
+        <member name="M:smartSuite.smartSpriteFX.Pictures.PointRange.UpdatePoint(System.Single,System.Single)">
             <summary>
-            Offers utilities to mantains colors
+            Updates the end points
+            </summary>
+            <param name="finalX"></param>
+            <param name="finalY"></param>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Pictures.PointRange.UpdatePoint(smartSuite.smartSpriteFX.Pictures.Point)">
+            <summary>
+            Updates the end points
             </summary>
         </member>
-        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.ColorPattern.ColorUtil.GetSlightlyDifferentColorComponent(System.Int32)">
+        <member name="M:smartSuite.smartSpriteFX.Pictures.PointRange.UpdatePoint(smartSuite.smartSpriteFX.Pictures.Point,smartSuite.smartSpriteFX.Pictures.Point)">
             <summary>
-            Gets the color component slighty different to trick the transparent mechanism
-            </summary>
-            <param name="colorComponent"></param>
-            <returns></returns>
-        </member>
-        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.ColorPattern.ColorUtil.GetSlightlyDifferentColor(System.Drawing.Color)">
-            <summary>
-            Gets the color slighty different to trick the transparent mechanism 
-            </summary>
-            <param name="color"></param>
-            <returns></returns>
-        </member>
-        <member name="T:smartSuite.smartSpriteFX.PictureEngine.Pictures.ColorPattern.LookLikeColorComparer">
-            <summary>
-            Represents a color comparer based on similiarity between color, used for pour acuracy.
+            Updates the whole range
             </summary>
         </member>
-        <member name="F:smartSuite.smartSpriteFX.PictureEngine.Pictures.ColorPattern.LookLikeColorComparer.innerComparer">
+        <member name="M:smartSuite.smartSpriteFX.Pictures.PointRange.CalculateHypotenuse">
             <summary>
-            It´s a inner comparer
-            </summary>
-        </member>
-        <member name="T:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase">
-            <summary>
-            Represents a manager for databases
-            </summary>
-        </member>
-        <member name="F:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase._transactionStartTime">
-            <summary>
-            It´s the start timeof transaction
-            </summary>
-        </member>
-        <member name="F:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase._sessionID">
-            <summary>
-            It´s the sessionID of datas.
-            </summary>
-        </member>
-        <member name="F:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase._dataSourceIndex">
-            <summary>
-            Relates the key with the point in dataSource
-            </summary>
-        </member>
-        <member name="F:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase._dataSource">
-            <summary>
-            It´s a datasource
-            </summary>
-        </member>
-        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase.#ctor">
-            <summary>
-            This constructor has been created for goals of design and can not be used for external calls
-            </summary>
-        </member>
-        <member name="P:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase.SessionID">
-            <summary>
-            Gets the identification of session
-            </summary>
-        </member>
-        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase.Open">
-            <summary>
-            Gets a opened database
+            Calculate the hypotenuse
             </summary>
             <returns></returns>
-        </member>
-        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase.Close">
-            <summary>
-            Closes the database
-            </summary>
-        </member>
-        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase.INSERT(System.Int32,System.Int32,System.Drawing.Color)">
-            <summary>
-            Inserts a record
-            </summary>
-            <param name="x"></param>
-            <param name="y"></param>
-            <param name="color"></param>
-        </member>
-        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase.INSERT(System.Collections.Generic.List{smartSuite.smartSpriteFX.PictureEngine.Pictures.PointInfo})">
-            <summary>
-            Inserts a bunch of points
-            </summary>
-            <param name="pointInfoList"></param>
-        </member>
-        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase.DELETE(System.Int32,System.Int32)">
-            <summary>
-            Removes the pixel
-            </summary>
-            <returns>An indicator informing that the pixel has been excluded.</returns>
-        </member>
-        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase.UPDATE(System.Int32,System.Int32,System.Drawing.Color)">
-            <summary>
-            Updates a record
-            </summary>
-            <param name="x"></param>
-            <param name="y"></param>
-            <param name="color"></param>
-            <returns>Gets the amount of records updated</returns>
-        </member>
-        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase.UPDATE(System.Drawing.Color,System.Drawing.Color)">
-            <summary>
-            Updates colors in all records
-            </summary>
-            <returns>Gets the amount of records updated</returns>
-        </member>
-        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase.SELECT(System.Int32,System.Int32)">
-            <summary>
-            Gets the color information of coordination
-            </summary>
-            <param name="x"></param>
-            <param name="y"></param>
-            <returns></returns>
-        </member>
-        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase.SELECT(smartSuite.smartSpriteFX.Pictures.Point)">
-            <summary>
-            Gets the pointInfo of the point
-            </summary>
-            <param name="point"></param>
-            <returns></returns>
-        </member>
-        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase.SELECT(System.Drawing.Color)">
-            <summary>
-            Gets the points for the color
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase.SELECTALL">
-            <summary>
-            Gets all the points
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase.COUNT">
-            <summary>
-            Counts the amount of pixels
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase.COUNT(System.Drawing.Color)">
-            <summary>
-            Counts the amount of colors for the critera
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase.EXISTS(smartSuite.smartSpriteFX.Pictures.Point,System.Drawing.Color)">
-            <summary>
-            Checks if exists the color for the coordinates
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase.EXISTS(smartSuite.smartSpriteFX.Pictures.Point)">
-            <summary>
-            Checks if exists the color for the coordinates
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase.Clear">
-            <summary>
-            Clear all the cache
-            </summary>
-        </member>
-        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase.CLEAR">
-            <summary>
-            Deletes all the content of table
-            </summary>
-        </member>
-        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase.Clone">
-            <summary>
-            Clones the database
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase.Merge(smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase)">
-            <summary>
-            Merge other dataBase in the current dataBase
-            </summary>
-            <param name="other"></param>
-        </member>
-        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase.GetAllColors">
-            <summary>
-            Gets all the colors of database
-            </summary>
-            <param name="other"></param>
-        </member>
-        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase.CountColor">
-            <summary>
-            Gets the amount of colors of database
-            </summary>
-            <param name="other"></param>
-        </member>
-        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase.BeginTransaction">
-            <summary>
-            Begins the transaction
-            </summary>
-        </member>
-        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase.RollbackTransaction">
-            <summary>
-            Rolls back the transaction
-            </summary>
-        </member>
-        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase.CommitTransaction">
-            <summary>
-            Commits the transaction
-            </summary>
-        </member>
-        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase.PrintTransactionTime(System.String)">
-            <summary>
-            Prints the transaction time
-            </summary>
-        </member>
-        <member name="T:smartSuite.smartSpriteFX.PictureEngine.Pictures.PointInfo">
-            <summary>
-            Represents a composition of point and aditional information
-            </summary>
-        </member>
-        <member name="P:smartSuite.smartSpriteFX.PictureEngine.Pictures.PointInfo.Color">
-            <summary>
-            Gets or sets color
-            </summary>
-        </member>
-        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.PointInfo.Clone">
-            <summary>
-            Clones the current object;
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="T:smartSuite.smartSpriteFX.PictureEngine.Templates.UnityMetaFile">
-            <summary>
-              A strongly-typed resource class, for looking up localized strings, etc.
-            </summary>
-        </member>
-        <member name="P:smartSuite.smartSpriteFX.PictureEngine.Templates.UnityMetaFile.ResourceManager">
-            <summary>
-              Returns the cached ResourceManager instance used by this class.
-            </summary>
-        </member>
-        <member name="P:smartSuite.smartSpriteFX.PictureEngine.Templates.UnityMetaFile.Culture">
-            <summary>
-              Overrides the current thread's CurrentUICulture property for all
-              resource lookups using this strongly typed resource class.
-            </summary>
-        </member>
-        <member name="P:smartSuite.smartSpriteFX.PictureEngine.Templates.UnityMetaFile.EmptyGameObject">
-             <summary>
-               Looks up a localized string similar to fileFormatVersion: 2
-            guid: [guid-without-trace]
-            folderAsset: yes
-            timeCreated: 1450310219
-            licenseType: Free
-            DefaultImporter:
-              userData: 
-              assetBundleName: 
-              assetBundleVariant: .
-             </summary>
-        </member>
-        <member name="P:smartSuite.smartSpriteFX.PictureEngine.Templates.UnityMetaFile.GameObject2D">
-             <summary>
-               Looks up a localized string similar to fileFormatVersion: 2
-            guid: [guid-without-trace]
-            timeCreated: 1450637947
-            licenseType: Free
-            TextureImporter:
-              fileIDToRecycleName: {}
-              serializedVersion: 2
-              mipmaps:
-                mipMapMode: 0
-                enableMipMap: 1
-                linearTexture: 0
-                correctGamma: 0
-                fadeOut: 0
-                borderMipMap: 0
-                mipMapFadeDistanceStart: 1
-                mipMapFadeDistanceEnd: 3
-              bumpmap:
-                convertToNormalMap: 0
-                externalNormalMap: 0
-                heightScale: .25
-                normalMapFilter: 0
-              isReadable: 0
-              grayScaleToAlpha: 0
-              ge [rest of string was truncated]&quot;;.
-             </summary>
-        </member>
-        <member name="P:smartSuite.smartSpriteFX.PictureEngine.Templates.UnityMetaFile.GuidPlaceHolder">
-            <summary>
-              Looks up a localized string similar to [guid-without-trace].
-            </summary>
         </member>
         <member name="T:smartSuite.smartSpriteFX.Unity.IGameObject">
             <summary>
