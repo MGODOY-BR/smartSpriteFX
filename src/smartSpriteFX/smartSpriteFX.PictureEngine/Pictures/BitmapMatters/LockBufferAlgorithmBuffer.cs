@@ -55,89 +55,17 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.BitmapMatters
             {
                 throw new ArgumentNullException("image");
             }
-            if (this.Buffer != null && this.Buffer.COUNT() > 0)
+            if (this.Buffer != null)
             {
                 return;
             }
 
             #endregion
 
-            this.Buffer = this.CreatePictureDatabase();
-
-            //List<AutoResetEvent> semaphoreList = new List<AutoResetEvent>();
-            //ThreadPool.SetMinThreads(1, 500);
-            //ThreadPool.SetMaxThreads(2000, 20000);
-
             this._lockBitmap = new LockBitmap(image);
             this._lockBitmap.LockBits();
 
-            try
-            {
-                this.Buffer.BeginTransaction();
-
-                for (int y = 0; y < image.Height; y++)
-                {
-                    for (int x = 0; x < image.Width; x++)
-                    {
-                        // var color = image.GetPixel(x, y);
-                        var color = this._lockBitmap.GetPixel(x, y);
-
-                        #region Filtering colors
-
-                        if (!colorFilter.IsValid(x, y, color))
-                        {
-                            continue;
-                        }
-
-                        #endregion
-
-                        AutoResetEvent sign = new AutoResetEvent(false);
-                        //semaphoreList.Add(sign);
-                        object[] stateArgs = new object[4] { x, y, color, sign };
-
-                        //ThreadPool.QueueUserWorkItem(
-                        var waitCallbackDelegate = 
-                            new WaitCallback(delegate (object state)
-                            {
-                                object[] args = (object[])state;
-
-                                int xx = (int)args[0];
-                                int yy = (int)args[1];
-                                Color myColor = (Color)args[2];
-                                // AutoResetEvent mySign = (AutoResetEvent)args[3];
-
-                                try
-                                {
-                                    this.Buffer.INSERT(xx, yy, color);
-                                }
-                                finally
-                                {
-                                    // mySign.Set();
-                                }
-                            });
-                        // stateArgs);
-
-                        waitCallbackDelegate(stateArgs);
-                    }
-                }
-
-                //foreach (AutoResetEvent signItem in semaphoreList)
-                //{
-                //    signItem.WaitOne();
-                //}
-
-                this.Buffer.CommitTransaction();
-            }
-            catch (Exception ex)
-            {
-                this.Buffer.RollbackTransaction();
-                throw ex;
-            }
-            finally
-            {
-                this._lockBitmap.UnlockBits();
-            }
-
+            this.Buffer = this.CreatePictureDatabase();
             this.ColorCount = this.Buffer.CountColor();
             this.Height = image.Height;
             this.Width = image.Width;

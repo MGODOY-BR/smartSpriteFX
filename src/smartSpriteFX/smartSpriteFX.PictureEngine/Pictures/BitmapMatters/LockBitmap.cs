@@ -308,7 +308,14 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.BitmapMatters
                     int y = (i / c) / w;
                     int x = (i / c) - (y * w);
 
-                    this.Current = new PointInfo(x, y, this.DataSource.GetPixel(x, y));
+                    try
+                    {
+                        this.Current = new PointInfo(x, y, this.DataSource.GetPixel(x, y));
+                    }
+                    catch(IndexOutOfRangeException)
+                    {
+                        return false;
+                    }
                 }
 
                 return true;

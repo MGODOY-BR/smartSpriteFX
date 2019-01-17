@@ -46,6 +46,7 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
 
         public void Close()
         {
+            this.DataSource.UnlockBits();
         }
 
         public void CommitTransaction()
