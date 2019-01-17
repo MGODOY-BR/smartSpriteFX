@@ -22,6 +22,7 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.BitmapMatters
     /// Revisions
     /// <note type="note">
     /// 2019-10-16 -> [mgodoy-br] It was included ColorComponentEnum, DepthEnum and LockBitmapEnumerator
+    /// 2019-10-17 -> [mgodoy-br] It was included Resize method
     /// </note>
     /// </para>
     /// </remarks>
@@ -78,7 +79,8 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.BitmapMatters
                 Height = source.Height;
 
                 // get total locked pixels count
-                int PixelCount = Width * Height;
+                // mgodoy-br: PixelCount was renamed for camel case
+                int pixelCount = Width * Height;
 
                 // Create rectangle to lock
                 Rectangle rect = new Rectangle(0, 0, Width, Height);
@@ -98,7 +100,7 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.BitmapMatters
 
                 // create byte array to copy pixel values
                 int step = Depth / 8;
-                Pixels = new byte[PixelCount * step];
+                Pixels = new byte[pixelCount * step];
                 Iptr = bitmapData.Scan0;
 
                 // Copy data from pointer to array
@@ -204,6 +206,30 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.BitmapMatters
             {
                 Pixels[i] = color.B;
             }
+        }
+
+        /// <summary>
+        /// Resizes the size of bitmap
+        /// </summary>
+        /// <author>mgodoy-br</author>
+        public void ReSize(int newX, int newY)
+        {
+            #region Entries validation
+
+            if (this.Width == newX && this.Height == newY) return;
+
+            #endregion
+
+            int step = this.Depth / 8;
+
+            int newPixelCount = newX * newY;
+            byte[] newPixelList = new byte[newPixelCount * step];
+
+            this.Pixels.CopyTo(newPixelList, 0);
+            this.Pixels = newPixelList;
+
+            this.Width = newX;
+            this.Height = newY;
         }
 
         /// <summary>

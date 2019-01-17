@@ -55,13 +55,7 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
 
         public long COUNT()
         {
-            long returnValue = 0;
-            LockBitmap.LockBitmapEnumerator enumerator = new LockBitmap.LockBitmapEnumerator((DepthEnum)this.DataSource.Depth, this.DataSource);
-            while (enumerator.MoveNext())
-            {
-                returnValue++;
-            }
-            return returnValue;
+            return this.DataSource.Width * this.DataSource.Height;
         }
 
         public long COUNT(Color color)
@@ -129,11 +123,33 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
 
         public void INSERT(int x, int y, Color color)
         {
+            int maxX = x + 1;
+            int maxY = x + 1;
+            bool resizingRequired = maxX > this.DataSource.Width || maxY > this.DataSource.Height;
+
+            if (resizingRequired)
+            {
+                this.DataSource.ReSize(
+                    maxX > this.DataSource.Width ? maxX : this.DataSource.Width,
+                    maxY > this.DataSource.Height ? maxY : this.DataSource.Height);
+            }
+
             this.DataSource.SetPixel(x, y, color);
         }
 
         public void INSERT(List<PointInfo> pointInfoList)
         {
+            int maxX = (int)pointInfoList.Max(p => p.X) + 1;
+            int maxY = (int)pointInfoList.Max(p => p.Y) + 1;
+            bool resizingRequired = maxX > this.DataSource.Width || maxY > this.DataSource.Height;
+
+            if (resizingRequired)
+            {
+                this.DataSource.ReSize(
+                    maxX > this.DataSource.Width ? maxX: this.DataSource.Width, 
+                    maxY > this.DataSource.Height ? maxY: this.DataSource.Height);
+            }
+
             pointInfoList.ForEach(p => this.DataSource.SetPixel((int)p.X, (int)p.Y, p.Color));
         }
 
