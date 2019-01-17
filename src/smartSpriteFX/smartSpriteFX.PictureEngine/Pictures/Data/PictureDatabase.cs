@@ -20,7 +20,7 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
     /// <summary>
     /// Represents a manager for databases
     /// </summary>
-    public class PictureDatabase
+    public class PictureDatabase : IPictureDatabase
     {
         /// <summary>
         /// It´s the start timeof transaction
@@ -525,7 +525,7 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
         /// Clones the database
         /// </summary>
         /// <returns></returns>
-        public PictureDatabase Clone()
+        public IPictureDatabase Clone()
         {
             #region Entries validation
 
@@ -624,7 +624,7 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
         /// Merge other dataBase in the current dataBase
         /// </summary>
         /// <param name="other"></param>
-        public void Merge(PictureDatabase other)
+        public void Merge(IPictureDatabase other)
         {
             #region Entries validation
 

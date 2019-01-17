@@ -87,6 +87,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>PictureStubs.resx</DependentUpon>
     </Compile>
+    <Compile Include="Pictures\BitmapMatters\LockBitmapTest.cs" />
     <Compile Include="Pictures\ColorPattern\PenColorComparerTest.cs" />
     <Compile Include="Pictures\Data\PictureDatabaseTest.cs" />
     <Compile Include="Pictures\PictureTest.cs" />
@@ -120,6 +121,7 @@
       <LastGenOutput>PictureStubs.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

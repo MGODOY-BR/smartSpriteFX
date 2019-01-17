@@ -1,258 +1,244 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shfbBuild product="Sandcastle Help File Builder and Tools" version="2017.5.15.0" projectFile="C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\smartSpriteFX.helpProject.shfbproj" started="06/08/2017 14:57:02">
+<shfbBuild product="Sandcastle Help File Builder and Tools" version="2018.7.8.0" projectFile="C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\smartSpriteFX.helpProject.shfbproj" started="16/01/2019 14:38:23">
 <buildStep step="Initializing">
 Finding tools...
 The Sandcastle tools are located in &#39;C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\&#39;
 Searching for HTML Help 1 compiler...
 Found HTML Help 1 compiler in &#39;C:\Program Files (x86)\HTML Help Workshop\&#39;
 Locating components in the following folder(s):
-    C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]
+    C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]
     C:\ProgramData\EWSoftware\Sandcastle Help File Builder\Components and Plug-Ins\
     C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\
 Using framework reflection data for &#39;.NET Framework 4.5.2&#39; located in &#39;C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\Data\.NETFramework&#39;
 Using presentation style &#39;VS2013&#39; located in &#39;C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013&#39;
 Loading and initializing plug-ins...
-Lightweight Website Style Version 2017.5.15.0
-Copyright &#169; 2006-2017, Eric Woodruff, All Rights Reserved
+Lightweight Website Style Version 2018.7.8.0
+Copyright &#169; 2006-2018, Eric Woodruff, All Rights Reserved
 Portions Copyright &#169; 2014, Sam Harwell, All Rights Reserved
+</buildStep>
+<buildStep step="ClearWorkFolder">
+Clearing working folder...
 </buildStep>
 <buildStep step="ValidatingDocumentationSources">
 Validating and copying documentation source information
-Source: C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.Common.UI\smartSpriteFX.Common.UI.csproj
-    Found project &#39;C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.Common.UI\smartSpriteFX.Common.UI.csproj&#39;
-Source: C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.PictureEngine\smartSpriteFX.PictureEngine.csproj
-    Found project &#39;C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.PictureEngine\smartSpriteFX.PictureEngine.csproj&#39;
-Source: C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule\smartSpriteFX.SpriteEffectModule.csproj
-    Found project &#39;C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule\smartSpriteFX.SpriteEffectModule.csproj&#39;
+Source: C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.Common.UI\smartSpriteFX.Common.UI.csproj
+    Found project &#39;C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.Common.UI\smartSpriteFX.Common.UI.csproj&#39;
+Source: C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.PictureEngine\smartSpriteFX.PictureEngine.csproj
+    Found project &#39;C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.PictureEngine\smartSpriteFX.PictureEngine.csproj&#39;
+Source: C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule\smartSpriteFX.SpriteEffectModule.csproj
+    Found project &#39;C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule\smartSpriteFX.SpriteEffectModule.csproj&#39;
 
 Parsing project files
-    Found assembly &#39;C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.Common.UI\bin\Release\smartSpriteFX.Common.UI.dll&#39;
-    Found assembly &#39;C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.PictureEngine\bin\Release\smartSpriteFX.PictureEngine.dll&#39;
-    Found assembly &#39;C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule\bin\Release\smartSpriteFX.SpriteEffectModule.dll&#39;
+    Found assembly &#39;C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.Common.UI\bin\Release\smartSpriteFX.Common.UI.dll&#39;
+    Found assembly &#39;C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.PictureEngine\bin\Release\smartSpriteFX.PictureEngine.dll&#39;
+    Found assembly &#39;C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule\bin\Release\smartSpriteFX.SpriteEffectModule.dll&#39;
 
 References to include (excluding framework assemblies):
     None
 
 Copying XML comments files
-    C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.Common.UI\bin\Release\smartSpriteFX.Common.UI.XML -&gt; C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\smartSpriteFX.Common.UI.XML
-    C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.PictureEngine\bin\Release\smartSpriteFX.PictureEngine.XML -&gt; C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\smartSpriteFX.PictureEngine.XML
-    C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule\bin\Release\smartSpriteFX.SpriteEffectModule.XML -&gt; C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\smartSpriteFX.SpriteEffectModule.XML
+    C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.Common.UI\bin\Release\smartSpriteFX.Common.UI.XML -&gt; C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\smartSpriteFX.Common.UI.XML
+    C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.PictureEngine\bin\Release\smartSpriteFX.PictureEngine.XML -&gt; C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\smartSpriteFX.PictureEngine.XML
+    C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule\bin\Release\smartSpriteFX.SpriteEffectModule.XML -&gt; C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\smartSpriteFX.SpriteEffectModule.XML
 </buildStep>
 <buildStep step="GenerateSharedContent">
 Generating shared content files (en-US, English (United States))...
 <plugIn name="Lightweight Website Style" behavior="After" priority="1000">
-</plugIn>    Last step completed in 00:00:00,0655
+</plugIn>    Last step completed in 00:00:00,0060
 </buildStep>
 <buildStep step="GenerateApiFilter">
 Generating API filter for MRefBuilder...
-    Last step completed in 00:00:00,0040
+    Last step completed in 00:00:00,0030
 </buildStep>
 <buildStep step="GenerateReflectionInfo">
 Generating reflection information...
 [C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\MSBuild.exe - GenerateRefInfo.proj]
-Compila‡&#198;o de 06/08/2017 14:57:04 iniciada.
-Projeto &quot;C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\GenerateRefInfo.proj&quot; no n&#162; 1 (destinos padr&#198;o).
+Compila‡&#198;o de 16/01/2019 14:38:24 iniciada.
+Projeto &quot;C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\GenerateRefInfo.proj&quot; no n&#162; 1 (destinos padr&#198;o).
 PrepareForBuild:
   Criando o diret&#162;rio &quot;obj\Debug\&quot;.
 GenerateRefInfo:
-  MRefBuilder (v2017.5.15.0)
-  Copyright &#184; 2006-2017, Microsoft Corporation, All Rights Reserved.
-  Portions Copyright &#184; 2006-2016, Eric Woodruff, All Rights Reserved.
+  MRefBuilder (v2018.7.8.0)
+  Copyright &#184; 2006-2018, Microsoft Corporation, All Rights Reserved.
+  Portions Copyright &#184; 2006-2018, Eric Woodruff, All Rights Reserved.
   No source code context base path specified.  Source context information is unavailable.
   Loaded 3 assemblies for reflection and 1 dependency assemblies.
-  Wrote information on 29 namespaces, 81 types, and 468 members
+  Wrote information on 36 namespaces, 118 types, and 700 members
   Copiando o arquivo de &quot;reflection.org&quot; para &quot;reflection.all&quot;.
-  XslTransform (v2017.5.15.0)
-  Copyright &#184; 2006-2017, Microsoft Corporation, All Rights Reserved.
-  Portions Copyright &#184; 2006-2016, Eric Woodruff, All Rights Reserved.
+  XslTransform (v2018.7.8.0)
+  Copyright &#184; 2006-2018, Microsoft Corporation, All Rights Reserved.
+  Portions Copyright &#184; 2006-2018, Eric Woodruff, All Rights Reserved.
   Applying XSL transformation &#39;C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\ProductionTransforms\MergeDuplicates.xsl&#39;.
-Projeto de compila‡&#198;o pronto &quot;C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\GenerateRefInfo.proj&quot; (destinos padr&#198;o).
-
-Compila‡&#198;o com ˆxito.
-
-Tempo Decorrido 00:00:01.47
-    Last step completed in 00:00:01,8877
+Projeto de compila‡&#198;o pronto &quot;C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\GenerateRefInfo.proj&quot; (destinos padr&#198;o).
+    Last step completed in 00:00:02,0475
 </buildStep>
 <buildStep step="TransformReflectionInfo">
 Transforming reflection output...
 [C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\MSBuild.exe - TransformManifest.proj]
-Compila‡&#198;o de 06/08/2017 14:57:05 iniciada.
-Projeto &quot;C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\TransformManifest.proj&quot; no n&#162; 1 (destinos padr&#198;o).
+Compila‡&#198;o de 16/01/2019 14:38:26 iniciada.
+Projeto &quot;C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\TransformManifest.proj&quot; no n&#162; 1 (destinos padr&#198;o).
 TransformManifest:
-  XslTransform (v2017.5.15.0)
-  Copyright &#184; 2006-2017, Microsoft Corporation, All Rights Reserved.
-  Portions Copyright &#184; 2006-2016, Eric Woodruff, All Rights Reserved.
+  XslTransform (v2018.7.8.0)
+  Copyright &#184; 2006-2018, Microsoft Corporation, All Rights Reserved.
+  Portions Copyright &#184; 2006-2018, Eric Woodruff, All Rights Reserved.
   Applying XSL transformation &#39;C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\\ProductionTransforms\ApplyVSDocModel.xsl&#39;.
   Copiando o arquivo de &quot;reflection.xml&quot; para &quot;reflection.ungrouped&quot;.
-  AddNamespaceGroups (v2017.5.15.0)
-  Copyright &#184; 2006-2017, Eric Woodruff, All Rights Reserved
-  Added 8 namespace group entries
+  AddNamespaceGroups (v2018.7.8.0)
+  Copyright &#184; 2006-2018, Eric Woodruff, All Rights Reserved
+  Added 12 namespace group entries
   Copiando o arquivo de &quot;reflection.xml&quot; para &quot;reflection.nofilenames&quot;.
-  XslTransform (v2017.5.15.0)
-  Copyright &#184; 2006-2017, Microsoft Corporation, All Rights Reserved.
-  Portions Copyright &#184; 2006-2016, Eric Woodruff, All Rights Reserved.
+  XslTransform (v2018.7.8.0)
+  Copyright &#184; 2006-2018, Microsoft Corporation, All Rights Reserved.
+  Portions Copyright &#184; 2006-2018, Eric Woodruff, All Rights Reserved.
   Applying XSL transformation &#39;C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\ProductionTransforms\AddFilenames.xsl&#39;.
-  XslTransform (v2017.5.15.0)
-  Copyright &#184; 2006-2017, Microsoft Corporation, All Rights Reserved.
-  Portions Copyright &#184; 2006-2016, Eric Woodruff, All Rights Reserved.
+  XslTransform (v2018.7.8.0)
+  Copyright &#184; 2006-2018, Microsoft Corporation, All Rights Reserved.
+  Portions Copyright &#184; 2006-2018, Eric Woodruff, All Rights Reserved.
   Applying XSL transformation &#39;C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\ProductionTransforms\ReflectionToManifest.xsl&#39;.
-Projeto de compila‡&#198;o pronto &quot;C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\TransformManifest.proj&quot; (destinos padr&#198;o).
-
-Compila‡&#198;o com ˆxito.
-
-Tempo Decorrido 00:00:03.91
-    Last step completed in 00:00:04,0395
+Projeto de compila‡&#198;o pronto &quot;C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\TransformManifest.proj&quot; (destinos padr&#198;o).
+    Last step completed in 00:00:04,6416
 </buildStep>
 <buildStep step="GenerateNamespaceSummaries">
 Generating namespace summary information...
-    Last step completed in 00:00:00,2261
+    Last step completed in 00:00:00,2064
 </buildStep>
 <buildStep step="CopyAdditionalContent">
 Copying additional content files...
 No additional content to copy
-    Last step completed in 00:00:00,0025
+    Last step completed in 00:00:00,0000
 </buildStep>
 <buildStep step="MergeTablesOfContents">
 Merging conceptual and additional tables of contents...
-    Last step completed in 00:00:00,0005
+    Last step completed in 00:00:00,0010
 </buildStep>
 <buildStep step="GenerateIntermediateTableOfContents">
 Generating intermediate table of contents file...
 [C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\MSBuild.exe - GenerateIntermediateTOC.proj]
-Compila‡&#198;o de 06/08/2017 14:57:10 iniciada.
-Projeto &quot;C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\GenerateIntermediateTOC.proj&quot; no n&#162; 1 (destinos padr&#198;o).
+Compila‡&#198;o de 16/01/2019 14:38:31 iniciada.
+Projeto &quot;C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\GenerateIntermediateTOC.proj&quot; no n&#162; 1 (destinos padr&#198;o).
 GenerateIntermediateTOC:
-  XslTransform (v2017.5.15.0)
-  Copyright &#184; 2006-2017, Microsoft Corporation, All Rights Reserved.
-  Portions Copyright &#184; 2006-2016, Eric Woodruff, All Rights Reserved.
+  XslTransform (v2018.7.8.0)
+  Copyright &#184; 2006-2018, Microsoft Corporation, All Rights Reserved.
+  Portions Copyright &#184; 2006-2018, Eric Woodruff, All Rights Reserved.
   Applying XSL transformation &#39;C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\\ProductionTransforms\CreateVSToc.xsl&#39;.
-Projeto de compila‡&#198;o pronto &quot;C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\GenerateIntermediateTOC.proj&quot; (destinos padr&#198;o).
-
-Compila‡&#198;o com ˆxito.
-
-Tempo Decorrido 00:00:00.32
+Projeto de compila‡&#198;o pronto &quot;C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\GenerateIntermediateTOC.proj&quot; (destinos padr&#198;o).
 Generating conceptual content intermediate TOC file...
-    Last step completed in 00:00:00,5239
+    Last step completed in 00:00:01,3175
 </buildStep>
 <buildStep step="CreateBuildAssemblerConfigs">
 Creating Sandcastle configuration files...
     sandcastle.config
-    Last step completed in 00:00:00,5096
+    Last step completed in 00:00:00,4358
 </buildStep>
 <buildStep step="MergeCustomConfigs">
 Merging custom build component configurations
-C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\sandcastle.config
+C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\sandcastle.config
   Updating reference topic configurations.
   No conceptual content.  Removing conceptual content components.
-    Last step completed in 00:00:00,0055
+    Last step completed in 00:00:00,0060
 </buildStep>
 <buildStep step="BuildTopics">
 Building help topics...
 [C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\MSBuild.exe - BuildTopics.proj]
-Compila‡&#198;o de 06/08/2017 14:57:11 iniciada.
-Projeto &quot;C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\BuildTopics.proj&quot; no n&#162; 1 (destinos padr&#198;o).
+Compila‡&#198;o de 16/01/2019 14:38:33 iniciada.
+Projeto &quot;C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\BuildTopics.proj&quot; no n&#162; 1 (destinos padr&#198;o).
 BuildTopics:
-  BuildAssembler (v2017.5.15.0)
-  Copyright &#184; 2006-2017, Microsoft Corporation, All Rights Reserved.
-  Portions Copyright &#184; 2006-2016, Eric Woodruff, All Rights Reserved.
+  BuildAssembler (v2018.7.8.0)
+  Copyright &#184; 2006-2018, Microsoft Corporation, All Rights Reserved.
+  Portions Copyright &#184; 2006-2018, Eric Woodruff, All Rights Reserved.
   Loading configuration...
   Processing topics...
-  Processed 755 topic(s)
+  Processed 1104 topic(s)
   CopyFromIndexComponent: &quot;reflection&quot; in-memory cache entries used: 5 of 15.
-  CopyFromIndexComponent: &quot;comments&quot; in-memory cache entries used: 4 of 30.
-  SaveComponent: Waiting for the document writer task to finish (40 Help1 API file(s) remaining)...
-Projeto de compila‡&#198;o pronto &quot;C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\BuildTopics.proj&quot; (destinos padr&#198;o).
-
-Compila‡&#198;o com ˆxito.
-
-Tempo Decorrido 00:00:15.08
-    Last step completed in 00:00:15,2372
+  CopyFromIndexComponent: &quot;comments&quot; in-memory cache entries used: 6 of 30.
+Projeto de compila‡&#198;o pronto &quot;C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\BuildTopics.proj&quot; (destinos padr&#198;o).
+    Last step completed in 00:00:24,0307
 </buildStep>
 <buildStep step="CombiningIntermediateTocFiles">
 Combining conceptual and API intermediate TOC files...
-    Last step completed in 00:00:00,0050
+    Last step completed in 00:00:00,0080
 </buildStep>
 <buildStep step="ExtractingHtmlInfo">
 Extracting HTML info for HTML Help 1 and/or website...
 [C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\MSBuild.exe - ExtractHtmlInfo.proj]
-Sandcastle Help File Builder and Tools, version 2017.5.15.0
-Copyright &#184; 2006-2017, Eric Woodruff, All Rights Reserved
+Sandcastle Help File Builder and Tools, version 2018.7.8.0
+Copyright &#184; 2006-2018, Eric Woodruff, All Rights Reserved
 E-Mail: Eric@EWoodruff.us
 
 Using LCID &#39;1033&#39;, code page &#39;65001&#39;, encoding charset &#39;UTF-8&#39;.
 
-Processing Help 1 files in C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1
-Processed 755 HTML files
+Processing Help 1 files in C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1
+Processed 1104 HTML files
 Sorting keywords and generating See Also indices
-Saving HTML Help 1 keyword index to C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\smartSpriteFX Library Technical Reference.hhk
-Saving HTML Help 1 table of contents to C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\smartSpriteFX Library Technical Reference.hhc
-    Last step completed in 00:00:01,5623
+Saving HTML Help 1 keyword index to C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\smartSpriteFX Library Technical Reference.hhk
+Saving HTML Help 1 table of contents to C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\smartSpriteFX Library Technical Reference.hhc
+    Last step completed in 00:00:01,6745
 </buildStep>
 <buildStep step="CopyStandardHelpContent">
 Copying standard help content...
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\AlertCaution.png -&gt; C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\icons\AlertCaution.png
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\AlertNote.png -&gt; C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\icons\AlertNote.png
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\AlertSecurity.png -&gt; C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\icons\AlertSecurity.png
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\CFW.gif -&gt; C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\icons\CFW.gif
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\CodeExample.png -&gt; C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\icons\CodeExample.png
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\favicon.ico -&gt; C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\icons\favicon.ico
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\privclass.gif -&gt; C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\icons\privclass.gif
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\privdelegate.gif -&gt; C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\icons\privdelegate.gif
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\privenumeration.gif -&gt; C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\icons\privenumeration.gif
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\privevent.gif -&gt; C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\icons\privevent.gif
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\privextension.gif -&gt; C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\icons\privextension.gif
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\privfield.gif -&gt; C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\icons\privfield.gif
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\privinterface.gif -&gt; C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\icons\privinterface.gif
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\privmethod.gif -&gt; C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\icons\privmethod.gif
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\privproperty.gif -&gt; C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\icons\privproperty.gif
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\privstructure.gif -&gt; C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\icons\privstructure.gif
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\protclass.gif -&gt; C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\icons\protclass.gif
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\protdelegate.gif -&gt; C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\icons\protdelegate.gif
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\protenumeration.gif -&gt; C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\icons\protenumeration.gif
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\protevent.gif -&gt; C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\icons\protevent.gif
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\protextension.gif -&gt; C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\icons\protextension.gif
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\protfield.gif -&gt; C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\icons\protfield.gif
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\protinterface.gif -&gt; C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\icons\protinterface.gif
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\protmethod.gif -&gt; C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\icons\protmethod.gif
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\protoperator.gif -&gt; C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\icons\protoperator.gif
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\protproperty.gif -&gt; C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\icons\protproperty.gif
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\protstructure.gif -&gt; C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\icons\protstructure.gif
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\pubclass.gif -&gt; C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\icons\pubclass.gif
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\pubdelegate.gif -&gt; C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\icons\pubdelegate.gif
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\pubenumeration.gif -&gt; C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\icons\pubenumeration.gif
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\pubevent.gif -&gt; C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\icons\pubevent.gif
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\pubextension.gif -&gt; C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\icons\pubextension.gif
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\pubfield.gif -&gt; C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\icons\pubfield.gif
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\pubinterface.gif -&gt; C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\icons\pubinterface.gif
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\pubmethod.gif -&gt; C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\icons\pubmethod.gif
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\puboperator.gif -&gt; C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\icons\puboperator.gif
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\pubproperty.gif -&gt; C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\icons\pubproperty.gif
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\pubstructure.gif -&gt; C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\icons\pubstructure.gif
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\SectionCollapsed.png -&gt; C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\icons\SectionCollapsed.png
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\SectionExpanded.png -&gt; C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\icons\SectionExpanded.png
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\slMobile.gif -&gt; C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\icons\slMobile.gif
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\static.gif -&gt; C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\icons\static.gif
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\xna.gif -&gt; C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\icons\xna.gif
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\scripts\branding.js -&gt; C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\scripts\branding.js
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-cs-CZ.css -&gt; C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\styles\branding-cs-CZ.css
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-de-DE.css -&gt; C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\styles\branding-de-DE.css
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-en-US.css -&gt; C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\styles\branding-en-US.css
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-es-ES.css -&gt; C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\styles\branding-es-ES.css
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-fr-FR.css -&gt; C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\styles\branding-fr-FR.css
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-Help1.css -&gt; C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\styles\branding-Help1.css
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-HelpViewer.css -&gt; C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\styles\branding-HelpViewer.css
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-it-IT.css -&gt; C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\styles\branding-it-IT.css
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-ja-JP.css -&gt; C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\styles\branding-ja-JP.css
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-ko-KR.css -&gt; C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\styles\branding-ko-KR.css
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-pl-PL.css -&gt; C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\styles\branding-pl-PL.css
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-pt-BR.css -&gt; C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\styles\branding-pt-BR.css
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-ru-RU.css -&gt; C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\styles\branding-ru-RU.css
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-tr-TR.css -&gt; C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\styles\branding-tr-TR.css
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-Website.css -&gt; C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\styles\branding-Website.css
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-zh-CN.css -&gt; C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\styles\branding-zh-CN.css
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-zh-TW.css -&gt; C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\styles\branding-zh-TW.css
-C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding.css -&gt; C:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\styles\branding.css
-    Last step completed in 00:00:00,8499
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\AlertCaution.png -&gt; C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\icons\AlertCaution.png
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\AlertNote.png -&gt; C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\icons\AlertNote.png
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\AlertSecurity.png -&gt; C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\icons\AlertSecurity.png
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\CFW.gif -&gt; C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\icons\CFW.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\CodeExample.png -&gt; C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\icons\CodeExample.png
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\favicon.ico -&gt; C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\icons\favicon.ico
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\privclass.gif -&gt; C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\icons\privclass.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\privdelegate.gif -&gt; C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\icons\privdelegate.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\privenumeration.gif -&gt; C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\icons\privenumeration.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\privevent.gif -&gt; C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\icons\privevent.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\privextension.gif -&gt; C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\icons\privextension.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\privfield.gif -&gt; C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\icons\privfield.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\privinterface.gif -&gt; C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\icons\privinterface.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\privmethod.gif -&gt; C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\icons\privmethod.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\privproperty.gif -&gt; C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\icons\privproperty.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\privstructure.gif -&gt; C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\icons\privstructure.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\protclass.gif -&gt; C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\icons\protclass.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\protdelegate.gif -&gt; C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\icons\protdelegate.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\protenumeration.gif -&gt; C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\icons\protenumeration.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\protevent.gif -&gt; C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\icons\protevent.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\protextension.gif -&gt; C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\icons\protextension.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\protfield.gif -&gt; C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\icons\protfield.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\protinterface.gif -&gt; C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\icons\protinterface.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\protmethod.gif -&gt; C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\icons\protmethod.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\protoperator.gif -&gt; C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\icons\protoperator.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\protproperty.gif -&gt; C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\icons\protproperty.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\protstructure.gif -&gt; C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\icons\protstructure.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\pubclass.gif -&gt; C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\icons\pubclass.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\pubdelegate.gif -&gt; C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\icons\pubdelegate.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\pubenumeration.gif -&gt; C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\icons\pubenumeration.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\pubevent.gif -&gt; C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\icons\pubevent.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\pubextension.gif -&gt; C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\icons\pubextension.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\pubfield.gif -&gt; C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\icons\pubfield.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\pubinterface.gif -&gt; C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\icons\pubinterface.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\pubmethod.gif -&gt; C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\icons\pubmethod.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\puboperator.gif -&gt; C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\icons\puboperator.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\pubproperty.gif -&gt; C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\icons\pubproperty.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\pubstructure.gif -&gt; C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\icons\pubstructure.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\SectionCollapsed.png -&gt; C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\icons\SectionCollapsed.png
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\SectionExpanded.png -&gt; C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\icons\SectionExpanded.png
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\slMobile.gif -&gt; C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\icons\slMobile.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\static.gif -&gt; C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\icons\static.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\icons\xna.gif -&gt; C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\icons\xna.gif
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\scripts\branding.js -&gt; C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\scripts\branding.js
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-cs-CZ.css -&gt; C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\styles\branding-cs-CZ.css
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-de-DE.css -&gt; C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\styles\branding-de-DE.css
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-en-US.css -&gt; C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\styles\branding-en-US.css
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-es-ES.css -&gt; C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\styles\branding-es-ES.css
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-fr-FR.css -&gt; C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\styles\branding-fr-FR.css
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-Help1.css -&gt; C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\styles\branding-Help1.css
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-HelpViewer.css -&gt; C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\styles\branding-HelpViewer.css
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-it-IT.css -&gt; C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\styles\branding-it-IT.css
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-ja-JP.css -&gt; C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\styles\branding-ja-JP.css
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-ko-KR.css -&gt; C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\styles\branding-ko-KR.css
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-pl-PL.css -&gt; C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\styles\branding-pl-PL.css
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-pt-BR.css -&gt; C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\styles\branding-pt-BR.css
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-ru-RU.css -&gt; C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\styles\branding-ru-RU.css
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-tr-TR.css -&gt; C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\styles\branding-tr-TR.css
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-Website.css -&gt; C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\styles\branding-Website.css
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-zh-CN.css -&gt; C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\styles\branding-zh-CN.css
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-zh-TW.css -&gt; C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\styles\branding-zh-TW.css
+C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding.css -&gt; C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\styles\branding.css
+    Last step completed in 00:00:00,5575
 </buildStep>
 <buildStep step="GenerateHelpFormatTableOfContents">
 Generating HTML Help 1 table of contents file...
@@ -264,7 +250,7 @@ Generating HTML Help 1 index file...
 </buildStep>
 <buildStep step="GenerateHelpProject">
 Generating HTML Help 1 project file...
-    Last step completed in 00:00:00,0135
+    Last step completed in 00:00:00,0120
 </buildStep>
 <buildStep step="CompilingHelpFile">
 Compiling HTML Help 1 file...
@@ -273,19 +259,19 @@ Compiling HTML Help 1 file...
   
   
   
-  Compiling c:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\smartSpriteFX Library Technical Reference.chm
+  Compiling c:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\smartSpriteFX Library Technical Reference.chm
   
   
   
   
   
-  Compile time: 0 minutes, 11 seconds
+  Compile time: 0 minutes, 14 seconds
   
-  757	Topics
+  1,106	Topics
   
-  7,832	Local links
+  11,476	Local links
   
-  26,727	Internet links
+  37,931	Internet links
   
   0	Graphics
   
@@ -293,19 +279,19 @@ Compiling HTML Help 1 file...
   
   
   
-  Created c:\Users\Marcelo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\smartSpriteFX Library Technical Reference.chm, 1,168,049 bytes
+  Created c:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\smartSpriteFX Library Technical Reference.chm, 2,042,535 bytes
   
-  Compression decreased file by 8,978,369 bytes.
+  Compression decreased file by 13,295,704 bytes.
   
-    Last step completed in 00:00:13,0815
+    Last step completed in 00:00:16,9467
 </buildStep>
 <buildStep step="CleanIntermediates">
 Removing intermediate files...
-    Last step completed in 00:00:00,2298
+    Last step completed in 00:00:00,4109
 </buildStep>
 <buildStep step="Completed">
 
-Build completed successfully at 06/08/2017 14:57:41.  Total time: 00:00:39,6855
+Build completed successfully at 16/01/2019 14:39:16.  Total time: 00:00:53,8180
 
 </buildStep>
 </shfbBuild>

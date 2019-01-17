@@ -31,4 +31,5 @@ C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSp
 C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.PictureEngine\obj\Debug\smartSpriteFX.PictureEngine.csproj.CoreCompileInputs.cache
 C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.PictureEngine\obj\Debug\smartSpriteFX.PictureEngine.dll
 C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.PictureEngine\obj\Debug\smartSpriteFX.PictureEngine.pdb
+C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.PictureEngine\bin\Debug\smartSpriteFX.PictureEngine.xml
 C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.PictureEngine\obj\Debug\smartSpriteFX.PictureEngine.csprojAssemblyReference.cache

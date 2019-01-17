@@ -17,6 +17,7 @@ using System.Threading;
 using smartSuite.smartSpriteFX.Pictures.PixelPatterns;
 using System.Drawing.Drawing2D;
 using System.Text.RegularExpressions;
+using smartSuite.smartSpriteFX.PictureEngine.Pictures.BitmapMatters;
 
 namespace smartSuite.smartSpriteFX.Pictures
 {
@@ -42,6 +43,11 @@ namespace smartSuite.smartSpriteFX.Pictures
         /// <seealso cref="LoadBuffer(Bitmap)"/>
         /// <seealso cref="LoadBuffer(string)"/>
         private IColorFilter _colorFilter;
+
+        /// <summary>
+        /// It's the algorithm buffer
+        /// </summary>
+        private ITraditionalAlgorithmBuffer _bufferAlgorithm;
 
         /// <summary>
         /// Gets the original width of picture with no filters applied
@@ -304,7 +310,7 @@ namespace smartSuite.smartSpriteFX.Pictures
         /// <summary>
         /// Gets the buffer
         /// </summary>
-        public PictureDatabase Buffer { get; private set; }
+        public IPictureDatabase Buffer { get; private set; }
 
         /// <summary>
         /// Loads the buffer of image
@@ -345,84 +351,10 @@ namespace smartSuite.smartSpriteFX.Pictures
         /// </summary>
         internal void LoadBuffer(Bitmap image)
         {
-            #region Entries validation
+            // if (this._bufferAlgorithm == null) this._bufferAlgorithm = new TraditionalAlgorithmBuffer(this.Buffer, image, this._colorFilter);
+            if (this._bufferAlgorithm == null) this._bufferAlgorithm = new LockBufferAlgorithmBuffer(this.Buffer, image, this._colorFilter);
 
-            if (image == null)
-            {
-                throw new ArgumentNullException("image");
-            }
-            if (this.Buffer != null && this.Buffer.COUNT() > 0)
-            {
-                return;
-            }
-
-            #endregion
-
-            this.Buffer = PictureDatabase.Open();
-            this.Buffer.CLEAR();
-
-            List<AutoResetEvent> semaphoreList = new List<AutoResetEvent>();
-            ThreadPool.SetMinThreads(1, 500);
-            ThreadPool.SetMaxThreads(2000, 20000);
-
-            try
-            {
-                this.Buffer.BeginTransaction();
-
-                for (int y = 0; y < image.Height; y++)
-                {
-                    for (int x = 0; x < image.Width; x++)
-                    {
-                        var color = image.GetPixel(x, y);
-
-                        #region Filtering colors
-
-                        if (!this._colorFilter.IsValid(x, y, color))
-                        {
-                            continue;
-                        }
-
-                        #endregion
-
-                        AutoResetEvent sign = new AutoResetEvent(false);
-                        semaphoreList.Add(sign);
-                        object[] stateArgs = new object[4] { x, y, color, sign };
-
-                        WaitCallback pixelProcessingDelegate = new WaitCallback(delegate (object state)
-                        {
-                            object[] args = (object[])state;
-
-                            int xx = (int)args[0];
-                            int yy = (int)args[1];
-                            Color myColor = (Color)args[2];
-                            AutoResetEvent mySign = (AutoResetEvent)args[3];
-
-                            try
-                            {
-                                this.SetPixel(xx, yy, myColor);
-                            }
-                            finally
-                            {
-                                mySign.Set();
-                            }
-                        });
-                        ThreadPool.QueueUserWorkItem(pixelProcessingDelegate, stateArgs);
-                    }
-                }
-
-                foreach (AutoResetEvent signItem in semaphoreList)
-                {
-                    signItem.WaitOne();
-                }
-
-                this.Buffer.CommitTransaction();
-            }
-            catch(Exception ex)
-            {
-                this.Buffer.RollbackTransaction();
-                throw ex;
-            }
-
+            this.Buffer = this._bufferAlgorithm.Buffer;
             this.ColorCount = this.Buffer.CountColor();
             this._height = image.Height;
             this._width = image.Width;

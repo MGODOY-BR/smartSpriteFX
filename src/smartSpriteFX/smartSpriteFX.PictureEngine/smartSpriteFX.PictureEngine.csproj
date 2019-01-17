@@ -24,6 +24,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <PlatformTarget>x64</PlatformTarget>
+    <DocumentationFile>bin\Debug\smartSpriteFX.PictureEngine.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -79,6 +80,9 @@
       <DependentUpon>ColorSupportForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Utilities\AskingForColorDelegateFactory.cs" />
+    <Compile Include="Pictures\BitmapMatters\IAlgorithmBuffer.cs" />
+    <Compile Include="Pictures\BitmapMatters\LockBufferAlgorithmBuffer.cs" />
+    <Compile Include="Pictures\BitmapMatters\TraditionalAlgorithmBuffer.cs" />
     <Compile Include="Pictures\ColorPattern\BackgroundPattern.cs" />
     <Compile Include="Pictures\ColorPattern\ColorEqualityComparer.cs" />
     <Compile Include="Pictures\ColorPattern\ColorFactor.cs" />
@@ -90,8 +94,10 @@
     <Compile Include="Pictures\ColorPattern\LookLikeColorComparer.cs" />
     <Compile Include="Pictures\ColorPattern\NoneColorFilter.cs" />
     <Compile Include="Pictures\ColorPattern\PenColorComparer.cs" />
+    <Compile Include="Pictures\Data\IPictureDatabase.cs" />
+    <Compile Include="Pictures\Data\LockBitmapPictureDatabaseAdapter.cs" />
     <Compile Include="Pictures\Data\PictureDatabase.cs" />
-    <Compile Include="Pictures\Data\PictureDatabaseIndexManager.cs" />
+    <Compile Include="Pictures\BitmapMatters\LockBitmap.cs" />
     <Compile Include="Pictures\Group.cs" />
     <Compile Include="Pictures\IFromString.cs" />
     <Compile Include="Pictures\Picture.cs" />

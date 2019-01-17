@@ -146,3 +146,4 @@ C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSp
 C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule.Test\obj\Debug\smartSpriteFX.SpriteEffectModule.Test.csproj.CopyComplete
 C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule.Test\obj\Debug\smartSpriteFX.SpriteEffectModule.Test.dll
 C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule.Test\obj\Debug\smartSpriteFX.SpriteEffectModule.Test.pdb
+C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule.Test\bin\Debug\smartSpriteFX.PictureEngine.xml

@@ -812,6 +812,121 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="T:smartSuite.smartSpriteFX.PictureEngine.Pictures.BitmapMatters.LockBufferAlgorithmBuffer">
+            <summary>
+            Represents an algorithm specified in lock bitmap for loading buffer
+            </summary>
+            <see cref="T:smartSuite.smartSpriteFX.PictureEngine.Pictures.BitmapMatters.LockBitmap"/>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.PictureEngine.Pictures.BitmapMatters.LockBufferAlgorithmBuffer.Buffer">
+            <summary>
+            It's the buffer
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.PictureEngine.Pictures.BitmapMatters.LockBufferAlgorithmBuffer.ColorCount">
+            <summary>
+            Gets the color count
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.PictureEngine.Pictures.BitmapMatters.LockBufferAlgorithmBuffer.Height">
+            <summary>
+            It's the height of image
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.PictureEngine.Pictures.BitmapMatters.LockBufferAlgorithmBuffer.Width">
+            <summary>
+            It's the width of image
+            </summary>
+        </member>
+        <member name="T:smartSuite.smartSpriteFX.PictureEngine.Pictures.BitmapMatters.TraditionalAlgorithmBuffer">
+            <summary>
+            Represents a traditional algorithm for loading buffer
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.PictureEngine.Pictures.BitmapMatters.TraditionalAlgorithmBuffer.Buffer">
+            <summary>
+            It's the buffer
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.PictureEngine.Pictures.BitmapMatters.TraditionalAlgorithmBuffer.ColorCount">
+            <summary>
+            Gets the color count
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.PictureEngine.Pictures.BitmapMatters.TraditionalAlgorithmBuffer.Height">
+            <summary>
+            It's the height of image
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.PictureEngine.Pictures.BitmapMatters.TraditionalAlgorithmBuffer.Width">
+            <summary>
+            It's the width of image
+            </summary>
+        </member>
+        <member name="T:smartSuite.smartSpriteFX.PictureEngine.Pictures.BitmapMatters.LockBitmap">
+            <summary>
+            Offers an alternative way to work with bitmaps faster
+            </summary>
+            <author>Vano Maisuradze</author>
+            <remarks>
+            This code was caught from https://www.codeproject.com/Tips/240428/Work-with-Bitmaps-Faster-in-Csharp-3
+            
+            This code is under license of CPOL - https://www.codeproject.com/info/cpol10.aspx
+            </remarks>
+            <example>
+            <code>
+            <![CDATA[Bitmap bmp = (Bitmap)Image.FromFile("d:\\source.png");
+            LockBitmap lockBitmap = new LockBitmap(bmp);
+            lockBitmap.LockBits();
+            
+            Color compareClr = Color.FromArgb(255, 255, 255, 255);
+            for (int y = 0; y < lockBitmap.Height; y++)
+            {
+                for (int x = 0; x < lockBitmap.Width; x++)
+                {
+                    if (lockBitmap.GetPixel(x, y) == compareClr)
+                    {
+                        lockBitmap.SetPixel(x, y, Color.Red);
+                    }
+                }
+            }
+            lockBitmap.UnlockBits();
+            bmp.Save("d:\\result.png");]]>
+            </code>
+            </example>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.BitmapMatters.LockBitmap.#ctor(System.Drawing.Bitmap)">
+            <summary>
+            Creates an instance of the object
+            </summary>
+            <param name="source"></param>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.BitmapMatters.LockBitmap.LockBits">
+            <summary>
+            Lock bitmap data
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.BitmapMatters.LockBitmap.UnlockBits">
+            <summary>
+            Unlock bitmap data
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.BitmapMatters.LockBitmap.GetPixel(System.Int32,System.Int32)">
+            <summary>
+            Get the color of the specified pixel
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.BitmapMatters.LockBitmap.SetPixel(System.Int32,System.Int32,System.Drawing.Color)">
+            <summary>
+            Set the color of the specified pixel
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <param name="color"></param>
+        </member>
         <member name="T:smartSuite.smartSpriteFX.PictureEngine.Pictures.ColorPattern.ColorUtil">
             <summary>
             Offers utilities to mantains colors
@@ -1106,34 +1221,6 @@
             <summary>
             Prints the transaction time
             </summary>
-        </member>
-        <member name="T:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabaseIndexManager">
-            <summary>
-            Controls the index database manager
-            </summary>
-        </member>
-        <member name="P:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabaseIndexManager.UnderlineIndex">
-            <summary>
-            It's the underline index reference
-            </summary>
-        </member>
-        <member name="P:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabaseIndexManager.UnderlineData">
-            <summary>
-            It's the under
-            </summary>
-        </member>
-        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabaseIndexManager.EnlistIndex(System.String,System.Int32)">
-            <summary>
-            Enlist an index.
-            </summary>
-            <param name="key"></param>
-            <param name="index"></param>
-        </member>
-        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabaseIndexManager.WaitForCompletion">
-            <summary>
-            Synchronizes the calling to feed of index
-            </summary>
-            <returns></returns>
         </member>
         <member name="T:smartSuite.smartSpriteFX.PictureEngine.Pictures.IFromString">
             <summary>
@@ -1665,6 +1752,11 @@
             </summary>
             <seealso cref="M:smartSuite.smartSpriteFX.Pictures.Picture.LoadBuffer(System.Drawing.Bitmap)"/>
             <seealso cref="M:smartSuite.smartSpriteFX.Pictures.Picture.LoadBuffer(System.String)"/>
+        </member>
+        <member name="F:smartSuite.smartSpriteFX.Pictures.Picture._bufferAlgorithm">
+            <summary>
+            It's the algorithm buffer
+            </summary>
         </member>
         <member name="P:smartSuite.smartSpriteFX.Pictures.Picture.OriginalWidth">
             <summary>

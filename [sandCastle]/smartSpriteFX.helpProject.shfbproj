@@ -7,7 +7,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{58633277-23ad-42e1-a98e-d1e8c712f03d}</ProjectGuid>
-    <SHFBSchemaVersion>2015.6.5.0</SHFBSchemaVersion>
+    <SHFBSchemaVersion>2017.9.26.0</SHFBSchemaVersion>
     <!-- AssemblyName, Name, and RootNamespace are not used by SHFB but Visual Studio adds them anyway -->
     <AssemblyName>Documentation</AssemblyName>
     <RootNamespace>Documentation</RootNamespace>
@@ -24,7 +24,7 @@
     <KeepLogFile>True</KeepLogFile>
     <DisableCodeBlockComponent>False</DisableCodeBlockComponent>
     <CleanIntermediates>True</CleanIntermediates>
-    <HelpFileVersion>1.0.0.0</HelpFileVersion>
+    <HelpFileVersion>2.0.0.0</HelpFileVersion>
     <MaximumGroupParts>2</MaximumGroupParts>
     <NamespaceGrouping>True</NamespaceGrouping>
     <SyntaxFilters>C#, Visual Basic, Managed C++</SyntaxFilters>
@@ -34,13 +34,13 @@
     <Preliminary>False</Preliminary>
     <NamingMethod>Guid</NamingMethod>
     <HelpTitle>smartSpriteFX Library Technical Reference</HelpTitle>
-    <CopyrightText>%28C%29 2016, 2017 - Atelier do Sofware. Programmed by MGodoy</CopyrightText>
+    <CopyrightText>%28C%29 2016, 2017, 2018 - MGodoy-BR</CopyrightText>
     <CopyrightHref>https://www.facebook.com/smartsuiteforindiegame/</CopyrightHref>
     <ContentPlacement>AboveNamespaces</ContentPlacement>
     <DocumentationSources>
-      <DocumentationSource sourceFile="..\src\smartSpriteFX\smartSpriteFX.Common.UI\smartSpriteFX.Common.UI.csproj" />
-      <DocumentationSource sourceFile="..\src\smartSpriteFX\smartSpriteFX.PictureEngine\smartSpriteFX.PictureEngine.csproj" />
-      <DocumentationSource sourceFile="..\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule\smartSpriteFX.SpriteEffectModule.csproj" />
+      <DocumentationSource sourceFile="..\src\smartSpriteFX\smartSpriteFX.Common.UI\smartSpriteFX.Common.UI.csproj" subFolders="true" />
+      <DocumentationSource sourceFile="..\src\smartSpriteFX\smartSpriteFX.PictureEngine\smartSpriteFX.PictureEngine.csproj" subFolders="true" />
+      <DocumentationSource sourceFile="..\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule\smartSpriteFX.SpriteEffectModule.csproj" subFolders="true" />
     </DocumentationSources>
     <MissingTags>AutoDocumentCtors, AutoDocumentDispose</MissingTags>
   </PropertyGroup>
