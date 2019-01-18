@@ -14,7 +14,7 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
     /// <summary>
     /// Represents an instance of PictureDatabase that is independent of intermidate cache
     /// </summary>
-    public class LockBitmapPictureDatabaseAdapter : IPictureDatabase
+    public class LockBitmapPictureDatabase : IPictureDatabase
     {
         /// <summary>
         /// It's a data source
@@ -39,7 +39,7 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
 
         public IPictureDatabase Clone()
         {
-            LockBitmapPictureDatabaseAdapter clone = new LockBitmapPictureDatabaseAdapter();
+            LockBitmapPictureDatabase clone = new LockBitmapPictureDatabase();
             clone.DataSource = this.DataSource;
             return clone;
         }
@@ -245,7 +245,7 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
         /// <returns></returns>
         internal static IPictureDatabase Open(LockBitmap dataSource)
         {
-            var resultValue = new LockBitmapPictureDatabaseAdapter();
+            var resultValue = new LockBitmapPictureDatabase();
             resultValue.DataSource = dataSource;
             return resultValue;
         }

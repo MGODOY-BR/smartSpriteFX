@@ -95,7 +95,7 @@
     <Compile Include="Pictures\ColorPattern\NoneColorFilter.cs" />
     <Compile Include="Pictures\ColorPattern\PenColorComparer.cs" />
     <Compile Include="Pictures\Data\IPictureDatabase.cs" />
-    <Compile Include="Pictures\Data\LockBitmapPictureDatabaseAdapter.cs" />
+    <Compile Include="Pictures\Data\LockBitmapPictureDatabase.cs" />
     <Compile Include="Pictures\Data\PictureDatabase.cs" />
     <Compile Include="Pictures\BitmapMatters\LockBitmap.cs" />
     <Compile Include="Pictures\Group.cs" />

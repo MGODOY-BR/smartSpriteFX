@@ -100,7 +100,7 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.BitmapMatters
                                              source.PixelFormat);
 
                 // create byte array to copy pixel values
-                int step = Depth / 8;
+                int step = this.Depth / 8;
                 Pixels = new byte[pixelCount * step];
                 Iptr = bitmapData.Scan0;
 
@@ -251,11 +251,17 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.BitmapMatters
 
             #endregion
 
-            int step = this.Depth / 8;
-            int newPixelCount = newX * newY * step;
-            var pixels = this.Pixels;
-            Array.Resize<byte>(ref pixels, newPixelCount);
-            this.Pixels = pixels;
+            LockBitmap newLockBitmap = new LockBitmap(new Bitmap(newX, newY));
+            newLockBitmap.LockBits();
+            LockBitmapEnumerator enumerator = new LockBitmapEnumerator((DepthEnum)this.Depth, this);
+            while (enumerator.MoveNext())
+            {
+                newLockBitmap.SetPixel(
+                    (int)enumerator.Current.X,
+                    (int)enumerator.Current.Y,
+                    enumerator.Current.Color);
+            }
+            this.Pixels = newLockBitmap.Pixels;
 
             this.Width = newX;
             this.Height = newY;

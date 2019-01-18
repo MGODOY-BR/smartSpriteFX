@@ -103,6 +103,7 @@ C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSp
 C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX\bin\Debug\smartSpriteFX.SpriteEffectModule.dll
 C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX\bin\Debug\smartSpriteFX.Common.UI.pdb
 C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX\bin\Debug\smartSpriteFX.PictureEngine.pdb
+C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX\bin\Debug\smartSpriteFX.PictureEngine.xml
 C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX\bin\Debug\smartSpriteFX.PictureEngine.dll.config
 C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX\bin\Debug\smartSpriteFX.SpriteEffectModule.pdb
 C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX\obj\Debug\smartSpriteFX.csprojAssemblyReference.cache
@@ -126,4 +127,3 @@ C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSp
 C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX\obj\Debug\smartSpriteFX.csproj.CopyComplete
 C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX\obj\Debug\smartSpriteFX.exe
 C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX\obj\Debug\smartSpriteFX.pdb
-C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX\bin\Debug\smartSpriteFX.PictureEngine.xml

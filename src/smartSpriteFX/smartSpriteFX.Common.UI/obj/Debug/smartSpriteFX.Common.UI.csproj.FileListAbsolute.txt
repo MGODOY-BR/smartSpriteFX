@@ -17,6 +17,7 @@ C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSp
 C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.Common.UI\bin\Debug\smartSpriteFX.Common.UI.pdb
 C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.Common.UI\bin\Debug\smartSpriteFX.PictureEngine.dll
 C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.Common.UI\bin\Debug\smartSpriteFX.PictureEngine.pdb
+C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.Common.UI\bin\Debug\smartSpriteFX.PictureEngine.xml
 C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.Common.UI\bin\Debug\smartSpriteFX.PictureEngine.dll.config
 C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.Common.UI\obj\Debug\smartSpriteFX.Common.UI.csprojAssemblyReference.cache
 C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.Common.UI\obj\Debug\smartSuite.smartSpriteFX.Forms.Controls.DraftControl.resources
@@ -28,4 +29,3 @@ C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSp
 C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.Common.UI\obj\Debug\smartSpriteFX.Common.UI.csproj.CopyComplete
 C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.Common.UI\obj\Debug\smartSpriteFX.Common.UI.dll
 C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.Common.UI\obj\Debug\smartSpriteFX.Common.UI.pdb
-C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.Common.UI\bin\Debug\smartSpriteFX.PictureEngine.xml

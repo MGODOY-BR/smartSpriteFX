@@ -73,7 +73,7 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.BitmapMatters
 
         public IPictureDatabase CreatePictureDatabase()
         {
-            return LockBitmapPictureDatabaseAdapter.Open(this._lockBitmap);
+            return LockBitmapPictureDatabase.Open(this._lockBitmap);
         }
 
         public void ReleaseBuffer()

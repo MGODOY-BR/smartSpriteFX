@@ -79,6 +79,7 @@ C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSp
 C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule\bin\Debug\smartSpriteFX.PictureEngine.dll
 C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule\bin\Debug\smartSpriteFX.Common.UI.pdb
 C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule\bin\Debug\smartSpriteFX.PictureEngine.pdb
+C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule\bin\Debug\smartSpriteFX.PictureEngine.xml
 C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule\bin\Debug\smartSpriteFX.PictureEngine.dll.config
 C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule\obj\Debug\smartSpriteFX.SpriteEffectModule.csprojAssemblyReference.cache
 C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule\obj\Debug\smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI.BorderFilterConfigurationPanelControl.resources
@@ -99,4 +100,3 @@ C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSp
 C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule\obj\Debug\smartSpriteFX.SpriteEffectModule.csproj.CopyComplete
 C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule\obj\Debug\smartSpriteFX.SpriteEffectModule.dll
 C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule\obj\Debug\smartSpriteFX.SpriteEffectModule.pdb
-C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.SpriteEffectModule\bin\Debug\smartSpriteFX.PictureEngine.xml
