@@ -132,5 +132,10 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.BitmapMatters
             resultValue.CLEAR();
             return resultValue;
         }
+
+        public void ReleaseBuffer()
+        {
+            this.Buffer.CLEAR();
+        }
     }
 }

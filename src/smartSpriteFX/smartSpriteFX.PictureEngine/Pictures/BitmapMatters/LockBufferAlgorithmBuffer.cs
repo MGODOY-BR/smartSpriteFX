@@ -75,5 +75,10 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.BitmapMatters
         {
             return LockBitmapPictureDatabaseAdapter.Open(this._lockBitmap);
         }
+
+        public void ReleaseBuffer()
+        {
+            // HACK: Do not clear the buffer!
+        }
     }
 }

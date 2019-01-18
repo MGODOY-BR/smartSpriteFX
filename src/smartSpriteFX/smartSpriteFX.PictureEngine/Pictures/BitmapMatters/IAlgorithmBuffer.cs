@@ -13,5 +13,9 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.BitmapMatters
         /// </summary>
         /// <returns></returns>
         IPictureDatabase CreatePictureDatabase();
+        /// <summary>
+        /// Releases the buffer
+        /// </summary>
+        void ReleaseBuffer();
     }
 }

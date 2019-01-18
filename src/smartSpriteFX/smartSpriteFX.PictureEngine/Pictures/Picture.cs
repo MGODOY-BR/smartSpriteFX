@@ -498,6 +498,7 @@ namespace smartSuite.smartSpriteFX.Pictures
             clone.ColorCount = this.ColorCount;
             clone._transparentColor = this._transparentColor;
             clone._fullPath = this._fullPath;
+            clone._bufferAlgorithm = this._bufferAlgorithm;
 
             clone.OriginalWidth = this.OriginalWidth;
             clone.OriginalHeight = this.OriginalHeight;
@@ -1039,9 +1040,14 @@ namespace smartSuite.smartSpriteFX.Pictures
             {
                 throw new ArgumentNullException("this.Buffer");
             }
+            if (this._bufferAlgorithm == null)
+            {
+                throw new ArgumentNullException("this._bufferAlgorithm");
+            }
 
             #endregion
-            this.Buffer.CLEAR();
+
+            this._bufferAlgorithm.ReleaseBuffer();
         }
 
         /// <summary>

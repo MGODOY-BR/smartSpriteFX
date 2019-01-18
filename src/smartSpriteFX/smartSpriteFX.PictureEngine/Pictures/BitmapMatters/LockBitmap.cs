@@ -22,7 +22,8 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.BitmapMatters
     /// Revisions
     /// <note type="note">
     /// 2019-10-16 -> [mgodoy-br] It was included ColorComponentEnum, DepthEnum and LockBitmapEnumerator
-    /// 2019-10-17 -> [mgodoy-br] It was included Resize method
+    /// 2019-10-17 -> [mgodoy-br] It was included Resize method and BitComposeInfo class
+    /// 2019-10-17 -> [mgodoy-br] GetPixels has been refactored to allow be used with other arrays than Pixels
     /// </note>
     /// </para>
     /// </remarks>
@@ -137,10 +138,13 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.BitmapMatters
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <returns></returns>
+        /// <remarks>
+        /// <note type="note">
+        /// 2019-10-17 -> [mgodoy-br] GetPixels has been refactored to allow be used with other arrays than Pixels
+        /// </note>
+        /// </remarks>
         public Color GetPixel(int x, int y)
         {
-            Color clr = Color.Empty;
-
             // Get color components count
             int cCount = Depth / 8;
 
@@ -150,27 +154,54 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.BitmapMatters
             if (i > Pixels.Length - cCount)
                 throw new IndexOutOfRangeException();
 
-            if (Depth == 32) // For 32 bpp get Red, Green, Blue and Alpha
+            return GetPixel(this.Pixels, i, (DepthEnum)this.Depth);
+        }
+
+        /// <summary>
+        /// Gets the color of pixel
+        /// </summary>
+        /// <param name="dataSource"></param>
+        /// <param name="cursor"></param>
+        /// <param name="depthEnum"></param>
+        /// <returns></returns>
+        public static Color GetPixel(byte[] dataSource, int cursor, DepthEnum depthEnum)
+        {
+            Color clr = Color.Empty;
+            switch (depthEnum)
             {
-                byte b = Pixels[i];
-                byte g = Pixels[i + 1];
-                byte r = Pixels[i + 2];
-                byte a = Pixels[i + 3]; // a
-                clr = Color.FromArgb(a, r, g, b);
+                case DepthEnum._8:
+                    {
+                        // For 8 bpp get color value (Red, Green and Blue values are the same)
+                        byte c = dataSource[cursor];
+                        clr = Color.FromArgb(c, c, c);
+                    }
+                    break;
+
+                case DepthEnum._24:
+                    {
+                        // For 24 bpp get Red, Green and Blue
+                        byte b = dataSource[cursor];
+                        byte g = dataSource[cursor + 1];
+                        byte r = dataSource[cursor + 2];
+                        clr = Color.FromArgb(r, g, b);
+                    }
+                    break;
+
+                case DepthEnum._32:
+                    {
+                        // For 32 bpp get Red, Green, Blue and Alpha
+                        byte b = dataSource[cursor];
+                        byte g = dataSource[cursor + 1];
+                        byte r = dataSource[cursor + 2];
+                        byte a = dataSource[cursor + 3];
+                        clr = Color.FromArgb(a, r, g, b);
+                    }
+                    break;
+
+                default:
+                    break;
             }
-            if (Depth == 24) // For 24 bpp get Red, Green and Blue
-            {
-                byte b = Pixels[i];
-                byte g = Pixels[i + 1];
-                byte r = Pixels[i + 2];
-                clr = Color.FromArgb(r, g, b);
-            }
-            if (Depth == 8)
-            // For 8 bpp get color value (Red, Green and Blue values are the same)
-            {
-                byte c = Pixels[i];
-                clr = Color.FromArgb(c, c, c);
-            }
+
             return clr;
         }
 
@@ -221,12 +252,10 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.BitmapMatters
             #endregion
 
             int step = this.Depth / 8;
-
-            int newPixelCount = newX * newY;
-            byte[] newPixelList = new byte[newPixelCount * step];
-
-            this.Pixels.CopyTo(newPixelList, 0);
-            this.Pixels = newPixelList;
+            int newPixelCount = newX * newY * step;
+            var pixels = this.Pixels;
+            Array.Resize<byte>(ref pixels, newPixelCount);
+            this.Pixels = pixels;
 
             this.Width = newX;
             this.Height = newY;
@@ -257,6 +286,61 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.BitmapMatters
             _8 = 8,
             _24 = 24,
             _32 = 32,
+        }
+
+        /// <summary>
+        /// Represents a information about the bit composing
+        /// </summary>
+        public class BitComposeInfo
+        {
+            /// <summary>
+            /// It's the cCount of the steps
+            /// </summary>
+            public int c { get; set; }
+            /// <summary>
+            /// It's the cursor in the list
+            /// </summary>
+            public int i { get; set; }
+            /// <summary>
+            /// It's the total width of image or area
+            /// </summary>
+            public int w { get; set; }
+            /// <summary>
+            /// It's the Y coordinate
+            /// </summary>
+            public int y { get; set; }
+            /// <summary>
+            /// It's the X coordinate
+            /// </summary>
+            public int x { get; set; }
+
+            private BitComposeInfo()
+            {
+
+            }
+
+            public static BitComposeInfo GetInstance(LockBitmap dataSource, int cursor)
+            {
+                int depth = dataSource.Depth;
+                int width = dataSource.Width;
+
+                return GetInstance(cursor, depth, width);
+            }
+
+            public static BitComposeInfo GetInstance(int cursor, int depth, int width)
+            {
+                BitComposeInfo bitComposeInfo = new BitComposeInfo
+                {
+                    c = depth / 8,
+                    i = cursor,
+                    w = width,
+                };
+
+                bitComposeInfo.y = (bitComposeInfo.i / bitComposeInfo.c) / bitComposeInfo.w;
+                bitComposeInfo.x = (bitComposeInfo.i / bitComposeInfo.c) - (bitComposeInfo.y * bitComposeInfo.w);
+
+                return bitComposeInfo;
+            }
         }
 
         /// <summary>
@@ -328,15 +412,12 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.BitmapMatters
                 }
                 else
                 {
-                    int c = this.DataSource.Depth / 8;
-                    int i = this._cursor;
-                    int w = this.DataSource.Width;
-                    int y = (i / c) / w;
-                    int x = (i / c) - (y * w);
+                    var bitComposeInfo =
+                        BitComposeInfo.GetInstance(this.DataSource, this._cursor);
 
                     try
                     {
-                        this.Current = new PointInfo(x, y, this.DataSource.GetPixel(x, y));
+                        this.Current = new PointInfo(bitComposeInfo.x, bitComposeInfo.y, this.DataSource.GetPixel(bitComposeInfo.x, bitComposeInfo.y));
                     }
                     catch(IndexOutOfRangeException)
                     {
