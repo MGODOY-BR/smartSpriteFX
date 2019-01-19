@@ -55,10 +55,10 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.BitmapMatters
             {
                 throw new ArgumentNullException("image");
             }
-            if (this.Buffer != null)
-            {
-                return;
-            }
+            //if (this.Buffer != null)
+            //{
+            //    return;
+            //}
 
             #endregion
 

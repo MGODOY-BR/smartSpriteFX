@@ -352,7 +352,8 @@ namespace smartSuite.smartSpriteFX.Pictures
         internal void LoadBuffer(Bitmap image)
         {
             // if (this._bufferAlgorithm == null) this._bufferAlgorithm = new TraditionalAlgorithmBuffer(this.Buffer, image, this._colorFilter);
-            if (this._bufferAlgorithm == null) this._bufferAlgorithm = new LockBufferAlgorithmBuffer(this.Buffer, image, this._colorFilter);
+            // if (this._bufferAlgorithm == null) this._bufferAlgorithm = new LockBufferAlgorithmBuffer(this.Buffer, image, this._colorFilter);
+            this._bufferAlgorithm = new LockBufferAlgorithmBuffer(this.Buffer, image, this._colorFilter);
 
             this.Buffer = this._bufferAlgorithm.Buffer;
             this.ColorCount = this.Buffer.CountColor();
