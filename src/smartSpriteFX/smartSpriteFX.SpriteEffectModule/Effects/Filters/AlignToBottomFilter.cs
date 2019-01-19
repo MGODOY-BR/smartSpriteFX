@@ -9,6 +9,8 @@ using smartSuite.smartSpriteFX.Pictures;
 using smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI;
 using smartSuite.smartSpriteFX.Effects.Facade;
 using smartSuite.smartSpriteFX.Effects.Infra;
+using System.Drawing;
+using smartSuite.smartSpriteFX.PictureEngine.Pictures;
 
 namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
 {
@@ -24,13 +26,20 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
 
         public override bool ApplyFilter(Picture frame, int index)
         {
+            #region Entries validation
+
+            if(this.BottomMargin == 0)
+            {
+                return false;
+            }
+
+            #endregion
+
             CropFilter cropFilter = 
                 cropFilter = new CropFilter();
 
             int previousHeight = frame.Height;
-            #region Fragment of instable code
-            // var originalFrame = frame.Clone(Picture.CloneMode.Full);
-            #endregion
+
             if (!cropFilter.ApplyFilter(frame, index))
             {
                 return false;
@@ -38,47 +47,35 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
             else
             {
                 var marginBottom = this.BottomMargin;
-                var pixelList = frame.GetAllPixels();
-                var maxY = pixelList.Max(p => p.Y);
+                var maxY =
+                    frame.GetAllPixels()
+                        .Where(
+                            p => p.Color != Color.Empty && 
+                            p.Color != Color.Transparent &&
+                            (frame.TransparentColor.HasValue && p.Color.ToArgb() != frame.TransparentColor.Value.ToArgb()))
+                        .Max(p => p.Y);
                 var maxYCut = maxY;
                 var offSet = Math.Abs(previousHeight - maxY);
 
-                // frame.Height = frame.OriginalHeight; // <-- This can't be done because it invalidates the scale filter
                 frame.Height = previousHeight;
 
-                pixelList.ForEach(p => p.Y = (offSet + p.Y) - marginBottom);
+                // pixelList.ForEach(p => p.Y = (offSet + p.Y) - marginBottom);
+                // frame.Buffer.CLEAR();
+                // frame.SetPixel(pixelList);
 
-                // Getting the lowest Y after the update
-                var minY = pixelList.Min(p => p.Y);
+                int sourceY = (int)offSet - marginBottom;
 
-                // Recalculating the heigh to warranty the whole picture in frame
-                if (minY < 0)
+                for (int x = 0; x < frame.Width; x++)
                 {
-                    int increment = (int)Math.Abs(minY);
-                    frame.Height +=
-                        // increment + (int)marginBottom;
-                        (int)marginBottom;
+                    for (int y = 0; y < frame.Height; y++)
+                    {
+                        var pixel = frame.GetPixel(x, sourceY);
 
-                    pixelList.ForEach(p => p.Y += increment);
+                        if (pixel == null || pixel == frame.TransparentColor) pixel = Color.Empty;
+                        frame.SetPixel(x, y, pixel.Value);
 
-                    maxY = pixelList.Max(p => p.Y);
-                    #region Instable code
-
-                    //// Filling the lack of pixel
-                    //if (maxY < frame.Height)
-                    //{
-                    //    // Getting the includ list
-                    //    var includeList =
-                    //        originalFrame.GetAllPixels().FindAll(p => p.Y > maxYCut);
-                        
-                    //    // Updatting the included list
-                    //    includeList.ForEach(p => p.Y += increment);
-
-                    //    // Adding the include
-                    //    frame.SetPixel(includeList);
-                    //}
-
-                    #endregion
+                        sourceY = ((int)offSet + y) - marginBottom;
+                    }
                 }
             }
 

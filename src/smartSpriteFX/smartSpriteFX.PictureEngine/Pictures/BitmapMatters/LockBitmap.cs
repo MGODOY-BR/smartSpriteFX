@@ -151,8 +151,8 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.BitmapMatters
             // Get start index of the specified pixel
             int i = ((y * Width) + x) * cCount;
 
-            if (i > Pixels.Length - cCount)
-                throw new IndexOutOfRangeException();
+            if (i > Pixels.Length - cCount) return Color.Empty;
+                // throw new IndexOutOfRangeException();
 
             return GetPixel(this.Pixels, i, (DepthEnum)this.Depth);
         }
@@ -213,6 +213,13 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.BitmapMatters
         /// <param name="color"></param>
         public void SetPixel(int x, int y, Color color)
         {
+            #region Entries validation
+
+            if (x < 0 || y < 0) return;
+            if (x > this.Width || y > this.Height) return;
+
+            #endregion
+
             // Get color components count
             int cCount = Depth / 8;
 
@@ -423,7 +430,9 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.BitmapMatters
 
                     try
                     {
-                        this.Current = new PointInfo(bitComposeInfo.x, bitComposeInfo.y, this.DataSource.GetPixel(bitComposeInfo.x, bitComposeInfo.y));
+                        Color color = this.DataSource.GetPixel(bitComposeInfo.x, bitComposeInfo.y);
+                        this.Current = new PointInfo(bitComposeInfo.x, bitComposeInfo.y, color);
+                        if (color == Color.Empty) return false;
                     }
                     catch(IndexOutOfRangeException)
                     {

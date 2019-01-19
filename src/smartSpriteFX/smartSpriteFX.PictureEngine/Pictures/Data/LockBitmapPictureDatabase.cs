@@ -102,6 +102,7 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
         public bool EXISTS(smartSpriteFX.Pictures.Point point, Color color)
         {
             var pixel = this.DataSource.GetPixel((int)point.X, (int)point.Y);
+            if (pixel == Color.Empty) return false;
 
             return pixel.ToArgb() != color.ToArgb();
         }
@@ -189,15 +190,27 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
 
         public ColorInfo SELECT(int x, int y)
         {
-            var pixel = this.DataSource.GetPixel(x, y);
-            return new ColorInfo(pixel);
+            try
+            {
+                var pixel = this.DataSource.GetPixel(x, y);
+                if (pixel == Color.Empty) return null;
+                return new ColorInfo(pixel);
+            }
+            catch(IndexOutOfRangeException)
+            {
+                return null;
+            }
         }
 
         public PointInfo SELECT(smartSpriteFX.Pictures.Point point)
         {
+            Color newColor = this.DataSource.GetPixel((int)point.X, (int)point.Y);
+
+            if (newColor == null) return null;
+
             return new PointInfo(
                 point,
-                this.DataSource.GetPixel((int)point.X, (int)point.Y));
+                newColor);
         }
 
         public List<PointInfo> SELECTALL()
