@@ -12,6 +12,7 @@ using smartSuite.smartSpriteFX.Effects.Facade;
 using smartSuite.smartSpriteFX.Pictures.PixelPatterns;
 using smartSuite.smartSpriteFX.Effects.Core;
 using System.Drawing;
+using smartSuite.smartSpriteFX.PictureEngine.Pictures;
 
 namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
 {
@@ -104,6 +105,8 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
 
             #endregion
 
+            var cloneFrame = frame.Clone();
+
             #region Preparation
 
             var shadowPixelGroup = from pixel in shadowPixelList
@@ -118,15 +121,26 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
 
             var middleShadow = groupList.Count / 2;
 
-            int oldHeight = frame.Height;
-            frame.Height += percentageHeight + middleShadow;
+            int oldHeight = cloneFrame.Height;
+            cloneFrame.Height += percentageHeight + middleShadow;
+
+            // Clearing the added part:
+            for (int y = oldHeight; y < cloneFrame.Height; y++)
+            {
+                for (int x = 0; x < cloneFrame.Width; x++)
+                {
+                    cloneFrame.RemovePixel(x, y);
+                }
+            }
 
             #endregion
 
             #region Printing
 
+            List<PointInfo> pointInfoList = new List<PointInfo>();
+
             var groupEnumerator = groupList.GetEnumerator();
-            for (int y = oldHeight - middleShadow; y < frame.Height; y++)
+            for (int y = oldHeight - middleShadow; y < cloneFrame.Height; y++)
             {
                 if (!groupEnumerator.MoveNext())
                 {
@@ -142,23 +156,27 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
                 {
                     #region Entries validation
 
-                    var existentPixel = frame.GetPixel(item.X, y);
+                    var existentPixel = cloneFrame.GetPixel(item.X, y);
                     if (existentPixel != null && existentPixel != transparentColor.Value)
                     {
                         continue;
                     }
                     if (existentPixel == transparentColor.Value)
                     {
-                        frame.RemovePixel(item.X, y);
+                        cloneFrame.RemovePixel(item.X, y);
                     }
 
                     #endregion
 
-                    frame.SetPixel(item.X, y, System.Drawing.Color.Black);
+                    cloneFrame.SetPixel(item.X, y, System.Drawing.Color.Black);
                 }
             }
 
             #endregion
+
+            frame.Height = cloneFrame.Height;
+            frame.Buffer.CLEAR();
+            frame.SetPixel(cloneFrame.GetAllPixels());
 
             return true;
         }

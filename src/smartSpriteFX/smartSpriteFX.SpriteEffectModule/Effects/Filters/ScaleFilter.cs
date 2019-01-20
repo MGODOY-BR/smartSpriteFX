@@ -100,8 +100,13 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
                     //    continue;
                     //}
 
-                    Color color = // cacheList[key].Color;
-                        frame.Buffer.SELECT((int)x, (int)y).GetInnerColor();
+                    var pointInfo = frame.Buffer.SELECT((int)x, (int)y);
+
+                    Color color = Color.Empty;
+                    if (pointInfo != null)
+                    {
+                        color = frame.Buffer.SELECT((int)x, (int)y).GetInnerColor();
+                    }
 
                     if (xx < bitmap.Width && yy < bitmap.Height)
                     {
