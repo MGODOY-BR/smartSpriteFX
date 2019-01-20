@@ -20,6 +20,7 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
     /// <summary>
     /// Represents a manager for databases
     /// </summary>
+    [Obsolete("This class is considered deprecated. Please use LockBitmapPictureDatabase set.")]
     public class PictureDatabase : IPictureDatabase
     {
         /// <summary>

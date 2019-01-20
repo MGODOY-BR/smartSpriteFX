@@ -13,6 +13,7 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.BitmapMatters
     /// <summary>
     /// Represents a traditional algorithm for loading buffer
     /// </summary>
+    [Obsolete("This class is considered deprecated. Please use LockBufferAlgorithmBuffer set.")]
     public class TraditionalAlgorithmBuffer : ITraditionalAlgorithmBuffer
     {
         /// <summary>
