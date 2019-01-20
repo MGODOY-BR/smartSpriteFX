@@ -27,13 +27,20 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
 
         public void CLEAR()
         {
-            LockBitmap.LockBitmapEnumerator enumerator = new LockBitmap.LockBitmapEnumerator((DepthEnum)this.DataSource.Depth, this.DataSource);
-            while (enumerator.MoveNext())
+            //LockBitmap.LockBitmapEnumerator enumerator = new LockBitmap.LockBitmapEnumerator((DepthEnum)this.DataSource.Depth, this.DataSource);
+            //while (enumerator.MoveNext())
+            //{
+            //    this.DataSource.SetPixel(
+            //        (int)enumerator.Current.X,
+            //        (int)enumerator.Current.Y,
+            //        Color.Empty);
+            //}
+            for (int x = 0; x < this.DataSource.Width; x++)
             {
-                this.DataSource.SetPixel(
-                    (int)enumerator.Current.X,
-                    (int)enumerator.Current.Y,
-                    Color.Empty);
+                for (int y = 0; y < this.DataSource.Height; y++)
+                {
+                    this.DataSource.SetPixel(x, y, Color.White);
+                }
             }
         }
 

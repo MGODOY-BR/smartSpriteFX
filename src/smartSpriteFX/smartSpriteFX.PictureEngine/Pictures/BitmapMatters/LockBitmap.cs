@@ -142,10 +142,17 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.BitmapMatters
         /// <remarks>
         /// <note type="note">
         /// 2019-10-17 -> [mgodoy-br] GetPixels has been refactored to allow be used with other arrays than Pixels
+        /// 2019-10-20 -> [mgodoy-br] Including entry validation
         /// </note>
         /// </remarks>
         public Color GetPixel(int x, int y)
         {
+            #region Entries validation
+
+            if (x > this.Width || x < 0 || y > this.Height || y < 0) return Color.Empty;
+
+            #endregion
+
             // Get color components count
             int cCount = Depth / 8;
 

@@ -38,36 +38,35 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
             CropFilter cropFilter = 
                 cropFilter = new CropFilter();
 
-            var cloneFrame = frame.Clone();
-            int previousHeight = cloneFrame.Height;
-            int previousWidth = cloneFrame.Width;
+            var cropFrame = frame.Clone();
+            int previousHeight = cropFrame.Height;
+            int previousWidth = cropFrame.Width;
 
-            if (!cropFilter.ApplyFilter(cloneFrame, index))
+            if (!cropFilter.ApplyFilter(cropFrame, index))
             {
                 return false;
             }
             else
             {
                 var marginBottom = this.BottomMargin;
-                var maxY = cloneFrame.Height;
-
-                cloneFrame.Height = previousHeight;
-                cloneFrame.Width = previousWidth;
+                var maxY = cropFrame.Height;
 
                 List<PointInfo> pointInfoList = new List<PointInfo>();
                 int startY = previousHeight - marginBottom;
-                int sourceY = maxY;
-                for (int y = cloneFrame.Height - 1; y > 0; y--)
+                // int endX = cropFrame.Width;
+                int sourceY = maxY - 1;
+                for (int y = frame.Height - 1; y >= 0; y--)
                 {
-                    for (int x = 0; x < cloneFrame.Width; x++)
+                    for (int x = 0; x < frame.Width; x++)
                     {
                         Color? pixel = null;
+                        // if (y <= startY && x < endX)
                         if (y <= startY)
                         {
-                            pixel = cloneFrame.GetPixel(x, sourceY);
+                            pixel = cropFrame.GetPixel(x, sourceY);
                         }
 
-                        if (pixel == null || pixel == cloneFrame.TransparentColor) pixel = Color.Transparent;
+                        if (pixel == null || pixel == cropFrame.TransparentColor) pixel = Color.Transparent;
 
                         pointInfoList.Add(
                             new PointInfo(x, y, pixel.Value));
@@ -75,7 +74,9 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
                     if (y <= startY) sourceY--;
                 }
 
+                frame.Buffer.CLEAR();
                 frame.SetPixel(pointInfoList);
+                frame.Width = cropFrame.Width;
             }
 
             return true;
