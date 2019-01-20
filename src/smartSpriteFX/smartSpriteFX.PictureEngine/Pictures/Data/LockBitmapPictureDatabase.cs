@@ -147,6 +147,12 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
 
         public void INSERT(List<PointInfo> pointInfoList)
         {
+            #region Entries validation
+
+            if (pointInfoList.Count == 0) return;
+
+            #endregion
+
             //int maxX = (int)pointInfoList.Max(p => p.X) + 1;
             //int maxY = (int)pointInfoList.Max(p => p.Y) + 1;
             int maxX = (int)pointInfoList.Max(p => p.X);

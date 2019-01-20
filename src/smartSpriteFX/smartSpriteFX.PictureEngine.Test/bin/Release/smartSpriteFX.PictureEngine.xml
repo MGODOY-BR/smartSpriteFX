@@ -812,6 +812,17 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.BitmapMatters.ITraditionalAlgorithmBuffer.CreatePictureDatabase">
+            <summary>
+            Creates a picture database
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.BitmapMatters.ITraditionalAlgorithmBuffer.ReleaseBuffer">
+            <summary>
+            Releases the buffer
+            </summary>
+        </member>
         <member name="T:smartSuite.smartSpriteFX.PictureEngine.Pictures.BitmapMatters.LockBufferAlgorithmBuffer">
             <summary>
             Represents an algorithm specified in lock bitmap for loading buffer
@@ -836,6 +847,11 @@
         <member name="P:smartSuite.smartSpriteFX.PictureEngine.Pictures.BitmapMatters.LockBufferAlgorithmBuffer.Width">
             <summary>
             It's the width of image
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSpriteFX.PictureEngine.Pictures.BitmapMatters.LockBufferAlgorithmBuffer._lockBitmap">
+            <summary>
+            It's the underlying lock bitmap
             </summary>
         </member>
         <member name="T:smartSuite.smartSpriteFX.PictureEngine.Pictures.BitmapMatters.TraditionalAlgorithmBuffer">
@@ -872,6 +888,15 @@
             This code was caught from https://www.codeproject.com/Tips/240428/Work-with-Bitmaps-Faster-in-Csharp-3
             
             This code is under license of CPOL - https://www.codeproject.com/info/cpol10.aspx
+            <para>
+            Revisions
+            <note type="note">
+            2019-10-16 -> [mgodoy-br] It was included ColorComponentEnum, DepthEnum and LockBitmapEnumerator
+            2019-10-17 -> [mgodoy-br] It was included Resize method and BitComposeInfo class
+            2019-10-17 -> [mgodoy-br] GetPixels has been refactored to allow be used with other arrays than Pixels
+            2019-10-19 -> [mgodoy-br] Clone method has been created
+            </note>
+            </para>
             </remarks>
             <example>
             <code>
@@ -918,6 +943,21 @@
             <param name="x"></param>
             <param name="y"></param>
             <returns></returns>
+            <remarks>
+            <note type="note">
+            2019-10-17 -> [mgodoy-br] GetPixels has been refactored to allow be used with other arrays than Pixels
+            2019-10-20 -> [mgodoy-br] Including entry validation
+            </note>
+            </remarks>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.BitmapMatters.LockBitmap.GetPixel(System.Byte[],System.Int32,smartSuite.smartSpriteFX.PictureEngine.Pictures.BitmapMatters.LockBitmap.DepthEnum)">
+            <summary>
+            Gets the color of pixel
+            </summary>
+            <param name="dataSource"></param>
+            <param name="cursor"></param>
+            <param name="depthEnum"></param>
+            <returns></returns>
         </member>
         <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.BitmapMatters.LockBitmap.SetPixel(System.Int32,System.Int32,System.Drawing.Color)">
             <summary>
@@ -926,6 +966,100 @@
             <param name="x"></param>
             <param name="y"></param>
             <param name="color"></param>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.BitmapMatters.LockBitmap.ReSize(System.Int32,System.Int32)">
+            <summary>
+            Resizes the size of bitmap
+            </summary>
+            <author>mgodoy-br</author>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.BitmapMatters.LockBitmap.Clone">
+            <summary>
+            Gets a copy of this object
+            </summary>
+            <author>mgodoy-br</author>
+            <returns></returns>
+        </member>
+        <member name="T:smartSuite.smartSpriteFX.PictureEngine.Pictures.BitmapMatters.LockBitmap.ColorComponentEnum">
+            <summary>
+            Relates the color component, according the Pixels array
+            </summary>
+            <author>mgodoy-br</author>
+            <remarks>
+            </remarks>
+        </member>
+        <member name="T:smartSuite.smartSpriteFX.PictureEngine.Pictures.BitmapMatters.LockBitmap.DepthEnum">
+            <summary>
+            Relates the depth options, according to file
+            </summary>
+            <author>mgodoy-br</author>
+            <remarks>
+            </remarks>
+        </member>
+        <member name="T:smartSuite.smartSpriteFX.PictureEngine.Pictures.BitmapMatters.LockBitmap.BitComposeInfo">
+            <summary>
+            Represents a information about the bit composing
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.PictureEngine.Pictures.BitmapMatters.LockBitmap.BitComposeInfo.c">
+            <summary>
+            It's the cCount of the steps
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.PictureEngine.Pictures.BitmapMatters.LockBitmap.BitComposeInfo.i">
+            <summary>
+            It's the cursor in the list
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.PictureEngine.Pictures.BitmapMatters.LockBitmap.BitComposeInfo.w">
+            <summary>
+            It's the total width of image or area
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.PictureEngine.Pictures.BitmapMatters.LockBitmap.BitComposeInfo.y">
+            <summary>
+            It's the Y coordinate
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.PictureEngine.Pictures.BitmapMatters.LockBitmap.BitComposeInfo.x">
+            <summary>
+            It's the X coordinate
+            </summary>
+        </member>
+        <member name="T:smartSuite.smartSpriteFX.PictureEngine.Pictures.BitmapMatters.LockBitmap.LockBitmapEnumerator">
+            <summary>
+            Offers an enumerator to interpretate the Pixels array
+            </summary>
+            <author>mgodoy-br</author>
+            <remarks>
+            </remarks>
+        </member>
+        <member name="F:smartSuite.smartSpriteFX.PictureEngine.Pictures.BitmapMatters.LockBitmap.LockBitmapEnumerator._cursor">
+            <summary>
+            It's the current cursor
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.PictureEngine.Pictures.BitmapMatters.LockBitmap.LockBitmapEnumerator.DataSource">
+            <summary>
+            It's the original data source
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.PictureEngine.Pictures.BitmapMatters.LockBitmap.LockBitmapEnumerator.DepthEnum">
+            <summary>
+            It's the depth of bitmap
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.PictureEngine.Pictures.BitmapMatters.LockBitmap.LockBitmapEnumerator.Current">
+            <summary>
+            Gets the current item
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.BitmapMatters.LockBitmap.LockBitmapEnumerator.#ctor(smartSuite.smartSpriteFX.PictureEngine.Pictures.BitmapMatters.LockBitmap.DepthEnum,smartSuite.smartSpriteFX.PictureEngine.Pictures.BitmapMatters.LockBitmap)">
+            <summary>
+            Creates an instance of object
+            </summary>
+            <param name="depthEnum"></param>
+            <param name="dataSource"></param>
         </member>
         <member name="T:smartSuite.smartSpriteFX.PictureEngine.Pictures.ColorPattern.ColorUtil">
             <summary>
@@ -1016,6 +1150,157 @@
         <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.ColorPattern.PenColorComparer.CalculatePointRadio">
             <summary>
             Calculate the point radio
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.IPictureDatabase">
+            <summary>
+            Defines how a picture data base must be
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.IPictureDatabase.BeginTransaction">
+            <summary>
+            Begins the transaction
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.IPictureDatabase.CLEAR">
+            <summary>
+            Deletes all the content of table
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.IPictureDatabase.Clone">
+            <summary>
+            Clones the database
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.IPictureDatabase.Close">
+            <summary>
+            Closes the database
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.IPictureDatabase.CommitTransaction">
+            <summary>
+            Commits the transaction
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.IPictureDatabase.COUNT">
+            <summary>
+            Counts the amount of pixels
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.IPictureDatabase.COUNT(System.Drawing.Color)">
+            <summary>
+            Counts the amount of colors for the critera
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.IPictureDatabase.CountColor">
+            <summary>
+            Gets the amount of colors of database
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.IPictureDatabase.DELETE(System.Int32,System.Int32)">
+            <summary>
+            Removes the pixel
+            </summary>
+            <returns>An indicator informing that the pixel has been excluded.</returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.IPictureDatabase.EXISTS(smartSuite.smartSpriteFX.Pictures.Point)">
+            <summary>
+            Checks if exists the color for the coordinates
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.IPictureDatabase.EXISTS(smartSuite.smartSpriteFX.Pictures.Point,System.Drawing.Color)">
+            <summary>
+            Checks if exists the color for the coordinates
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.IPictureDatabase.GetAllColors">
+            <summary>
+            Gets all the colors of database
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.IPictureDatabase.INSERT(System.Int32,System.Int32,System.Drawing.Color)">
+            <summary>
+            Inserts a record
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <param name="color"></param>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.IPictureDatabase.INSERT(System.Collections.Generic.List{smartSuite.smartSpriteFX.PictureEngine.Pictures.PointInfo})">
+            <summary>
+            Inserts a bunch of points
+            </summary>
+            <param name="pointInfoList"></param>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.IPictureDatabase.Merge(smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.IPictureDatabase)">
+            <summary>
+            Merge other dataBase in the current dataBase
+            </summary>
+            <param name="other"></param>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.IPictureDatabase.RollbackTransaction">
+            <summary>
+            Rolls back the transaction
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.IPictureDatabase.SELECT(System.Drawing.Color)">
+            <summary>
+            Gets the points for the color
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.IPictureDatabase.SELECT(System.Int32,System.Int32)">
+            <summary>
+            Gets the color information of coordination
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.IPictureDatabase.SELECT(smartSuite.smartSpriteFX.Pictures.Point)">
+            <summary>
+            Gets the pointInfo of the point
+            </summary>
+            <param name="point"></param>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.IPictureDatabase.SELECTALL">
+            <summary>
+            Gets all the points
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.IPictureDatabase.UPDATE(System.Drawing.Color,System.Drawing.Color)">
+            <summary>
+            Updates colors in all records
+            </summary>
+            <returns>Gets the amount of records updated</returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.IPictureDatabase.UPDATE(System.Int32,System.Int32,System.Drawing.Color)">
+            <summary>
+            Updates colors in all records
+            </summary>
+            <returns>Gets the amount of records updated</returns>
+        </member>
+        <member name="T:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.LockBitmapPictureDatabase">
+            <summary>
+            Represents an instance of PictureDatabase that is independent of intermidate cache
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.LockBitmapPictureDatabase.DataSource">
+            <summary>
+            It's a data source
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.LockBitmapPictureDatabase.Open(smartSuite.smartSpriteFX.PictureEngine.Pictures.BitmapMatters.LockBitmap)">
+            <summary>
+            Creates and returns an instance of picture data base based on lock bitmap
             </summary>
             <returns></returns>
         </member>
@@ -1184,7 +1469,7 @@
             <param name="data"></param>
             <returns></returns>
         </member>
-        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase.Merge(smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase)">
+        <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.PictureDatabase.Merge(smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.IPictureDatabase)">
             <summary>
             Merge other dataBase in the current dataBase
             </summary>

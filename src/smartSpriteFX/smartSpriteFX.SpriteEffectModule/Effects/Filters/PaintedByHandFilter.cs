@@ -38,6 +38,8 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
             List<PointInfo>[] lineList =
                 frame.GetLines();
 
+            List<PointInfo> pointInfoList = new List<PointInfo>();
+
             ColorEqualityComparer comparer = new ColorEqualityComparer();
             ColorBuffer colorBuffer = new ColorBuffer(36, this.Contrast);
 
@@ -65,10 +67,8 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
                 {
                     #region Entries validation
 
-                    if (comparer.Equals(transparentColor, pointItem.Color))
-                    {
-                        continue;
-                    }
+                    if (comparer.Equals(transparentColor, pointItem.Color)) continue;
+                    if (pointItem.Color == Color.Empty || pointItem.Color == Color.Transparent) continue;
 
                     #endregion
 
@@ -77,6 +77,7 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
 
                     pointItem.Color = currentColor;
                     comparing = currentColor;
+                    pointInfoList.Add(pointItem);
                 }
             }
 
@@ -88,10 +89,8 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
                 {
                     #region Entries validation
 
-                    if (comparer.Equals(transparentColor, pointItem.Color))
-                    {
-                        continue;
-                    }
+                    if (comparer.Equals(transparentColor, pointItem.Color)) continue;
+                    if (pointItem.Color == Color.Empty || pointItem.Color == Color.Transparent) continue;
 
                     #endregion
 
@@ -100,8 +99,11 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
 
                     pointItem.Color = currentColor;
                     comparing = currentColor;
+                    pointInfoList.Add(pointItem);
                 }
             }
+
+            frame.SetPixel(pointInfoList);
 
             return true;
         }
