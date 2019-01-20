@@ -24,6 +24,7 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.BitmapMatters
     /// 2019-10-16 -> [mgodoy-br] It was included ColorComponentEnum, DepthEnum and LockBitmapEnumerator
     /// 2019-10-17 -> [mgodoy-br] It was included Resize method and BitComposeInfo class
     /// 2019-10-17 -> [mgodoy-br] GetPixels has been refactored to allow be used with other arrays than Pixels
+    /// 2019-10-19 -> [mgodoy-br] Clone method has been created
     /// </note>
     /// </para>
     /// </remarks>
@@ -166,6 +167,12 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.BitmapMatters
         /// <returns></returns>
         public static Color GetPixel(byte[] dataSource, int cursor, DepthEnum depthEnum)
         {
+            #region Entries validation
+
+            if (cursor < 0) return Color.Empty;
+
+            #endregion
+
             Color clr = Color.Empty;
             switch (depthEnum)
             {
@@ -225,6 +232,8 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.BitmapMatters
 
             // Get start index of the specified pixel
             int i = ((y * Width) + x) * cCount;
+            // @mgodoy-br: boundaries handling
+            if (i > this.Pixels.Length - 1) return;
 
             if (Depth == 32) // For 32 bpp set Red, Green, Blue and Alpha
             {
@@ -272,6 +281,23 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.BitmapMatters
 
             this.Width = newX;
             this.Height = newY;
+        }
+
+        /// <summary>
+        /// Gets a copy of this object
+        /// </summary>
+        /// <author>mgodoy-br</author>
+        /// <returns></returns>
+        public LockBitmap Clone()
+        {
+            LockBitmap clone = new LockBitmap(this.source);
+            clone.Pixels = new byte[this.Pixels.Length];
+            clone.Depth = this.Depth;
+            clone.Height = this.Height;
+            clone.Iptr = this.Iptr;
+            clone.Width = this.Width;
+            this.Pixels.CopyTo(clone.Pixels, 0);
+            return clone;
         }
 
         /// <summary>

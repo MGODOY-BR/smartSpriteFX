@@ -38,45 +38,44 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
             CropFilter cropFilter = 
                 cropFilter = new CropFilter();
 
-            int previousHeight = frame.Height;
+            var cloneFrame = frame.Clone();
+            int previousHeight = cloneFrame.Height;
+            int previousWidth = cloneFrame.Width;
 
-            if (!cropFilter.ApplyFilter(frame, index))
+            if (!cropFilter.ApplyFilter(cloneFrame, index))
             {
                 return false;
             }
             else
             {
                 var marginBottom = this.BottomMargin;
-                var maxY =
-                    frame.GetAllPixels()
-                        .Where(
-                            p => p.Color != Color.Empty && 
-                            p.Color != Color.Transparent &&
-                            (frame.TransparentColor.HasValue && p.Color.ToArgb() != frame.TransparentColor.Value.ToArgb()))
-                        .Max(p => p.Y);
-                var maxYCut = maxY;
-                var offSet = Math.Abs(previousHeight - maxY);
+                var maxY = cloneFrame.Height;
 
-                frame.Height = previousHeight;
+                cloneFrame.Height = previousHeight;
+                cloneFrame.Width = previousWidth;
 
-                // pixelList.ForEach(p => p.Y = (offSet + p.Y) - marginBottom);
-                // frame.Buffer.CLEAR();
-                // frame.SetPixel(pixelList);
-
-                int sourceY = (int)offSet - marginBottom;
-
-                for (int x = 0; x < frame.Width; x++)
+                List<PointInfo> pointInfoList = new List<PointInfo>();
+                int startY = previousHeight - marginBottom;
+                int sourceY = maxY;
+                for (int y = cloneFrame.Height - 1; y > 0; y--)
                 {
-                    for (int y = 0; y < frame.Height; y++)
+                    for (int x = 0; x < cloneFrame.Width; x++)
                     {
-                        var pixel = frame.GetPixel(x, sourceY);
+                        Color? pixel = null;
+                        if (y <= startY)
+                        {
+                            pixel = cloneFrame.GetPixel(x, sourceY);
+                        }
 
-                        if (pixel == null || pixel == frame.TransparentColor) pixel = Color.Empty;
-                        frame.SetPixel(x, y, pixel.Value);
+                        if (pixel == null || pixel == cloneFrame.TransparentColor) pixel = Color.Transparent;
 
-                        sourceY = ((int)offSet + y) - marginBottom;
+                        pointInfoList.Add(
+                            new PointInfo(x, y, pixel.Value));
                     }
+                    if (y <= startY) sourceY--;
                 }
+
+                frame.SetPixel(pointInfoList);
             }
 
             return true;

@@ -40,7 +40,7 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
         public IPictureDatabase Clone()
         {
             LockBitmapPictureDatabase clone = new LockBitmapPictureDatabase();
-            clone.DataSource = this.DataSource;
+            clone.DataSource = this.DataSource.Clone();
             return clone;
         }
 
@@ -140,8 +140,10 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
 
         public void INSERT(List<PointInfo> pointInfoList)
         {
-            int maxX = (int)pointInfoList.Max(p => p.X) + 1;
-            int maxY = (int)pointInfoList.Max(p => p.Y) + 1;
+            //int maxX = (int)pointInfoList.Max(p => p.X) + 1;
+            //int maxY = (int)pointInfoList.Max(p => p.Y) + 1;
+            int maxX = (int)pointInfoList.Max(p => p.X);
+            int maxY = (int)pointInfoList.Max(p => p.Y);
             bool resizingRequired = maxX > this.DataSource.Width || maxY > this.DataSource.Height;
 
             if (resizingRequired)
