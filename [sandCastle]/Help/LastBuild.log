@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shfbBuild product="Sandcastle Help File Builder and Tools" version="2018.7.8.0" projectFile="C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\smartSpriteFX.helpProject.shfbproj" started="16/01/2019 14:38:23">
+<shfbBuild product="Sandcastle Help File Builder and Tools" version="2018.7.8.0" projectFile="C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\smartSpriteFX.helpProject.shfbproj" started="20/01/2019 10:36:38">
 <buildStep step="Initializing">
 Finding tools...
 The Sandcastle tools are located in &#39;C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\&#39;
@@ -15,9 +15,6 @@ Loading and initializing plug-ins...
 Lightweight Website Style Version 2018.7.8.0
 Copyright &#169; 2006-2018, Eric Woodruff, All Rights Reserved
 Portions Copyright &#169; 2014, Sam Harwell, All Rights Reserved
-</buildStep>
-<buildStep step="ClearWorkFolder">
-Clearing working folder...
 </buildStep>
 <buildStep step="ValidatingDocumentationSources">
 Validating and copying documentation source information
@@ -44,16 +41,16 @@ Copying XML comments files
 <buildStep step="GenerateSharedContent">
 Generating shared content files (en-US, English (United States))...
 <plugIn name="Lightweight Website Style" behavior="After" priority="1000">
-</plugIn>    Last step completed in 00:00:00,0060
+</plugIn>    Last step completed in 00:00:00,0698
 </buildStep>
 <buildStep step="GenerateApiFilter">
 Generating API filter for MRefBuilder...
-    Last step completed in 00:00:00,0030
+    Last step completed in 00:00:00,0289
 </buildStep>
 <buildStep step="GenerateReflectionInfo">
 Generating reflection information...
 [C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\MSBuild.exe - GenerateRefInfo.proj]
-Compila‡&#198;o de 16/01/2019 14:38:24 iniciada.
+Compila‡&#198;o de 20/01/2019 10:36:40 iniciada.
 Projeto &quot;C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\GenerateRefInfo.proj&quot; no n&#162; 1 (destinos padr&#198;o).
 PrepareForBuild:
   Criando o diret&#162;rio &quot;obj\Debug\&quot;.
@@ -63,19 +60,19 @@ GenerateRefInfo:
   Portions Copyright &#184; 2006-2018, Eric Woodruff, All Rights Reserved.
   No source code context base path specified.  Source context information is unavailable.
   Loaded 3 assemblies for reflection and 1 dependency assemblies.
-  Wrote information on 36 namespaces, 118 types, and 700 members
+  Wrote information on 36 namespaces, 124 types, and 776 members
   Copiando o arquivo de &quot;reflection.org&quot; para &quot;reflection.all&quot;.
   XslTransform (v2018.7.8.0)
   Copyright &#184; 2006-2018, Microsoft Corporation, All Rights Reserved.
   Portions Copyright &#184; 2006-2018, Eric Woodruff, All Rights Reserved.
   Applying XSL transformation &#39;C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\ProductionTransforms\MergeDuplicates.xsl&#39;.
 Projeto de compila‡&#198;o pronto &quot;C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\GenerateRefInfo.proj&quot; (destinos padr&#198;o).
-    Last step completed in 00:00:02,0475
+    Last step completed in 00:00:02,5771
 </buildStep>
 <buildStep step="TransformReflectionInfo">
 Transforming reflection output...
 [C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\MSBuild.exe - TransformManifest.proj]
-Compila‡&#198;o de 16/01/2019 14:38:26 iniciada.
+Compila‡&#198;o de 20/01/2019 10:36:42 iniciada.
 Projeto &quot;C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\TransformManifest.proj&quot; no n&#162; 1 (destinos padr&#198;o).
 TransformManifest:
   XslTransform (v2018.7.8.0)
@@ -96,16 +93,16 @@ TransformManifest:
   Portions Copyright &#184; 2006-2018, Eric Woodruff, All Rights Reserved.
   Applying XSL transformation &#39;C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\ProductionTransforms\ReflectionToManifest.xsl&#39;.
 Projeto de compila‡&#198;o pronto &quot;C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\TransformManifest.proj&quot; (destinos padr&#198;o).
-    Last step completed in 00:00:04,6416
+    Last step completed in 00:00:05,3746
 </buildStep>
 <buildStep step="GenerateNamespaceSummaries">
 Generating namespace summary information...
-    Last step completed in 00:00:00,2064
+    Last step completed in 00:00:00,4189
 </buildStep>
 <buildStep step="CopyAdditionalContent">
 Copying additional content files...
 No additional content to copy
-    Last step completed in 00:00:00,0000
+    Last step completed in 00:00:00,0030
 </buildStep>
 <buildStep step="MergeTablesOfContents">
 Merging conceptual and additional tables of contents...
@@ -114,7 +111,7 @@ Merging conceptual and additional tables of contents...
 <buildStep step="GenerateIntermediateTableOfContents">
 Generating intermediate table of contents file...
 [C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\MSBuild.exe - GenerateIntermediateTOC.proj]
-Compila‡&#198;o de 16/01/2019 14:38:31 iniciada.
+Compila‡&#198;o de 20/01/2019 10:36:48 iniciada.
 Projeto &quot;C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\GenerateIntermediateTOC.proj&quot; no n&#162; 1 (destinos padr&#198;o).
 GenerateIntermediateTOC:
   XslTransform (v2018.7.8.0)
@@ -123,24 +120,24 @@ GenerateIntermediateTOC:
   Applying XSL transformation &#39;C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\\ProductionTransforms\CreateVSToc.xsl&#39;.
 Projeto de compila‡&#198;o pronto &quot;C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\GenerateIntermediateTOC.proj&quot; (destinos padr&#198;o).
 Generating conceptual content intermediate TOC file...
-    Last step completed in 00:00:01,3175
+    Last step completed in 00:00:01,2566
 </buildStep>
 <buildStep step="CreateBuildAssemblerConfigs">
 Creating Sandcastle configuration files...
     sandcastle.config
-    Last step completed in 00:00:00,4358
+    Last step completed in 00:00:00,6832
 </buildStep>
 <buildStep step="MergeCustomConfigs">
 Merging custom build component configurations
 C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\sandcastle.config
   Updating reference topic configurations.
   No conceptual content.  Removing conceptual content components.
-    Last step completed in 00:00:00,0060
+    Last step completed in 00:00:00,0100
 </buildStep>
 <buildStep step="BuildTopics">
 Building help topics...
 [C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\MSBuild.exe - BuildTopics.proj]
-Compila‡&#198;o de 16/01/2019 14:38:33 iniciada.
+Compila‡&#198;o de 20/01/2019 10:36:50 iniciada.
 Projeto &quot;C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\BuildTopics.proj&quot; no n&#162; 1 (destinos padr&#198;o).
 BuildTopics:
   BuildAssembler (v2018.7.8.0)
@@ -148,15 +145,16 @@ BuildTopics:
   Portions Copyright &#184; 2006-2018, Eric Woodruff, All Rights Reserved.
   Loading configuration...
   Processing topics...
-  Processed 1104 topic(s)
-  CopyFromIndexComponent: &quot;reflection&quot; in-memory cache entries used: 5 of 15.
+  Processed 1199 topic(s)
+  CopyFromIndexComponent: &quot;reflection&quot; in-memory cache entries used: 6 of 15.
   CopyFromIndexComponent: &quot;comments&quot; in-memory cache entries used: 6 of 30.
+  ResolveReferenceLinksComponent: 4 entries added to the MSDN content ID cache.  New cache size: 601 entries
 Projeto de compila‡&#198;o pronto &quot;C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\BuildTopics.proj&quot; (destinos padr&#198;o).
-    Last step completed in 00:00:24,0307
+    Last step completed in 00:00:32,0552
 </buildStep>
 <buildStep step="CombiningIntermediateTocFiles">
 Combining conceptual and API intermediate TOC files...
-    Last step completed in 00:00:00,0080
+    Last step completed in 00:00:00,0110
 </buildStep>
 <buildStep step="ExtractingHtmlInfo">
 Extracting HTML info for HTML Help 1 and/or website...
@@ -168,11 +166,11 @@ E-Mail: Eric@EWoodruff.us
 Using LCID &#39;1033&#39;, code page &#39;65001&#39;, encoding charset &#39;UTF-8&#39;.
 
 Processing Help 1 files in C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1
-Processed 1104 HTML files
+Processed 1199 HTML files
 Sorting keywords and generating See Also indices
 Saving HTML Help 1 keyword index to C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\smartSpriteFX Library Technical Reference.hhk
 Saving HTML Help 1 table of contents to C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\smartSpriteFX Library Technical Reference.hhc
-    Last step completed in 00:00:01,6745
+    Last step completed in 00:00:21,1833
 </buildStep>
 <buildStep step="CopyStandardHelpContent">
 Copying standard help content...
@@ -238,7 +236,7 @@ C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyle
 C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-zh-CN.css -&gt; C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\styles\branding-zh-CN.css
 C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding-zh-TW.css -&gt; C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\styles\branding-zh-TW.css
 C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\styles\branding.css -&gt; C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\styles\branding.css
-    Last step completed in 00:00:00,5575
+    Last step completed in 00:00:01,0223
 </buildStep>
 <buildStep step="GenerateHelpFormatTableOfContents">
 Generating HTML Help 1 table of contents file...
@@ -267,11 +265,11 @@ Compiling HTML Help 1 file...
   
   Compile time: 0 minutes, 14 seconds
   
-  1,106	Topics
+  1,201	Topics
   
-  11,476	Local links
+  12,485	Local links
   
-  37,931	Internet links
+  38,093	Internet links
   
   0	Graphics
   
@@ -279,11 +277,11 @@ Compiling HTML Help 1 file...
   
   
   
-  Created c:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\smartSpriteFX Library Technical Reference.chm, 2,042,535 bytes
+  Created c:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\[sandCastle]\Help\Working\Output\HtmlHelp1\smartSpriteFX Library Technical Reference.chm, 2,145,889 bytes
   
-  Compression decreased file by 13,295,704 bytes.
+  Compression decreased file by 13,919,029 bytes.
   
-    Last step completed in 00:00:16,9467
+    Last step completed in 00:00:15,5464
 </buildStep>
 <buildStep step="CleanIntermediates">
 Removing intermediate files...
@@ -291,7 +289,7 @@ Removing intermediate files...
 </buildStep>
 <buildStep step="Completed">
 
-Build completed successfully at 16/01/2019 14:39:16.  Total time: 00:00:53,8180
+Build completed successfully at 20/01/2019 10:38:00.  Total time: 00:01:22,5371
 
 </buildStep>
 </shfbBuild>

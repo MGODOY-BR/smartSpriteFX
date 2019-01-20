@@ -1,13 +1,5 @@
-vAlpha 3.0.0.1
+vAlpha 4.0.0.0
 
 New Feactures
-- Wellcome Linux SO! Now we are compatible through Mono framework!!
-- Brand new filter: AlignToBottom
-
-Improvements
-- Frames has brought its file names
-
-Bugfixes
-- Frame order has been corrected
-- Version incompability in user settings
-- Temp directory is created when it doesn't exist
+- Performance improvements
+- New filters
