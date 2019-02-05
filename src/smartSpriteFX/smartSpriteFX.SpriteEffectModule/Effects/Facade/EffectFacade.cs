@@ -13,63 +13,72 @@ using System.Windows.Forms;
 
 namespace smartSuite.smartSpriteFX.Effects.Facade
 {
-  public static class EffectFacade
-  {
-    public static bool DoNotPutFrameIndex
+    public static class EffectFacade
     {
-      get
-      {
-        return FilterCollection.DoNotPutFrameIndex;
-      }
-      set
-      {
-        FilterCollection.DoNotPutFrameIndex = value;
-      }
-    }
+        public static bool DoNotPutFrameIndex
+        {
+            get
+            {
+                return FilterCollection.DoNotPutFrameIndex;
+            }
+            set
+            {
+                FilterCollection.DoNotPutFrameIndex = value;
+            }
+        }
 
-    public static FrameIterator GetIterator()
-    {
-      return EffectEngine.GetIterator();
-    }
+        public static FrameIterator GetIterator()
+        {
+            return EffectEngine.GetIterator();
+        }
 
-    public static Image UpdatePreviewBoard()
-    {
-      return EffectEngine.UpdatePreviewBoard();
-    }
+        /// <summary>
+        /// Gets the preview board box
+        /// </summary>
+        /// <returns></returns>
+        public static PictureBox GetPreviewBoardBox()
+        {
+            return EffectEngine.GetPreviewBoardBox();
+        }
 
-    public static T FindFilter<T>() where T : IEffectFilter
-    {
-      return EffectEngine.FindFilter<T>();
-    }
+        public static Image UpdatePreviewBoard()
+        {
+            return EffectEngine.UpdatePreviewBoard();
+        }
 
-    public static TransparentBackgroundFilter GetTransparentBackgroundFilter()
-    {
-      return EffectEngine.GetTransparentBackgroundFilter();
-    }
+        public static T FindFilter<T>() where T : IEffectFilter
+        {
+            return EffectEngine.FindFilter<T>();
+        }
 
-    public static Control.ControlCollection GetControlCollectionFromPreviewBoard()
-    {
-      return EffectEngine.GetPreviewBoard().Controls;
-    }
+        public static TransparentBackgroundFilter GetTransparentBackgroundFilter()
+        {
+            return EffectEngine.GetTransparentBackgroundFilter();
+        }
 
-    public static void RegisterFilter(IEffectFilter effectFilter, int frameIndex)
-    {
-      EffectEngine.RegisterFilter(effectFilter, frameIndex);
-    }
+        public static Control.ControlCollection GetControlCollectionFromPreviewBoard()
+        {
+            return EffectEngine.GetPreviewBoard().Controls;
+        }
 
-    public static void UnRegisterFilter(IEffectFilter effectFilter)
-    {
-      EffectEngine.UnRegisterFilter(effectFilter);
-    }
+        public static void RegisterFilter(IEffectFilter effectFilter, int frameIndex)
+        {
+            EffectEngine.RegisterFilter(effectFilter, frameIndex);
+        }
 
-    public static void UpFilterOrder(IEffectFilter filter)
-    {
-      EffectEngine.UpFilterOrder(filter);
-    }
+        public static void UnRegisterFilter(IEffectFilter effectFilter)
+        {
+            EffectEngine.UnRegisterFilter(effectFilter);
+        }
 
-    public static void DownFilterOrder(IEffectFilter filter)
-    {
-      EffectEngine.DownFilterOrder(filter);
+        public static void UpFilterOrder(IEffectFilter filter)
+        {
+            EffectEngine.UpFilterOrder(filter);
+        }
+
+        public static void DownFilterOrder(IEffectFilter filter)
+        {
+            EffectEngine.DownFilterOrder(filter);
+        }
     }
-  }
 }

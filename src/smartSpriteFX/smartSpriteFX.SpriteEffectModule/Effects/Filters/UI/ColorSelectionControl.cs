@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using smartSuite.smartSpriteFX.SpriteEffectModule.Properties;
+using System.IO;
+using smartSuite.smartSpriteFX.Effects.Facade;
 
 namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI
 {
@@ -15,6 +18,11 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI
     /// </summary>
     public partial class ColorSelectionControl : UserControl
     {
+        /// <summary>
+        /// Indicates if it in dropper mode
+        /// </summary>
+        private bool _inDropperMode;
+
         /// <summary>
         /// Occurs when the color is selected
         /// </summary>
@@ -77,6 +85,47 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI
         private void ColorSelectionControl_Load(object sender, EventArgs e)
         {
             this.panelColorPreview.BackColor = this._selectedColor;
+        }
+
+        private void btnDropper_Click(object sender, EventArgs e)
+        {
+            this._inDropperMode = !this._inDropperMode;
+
+            PictureBox pictureBox = EffectFacade.GetPreviewBoardBox();
+            pictureBox.MouseClick += delegate (object mouseSender, MouseEventArgs mouseEventArgs)
+            {
+                if (!this._inDropperMode) return;
+                this._selectedColor =
+                    ((Bitmap)EffectFacade.UpdatePreviewBoard()).GetPixel(mouseEventArgs.X, mouseEventArgs.Y);
+
+                this.panelColorPreview.BackColor = this._selectedColor;
+
+                if (SelectedColorEvent != null)
+                {
+                    SelectedColorEvent(this, new SelectionColorEventArgs
+                    {
+                        SelectedColor = this._selectedColor
+                    });
+                }
+            };
+
+            pictureBox.FindForm().KeyDown += delegate (object keySender, KeyEventArgs keyDownEventArgs)
+            {
+                if(keyDownEventArgs.KeyCode == Keys.Escape)
+                {
+                    this._inDropperMode = false;
+                    pictureBox.Cursor = Cursors.Default;
+                }
+            };
+
+            if (this._inDropperMode)
+            {
+                pictureBox.Cursor = new Cursor(Resources.get_color_png.GetHicon());
+            }
+            else
+            {
+                pictureBox.Cursor = Cursors.Default;
+            }
         }
     }
 }

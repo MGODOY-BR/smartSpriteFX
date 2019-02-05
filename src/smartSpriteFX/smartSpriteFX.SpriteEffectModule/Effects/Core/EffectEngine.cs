@@ -309,6 +309,15 @@ namespace smartSuite.smartSpriteFX.Effects.Core{
             return EffectEngine._iterator;
 		}
 
+        /// <summary>
+        /// Gets the preview board box
+        /// </summary>
+        /// <returns></returns>
+        public static PictureBox GetPreviewBoardBox()
+        {
+            return EffectEngine._previewBoard;
+        }
+
 		/// <summary>
 		/// Updates the main view board and returns the image.
 		/// </summary>

@@ -32,6 +32,7 @@
             this.panelColorPreview = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
+            this.btnDropper = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnBrowserColor
@@ -61,15 +62,26 @@
             this.label2.TabIndex = 38;
             this.label2.Text = "Color";
             // 
+            // btnDropper
+            // 
+            this.btnDropper.Image = global::smartSuite.smartSpriteFX.SpriteEffectModule.Properties.Resources.get_color_png;
+            this.btnDropper.Location = new System.Drawing.Point(153, 24);
+            this.btnDropper.Name = "btnDropper";
+            this.btnDropper.Size = new System.Drawing.Size(26, 23);
+            this.btnDropper.TabIndex = 41;
+            this.btnDropper.UseVisualStyleBackColor = true;
+            this.btnDropper.Click += new System.EventHandler(this.btnDropper_Click);
+            // 
             // ColorSelectionControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnDropper);
             this.Controls.Add(this.btnBrowserColor);
             this.Controls.Add(this.panelColorPreview);
             this.Controls.Add(this.label2);
             this.Name = "ColorSelectionControl";
-            this.Size = new System.Drawing.Size(169, 58);
+            this.Size = new System.Drawing.Size(216, 58);
             this.Load += new System.EventHandler(this.ColorSelectionControl_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -82,5 +94,6 @@
         private System.Windows.Forms.Panel panelColorPreview;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ColorDialog colorDialog1;
+        private System.Windows.Forms.Button btnDropper;
     }
 }
