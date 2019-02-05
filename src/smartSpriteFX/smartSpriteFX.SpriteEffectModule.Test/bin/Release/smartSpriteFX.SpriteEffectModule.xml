@@ -30,6 +30,21 @@
             Defines a filter that cut image
             </summary>
         </member>
+        <member name="F:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.ReplaceColorFilter._colorEqualityComparer">
+            <summary>
+            It's a comparer used to compare colors
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.ReplaceColorFilter.NewColor">
+            <summary>
+            It's the new color
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.ReplaceColorFilter.FromColorList">
+            <summary>
+            It's a list of color to be replaced
+            </summary>
+        </member>
         <member name="T:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.CutFilter">
             <summary>
             Represents a filter which is used to cut frames
@@ -327,6 +342,11 @@
             the contents of this method with the code editor.
             </summary>
         </member>
+        <member name="M:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI.ReplaceColorsPanelControl.RefreshForm">
+            <summary>
+            Refreshes the form field
+            </summary>
+        </member>
         <member name="F:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI.ReplaceColorsPanelControl.components">
             <summary> 
             Required designer variable.
@@ -475,6 +495,11 @@
         <member name="T:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI.ColorSelectionControl">
             <summary>
             Represents a control to offer color selection capabilities
+            </summary>
+        </member>
+        <member name="F:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI.ColorSelectionControl._inDropperMode">
+            <summary>
+            Indicates if it in dropper mode
             </summary>
         </member>
         <member name="E:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI.ColorSelectionControl.SelectedColorEvent">
@@ -901,11 +926,6 @@
               resource lookups using this strongly typed resource class.
             </summary>
         </member>
-        <member name="P:smartSuite.smartSpriteFX.SpriteEffectModule.Properties.Resources.get_color_cursor">
-            <summary>
-              Looks up a localized resource of type System.Byte[].
-            </summary>
-        </member>
         <member name="P:smartSuite.smartSpriteFX.SpriteEffectModule.Properties.Resources.get_color_png">
             <summary>
               Looks up a localized resource of type System.Drawing.Bitmap.
@@ -1170,6 +1190,12 @@
         <member name="M:smartSuite.smartSpriteFX.Effects.Core.EffectEngine.GetIterator">
             <summary>
             Gets the frame iterator
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Effects.Core.EffectEngine.GetPreviewBoardBox">
+            <summary>
+            Gets the preview board box
             </summary>
             <returns></returns>
         </member>
@@ -1579,6 +1605,12 @@
             </summary>
             <param name="frame"></param>
             <param name="index"></param>
+            <returns></returns>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Effects.Facade.EffectFacade.GetPreviewBoardBox">
+            <summary>
+            Gets the preview board box
+            </summary>
             <returns></returns>
         </member>
         <member name="T:smartSuite.smartSpriteFX.Effects.FilterEngine.FilterCollection">
