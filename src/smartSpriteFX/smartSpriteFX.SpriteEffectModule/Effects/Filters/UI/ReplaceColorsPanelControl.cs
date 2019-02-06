@@ -51,6 +51,7 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI
 
             #endregion
 
+            this._sourceColor.CancelDropper();
             this._replaceColorFilter.NewColor = e.SelectedColor;
         }
 

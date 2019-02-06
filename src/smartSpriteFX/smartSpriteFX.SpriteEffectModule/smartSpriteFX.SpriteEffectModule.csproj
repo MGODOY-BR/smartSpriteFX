@@ -185,7 +185,6 @@
   <ItemGroup>
     <None Include="Resources\sun.png" />
     <None Include="Resources\get-color-png.png" />
-    <None Include="Resources\get-color-cursor.ico" />
     <None Include="Resources\get-color-cursor.cur" />
     <Content Include="Temp\empty.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

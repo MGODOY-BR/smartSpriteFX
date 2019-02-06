@@ -19,9 +19,18 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI
     public partial class ColorSelectionControl : UserControl
     {
         /// <summary>
+        /// It's the last control triggered
+        /// </summary>
+        private static ColorSelectionControl _lastColorSelection;
+
+        /// <summary>
         /// Indicates if it in dropper mode
         /// </summary>
-        private bool _inDropperMode;
+        public bool InDropperMode
+        {
+            get;
+            private set;
+        }
 
         /// <summary>
         /// Occurs when the color is selected
@@ -36,6 +45,11 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI
         public ColorSelectionControl()
         {
             InitializeComponent();
+
+            PictureBox pictureBox = EffectFacade.GetPreviewBoardBox();
+
+            pictureBox.MouseClick += PictureBox_MouseClick;
+            pictureBox.FindForm().KeyDown += ColorSelectionControl_KeyDown;
         }
 
         private void btnBrowserColor_Click(object sender, EventArgs e)
@@ -44,6 +58,7 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI
             {
                 this._selectedColor = colorDialog1.Color;
                 this.panelColorPreview.BackColor = colorDialog1.Color;
+                _lastColorSelection = this;
 
                 if (SelectedColorEvent != null)
                 {
@@ -89,43 +104,56 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI
 
         private void btnDropper_Click(object sender, EventArgs e)
         {
-            this._inDropperMode = !this._inDropperMode;
-
-            PictureBox pictureBox = EffectFacade.GetPreviewBoardBox();
-            pictureBox.MouseClick += delegate (object mouseSender, MouseEventArgs mouseEventArgs)
+            _lastColorSelection = null;
+            this.InDropperMode = !this.InDropperMode;
+            if(!this.InDropperMode)
             {
-                if (!this._inDropperMode) return;
-                this._selectedColor =
-                    ((Bitmap)EffectFacade.UpdatePreviewBoard()).GetPixel(mouseEventArgs.X, mouseEventArgs.Y);
-
-                this.panelColorPreview.BackColor = this._selectedColor;
-
-                if (SelectedColorEvent != null)
-                {
-                    SelectedColorEvent(this, new SelectionColorEventArgs
-                    {
-                        SelectedColor = this._selectedColor
-                    });
-                }
-            };
-
-            pictureBox.FindForm().KeyDown += delegate (object keySender, KeyEventArgs keyDownEventArgs)
-            {
-                if(keyDownEventArgs.KeyCode == Keys.Escape)
-                {
-                    this._inDropperMode = false;
-                    pictureBox.Cursor = Cursors.Default;
-                }
-            };
-
-            if (this._inDropperMode)
-            {
-                pictureBox.Cursor = new Cursor(Resources.get_color_png.GetHicon());
+                this.CancelDropper();
             }
             else
             {
-                pictureBox.Cursor = Cursors.Default;
+                EffectFacade.GetPreviewBoardBox().Cursor = new Cursor(Resources.get_color_png.GetHicon());
+                _lastColorSelection = this;
             }
+        }
+
+        private void ColorSelectionControl_KeyDown(object sender, KeyEventArgs keyDownEventArgs)
+        {
+            if (keyDownEventArgs.KeyCode == Keys.Escape)
+            {
+                this.CancelDropper();
+            }
+        }
+
+        private void PictureBox_MouseClick(object sender, MouseEventArgs mouseEventArgs)
+        {
+            if (!this.InDropperMode) return;
+            if (_lastColorSelection != this) return;
+
+            this._selectedColor =
+                ((Bitmap)EffectFacade.UpdatePreviewBoard()).GetPixel(mouseEventArgs.X, mouseEventArgs.Y);
+
+            this.panelColorPreview.BackColor = this._selectedColor;
+
+            if (SelectedColorEvent != null)
+            {
+                SelectedColorEvent(this, new SelectionColorEventArgs
+                {
+                    SelectedColor = this._selectedColor
+                });
+            }
+        }
+        
+        /// <summary>
+        /// Cancels dropper operation
+        /// </summary>
+        public void CancelDropper()
+        {
+            PictureBox pictureBox = EffectFacade.GetPreviewBoardBox();
+
+            this.InDropperMode = false;
+            _lastColorSelection = null;
+            pictureBox.Cursor = Cursors.Default;
         }
     }
 }

@@ -38,12 +38,34 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
         public override bool ApplyFilter(Picture frame, int index)
         {
             if (this.NewColor == Color.Transparent) return false;
-            foreach (var colorItem in frame.GetAllColors())
-            {
-                if (!FromColorList.Exists(c => this._colorEqualityComparer.LooksLikeBySensibility3(c, colorItem))) continue;
+            
+            #region Obsolete code
 
-                frame.ReplaceColor(colorItem, this.NewColor);
+            //foreach (var colorItem in frame.GetAllColors())
+            //{
+            //    if (!FromColorList.Exists(c => this._colorEqualityComparer.LooksLikeBySensibility3(c, colorItem))) continue;
+
+            //    frame.ReplaceColor(colorItem, this.NewColor);
+            //}
+
+            #endregion
+
+            for (int y = 0; y < frame.Height; y++)
+            {
+                for (int x = 0; x < frame.Width; x++)
+                {
+                    var colorItem = frame.GetPixel(x, y);
+                    if (!colorItem.HasValue) continue;
+                    if (frame.TransparentColor.HasValue)
+                    {
+                        if (this._colorEqualityComparer.LooksLikeBySensibility3(colorItem.Value, frame.TransparentColor.Value)) continue;
+                    }
+                    if (!FromColorList.Exists(c => this._colorEqualityComparer.LooksLikeBySensibility3(c, colorItem.Value))) continue;
+
+                    frame.SetPixel(x, y, this.NewColor);
+                }
             }
+
             return true;
         }
 

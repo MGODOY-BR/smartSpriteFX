@@ -34,6 +34,17 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI
             set;
         }
 
+        /// <summary>
+        /// Indicates if the color selection is in dropper mode
+        /// </summary>
+        public bool InDropperMode
+        {
+            get
+            {
+                return this._colorSelectionControl.InDropperMode;
+            }
+        }
+
         public ColorListControl()
         {
             InitializeComponent();
@@ -113,6 +124,14 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI
             /// It´s the current color list
             /// </summary>
             public List<Color> CurrentColorList { get; set; }
+        }
+
+        /// <summary>
+        /// Cancels dropper command
+        /// </summary>
+        public void CancelDropper()
+        {
+            this._colorSelectionControl.CancelDropper();
         }
     }
 }

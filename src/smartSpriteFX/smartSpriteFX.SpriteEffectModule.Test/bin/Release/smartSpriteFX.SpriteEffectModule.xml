@@ -453,6 +453,11 @@
             It´s a list of colors
             </summary>
         </member>
+        <member name="P:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI.ColorListControl.InDropperMode">
+            <summary>
+            Indicates if the color selection is in dropper mode
+            </summary>
+        </member>
         <member name="M:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI.ColorListControl.OnColorListChanged">
             <summary>
             Throws the event
@@ -473,6 +478,11 @@
         <member name="P:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI.ColorListControl.ColorListChangeEventArgs.CurrentColorList">
             <summary>
             It´s the current color list
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI.ColorListControl.CancelDropper">
+            <summary>
+            Cancels dropper command
             </summary>
         </member>
         <member name="F:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI.ColorListControl.components">
@@ -497,7 +507,12 @@
             Represents a control to offer color selection capabilities
             </summary>
         </member>
-        <member name="F:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI.ColorSelectionControl._inDropperMode">
+        <member name="F:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI.ColorSelectionControl._lastColorSelection">
+            <summary>
+            It's the last control triggered
+            </summary>
+        </member>
+        <member name="P:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI.ColorSelectionControl.InDropperMode">
             <summary>
             Indicates if it in dropper mode
             </summary>
@@ -525,6 +540,11 @@
         <member name="P:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI.ColorSelectionControl.SelectionColorEventArgs.SelectedColor">
             <summary>
             It´s the selected color
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI.ColorSelectionControl.CancelDropper">
+            <summary>
+            Cancels dropper operation
             </summary>
         </member>
         <member name="F:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI.ColorSelectionControl.components">
