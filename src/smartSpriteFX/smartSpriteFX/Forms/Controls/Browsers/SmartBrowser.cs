@@ -118,6 +118,7 @@ namespace smartSuite.smartSpriteFX.Forms.Controls.Browsers
             String previousValue = this.txtFileName.Text;
             this.txtFileName.Text = fileName;
             this.UserChoice = fileName;
+            this.folderBrowserDialog1.SelectedPath = fileName;
             try
             {
                 if (this.ChosenByUserEvent != null)
@@ -194,7 +195,8 @@ namespace smartSuite.smartSpriteFX.Forms.Controls.Browsers
 
         private void txtFileName_TextChanged(object sender, EventArgs e)
         {
-            this.UserChoice = this.txtFileName.Text;
+            if (String.IsNullOrEmpty(this.txtFileName.Text)) return;
+            this.DoChoice(this.txtFileName.Text);
         }
     }
 
