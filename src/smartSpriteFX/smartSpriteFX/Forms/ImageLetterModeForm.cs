@@ -139,7 +139,7 @@ namespace smartSuite.smartSpriteFX.Forms
 
                 SolidBrush brush = new SolidBrush(forecolor);
 
-                for (long i = minRange; i < maxRange; i++)
+                for (long i = minRange; i <= maxRange; i++)
                 {
                     var hex = Convert.ToString(i, 16).PadLeft(4, '0');
                     var unicodeChar = System.Convert.ToChar(System.Convert.ToUInt32(hex, 16));

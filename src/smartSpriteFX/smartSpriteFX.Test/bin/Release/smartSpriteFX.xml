@@ -892,6 +892,11 @@
             the contents of this method with the code editor.
             </summary>
         </member>
+        <member name="T:smartSuite.smartSpriteFX.Forms.Utilities.CharacterSet.BoxKeysAndArrowsCharacterSet">
+            <summary>
+            Offers special characteres for use with boxes, keys and arrows
+            </summary>
+        </member>
         <member name="T:smartSuite.smartSpriteFX.Forms.Utilities.CharacterSet.CharacterSet">
             <summary>
             Gets the character set

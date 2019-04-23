@@ -1,5 +1,9 @@
-vAlpha 4.0.0.0
+vAlpha 4.0.0.1
 
 New Feactures
 - Performance improvements
 - New filters
+- New Image Letter Character Set: Boxes / Arrows / Keys
+
+Fixes
+- Image Letter mode -> the last character bug: the item wasn't printed

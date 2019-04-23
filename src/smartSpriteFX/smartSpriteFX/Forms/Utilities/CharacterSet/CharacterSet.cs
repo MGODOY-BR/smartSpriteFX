@@ -19,6 +19,7 @@ namespace smartSuite.smartSpriteFX.Forms.Utilities.CharacterSet
             new CommonOcidentalCharacterSet(),
             new CJKUnifiedIdeogramsCharacterSet(),
             new ExtraLusofoneCharacterSet(),
+            new BoxKeysAndArrowsCharacterSet()
         };
 
         /// <summary>

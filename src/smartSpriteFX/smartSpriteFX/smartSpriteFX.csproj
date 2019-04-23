@@ -161,6 +161,7 @@
     <Compile Include="Forms\ToolsForm.Designer.cs">
       <DependentUpon>ToolsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Utilities\CharacterSet\BoxKeysAndArrowsCharacterSet.cs" />
     <Compile Include="Forms\Utilities\CharacterSet\CharacterSet.cs" />
     <Compile Include="Forms\Utilities\CharacterSet\CJKUnifiedIdeogramsCharacterSet.cs" />
     <Compile Include="Forms\Utilities\CharacterSet\ExtraLusofoneCharacterSet.cs" />
