@@ -33,11 +33,11 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.btnEffectModeBatch = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnTools = new System.Windows.Forms.Button();
             this.btnLettlerModeBatch = new System.Windows.Forms.Button();
             this.imgDemo = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblDescription = new System.Windows.Forms.Label();
-            this.btnTools = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgDemo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -49,7 +49,7 @@
             this.btnLandscapeMode.FlatAppearance.BorderSize = 5;
             this.btnLandscapeMode.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.btnLandscapeMode.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnLandscapeMode.Font = new System.Drawing.Font("Open Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLandscapeMode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLandscapeMode.Location = new System.Drawing.Point(3, 3);
             this.btnLandscapeMode.Name = "btnLandscapeMode";
             this.btnLandscapeMode.Size = new System.Drawing.Size(167, 41);
@@ -65,7 +65,7 @@
             this.btnEffectMode.FlatAppearance.BorderSize = 5;
             this.btnEffectMode.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.btnEffectMode.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnEffectMode.Font = new System.Drawing.Font("Open Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEffectMode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEffectMode.Location = new System.Drawing.Point(238, 2);
             this.btnEffectMode.Name = "btnEffectMode";
             this.btnEffectMode.Size = new System.Drawing.Size(167, 41);
@@ -90,7 +90,7 @@
             this.btnEffectModeBatch.FlatAppearance.BorderSize = 5;
             this.btnEffectModeBatch.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.btnEffectModeBatch.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnEffectModeBatch.Font = new System.Drawing.Font("Open Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEffectModeBatch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEffectModeBatch.Location = new System.Drawing.Point(463, 4);
             this.btnEffectModeBatch.Name = "btnEffectModeBatch";
             this.btnEffectModeBatch.Size = new System.Drawing.Size(167, 41);
@@ -113,16 +113,27 @@
             this.panel1.Size = new System.Drawing.Size(928, 48);
             this.panel1.TabIndex = 4;
             // 
+            // btnTools
+            // 
+            this.btnTools.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTools.Location = new System.Drawing.Point(880, 3);
+            this.btnTools.Name = "btnTools";
+            this.btnTools.Size = new System.Drawing.Size(45, 37);
+            this.btnTools.TabIndex = 4;
+            this.btnTools.Text = "...";
+            this.btnTools.UseVisualStyleBackColor = true;
+            this.btnTools.Click += new System.EventHandler(this.btnTools_Click);
+            // 
             // btnLettlerModeBatch
             // 
             this.btnLettlerModeBatch.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
             this.btnLettlerModeBatch.FlatAppearance.BorderSize = 5;
             this.btnLettlerModeBatch.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.btnLettlerModeBatch.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnLettlerModeBatch.Font = new System.Drawing.Font("Open Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLettlerModeBatch.Location = new System.Drawing.Point(682, 2);
+            this.btnLettlerModeBatch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLettlerModeBatch.Location = new System.Drawing.Point(682, 6);
             this.btnLettlerModeBatch.Name = "btnLettlerModeBatch";
-            this.btnLettlerModeBatch.Size = new System.Drawing.Size(167, 41);
+            this.btnLettlerModeBatch.Size = new System.Drawing.Size(192, 37);
             this.btnLettlerModeBatch.TabIndex = 3;
             this.btnLettlerModeBatch.Text = "Image Letter Mode";
             this.btnLettlerModeBatch.UseVisualStyleBackColor = true;
@@ -163,17 +174,6 @@
             this.lblDescription.TabIndex = 6;
             this.lblDescription.Visible = false;
             // 
-            // btnTools
-            // 
-            this.btnTools.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTools.Location = new System.Drawing.Point(880, 3);
-            this.btnTools.Name = "btnTools";
-            this.btnTools.Size = new System.Drawing.Size(45, 37);
-            this.btnTools.TabIndex = 4;
-            this.btnTools.Text = "...";
-            this.btnTools.UseVisualStyleBackColor = true;
-            this.btnTools.Click += new System.EventHandler(this.btnTools_Click);
-            // 
             // SelectModeScreenForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -187,7 +187,6 @@
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "SelectModeScreenForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Please, select some edition mode";
