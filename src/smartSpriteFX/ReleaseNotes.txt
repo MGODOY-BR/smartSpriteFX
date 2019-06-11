@@ -7,3 +7,4 @@ New Feactures
 
 Fixes
 - Image Letter mode -> the last character bug: the item wasn't printed
+- The Landscape Mode has been reviewed

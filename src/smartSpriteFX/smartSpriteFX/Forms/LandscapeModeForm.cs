@@ -218,7 +218,7 @@ namespace smartSuite.smartSpriteFX.Forms
                 this.Cursor = Cursors.WaitCursor;
 
                 // Loading the picture
-                this.draftControl1.LoadDraftPicture(fileName);
+                if(this.draftControl1 != null) this.draftControl1.LoadDraftPicture(fileName);
                 this.SetupScroll();
                 this._dataTreeNodeList.Clear();
                 this._projectBrowser.ClearText();
@@ -237,6 +237,7 @@ namespace smartSuite.smartSpriteFX.Forms
         {
             try
             {
+                if (this.draftControl1 == null) return;
                 this.Cursor = Cursors.WaitCursor;
 
                 this._dataTreeNodeList.Clear();
@@ -310,6 +311,7 @@ namespace smartSuite.smartSpriteFX.Forms
             this.hScrollBar1.Visible = true;
             this.vScrollBar1.Visible = true;
 
+            if (this.draftControl1 == null) return;
             this.hScrollBar1.Maximum = Math.Abs(this.draftControl1.Width - this.pnlImage.Width) + 100;
             this.vScrollBar1.Maximum = Math.Abs(this.draftControl1.Height - this.pnlImage.Height) + 100;
 
