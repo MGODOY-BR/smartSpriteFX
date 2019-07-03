@@ -300,13 +300,13 @@ namespace smartSuite.smartSpriteFX.Effects.FilterEngine{
             }
         }
 
-		/// <summary>
-		/// Applies all the filter buffer list in order
-		/// </summary>
-		/// <param name="picture"></param>
+        /// <summary>
+        /// Applies all the filter buffer list in order
+        /// </summary>
+        /// <param name="picture"></param>
         /// <param name="frameIndex">It´s the frame index in an animation</param>
-		/// <returns>The output path</returns>
-		public string Apply(Picture picture, int frameIndex)
+        /// <returns>The output path</returns>
+        public string Apply(Picture picture, int frameIndex)
         {
             #region Entries validation
 
@@ -346,22 +346,25 @@ namespace smartSuite.smartSpriteFX.Effects.FilterEngine{
 
             #endregion
 
-            for (int i = 0; i < this._filterBufferList.Count; i++)
-            {
-                var filter = this._filterBufferList[i];
-
-                if (filter is FrameRateFilter) continue;
-
-                if (filter.ApplyFilter(picture, frameIndex))
-                {
-                    string file = this.FormatFileName(frameIndex, baseFile, folder);
-
-                    if (!Directory.Exists(folder))
-                    {
-                        Directory.CreateDirectory(folder);
-                    }
-
+            // It's the function which generate the files
+            Action<int, string, string> generateFileDelegate =
+                new Action<int, string, string>(delegate (int index, string baseFileName, string folderName) {
+                    string file = this.FormatFileName(index, baseFileName, folderName);
+                    if (!Directory.Exists(folderName)) Directory.CreateDirectory(folderName);
                     this.GenerateFilteredImage(picture, file);
+                });
+
+            if (this._filterBufferList.Count == 1 && frameRateFilter != null)
+            {
+                generateFileDelegate(frameIndex, baseFile, folder);
+            }
+            else
+            {
+                for (int i = 0; i < this._filterBufferList.Count; i++)
+                {
+                    var filter = this._filterBufferList[i];
+                    if (filter is FrameRateFilter) continue;
+                    if (filter.ApplyFilter(picture, frameIndex)) generateFileDelegate(frameIndex, baseFile, folder);
                 }
             }
 
