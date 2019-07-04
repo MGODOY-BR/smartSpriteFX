@@ -3,6 +3,7 @@ vAlpha 5.0.0.0
 New Feactures
 - Performance improvements
 - New filters
+	- InversionFilter
 - New Image Letter Character Set: Boxes / Arrows / Keys
 
 Fixes

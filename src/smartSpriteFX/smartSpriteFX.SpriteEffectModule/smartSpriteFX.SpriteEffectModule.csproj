@@ -58,6 +58,7 @@
     <Compile Include="Effects\Filters\AlignToBottomFilter.cs" />
     <Compile Include="Effects\Filters\AlphaFilter.cs" />
     <Compile Include="Effects\Filters\ICutFilter.cs" />
+    <Compile Include="Effects\Filters\InversionFilter.cs" />
     <Compile Include="Effects\Filters\ReplaceColorFilter.cs" />
     <Compile Include="Effects\Filters\BrightFilter.cs" />
     <Compile Include="Effects\Filters\CropFilter.cs" />

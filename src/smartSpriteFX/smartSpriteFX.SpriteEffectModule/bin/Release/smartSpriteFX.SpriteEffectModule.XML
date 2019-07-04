@@ -30,6 +30,11 @@
             Defines a filter that cut image
             </summary>
         </member>
+        <member name="T:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.InversionFilter">
+            <summary>
+            Represents a filter capable to invert the frame
+            </summary>
+        </member>
         <member name="F:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.ReplaceColorFilter._colorEqualityComparer">
             <summary>
             It's a comparer used to compare colors

@@ -14,20 +14,18 @@ using System.Threading.Tasks;
 namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
 {
     /// <summary>
-    /// Represents a filter capable to expand the frame, adding a mirror image from original
+    /// Represents a filter capable to invert the frame
     /// </summary>
-    public class MirrorFilter : SmartSpriteOriginalFilterBase
+    public class InversionFilter : SmartSpriteOriginalFilterBase
     {
         public override bool ApplyFilter(Picture frame, int index)
         {
             var originalWidth = frame.Width;
-            var newWidth = originalWidth * 2;
-            frame.Width = newWidth;
 
             // Filling the rest of empty spaces
             int originalX = originalWidth;
             List<PointInfo> pointInfoList = new List<PointInfo>();
-            for (int x = originalWidth; x < newWidth; x++)
+            for (int x = 0; x < originalWidth; x++)
             {
                 originalX--; if (originalX == -1) originalX = originalWidth;
 
@@ -40,7 +38,8 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
 
                     if (mirrorPixel != null && mirrorPixel.Value != Color.Transparent)
                     {
-                        pointInfoList.Add(new PointInfo(x, y, mirrorPixel.Value));
+                        var newX = originalWidth - originalX;
+                        pointInfoList.Add(new PointInfo(newX, y, mirrorPixel.Value));
                     }
                 }
             }
@@ -61,9 +60,9 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
         public override Identification GetIdentification()
         {
             var identification = base.GetIdentification();
-            identification.SetName("Mirror Filter");
-            identification.SetDescription("Represents a filter capable to expand the frame, adding a mirror image from original");
-            identification.SetGroup("SFX");
+            identification.SetName("Inversion Filter");
+            identification.SetDescription("Represents a filter capable to invert the frame");
+            identification.SetGroup("Picture");
 
             return identification;
         }
