@@ -195,6 +195,10 @@ namespace smartSuite.smartSpriteFX.Forms.Controls.Browsers
 
         private void txtFileName_TextChanged(object sender, EventArgs e)
         {
+        }
+
+        private void txtFileName_Leave(object sender, EventArgs e)
+        {
             if (String.IsNullOrEmpty(this.txtFileName.Text)) return;
             this.DoChoice(this.txtFileName.Text);
         }
