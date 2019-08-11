@@ -53,41 +53,38 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
 
                 List<PointInfo> pointInfoList = new List<PointInfo>();
                 int startY = previousHeight - marginBottom;
-                // int endX = cropFrame.Width;
                 int sourceY = maxY - 1;
                 for (int y = frame.Height - 1; y >= 0; y--)
                 {
-                    for (int x = 0; x < frame.Width; x++)
+                    for (int x = 0; x < cropFrame.Width; x++)
                     {
                         Color? pixel = null;
-                        // if (y <= startY && x < endX)
-                        if (y <= startY)
-                        {
-                            pixel = cropFrame.GetPixel(x, sourceY);
-                        }
+                        if (y <= startY) pixel = cropFrame.GetPixel(x, sourceY);
 
                         if (pixel == null || pixel == cropFrame.TransparentColor) pixel = Color.Transparent;
 
-                        pointInfoList.Add(
-                            new PointInfo(x, y, pixel.Value));
+                        pointInfoList.Add(new PointInfo(x, y, pixel.Value));
                     }
                     if (y <= startY) sourceY--;
                 }
 
-                // frame.Buffer.CLEAR();
+                frame.Buffer.CLEAR();
 
                 // Compensenting the old width
                 float pixelOffSet = (frame.Width - cropFrame.Width) / 2;
                 pointInfoList.ForEach(p => p.X += pixelOffSet);
 
-                // Filling the useless old-piece of image
-                for (float y = 0; y < frame.Height; y++)
-                {
-                    for (float x = 0; x < pixelOffSet; x++)
-                    {
-                        pointInfoList.Add(new PointInfo(x, y, Color.Transparent));
-                    }
-                }
+                #region Filling the useless old-piece of image
+
+                //for (float y = 0; y < frame.Height; y++)
+                //{
+                //    for (float x = 0; x < pixelOffSet; x++)
+                //    {
+                //        pointInfoList.Add(new PointInfo(x, y, Color.Transparent));
+                //    }
+                //}
+
+                #endregion
 
                 frame.Width = previousWidth;
                 frame.SetPixel(pointInfoList);

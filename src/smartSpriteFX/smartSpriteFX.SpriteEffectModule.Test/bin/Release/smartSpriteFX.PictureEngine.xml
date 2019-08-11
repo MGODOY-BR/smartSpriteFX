@@ -2211,6 +2211,15 @@
             <param name="y"></param>
             <returns></returns>
         </member>
+        <member name="M:smartSuite.smartSpriteFX.Pictures.Picture.GetPixel(System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            Gets a pixel from coordinate
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <param name="eagerLoading">Indicates if the buffer must be loaded, cause an empty buffer has been detected</param>
+            <returns></returns>
+        </member>
         <member name="M:smartSuite.smartSpriteFX.Pictures.Picture.Find(System.Drawing.Color[])">
             <summary>
             Finds a list of points for the color list

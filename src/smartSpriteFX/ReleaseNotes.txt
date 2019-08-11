@@ -12,3 +12,5 @@ Fixes
 - FrameRate Filter now can run under a scenario that it is the unique filter in list
 - Folder field writing doesn't refreshing anymore
 - AlignToButton has been reviewed to not change the horizontal length of image
+- AlignToButton doesn't repeat previous images anymore
+- Empty images on saving has been reviewed

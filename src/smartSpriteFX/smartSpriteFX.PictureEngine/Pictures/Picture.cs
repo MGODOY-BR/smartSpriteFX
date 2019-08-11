@@ -515,6 +515,18 @@ namespace smartSuite.smartSpriteFX.Pictures
         /// <returns></returns>
         public Color? GetPixel(int x, int y)
         {
+            return this.GetPixel(x, y, true);
+        }
+
+        /// <summary>
+        /// Gets a pixel from coordinate
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="eagerLoading">Indicates if the buffer must be loaded, cause an empty buffer has been detected</param>
+        /// <returns></returns>
+        private Color? GetPixel(int x, int y, bool eagerLoading)
+        {
             #region Entries validation
 
             long bufferSize = 0;
@@ -526,7 +538,14 @@ namespace smartSuite.smartSpriteFX.Pictures
 
             if (bufferSize == 0 && !String.IsNullOrWhiteSpace(this._fullPath))
             {
-                this.LoadBuffer(this._fullPath);
+                if (eagerLoading)
+                {
+                    this.LoadBuffer(this._fullPath);
+                }
+                else
+                {
+                    return null;
+                }
             }
             else if (bufferSize == 0)
             {
@@ -778,7 +797,7 @@ namespace smartSuite.smartSpriteFX.Pictures
 
             #endregion
 
-            var firstPixelRef = this.GetPixel(0, 0);
+            var firstPixelRef = this.GetPixel(0, 0, false);
 
             Color firstPixel;
             if (firstPixelRef.HasValue)
