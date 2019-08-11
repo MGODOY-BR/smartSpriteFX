@@ -11,3 +11,4 @@ Fixes
 - The Landscape Mode has been reviewed
 - FrameRate Filter now can run under a scenario that it is the unique filter in list
 - Folder field writing doesn't refreshing anymore
+- AlignToButton has been reviewed to not change the horizontal length of image

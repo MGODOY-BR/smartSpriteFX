@@ -74,9 +74,23 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
                     if (y <= startY) sourceY--;
                 }
 
-                frame.Buffer.CLEAR();
+                // frame.Buffer.CLEAR();
+
+                // Compensenting the old width
+                float pixelOffSet = (frame.Width - cropFrame.Width) / 2;
+                pointInfoList.ForEach(p => p.X += pixelOffSet);
+
+                // Filling the useless old-piece of image
+                for (float y = 0; y < frame.Height; y++)
+                {
+                    for (float x = 0; x < pixelOffSet; x++)
+                    {
+                        pointInfoList.Add(new PointInfo(x, y, Color.Transparent));
+                    }
+                }
+
+                frame.Width = previousWidth;
                 frame.SetPixel(pointInfoList);
-                frame.Width = cropFrame.Width;
             }
 
             return true;
