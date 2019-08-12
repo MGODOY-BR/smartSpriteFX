@@ -16,6 +16,7 @@ using smartSuite.smartSpriteFX.PictureEngine.Pictures.Data;
 using System.Globalization;
 using System.Text.RegularExpressions;
 using smartSuite.smartSpriteFX.PictureEngine.Pictures;
+using System.Configuration;
 
 namespace smartSuite.smartSpriteFX.Effects.Core{
 	/// <summary>
@@ -234,8 +235,8 @@ namespace smartSuite.smartSpriteFX.Effects.Core{
             EffectEngine._callback = callback;
             EffectEngine._outputPath = null;
 
-            ThreadPool.SetMinThreads(3, 40);
-            ThreadPool.SetMaxThreads(10, 80);
+            ThreadPool.SetMinThreads(int.Parse(ConfigurationManager.AppSettings["minThreads"]), 40);
+            ThreadPool.SetMaxThreads(int.Parse(ConfigurationManager.AppSettings["maxThreads"]), 80);
 
             EffectEngine._applyingThreadList.Clear();
             List<WaitHandle> syncList = new List<WaitHandle>();
