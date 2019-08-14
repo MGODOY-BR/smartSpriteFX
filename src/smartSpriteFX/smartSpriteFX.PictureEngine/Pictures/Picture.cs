@@ -827,18 +827,11 @@ namespace smartSuite.smartSpriteFX.Pictures
                     PointInfo pointInfo = pixelItem;
                     #region Entries validation
 
-                    if (pixelItem == null)
-                    {
-                        pointInfo.Color = firstPixel;
-                    }
-                    if (pointInfo.X >= this._width)
-                    {
-                        continue;
-                    }
-                    if (pointInfo.Y >= this._height)
-                    {
-                        continue;
-                    }
+                    if (pixelItem == null) pointInfo.Color = firstPixel;
+                    if (pointInfo.X >= this._width) continue;
+                    if (pointInfo.Y >= this._height) continue;
+                    if (pointInfo.X < 0) continue;
+                    if (pointInfo.Y < 0) continue;
 
                     #endregion
 
