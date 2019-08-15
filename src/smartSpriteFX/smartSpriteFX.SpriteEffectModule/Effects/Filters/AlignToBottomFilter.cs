@@ -30,7 +30,7 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
 
             if(this.BottomMargin == 0)
             {
-                return false;
+                this.BottomMargin = 1;
             }
 
             #endregion
@@ -49,33 +49,25 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
             else
             {
                 var marginBottom = this.BottomMargin;
-                var maxY = cropFrame.Height;
 
                 List<PointInfo> pointInfoList = new List<PointInfo>();
-                int startY = previousHeight - marginBottom;
-                int sourceY = maxY - 1;
-                for (int y = previousHeight - 1; y >= 0; y--)
-                {
-                    for (int x = 0; x < previousWidth; x++)
-                    {
-                        Color? pixel = null;
-                        if (y <= startY) pixel = cropFrame.GetPixel(x, sourceY);
-
-                        if (pixel == null || pixel == cropFrame.TransparentColor) pixel = Color.Transparent;
-
-                        pointInfoList.Add(new PointInfo(x, y, pixel.Value));
-                    }
-                    if (y <= startY) sourceY--;
-                }
-
-                frame.Buffer.CLEAR();
-
-                // Compensenting the old width
-                float pixelOffSet = (frame.Width - cropFrame.Width) / 2;
-                pointInfoList.ForEach(p => p.X += pixelOffSet);
 
                 frame.Height = previousHeight;
                 frame.Width = previousWidth;
+                frame.Buffer.CLEAR();
+
+                for (int y = 0; y < cropFrame.Height; y++)
+                {
+                    for (int x = 0; x < cropFrame.Width; x++)
+                    {
+                        var pixel = cropFrame.GetPixel(x, y);
+                        int newY = y + previousHeight - cropFrame.Height;
+                        int newX = x + (frame.Width - cropFrame.Width) / 2;
+
+                        pointInfoList.Add(new PointInfo(newX, newY, pixel.Value));
+                    }
+                }
+
                 frame.SetPixel(pointInfoList);
             }
 
