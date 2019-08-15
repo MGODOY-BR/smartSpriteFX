@@ -39,8 +39,8 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
                 cropFilter = new CropFilter();
 
             var cropFrame = frame.Clone();
-            int previousHeight = cropFrame.Height;
-            int previousWidth = cropFrame.Width;
+            int previousHeight = frame.Height;
+            int previousWidth = frame.Width;
 
             if (!cropFilter.ApplyFilter(cropFrame, index))
             {
@@ -54,9 +54,9 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
                 List<PointInfo> pointInfoList = new List<PointInfo>();
                 int startY = previousHeight - marginBottom;
                 int sourceY = maxY - 1;
-                for (int y = frame.Height - 1; y >= 0; y--)
+                for (int y = previousHeight - 1; y >= 0; y--)
                 {
-                    for (int x = 0; x < cropFrame.Width; x++)
+                    for (int x = 0; x < previousWidth; x++)
                     {
                         Color? pixel = null;
                         if (y <= startY) pixel = cropFrame.GetPixel(x, sourceY);
@@ -74,18 +74,7 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
                 float pixelOffSet = (frame.Width - cropFrame.Width) / 2;
                 pointInfoList.ForEach(p => p.X += pixelOffSet);
 
-                #region Filling the useless old-piece of image
-
-                //for (float y = 0; y < frame.Height; y++)
-                //{
-                //    for (float x = 0; x < pixelOffSet; x++)
-                //    {
-                //        pointInfoList.Add(new PointInfo(x, y, Color.Transparent));
-                //    }
-                //}
-
-                #endregion
-
+                frame.Height = previousHeight;
                 frame.Width = previousWidth;
                 frame.SetPixel(pointInfoList);
             }
