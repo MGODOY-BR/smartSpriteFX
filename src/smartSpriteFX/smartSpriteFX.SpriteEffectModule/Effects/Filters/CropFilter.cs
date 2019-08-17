@@ -24,6 +24,11 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
         private TransparentBackgroundFilter _transparentBackgroundFilter = new TransparentBackgroundFilter();
         private CutFilter _cutFilter = new CutFilter();
 
+        /// <summary>
+        /// Gets the first point in the original frame used to start the crop point
+        /// </summary>
+        public Point Reference { get; private set; }
+
         public Color GetTransparentColor()
         {
             if (this._transparentBackgroundFilter == null)
@@ -42,13 +47,25 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
 
             this._transparentBackgroundFilter.ApplyFilter(copyFrame, index);
             List<PointInfo> pointInfoList = copyFrame.ListBorder();
-            if (pointInfoList.Count == 0)
-                return false;
-            float num1 = ((IEnumerable<PointInfo>)pointInfoList).Min<PointInfo>((Func<PointInfo, float>)(pointItem => ((Point)pointItem).X));
-            float num2 = ((IEnumerable<PointInfo>)pointInfoList).Max<PointInfo>((Func<PointInfo, float>)(pointItem => ((Point)pointItem).X));
-            float num3 = ((IEnumerable<PointInfo>)pointInfoList).Min<PointInfo>((Func<PointInfo, float>)(pointItem => ((Point)pointItem).Y));
-            float num4 = ((IEnumerable<PointInfo>)pointInfoList).Max<PointInfo>((Func<PointInfo, float>)(pointItem => ((Point)pointItem).Y));
-            this._cutFilter.SetPoint(new Point(num1, num3), new Point(num2, num4));
+            if (pointInfoList.Count == 0) return false;
+
+            #region New calculation
+
+            float minY = pointInfoList.Where(p => this._transparentBackgroundFilter.TransparentColor != p.Color).Min<PointInfo>(p => p.Y);
+            float minX = pointInfoList.Where(p => this._transparentBackgroundFilter.TransparentColor != p.Color).Min<PointInfo>(p => p.X);
+
+            float maxY = pointInfoList.Where(p => this._transparentBackgroundFilter.TransparentColor != p.Color).Max<PointInfo>(p => p.Y);
+            float maxX = pointInfoList.Where(p => this._transparentBackgroundFilter.TransparentColor != p.Color).Max<PointInfo>(p => p.X);
+
+            Point minPoint = new Point(minX, minY);
+            Point maxPoint = new Point(maxX, maxY);
+
+            #endregion
+
+            // this.Reference = new Point(num1, num3);
+            this.Reference = minPoint;
+
+            this._cutFilter.SetPoint(minPoint, maxPoint);
             this._cutFilter.ApplyFilter(copyFrame, index);
 
             frame.Buffer.CLEAR();
