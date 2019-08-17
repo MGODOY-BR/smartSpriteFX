@@ -10,6 +10,7 @@ using smartSuite.smartSpriteFX.Effects.Infra;
 using smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI;
 using smartSuite.smartSpriteFX.Effects.Facade;
 using smartSuite.smartSpriteFX.Pictures.ColorPattern;
+using smartSuite.smartSpriteFX.PictureEngine.Pictures;
 
 namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
 {
@@ -89,12 +90,6 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
 
             #endregion
 
-            var originalFrame = frame.Clone();
-            frame.ReleaseBuffer();
-
-            frame.Width = (int)Math.Abs(this._pointB.X - this._pointA.X);
-            frame.Height = (int)Math.Abs(this._pointB.Y - this._pointA.Y);
-
             int minX = (int)this._pointA.X;
             int minY = (int)this._pointA.Y;
 
@@ -104,10 +99,14 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
             int maxX = (int)this._pointB.X;
             int maxY = (int)this._pointB.Y;
 
-            if (maxX > originalFrame.Width) maxX = originalFrame.Width;
-            if (maxY > originalFrame.Height) maxY = originalFrame.Height;
+            if (maxX > frame.Width) maxX = frame.Width;
+            if (maxY > frame.Height) maxY = frame.Height;
 
-            var sourceList = originalFrame.GetAllPixels();
+            frame.Width = (int)Math.Abs(this._pointB.X - this._pointA.X);
+            frame.Height = (int)Math.Abs(this._pointB.Y - this._pointA.Y);
+
+            var sourceList = frame.GetAllPixels();
+            List<PointInfo> pointList = new List<PointInfo>();
             foreach (var sourceItem in sourceList)
             {
                 int y = (int)sourceItem.Y;
@@ -115,33 +114,18 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
 
                 #region Entries validation
 
-                if (y < minY)
-                {
-                    continue;
-                }
-                if (y >= maxY)
-                {
-                    continue;
-                }
-                if (x < minX)
-                {
-                    continue;
-                }
-                if (x >= maxX)
-                {
-                    continue;
-                }
+                if (y < minY) continue;
+                if (y >= maxY) continue;
+                if (x < minX) continue;
+                if (x >= maxX) continue;
 
                 #endregion
 
-                var pixel = sourceItem.Color;
-
-                frame.ReplacePixel(
-                    Math.Abs(x - minX),
-                    Math.Abs(y - minY),
-                    pixel);
+                pointList.Add(
+                    new PointInfo(Math.Abs(x - minX), Math.Abs(y - minY), sourceItem.Color));
             }
-            originalFrame.ReleaseBuffer();
+            frame.ClearCache();
+            frame.SetPixel(pointList);
 
             return true;
         }

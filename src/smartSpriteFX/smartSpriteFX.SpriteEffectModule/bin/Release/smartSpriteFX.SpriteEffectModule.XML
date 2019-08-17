@@ -50,6 +50,11 @@
             It's a list of color to be replaced
             </summary>
         </member>
+        <member name="P:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.CropFilter.Reference">
+            <summary>
+            Gets the first point in the original frame used to start the crop point
+            </summary>
+        </member>
         <member name="T:smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.CutFilter">
             <summary>
             Represents a filter which is used to cut frames
