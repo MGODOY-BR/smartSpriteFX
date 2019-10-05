@@ -71,7 +71,6 @@ C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSp
 C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX\obj\Release\smartSuite.smartSpriteFX.Forms.ToolsForm.resources
 C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX\obj\Release\smartSuite.smartSpriteFX.Properties.Resources.resources
 C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX\obj\Release\smartSpriteFX.csproj.GenerateResource.cache
-C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX\obj\Release\smartSpriteFX.csproj.CoreCompileInputs.cache
 C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX\obj\Release\smartSpriteFX.csproj.CopyComplete
 C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX\obj\Release\smartSpriteFX.exe
 C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX\obj\Release\smartSpriteFX.pdb

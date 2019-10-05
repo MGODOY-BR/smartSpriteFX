@@ -11,7 +11,6 @@ C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSp
 C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.Common.UI\obj\Release\smartSuite.smartSpriteFX.Forms.Controls.LineControl.resources
 C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.Common.UI\obj\Release\smartSuite.smartSpriteFX.Common.UI.Properties.Resource.resources
 C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.Common.UI\obj\Release\smartSpriteFX.Common.UI.csproj.GenerateResource.cache
-C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.Common.UI\obj\Release\smartSpriteFX.Common.UI.csproj.CoreCompileInputs.cache
 C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.Common.UI\obj\Release\smartSpriteFX.Common.UI.csproj.CopyComplete
 C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.Common.UI\obj\Release\smartSpriteFX.Common.UI.dll
 C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.Common.UI\obj\Release\smartSpriteFX.Common.UI.pdb

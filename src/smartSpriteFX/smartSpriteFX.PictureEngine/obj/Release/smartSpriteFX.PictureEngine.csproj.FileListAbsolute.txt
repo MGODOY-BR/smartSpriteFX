@@ -5,7 +5,6 @@ C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSp
 C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.PictureEngine\obj\Release\smartSuite.smartSpriteFX.Forms.ColorSupportForm.resources
 C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.PictureEngine\obj\Release\smartSuite.smartSpriteFX.PictureEngine.Templates.UnityMetaFile.resources
 C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.PictureEngine\obj\Release\smartSpriteFX.PictureEngine.csproj.GenerateResource.cache
-C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.PictureEngine\obj\Release\smartSpriteFX.PictureEngine.csproj.CoreCompileInputs.cache
 C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.PictureEngine\obj\Release\smartSpriteFX.PictureEngine.dll
 C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.PictureEngine\obj\Release\smartSpriteFX.PictureEngine.pdb
 C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.PictureEngine\obj\Release\smartSpriteFX.PictureEngine.csprojAssemblyReference.cache

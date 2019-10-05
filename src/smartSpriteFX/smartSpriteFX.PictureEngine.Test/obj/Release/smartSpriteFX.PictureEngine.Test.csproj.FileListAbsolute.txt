@@ -13,7 +13,6 @@ C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSp
 C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.PictureEngine.Test\obj\Release\smartSpriteFX.PictureEngine.Test.csprojAssemblyReference.cache
 C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.PictureEngine.Test\obj\Release\smartSuite.smartSpriteFX.PictureEngine.Test.PictureStubs.resources
 C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.PictureEngine.Test\obj\Release\smartSpriteFX.PictureEngine.Test.csproj.GenerateResource.cache
-C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.PictureEngine.Test\obj\Release\smartSpriteFX.PictureEngine.Test.csproj.CoreCompileInputs.cache
 C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.PictureEngine.Test\obj\Release\smartSpriteFX.PictureEngine.Test.csproj.CopyComplete
 C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.PictureEngine.Test\obj\Release\smartSpriteFX.PictureEngine.Test.dll
 C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.PictureEngine.Test\obj\Release\smartSpriteFX.PictureEngine.Test.pdb

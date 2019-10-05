@@ -61,11 +61,11 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
                     for (int x = 0; x < cropFrame.Width; x++)
                     {
                         var pixel = cropFrame.GetPixel(x, y);
+                        if (!pixel.HasValue) continue;
                         int newY = y + previousHeight - cropFrame.Height;
-                        // int newY = (int)cropFilter.Reference.Y + y + (previousHeight - (int)cropFilter.Reference.Y);
                         int newX = x + (frame.Width - cropFrame.Width) / 2;
 
-                        pointInfoList.Add(new PointInfo(newX, newY, pixel.Value));
+                        pointInfoList.Add(new PointInfo(newX, newY, pixel.Value)); 
                     }
                 }
 
