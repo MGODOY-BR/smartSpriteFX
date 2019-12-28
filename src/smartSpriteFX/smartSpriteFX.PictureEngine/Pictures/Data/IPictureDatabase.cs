@@ -11,6 +11,16 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
     public interface IPictureDatabase
     {
         /// <summary>
+        /// Gets or sets the background color, used in clear methods to stablish the paper color
+        /// </summary>
+        /// <returns></returns>
+        Color? BackgroundColor 
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
         /// Begins the transaction
         /// </summary>
         void BeginTransaction();

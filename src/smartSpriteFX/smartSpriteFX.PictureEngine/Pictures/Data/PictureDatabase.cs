@@ -70,6 +70,7 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
         /// It´s a datasource
         /// </summary>
         public List<PointInfo> DataSource { get => _dataSource; }
+        public Color? BackgroundColor { get; set; }
 
         /// <summary>
         /// Gets a opened database

@@ -20,6 +20,7 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
         /// It's a data source
         /// </summary>
         public LockBitmap DataSource { get; private set; }
+        public Color? BackgroundColor { get; set; }
 
         public void BeginTransaction()
         {
@@ -39,7 +40,10 @@ namespace smartSuite.smartSpriteFX.PictureEngine.Pictures.Data
             {
                 for (int y = 0; y < this.DataSource.Height; y++)
                 {
-                    this.DataSource.SetPixel(x, y, Color.White);
+                    // this.DataSource.SetPixel(x, y, Color.White);
+                    Color backgroundColor = Color.White;
+                    if (this.BackgroundColor.HasValue) backgroundColor = this.BackgroundColor.Value;
+                    this.DataSource.SetPixel(x, y, backgroundColor);
                 }
             }
         }

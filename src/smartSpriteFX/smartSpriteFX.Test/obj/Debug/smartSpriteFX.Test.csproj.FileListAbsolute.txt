@@ -70,7 +70,6 @@ C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSp
 C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.Test\bin\Debug\smartSpriteFX.SpriteEffectModule.pdb
 C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.Test\bin\Debug\smartSpriteFX.Common.UI.pdb
 C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.Test\obj\Debug\smartSpriteFX.Test.csprojAssemblyReference.cache
-C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.Test\obj\Debug\smartSpriteFX.Test.csproj.CoreCompileInputs.cache
 C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.Test\obj\Debug\smartSpriteFX.Test.csproj.CopyComplete
 C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.Test\obj\Debug\smartSpriteFX.Test.dll
 C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.Test\obj\Debug\smartSpriteFX.Test.pdb

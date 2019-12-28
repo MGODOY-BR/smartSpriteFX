@@ -14,5 +14,6 @@ Fixes
 - Folder field writing doesn't refreshing anymore
 - AlignToButton has been reviewed to not change the horizontal length of image
 - AlignToButton doesn't repeat previous images anymore
+- AlignToButton has been reviewed to avoid misframing.
 - Empty images on saving has been reviewed
 - Free Cut filter has been reviewed against bugs that includes multiple Free Cuts embedded

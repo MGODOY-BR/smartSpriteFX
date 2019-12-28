@@ -1158,6 +1158,12 @@
             Defines how a picture data base must be
             </summary>
         </member>
+        <member name="P:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.IPictureDatabase.BackgroundColor">
+            <summary>
+            Gets or sets the background color, used in clear methods to stablish the paper color
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:smartSuite.smartSpriteFX.PictureEngine.Pictures.Data.IPictureDatabase.BeginTransaction">
             <summary>
             Begins the transaction

@@ -54,6 +54,7 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
 
                 frame.Height = previousHeight;
                 frame.Width = previousWidth;
+                frame.Buffer.BackgroundColor = frame.GetPixel(0, 0);
                 frame.Buffer.CLEAR();
 
                 for (int y = 0; y < cropFrame.Height; y++)
