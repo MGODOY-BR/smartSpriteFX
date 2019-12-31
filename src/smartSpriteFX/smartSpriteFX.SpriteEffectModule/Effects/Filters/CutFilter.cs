@@ -82,6 +82,23 @@ namespace smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters
                     Y = frame.Height,
                 };
             }
+            if (this._pointA == null)
+            {
+                this._pointA = new Point
+                {
+                    X = 0,
+                    Y = 0,
+                };
+            }
+
+            if (this._pointB == null)
+            {
+                this._pointB = new Point
+                {
+                    X = frame.Width,
+                    Y = frame.Height,
+                };
+            }
             if (this._pointA.CompareTo(this._pointB) > 0)
             {
                 this._pointA = this._pointB.Clone();
