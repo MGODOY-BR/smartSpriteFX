@@ -35,6 +35,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.link = new System.Windows.Forms.LinkLabel();
             this.btnOK = new System.Windows.Forms.Button();
+            this.btnWatch = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -77,6 +78,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.btnWatch);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.link);
             this.panel2.Controls.Add(this.btnOK);
@@ -116,6 +118,16 @@
             this.btnOK.UseVisualStyleBackColor = true;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
+            // btnWatch
+            // 
+            this.btnWatch.Location = new System.Drawing.Point(312, 65);
+            this.btnWatch.Name = "btnWatch";
+            this.btnWatch.Size = new System.Drawing.Size(75, 23);
+            this.btnWatch.TabIndex = 3;
+            this.btnWatch.Text = "Watch...";
+            this.btnWatch.UseVisualStyleBackColor = true;
+            this.btnWatch.Click += new System.EventHandler(this.btnWatch_Click);
+            // 
             // PathAlertForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -147,5 +159,6 @@
         private System.Windows.Forms.Label lblLabel;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.LinkLabel link;
+        private System.Windows.Forms.Button btnWatch;
     }
 }

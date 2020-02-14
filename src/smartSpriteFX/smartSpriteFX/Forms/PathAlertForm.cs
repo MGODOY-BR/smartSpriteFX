@@ -39,5 +39,11 @@ namespace smartSuite.smartSpriteFX.Forms
         {
             this.Focus();
         }
+
+        private void btnWatch_Click(object sender, EventArgs e)
+        {
+            WatchAnimation watchAnimation = new WatchAnimation(this.link.Links[0].LinkData.ToString());
+            watchAnimation.ShowDialog();
+        }
     }
 }
