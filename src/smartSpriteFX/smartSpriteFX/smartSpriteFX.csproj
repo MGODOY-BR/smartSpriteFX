@@ -80,6 +80,12 @@
     <Compile Include="Forms\AboutBoxForm.Designer.cs">
       <DependentUpon>AboutBoxForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\BrowseFolder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\BrowseFolder.Designer.cs">
+      <DependentUpon>BrowseFolder.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\EffectModeBatchForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -186,6 +192,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\AboutBoxForm.resx">
       <DependentUpon>AboutBoxForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\BrowseFolder.resx">
+      <DependentUpon>BrowseFolder.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\EffectModeBatchForm.resx">
       <DependentUpon>EffectModeBatchForm.cs</DependentUpon>

@@ -6,6 +6,7 @@ New Feactures
 	- InversionFilter
 - New Image Letter Character Set: Boxes / Arrows / Keys
 - Number of current threads can be set up from smartSpriteFX.exe.config
+- Introducing "Watch Animation" feature!!
 
 Fixes
 - Image Letter mode -> the last character bug: the item wasn't printed

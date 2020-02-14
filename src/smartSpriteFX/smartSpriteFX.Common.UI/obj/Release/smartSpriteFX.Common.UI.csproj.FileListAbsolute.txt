@@ -14,4 +14,3 @@ C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSp
 C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.Common.UI\obj\Release\smartSpriteFX.Common.UI.csproj.CopyComplete
 C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.Common.UI\obj\Release\smartSpriteFX.Common.UI.dll
 C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.Common.UI\obj\Release\smartSpriteFX.Common.UI.pdb
-C:\Users\mgodo\Documents\Repositorio GIT\smartSpriteFX\src\smartSpriteFX\smartSpriteFX.Common.UI\obj\Release\smartSpriteFX.Common.UI.csproj.CoreCompileInputs.cache

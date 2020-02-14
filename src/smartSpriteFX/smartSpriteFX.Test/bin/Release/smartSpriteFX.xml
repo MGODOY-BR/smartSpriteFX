@@ -20,6 +20,23 @@
             the contents of this method with the code editor.
             </summary>
         </member>
+        <member name="F:smartSuite.smartSpriteFX.Forms.BrowseFolder.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.BrowseFolder.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.BrowseFolder.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
         <member name="F:smartSuite.smartSpriteFX.Forms.EffectModeBatchForm._originFolder">
             <summary>
             It is the origin folder
@@ -1256,6 +1273,23 @@
             </summary>
             <param name="dataTreeNodeList"></param>
             <returns></returns>
+        </member>
+        <member name="F:smartSuite.smartSpriteFX.Forms.WatchAnimation.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.WatchAnimation.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:smartSuite.smartSpriteFX.Forms.WatchAnimation.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
         </member>
         <member name="M:smartSuite.smartSpriteFX.Program.Main">
             <summary>

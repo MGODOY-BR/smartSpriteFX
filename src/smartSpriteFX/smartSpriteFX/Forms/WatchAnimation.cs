@@ -82,20 +82,26 @@ namespace smartSuite.smartSpriteFX.Forms
         {
             State state = (State)e.Argument;
             BackgroundWorker worker = (BackgroundWorker)sender;
-            var files = Directory.GetFiles(state.URI);
+
+            List<string> files = new List<string>();
+            files.AddRange(Directory.GetFiles(state.URI, "*.png"));
+            files.AddRange(Directory.GetFiles(state.URI, "*.jpg"));
+            files.AddRange(Directory.GetFiles(state.URI, "*.jpeg"));
+            files.AddRange(Directory.GetFiles(state.URI, "*.bmp"));
+            files.AddRange(Directory.GetFiles(state.URI, "*.filtered.png"));
 
             int bookmark = 0;
 
             while (_command == PlayModeEnum.RUNNING || _command == PlayModeEnum.PAUSED)
             {
-                for (int i = bookmark; i < files.Length; i++)
+                for (int i = bookmark; i < files.Count; i++)
                 {
                     if (_command != PlayModeEnum.RUNNING) break;
                     bookmark = i;
 
                     var file = files[i];
                     worker.ReportProgress(
-                        i / files.Length * 100, 
+                        i / files.Count * 100, 
                         new FramePointer
                         {
                             FileName = file,

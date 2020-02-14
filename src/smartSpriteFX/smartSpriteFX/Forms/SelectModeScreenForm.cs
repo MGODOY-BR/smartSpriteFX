@@ -186,5 +186,13 @@ namespace smartSuite.smartSpriteFX.Forms
             ToolsForm form = new ToolsForm();
             form.ShowDialog();
         }
+
+        private void btnWatchAnimation_Click(object sender, EventArgs e)
+        {
+            BrowseFolder browseFolder = new BrowseFolder();
+            browseFolder.ShowDialog();
+
+            this.Close();
+        }
     }
 }

@@ -38,6 +38,7 @@
             this.imgDemo = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblDescription = new System.Windows.Forms.Label();
+            this.btnWatchAnimation = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgDemo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -174,12 +175,26 @@
             this.lblDescription.TabIndex = 6;
             this.lblDescription.Visible = false;
             // 
+            // btnWatchAnimation
+            // 
+            this.btnWatchAnimation.BackColor = System.Drawing.Color.White;
+            this.btnWatchAnimation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnWatchAnimation.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnWatchAnimation.Location = new System.Drawing.Point(12, 365);
+            this.btnWatchAnimation.Name = "btnWatchAnimation";
+            this.btnWatchAnimation.Size = new System.Drawing.Size(84, 59);
+            this.btnWatchAnimation.TabIndex = 7;
+            this.btnWatchAnimation.Text = "Watch Animation...";
+            this.btnWatchAnimation.UseVisualStyleBackColor = false;
+            this.btnWatchAnimation.Click += new System.EventHandler(this.btnWatchAnimation_Click);
+            // 
             // SelectModeScreenForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(928, 478);
+            this.Controls.Add(this.btnWatchAnimation);
             this.Controls.Add(this.lblDescription);
             this.Controls.Add(this.imgDemo);
             this.Controls.Add(this.panel1);
@@ -210,5 +225,6 @@
         private System.Windows.Forms.Label lblDescription;
         private System.Windows.Forms.Button btnLettlerModeBatch;
         private System.Windows.Forms.Button btnTools;
+        private System.Windows.Forms.Button btnWatchAnimation;
     }
 }
