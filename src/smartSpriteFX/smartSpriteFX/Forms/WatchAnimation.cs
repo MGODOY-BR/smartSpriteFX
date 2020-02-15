@@ -224,6 +224,8 @@ namespace smartSuite.smartSpriteFX.Forms
 
                     this.lblFile.Text = Path.GetFileName(file);
 
+                    if (pictureBox1.Image != null) pictureBox1.Image.Dispose();
+                    pictureBox1.Image = null;
                     pictureBox1.Image = LoadImage(file);
                     pictureBox1.Refresh();
                 }
