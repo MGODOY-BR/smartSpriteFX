@@ -1,4 +1,5 @@
-﻿using System;
+﻿using smartSuite.smartSpriteFX.Properties;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -18,7 +19,7 @@ namespace smartSuite.smartSpriteFX.Forms
         private string _uri;
         PlayModeEnum _playModeEnum = PlayModeEnum.STOPPED;
         static PlayModeEnum _command = PlayModeEnum.STOPPED;
-        static float FramesPerSec { get; set; }
+        static float FramesPerSec;
         static FramePointer _currentPointer;
 
         public WatchAnimation()
@@ -29,6 +30,10 @@ namespace smartSuite.smartSpriteFX.Forms
         {
             InitializeComponent();
             _uri = uri;
+
+            _command = PlayModeEnum.STOPPED;
+            FramesPerSec = Settings.Default.lastFramePerSec;
+            _currentPointer = null;
         }
 
         protected override void OnLoad(EventArgs e)
@@ -184,6 +189,8 @@ namespace smartSuite.smartSpriteFX.Forms
         private void txtFramesPerSec_ValueChanged(object sender, EventArgs e)
         {
             FramesPerSec = 1 / (float)this.txtFramesPerSec.Value;
+            Settings.Default.lastFramePerSec = FramesPerSec;
+            Settings.Default.Save();
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
