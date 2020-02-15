@@ -19,7 +19,7 @@ namespace smartSuite.smartSpriteFX.Forms
         private string _uri;
         PlayModeEnum _playModeEnum = PlayModeEnum.STOPPED;
         static PlayModeEnum _command = PlayModeEnum.STOPPED;
-        static float FramesPerSec;
+        static float _timePerFrame;
         static FramePointer _currentPointer;
 
         public WatchAnimation()
@@ -32,10 +32,9 @@ namespace smartSuite.smartSpriteFX.Forms
             _uri = uri;
 
             _command = PlayModeEnum.STOPPED;
-            FramesPerSec = Settings.Default.lastFramePerSec;
             _currentPointer = null;
 
-            this.txtFramesPerSec.Value = (decimal)FramesPerSec;
+            this.txtFramesPerSec.Value = (decimal)Settings.Default.lastFramePerSec;
         }
 
         protected override void OnLoad(EventArgs e)
@@ -69,7 +68,7 @@ namespace smartSuite.smartSpriteFX.Forms
                     this._playModeEnum = PlayModeEnum.RUNNING;
                     if (!this.backgroundWorker1.IsBusy)
                     {
-                        FramesPerSec = 1 / (float)this.txtFramesPerSec.Value;
+                        _timePerFrame = 1 / (float)this.txtFramesPerSec.Value;
 
                         this.backgroundWorker1.RunWorkerAsync(
                             new State
@@ -130,7 +129,7 @@ namespace smartSuite.smartSpriteFX.Forms
                     worker.ReportProgress(
                         i / files.Count * 100, _currentPointer);
 
-                    Thread.Sleep((int)(1000 * FramesPerSec));
+                    Thread.Sleep((int)(1000 * _timePerFrame));
                 }
                 if (_command == PlayModeEnum.RUNNING) bookmark = 0;
             }
@@ -190,8 +189,8 @@ namespace smartSuite.smartSpriteFX.Forms
 
         private void txtFramesPerSec_ValueChanged(object sender, EventArgs e)
         {
-            FramesPerSec = 1 / (float)this.txtFramesPerSec.Value;
-            Settings.Default.lastFramePerSec = FramesPerSec;
+            _timePerFrame = 1 / (float)this.txtFramesPerSec.Value;
+            Settings.Default.lastFramePerSec = (float)this.txtFramesPerSec.Value;
             Settings.Default.Save();
         }
 
