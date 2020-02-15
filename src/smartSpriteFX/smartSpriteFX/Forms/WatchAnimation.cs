@@ -142,8 +142,7 @@ namespace smartSuite.smartSpriteFX.Forms
 
         private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-            if(this.pictureBox1.Image != null) this.pictureBox1.Image.Dispose();
-            this.pictureBox1.Image = null;
+            if (this.pictureBox1.Image != null) this.pictureBox1.Image.Dispose();
 
             FramePointer state = (FramePointer)e.UserState;
             this.pictureBox1.Image = LoadImage(state.FileName);
@@ -194,9 +193,9 @@ namespace smartSuite.smartSpriteFX.Forms
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            this.pictureBox1.Image.Dispose();
-            ProcessStartInfo startInfo = new ProcessStartInfo(_currentPointer.FileName);
+            if (this.pictureBox1.Image != null) this.pictureBox1.Image.Dispose();
 
+            ProcessStartInfo startInfo = new ProcessStartInfo(_currentPointer.FileName);
             Process.Start(startInfo);
         }
 
