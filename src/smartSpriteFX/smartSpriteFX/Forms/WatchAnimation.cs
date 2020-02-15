@@ -142,7 +142,6 @@ namespace smartSuite.smartSpriteFX.Forms
             files.AddRange(Directory.GetFiles(uri, "*.jpg"));
             files.AddRange(Directory.GetFiles(uri, "*.jpeg"));
             files.AddRange(Directory.GetFiles(uri, "*.bmp"));
-            files.AddRange(Directory.GetFiles(uri, "*.filtered.png"));
             return files;
         }
 
@@ -217,29 +216,35 @@ namespace smartSuite.smartSpriteFX.Forms
         {
             if(this._playModeEnum == PlayModeEnum.PAUSED)
             {
-                try
-                {
-                    var files = this.GetFrames(this._uri);
-                    var file = files[(int)this.txtFrame.Value - 1];
+                var files = this.GetFrames(this._uri);
+                int index = (int)this.txtFrame.Value - 1;
 
-                    _currentPointer =
-                        new FramePointer
-                        {
-                            FileName = file,
-                            Frame = (int)this.txtFrame.Value - 1,
-                        };
-
-                    this.lblFile.Text = Path.GetFileName(file);
-
-                    if (pictureBox1.Image != null) pictureBox1.Image.Dispose();
-                    pictureBox1.Image = null;
-                    pictureBox1.Image = LoadImage(file);
-                    pictureBox1.Refresh();
+                if (index > files.Count - 1) 
+                { 
+                    index = 0; 
+                    txtFrame.Value = 1; 
                 }
-                catch
+                else if(index < 0)
                 {
-                    this.txtFrame.Value = 1;
+                    index = 0;
+                    txtFrame.Value = 1;
                 }
+
+                var file = files[index];
+
+                _currentPointer =
+                    new FramePointer
+                    {
+                        FileName = file,
+                        Frame = index,
+                    };
+
+                this.lblFile.Text = Path.GetFileName(file);
+
+                if (pictureBox1.Image != null) pictureBox1.Image.Dispose();
+                pictureBox1.Image = null;
+                pictureBox1.Image = LoadImage(file);
+                pictureBox1.Refresh();
             }
         }
     }
