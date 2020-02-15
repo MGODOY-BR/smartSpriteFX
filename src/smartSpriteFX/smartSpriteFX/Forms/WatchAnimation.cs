@@ -200,7 +200,11 @@ namespace smartSuite.smartSpriteFX.Forms
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            if (this.pictureBox1.Image != null) this.pictureBox1.Image.Dispose();
+            if (this.pictureBox1.Image != null)
+            {
+                this.pictureBox1.Image.Dispose();
+                this.pictureBox1.Image = null;
+            }
 
             ProcessStartInfo startInfo = new ProcessStartInfo(_currentPointer.FileName);
             Process.Start(startInfo);
