@@ -32,18 +32,24 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
             this.btnPlay = new System.Windows.Forms.Button();
             this.txtFramesPerSec = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.lblFrame = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.btnEdit = new System.Windows.Forms.Button();
+            this.btnRefresh = new System.Windows.Forms.Button();
+            this.pnlEdit = new System.Windows.Forms.Panel();
+            this.txtFrame = new System.Windows.Forms.NumericUpDown();
+            this.lblFile = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtFramesPerSec)).BeginInit();
+            this.pnlEdit.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFrame)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -85,8 +91,10 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.lblFile);
+            this.panel2.Controls.Add(this.txtFrame);
+            this.panel2.Controls.Add(this.pnlEdit);
             this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.lblFrame);
             this.panel2.Controls.Add(this.btnPlay);
             this.panel2.Controls.Add(this.txtFramesPerSec);
             this.panel2.Controls.Add(this.label1);
@@ -96,6 +104,15 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(794, 58);
             this.panel2.TabIndex = 1;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(475, 31);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(39, 13);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Frame:";
             // 
             // btnPlay
             // 
@@ -148,23 +165,51 @@
             this.backgroundWorker1.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker1_ProgressChanged);
             this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
             // 
-            // lblFrame
+            // btnEdit
             // 
-            this.lblFrame.AutoSize = true;
-            this.lblFrame.Location = new System.Drawing.Point(478, 31);
-            this.lblFrame.Name = "lblFrame";
-            this.lblFrame.Size = new System.Drawing.Size(10, 13);
-            this.lblFrame.TabIndex = 4;
-            this.lblFrame.Text = "-";
+            this.btnEdit.Location = new System.Drawing.Point(3, 3);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(75, 23);
+            this.btnEdit.TabIndex = 6;
+            this.btnEdit.Text = "EDIT";
+            this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
-            // label2
+            // btnRefresh
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(424, 31);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(39, 13);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Frame:";
+            this.btnRefresh.Location = new System.Drawing.Point(84, 3);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(66, 23);
+            this.btnRefresh.TabIndex = 7;
+            this.btnRefresh.Text = "REFRESH";
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            // 
+            // pnlEdit
+            // 
+            this.pnlEdit.Controls.Add(this.btnEdit);
+            this.pnlEdit.Controls.Add(this.btnRefresh);
+            this.pnlEdit.Location = new System.Drawing.Point(273, 21);
+            this.pnlEdit.Name = "pnlEdit";
+            this.pnlEdit.Size = new System.Drawing.Size(162, 28);
+            this.pnlEdit.TabIndex = 8;
+            // 
+            // txtFrame
+            // 
+            this.txtFrame.Location = new System.Drawing.Point(520, 29);
+            this.txtFrame.Name = "txtFrame";
+            this.txtFrame.Size = new System.Drawing.Size(54, 20);
+            this.txtFrame.TabIndex = 9;
+            this.txtFrame.ValueChanged += new System.EventHandler(this.txtFrame_ValueChanged);
+            // 
+            // lblFile
+            // 
+            this.lblFile.AutoSize = true;
+            this.lblFile.Location = new System.Drawing.Point(580, 31);
+            this.lblFile.Name = "lblFile";
+            this.lblFile.Size = new System.Drawing.Size(10, 13);
+            this.lblFile.TabIndex = 10;
+            this.lblFile.Text = "-";
             // 
             // WatchAnimation
             // 
@@ -181,6 +226,8 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtFramesPerSec)).EndInit();
+            this.pnlEdit.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.txtFrame)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -197,6 +244,10 @@
         private System.Windows.Forms.Button btnPlay;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label lblFrame;
+        private System.Windows.Forms.Button btnEdit;
+        private System.Windows.Forms.Button btnRefresh;
+        private System.Windows.Forms.Panel pnlEdit;
+        private System.Windows.Forms.NumericUpDown txtFrame;
+        private System.Windows.Forms.Label lblFile;
     }
 }
