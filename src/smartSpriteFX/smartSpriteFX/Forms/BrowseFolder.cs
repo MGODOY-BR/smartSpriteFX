@@ -1,4 +1,5 @@
 ﻿using smartSuite.smartSpriteFX.Forms.Controls.Browsers;
+using smartSuite.smartSpriteFX.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,10 +23,14 @@ namespace smartSuite.smartSpriteFX.Forms
 
             browser.BrowserType = SmartBrowserTypeEnum.Folder;
             browser.ChosenByUserEvent += Browser_ChosenByUserEvent;
+            browser.LoadLastUserChoice(Settings.Default.lastAnimationFolder);
         }
 
         private void Browser_ChosenByUserEvent(object sender, SmartBrowserEventArgs e)
         {
+            Settings.Default.lastAnimationFolder = e.UserChoice;
+            Settings.Default.Save();
+
             WatchAnimation watchAnimation = new WatchAnimation(e.UserChoice);
             watchAnimation.ShowDialog();
         }

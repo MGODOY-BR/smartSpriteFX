@@ -40,28 +40,28 @@ namespace smartSuite.smartSpriteFX.Forms
 
             this.btnPlay.Text = ">";
             this.pnlEdit.Visible = false;
-
-            _command = PlayModeEnum.STOPPED;
         }
 
         private void btnPlay_Click(object sender, EventArgs e)
         {
             this.pnlEdit.Visible = false;
+
+            if(this.btnPlay.Text == ">")
+            {
+                _command = PlayModeEnum.RUNNING;
+            }
+            else
+            {
+                _command = PlayModeEnum.PAUSED;
+            }
+
             switch (_command)
             {
                 case PlayModeEnum.RUNNING:
-                    // Pause
-                    this.btnPlay.Text = "||";
-                    _command = PlayModeEnum.PAUSED;
-                    this._playModeEnum = PlayModeEnum.PAUSED;
-                    this.pnlEdit.Visible = true;
-                    break;
-                case PlayModeEnum.STOPPED:
                     // Play
-                    this.btnPlay.Text = ">";
+                    this._playModeEnum = PlayModeEnum.RUNNING;
                     if (!this.backgroundWorker1.IsBusy)
                     {
-                        _command = PlayModeEnum.RUNNING;
                         FramesPerSec = 1 / (float)this.txtFramesPerSec.Value;
 
                         this.backgroundWorker1.RunWorkerAsync(
@@ -70,18 +70,30 @@ namespace smartSuite.smartSpriteFX.Forms
                                 URI = _uri,
                             });
                     }
-                    this._playModeEnum = PlayModeEnum.RUNNING;
                     break;
+                case PlayModeEnum.STOPPED:
                 case PlayModeEnum.PAUSED:
                     // Play
-                    this.btnPlay.Text = ">";
-                    this._playModeEnum = PlayModeEnum.RUNNING;
-                    _command = PlayModeEnum.RUNNING;
+                    this._playModeEnum = PlayModeEnum.PAUSED;
                     break;
                 default:
-                    throw new NotSupportedException(this._playModeEnum.ToString());
+                    throw new NotSupportedException(_command.ToString());
             }
 
+            switch (this._playModeEnum)
+            {
+                case PlayModeEnum.RUNNING:
+                    this.btnPlay.Text = "||";
+                    this.pnlEdit.Visible = false;
+                    break;
+                case PlayModeEnum.STOPPED:
+                case PlayModeEnum.PAUSED:
+                    this.btnPlay.Text = ">";
+                    this.pnlEdit.Visible = true;
+                    break;
+                default:
+                    break;
+            }
         }
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
@@ -130,6 +142,9 @@ namespace smartSuite.smartSpriteFX.Forms
 
         private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
+            if(this.pictureBox1.Image != null) this.pictureBox1.Image.Dispose();
+            this.pictureBox1.Image = null;
+
             FramePointer state = (FramePointer)e.UserState;
             this.pictureBox1.Image = LoadImage(state.FileName);
             this.txtFrame.Value = state.Frame;
