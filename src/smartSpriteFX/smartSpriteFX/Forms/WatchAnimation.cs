@@ -34,6 +34,8 @@ namespace smartSuite.smartSpriteFX.Forms
             _command = PlayModeEnum.STOPPED;
             FramesPerSec = Settings.Default.lastFramePerSec;
             _currentPointer = null;
+
+            this.txtFramesPerSec.Value = (decimal)FramesPerSec;
         }
 
         protected override void OnLoad(EventArgs e)
