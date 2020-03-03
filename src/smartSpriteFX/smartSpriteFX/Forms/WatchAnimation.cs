@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using smartSuite.smartSpriteFX.SpriteEffectModule.Effects.Filters.UI;
 
 namespace smartSuite.smartSpriteFX.Forms
 {
@@ -33,6 +34,7 @@ namespace smartSuite.smartSpriteFX.Forms
 
             _command = PlayModeEnum.STOPPED;
             _currentPointer = null;
+            _playModeEnum = PlayModeEnum.STOPPED;
 
             this.txtFramesPerSec.Value = (decimal)Settings.Default.lastFramePerSec;
         }
@@ -147,12 +149,26 @@ namespace smartSuite.smartSpriteFX.Forms
 
         private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-            if (this.pictureBox1.Image != null) this.pictureBox1.Image.Dispose();
+            try
+            {
+                if (this.pictureBox1.Image != null) this.pictureBox1.Image.Dispose();
 
-            FramePointer state = (FramePointer)e.UserState;
-            this.pictureBox1.Image = LoadImage(state.FileName);
-            this.txtFrame.Value = state.Frame;
-            this.lblFile.Text = Path.GetFileName(state.FileName);
+                FramePointer state = (FramePointer) e.UserState;
+                this.pictureBox1.Image = LoadImage(state.FileName);
+                this.txtFrame.Value = state.Frame;
+                this.lblFile.Text = Path.GetFileName(state.FileName);
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                _command = PlayModeEnum.STOPPED;
+                _playModeEnum = PlayModeEnum.STOPPED;
+            }
+            catch (Exception ex)
+            {
+                _command = PlayModeEnum.STOPPED;
+                _playModeEnum = PlayModeEnum.STOPPED;
+                MessageBoxUtil.Show(ex);
+            }
         }
 
         private Image LoadImage(string uri)
