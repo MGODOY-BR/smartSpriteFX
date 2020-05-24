@@ -824,6 +824,12 @@ namespace smartSuite.smartSpriteFX.Forms
         private void _draftBrowser_ChosenByUserEvent(object sender, SmartBrowserEventArgs e)
         {
             this.DoOpenDraft(e.UserChoice);
+
+            if (!String.IsNullOrEmpty(e.UserChoice))
+            {
+                var target = new FileInfo(e.UserChoice);
+                this.cutInPiecesDialog.SelectedPath = target.DirectoryName;
+            }
         }
 
         private void _amimationModeBrowser_ChosenByUserEvent(object sender, SmartBrowserEventArgs e)
@@ -832,5 +838,15 @@ namespace smartSuite.smartSpriteFX.Forms
         }
 
         #endregion
+
+        private void openSmartSpriteFileDialog1_FileOk(object sender, CancelEventArgs e)
+        {
+
+        }
+
+        private void openDraftFileDialog1_FileOk(object sender, CancelEventArgs e)
+        {
+
+        }
     }
 }

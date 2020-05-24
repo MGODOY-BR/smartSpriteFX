@@ -350,11 +350,13 @@
     "*";
             this.openDraftFileDialog1.SupportMultiDottedExtensions = true;
             this.openDraftFileDialog1.Title = "Open draft";
+            this.openDraftFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openDraftFileDialog1_FileOk);
             // 
             // openSmartSpriteFileDialog1
             // 
             this.openSmartSpriteFileDialog1.Filter = "smartSprite File|*.smartSprite";
             this.openSmartSpriteFileDialog1.Title = "Open project";
+            this.openSmartSpriteFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openSmartSpriteFileDialog1_FileOk);
             // 
             // saveFileDialog1
             // 

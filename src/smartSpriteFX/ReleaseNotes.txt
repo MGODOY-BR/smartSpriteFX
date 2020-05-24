@@ -1,20 +1,11 @@
-vAlpha 5.0.0.0
+vAlpha 6.0.0.0
 
 New Feactures
-- Performance improvements
-- New filters
-	- InversionFilter
-- New Image Letter Character Set: Boxes / Arrows / Keys
-- Number of current threads can be set up from smartSpriteFX.exe.config
-- Introducing "Watch Animation" feature!!
+-
 
 Fixes
-- Image Letter mode -> the last character bug: the item wasn't printed
-- The Landscape Mode has been reviewed
-- FrameRate Filter now can run under a scenario that it is the unique filter in list
-- Folder field writing doesn't refreshing anymore
-- AlignToButton has been reviewed to not change the horizontal length of image
-- AlignToButton doesn't repeat previous images anymore
-- AlignToButton has been reviewed to avoid misframing.
-- Empty images on saving has been reviewed
-- Free Cut filter has been reviewed against bugs that includes multiple Free Cuts embedded
+- Default index file name has been changed to false
+- Little revision in Transparent background filter
+
+- Landscape mode: cut feature has been fixed about the fake transparent line in position 0, 0
+- Landscape mode: default cut in pieces target has been changed to the draft folder

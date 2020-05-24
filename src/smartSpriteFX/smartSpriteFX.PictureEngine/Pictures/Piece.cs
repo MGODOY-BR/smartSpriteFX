@@ -263,8 +263,8 @@ namespace smartSuite.smartSpriteFX.Pictures
                             {
                                 // Creating fragment image
                                 pieceBitmap.SetPixel(
-                                    Math.Abs(minX - x),
-                                    Math.Abs(minY - y),
+                                    Math.Abs(minX - x) - 1,
+                                    Math.Abs(minY - y) - 1,
                                     piecePixel.Value);
                             }
                             else

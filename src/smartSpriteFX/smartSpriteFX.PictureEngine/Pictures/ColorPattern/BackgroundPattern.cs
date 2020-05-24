@@ -379,9 +379,11 @@ namespace smartSuite.smartSpriteFX.Pictures.ColorPattern
             int counter = 0;
 
             // Getting the horizontal pattern
-            for (int x = (int)this._topLeft.X; x < (int)this._topRight.X; x++)
+            // for (int x = (int)this._topLeft.X; x < (int)this._topRight.X; x++)
+            for (int x = (int)topLeftPiece.X; x < (int)topRightPiece.X; x++)
             {
-                var color = picture.GetPixel(x, (int)this._topLeft.Y);
+                // var color = picture.GetPixel(x, (int)this._topLeft.Y);
+                var color = picture.GetPixel(x, (int)topLeftPiece.Y);
 
                 #region Entries validation
 
